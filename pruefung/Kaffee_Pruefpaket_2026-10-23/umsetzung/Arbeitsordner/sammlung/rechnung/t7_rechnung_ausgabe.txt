@@ -1,0 +1,91 @@
+Tutorium 7: Wärmebilanzen (instationär differentiell), Zahlen für teile/t7.md (Skript t7_rechnung.py)
+
+Teil      Größe                                                                Wert  Einheit    | Schreibweise im Markdown
+Tab.      Temperaturleitfähigkeit Boden a                                     5e-07  m²/s       | a = 5\cdot 10^{-7}\,\mathrm{m^2/s}
+Tab.      Amplitude Jahresgang dT_0                                              10  K          | \Delta T_0 = 10\,\mathrm{K}
+Text      Periodendauer Jahr t_J                                             365.25  Tage       | t_J = 365{,}25\,\mathrm{Tage}
+Text      Periodendauer Tag t_T                                                  24  h          | t_T = 24\,\mathrm{h}
+A1 g      Kälteperiode t_K (im Text)                                             14  Tage       | t_K = 14\,\mathrm{Tage}
+Tab.      Permafrost: Jahresmittel theta_m,P                                     -8  °C         | \vartheta_{m,P} = -8\,\mathrm{°C}
+Tab.      Permafrost: Amplitude dT_0,P                                           15  K          | \Delta T_{0,P} = 15\,\mathrm{K}
+Tab.      Permafrost: Erwärmung dtheta_P                                          3  K          | \Delta\vartheta_P = 3\,\mathrm{K}
+Tab.      Gestein: Temperaturleitfähigkeit a_G                                1e-06  m²/s       | a_G = 1\cdot 10^{-6}\,\mathrm{m^2/s}
+A1 i      Zeit seit der Erwärmung t_E (im Text)                                 100  Jahre      | t_E = 100\,\mathrm{Jahre}
+A1 d      Kreisfrequenz Tag omega_T                                      7.2722e-05  1/s        | \omega_T = 7{,}27\cdot 10^{-5}\,\mathrm{1/s}
+A1 d      Dämpfungstiefe Tag d_T (drei Ziffern, siehe Teil e)               0.11726  m          | d_T = 0{,}117\,\mathrm{m}
+A1 d        Kontrolle: Tagesgang in 0,5 m mit d_T = 0,12 m                   1.5504  %          | 
+A1 d        Kontrolle: Tagesgang in 0,5 m mit d_T = 0,117 m                  1.3933  %          | 
+A1 d      Kreisfrequenz Jahr omega_J                                      1.991e-07  1/s        | \omega_J = 1{,}99\cdot 10^{-7}\,\mathrm{1/s}
+A1 d      Dämpfungstiefe Jahr d_J                                            2.2411  m          | d_J = 2{,}24\,\mathrm{m}
+A1 e      Jahresgang: Anteil der Amplitude in 1 m                            64.005  %          | 64\,\%
+A1 e      Jahresgang: Anteil der Amplitude in 5 m                            10.742  %          | 11\,\%
+A1 e      Jahresgang: Anteil der Amplitude in 10 m                           1.1538  %          | 1{,}2\,\%
+A1 e      Jahresgang: Amplitude in 10 m                                     0.11538  K          | \Delta T(10\,\mathrm{m}) = 0{,}12\,\mathrm{K}
+A1 e      Tagesgang: Anteil der Amplitude in 0,5 m                           1.4068  %          | 1{,}4\,\%
+A1 e        Tagesgang: Anteil in 5 cm (Messtiefen des DWD)                   65.286  %          | 
+A1 e        Tagesgang: Anteil in 10 cm (Messtiefen des DWD)                  42.623  %          | 
+A1 e        Tagesgang: Anteil in 20 cm (Messtiefen des DWD)                  18.167  %          | 
+A1 e        Tagesgang: Anteil in 50 cm (Messtiefen des DWD)                  1.4068  %          | 
+A1 f      Verzögerung des Jahresmaximums in 2 m                              51.877  Tage       | 52\,\mathrm{Tage}
+A1 f      Verzögerung des Jahresmaximums in 3 m                              77.816  Tage       | 78\,\mathrm{Tage}
+A1 f      Verzögerung des Jahresmaximums in 5 m                              129.69  Tage       | 130\,\mathrm{Tage}
+A1 f        Verzögerung des Tagesmaximums in 20 cm                           6.5147  h          | 
+A1 g      Eindringtiefe sqrt(a t_K)                                         0.77769  m          | \sqrt{a\,t_K} = 0{,}78\,\mathrm{m}
+A1 h      Auftautiefe bei Jahresmittel -8 °C                                 1.4088  m          | z_0 = 1{,}41\,\mathrm{m}
+A1 h      Auftautiefe bei Jahresmittel -5 °C                                 2.4621  m          | z_0 = 2{,}46\,\mathrm{m}
+A1 i      Eindringtiefe der Erwärmung sqrt(a_G t_E)                          56.176  m          | \sqrt{a_G\,t_E} = 56\,\mathrm{m}
+Frage 3   Kupfer (Cu-OF, 20 °C): lambda                                         394  W/(m K)    | \lambda = 394\,\mathrm{W/(m\,K)}
+Frage 3   Kupfer (Cu-OF, 20 °C): rho                                           8940  kg/m³      | \rho = 8940\,\mathrm{kg/m^3}
+Frage 3   Kupfer (Cu-OF, 20 °C): c                                              386  J/(kg K)   | c = 386\,\mathrm{J/(kg\,K)}
+Frage 3   Kupfer (Cu-OF, 20 °C): a = lambda/(rho c)                      0.00011418  m²/s       | 
+Frage 3   Wasser (20 °C): lambda                                              0.598  W/(m K)    | \lambda = 0{,}598\,\mathrm{W/(m\,K)}
+Frage 3   Wasser (20 °C): rho                                                   998  kg/m³      | \rho = 998\,\mathrm{kg/m^3}
+Frage 3   Wasser (20 °C): c                                                    4184  J/(kg K)   | c = 4184\,\mathrm{J/(kg\,K)}
+Frage 3   Wasser (20 °C): a = lambda/(rho c)                             1.4321e-07  m²/s       | 
+Frage 3   Luft (20 °C, 1,013 bar): lambda                                    0.0259  W/(m K)    | \lambda = 0{,}0259\,\mathrm{W/(m\,K)}
+Frage 3   Luft (20 °C, 1,013 bar): rho                                          1.2  kg/m³      | \rho = 1{,}20\,\mathrm{kg/m^3}
+Frage 3   Luft (20 °C, 1,013 bar): c                                           1006  J/(kg K)   | c = 1006\,\mathrm{J/(kg\,K)}
+Frage 3   Luft (20 °C, 1,013 bar): a = lambda/(rho c)                    2.1455e-05  m²/s       | 
+Frage 3     CoolProp Wasser lambda, rho, c (ungerundet)                     0.59801  W/(m K)    | 
+Frage 3     CoolProp Luft lambda, rho, c (ungerundet)                      0.025874  W/(m K)    | 
+Frage 3     a Luft ungerundet                                            2.1348e-05  m²/s       | 
+Frage 3     a Wasser ungerundet                                          1.4318e-07  m²/s       | 
+Frage 3   Granit: lambda von                                                    2.3  W/(m K)    | \lambda = 2{,}3
+Frage 3   Granit: lambda bis                                                    3.7  W/(m K)    | 
+Frage 3   Granit: a von                                                  9.7222e-07  m²/s       | 
+Frage 3   Granit: a bis                                                  1.5046e-06  m²/s       | 1{,}5\cdot 10^{-6}\,\mathrm{m^2/s}
+Frage 3     Granit: rho c = lambda/a (untere Werte)                          2.3657  MJ/(m³ K)  | 
+Frage 3   feuchter Ton (schwer, 15 % Wasser): lambda von                        1.4  W/(m K)    | \lambda = 1{,}4
+Frage 3   feuchter Ton (schwer, 15 % Wasser): lambda bis                        1.9  W/(m K)    | 
+Frage 3   feuchter Ton (schwer, 15 % Wasser): a von                      4.8611e-07  m²/s       | 
+Frage 3   feuchter Ton (schwer, 15 % Wasser): a bis                      7.0602e-07  m²/s       | 7{,}1\cdot 10^{-7}\,\mathrm{m^2/s}
+Frage 3     feuchter Ton (schwer, 15 % Wasser): rho c = lambda/a (untere Werte)           2.88  MJ/(m³ K)  | 
+Frage 3     Verhältnis lambda Wasser/Luft                                    23.089  -          | 
+Frage 3     Verhältnis a Luft/Wasser                                         149.81  -          | 
+Frage 3     Verhältnis rho c Wasser/Luft                                     3458.9  -          | 
+Z1        Anfangstemperatur theta_A                                            3870  °C         | \vartheta_A = 3870\,\mathrm{°C}
+Z1        Gradient                                                             36.5  K/km       | 36{,}5\,\mathrm{K/km}
+Z1        Temperaturleitfähigkeit a                                        1.18e-06  m²/s       | a = 1{,}18\cdot 10^{-6}\,\mathrm{m^2/s}
+Z1 a      Alter der Erde nach Kelvin                                     9.6095e+07  Jahre      | t = 9{,}6\cdot 10^{7}\,\mathrm{Jahre}
+Z1 a        in Millionen Jahren                                              96.095  Mio. Jahre | 
+Z1 b      Eindringtiefe der Abkühlung sqrt(a t)                               59.82  km         | \sqrt{a\,t} = 59{,}8\,\mathrm{km}
+Z1 b        Anteil am Erdradius                                             0.93894  %          | 
+Z1 b      Erdradius R                                                          6371  km         | R = 6371\,\mathrm{km}
+
+Abgleich mit den Kernzahlen der Ideensammlung (Abschnitt 4.7, gerundet):
+  d Tag m                Skript     0.1173  Ideensammlung    0.12  ok
+  d Jahr m               Skript      2.241  Ideensammlung    2.24  ok
+  Amplitude 1 m %        Skript      64.01  Ideensammlung      64  ok
+  Amplitude 5 m %        Skript      10.74  Ideensammlung      11  ok
+  Amplitude 10 m %       Skript      1.154  Ideensammlung     1.2  ok
+  Verzögerung 2 m Tage   Skript      51.88  Ideensammlung      52  ok
+  Verzögerung 3 m Tage   Skript      77.82  Ideensammlung      78  ok
+  Verzögerung 5 m Tage   Skript      129.7  Ideensammlung     130  ok
+  Tagesgang 0,5 m %      Skript      1.407  Ideensammlung     1.4  ok
+  sqrt(a t) 14 Tage m    Skript     0.7777  Ideensammlung    0.78  ok
+  Auftautiefe -8 °C m    Skript      1.409  Ideensammlung     1.4  ok
+  Auftautiefe -5 °C m    Skript      2.462  Ideensammlung     2.5  ok
+  Bohrloch 100 a m       Skript      56.18  Ideensammlung      56  ok
+  Kelvin Mio. Jahre      Skript      96.09  Ideensammlung      96  ok
+
+Abgleich mit teile/t7.md: alle Werte gefunden

@@ -1,0 +1,138 @@
+Tutorium 1: Wärmeleitung (Zahlen für teile/t1.md, Skript t1_rechnung.py)
+
+AUFGABE 1: Seen unter dem Eisschild, Tabelle
+Eisdicke H                                                        3700 m
+Oberflächentemperatur theta_O                                      -55 °C
+Wärmestromdichte aus dem Erdinneren q_E                             58 mW/m²
+lambda(T) = a exp(-b T): a                                       9.828 W/(m K)
+lambda(T) = a exp(-b T): b                                         5.7 1e-3/K
+Dichte Eis rho                                                     917 kg/m³
+Schmelzenthalpie                                                 333.5 kJ/kg
+Schmelzpunktsenkung gamma (Absenkung je MPa)                    0.0742 K/MPa
+Erdbeschleunigung g                                               9.81 m/s²
+Firn: Dicke s_F                                                    100 m
+Firn: Wärmeleitfähigkeit lambda_F                                  1.0 W/(m K)
+Dome C: Tiefe z_1                                                 3200 m
+Dome C: Temperatur theta_1                                        -4.2 °C
+Dome C: Tiefe z_2                                               3270.2 m
+Dome C: Temperatur theta_2                                       -2.34 °C
+
+AUFGABE 1: Ergebnisse
+d) lambda(theta_O = -55 °C)                                     2.8343 W/(m K)
+d) lambda(0 °C)                                                 2.0715 W/(m K)
+d) lambda_m (Integralmittel -55 bis 0 °C)                       2.4330 W/(m K)
+   zum Vergleich: Mittel der Randwerte                          2.4529 W/(m K)
+e) Basistemperatur theta_B (alles geleitet)                      33.20 °C
+   Gradient q_E/lambda_m                                         23.84 K/km
+f) Druck an der Basis p                                         33.284 MPa
+f) Druckschmelzpunkt theta_pm                                   -2.470 °C
+f) Abstand theta_B - theta_pm                                    35.67 K
+g) geleitete Wärmestromdichte q_leit                            34.542 mW/m²
+g) Rest für das Schmelzen                                       23.458 mW/m²
+g) Schmelzrate v_schm                                       7.6705e-11 m/s
+g) Schmelzrate v_schm je Jahr                                    2.421 mm/a
+h1) Mindestdicke H_krit (Schmelzpunkt aus f)                    2203.5 m
+   Kontrolle: mit Schmelzpunkt in dieser Tiefe                  2253.2 m
+h2) Faktor der Gradienten Firn/Eis = lambda_m/lambda_F          2.4330 -
+   Gradient im Firn (q_leit)                                     34.54 K/km
+   Gradient im Eis (q_leit)                                      14.20 K/km
+h3) Dome C: Gradient nahe der Basis                             26.496 K/km
+h3) lambda(-3 °C)                                               2.1072 W/(m K)
+h3) Wärmestromdichte q_C = lambda(-3 °C) dT/dz                  55.833 mW/m²
+h3) Druck in z_2                                                29.418 MPa
+h3) Druckschmelzpunkt in z_2                                    -2.183 °C
+h3) Abstand Schmelzpunkt minus Messwert                          0.157 K
+h3) Strecke bis zum Schmelzpunkt Delta z                          5.93 m
+
+AUFGABE 2: Kühlhauswand, Tabelle
+Stahlbeton: Dicke s_B                                               20 cm
+Stahlbeton: lambda_B                                               2.3 W/(m K)
+Hartschaum: Dicke s_D                                               12 cm
+Hartschaum: lambda_D                                             0.025 W/(m K)
+Wand: Fläche A                                                     250 m²
+Wand: Oberflächentemperatur außen theta_a                           28 °C
+Wand: Oberflächentemperatur innen theta_i                          -22 °C
+Betreiber: Grenzwert q_max                                           8 W/m²
+
+AUFGABE 2: Ergebnisse
+b) s_B/lambda_B                                                 0.0870 m² K/W
+b) s_D/lambda_D                                                 4.8000 m² K/W
+b) Wärmestromdichte q                                          10.2313 W/m²
+b) Wärmestrom Q durch 250 m²                                    2.5578 kW
+c) Temperatur an der Grenzfläche theta_G                       27.1103 °C
+c) Gradient im Beton                                             4.448 K/m
+c) Gradient in der Dämmung                                      409.25 K/m
+c) Faktor der Gradienten = lambda_B/lambda_D                     92.00 -
+e) Anteil des Betons am Widerstand                                1.78 %
+d) Mindestdicke der Dämmung s_D,min                             15.408 cm
+d) gewählte Dicke (aufgerundet)                                     16 cm
+d) Wärmestromdichte mit gewählter Dicke                         7.7078 W/m²
+e) Wärmestromdichte mit doppelter Betondicke                   10.0524 W/m²
+
+ZUSATZAUFGABE 1: Erdwärme in Deutschland
+Gradient KTB                                                        28 K/km
+Wärmeleitfähigkeit Gestein lambda_KTB                              2.9 W/(m K)
+Endteufe z_KTB                                                    9101 m
+a) Wärmestromdichte q_KTB                                       81.200 mW/m²
+b) Verhältnis q_KTB/q_E                                         1.4000 -
+b) Verhältnis lambda_KTB/lambda_m                               1.1919 -
+   Gradient im Eis (Teil e) zum Vergleich                        23.84 K/km
+c) Temperaturunterschied bis z_KTB                              254.83 K
+
+VORAB-FRAGE
+Gradient Firn / Gradient Eis = lambda_m/lambda_F                  2.43 -
+
+ABGLEICH mit teile/t1.md (jede Zeichenkette muss im Markdown stehen)
+ok    H = 3700\,\mathrm{m}
+ok    \vartheta_{\mathrm{O}} = -55\,\mathrm{°C}
+ok    \dot{q}_{\mathrm{E}} = 58\,\mathrm{mW/m^2}
+ok    a = 9{,}828\,\mathrm{W/(m\,K)}
+ok    b = 5{,}7\cdot 10^{-3}\,\mathrm{K^{-1}}
+ok    \rho = 917\,\mathrm{kg/m^3}
+ok    \Delta h_{\mathrm{schm}} = 333{,}5\,\mathrm{kJ/kg}
+ok    \gamma = 0{,}0742\,\mathrm{K/MPa}
+ok    g = 9{,}81\,\mathrm{m/s^2}
+ok    s_{\mathrm{F}} = 100\,\mathrm{m}
+ok    \lambda_{\mathrm{F}} = 1{,}0\,\mathrm{W/(m\,K)}
+ok    z_1 = 3200\,\mathrm{m}
+ok    \vartheta_1 = -4{,}2\,\mathrm{°C}
+ok    z_2 = 3270{,}2\,\mathrm{m}
+ok    \vartheta_2 = -2{,}34\,\mathrm{°C}
+ok    \lambda(\vartheta_{\mathrm{O}}) = 2{,}83
+ok    \lambda(0\,\mathrm{°C}) = 2{,}07
+ok    \lambda_{\mathrm{m}} = 2{,}43
+ok    \vartheta_{\mathrm{B}} = 33{,}2
+ok    p = 33{,}3
+ok    \vartheta_{\mathrm{pm}} = -2{,}47
+ok    \dot{q}_{\mathrm{leit}} = 34{,}5
+ok    v_{\mathrm{schm}} = 2{,}42
+ok    H_{\mathrm{krit}} \approx 2200
+ok    zu (2): Faktor $2{,}43
+ok    \mathrm{d}T/\mathrm{d}z = 26{,}5
+ok    \dot{q}_{\mathrm{C}} = 55{,}8
+ok    \vartheta_{\mathrm{pm}}(z_2) = -2{,}18
+ok    \Delta z \approx 6
+ok    s_{\mathrm{B}} = 20\,\mathrm{cm}
+ok    \lambda_{\mathrm{B}} = 2{,}3\,\mathrm{W/(m\,K)}
+ok    s_{\mathrm{D}} = 12\,\mathrm{cm}
+ok    \lambda_{\mathrm{D}} = 0{,}025\,\mathrm{W/(m\,K)}
+ok    A = 250\,\mathrm{m^2}
+ok    \vartheta_{\mathrm{a}} = 28\,\mathrm{°C}
+ok    \vartheta_{\mathrm{i}} = -22\,\mathrm{°C}
+ok    \dot{q}_{\mathrm{max}} = 8\,\mathrm{W/m^2}
+ok    \dot{q} = 10{,}23
+ok    \dot{Q} = 2{,}56
+ok    \vartheta_{\mathrm{G}} = 27{,}11
+ok    Faktor $92
+ok    s_{\mathrm{D,min}} = 15{,}41
+ok    s_{\mathrm{D}} = 16
+ok    \dot{q}(s_{\mathrm{D}} = 16\,\mathrm{cm}) = 7{,}71
+ok    \dot{q} = 10{,}05
+ok    28\,\mathrm{K/km}
+ok    \lambda_{\mathrm{KTB}} = 2{,}9\,\mathrm{W/(m\,K)}
+ok    z_{\mathrm{KTB}} = 9101\,\mathrm{m}
+ok    \dot{q}_{\mathrm{KTB}} = 81{,}2
+ok    \dot{q}_{\mathrm{KTB}}/\dot{q}_{\mathrm{E}} = 1{,}40
+ok    \lambda_{\mathrm{KTB}}/\lambda_{\mathrm{m}} = 1{,}19
+ok    \Delta T = 254{,}8
+Ergebnis des Abgleichs: alles gefunden

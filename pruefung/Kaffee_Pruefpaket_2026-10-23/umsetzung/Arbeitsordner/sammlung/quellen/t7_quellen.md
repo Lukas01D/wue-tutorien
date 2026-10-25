@@ -1,0 +1,26 @@
+**Tutorium 7, Aufgabe 1: Das Gedächtnis des Bodens**
+
+- Temperaturleitfähigkeit des feuchten Bodens a = 5·10⁻⁷ m²/s: Arbeitswert der Ideensammlung (Abschnitt 4.7) in der Spanne für schweren Ton mit 15 % Wasser, 0,042 bis 0,061 m²/Tag (4,9 bis 7,1·10⁻⁷ m²/s), Wärmeleitfähigkeit 1,4 bis 1,9 W/(m·K): ASHRAE (2000), Thermal properties of selected soil, zitiert in Sobti, J. & Singh, S. K. (2015), Earth-air heat exchanger as a green retrofit for Chandīgarh: a critical review, Geothermal Energy 3, 14, Tabelle 1: <https://geothermal-energy-journal.springeropen.com/articles/10.1186/s40517-015-0034-4/tables/1> (am 21.10.2026 eingesehen; Titel ergänzt). Die ASHRAE-Tabelle ist nur über diese Sekundärquelle geprüft.
+- Temperaturleitfähigkeit von Gestein a~G~ = 1·10⁻⁶ m²/s (Bohrloch, Teil i): Arbeitswert der Ideensammlung; dieselbe Tabelle nennt für Granit 0,084 bis 0,13 m²/Tag (1,0 bis 1,5·10⁻⁶ m²/s)
+- Amplitude des Jahresgangs 10 K; Permafrost mit Jahresmittel −8 °C, Amplitude 15 K und Erwärmung um 3 K; Kälteperiode 14 Tage: Arbeitswerte der Ideensammlung, ohne eigene Quelle
+- Stündliche Bodentemperaturen in Bad Lippspringe (Station 03028) in mehreren Tiefen bis 50 cm (Ausgangssituation, Teil e): Deutscher Wetterdienst (2026), Climate Data Center: <https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/soil_temperature/>. Faktenprüfung der Ideensammlung (KI-Protokoll): stündlich 2, 5, 10, 20, 50 und 100 cm, täglich nur bis 50 cm, Stundenwerte seit 1981; 100 cm für diese Station nicht geprüft, deshalb im Text „bis 50 cm“. Die Messwerte selbst sind nicht geladen.
+- Erwärmung der Oberfläche über Permafrost in Alaska um 2 bis 4 K innerhalb von Jahrzehnten bis einem Jahrhundert, aus Bohrlochtemperaturen (Ausgangssituation, Teil i): Lachenbruch, A. H. & Marshall, B. V. (1986), Changing climate: Geothermal evidence from permafrost in the Alaskan Arctic, Science 234, 689 bis 696: <https://doi.org/10.1126/science.234.4777.689>
+- „In etwa zehn Metern Tiefe schwankt die Temperatur übers Jahr kaum noch“ und „in 3 m Tiefe am wärmsten im Herbst“: eigene Rechnung (Ideensammlung, Abschnitt 4.7; Teil e und f)
+- Gegebene Lösung der Temperaturwelle und Eindringtiefe √(a·t): Holman, J. P. (2010), Heat transfer, 10. Aufl., McGraw-Hill, Abschnitt 4-3 sowie Aufgaben 4-18 und 4-19 (nicht in den Folien und nicht in der Formelsammlung; Rücksprache mit der Professorin laut Ideensammlung, Abschnitt 10, noch offen)
+- Wärmeleitungsgleichung, Temperaturleitfähigkeit, Anfangs- und Randbedingungen: Riese, J. (2026), Wärmeübertragung, Foliensatz 02, F. 21 bis 30, Lehrstuhl für Fluidverfahrenstechnik, Universität Paderborn
+- Frostfreie Gründungstiefe (häufig etwa 0,8 m, für die Lösung von Teil g): Norm nicht eingesehen (DIN 1054 mit DIN EN 1997-1/NA); deshalb ohne Zahl im Aufgabentext
+- Rechnung: `rechnung/t7_rechnung.py` (Ausgabe `rechnung/t7_rechnung_ausgabe.txt`), nachgebaut nach `nachrechnung_leitphaenomene.py`, Abschnitt T7
+
+**Tutorium 7, Frage 3: Temperaturleitfähigkeit vergleichen**
+
+- Kupfer (Cu-OF): Dichte 8,94 g/cm³, Wärmeleitfähigkeit bei 20 °C 394 W/(m·K), spezifische Wärmekapazität bei 20 °C 386 J/(kg·K): Lamineries Matthey (Notz Metall AG), Werkstoffdatenblatt Cu-OF: <https://www.matthey.ch/fileadmin/user_upload/downloads/fichetechnique/DE/Cu-OF_v26D.pdf> (am 21.10.2026 eingesehen); Gegenprobe für Dichte und Wärmeleitfähigkeit: Aurubis, Werkstoff-Datenblatt Cu-OF (DE_2024_06): <https://www.aurubis.com/dam/jcr:726de301-1eb9-48cb-a2cf-09490c19fad0/PNA%20400_Cu-OF_C10200-DE%20(1).pdf>
+- Wasser und Luft bei 20 °C und 1,01325 bar: berechnet mit CoolProp 8.0 in `rechnung/t7_rechnung.py`; Bell, I. H., Wronski, J., Quoilin, S. & Lemort, V. (2014), Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library CoolProp, Industrial & Engineering Chemistry Research 53(6), 2498 bis 2508: <https://doi.org/10.1021/ie4033999>
+- Granit und feuchter Ton (schwerer Ton, 15 % Wasser): ASHRAE (2000) über Sobti & Singh (2015), Tabelle 1 (s. o.)
+- Größenordnungen der Temperaturleitfähigkeit (Flüssigkeiten etwa 0,1·10⁻⁶ m²/s, Metalle und Gase 3 bis 100·10⁻⁶ m²/s): Riese, J. (2026), Foliensatz 02, F. 26
+
+**Tutorium 7, Zusatzaufgabe 1: Lord Kelvin und das Alter der Erde**
+
+- Kelvins Abschätzung von rund 100 Millionen Jahren (96 Millionen Jahre, Grenzen 24 bis 400 Millionen Jahre): England, P., Molnar, P. & Richter, F. (2007), John Perry's neglected critique of Kelvin's age for the Earth: A missed opportunity in geodynamics, GSA Today 17(1), 4 bis 9: <https://doi.org/10.1130/GSAT01701A.1>. Eingangswerte 3870 °C (7000 °F), 36,5 K/km und a = 1,18·10⁻⁶ m²/s wie in der Nachrechnung der Ideensammlung (`nachrechnung_leitphaenomene.py`, Abschnitt T7); der Artikel konnte am 21.10.2026 nicht erneut gelesen werden (Abruf abgelehnt, HTTP 429), in der Ideensammlung ist er als im Volltext geprüft vermerkt.
+- Lösung für den halbunendlichen Körper mit plötzlich geänderter Oberflächentemperatur (Gradient an der Oberfläche): Holman (2010), Abschnitt 4-3 (s. o.)
+- Erdradius R = 6371 km (Teil b): mittlerer Erdradius wie in Tutorium 6
+- Alter der Erde rund 4,5 Milliarden Jahre: Allgemeinwissen, nicht eigens belegt

@@ -1,0 +1,27 @@
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.6cm,bottom=2.5cm,headheight=14pt]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\small Wärmeübertragung}
+\fancyhead[R]{\small Entwurf, Stand 23.10.2026}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[C]{\small Wärmeübertragung}\fancyhead[R]{\small Entwurf, Stand 23.10.2026}\fancyfoot[R]{\small\thepage}\renewcommand{\headrulewidth}{0.5pt}}
+\usepackage{setspace}
+\setstretch{1.25}
+\setlength{\parskip}{4pt plus 1pt}
+\setlength{\parindent}{0pt}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=3pt}
+\usepackage{array}
+\renewcommand{\arraystretch}{1.25}
+\usepackage{ragged2e}
+\setmathrm{Latin Modern Roman}
+\usepackage{graphicx}
+\usepackage{needspace}
+% keine einzelnen Zeilen (z. B. Ergebniszeilen) am Seitenanfang oder Seitenende
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+% Aufzählung zweiter Ebene mit Kreis statt Strich
+\renewcommand{\labelitemii}{$\circ$}

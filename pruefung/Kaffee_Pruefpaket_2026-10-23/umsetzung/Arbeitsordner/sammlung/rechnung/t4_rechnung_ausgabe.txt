@@ -1,0 +1,44 @@
+Tutorium 4: Strahlung (Zahlen der Tabellen und Ergebniszeilen; Spalte „Blatt“ = Anzeige im Blatt,
+„nur Info“ = Kontrolle oder Hilfswert, steht nicht im Blatt)
+
+Aufgabe 1: Die Strahlungsbilanz der Erde (Tabellenwerte)
+Solarkonstante S0                                                     1361.0000 W/m²       Blatt: 1361
+planetare Albedo rho_p                                                   0.3000 -          Blatt: 0,30
+Mitteltemperatur der Oberfläche T_O                                    288.0000 K          Blatt: 288
+Erdwärme q_E                                                             0.0900 W/m²       Blatt: 0,09
+Strahlungsantrieb bei Verdopplung von CO2                                3.9300 W/m²       Blatt: 3,93
+Stefan-Boltzmann-Konstante (Anzeige 5,6705e-8)                           5.6705 1e-8 W/(m² K⁴) Blatt: 5,6705
+
+Aufgabe 1: Ergebnisse
+a) S0/4                                                                340.2500 W/m²       Blatt: 340
+c) absorbiert q_abs = S0 (1 - rho_p)/4                                 238.1750 W/m²       Blatt: 238
+d) T_e = (q_abs/sigma)^(1/4)                                           254.5767 K          Blatt: 254,6
+d) T_e in °C                                                           -18.5733 °C         Blatt: -18,6
+d) nur Erdwärme 0,09 W/m²: T                                            35.4940 K          Blatt: 35,5
+d) nur Erdwärme in °C                                                 -237.6560 °C         nur Info
+d) Verhältnis q_abs / q_E                                             2646.3889 -          nur Info
+f) eps_A für T_O = 288 K: 2 (1 - (T_e/T_O)^4)                            0.7789 -          Blatt: 0,78
+f) T_A = T_O / 2^(1/4)                                                 242.1782 K          Blatt: 242,2
+f) Kontrolle: T_O mit eps_A = 0,78                                     288.0622 K          nur Info
+g) Grenzfall eps_A = 0: T_O                                            254.5767 K          Blatt: 254,6
+g) Grenzfall eps_A = 1: T_O                                            302.7445 K          Blatt: 302,7
+g) Gegenstrahlung im Modell eps_A sigma T_A^4                          151.9388 W/m²       Blatt: 152
+g) Gegenstrahlung mit eps_A = 0,78 (gerundet)                          152.1444 W/m²       Blatt: 152
+g) Abstrahlung der Oberfläche im Modell sigma T_O^4                    390.1138 W/m²       nur Info
+g) Anteil (Konvektion + Verdunstung)/Abstrahlung (gemessen)             25.8794 %          Blatt: 26
+g) Info: Sonne an der Oberfläche q_abs - 80                            158.1750 W/m²       nur Info
+g) Info: Oberflächenbilanz mit Messwerten (q_abs - 80) + 342 - 398 - 21 - 82      -0.8250 W/m²       nur Info
+g) Info: Lücke gemessen - Modell, 342 - q_G                            190.0612 W/m²       nur Info
+g) Info: Erklärung 80 + 21 + 82 + (398 - sigma T_O^4)                  190.8862 W/m²       nur Info
+h) 4 sigma T_e^3                                                         3.7423 W/(m² K)   Blatt: 3,74
+h) Delta T = Delta q / (4 sigma T_e^3)                                   1.0502 K          Blatt: 1,05
+
+Zusatzaufgabe 1: Eis aus der Nacht (Luft 5 °C, Himmel -20 °C, eps = 0,96)
+b) Gleichgewicht für alpha_L = 2 W/(m² K)                              -11.2584 °C         Blatt: -11,3
+b) Gleichgewicht für alpha_L = 5 W/(m² K)                               -5.8592 °C         Blatt: -5,9
+Info: Nettoabstrahlung bei 0 °C                                         79.4730 W/m²       nur Info
+
+Zusatzaufgabe 2: Autoscheibe und Reif (Scheibe 0 °C, Umgebung aus Himmel, Häusern, Bäumen -5 °C, eps = 0,95)
+a) Nettoabstrahlung der Scheibe bei 0 °C                                21.3617 W/m²       nur Info
+a/b) Grenz-Lufttemperatur für alpha_L = 5 W/(m² K)                       4.2723 °C         Blatt: 4,27
+a/b) Grenz-Lufttemperatur für alpha_L = 10 W/(m² K)                      2.1362 °C         Blatt: 2,14

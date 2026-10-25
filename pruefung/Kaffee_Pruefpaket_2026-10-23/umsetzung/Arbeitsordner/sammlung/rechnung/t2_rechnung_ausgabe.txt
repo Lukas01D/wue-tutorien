@@ -1,0 +1,108 @@
+Tutorium 2: Konvektion (Zahlen für teile/t2.md, Skript t2_rechnung.py)
+
+AUFGABE 1: Offene Rinnen im Meereis, Tabelle
+Rinne: Breite b in Windrichtung                                     10 m
+Rinne: Länge l quer zum Wind                                         1 km
+Wasser: Temperatur theta_W                                        -1.8 °C
+Wind: Geschwindigkeit w                                              8 m/s
+Wind: Lufttemperatur theta_u                                       -30 °C
+Luft bei Filmtemperatur: lambda (CoolProp)                    0.023132 W/(m K)
+Luft bei Filmtemperatur: lambda (Tabelle)                      0.02313 W/(m K)
+Luft bei Filmtemperatur: nu (CoolProp)                     1.19509e-05 m²/s
+Luft bei Filmtemperatur: nu (Tabelle)                       1.1950e-05 m²/s
+Luft bei Filmtemperatur: Pr (CoolProp)                         0.71343 -
+Luft bei Filmtemperatur: Pr (Tabelle)                            0.713 -
+Weitere Rinnen: schmal b_1                                           1 m
+Weitere Rinnen: breit b_2                                          100 m
+
+AUFGABE 1: Ergebnisse (mit den Tabellenwerten)
+d) Filmtemperatur theta_m                                       -15.90 °C
+d) Reynolds-Zahl Re (b = 10 m)                              6.6946e+06 -
+d) Umschlag laminar/turbulent nach x_krit                       0.7469 m
+e) Nußelt-Zahl Nu (turbulent, Platte)                           8488.0 -
+e) alpha (b = 10 m)                                             19.633 W/(m² K)
+e) Wärmestromdichte q (b = 10 m)                                553.64 W/m²
+e) Wärmestrom der ganzen Rinne Q                                5.5364 MW
+   ungerundet (CoolProp): alpha (b = 10 m)                      19.642 W/(m² K)
+   ungerundet (CoolProp): q (b = 10 m)                          553.90 W/m²
+f) Re (b_1 = 1 m)                                           6.6946e+05 -
+f) alpha_1 (b_1 = 1 m), gültig                                  32.063 W/(m² K)
+f) q (b_1 = 1 m)                                                 904.2 W/m²
+f) Re_2 (b_2 = 100 m), außerhalb (Re > 1e7)                 6.6946e+07 -
+f) alpha_2 (b_2 = 100 m), nur Tendenz                           12.103 W/(m² K)
+f) q (b_2 = 100 m)                                               341.3 W/m²
+f) alpha_1/alpha (10 m)                                          1.633 -
+f) alpha_1/alpha_2                                               2.649 -
+g) charakteristische Länge L = A/U                              4.9505 m
+g) beta = 1/T_u                                               0.004113 1/K
+g) Grashof-Zahl Gr                                          9.6662e+11 -
+g) Gr Pr f(Pr) (> 7e4: turbulent)                           2.7856e+11 -
+g) Nu (freie Konvektion, turbulent)                             979.63 -
+g) alpha (frei)                                                 4.5771 W/(m² K)
+g) q (frei)                                                     129.07 W/m²
+   ungerundet (CoolProp): alpha (frei)                          4.5786 W/(m² K)
+
+ZUSATZAUFGABE 1: Windchill
+Lufttemperatur theta_u                                             -10 °C
+Luft bei -10 °C: lambda (CoolProp)                            0.023591 W/(m K)
+Luft bei -10 °C: lambda (Text)                                 0.02359 W/(m K)
+Luft bei -10 °C: nu (CoolProp)                             1.24507e-05 m²/s
+Luft bei -10 °C: nu (Text)                                  1.2450e-05 m²/s
+Luft bei -10 °C: Pr (CoolProp)                                 0.71243 -
+Luft bei -10 °C: Pr (Text)                                       0.712 -
+Wind w                                                               5 m/s
+Finger: d                                                            2 cm
+Kopf: d                                                             18 cm
+a) Finger: L = pi d/2                                          0.03142 m
+a) Finger: Re                                                    12617 -
+a) Finger: Nu                                                    91.48 -
+a) Finger: alpha_F                                              68.692 W/(m² K)
+a) Kopf: L = pi d/2                                            0.28274 m
+a) Kopf: Re                                                     113552 -
+a) Kopf: Nu                                                     398.94 -
+a) Kopf: alpha_K                                                33.284 W/(m² K)
+   ungerundet (CoolProp): alpha_F / alpha_K                     68.707 W/(m² K)
+   ungerundet (CoolProp): alpha_K                               33.294 W/(m² K)
+b) Verhältnis alpha_F/alpha_K                                    2.064 -
+c) Kopf bei 0,5 m/s: Re                                          11355 -
+c) Kopf bei 0,5 m/s: alpha                                       7.146 W/(m² K)
+c) Faktor alpha_K(5 m/s)/alpha_K(0,5 m/s)                        4.658 -
+
+ABGLEICH mit teile/t2.md (jede Zeichenkette muss im Markdown stehen)
+ok    b = 10\,\mathrm{m}
+ok    l = 1\,\mathrm{km}
+ok    \vartheta_{\mathrm{W}} = -1{,}8\,\mathrm{°C}
+ok    w = 8\,\mathrm{m/s}
+ok    \vartheta_{\mathrm{u}} = -30\,\mathrm{°C}
+ok    \lambda = 0{,}02313\,\mathrm{W/(m\,K)}
+ok    \nu = 1{,}195\cdot 10^{-5}\,\mathrm{m^2/s}
+ok    Pr = 0{,}713
+ok    b_1 = 1\,\mathrm{m}
+ok    b_2 = 100\,\mathrm{m}
+ok    \vartheta_{\mathrm{m}} = -15{,}9
+ok    Re = 6{,}69\cdot 10^{6}
+ok    x_{\mathrm{krit}} = 0{,}75
+ok    Nu = 8488
+ok    \alpha = 19{,}6
+ok    \dot{q} = 554
+ok    \dot{Q} = 5{,}54
+ok    \alpha_1 = 32{,}1
+ok    Re_2 = 6{,}69\cdot 10^{7}
+ok    \alpha_2 = 12{,}1
+ok    L = 4{,}95
+ok    Gr = 9{,}67\cdot 10^{11}
+ok    \alpha = 4{,}58
+ok    \dot{q} = 129
+ok    \vartheta_{\mathrm{u}} = -10\,\mathrm{°C}
+ok    \lambda = 0{,}02359\,\mathrm{W/(m\,K)}
+ok    \nu = 1{,}245\cdot 10^{-5}\,\mathrm{m^2/s}
+ok    Pr = 0{,}712
+ok    w = 5\,\mathrm{m/s}
+ok    d_{\mathrm{F}} = 2\,\mathrm{cm}
+ok    d_{\mathrm{K}} = 18\,\mathrm{cm}
+ok    \alpha_{\mathrm{F}} = 68{,}7
+ok    \alpha_{\mathrm{K}} = 33{,}3
+ok    \alpha_{\mathrm{F}}/\alpha_{\mathrm{K}} = 2{,}06
+ok    \alpha_{\mathrm{K}}(0{,}5\,\mathrm{m/s}) = 7{,}1
+ok    Faktor $4{,}7
+Ergebnis des Abgleichs: alles gefunden

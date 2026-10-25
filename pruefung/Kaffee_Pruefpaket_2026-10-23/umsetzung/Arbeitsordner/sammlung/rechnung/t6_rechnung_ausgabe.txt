@@ -1,0 +1,69 @@
+Tutorium 6: Wärmebilanzen (stationär differentiell), Zahlen für teile/t6.md (Skript t6_rechnung.py)
+
+Teil        Größe                                                                    Wert  Einheit   | Schreibweise im Markdown
+Tab. A1     Krustendicke s                                                             30  km        | s = 30\,\mathrm{km}
+Tab. A1     Wärmeleitfähigkeit lambda                                                 2.5  W/(m K)   | \lambda = 2{,}5\,\mathrm{W/(m\,K)}
+Tab. A1     Wärmequelle q_KV                                                            1  µW/m³     | \dot{q}_{KV} = 1\,\mathrm{µW/m^3}
+Tab. A1     Oberflächentemperatur theta_O                                              10  °C        | \vartheta_O = 10\,\mathrm{°C}
+Tab. A1     Wärmestromdichte Oberfläche q_O                                            65  mW/m²     | \dot{q}_O = 65\,\mathrm{mW/m^2}
+Tab. A1     Wärmequelle Granit q_KV,G                                                 2.5  µW/m³     | \dot{q}_{KV,G} = 2{,}5\,\mathrm{µW/m^3}
+Tab. A1     Tiefe Tiefbohrung z_B                                                     9.1  km        | z_B = 9{,}1\,\mathrm{km}
+Tab. A1     Temperatur Tiefbohrung theta_B                                            265  °C        | \vartheta_B = 265\,\mathrm{°C}
+Tab. A2     Erdradius R                                                              6371  km        | R = 6371\,\mathrm{km}
+Tab. A2     Wärmestrom aus dem Erdinneren                                              47  TW        | \dot{Q} = 47\,\mathrm{TW}
+Tab. A2     Wärmeleitfähigkeit Kugel (unten)                                            3  W/(m K)   | \lambda = 3
+Tab. A2     Wärmeleitfähigkeit Kugel (oben)                                             4  W/(m K)   | 4\,\mathrm{W/(m\,K)}
+Tab. A2     Temperatur am inneren Kern                                               6000  °C        | \vartheta_K = 6000\,\mathrm{°C}
+Tab. A2     absorbierte Sonnenstrahlung q_S = S0 (1 - rho_p)/4                     238.17  W/m²      | \dot{q}_S = 238\,\mathrm{W/m^2}
+A1 e        theta(10 km) mit Quelle                                                   250  °C        | \vartheta(10\,\mathrm{km}) = 250\,\mathrm{°C}
+A1 e        theta(10 km) ohne Quelle                                                  270  °C        | \vartheta(10\,\mathrm{km}) = 270\,\mathrm{°C}
+A1 e        theta(20 km) mit Quelle                                                   450  °C        | \vartheta(20\,\mathrm{km}) = 450\,\mathrm{°C}
+A1 e        theta(20 km) ohne Quelle                                                  530  °C        | \vartheta(20\,\mathrm{km}) = 530\,\mathrm{°C}
+A1 e        theta(30 km) mit Quelle                                                   610  °C        | \vartheta(30\,\mathrm{km}) = 610\,\mathrm{°C}
+A1 e        theta(30 km) ohne Quelle                                                  790  °C        | \vartheta(30\,\mathrm{km}) = 790\,\mathrm{°C}
+A1 f        theta(z_B) aus dem Profil                                              230.04  °C        | \vartheta(z_B) = 230\,\mathrm{°C}
+A1 f          Abstand zum Wert der Bohrung                                         34.962  K         | 
+A1 f          Wärmestromdichte, die mit dem Profil 265 °C in z_B ergäbe            74.605  mW/m²     | 
+A1 g        q_M aus dem Profil (lam dT/dz bei z = s)                                   35  mW/m²     | \dot{q}_M = 35\,\mathrm{mW/m^2}
+A1 g        q_M aus der globalen Bilanz q_O - q_KV s                                   35  mW/m²     | 
+A1 g          Anteil der Kruste an q_O (q_KV s / q_O)                              46.154  %         | 
+A1 h        Granit: Tiefe des Maximums z_max = q_O/q_KV,G                              26  km        | z_{max} = 26\,\mathrm{km}
+A1 h        Granit: Wärmestromdichte an der Basis q_M                                 -10  mW/m²     | \dot{q}_M = -10\,\mathrm{mW/m^2}
+A1 h          Granit: Temperatur im Maximum                                           348  °C        | 
+A1 h          Granit: Temperatur an der Basis (30 km)                                 340  °C        | 
+A1 Prüfung    Abweichung der Parabel von der Geraden in 100 m Tiefe                 0.002  K         | 
+A1 Prüfung    Gradient an der Oberfläche q_O/lambda                                    26  K/km      | 
+A2 c        q_KV der Erde (47 TW gleichmäßig)                                   4.339e-08  W/m³      | \dot{q}_{KV} = 4{,}34\cdot 10^{-8}\,\mathrm{W/m^3}
+A2 c        T_Mitte - T_O für lambda = 3                                            97843  K         | 97\,800\,\mathrm{K}
+A2 c        T_Mitte - T_O für lambda = 4                                            73382  K         | 73\,400\,\mathrm{K}
+A2 d        q_O = q_KV R/3 (aus dem Profil)                                        92.145  mW/m²     | \dot{q}_O = 92{,}1\,\mathrm{mW/m^2}
+A2 d        q_O = Q/(4 pi R²) (globale Bilanz)                                     92.145  mW/m²     | 
+A2 f        q_S / q_O                                                              2584.8  -         | 
+A2 f        q_S / q_O, gerundet auf zwei gültige Ziffern                             2600  -         | \dot{q}_S/\dot{q}_O \approx 2600
+A2 f          absorbierte Sonnenstrahlung gesamt                               1.2148e+05  TW        | 
+Z1 a        Oberflächentemperatur ohne Sonne mit q_O aus A2                        35.704  K         | T = 35{,}7\,\mathrm{K}
+Z1 a          in °C                                                               -237.45  °C        | 
+Z1 a          zum Vergleich mit 92 mW/m² (gerundet)                                 35.69  K         | 
+Z1 b        Oberflächentemperatur mit 87 mW/m²                                     35.194  K         | T = 35{,}2\,\mathrm{K}
+Z1 b          Änderung der Temperatur in %                                        -1.4262  %         | 
+Z1 b          Änderung der Wärmestromdichte in %                                  -5.5838  %         | 
+Z1 b          Tabellenwert 87 mW/m²                                                    87  mW/m²     | 87\,\mathrm{mW/m^2}
+
+Abgleich mit den Kernzahlen der Ideensammlung (Abschnitt 4.6, gerundet):
+  theta(10 km)           Skript          250  Ideensammlung      250  ok
+  theta(20 km)           Skript          450  Ideensammlung      450  ok
+  theta(30 km)           Skript          610  Ideensammlung      610  ok
+  ohne Quelle 10 km      Skript          270  Ideensammlung      270  ok
+  ohne Quelle 20 km      Skript          530  Ideensammlung      530  ok
+  ohne Quelle 30 km      Skript          790  Ideensammlung      790  ok
+  Mantel mW/m²           Skript           35  Ideensammlung       35  ok
+  z_max km               Skript           26  Ideensammlung       26  ok
+  Mantel Granit          Skript          -10  Ideensammlung      -10  ok
+  KTB °C                 Skript          230  Ideensammlung      230  ok
+  q_KV Erde 1e-8         Skript        4.339  Ideensammlung      4.3  ok
+  dT lambda 4            Skript    7.338e+04  Ideensammlung    73000  ok
+  dT lambda 3            Skript    9.784e+04  Ideensammlung    98000  ok
+  q_O Kugel mW/m²        Skript        92.15  Ideensammlung       92  ok
+  ohne Sonne K           Skript         35.7  Ideensammlung       35  ok
+
+Abgleich mit teile/t6.md: alle Werte gefunden

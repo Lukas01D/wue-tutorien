@@ -1,0 +1,131 @@
+Tutorium 3: Wärmedurchgang (Zahlen der Tabellen und Ergebniszeilen; Spalte „Blatt“ = Anzeige im Blatt)
+
+Aufgabe 1: Meereis und Schnee als Deckel (A = 1 m²)
+c) R_th,alpha = 1/(alpha_a A)                                                        0.066667 K/W        Blatt: 0,0667
+c) R_th,S = s_S/(lambda_S A)                                                         1.000000 K/W        Blatt: 1,00
+c) R_th,E = s_E/(lambda_E A)                                                         0.666667 K/W        Blatt: 0,667
+c) R_th,S mit lambda_S = 0,3 W/(m K)                                                 0.666667 K/W        Blatt: 0,667
+c) R_th,S mit lambda_S = 0,14 W/(m K)                                                1.428571 K/W        Blatt: 1,43
+d) R_th,ges                                                                          1.733333 K/W        Blatt: 1,73
+d) kA = 1/R_th,ges                                                                   0.576923 W/K        Blatt: 0,577
+d) Wärmestrom Q                                                                     16.269231 W          Blatt: 16,3
+d) theta_O (Schneeoberfläche)                                                      -28.915385 °C         Blatt: -28,9
+d) theta_SE (Grenze Schnee/Eis)                                                    -12.646154 °C         Blatt: -12,6
+e) Delta T über alpha_a                                                              1.084615 K          Blatt: 1,08
+e) Delta T über dem Schnee                                                          16.269231 K          Blatt: 16,3
+e) Delta T über dem Eis                                                             10.846154 K          Blatt: 10,8
+e) Summe der Teildifferenzen                                                        28.200000 K          Blatt: 28,2
+e) offenes Wasser q_W = alpha_a (theta_W - theta_u)                                423.000000 W/m²       Blatt: 423
+e) Faktor offenes Wasser / mit Eis und Schnee                                       26.000000 -          Blatt: 26
+e) Tutorium 2: alpha der Rinne (CoolProp, wie nachrechnung_leitphaenomene.py)        19.641761 W/(m² K)   Blatt: 19,6
+e) Tutorium 2: q der Rinne (offenes Wasser)                                        553.897658 W/m²       Blatt: 554
+e) Q mit alpha = 19,6 W/(m² K) (Eis und Schnee)                                     16.417426 W          Blatt: 16,4
+e) Anteil des äußeren Widerstands an R_th,ges                                        3.846154 %          Blatt: 3,8
+f) Eiswachstum dh/dt = q/(rho_E dh_schm)                                             0.459638 cm/d       Blatt: 0,46
+f) Jungeis 10 cm ohne Schnee: q                                                    246.750000 W/m²       Blatt: 247
+f) Jungeis 10 cm ohne Schnee: dh/dt                                                  6.971171 cm/d       Blatt: 6,97
+f) Verhältnis q Jungeis / q mit Schnee                                              15.166667 -          Blatt: 15,2
+Info: Q mit lambda_S = 0,30 W/(m K)                                                 20.142857 W          Blatt: 20,1
+Info: Q mit lambda_S = 0,14 W/(m K)                                                 13.044053 W          Blatt: 13,0
+
+Aufgabe 2: Ölleitung im Permafrost (L = 1 m)
+Tabelle: Luft bei -29 °C (CoolProp) nu                                               1.087039 1e-5 m²/s  Blatt: 1,087
+Tabelle: Luft bei -29 °C (CoolProp) lambda                                           0.022103 W/(m K)    Blatt: 0,0221
+Tabelle: Luft bei -29 °C (CoolProp) Pr                                               0.715791 -          Blatt: 0,716
+a) Innenradius Stahlrohr r_i                                                         0.595700 m          Blatt: 0,5957
+a) Außendurchmesser der Dämmung d_a                                                  1.410000 m          Blatt: 1,41
+a) charakteristische Länge pi d_a/2                                                  2.214823 m          Blatt: 2,215
+a) Re                                                                          1018777.746449 -          Blatt: 1018778
+a) Re / 1e6                                                                          1.018778 1e6        Blatt: 1,02
+a) Nu_lam                                                                          599.577709 -          Blatt: 600
+a) Nu_turb                                                                        1932.987202 -          Blatt: 1933
+a) Nu_m                                                                           2024.141138 -          Blatt: 2024
+a) alpha_a                                                                          20.197335 W/(m² K)   Blatt: 20,2
+b) R_th,i = 1/(alpha_i 2 pi r_i L)                                                   0.000534 K/W        Blatt: 0,000534
+b) R_th,St = ln(r_St/r_i)/(2 pi lambda_St L)                                         0.000084 K/W        Blatt: 0,0000839
+b) R_th,Iso = ln(r_a/r_St)/(2 pi lambda_Iso L)                                       0.575898 K/W        Blatt: 0,576
+b) R_th,a = 1/(alpha_a 2 pi r_a L)                                                   0.011177 K/W        Blatt: 0,0112
+b) R_th,ges                                                                          0.587693 K/W        Blatt: 0,588
+b) Anteil der Dämmung an R_th,ges                                                   97.992907 %          Blatt: 98,0
+b) Wärmestrom Q (L = 1 m) = Q/L                                                    102.094101 W          Blatt: 102
+b) Q/L mit einer Nachkommastelle                                                   102.094101 W/m        Blatt: 102,1
+c) theta_O (Oberfläche der Dämmung)                                                -28.858864 °C         Blatt: -28,9
+c) Filmtemperatur theta_m = (theta_O + theta_u)/2                                  -29.429432 °C         Blatt: -29,4
+d) k_i = kA/(2 pi r_i L)                                                             0.454613 W/(m² K)   Blatt: 0,455
+d) k_a = kA/(2 pi r_a L)                                                             0.384132 W/(m² K)   Blatt: 0,384
+d) k_i A_i                                                                           1.701568 W/K        Blatt: 1,70
+d) k_a A_a                                                                           1.701568 W/K        Blatt: 1,70
+e) r_krit = lambda_Iso/alpha_a in mm                                                 1.980459 mm         Blatt: 1,98
+e) Außenradius der Dämmung r_a in mm                                               705.000000 mm         Blatt: 705
+
+Zusatzaufgabe 1: schneefreie Stellen (10 % der Fläche ohne Schnee)
+a) R_th mit Schnee (0,9 m²)                                                          1.925926 K/W        Blatt: 1,93
+a) R_th ohne Schnee (0,1 m²)                                                         7.333333 K/W        Blatt: 7,33
+a) R_th,ges parallel                                                                 1.525333 K/W        Blatt: 1,53
+b) Wärmestrom Q                                                                     18.487762 W          Blatt: 18,5
+b) Zunahme gegenüber geschlossener Schneedecke                                      13.636364 %          Blatt: 13,6
+c) Anteil durch die schneefreie Fläche                                              20.800000 %          Blatt: 20,8
+
+ABGLEICH mit teile/t3.md (jede Zeichenkette muss im Markdown stehen)
+ok    \vartheta_u = -30\,\mathrm{°C}
+ok    \vartheta_W = -1{,}8\,\mathrm{°C}
+ok    \alpha_a = 15\,\mathrm{W/(m^2\,K)}
+ok    s_S = 0{,}2\,\mathrm{m}
+ok    \lambda_S = 0{,}2\,\mathrm{W/(m\,K)}
+ok    s_E = 1{,}4\,\mathrm{m}
+ok    \lambda_E = 2{,}1\,\mathrm{W/(m\,K)}
+ok    \rho_E = 917\,\mathrm{kg/m^3}
+ok    \Delta h_{schm} = 333{,}5\,\mathrm{kJ/kg}
+ok    A = 1\,\mathrm{m^2}
+ok    s_J = 0{,}1\,\mathrm{m}
+ok    zwischen $0{,}14$ und $0{,}3\,\mathrm{W/(m\,K)}$
+ok    R_{th,\alpha} = 0{,}0667\,\mathrm{K/W}
+ok    R_{th,S} = 1{,}00\,\mathrm{K/W}
+ok    R_{th,E} = 0{,}667\,\mathrm{K/W}
+ok    R_{th,S} = 0{,}667$ bis $1{,}43\,\mathrm{K/W}
+ok    R_{th,ges} = 1{,}73\,\mathrm{K/W}
+ok    kA = 0{,}577\,\mathrm{W/K}
+ok    \dot{Q} = 16{,}3\,\mathrm{W}
+ok    \vartheta_O = -28{,}9\,\mathrm{°C}
+ok    \vartheta_{SE} = -12{,}6\,\mathrm{°C}
+ok    \Delta T_S = 16{,}3\,\mathrm{K}
+ok    1{,}08\,\mathrm{K} + 16{,}3\,\mathrm{K} + 10{,}8\,\mathrm{K} = 28{,}2\,\mathrm{K}
+ok    \dot{q}_W = 423\,\mathrm{W/m^2}$, Faktor 26
+ok    \alpha = 19{,}6\,\mathrm{W/(m^2\,K)}$ und $\dot{q} = 554\,\mathrm{W/m^2}
+ok    zu (3): $\dot{Q} = 16{,}4\,\mathrm{W}
+ok    \mathrm{d}s_E/\mathrm{d}t = 0{,}46\,\mathrm{cm/d}
+ok    \dot{q}_J = 247\,\mathrm{W/m^2}
+ok    \mathrm{d}s_J/\mathrm{d}t = 6{,}97\,\mathrm{cm/d}
+ok    \vartheta_i = 30\,\mathrm{°C}
+ok    \alpha_i = 500\,\mathrm{W/(m^2\,K)}
+ok    w = 5\,\mathrm{m/s}
+ok    \nu_L = 1{,}087\cdot 10^{-5}\,\mathrm{m^2/s}
+ok    \lambda_L = 0{,}0221\,\mathrm{W/(m\,K)}
+ok    Pr = 0{,}716
+ok    d_{St} = 1{,}22\,\mathrm{m}
+ok    s_{St} = 14{,}3\,\mathrm{mm}
+ok    \lambda_{St} = 45\,\mathrm{W/(m\,K)}
+ok    s_{Iso} = 9{,}5\,\mathrm{cm}
+ok    \lambda_{Iso} = 0{,}04\,\mathrm{W/(m\,K)}
+ok    L = 1\,\mathrm{m}
+ok    \vartheta_m = -29\,\mathrm{°C}
+ok    Re = 1{,}02\cdot 10^{6}
+ok    Nu_m = 2024
+ok    \alpha_a = 20{,}2\,\mathrm{W/(m^2\,K)}
+ok    R_{th,i} = 5{,}34\cdot 10^{-4}\,\mathrm{K/W}
+ok    R_{th,St} = 8{,}39\cdot 10^{-5}\,\mathrm{K/W}
+ok    R_{th,Iso} = 0{,}576\,\mathrm{K/W}
+ok    R_{th,a} = 0{,}0112\,\mathrm{K/W}
+ok    R_{th,ges} = 0{,}588\,\mathrm{K/W}
+ok    \dot{Q} = 102\,\mathrm{W}
+ok    \vartheta_O = -28{,}9\,\mathrm{°C}
+ok    \vartheta_m = -29{,}4\,\mathrm{°C}
+ok    k_i = 0{,}455\,\mathrm{W/(m^2\,K)}
+ok    k_a = 0{,}384\,\mathrm{W/(m^2\,K)}
+ok    k_i A_i = k_a A_a = 1{,}70\,\mathrm{W/K}
+ok    r_{krit} = \lambda_{Iso}/\alpha_a = 1{,}98\,\mathrm{mm}
+ok    R_{th,ges} = 1{,}53\,\mathrm{K/W}
+ok    \dot{Q} = 18{,}5\,\mathrm{W}
+ok    Zunahme: $13{,}6\,\%
+ok    Anteil: $20{,}8\,\%
+Ergebnis des Abgleichs: alles gefunden

@@ -1,0 +1,55 @@
+Arbeitswerte: {'V_K': 0.0002, 'rho_K': 1000.0, 'cp_K': 4180.0, 'V_M': 3e-05, 'rho_M': 1030.0, 'cp_M': 3940.0, 'th_K0': 80.0, 'th_M': 5.0, 'th_U': 20.0, 't_end': 3600.0, 't_mess': 600.0, 'th_mess': 67.0}
+m_K                                                                0.2 kg
+m_M                                                                0.0309 kg
+C_K = m_K c_p,K                                                    836 J/K
+C_M = m_M c_p,M                                                    121.7 J/K
+C_K + C_M                                                          957.7 J/K
+
+a) Mischtemperatur Tasse 1
+T_1,0                                                              343.62 K
+theta_1,0                                                          70.47 °C
+
+c) kA aus der Messung
+ln((T - T_u)/(T_K0 - T_u))                                         -0.24420 
+kA                                                                 0.3402 W/K
+Zeitkonstante ohne Milch                                           41.0 min
+Zeitkonstante mit Milch                                            46.9 min
+
+d) Temperaturen nach 60 min
+exp(-kA t/(C_K + C_M))                                             0.2783 
+T_1                                                                307.20 K
+theta_1                                                            34.05 °C
+exp(-kA t/C_K)                                                     0.2310 
+T_K(60 min)                                                        307.01 K
+theta_K(60 min)                                                    33.86 °C
+T_2                                                                303.34 K
+theta_2                                                            30.19 °C
+Unterschied theta_1 - theta_2                                      3.85 K
+
+e) abgegebene Wärme
+Q_1                                                                34.88 kJ
+Q_2                                                                38.57 kJ
+(Q_2 - Q_1)/(C_K + C_M)                                            3.85 K
+Wärmestrom am Anfang Tasse 1                                       17.17 W
+Wärmestrom am Anfang Tasse 2                                       20.41 W
+Kaffee ohne Milch wird kälter als das Gemisch ab                   55.7 min
+
+f) nichtlineare Wärmeabgabe, angepasst an dieselbe Messung
+   n = 1.00: theta_1 = 34.05 °C, theta_2 = 30.19 °C, Unterschied 3.85 K
+   n = 1.33: theta_1 = 37.65 °C, theta_2 = 33.34 °C, Unterschied 4.31 K
+   n = 1.60: theta_1 = 39.96 °C, theta_2 = 35.35 °C, Unterschied 4.61 K
+
+Empfindlichkeit
+   Milch 7 °C                    : theta_1 = 34.12 °C, theta_2 = 30.45 °C, Unterschied 3.67 K
+   Milch 20 °C (Raumtemperatur)  : theta_1 = 34.58 °C, theta_2 = 32.10 °C, Unterschied 2.48 K
+   Milch 40 ml                   : theta_1 = 34.02 °C, theta_2 = 29.17 °C, Unterschied 4.85 K
+   Kaffee 85 °C                  : theta_1 = 30.04 °C, theta_2 = 26.20 °C, Unterschied 3.83 K
+   Messung 64 °C (schneller)     : theta_1 = 29.94 °C, theta_2 = 26.24 °C, Unterschied 3.70 K
+   Messung 70 °C (langsamer)     : theta_1 = 39.42 °C, theta_2 = 35.63 °C, Unterschied 3.79 K
+   Becher 300 g, kA neu aus derselben Messung (0.444 W/K): theta_1 = 34.04 °C, theta_2 = 30.96 °C, Unterschied 3.08 K
+   Becher 300 g, gleiches kA (passt nicht mehr zur Messung):  theta_1 = 39.11 °C, theta_2 = 36.06 °C, Unterschied 3.05 K
+   Anteil Becher an der Wärmekapazität des Kaffees                 31 %
+Milchtemperatur, bei der beide Tassen gleich warm wären            47.0 °C
+   Milch 60 °C (warmer Milchschaum): theta_1 = 35.99 °C, theta_2 = 37.18 °C, Unterschied -1.19 K
+
+Allgemeine Prüfung (Tasse 2 immer kälter, wenn die Milch nicht wärmer als der Raum ist): True

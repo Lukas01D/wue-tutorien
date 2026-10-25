@@ -1,0 +1,100 @@
+Tutorium 8: Wärmeübertrager und Verdampfer, Nachrechnung (t8_rechnung.py)
+Spalten: Name | Wert | Einheit | Schreibweise im Aufgabentext (Prüfung gegen teile/t8.md)
+
+b) elektrische Leistung P_el = Q_H/COP                                          2 kW          P_{\mathrm{el}} = 2{,}00\,\mathrm{kW}  [steht im Text]
+b) Wärmestrom aus der Sole Q_V = Q_H - P_el                                     6 kW          \dot{Q}_{\mathrm{V}} = 6{,}00\,\mathrm{kW}  [steht im Text]
+b) Solemassenstrom m_S                                                   0.526316 kg/s        \dot{m}_{\mathrm{S}} = 0{,}526\,\mathrm{kg/s}  [steht im Text]
+   (Volumenstrom, nur zur Information)                                    1.82186 m³/h      
+   Wärmekapazitätsstrom der Sole C_S                                         2000 W/K       
+c) (1) ein Rohrkreis: w                                                  0.953183 m/s         w = 0{,}95\,\mathrm{m/s}  [steht im Text]
+c) (1) Re (Schreibweise auf 100 gerundet)                                 6195.69             Re = 6200  [steht im Text]
+c) (2) zwei Rohrkreise: w                                                0.476592 m/s         w = 0{,}48\,\mathrm{m/s}  [steht im Text]
+c) (2) Re (Schreibweise auf 100 gerundet)                                 3097.85             Re = 3100  [steht im Text]
+d) Delta T_ln Verdampfer                                                  6.38293 K           \Delta T_{\mathrm{ln}} = 6{,}38\,\mathrm{K}  [steht im Text]
+d) (kA)_V = Q_V/Delta T_ln (Schreibweise ganzzahlig)                      940.007 W/K         (kA)_{\mathrm{V}} = 940\,\mathrm{W/K}  [steht im Text]
+d) Fläche bei k1 = 1000 W/(m² K)                                         0.940007 m²          A_{\mathrm{V}} = 0{,}94\,\mathrm{m^2}  [steht im Text]
+d) Fläche bei k2 = 2000 W/(m² K)                                         0.470004 m²          bzw. $0{,}47\,\mathrm{m^2}$  [steht im Text]
+e) C* = C_min/C_max (Kältemittel siedet, C_max -> unendlich)                    0             C^* = 0  [steht im Text]
+e) eps_V                                                                    0.375             \varepsilon_{\mathrm{V}} = 0{,}375  [steht im Text]
+e) NTU_V                                                                 0.470004             NTU_{\mathrm{V}} = 0{,}470  [steht im Text]
+e) (kA)_V = NTU_V C_S                                                     940.007 W/K         (kA)_{\mathrm{V}} = 940\,\mathrm{W/K}  [steht im Text]
+   Kontrolle: Unterschied der beiden Wege                            -1.13687e-13 W/K       
+f) eps_Sonde                                                                 0.25             \varepsilon_{\mathrm{Sonde}} = 0{,}250  [steht im Text]
+f) NTU_Sonde                                                             0.287682             NTU_{\mathrm{Sonde}} = 0{,}288  [steht im Text]
+f) (kA)_Sonde (Schreibweise ganzzahlig)                                   575.364 W/K         (kA)_{\mathrm{Sonde}} = 575\,\mathrm{W/K}  [steht im Text]
+f) eps nach halbem Weg = 1 - exp(-NTU/2) = 1 - sqrt(1 - eps)             0.133975           
+f) Soletemperatur am tiefsten Punkt                                      0.607695 °C          \vartheta_{\mathrm{S,unten}} = 0{,}61\,\mathrm{°C}  [steht im Text]
+f) Anteil von Q_V auf dem Weg nach unten                                  53.5898 %           \dot{Q}_{\mathrm{unten}}/\dot{Q}_{\mathrm{V}} = 53{,}6\,\%  [steht im Text]
+g) (1) Entzugsleistung je Meter Q_V/L                                          60 W/m         \dot{Q}_{\mathrm{V}}/L = 60\,\mathrm{W/m}  [steht im Text]
+   Richtwert VDI 4640 Blatt 2 (2001), normales Festgestein                     60 W/m       
+g) (2) Carnot-Leistungszahl T_K/(T_K - T_V)                               6.80761             COP_{\mathrm{C}} = 6{,}81  [steht im Text]
+g) (2) COP/COP_C                                                          58.7578 %           COP/COP_{\mathrm{C}} = 59\,\%  [steht im Text]
+h) (1) Fläche für Q_V aus dem Erdwärmestrom                               92307.7 m²        
+h) (1) dieselbe Fläche in Hektar                                          9.23077 ha          A = 9{,}23\,\mathrm{ha}  [steht im Text]
+h) (2) CO2 je kWh Wärme, Wärmepumpe mit COP 4                                  86 g/kWh       e_{\mathrm{WP}} = 86\,\mathrm{g/kWh}  [steht im Text]
+h) (2) CO2 je kWh Wärme, Wärmepumpe mit JAZ 4,3                                80 g/kWh       (mit $JAZ$: $80\,\mathrm{g/kWh}$)  [steht im Text]
+h) (2) CO2 je kWh Wärme, Gasheizung (eta 0,95)                            212.632 g/kWh       e_{\mathrm{Gas}} = 213\,\mathrm{g/kWh}  [steht im Text]
+Tab. A2: Wärmestrom der AMOC (Tutorium 5)                                     1.2 PW          \dot{Q}_{\mathrm{AMOC}} = 1{,}2\,\mathrm{PW}  [steht im Text]
+Tab. A2: Erdbeschleunigung g (damit rechnet Teil a)                          9.81 m/s²        g = 9{,}81\,\mathrm{m/s^2}  [steht im Text]
+a) rho c_p Meerwasser                                                     4.08975 MJ/(m³ K) 
+a) rho c_p Luft                                                             1.206 kJ/(m³ K) 
+a) Verhältnis (Schreibweise auf 10 gerundet)                              3391.17             (\rho\,c_p)_{\mathrm{W}}/(\rho\,c_p)_{\mathrm{L}} = 3390  [steht im Text]
+a) Masse der Luftsäule p0/g                                               10328.7 kg/m²     
+a) Wasserschicht mit derselben Wärmekapazität wie die Luftsäule           2.53815 m           h_{\mathrm{W}} = 2{,}54\,\mathrm{m}  [steht im Text]
+a) Ozeanschicht für die ganze Atmosphäre (71 % Ozean)                     3.57486 m           h_{\mathrm{O}} = 3{,}57\,\mathrm{m}  [steht im Text]
+a) 3 m Ozean im Verhältnis zur ganzen Atmosphäre                          83.9195 %           3 m Ozean: $84\,\%  [steht im Text]
+   (nur zur Information) h_O mit g = 9,80665 m/s²                         3.57608 m         
+b) Luftmassenstrom nur fühlbar                                        2.48756e+11 kg/s        \dot{m}_{\mathrm{L}} = 2{,}49\cdot 10^{11}\,\mathrm{kg/s}  [steht im Text]
+b) Volumenstrom (rho 1,2) in Sv                                            207297 Sv          \dot{V}_{\mathrm{L}} = 2{,}07\cdot 10^{5}\,\mathrm{Sv}  [steht im Text]
+b) Massenstrom der AMOC                                                1.7425e+10 kg/s      
+b) Volumenstrom Luft / AMOC (Schreibweise auf 100 gerundet)               12193.9             \dot{V}_{\mathrm{L}}/\dot{V}_{\mathrm{AMOC}} = 12\,200  [steht im Text]
+b) Massenstrom Luft / AMOC                                                14.2758             \dot{m}_{\mathrm{L}}/\dot{m}_{\mathrm{AMOC}} = 14{,}3  [steht im Text]
+b) Wärmestrom Atmosphäre / AMOC                                           4.16667             \dot{Q}_{\mathrm{A}}/\dot{Q}_{\mathrm{AMOC}} = 4{,}2  [steht im Text]
+c) latente Wärme je kg Luft                                                 12.15 kJ/kg     
+c) entspricht einer Erwärmung um                                          12.0896 K           \Delta T_{\mathrm{lat}} = 12{,}1\,\mathrm{K}  [steht im Text]
+c) Luftmassenstrom fühlbar und latent                                 1.55039e+11 kg/s        \dot{m}_{\mathrm{L}} = 1{,}55\cdot 10^{11}\,\mathrm{kg/s}  [steht im Text]
+c) latenter Anteil                                                        37.6744 %           latenter Anteil $38\,\%  [steht im Text]
+d) (1) Hadley-Zelle / Ergebnis aus c)                                       0.516             \dot{m}_{\mathrm{H}}/\dot{m}_{\mathrm{L}} = 0{,}52  [steht im Text]
+d) (1) Faktor                                                             1.93798           
+d) (2) mittlere Nordwärts-Geschwindigkeit (halbe Wand)                    1.32898 m/s         w_{\mathrm{N}} = 1{,}33\,\mathrm{m/s}  [steht im Text]
+Z1 a) eps Gegenstrom, NTU = 4                                                 0.8             \varepsilon_{\mathrm{Gegen}} = 0{,}80  [steht im Text]
+Z1 a) eps Gleichstrom, NTU = 4                                           0.499832             \varepsilon_{\mathrm{Gleich}} = 0{,}50  [steht im Text]
+   NTU =   0.5: eps Gegenstrom / Gleichstrom                             0.333333 / 0.3161  
+   NTU =   1.0: eps Gegenstrom / Gleichstrom                                  0.5 / 0.4323  
+   NTU =   2.0: eps Gegenstrom / Gleichstrom                             0.666667 / 0.4908  
+   NTU =   4.0: eps Gegenstrom / Gleichstrom                                  0.8 / 0.4998  
+   NTU =  10.0: eps Gegenstrom / Gleichstrom                             0.909091 / 0.5000  
+   NTU = 100.0: eps Gegenstrom / Gleichstrom                             0.990099 / 0.5000  
+Z1 b) Grenzwert Gegenstrom (NTU -> unendlich)                                   1             \varepsilon_{\mathrm{Gegen}} \to 1  [steht im Text]
+Z1 b) Grenzwert Gleichstrom (NTU -> unendlich)                                0.5             \varepsilon_{\mathrm{Gleich}} \to 0{,}5  [steht im Text]
+Z1 c) Wärmeabgabe Gegenstrom / ohne Übertragung                               0.2           
+Z1 c) Wärmeabgabe Gleichstrom / ohne Übertragung                         0.500168           
+Z1 c) Faktor Gegenstrom gegenüber Gleichstrom                             2.50084             Faktor $2{,}5$  [steht im Text]
+Z1 c) Faktor Gegenstrom gegenüber ohne Übertragung                              5             bzw. $5$  [steht im Text]
+Z1 c) gemessen 3 % -> ohne Übertragung (gleiche Durchblutung)                  15 %           ohne Wärmeübertragung $15$ bis  [steht im Text]
+Z1 c) gemessen 7 % -> ohne Übertragung (gleiche Durchblutung)                  35 %           bis $35\,\%$  [steht im Text]
+Z2 a) Geschwindigkeit über Grund                                          311.937 m/s       
+Z2 a) mittlerer Rückenwind (Großkreis)                                    59.9369 m/s         w_{\mathrm{R}} = 59{,}9\,\mathrm{m/s}  [steht im Text]
+Z2 a) mittlerer Rückenwind in km/h                                        215.773 km/h        \,\mathrm{m/s} = 216\,\mathrm{km/h}  [steht im Text]
+Z2 b) mit 3 % längerem Flugweg                                             69.295 m/s         w_{\mathrm{R}} = 69{,}3\,\mathrm{m/s}  [steht im Text]
+   Flightradar24 rund 150 mph in m/s                                       67.056 m/s       
+Z2 c) Flugzeit ohne Wind                                                   6.1067 h           t = 6{,}11\,\mathrm{h}  [steht im Text]
+Z2 c) Flugzeit ohne Wind, Minuten über 6 h                                6.40212 min       
+
+Vergleich mit den Ausgangsskripten (neu | Ausgangsskript | Angabe dort):
+  Solemassenstrom                         0.52632 |      0.526 | 0,526 kg/s (1,82 m³/h)
+  Re ein Kreis / zwei Kreise               6195.7 |       6196 | 6196 / 3098
+  kA Verdampfer (Delta T_ln)               940.01 |        940 | 940 W/K bei Delta T_ln = 6,38 K
+  kA Sonde                                 575.36 |        575 | eps 0,250, NTU 0,288, kA 575 W/K
+  Carnot-COP                               6.8076 |        6.8 | 6,8; COP 4 sind 59 % davon
+  CO2 Wärmepumpe / Gas                         86 |         86 | 86 g gegen 213 g (JAZ 4,3: 80 g)
+  Fläche Erdwärmestrom                     9.2308 |        9.2 | 9,2 ha
+  Ozeanschicht ganze Atmosphäre            3.5749 |       3.58 | 3,58 m (mit g = 9,80665; Kernzahl 3,6 m)
+  Luftmassenstrom fühlbar              2.4876e+11 |  2.488e+11 | 2,488e11 kg/s, 2,07e5 Sv, 12194-fach, 14,3-fach
+  latenter Anteil                          37.674 |         38 | 12,2 kJ/kg, 12 K, 1,55e11 kg/s, 38 %
+  Hadley / C3                               0.516 |       0.54 | 0,54 mit 0,84e11 kg/s (Aufgabentext: rund 0,8e11, Faktor 2)
+  Nordwärts-Geschwindigkeit                 1.329 |       1.32 | 1,32 m/s mit rho 0,764 und U 30 665 km
+  Rückenwind 3 % länger                    69.295 |       69.2 | 69,2 m/s mit 252,1 m/s (hier 252 m/s wie im Aufgabentext)
+  Flugzeit ohne Wind                       6.1067 |       6.11 | 6,11 h
+
+Prüfung: 55 Schreibweisen geprüft, 0 fehlen im Text.

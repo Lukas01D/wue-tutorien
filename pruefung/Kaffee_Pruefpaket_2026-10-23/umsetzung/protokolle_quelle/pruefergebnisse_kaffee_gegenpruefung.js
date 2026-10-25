@@ -1,0 +1,15 @@
+// Befunde der unabhängigen Gegenprüfung der Kaffee-Aufgabe vom 21.10.2026 (für KI-Protokoll, Abschnitt 3.5)
+// Spalten: Aussage im Entwurf | Ergebnis der Prüfung | Folge
+module.exports = [
+  ["Hinweise: Mit Becher (300 g) 39,1 gegenüber 36,1 °C", "gerechnet mit unverändertem *kA* = 0,3402 W/K; das passt mit Becher nicht mehr zur gegebenen Messung (schwarzer Kaffee wäre nach 10 min bei 69,8 statt 67 °C)", "*kA* mit Becher aus derselben Messung neu bestimmt (0,444 W/K): 30,96 gegenüber 34,04 °C; Rechenmodell um die Funktion becher() ergänzt"],
+  ["Lösung f: „37,7 °C und 33,3 °C, also 4,3 K … statt 3,9 K“", "gerundete Werte ergeben 4,4 K; 3,9 K widerspricht den 3,85 K im übrigen Text", "zwei Nachkommastellen (37,65 und 33,34 °C, 4,31 statt 3,85 K); ∝ statt ∼"],
+  ["Abb. 1: „Umgebung: *ϑ*_{U}“", "Index groß, sonst überall *ϑ*_{u}; Bild stammte noch aus einem älteren Lauf", "Abb. 1 neu erzeugt (*ϑ*_{u})"],
+  ["Aufgabe b: „Zeichnen Sie den Bilanzraum in Abb. 1 ein“", "Abb. 1 zeigt vier Tassen, der Auftrag ist mehrdeutig", "„für Tasse 1“ ergänzt"],
+  ["Hinweise, typische Fehler: „die Milch in Tasse 2 vor dem Zugießen ebenfalls abkühlen lassen“", "physikalisch schief (Milch mit 5 °C würde sich erwärmen) und nicht parallel formuliert", "ersetzt durch „in Tasse 2 schon während der 60 Minuten mit *m*_{K} *c*_{p,K} + *m*_{M} *c*_{p,M} gerechnet“"],
+  ["Aufgabe f: „Wird der Unterschied … größer oder kleiner?“", "„der Unterschied“ nicht bestimmt; Antwort „größer“ hält für Exponenten 1,25 bis 2 und ein Verdunstungsgesetz (4,14 bis 4,96 K)", "„der Temperaturunterschied der Tassen nach 60 Minuten“"],
+  ["Quellen: *τ* ≈ 41 min (Ferreira 2025); Verdunstung „rund die Hälfte“ (Condoret 2007)", "beide Quellen existieren wie zitiert, nennen die Werte aber nicht direkt: *τ* folgt aus der Steigung 0,0241 1/min in Abb. 6; Condoret Tab. 2: 12,0 von 22,7 W bei 79 °C (53 %)", "Herleitung und Fundstelle in Lösung und Quellenliste ergänzt"],
+  ["Abb. L1 und L2", "Bilanzgrenze lief außen um Wand und Henkel; Beschriftungen 34,0 und 30,2 °C statt der Textwerte; Mischsprung bei 60 min wirkte durchgezogen", "Grenze knapp innerhalb der Wand, Pfeile auch seitlich; Werte mit zwei Nachkommastellen; beide Sprünge fein gestrichelt"],
+  ["Lösung: Ges. nur *ϑ*_{1}, *ϑ*_{2}; *τ* ohne Definition; Frage 1 ohne Auflösung; Begründung in f knapp", "kleinere Lücken", "Ges. vollständig; *τ* = *m* *c*_{p}/*kA*; Auflösung der Vorab-Frage am Anfang der Lösung; f mit Wärmestromunterschied am Anfang (9,5 K) begründet"],
+  ["Allgemeine Aussage: Tasse 2 ist immer kühler, wenn die Milch nicht wärmer als der Raum ist", "bestätigt (linear allgemein bewiesen; für jedes steigende Wärmeabgabegesetz, solange die Milch nicht wärmer als der schwarze Kaffee beim Zugießen ist); gleich warm erst bei Milch mit 47,0 °C", "als „Zum Weiterdenken“ in die Hinweise (warmer Milchschaum dreht das Ergebnis um)"],
+  ["Kopfzeile „Entwurf“", "vor dem Einsatz entfernen", "bleibt bis zur Freigabe durch Tutoriumsleitung und Professorin"],
+];

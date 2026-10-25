@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="394.0545pt" height="141.588pt" viewBox="0 0 394.0545 141.588" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-21T16:29:45.181053</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 141.588 
+L 394.0545 141.588 
+L 394.0545 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 24.7095 112.0275 
+L 72.00675 112.0275 
+L 72.00675 31.986 
+L 24.7095 31.986 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #dde7ef; stroke: #555555; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 72.00675 112.0275 
+L 119.304 112.0275 
+L 119.304 31.986 
+L 72.00675 31.986 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #efe3cb; stroke: #555555; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 152.04825 112.0275 
+L 199.3455 112.0275 
+L 199.3455 31.986 
+L 152.04825 31.986 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #dde7ef; stroke: #555555; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 199.3455 112.0275 
+L 246.64275 112.0275 
+L 246.64275 31.986 
+L 199.3455 31.986 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #efe3cb; stroke: #555555; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 279.387 112.0275 
+L 326.68425 112.0275 
+L 326.68425 31.986 
+L 279.387 31.986 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #dde7ef; stroke: #555555; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 326.68425 112.0275 
+L 373.9815 112.0275 
+L 373.9815 31.986 
+L 326.68425 31.986 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #efe3cb; stroke: #555555; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10.5px; font-family: 'Carlito'; text-anchor: middle; fill: #555555" x="48.358125" y="123.3843" transform="rotate(-0 48.358125 123.3843)">Schicht 1</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10.5px; font-family: 'Carlito'; text-anchor: middle; fill: #555555" x="95.655375" y="123.3843" transform="rotate(-0 95.655375 123.3843)">Schicht 2</text>
+   </g>
+   <g id="text_3">
+    <!-- $T$ -->
+    <g style="fill: #222222" transform="translate(13.28025 19.9479)">
+     <text>
+      <tspan x="0" y="-0.296875" style="font-style: italic; font-size: 12px; font-family: 'Carlito'; fill: #222222">T</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_4">
+    <!-- $x$ -->
+    <g style="fill: #222222" transform="translate(131.217 132.006)">
+     <text>
+      <tspan x="0" y="-0.265625" style="font-style: italic; font-size: 12px; font-family: 'Carlito'; fill: #222222">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="line2d_1">
+    <path d="M 24.7095 38.38932 
+L 72.00675 78.41007 
+L 119.304 94.41837 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Carlito'; text-anchor: middle; fill: #222222" x="72.00675" y="24.32125" transform="rotate(-0 72.00675 24.32125)">A</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10.5px; font-family: 'Carlito'; text-anchor: middle; fill: #555555" x="175.696875" y="123.3843" transform="rotate(-0 175.696875 123.3843)">Schicht 1</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10.5px; font-family: 'Carlito'; text-anchor: middle; fill: #555555" x="222.994125" y="123.3843" transform="rotate(-0 222.994125 123.3843)">Schicht 2</text>
+   </g>
+   <g id="text_8">
+    <!-- $T$ -->
+    <g style="fill: #222222" transform="translate(140.619 19.9479)">
+     <text>
+      <tspan x="0" y="-0.296875" style="font-style: italic; font-size: 12px; font-family: 'Carlito'; fill: #222222">T</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_9">
+    <!-- $x$ -->
+    <g style="fill: #222222" transform="translate(258.55575 132.006)">
+     <text>
+      <tspan x="0" y="-0.265625" style="font-style: italic; font-size: 12px; font-family: 'Carlito'; fill: #222222">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="line2d_2">
+    <path d="M 152.04825 38.38932 
+L 199.3455 47.9943 
+L 246.64275 94.41837 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Carlito'; text-anchor: middle; fill: #222222" x="199.3455" y="24.32125" transform="rotate(-0 199.3455 24.32125)">B</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10.5px; font-family: 'Carlito'; text-anchor: middle; fill: #555555" x="303.035625" y="123.3843" transform="rotate(-0 303.035625 123.3843)">Schicht 1</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10.5px; font-family: 'Carlito'; text-anchor: middle; fill: #555555" x="350.332875" y="123.3843" transform="rotate(-0 350.332875 123.3843)">Schicht 2</text>
+   </g>
+   <g id="text_13">
+    <!-- $T$ -->
+    <g style="fill: #222222" transform="translate(267.95775 19.9479)">
+     <text>
+      <tspan x="0" y="-0.296875" style="font-style: italic; font-size: 12px; font-family: 'Carlito'; fill: #222222">T</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_14">
+    <!-- $x$ -->
+    <g style="fill: #222222" transform="translate(385.8945 132.006)">
+     <text>
+      <tspan x="0" y="-0.265625" style="font-style: italic; font-size: 12px; font-family: 'Carlito'; fill: #222222">x</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="line2d_3">
+    <path d="M 279.387 68.004675 
+L 326.68425 41.59098 
+L 373.9815 92.017125 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Carlito'; text-anchor: middle; fill: #222222" x="326.68425" y="24.32125" transform="rotate(-0 326.68425 24.32125)">C</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 16.22025 110.025471 
+Q 16.22025 67.15484 16.22025 25.290441 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 14.62025 28.490441 
+L 16.22025 25.290441 
+L 17.82025 28.490441 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #222222; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 26.711529 129.006 
+Q 76.858234 129.006 125.998709 129.006 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 122.798709 127.406 
+L 125.998709 129.006 
+L 122.798709 130.606 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #222222; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 143.559 110.025471 
+Q 143.559 67.15484 143.559 25.290441 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 141.959 28.490441 
+L 143.559 25.290441 
+L 145.159 28.490441 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #222222; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 154.050279 129.006 
+Q 204.196984 129.006 253.337459 129.006 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 250.137459 127.406 
+L 253.337459 129.006 
+L 250.137459 130.606 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #222222; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 270.89775 110.025471 
+Q 270.89775 67.15484 270.89775 25.290441 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 269.29775 28.490441 
+L 270.89775 25.290441 
+L 272.49775 28.490441 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #222222; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 281.389029 129.006 
+Q 331.535734 129.006 380.676209 129.006 
+" clip-path="url(#pc1710240dc)" style="fill: none; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+    <path d="M 377.476209 127.406 
+L 380.676209 129.006 
+L 377.476209 130.606 
+z
+" clip-path="url(#pc1710240dc)" style="fill: #222222; stroke: #222222; stroke-width: 0.9; stroke-linecap: round"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc1710240dc">
+   <rect x="2.88" y="2.88" width="388.08" height="135.828"/>
+  </clipPath>
+ </defs>
+</svg>

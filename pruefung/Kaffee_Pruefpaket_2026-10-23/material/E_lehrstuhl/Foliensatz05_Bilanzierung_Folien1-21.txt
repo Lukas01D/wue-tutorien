@@ -1,0 +1,289 @@
+Foliensatz 05 „Bilanzierung und Wärmedurchgang“ (Riese, SoSe 2026), Folien 1 bis 21 (Bilanzierung), Text aus dem PDF mit gestauchtem Leerraum. Hinweis: „ሶ“ hinter einem Zeichen steht für den Punkt darüber (zeitliche Ableitung, z. B. 𝑄ሶ = Q̇), „Ԧ“ für einen Vektorpfeil. Die Folien 22 bis 43 (Wärmedurchgang) sind hier nicht enthalten.
+
+--- Folie 1 ---
+Wärmeübertragung
+Pflichtveranstaltung im Modul Transportphänomene
+Bachelorstudium Maschinenbau
+Bachelorstudium Chemieingenieurwesen
+Prof. Dr.-Ing. Julia Riese
+Sommersemester 2026
+
+--- Folie 2 ---
+Beispiel: Kühlung von Rechenzentren  Rechenzentren sind für
+ca. 2-3% des weltweiten
+Stromverbrauchs
+verantwortlich!
+https://www.danfoss.com/en/markets/buildings-commercial/dcs/chillers/
+Wärmeübertragung | SoSe 2026  2
+
+--- Folie 3 ---
+Beispiel: Kühlung von Rechenzentren
+Hier exemplarisch der
+Einsatz von sog.
+Plattenwärmeübertragern
+© Google
+Wärmeübertragung | SoSe 2026  3
+
+--- Folie 4 ---
+Warmes
+Beispiel: Kühlung von Rechenzentren  Medium
+Funktionsweise von Plattenwärmeübertragern:  Konvektiver
+Wärmeübergang
+Wärmeleitung
+𝑇
+Kaltes
+𝑸ሶ  Medium
+Welcher Wärmestrom wird insgesamt übertragen?
+Kaltes Medium
+Gibt es kritische Wandtemperaturen?
+Warmes Medium  Welche Strömungsgeschwindigkeiten sind sinnvoll?
+???
+Wärmeübertragung | SoSe 2026  4
+
+--- Folie 5 ---
+5
+Bilanzierung
+&
+Wärmedurchgang
+
+--- Folie 6 ---
+Energiebilanz für ruhende Medien
+Kontrollvolumen (KV): raumfestes Gebiet, dass masse-
+und energiedurchlässig ist
+Oberfläche des Kontrollvolumens (KA)
+Ein Kontrollvolumen ist immer von einer
+geschlossenen Oberfläche umgeben!
+Die relevante Fläche der Wärmeübertragung
+ist i. d. R. ein Teil der gesamten Oberfläche KA
+Wärmeübertragung | SoSe 2026  6
+
+--- Folie 7 ---
+Energiebilanz für ruhende Medien
+𝐸=𝑈  Gesamtenergie (hier = innerer Energie)
+𝑞Ԧሶ  effektiv zugeführte Wärmestromdichte [W/m²]
+𝑞Ԧሶ  𝑞ሶ KV  innere Wärmequellen im KV [W/m³]
+𝑑 𝐴Ԧ
+𝑑𝐴Ԧ  nach außen gerichteter Flächennormalvektor
+𝑄ሶ  effektiver Wärmestrom (𝑄ሶ = 𝑄ሶ zu − 𝑄ሶ ab )
+𝑞ሶ KV
+𝑄ሶ zu  𝑄ሶ ab
+𝑑𝐸 𝑑𝑈
+=
+𝑑𝑡  𝑑𝑡
+In ruhenden Medien gilt 𝑤 ≡ 0, und 𝐸kin = 0.
+Wärmeübertragung | SoSe 2026  7
+
+--- Folie 8 ---
+Energiebilanz für ruhende Medien
+𝑑𝑈
+Die zeitliche Änderung der inneren Energie eines geschlossenen Kontrollvolumens  ist
+𝑑𝑡
+gleich der Differenz aus dem über die Oberfläche zugeführten 𝑄ሶ zu und Abgeführten
+Wärmestrom 𝑄ሶ ab sowie des im inneren des Kontrollvolumens durch Umwandlung erzeugten
+Wärmestroms 𝑄ሶ KV .
+𝑑𝑈
+= 𝑄ሶ zu − 𝑄ሶ ab + 𝑄ሶ KV
+𝑑𝑡
+𝑑𝑈
+= − න 𝑞Ԧሶ ∙ 𝑑 𝐴Ԧ + න 𝑞ሶ KV ∙ 𝑑𝑉
+𝑑𝑡
+KA  KV
+𝑑𝑈
+Stationäre Wärmeleitung:  ≡ 0 → 𝑄ሶ zu − 𝑄ሶ ab + 𝑄ሶ KV = 0 und für 𝑄ሶ KV = 0 → 𝑄ሶ zu = 𝑄ሶ ab
+𝑑𝑡
+Wärmeübertragung | SoSe 2026  8
+
+--- Folie 9 ---
+Formalisierung von Bilanzen
+▪ Bilanzen in der Wärmeübertragung beruhen auf dem Prinzip der Energieerhaltung.
+▪ Erhaltungsgleichungen sind nicht beweisbare Erfahrungssätze, die für eine Vielzahl von
+physikalischen Größen (Erhaltungsgrößen) gelten.
+▪ zentrale Erhaltungsgrößen: Energie, Masse, elektrische Ladung, Impuls
+Änderung der im  Summe der in das  Summe der aus dem  Summe der im
+Kontrollvolumen  Kontrollvolumen  Kontrollvolumen  Kontrollvolumen
+gespeicherten  =  eintretende  −  austretenden  ±  gebildeten /
+Mengen  Mengen  Mengen  umgewandelten Mengen
+Wärmeübertragung | SoSe 2026  9
+
+--- Folie 10 ---
+Formalisierung von Kontrollvolumina
+Ortsfestes Kontrollvolumen (Euler-Betrachtung)  Materielles Kontrollvolumen (Lagrange-Betrachtung)
+Es wird ein bestimmtes Volumen im Raum betrachtet.  Es wird stets die gleiche Gruppe an „Teilchen“
+betrachtet.
+KV  KV
+𝑡a :  𝑡a :
+𝑡 > 𝑡a :  KV  𝑡 > 𝑡a :  KV
+bei 𝑡 = 𝑡a nicht im KV
+bei 𝑡 = 𝑡a im KV
+Wärmeübertragung | SoSe 2026  10
+
+--- Folie 11 ---
+Massenbilanz für ein ortsfestes Volumenelement
+(𝑥 + d𝑥, 𝑦 + d𝑦, 𝑧 + d𝑧)
+KV
+d𝑦
+d𝑧
+(𝑥, 𝑦, 𝑧)  d𝑥
+Wärmeübertragung | SoSe 2026  11
+
+--- Folie 12 ---
+Massenbilanz für ein ortsfestes Volumenelement
+(𝑥 + d𝑥, 𝑦 + d𝑦, 𝑧 + d𝑧)
+KV
+d𝑦
+d𝑧
+(𝑥, 𝑦, 𝑧)  d𝑥
+Änderung der  Summe der  Summe der  Summe der im
+Masse im Kontroll-  eintretenden  austretenden  Kontrollvolumen
+volumen im  =  Massenströme  −  Massenströme  ±  gebildeten /
+Zeitintervall 𝑑𝑡  (𝑥 = 𝑥)  (𝑥 = 𝑥 + 𝑑𝑥)  umgewandelten Masse
+Wärmeübertragung | SoSe 2026  12
+
+--- Folie 13 ---
+Massenbilanz für ein ortsfestes Volumenelement
+(𝑥 + d𝑥, 𝑦 + d𝑦, 𝑧 + d𝑧)
+KV
+𝜌𝑢𝑥 ቚ 𝑑𝑦𝑑𝑧𝑑𝑡  𝜌𝑢𝑥 ቚ  𝑑𝑦𝑑𝑧𝑑𝑡
+𝑥  𝑥+𝑑𝑥
+d𝑦
+d𝑧
+(𝑥, 𝑦, 𝑧)  d𝑥
+𝑑𝑚 = 𝜌𝑢𝑥 ቚ 𝑑𝑦𝑑𝑧𝑑𝑡 − 𝜌𝑢𝑥 ቚ  𝑑𝑦𝑑𝑧𝑑𝑡
+𝑥  𝑥+𝑑𝑥
+Wärmeübertragung | SoSe 2026  13
+
+--- Folie 14 ---
+Massenbilanz für ein ortsfestes Volumenelement
+𝑑𝑚 = 𝜌𝑢𝑥 ቚ 𝑑𝑦𝑑𝑧𝑑𝑡 − 𝜌𝑢𝑥 ቚ  𝑑𝑦𝑑𝑧𝑑𝑡 =  𝜌𝑢𝑥 ቚ − 𝜌𝑢𝑥 ቚ  𝑑𝑦𝑑𝑧𝑑𝑡
+𝑥  𝑥+𝑑𝑥  𝑥  𝑥+𝑑𝑥
+Mit der Taylor-Reihe (Abbruch nach dem 1. Glied)
+𝜕 𝜌𝑢𝑥
+𝜌𝑢𝑥 ቚ  = 𝜌𝑢𝑥 ቚ +  𝑑𝑥 + ⋯
+𝑥+𝑑𝑥  𝑥  𝜕𝑥
+Damit ergibt sich für die Massenbilanz:
+𝜕 𝜌𝑢𝑥
+𝑑𝑚 = −  𝑑𝑥𝑑𝑦𝑑𝑧𝑑𝑡
+𝜕𝑥
+𝜕 𝜌𝑢𝑥
+𝑑𝑚 = −  𝑑𝑉𝑑𝑡
+𝜕𝑥
+Wärmeübertragung | SoSe 2026  14
+
+--- Folie 15 ---
+Massenbilanz für ein ortsfestes Volumenelement
+Damit ergibt sich für die Massenbilanz:
+𝜕 𝜌𝑢𝑥
+𝑑𝑚 = −  𝑑𝑉𝑑𝑡
+𝜕𝑥
+Übertragung auf das kartesische Koordinatensystem:
+𝜕 𝜌𝑢𝑥  𝜕 𝜌𝑢𝑦  𝜕 𝜌𝑢𝑧
+𝑑𝑚 = −  +  +  𝑑𝑉𝑑𝑡  (1)
+𝜕𝑥  𝜕𝑦  𝜕𝑧
+Beschreibung der Änderung im Kontrollvolumen:
+𝜕 𝜌𝑑𝑉  𝜕𝜌
+𝑑𝑚 =  𝑑𝑡 = 𝑑𝑉 𝑑𝑡  (2)
+𝜕𝑡  𝜕𝑡
+Wärmeübertragung | SoSe 2026  15
+
+--- Folie 16 ---
+Massenbilanz für ein ortsfestes Volumenelement
+Durch Kombination aus Gleichung (1) und (2) ergibt sich:
+𝜕𝜌  𝜕 𝜌𝑢𝑥  𝜕 𝜌𝑢𝑦  𝜕 𝜌𝑢𝑧
+=−  +  +
+𝜕𝑡  𝜕𝑥  𝜕𝑦  𝜕𝑧
+𝜕𝑎  𝜕𝑎𝑦  𝜕𝑎
+Mit der Definition der Divergenz im kartesischen Koordinatensystem: ∇ ⋅ 𝒂 = 𝜕𝑥𝑥 + 𝜕𝑦 + 𝜕𝑧𝑧
+Beschreibung der Massenbilanz durch die Kontinuitätsgleichung:
+𝜕𝜌
++ ∇ ⋅ 𝜌𝒖 = 0
+𝜕𝑡
+Für dichtebeständige Fluide (𝜌 ≠ 𝜌 𝑇, 𝑝 = const.) gilt:
+𝜕𝜌
+= 0 = −∇ ⋅ 𝜌𝒖 = −𝜌(∇ ⋅ 𝒖) − 𝒖 ⋅ ∇  →  ∇⋅𝒖=0
+𝜕𝑡
+Wärmeübertragung | SoSe 2026  16
+
+--- Folie 17 ---
+Energiebilanz für ein ortsfestes Volumenelement
+(𝑥 + d𝑥, 𝑦 + d𝑦, 𝑧 + d𝑧)
+KV
+𝜕𝑇  𝜕𝑇
+−𝜆  𝑑𝑦𝑑𝑧𝑑𝑡  −𝜆  𝑑𝑦𝑑𝑧𝑑𝑡
+𝜕𝑥 𝑥  𝜕𝑥 𝑥+𝑑𝑥
+d𝑦  𝜌𝑐𝑝 𝑢𝑇 𝑥+𝑑𝑥 𝑑𝑦𝑑𝑧𝑑𝑡
+𝜌𝑐𝑝 𝑢𝑇 𝑥 𝑑𝑦𝑑𝑧𝑑𝑡
+d𝑧
+(𝑥, 𝑦, 𝑧)  d𝑥
+Änderung der  Summe der  Summe der  Summe der im
+inneren Energie im  =  eintretenden  −  austretenden Wärme  ±  Kontrollvolumen
+Kontrollvolumen  Wärme (𝑥 = 𝑥)  (𝑥 = 𝑥 + 𝑑𝑥)  umgewandelten Energie
+Die folgende Herleitung gilt für dichtebeständige Fluide (𝜌 ≠ 𝜌 𝑇, 𝑝 ; 𝑐𝑝 = 𝑐𝑣 )
+Wärmeübertragung | SoSe 2026  17
+
+--- Folie 18 ---
+Energiebilanz für ein ortsfestes Volumenelement
+𝜕𝑇  𝜕𝑇
+𝑑𝑈 = 𝜌𝑐𝑝 𝑢𝑇 𝑥 𝑑𝑦𝑑𝑧𝑑𝑡 + −𝜆  𝑑𝑦𝑑𝑧𝑑𝑡 − 𝜌𝑐𝑝 𝑢𝑇 𝑥+𝑑𝑥 𝑑𝑦𝑑𝑧𝑑𝑡 − −𝜆  ሶ
+𝑑𝑦𝑑𝑧𝑑𝑡 ± 𝑊𝑑𝑉
+𝜕𝑥 𝑥  𝜕𝑥 𝑥+𝑑𝑥
+Beschreibung der Änderung an der Stelle 𝑥 + 𝑑𝑥 mit Hilfe der Taylor-Reihe (Abbruch nach dem 1. Glied).
+Beschreibung der inneren Energie:
+𝜕𝑇
+𝑑𝑈 = 𝜌𝑐𝑝
+𝜕𝑡
+Resultierende Formulierung der Energiebilanz in 𝑥-Richtung:
+𝜕𝑇  𝜕(𝑇𝑢)  𝜕2𝑇
+𝜌𝑐𝑝  = −𝜌𝑐𝑝  + 𝜆 2 ± 𝑊ሶ
+𝜕𝑡  𝜕𝑥  𝜕𝑥
+Wärmeübertragung | SoSe 2026  18
+
+--- Folie 19 ---
+Energiebilanz für ein ortsfestes Volumenelement
+Übertragung der Formulierung auf das kartesische Koordinatensystem und unter Berücksichtigung der
+Kontinuität:
+𝜕𝑇  𝜕𝑇  𝜕𝑇  𝜕𝑇  𝜕2𝑇 𝜕2𝑇 𝜕2𝑇
+𝜌𝑐𝑝  + 𝑢𝑥  + 𝑢𝑦  + 𝑢𝑧  =𝜆  2
++ 2 + 2 ± 𝑊ሶ
+𝜕𝑡  𝜕𝑥  𝜕𝑦  𝜕𝑧  𝜕𝑥  𝜕𝑦  𝜕𝑧
+𝜕2𝑇  𝜕2 𝑇  𝜕2 𝑇
+∇2 𝑇 =  +  +
+𝜕𝑥 2  𝜕𝑦 2  𝜕𝑧 2
+Berücksichtigung des Laplace-Operators (∇2 𝑇) und Vereinfachung der Gleichung liefert:
+𝜕𝑇
+𝜌𝑐𝑝  + 𝒖 ⋅ ∇ 𝑇 = 𝜆∇2 𝑇 ± 𝑊ሶ
+𝜕𝑡
+Wärmeübertragung | SoSe 2026  19
+
+--- Folie 20 ---
+Energiebilanz für ein ortsfestes Volumenelement
+𝜕𝑇
+𝜌𝑐𝑝  + 𝒖 ⋅ ∇ 𝑇 = 𝜆∇2 𝑇 ± 𝑊ሶ
+𝜕𝑡  Umwandlungs-
+term
+Diffusiver
+Zeitliche, lokale  Energietransport
+Konvektiver
+Änderung der
+Energietransport
+Temperatur
+▪ Aus praktischer Sicht werden sowohl für die Herleitung der Bilanz als auch für die Lösung vereinfachende
+Annahmen getroffen!
+▪ Für die Lösung der (resultierenden) Bilanzen werden geeignete Anfangs- und Randbedingungen benötigt!
+Wärmeübertragung | SoSe 2026  20
+
+--- Folie 21 ---
+Beispiel 5
+Zum Aufheizen von Wasser (𝑇ein = 20 °C, 𝑇aus = 60 °C, 𝑐𝑝 =
+4,2 kJ/(kg ∙ K)) wird das Fluid durch ein dickwandiges Rohr
+geleitet (𝐷i = 20 mm, 𝐷a = 40 mm), welches elektrisch beheizt
+𝑟a
+ist. Das Rohr ist nach außen ideal isoliert. Durch die elektrische
+Beheizung entsteht eine konstante volumetrische Wärmemenge
+𝑟i
+von 𝑞ሶ = 106 W/m³.
+a) Wie lang muss das Rohr sein, um für einen Massenstrom
+von 𝑚ሶ = 0,1 kg/s die gewünschte Austrittstemperatur zu
+erreichen?
+→ Leiten Sie eine geeignete Bilanz am differentiellen
+Volumenelement her!  Isolierung
+Wärmeübertragung | SoSe 2026  21
