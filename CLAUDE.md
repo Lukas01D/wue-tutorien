@@ -22,6 +22,10 @@ Startsatz der TL: „Führe die Kaffee-Prüfung durch.“ Dann arbeitest du nach
 | Schritt 3: Claude-Dokument nachziehen | nur mit Docs-Werkzeugen; sonst weglassen und im Schlussbericht erwähnen. |
 | Schritt 5: Übergabe | Fertige Dateien (Kaffee-Blatt und Lösung als PDF und Word, Sammlung als PDF und Word, Protokolle) nach `ergebnisse/kaffee/fertig/`. Die Markdown-Fassungen, die in der Projektablage ersetzt werden sollen, nach `ergebnisse/kaffee/projektablage/` (gleiche Dateinamen wie im Startprompt). Kein Arbeitsstand-ZIP: Das Repository ist der Arbeitsstand. |
 
+## Siebter Bericht: Gegenprüfung durch Codex
+
+Die TL lässt parallel Codex (OpenAI) als unabhängige Rolle X prüfen (Auftrag in `AGENTS.md`; die Datei ist für Codex, nicht für dich). Codex legt seinen Bericht auf einem eigenen Zweig als `ergebnisse/kaffee/X_CODEX_BERICHT.md` ab. **Vor dem Bündeln:** `git fetch origin '+refs/heads/*:refs/remotes/origin/*'` und mit `git log --all --oneline -- ergebnisse/kaffee/X_CODEX_BERICHT.md` suchen; gefunden: mit `git show <zweig>:ergebnisse/kaffee/X_CODEX_BERICHT.md` lesen, nach `ergebnisse/kaffee/` übernehmen und als siebten Bericht mitbündeln (Präfix „Codex“; Zahlen wie bei allen nachrechnen; im Gesamturteil sagen, wo Codex und die Claude-Prüfer übereinstimmen oder sich widersprechen). Nicht gefunden: die TL im Zwischenstand fragen, ob sie warten will oder ohne Codex gebündelt wird (Nachzügler später ergänzen).
+
 ## Git
 
 - Arbeite auf dem Zweig der Sitzung. Nach jedem fertigen Bericht, nach der Bündelung und am Ende committen und pushen (kurze deutsche Commit-Nachrichten).
