@@ -1,0 +1,9 @@
+Rech2 n=4/3 mit Becher: B1 37.66, B2 34.21, B3 35.71, B1-B2 3.45, B1-B3 1.94
+Tech2 Rest linear f_v 0.0: th1 34.05, th2 30.19, diff 3.85 K; mit Becher 3.08 K; Tasse 1 kA*1,05: diff 2.98 K
+Tech2 Rest linear f_v 0.3: th1 36.15, th2 32.01, diff 4.14 K; mit Becher 3.32 K; Tasse 1 kA*1,05: diff 3.29 K
+Tech2 Rest linear f_v 0.5: th1 37.77, th2 33.40, diff 4.36 K; mit Becher 3.50 K; Tasse 1 kA*1,05: diff 3.53 K
+Tech2 Rest linear f_v 0.6: th1 38.64, th2 34.16, diff 4.48 K; mit Becher 3.59 K; Tasse 1 kA*1,05: diff 3.66 K
+Tech2 Rest 4/3    f_v 0.0: th1 37.65, th2 33.34, diff 4.31 K; mit Becher 3.45 K; Tasse 1 kA*1,05: diff 3.55 K
+Tech2 Rest 4/3    f_v 0.3: th1 38.91, th2 34.42, diff 4.49 K; mit Becher 3.60 K; Tasse 1 kA*1,05: diff 3.73 K
+Tech2 Rest 4/3    f_v 0.5: th1 39.84, th2 35.23, diff 4.62 K; mit Becher 3.70 K; Tasse 1 kA*1,05: diff 3.87 K
+Tech2 Rest 4/3    f_v 0.6: th1 40.35, th2 35.66, diff 4.69 K; mit Becher 3.76 K; Tasse 1 kA*1,05: diff 3.95 K
