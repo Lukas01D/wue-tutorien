@@ -26,6 +26,10 @@ Startsatz der TL: „Führe die Kaffee-Prüfung durch.“ Dann arbeitest du nach
 
 Die TL lässt parallel Codex (OpenAI) als unabhängige Rolle X prüfen (Auftrag in `AGENTS.md`; die Datei ist für Codex, nicht für dich). Codex legt seinen Bericht auf einem eigenen Zweig als `ergebnisse/kaffee/X_CODEX_BERICHT.md` ab. **Vor dem Bündeln:** `git fetch origin '+refs/heads/*:refs/remotes/origin/*'` und mit `git log --all --oneline -- ergebnisse/kaffee/X_CODEX_BERICHT.md` suchen; gefunden: mit `git show <zweig>:ergebnisse/kaffee/X_CODEX_BERICHT.md` lesen, nach `ergebnisse/kaffee/` übernehmen und als siebten Bericht mitbündeln (Präfix „Codex“; Zahlen wie bei allen nachrechnen; im Gesamturteil sagen, wo Codex und die Claude-Prüfer übereinstimmen oder sich widersprechen). Nicht gefunden: die TL im Zwischenstand fragen, ob sie warten will oder ohne Codex gebündelt wird (Nachzügler später ergänzen).
 
+## Abnahmeprüfung durch Codex nach der Umsetzung
+
+Bevor du umsetzt, schreib die Entscheidungen der TL in die Spalten „Entscheidung“ und „Anmerkung“ von `ergebnisse/kaffee/Aenderungsvorschlaege.md` (auch wenn sie im Chat entschieden hat) und pushe. Nach der Umsetzung (Schritt 2 im Startprompt, gebaut und alle Seiten angesehen) und der zweiten Runde der Rolle S: alles committen und pushen, dann **anhalten** und der TL schreiben: „Bitte in Codex die Abnahmeprüfung starten: Zweig `<Name deines Zweigs>` wählen und ‚Führe die Abnahmeprüfung nach AGENTS.md durch.‘ senden.“ Wenn die TL meldet, dass Codex fertig ist: Bericht `ergebnisse/kaffee/X2_CODEX_ABNAHME.md` wie oben über `git fetch` holen, jeden Befund nachrechnen, eindeutige Fehler beheben, alles andere der TL mit Empfehlung vorlegen. Erst danach Übergabe (Schritt 5) und Pull Request. Will die TL keine Abnahme durch Codex, entfällt dieser Schritt.
+
 ## Git
 
 - Arbeite auf dem Zweig der Sitzung. Nach jedem fertigen Bericht, nach der Bündelung und am Ende committen und pushen (kurze deutsche Commit-Nachrichten).
