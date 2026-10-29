@@ -7,8 +7,8 @@ const C = [];
 
 C.push(new Paragraph({ style: "Title", children: [new TextRun("Tutorien Wärmeübertragung: Entscheidungsprotokoll")] }));
 C.push(P("Grundlagen und Entscheidungen der Aufgabenentwicklung, fortlaufend geführt", { size: 24, color: h.GREY, align: AlignmentType.LEFT, before: 0, after: 120 }));
-C.push(Small("**Version:** 8 · **Stand:** 23.10.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)"));
-C.push(Small("**Begleitdokumente:** „Lernziele, Vorab-Fragen und Bilanz-Systematik“ (16.10.2026), „Leitaufgaben aus Klima und Erde“ (17.10.2026), „Aufgabenideen: Meeresströmungen, Sverdrup und Luftströmungen“ (20.10.2026), „Kaffee mit Milch“ (Aufgabe und Lösung, 21.10.2026), „Strukturvorlage: Aufgaben im Stil des Lehrstuhls“ (21.10.2026), „Aufgabensammlung der Tutorien“ (21.10.2026), Plan und Prüfpaket zur Prüfung der Kaffee-Aufgabe (23.10.2026), KI-Protokoll", { after: 160 }));
+C.push(Small("**Version:** 9 · **Stand:** 29.10.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)"));
+C.push(Small("**Begleitdokumente:** „Lernziele, Vorab-Fragen und Bilanz-Systematik“ (16.10.2026), „Leitaufgaben aus Klima und Erde“ (17.10.2026), „Aufgabenideen: Meeresströmungen, Sverdrup und Luftströmungen“ (20.10.2026), „Kaffee mit Milch“ (Aufgabe und Lösung, 21.10.2026), „Strukturvorlage: Aufgaben im Stil des Lehrstuhls“ (21.10.2026), „Aufgabensammlung der Tutorien“ (21.10.2026), Plan und Prüfpaket zur Prüfung der Kaffee-Aufgabe (23.10.2026), Prüfberichte, Bündelung und Änderungsvorschläge zur Kaffee-Aufgabe (29.10.2026), KI-Protokoll", { after: 160 }));
 
 C.push(box([
   h.boxTitle("Wozu dieses Protokoll?"),
@@ -72,6 +72,7 @@ C.push(grid(
     ["G37", "Wunsch der Tutoriumsleitung vom 21.10.2026 (19:04): Kaffee-Aufgabe separat als PDF, Word und als Claude-Dokument, in dem sie Feedback in [ ] gibt und die KI direkt ändert", "M", "D87"],
     ["G38", "Wünsche der Tutoriumsleitung vom 23.10.2026 (00:37 bis 09:22): die Kaffee-Aufgabe mit Anforderungen, Vorlagen und Lehrstuhlaufgaben unabhängig prüfen lassen (Rollen wie Prüfer, Professorin, Recherche) und Änderungsvorschläge auf didaktischer, technischer und inhaltlicher Ebene finden; Pause wegen des Nutzungsvolumens; alle Rollen mit dem Hauptmodell, Leselisten je Rolle; zusätzlich eine Gestaltungsrolle mit Blick auf die Formatvorlagen; ein Gesamtprompt statt einzelner Chats, eine Anleitung, alle Dateien in die Ablage", "M", "D88, D89"],
     ["G39", "Wünsche der Tutoriumsleitung vom 23.10.2026 (10:34): die Word-Vorlage „Aufgabenstellungen“ als Datei für die Gestaltungsrolle (kleine Anpassung); alle Erkenntnisse, Vorgänge, Arbeitsweisen und Planungen für spätere Aufgaben sichern, als Dateien oder ZIP, das bei der Überarbeitung einer weiteren Tutoriumsaufgabe angehängt wird und sofort weiterarbeiten lässt; möglichst sparsam, ohne die Arbeit einzuschränken", "M", "D90 bis D92"],
+    ["G40", "Prüfberichte P, T, D, R, S und G vom 29.10.2026: unabhängige Prüfung der Kaffee-Aufgabe mit sechs Rollen, je mit eigener Leseliste, eigenem Materialordner und eigener Nachrechnung; Bündelung zu den Änderungsvorschlägen Ä1 bis Ä29 mit Nachrechnung aller Zahlen durch die Koordination (KI-Protokoll K34 und Abschnitt 3.7; Berichte, Bündelung und Vorlage im Repository unter ergebnisse/kaffee/ und im Tab „Änderungsvorschläge“ des Claude-Dokuments)", "N, F", "D93 ff."],
   ],
   [600, 4300, 600, 3570], { firstColBold: true },
 ));
@@ -203,8 +204,8 @@ C.push(TAB([
 C.push(H2("3.8 Prüfung der Kaffee-Aufgabe, vorbereitet am 23.10.2026"));
 C.push(TAB([
   ["D87", "Die Kaffee-Aufgabe liegt zusätzlich als Claude-Dokument vor. Die Tutoriumsleitung schreibt Feedback in [eckigen Klammern] in den Text; die KI arbeitet es ein, rechnet geänderte Zahlen nach und nimmt die Klammer heraus. Einzelblatt (PDF, Word) und Sammlung bleiben textgleich.", "G37", "TL", "umgesetzt", "Feedback im Chat"],
-  ["D88", "Unabhängige Prüfung mit sechs Rollen: Professorin, Technik, Didaktik, Recherche, Studierende und Gestaltung, alle mit dem Hauptmodell. Jede Rolle bekommt eine eigene Leseliste, einen eigenen Materialordner und eine Obergrenze für Websuchen (5, 10, 10, 20, 0 und 5). Die Prüfer machen nur Vorschläge.", "G38", "TL", "entschieden", "fünf Rollen; günstigeres Modell für Recherche und Studierende"],
-  ["D89", "Durchführung in einem neuen Chat mit Prüfpaket und einem Startprompt: Der koordinierende Chat startet alle sechs Prüfer, bündelt die Vorschläge und legt sie als Tab „Änderungsvorschläge“ im Claude-Dokument vor. Die Tutoriumsleitung entscheidet je Vorschlag in [ ]; erst danach wird umgesetzt.", "G38", "KI", "vorgeschlagen; Paket bereit", "Durchführung in dieser Sitzung"],
+  ["D88", "Unabhängige Prüfung mit sechs Rollen: Professorin, Technik, Didaktik, Recherche, Studierende und Gestaltung, alle mit dem Hauptmodell. Jede Rolle bekommt eine eigene Leseliste, einen eigenen Materialordner und eine Obergrenze für Websuchen (5, 10, 10, 20, 0 und 5). Die Prüfer machen nur Vorschläge.", "G38", "TL", "umgesetzt (29.10.2026, K34, G40)", "fünf Rollen; günstigeres Modell für Recherche und Studierende"],
+  ["D89", "Durchführung in einem neuen Chat mit Prüfpaket und einem Startprompt: Der koordinierende Chat startet alle sechs Prüfer, bündelt die Vorschläge und legt sie als Tab „Änderungsvorschläge“ im Claude-Dokument vor. Die Tutoriumsleitung entscheidet je Vorschlag in [ ]; erst danach wird umgesetzt.", "G38", "KI", "umgesetzt (29.10.2026, Cloud-Sitzung statt Chat, K34); Entscheidung über Ä1 bis Ä29 offen", "Durchführung in dieser Sitzung"],
 ]));
 
 C.push(H2("3.9 FVT-Vorlage und Werkzeugkasten vom 23.10.2026"));
@@ -226,7 +227,7 @@ C.push(H1("4. Offene Punkte"));
   "Entscheidung über D67 (Einordnung der Kaffee-Aufgabe in Tutorium 5)",
   "Auswahl und Kürzung je Tutorium aus der Aufgabensammlung (D77); danach Lösungsband (D80, D85)",
   "Entscheidung über D79 (keine Lernziele auf den Blättern, Abweichung von D20) und D84 (bewusst belassene Punkte)",
-  "Unabhängige Prüfung der Kaffee-Aufgabe durchführen (D88, D89) und über die Änderungsvorschläge entscheiden",
+  "Über die Änderungsvorschläge Ä1 bis Ä29 zur Kaffee-Aufgabe entscheiden (Tab „Änderungsvorschläge“, G40); Bericht von Codex (Rolle X) nachtragen",
   "Aussehen der Blätter nach der Prüfung der Kaffee-Aufgabe festlegen: bisherige Tutoriumsblätter oder FVT-Vorlage (D90)",
   "Werkzeugkasten nach der Umsetzung der Kaffee-Prüfung auf den neuen Arbeitsstand bringen (D91)",
   "Offene fachliche Punkte der Sammlung: Normwerte für Stahlbeton und PUR-Hartschaum (DIN EN ISO 10456, DIN 4108-4) nicht eingesehen; *λ* = 2,9 W/(m K) der KTB ohne Primärquelle; Arbeitswerte in Tutorium 6 und 7 ohne eigene Quelle; England et al. (2007) nicht abrufbar; VDI 4640 nur über eine Sekundärquelle; Abschätzung zum Entenfuß als eigene Rechnung gekennzeichnet",
@@ -245,6 +246,7 @@ C.push(grid(
     ["6", "21.10.2026", "Bausteine der Kaffee-Aufgabe, neue Struktur mit Ausgangssituation und Aufgabensammlung, Gegenprüfung der Sammlung: Grundlagen G32 bis G36, Entscheidungen D72 bis D86, offene Punkte aktualisiert"],
     ["7", "23.10.2026", "Kaffee-Aufgabe als Claude-Dokument und Vorbereitung der unabhängigen Prüfung: Grundlagen G37 und G38, Entscheidungen D87 bis D89 (Abschnitt 3.8), offene Punkte ergänzt"],
     ["8", "23.10.2026", "FVT-Vorlage für die Gestaltungsrolle und Werkzeugkasten für künftige Aufgaben: Grundlage G39, Entscheidungen D90 bis D92 (Abschnitt 3.9), offene Punkte ergänzt"],
+    ["9", "29.10.2026", "Unabhängige Prüfung der Kaffee-Aufgabe durchgeführt: Grundlage G40, Status von D88 und D89 auf „umgesetzt“, offene Punkte aktualisiert; Entscheidungen D93 ff. folgen nach der Auswahl der Tutoriumsleitung"],
   ],
   [1200, 1500, 6370], { firstColBold: true },
 ));

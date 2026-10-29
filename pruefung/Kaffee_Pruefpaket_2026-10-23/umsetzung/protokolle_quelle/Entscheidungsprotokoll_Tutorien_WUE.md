@@ -1,12 +1,12 @@
-> Fortlaufendes Entscheidungsprotokoll (Markdown-Fassung, Stand 23.10.2026, Version 8). In späteren Sitzungen hier fortschreiben; Word- und PDF-Fassung liegen im jeweils neuesten Paket.
+> Fortlaufendes Entscheidungsprotokoll (Markdown-Fassung, Stand 29.10.2026, Version 9).
 
 # Tutorien Wärmeübertragung: Entscheidungsprotokoll
 
 Grundlagen und Entscheidungen der Aufgabenentwicklung, fortlaufend geführt
 
-**Version:** 8 · **Stand:** 23.10.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)
+**Version:** 9 · **Stand:** 29.10.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)
 
-**Begleitdokumente:** „Lernziele, Vorab-Fragen und Bilanz-Systematik“ (16.10.2026), „Leitaufgaben aus Klima und Erde“ (17.10.2026), „Aufgabenideen: Meeresströmungen, Sverdrup und Luftströmungen“ (20.10.2026), „Kaffee mit Milch“ (Aufgabe und Lösung, 21.10.2026), „Strukturvorlage: Aufgaben im Stil des Lehrstuhls“ (21.10.2026), „Aufgabensammlung der Tutorien“ (21.10.2026), Plan und Prüfpaket zur Prüfung der Kaffee-Aufgabe (23.10.2026), KI-Protokoll
+**Begleitdokumente:** „Lernziele, Vorab-Fragen und Bilanz-Systematik“ (16.10.2026), „Leitaufgaben aus Klima und Erde“ (17.10.2026), „Aufgabenideen: Meeresströmungen, Sverdrup und Luftströmungen“ (20.10.2026), „Kaffee mit Milch“ (Aufgabe und Lösung, 21.10.2026), „Strukturvorlage: Aufgaben im Stil des Lehrstuhls“ (21.10.2026), „Aufgabensammlung der Tutorien“ (21.10.2026), Plan und Prüfpaket zur Prüfung der Kaffee-Aufgabe (23.10.2026), Prüfberichte, Bündelung und Änderungsvorschläge zur Kaffee-Aufgabe (29.10.2026), KI-Protokoll
 
 **Wozu dieses Protokoll?**
 
@@ -67,6 +67,7 @@ Vollständige Literaturangaben stehen in den Quellenverzeichnissen der Begleitdo
 | **G37** | Wunsch der Tutoriumsleitung vom 21.10.2026 (19:04): Kaffee-Aufgabe separat als PDF, Word und als Claude-Dokument, in dem sie Feedback in \[ \] gibt und die KI direkt ändert                                                                                                                                                                                                                                                                                                                                                                | M       | D87                                                                                                    |
 | **G38** | Wünsche der Tutoriumsleitung vom 23.10.2026 (00:37 bis 09:22): die Kaffee-Aufgabe mit Anforderungen, Vorlagen und Lehrstuhlaufgaben unabhängig prüfen lassen (Rollen wie Prüfer, Professorin, Recherche) und Änderungsvorschläge auf didaktischer, technischer und inhaltlicher Ebene finden; Pause wegen des Nutzungsvolumens; alle Rollen mit dem Hauptmodell, Leselisten je Rolle; zusätzlich eine Gestaltungsrolle mit Blick auf die Formatvorlagen; ein Gesamtprompt statt einzelner Chats, eine Anleitung, alle Dateien in die Ablage | M       | D88, D89                                                                                               |
 | **G39** | Wünsche der Tutoriumsleitung vom 23.10.2026 (10:34): die Word-Vorlage „Aufgabenstellungen“ als Datei für die Gestaltungsrolle (kleine Anpassung); alle Erkenntnisse, Vorgänge, Arbeitsweisen und Planungen für spätere Aufgaben sichern, als Dateien oder ZIP, das bei der Überarbeitung einer weiteren Tutoriumsaufgabe angehängt wird und sofort weiterarbeiten lässt; möglichst sparsam, ohne die Arbeit einzuschränken                                                                                                                  | M       | D90 bis D92                                                                                            |
+| **G40** | Prüfberichte P, T, D, R, S und G vom 29.10.2026: unabhängige Prüfung der Kaffee-Aufgabe mit sechs Rollen, je mit eigener Leseliste, eigenem Materialordner und eigener Nachrechnung; Bündelung zu den Änderungsvorschlägen Ä1 bis Ä29 mit Nachrechnung aller Zahlen durch die Koordination (KI-Protokoll K34 und Abschnitt 3.7; Berichte, Bündelung und Vorlage im Repository unter ergebnisse/kaffee/ und im Tab „Änderungsvorschläge“ des Claude-Dokuments)                                                                               | N, F    | D93 ff.                                                                                                |
 
 ## 3. Entscheidungen
 
@@ -195,11 +196,11 @@ Die Ideensammlung wurde vor der Übergabe von einem getrennten Prüfauftrag gege
 
 ### 3.8 Prüfung der Kaffee-Aufgabe, vorbereitet am 23.10.2026
 
-| **Nr.** | **Gegenstand und Entscheidung**                                                                                                                                                                                                                                                                             | **Grundlage** | **Von** | **Status**                  | **Rückweg**                                                   |
-|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------|-----------------------------|---------------------------------------------------------------|
-| **D87** | Die Kaffee-Aufgabe liegt zusätzlich als Claude-Dokument vor. Die Tutoriumsleitung schreibt Feedback in \[eckigen Klammern\] in den Text; die KI arbeitet es ein, rechnet geänderte Zahlen nach und nimmt die Klammer heraus. Einzelblatt (PDF, Word) und Sammlung bleiben textgleich.                       | G37           | TL      | umgesetzt                   | Feedback im Chat                                              |
-| **D88** | Unabhängige Prüfung mit sechs Rollen: Professorin, Technik, Didaktik, Recherche, Studierende und Gestaltung, alle mit dem Hauptmodell. Jede Rolle bekommt eine eigene Leseliste, einen eigenen Materialordner und eine Obergrenze für Websuchen (5, 10, 10, 20, 0 und 5). Die Prüfer machen nur Vorschläge. | G38           | TL      | entschieden                 | fünf Rollen; günstigeres Modell für Recherche und Studierende |
-| **D89** | Durchführung in einem neuen Chat mit Prüfpaket und einem Startprompt: Der koordinierende Chat startet alle sechs Prüfer, bündelt die Vorschläge und legt sie als Tab „Änderungsvorschläge“ im Claude-Dokument vor. Die Tutoriumsleitung entscheidet je Vorschlag in \[ \]; erst danach wird umgesetzt.      | G38           | KI      | vorgeschlagen; Paket bereit | Durchführung in dieser Sitzung                                |
+| **Nr.** | **Gegenstand und Entscheidung**                                                                                                                                                                                                                                                                             | **Grundlage** | **Von** | **Status**                                                                                | **Rückweg**                                                   |
+|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------|-------------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| **D87** | Die Kaffee-Aufgabe liegt zusätzlich als Claude-Dokument vor. Die Tutoriumsleitung schreibt Feedback in \[eckigen Klammern\] in den Text; die KI arbeitet es ein, rechnet geänderte Zahlen nach und nimmt die Klammer heraus. Einzelblatt (PDF, Word) und Sammlung bleiben textgleich.                       | G37           | TL      | umgesetzt                                                                                 | Feedback im Chat                                              |
+| **D88** | Unabhängige Prüfung mit sechs Rollen: Professorin, Technik, Didaktik, Recherche, Studierende und Gestaltung, alle mit dem Hauptmodell. Jede Rolle bekommt eine eigene Leseliste, einen eigenen Materialordner und eine Obergrenze für Websuchen (5, 10, 10, 20, 0 und 5). Die Prüfer machen nur Vorschläge. | G38           | TL      | umgesetzt (29.10.2026, K34, G40)                                                          | fünf Rollen; günstigeres Modell für Recherche und Studierende |
+| **D89** | Durchführung in einem neuen Chat mit Prüfpaket und einem Startprompt: Der koordinierende Chat startet alle sechs Prüfer, bündelt die Vorschläge und legt sie als Tab „Änderungsvorschläge“ im Claude-Dokument vor. Die Tutoriumsleitung entscheidet je Vorschlag in \[ \]; erst danach wird umgesetzt.      | G38           | KI      | umgesetzt (29.10.2026, Cloud-Sitzung statt Chat, K34); Entscheidung über Ä1 bis Ä29 offen | Durchführung in dieser Sitzung                                |
 
 ### 3.9 FVT-Vorlage und Werkzeugkasten vom 23.10.2026
 
@@ -231,7 +232,7 @@ Die Ideensammlung wurde vor der Übergabe von einem getrennten Prüfauftrag gege
 
 - Entscheidung über D79 (keine Lernziele auf den Blättern, Abweichung von D20) und D84 (bewusst belassene Punkte)
 
-- Unabhängige Prüfung der Kaffee-Aufgabe durchführen (D88, D89) und über die Änderungsvorschläge entscheiden
+- Über die Änderungsvorschläge Ä1 bis Ä29 zur Kaffee-Aufgabe entscheiden (Tab „Änderungsvorschläge“, G40); Bericht von Codex (Rolle X) nachtragen
 
 - Aussehen der Blätter nach der Prüfung der Kaffee-Aufgabe festlegen: bisherige Tutoriumsblätter oder FVT-Vorlage (D90)
 
@@ -241,14 +242,15 @@ Die Ideensammlung wurde vor der Übergabe von einem getrennten Prüfauftrag gege
 
 ## 5. Änderungsverlauf
 
-| **Version** | **Datum**  | **Änderung**                                                                                                                                                                                      |
-|-------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **1**       | 17.10.2026 | Protokoll angelegt; Entscheidungen vom 16.10.2026 nachgetragen; Rückmeldung der Tutoriumsleitung und Vorschläge vom 17.10.2026 aufgenommen                                                        |
-| **2**       | 17.10.2026 | Gegenprüfung eingearbeitet: Grundlagen G19 und G20, Entscheidungen D43 bis D50 (darunter neue Vorschläge E16 und E17), D39 um Variante 34 ergänzt, offene Punkte erweitert                        |
-| **3**       | 17.10.2026 | Pilot Tutorium 1: Grundlagen G21 und G22, Entscheidungen D51 bis D56                                                                                                                              |
-| **4**       | 20.10.2026 | Aufgabenideen Meeresströmungen und Luftströmungen: Grundlagen G23 bis G26, Entscheidungen D57 bis D64 (Vorschläge E18 bis E22), offene Punkte ergänzt                                             |
-| **4.1**     | 21.10.2026 | D63: Aufgabenideen auf Wunsch als Word und PDF erstellt                                                                                                                                           |
-| **5**       | 21.10.2026 | Lehrstuhl-Struktur und Kaffee-Aufgabe: Grundlagen G27 bis G31, Entscheidungen D65 bis D71, Status von D33 ergänzt, Legende erweitert, offene Punkte ergänzt                                       |
-| **6**       | 21.10.2026 | Bausteine der Kaffee-Aufgabe, neue Struktur mit Ausgangssituation und Aufgabensammlung, Gegenprüfung der Sammlung: Grundlagen G32 bis G36, Entscheidungen D72 bis D86, offene Punkte aktualisiert |
-| **7**       | 23.10.2026 | Kaffee-Aufgabe als Claude-Dokument und Vorbereitung der unabhängigen Prüfung: Grundlagen G37 und G38, Entscheidungen D87 bis D89 (Abschnitt 3.8), offene Punkte ergänzt                           |
-| **8**       | 23.10.2026 | FVT-Vorlage für die Gestaltungsrolle und Werkzeugkasten für künftige Aufgaben: Grundlage G39, Entscheidungen D90 bis D92 (Abschnitt 3.9), offene Punkte ergänzt                                   |
+| **Version** | **Datum**  | **Änderung**                                                                                                                                                                                                |
+|-------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **1**       | 17.10.2026 | Protokoll angelegt; Entscheidungen vom 16.10.2026 nachgetragen; Rückmeldung der Tutoriumsleitung und Vorschläge vom 17.10.2026 aufgenommen                                                                  |
+| **2**       | 17.10.2026 | Gegenprüfung eingearbeitet: Grundlagen G19 und G20, Entscheidungen D43 bis D50 (darunter neue Vorschläge E16 und E17), D39 um Variante 34 ergänzt, offene Punkte erweitert                                  |
+| **3**       | 17.10.2026 | Pilot Tutorium 1: Grundlagen G21 und G22, Entscheidungen D51 bis D56                                                                                                                                        |
+| **4**       | 20.10.2026 | Aufgabenideen Meeresströmungen und Luftströmungen: Grundlagen G23 bis G26, Entscheidungen D57 bis D64 (Vorschläge E18 bis E22), offene Punkte ergänzt                                                       |
+| **4.1**     | 21.10.2026 | D63: Aufgabenideen auf Wunsch als Word und PDF erstellt                                                                                                                                                     |
+| **5**       | 21.10.2026 | Lehrstuhl-Struktur und Kaffee-Aufgabe: Grundlagen G27 bis G31, Entscheidungen D65 bis D71, Status von D33 ergänzt, Legende erweitert, offene Punkte ergänzt                                                 |
+| **6**       | 21.10.2026 | Bausteine der Kaffee-Aufgabe, neue Struktur mit Ausgangssituation und Aufgabensammlung, Gegenprüfung der Sammlung: Grundlagen G32 bis G36, Entscheidungen D72 bis D86, offene Punkte aktualisiert           |
+| **7**       | 23.10.2026 | Kaffee-Aufgabe als Claude-Dokument und Vorbereitung der unabhängigen Prüfung: Grundlagen G37 und G38, Entscheidungen D87 bis D89 (Abschnitt 3.8), offene Punkte ergänzt                                     |
+| **8**       | 23.10.2026 | FVT-Vorlage für die Gestaltungsrolle und Werkzeugkasten für künftige Aufgaben: Grundlage G39, Entscheidungen D90 bis D92 (Abschnitt 3.9), offene Punkte ergänzt                                             |
+| **9**       | 29.10.2026 | Unabhängige Prüfung der Kaffee-Aufgabe durchgeführt: Grundlage G40, Status von D88 und D89 auf „umgesetzt“, offene Punkte aktualisiert; Entscheidungen D93 ff. folgen nach der Auswahl der Tutoriumsleitung |
