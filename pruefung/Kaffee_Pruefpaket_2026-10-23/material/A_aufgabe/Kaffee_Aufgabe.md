@@ -16,78 +16,75 @@ Sonntagmorgen in der WG-Küche: Sie haben Filterkaffee gekocht und zwei gleiche 
 
 **[Frage 1]{.underline}** (Vorab-Frage)
 
-Ihr Mitbewohner meint: „Ob man die Milch sofort oder später hineingießt, ist egal. Die Energie bleibt ja erhalten.“ Welche Tasse ist nach einer Stunde wärmer: Tasse 1, Tasse 2, oder sind beide gleich warm? Notieren Sie Ihre Vermutung mit einem Satz Begründung, bevor Sie Aufgabe 1 rechnen.
+Ihr Mitbewohner meint: „Ob man die Milch sofort oder später hineingießt, ist egal. Die Energie bleibt ja erhalten.“ Welche Tasse ist nach einer Stunde wärmer? Notieren Sie Ihre Vermutung, bevor Sie Aufgabe 1 rechnen.
 
 **[Aufgabe 1]{.underline}** (neu)
 
-Um die Frage zu klären, messen Sie nach 10 Minuten die Temperatur in Tasse 2 (noch ohne Milch).
+Um die Frage zu klären, messen Sie nach 10 Minuten die Temperatur in Tasse 2, die bis dahin noch keine Milch enthält.
 
 **Annahmen:**
 
-- Der Tasseninhalt ist ideal durchmischt, die Milch mischt sich sofort und ohne Wärmeverlust.
+- Der Tasseninhalt wird als ideal durchmischt angenommen.
 - Die Wärmekapazität der Tasse wird bis Teil e vernachlässigt.
-- Die gesamte Wärmeabgabe (auch durch Strahlung und Verdunstung) ist $\dot{Q}_{ab} = kA\,(\vartheta - \vartheta_u)$ mit konstantem $kA$; die verdunstete Masse wird vernachlässigt.
-- Kaffee (Stoffdaten von Wasser) und Milch sind inkompressibel ($c_p = c_v$); die Stoffdaten sind konstant.
+- Die gesamte Wärmeabgabe an die Umgebung (Konvektion, Strahlung, Verdunstung und Wärmedurchgang durch die Tassenwand) wird über ein konstantes Produkt $kA$ beschrieben, das mit und ohne Milch gleich ist. Die verdunstete Masse wird vernachlässigt.
+- Kaffee und Milch mischen sich sofort und ohne Wärmeverlust.
+- Die Stoffdaten sind unabhängig von der Temperatur; Kaffee hat die Stoffdaten von Wasser.
 
-**Gegebene Größen:**
+***Gegebene Größen:***
 
-| **Kaffee** | | **Milch** | |
-|:-------------------------------------|:-------------------------------------------|:-------------------------------------|:-------------------------------------------|
-| Volumen | $V_K = 200\,\mathrm{ml}$ | Volumen | $V_M = 30\,\mathrm{ml}$ |
-| Dichte | $\rho_K = 1000\,\mathrm{kg/m^3}$ | Dichte | $\rho_M = 1030\,\mathrm{kg/m^3}$ |
-| Spez. Wärmekapazität | $c_{p,K} = 4{,}18\,\mathrm{kJ/(kg\,K)}$ | Spez. Wärmekapazität | $c_{p,M} = 3{,}94\,\mathrm{kJ/(kg\,K)}$ |
-| Anfangstemperatur | $\vartheta_{K,0} = 80\,\mathrm{°C}$ | Temperatur | $\vartheta_M = 5\,\mathrm{°C}$ |
-| **Umgebung** | | **Messung in Tasse 2** | |
-| Temperatur | $\vartheta_u = 20\,\mathrm{°C}$ | nach 10 min | $\vartheta_K(10\,\mathrm{min}) = 67\,\mathrm{°C}$ |
-| **Becher ab Teil f** | | **Milch in Teil g** | |
-| Masse | $m_B = 300\,\mathrm{g}$ | Temperatur | $\vartheta_{M,h} = 60\,\mathrm{°C}$ |
-| Spez. Wärmekapazität | $c_B = 0{,}85\,\mathrm{kJ/(kg\,K)}$ | | |
+| ***Kaffee:*** | | ***Milch:*** | |
+|:---------------------|:-----------------------------|:---------------------|:-----------------------------|
+| Volumen: | $V_K = 200\,\mathrm{ml}$ | Volumen: | $V_M = 30\,\mathrm{ml}$ |
+| Dichte: | $\rho_K = 1000\,\mathrm{kg/m^3}$ | Dichte: | $\rho_M = 1030\,\mathrm{kg/m^3}$ |
+| Spez. Wärmekapazität: | $c_{p,K} = 4{,}18\,\mathrm{kJ/(kg\,K)}$ | Spez. Wärmekapazität: | $c_{p,M} = 3{,}94\,\mathrm{kJ/(kg\,K)}$ |
+| Temperatur bei $t = 0$: | $\vartheta_{K,0} = 80\,\mathrm{°C}$ | Temperatur: | $\vartheta_M = 5\,\mathrm{°C}$ |
+| | | | |
+| ***Umgebung:*** | | ***Messung:*** | |
+| Temperatur: | $\vartheta_u = 20\,\mathrm{°C}$ | Temperatur nach 10 min: | $\vartheta_K(10\,\mathrm{min}) = 67\,\mathrm{°C}$ |
+| | | | |
+| ***Becher:*** | | ***Milchschaum:*** | |
+| Masse: | $m_B = 300\,\mathrm{g}$ | Temperatur: | $\vartheta_S = 60\,\mathrm{°C}$ |
+| Spez. Wärmekapazität: | $c_B = 0{,}85\,\mathrm{kJ/(kg\,K)}$ | | |
 
 **Aufgabenstellung:**
 
 a) Bestimmen Sie mit einer Energiebilanz die Mischtemperatur $\vartheta_{1,0}$ direkt nach dem Zugießen der Milch in Tasse 1.\
    $\vartheta_{1,0} = 70{,}47\,\mathrm{°C}$
 
-b) Zeichnen Sie den Bilanzraum um den Inhalt von Tasse 1 in Abb. 1 ein. Vereinfachen Sie die allgemeine Energiebilanz zur globalen instationären Bilanz für den Inhalt einer Tasse und begründen Sie, welche Terme entfallen. Lösen Sie sie durch Trennung der Variablen für $T(t = 0\,\mathrm{s}) = T_0$.\
+b) Zeichnen Sie den Bilanzraum für Tasse 1 in Abb. 1 ein und stellen Sie die instationäre Energiebilanz für den Inhalt einer Tasse auf. Lösen Sie die Differentialgleichung durch Trennung der Variablen für die Anfangstemperatur $T(t = 0\,\mathrm{s}) = T_0$.\
    $T(t) = T_u + (T_0 - T_u)\cdot \exp\left(-\frac{kA}{m\,c_p}\,t\right)$
 
-c) Bestimmen Sie $kA$ aus der Messung in Tasse 2. Welche Annahme brauchen Sie, um diesen Wert auch für Tasse 1 zu verwenden, und ist sie plausibel?\
+c) Bestimmen Sie aus der Messung in Tasse 2 das Produkt $kA$.\
    $kA = 0{,}3402\,\mathrm{W/K}$
 
-d) Berechnen Sie $\vartheta_1$ und $\vartheta_2$ nach 60 Minuten (Tasse 2 direkt nach dem Zugießen). Welches $m\,c_p$ setzen Sie jeweils ein? Welche Tasse ist wärmer?\
+d) Berechnen Sie die Temperaturen $\vartheta_1$ und $\vartheta_2$ beider Tassen nach 60 Minuten, bei Tasse 2 direkt nach dem Zugießen der Milch. Welche Tasse ist kühler?\
    $\vartheta_1 = 34{,}05\,\mathrm{°C}$, $\quad\vartheta_2 = 30{,}19\,\mathrm{°C}$
 
-e) Berechnen Sie die Wärme, die jede Tasse in 60 Minuten an die Umgebung abgibt. Zeigen Sie, dass $Q_2 - Q_1$ den Temperaturunterschied aus d) erklärt. Wo liegt der Denkfehler Ihres Mitbewohners?\
+e) Berechnen Sie für beide Tassen die Wärme, die in den 60 Minuten an die Umgebung abgegeben wird. Erklären Sie damit das Ergebnis aus d). Hat Ihr Mitbewohner recht?\
    $Q_1 = 34{,}88\,\mathrm{kJ}$, $\quad Q_2 = 38{,}57\,\mathrm{kJ}$
 
-f) *Vertiefung:* Die Tassen sind vorgewärmte Keramikbecher, die immer die Temperatur ihres Inhalts haben, auch beim Zugießen der Milch. Passen Sie Bilanzraum und Bilanz aus b) an, bestimmen Sie $kA$ neu und berechnen Sie $\vartheta_1$ und $\vartheta_2$. Gilt die Aussage aus d) weiter?\
+f) Die Tassen sind in Wirklichkeit Keramikbecher. Sie wurden vorgewärmt und haben immer die Temperatur ihres Inhalts. Bestimmen Sie $kA$ mit Becher erneut aus der Messung und berechnen Sie $\vartheta_1$ und $\vartheta_2$ noch einmal. Bleibt die Aussage aus d) gültig?\
    $kA = 0{,}4440\,\mathrm{W/K}$, $\quad\vartheta_1 = 34{,}04\,\mathrm{°C}$, $\quad\vartheta_2 = 30{,}96\,\mathrm{°C}$
 
-g) Am nächsten Tag gibt es Milchkaffee: Die Milch wird je Tasse kurz vorher auf $\vartheta_{M,h}$ erwärmt und untergerührt (gleiche Masse und Stoffdaten, ohne Becher). Welche Tasse ist nach 60 Minuten wärmer? Sagen Sie es mit kurzer Begründung voraus, prüfen Sie dann mit den Gleichungen aus d) und erklären Sie das Ergebnis.\
-   $35{,}99\,\mathrm{°C}$ und $37{,}18\,\mathrm{°C}$ (Zuordnung selbst bestimmen)
+g) Am nächsten Tag trinkt Ihr Mitbewohner Cappuccino: Statt kalter Milch kommt Milchschaum mit $\vartheta_S$ in beide Tassen (gleiche Masse, Becher wieder vernachlässigt). Sagen Sie zuerst voraus, welche Tasse nach 60 Minuten wärmer ist. Prüfen Sie Ihre Vorhersage dann mit den Gleichungen aus d).\
+   $\vartheta_1 = 35{,}99\,\mathrm{°C}$, $\quad\vartheta_2 = 37{,}18\,\mathrm{°C}$
 
-h) *Zusatzfrage:* (1) Bei welcher Milchtemperatur sind beide Tassen nach 60 Minuten gleich warm (ohne Becher)? (2) Die Milch für Tasse 2 steht ab $t = 0$ neben der Tasse und wird nur von der Raumluft erwärmt. Kann Tasse 2 so wärmer werden als Tasse 1? Begründen Sie mit einer Abschätzung und e).\
-   $\vartheta_M = 47{,}0\,\mathrm{°C}$
-
-::: seitenumbruch
-:::
+h) *Zusatzfrage:* (1) Bei welcher Milchtemperatur ist es egal, ob die Milch sofort oder erst nach 60 Minuten hineinkommt (ohne Becher)? (2) Sie nehmen die Milch für Tasse 2 schon bei $t = 0$ aus dem Kühlschrank und stellen sie neben die Tasse. Kann Tasse 2 dadurch wärmer werden als Tasse 1? Begründen Sie mit einer Abschätzung und den Ergebnissen aus e).\
+   Zu (1): $\vartheta_M = 47{,}0\,\mathrm{°C}$
 
 **[Versuch zu Aufgabe 1]{.underline}** (im Tutorium, läuft neben der Rechnung)
 
-Drei gleiche, vorgewärmte Becher mit je 200 ml heißem Wasser oder Kaffee: Becher 1 bekommt die Milch sofort, Becher 2 und 3 erst nach 40 Minuten (Milch aus der Kühltasche bzw. aus einem Glas neben den Bechern). Nach 10 Minuten werden Becher 2 und 3 gemessen.
+*Material:* drei gleiche Becher, heißes Wasser oder Kaffee aus der Thermoskanne, Milch aus der Kühltasche, ein kleines Glas, Messbecher, ein Einstichthermometer für alle Becher, Löffel, Uhr.
 
-1. Bestimmen Sie $kA$ aus dem Mittelwert wie in Teil c und sagen Sie mit den Gleichungen aus d) die Temperaturen nach 40 Minuten voraus (Becher 3 mit Milch bei Raumtemperatur).
-2. Ist der gemessene Unterschied zwischen Becher 1 und 2 größer als die Messunsicherheit? Nennen Sie zwei Gründe für Abweichungen vom Modell.
+1. Notieren Sie Ihre Vermutung zu Frage 1.
+2. $t = 0$: Becher vorwärmen, je 200 ml einfüllen und die Starttemperatur messen. Becher 1 bekommt die Milch sofort. Für Becher 2 bleibt die Milch in der Kühltasche, für Becher 3 steht sie im Glas neben dem Becher.
+3. $t = 10\,\mathrm{min}$: Becher 2 messen und daraus $kA$ wie in Teil f (mit Becher) bestimmen.
+4. Mit den gemessenen Werten die Temperaturen nach 60 Minuten vorhersagen, für Becher 3 mit Milch bei Raumtemperatur.
+5. $t = 60\,\mathrm{min}$: Milchtemperatur in Kühltasche und Glas messen, Milch in Becher 2 und 3 gießen, umrühren und alle drei Becher messen.
 
-| Becher | Start $\vartheta(0)$ | $\vartheta(10\,\mathrm{min})$ | Milch $\vartheta_M$ | Vorhersage $\vartheta(40\,\mathrm{min})$ | Messung $\vartheta(40\,\mathrm{min})$ |
-|:----------------------------------------------|:---------------------|:-----------------------|:--------------------|:------------------------|:------------------------|
-| 1: Milch sofort | | | | | |
-| 2: Milch nach 40 min aus der Kühltasche | | | | | |
-| 3: Milch nach 40 min aus dem Glas | | | | | |
-
-Raumtemperatur: \_\_\_\_\_\_\_\_\_\_ °C
-
-Mischtemperatur Becher 1: \_\_\_\_\_\_\_\_\_\_ °C
-
-$kA$ aus Becher 2 und 3: \_\_\_\_\_\_\_\_\_\_ W/K
+| Becher | Vorhersage nach 60 min | Messung nach 60 min |
+|:-------------------------------|:---------------------------|:---------------------------|
+| 1: Milch sofort | | |
+| 2: Milch nach 60 min aus der Kühltasche | | |
+| 3: Milch nach 60 min aus dem Glas | | |
 

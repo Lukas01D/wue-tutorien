@@ -1,4 +1,4 @@
-Arbeitswerte: {'V_K': 0.0002, 'rho_K': 1000.0, 'cp_K': 4180.0, 'V_M': 3e-05, 'rho_M': 1030.0, 'cp_M': 3940.0, 'th_K0': 80.0, 'th_M': 5.0, 'th_U': 20.0, 't_end': 3600.0, 't_mess': 600.0, 'th_mess': 67.0, 'th_Mh': 60.0, 'm_B': 0.3, 'c_B': 850.0, 'dh_v': 2380000.0}
+Arbeitswerte: {'V_K': 0.0002, 'rho_K': 1000.0, 'cp_K': 4180.0, 'V_M': 3e-05, 'rho_M': 1030.0, 'cp_M': 3940.0, 'th_K0': 80.0, 'th_M': 5.0, 'th_U': 20.0, 't_end': 3600.0, 't_mess': 600.0, 'th_mess': 67.0}
 m_K                                                                0.2 kg
 m_M                                                                0.0309 kg
 C_K = m_K c_p,K                                                    836 J/K
@@ -34,10 +34,10 @@ Wärmestrom am Anfang Tasse 1                                       17.17 W
 Wärmestrom am Anfang Tasse 2                                       20.41 W
 Kaffee ohne Milch wird kälter als das Gemisch ab                   55.7 min
 
-Zusatzprüfung: temperaturabhängige Wärmeabgabe c (T - T_u)^n, an dieselbe Messung angepasst (exakt integriert)
+f) nichtlineare Wärmeabgabe, angepasst an dieselbe Messung
    n = 1.00: theta_1 = 34.05 °C, theta_2 = 30.19 °C, Unterschied 3.85 K
    n = 1.33: theta_1 = 37.65 °C, theta_2 = 33.34 °C, Unterschied 4.31 K
-   n = 1.60: theta_1 = 39.95 °C, theta_2 = 35.35 °C, Unterschied 4.61 K
+   n = 1.60: theta_1 = 39.96 °C, theta_2 = 35.35 °C, Unterschied 4.61 K
 
 Empfindlichkeit
    Milch 7 °C                    : theta_1 = 34.12 °C, theta_2 = 30.45 °C, Unterschied 3.67 K
@@ -50,57 +50,6 @@ Empfindlichkeit
    Becher 300 g, gleiches kA (passt nicht mehr zur Messung):  theta_1 = 39.11 °C, theta_2 = 36.06 °C, Unterschied 3.05 K
    Anteil Becher an der Wärmekapazität des Kaffees                 31 %
 Milchtemperatur, bei der beide Tassen gleich warm wären            47.0 °C
-   g) erwärmte Milch 60 °C: theta_1 = 35.99 °C, theta_2 = 37.18 °C, Unterschied -1.19 K
+   Milch 60 °C (warmer Milchschaum): theta_1 = 35.99 °C, theta_2 = 37.18 °C, Unterschied -1.19 K
 
 Allgemeine Prüfung (Tasse 2 immer kälter, wenn die Milch nicht wärmer als der Raum ist): True
-
-f) kA als Modellparameter
-kA mit Becher / kA ohne Becher                                     1.305 
-Zeitkonstante mit Becher (C_K + C_B)/kA                            41.0 min
-Anteil Becher an C_K                                               30.5 %
-Kaffee-Effekt ohne / mit Becher                                    2.48 K
-                                                                   1.98 K
-Milch-Effekt ohne / mit Becher                                     1.38 K
-                                                                   1.10 K
-Milch-Effekt mit erwärmter Milch (ohne Becher)                     -3.67 K
-Typischer Fehler f: Becher nicht mitgemischt, theta_1              33.51 °C
-Typischer Fehler f: Becher nicht mitgemischt, theta_2              30.19 °C
-
-c) und d) Robustheit und Plausibilität
-   Messung 66 °C: kA 0.3702 W/K (+8.8 %), theta_1 = 32.55 °C, theta_2 = 28.73 °C, Unterschied 3.82 K
-   Messung 68 °C: kA 0.3109 W/K (-8.6 %), theta_1 = 35.68 °C, theta_2 = 31.82 °C, Unterschied 3.86 K
-theta nach der Zeit tau (schwarzer Kaffee)                         42.1 °C
-Becher 8 cm: Füllhöhe ohne / mit Milch                             4.0 cm
-                                                                   4.6 cm
-Fläche (Wand, Boden, Oberfläche) ohne Milch                        201 cm²
-Zuwachs der Fläche mit Milch                                       7.5 %
-kA/A ohne Becher                                                   17 W/(m² K)
-Unterschied, wenn kA mit Milch um 3 % größer ist                   3.32 K
-Unterschied, wenn kA mit Milch um 5 % größer ist                   2.98 K
-Unterschied, wenn kA mit Milch um 10 % größer ist                  2.17 K
-kA-Faktor in Tasse 1, bei dem beide gleich warm sind (ohne Becher) 1.251 
-dto. mit Becher                                                    1.188 
-Größter Unterschied bei Zugabe nach (min)                          56 min
-
-g) und h) Grenzwerte
-g: Tasse 1 mit erwärmter Milch kA um 5,6 % kleiner (Schaumschicht), Unterschied -0.00 K
-g: Tasse 1 mit kA um 10 % kleiner, Unterschied                     0.99 K
-g: späte Portion muss mindestens so warm sein                      50.6 °C
-h (1): Kipppunkt bei kA in Tasse 1 x 1.05                          36.8 °C
-h (1): Kipppunkt bei kA in Tasse 1 x 0.95                          58.5 °C
-h (1): Kipppunkt mit Exponent 4/3                                  49.7 °C
-h (2): nur die späte Portion erwärmt, Gleichstand bei              35.3 °C
-Verdunstete Masse in Tasse 2 höchstens (Hälfte von Q_2)            8.1 g
-dto. Anteil an m_K                                                 4.1 %
-Tassenwärmer: Leistung für 60 °C mit kA aus c                      13.6 W
-Tassenwärmer: Leistung für 60 °C mit kA aus f                      17.8 W
-
-Versuch: vorgewärmte Becher, Vorhersage nach 40 min
-   30 min mit Becher: Becher 1 47.15 °C, Becher 2 44.44 °C, 1 - 2 2.71 K, 1 - 3 (Milch 20 °C) 1.20 K
-   40 min mit Becher: Becher 1 41.79 °C, Becher 2 38.82 °C, 1 - 2 2.97 K, 1 - 3 (Milch 20 °C) 1.47 K
-   60 min mit Becher: Becher 1 34.04 °C, Becher 2 30.96 °C, 1 - 2 3.08 K, 1 - 3 (Milch 20 °C) 1.57 K
-   40 min, Modell aus d (ohne Becher): Becher 1 - 2 3.70 K
-   40 min mit Becher, kA mit Milch 3 % größer: Becher 1 - 2 2.41 K
-   40 min mit Becher, kA mit Milch 5 % größer: Becher 1 - 2 2.04 K
-Abkürzung: Anteil der Übertemperatur nach 40 min, (47/60)^4        0.3765 
-Abkühlrate bei 40 °C mit Becher (Gemisch)                          0.44 K/min
