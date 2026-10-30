@@ -16,7 +16,7 @@ s60 = rechne(dict(P, th_M=P["th_Mh"]))
 T_VERSUCH = 40                                             # min, Versuch im Tutorium (Ä4)
 assert r["dT"] > 0 and b["dT"] > 0 and s60["dT"] < 0
 
-# h (2): Milch für Tasse 2 steht 60 min neben der Tasse und hat höchstens Raumtemperatur; Tasse 1 wie in d)
+# Zusatzfrage (2), in den Hinweisen der Lösung: Milch für Tasse 2 steht 60 min neben der Tasse und hat höchstens Raumtemperatur; Tasse 1 wie in d)
 h2_T2 = (r["C_K"] * r["T2_K"] + r["C_M"] * r["T_U"]) / r["C_G"]
 h2_dT = r["T1"] - h2_T2                                   # Tasse 2 bleibt mindestens so viel kühler
 h2_Q_M = r["C_M"] * (r["T_U"] - r["T_M"])                 # höchstens aus der Raumluft aufgenommene Wärme
@@ -25,7 +25,7 @@ assert h2_dT > 0 and abs(h2_dT - (r["Q2"] - r["Q1"] - h2_Q_M) / r["C_G"]) < 1e-9
 
 
 def versuch_becher(th_milch, t_min=60):
-    """Versuch: vorgewärmte Becher (Modell aus Teil f), Milch nach t_min mit th_milch in °C."""
+    """Versuch: vorgewärmte Becher (Modell aus Teil g), Milch nach t_min mit th_milch in °C."""
     return zwei_tassen(C_T=P["m_B"] * P["c_B"], th_M2=th_milch, t_end=t_min * 60.0)["T2"]
 
 
@@ -51,14 +51,14 @@ AUSGABE = [
     ("Becher: theta_2", b["T2"] - K, "°C"),
     ("Erwärmte Milch 60 °C: theta_1", s60["T1"] - K, "°C"),
     ("Erwärmte Milch 60 °C: theta_2", s60["T2"] - K, "°C"),
-    ("Milchtemperatur für gleich warme Tassen", r["th_M_gleich"], "°C"),
-    ("Info h (2): theta_2 mit Milch bei Raumtemperatur", h2_T2 - K, "°C"),
-    ("Info h (2): Tasse 2 mindestens kühler um", h2_dT, "K"),
-    ("Info h (2): Milch nimmt höchstens auf, C_M (20 - 5) K", h2_Q_M / 1e3, "kJ"),
-    ("Info h (2): Q_2 - Q_1", (r["Q2"] - r["Q1"]) / 1e3, "kJ"),
-    ("Info h (2): Milchtemperatur für Gleichstand mit Tasse 1", h2_th_gleich, "°C"),
-    ("Info Versuch nach 40 min: Becher 1 (wie f)", zwei_tassen(C_T=P["m_B"] * P["c_B"], t_end=T_VERSUCH * 60.0)["T1"] - K, "°C"),
-    ("Info Versuch nach 40 min: Becher 2 (wie f)", versuch_becher(P["th_M"], T_VERSUCH) - K, "°C"),
+    ("Zusatzfrage (1): Milchtemperatur für gleich warme Tassen", r["th_M_gleich"], "°C"),
+    ("Info Zusatzfrage (2): theta_2 mit Milch bei Raumtemperatur", h2_T2 - K, "°C"),
+    ("Info Zusatzfrage (2): Tasse 2 mindestens kühler um", h2_dT, "K"),
+    ("Info Zusatzfrage (2): Milch nimmt höchstens auf, C_M (20 - 5) K", h2_Q_M / 1e3, "kJ"),
+    ("Info Zusatzfrage (2): Q_2 - Q_1", (r["Q2"] - r["Q1"]) / 1e3, "kJ"),
+    ("Info Zusatzfrage (2): Milchtemperatur für Gleichstand mit Tasse 1", h2_th_gleich, "°C"),
+    ("Info Versuch nach 40 min: Becher 1 (wie g)", zwei_tassen(C_T=P["m_B"] * P["c_B"], t_end=T_VERSUCH * 60.0)["T1"] - K, "°C"),
+    ("Info Versuch nach 40 min: Becher 2 (wie g)", versuch_becher(P["th_M"], T_VERSUCH) - K, "°C"),
     ("Info Versuch nach 40 min: Becher 3, Milch 20 °C", versuch_becher(P["th_U"], T_VERSUCH) - K, "°C"),
 ]
 assert abs(versuch_becher(P["th_M"]) - b["T2"]) < 1e-9
@@ -86,7 +86,7 @@ Um die Frage zu klären, messen Sie nach 10 Minuten die Temperatur in Tasse 2 (n
 **Annahmen:**
 
 - Der Tasseninhalt ist ideal durchmischt, die Milch mischt sich sofort und ohne Wärmeverlust.
-- Die Wärmekapazität der Tasse wird bis Teil e vernachlässigt.
+- Die Wärmekapazität der Tasse wird außer in Teil g vernachlässigt.
 - Die gesamte Wärmeabgabe (auch durch Strahlung und Verdunstung) ist $\dot{{Q}}_{{ab}} = kA\,(\vartheta - \vartheta_u)$ mit konstantem $kA$; die verdunstete Masse wird vernachlässigt.
 - Kaffee (Stoffdaten von Wasser) und Milch sind inkompressibel ($c_p = c_v$); die Stoffdaten sind konstant.
 
@@ -100,41 +100,38 @@ Um die Frage zu klären, messen Sie nach 10 Minuten die Temperatur in Tasse 2 (n
 | Anfangstemperatur | $\vartheta_{{K,0}} = {de(P['th_K0'], 0)}{U('°C')}$ | Temperatur | $\vartheta_M = {de(P['th_M'], 0)}{U('°C')}$ |
 | **Umgebung** | | **Messung in Tasse 2** | |
 | Temperatur | $\vartheta_u = {de(P['th_U'], 0)}{U('°C')}$ | nach {dt(P['t_mess']/60, 0)} min | $\vartheta_K({de(P['t_mess']/60, 0)}{U('min')}) = {de(P['th_mess'], 0)}{U('°C')}$ |
-| **Becher ab Teil f** | | **Milch in Teil g** | |
-| Masse | $m_B = {de(P['m_B']*1e3, 0)}{U('g')}$ | Temperatur | $\vartheta_{{M,h}} = {de(P['th_Mh'], 0)}{U('°C')}$ |
-| Spez. Wärmekapazität | $c_B = {de(P['c_B']/1e3, 2)}{U('kJ/(kg\\,K)')}$ | | |
+| **Milch in Teil f** | | **Becher in Teil g** | |
+| Temperatur | $\vartheta_{{M,h}} = {de(P['th_Mh'], 0)}{U('°C')}$ | Masse | $m_B = {de(P['m_B']*1e3, 0)}{U('g')}$ |
+| | | Spez. Wärmekapazität | $c_B = {de(P['c_B']/1e3, 2)}{U('kJ/(kg\\,K)')}$ |
 
 **Aufgabenstellung:**
 
 a) Bestimmen Sie mit einer Energiebilanz die Mischtemperatur $\vartheta_{{1,0}}$ direkt nach dem Zugießen der Milch in Tasse 1.\
    $\vartheta_{{1,0}} = {de(r['T1_0']-K)}{U('°C')}$
 
-b) Zeichnen Sie den Bilanzraum um den Inhalt von Tasse 1 in Abb. 1 ein. Vereinfachen Sie die allgemeine Energiebilanz zur globalen instationären Bilanz für den Inhalt einer Tasse und begründen Sie, welche Terme entfallen. Lösen Sie sie durch Trennung der Variablen für $T(t = 0\,\mathrm{{s}}) = T_0$.\
+b) Zeichnen Sie den Bilanzraum um den Inhalt von Tasse 1 in Abb. 1 ein. Vereinfachen Sie die allgemeine Energiebilanz (Foliensatz 05, Folie 8) zur globalen instationären Bilanz für den Inhalt einer Tasse und begründen Sie, welche Terme entfallen. Lösen Sie sie durch Trennung der Variablen für $T(t = 0\,\mathrm{{s}}) = T_0$.\
    $T(t) = T_u + (T_0 - T_u)\cdot \exp\left(-\frac{{kA}}{{m\,c_p}}\,t\right)$
 
 c) Bestimmen Sie $kA$ aus der Messung in Tasse 2. Welche Annahme brauchen Sie, um diesen Wert auch für Tasse 1 zu verwenden, und ist sie plausibel?\
    $kA = {de(r['kA'], 4)}{U('W/K')}$
 
 d) Berechnen Sie $\vartheta_1$ und $\vartheta_2$ nach 60 Minuten (Tasse 2 direkt nach dem Zugießen). Welches $m\,c_p$ setzen Sie jeweils ein? Welche Tasse ist wärmer?\
-   $\vartheta_1 = {de(r['T1']-K)}{U('°C')}$, $\quad\vartheta_2 = {de(r['T2']-K)}{U('°C')}$
+   ${de(r['T1']-K)}{U('°C')}$ und ${de(r['T2']-K)}{U('°C')}$ (Zuordnung selbst bestimmen)
 
 e) Berechnen Sie die Wärme, die jede Tasse in 60 Minuten an die Umgebung abgibt. Zeigen Sie, dass $Q_2 - Q_1$ den Temperaturunterschied aus d) erklärt. Wo liegt der Denkfehler Ihres Mitbewohners?\
    $Q_1 = {de(r['Q1']/1e3)}{U('kJ')}$, $\quad Q_2 = {de(r['Q2']/1e3)}{U('kJ')}$
 
-f) *Vertiefung:* Die Tassen sind vorgewärmte Keramikbecher, die immer die Temperatur ihres Inhalts haben, auch beim Zugießen der Milch. Passen Sie Bilanzraum und Bilanz aus b) an, bestimmen Sie $kA$ neu und berechnen Sie $\vartheta_1$ und $\vartheta_2$. Gilt die Aussage aus d) weiter?\
-   $kA = {de(b['kA'], 4)}{U('W/K')}$, $\quad\vartheta_1 = {de(b['T1']-K)}{U('°C')}$, $\quad\vartheta_2 = {de(b['T2']-K)}{U('°C')}$
-
-g) Am nächsten Tag gibt es Milchkaffee: Die Milch wird je Tasse kurz vorher auf $\vartheta_{{M,h}}$ erwärmt und untergerührt (gleiche Masse und Stoffdaten, ohne Becher). Welche Tasse ist nach 60 Minuten wärmer? Sagen Sie es mit kurzer Begründung voraus, prüfen Sie dann mit den Gleichungen aus d) und erklären Sie das Ergebnis.\
+f) Am nächsten Tag gibt es Milchkaffee: Die Milch wird je Tasse kurz vorher auf $\vartheta_{{M,h}}$ erwärmt und untergerührt (gleiche Masse und Stoffdaten). Welche Tasse ist nach 60 Minuten wärmer? Sagen Sie es mit kurzer Begründung voraus, prüfen Sie dann mit den Gleichungen aus d) und erklären Sie das Ergebnis.\
    ${de(s60['T1']-K)}{U('°C')}$ und ${de(s60['T2']-K)}{U('°C')}$ (Zuordnung selbst bestimmen)
 
-h) *Zusatzfrage:* (1) Bei welcher Milchtemperatur sind beide Tassen nach 60 Minuten gleich warm (ohne Becher)? (2) Die Milch für Tasse 2 steht ab $t = 0$ neben der Tasse und wird nur von der Raumluft erwärmt. Kann Tasse 2 so wärmer werden als Tasse 1? Begründen Sie mit einer Abschätzung und e).\
-   $\vartheta_M = {de(r['th_M_gleich'], 1)}{U('°C')}$
+g) *Vertiefung:* Die Tassen sind vorgewärmte Keramikbecher, die immer die Temperatur ihres Inhalts haben, auch beim Zugießen der Milch. Passen Sie Bilanzraum und Bilanz aus b) an, bestimmen Sie $kA$ neu und berechnen Sie $\vartheta_1$ und $\vartheta_2$ wie in d). Gilt die Aussage aus d) weiter?\
+   $kA = {de(b['kA'], 4)}{U('W/K')}$, $\quad\vartheta_1 = {de(b['T1']-K)}{U('°C')}$, $\quad\vartheta_2 = {de(b['T2']-K)}{U('°C')}$
 
 **[Versuch zu Aufgabe 1]{{.underline}}** (im Tutorium, läuft neben der Rechnung)
 
 Drei gleiche, vorgewärmte Becher mit je 200 ml heißem Wasser oder Kaffee und je 30 ml Milch: Becher 1 bekommt die Milch sofort, Becher 2 und 3 erst nach {T_VERSUCH} Minuten (Milch aus der Kühltasche bzw. aus einem Glas mit etwas Abstand zu den Bechern). Nach {dt(P['t_mess']/60, 0)} Minuten werden Becher 2 und 3 gemessen.
 
-1. Bestimmen Sie $kA$ wie in Teil c aus dem Mittelwert der beiden Messungen und sagen Sie mit den Gleichungen aus d) die Temperaturen nach {T_VERSUCH} Minuten voraus (Becher 3 mit Milch bei Raumtemperatur).
+1. Bestimmen Sie $kA$ wie in Teil c (ohne Becher) aus dem Mittelwert der beiden Messungen und sagen Sie mit den Gleichungen aus d) die Temperaturen nach {T_VERSUCH} Minuten voraus (Becher 3 mit Milch bei Raumtemperatur).
 2. Ist der gemessene Unterschied zwischen Becher 1 und 2 größer als die Messunsicherheit? Nennen Sie zwei Gründe für Abweichungen vom Modell.
 
 | Becher | Start $\vartheta(0)$ | $\vartheta({dt(P['t_mess']/60, 0)}\,\mathrm{{min}})$ | Milch $\vartheta_M$ | Vorhersage $\vartheta({T_VERSUCH}\,\mathrm{{min}})$ | Messung $\vartheta({T_VERSUCH}\,\mathrm{{min}})$ |

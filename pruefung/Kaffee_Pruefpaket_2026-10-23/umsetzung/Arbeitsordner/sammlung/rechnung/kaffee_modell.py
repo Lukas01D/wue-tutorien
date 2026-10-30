@@ -19,8 +19,8 @@ P = dict(
     t_end=60 * 60.0,                            # s
     t_mess=10 * 60.0, th_mess=67.0,             # Messung ohne Milch: nach 10 min noch 67 °C,
                                                 # entspricht tau = 41 min (offener Keramikbecher, Ferreira 2025)
-    th_Mh=60.0,                                 # °C, erwärmte Milch in Teil g (Thermoplan: 55 bis 65 °C)
-    m_B=0.300, c_B=850.0,                       # Keramikbecher in Teil f und im Versuch (Arbeitswert, Schätzung)
+    th_Mh=60.0,                                 # °C, erwärmte Milch in Teil f (Thermoplan: 55 bis 65 °C)
+    m_B=0.300, c_B=850.0,                       # Keramikbecher in Teil g und im Versuch (Arbeitswert, Schätzung)
     dh_v=2380e3,                                # J/kg, Verdampfungsenthalpie von Wasser bei etwa 50 °C (Abschätzung)
 )
 

@@ -50,11 +50,11 @@ Empfindlichkeit
    Becher 300 g, gleiches kA (passt nicht mehr zur Messung):  theta_1 = 39.11 °C, theta_2 = 36.06 °C, Unterschied 3.05 K
    Anteil Becher an der Wärmekapazität des Kaffees                 31 %
 Milchtemperatur, bei der beide Tassen gleich warm wären            47.0 °C
-   g) erwärmte Milch 60 °C: theta_1 = 35.99 °C, theta_2 = 37.18 °C, Unterschied -1.19 K
+   f) erwärmte Milch 60 °C: theta_1 = 35.99 °C, theta_2 = 37.18 °C, Unterschied -1.19 K
 
 Allgemeine Prüfung (Tasse 2 immer kälter, wenn die Milch nicht wärmer als der Raum ist): True
 
-f) kA als Modellparameter
+g) kA als Modellparameter (Becher)
 kA mit Becher / kA ohne Becher                                     1.305 
 Zeitkonstante mit Becher (C_K + C_B)/kA                            41.0 min
 Anteil Becher an C_K                                               30.5 %
@@ -82,18 +82,18 @@ kA-Faktor in Tasse 1, bei dem beide gleich warm sind (ohne Becher) 1.251
 dto. mit Becher                                                    1.188 
 Größter Unterschied bei Zugabe nach (min)                          56 min
 
-g) und h) Grenzwerte
-g: Tasse 1 mit erwärmter Milch kA um 5,6 % kleiner (Schaumschicht), Unterschied -0.00 K
-g: Tasse 1 mit kA um 10 % kleiner, Unterschied                     0.99 K
-g: späte Portion muss mindestens so warm sein                      50.6 °C
-h (1): Kipppunkt bei kA in Tasse 1 x 1.05                          36.8 °C
-h (1): Kipppunkt bei kA in Tasse 1 x 0.95                          58.5 °C
-h (1): Kipppunkt mit Exponent 4/3                                  49.7 °C
-h (2): nur die späte Portion erwärmt, Gleichstand bei              35.3 °C
+f) und Zusatzfrage: Grenzwerte
+f: Tasse 1 mit erwärmter Milch kA um 5,6 % kleiner (Schaumschicht), Unterschied -0.00 K
+f: Tasse 1 mit kA um 10 % kleiner, Unterschied                     0.99 K
+f: späte Portion muss mindestens so warm sein                      50.6 °C
+Zusatzfrage (1): Kipppunkt bei kA in Tasse 1 x 1.05                36.8 °C
+Zusatzfrage (1): Kipppunkt bei kA in Tasse 1 x 0.95                58.5 °C
+Zusatzfrage (1): Kipppunkt mit Exponent 4/3                        49.7 °C
+Zusatzfrage (2): nur die späte Portion erwärmt, Gleichstand bei    35.3 °C
 Verdunstete Masse in Tasse 2 höchstens (Hälfte von Q_2)            8.1 g
 dto. Anteil an m_K                                                 4.1 %
 Tassenwärmer: Leistung für 60 °C mit kA aus c                      13.6 W
-Tassenwärmer: Leistung für 60 °C mit kA aus f                      17.8 W
+Tassenwärmer: Leistung für 60 °C mit kA aus g                      17.8 W
 
 Versuch: vorgewärmte Becher, Vorhersage nach 40 min
    30 min mit Becher: Becher 1 47.15 °C, Becher 2 44.44 °C, 1 - 2 2.71 K, 1 - 3 (Milch 20 °C) 1.20 K

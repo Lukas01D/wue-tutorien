@@ -41,6 +41,10 @@ def tasse(x, y, fuell, text=None, stand=1.25):
     ax.add_patch(FancyArrowPatch((x + b / 2, y + h + 0.1), (x + b / 2, y + h + 0.75), arrowstyle="-|>",
                                  mutation_scale=10, color="#B03A2E", linewidth=1.2))
     ax.text(x + b / 2 + 0.12, y + h + 0.45, r"$\dot{Q}_{ab}$", fontsize=10, color="#B03A2E", va="center")
+    # auch durch die Wand: kleine Pfeile zu beiden Seiten (gesamte Wärmeabgabe, wie Abb. L1)
+    for x1, x2 in ((x - 0.08, x - 0.55), (x + b + 0.08, x + b + 0.55)):
+        ax.add_patch(FancyArrowPatch((x1, y + 0.3), (x2, y + 0.3), arrowstyle="-|>",
+                                     mutation_scale=9, color="#B03A2E", linewidth=1.1))
     if text:
         ax.text(x + b / 2, y - 0.3, text, ha="center", va="top", fontsize=10)
 

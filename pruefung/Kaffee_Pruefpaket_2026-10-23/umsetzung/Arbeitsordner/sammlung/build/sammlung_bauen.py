@@ -178,7 +178,7 @@ def word_zusammenhalten(pfad):
     # Versuchstabelle mit Datenzeilen von mindestens 10 mm zum Ausfüllen von Hand
     def kaffee(m):
         t = m.group(0)
-        if "Milch in Teil g" in t:
+        if "Becher in Teil g" in t:
             t = t.replace("<w:tblHeader/>", "").replace('<w:tblHeader w:val="true"/>', "")
         if "Milch sofort" in t:
             t = t.replace("<w:trPr><w:cantSplit/>", '<w:trPr><w:cantSplit/><w:trHeight w:val="567" w:hRule="atLeast"/>')

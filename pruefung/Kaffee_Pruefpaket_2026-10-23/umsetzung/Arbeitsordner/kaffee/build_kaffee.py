@@ -4,6 +4,8 @@ Alle Zahlen stammen aus kaffee_modell.py, damit Rechnung und Dokumente übereins
 Aufruf: python3 build_kaffee.py
 """
 import os, re, subprocess
+
+KOPF_RECHTS = "Sommersemester 2027"                                        # rechts in der Kopfzeile (Endfassung, TL 30.10.2026)
 from kaffee_modell import P, rechne, nichtlinear, becher, zwei_tassen, gleichstand
 
 HIER = os.path.dirname(os.path.abspath(__file__))
@@ -30,7 +32,7 @@ CK, CM, CG = r["C_K"], r["C_M"], r["C_G"]
 T10, T1, T2K, T2 = r["T1_0"], r["T1"], r["T2_K"], r["T2"]
 nl1, nl2 = nichtlinear(4 / 3)
 MILCH20 = rechne(dict(P, th_M=20.0))
-MILCH60 = rechne(dict(P, th_M=P["th_Mh"]))                                  # g: erwärmte Milch
+MILCH60 = rechne(dict(P, th_M=P["th_Mh"]))                                  # f: erwärmte Milch
 T_S = P["th_Mh"] + K
 BECHER = becher()
 assert BECHER["dT"] > 0 and MILCH20["dT"] > 0 and r["dT"] > 0 and MILCH60["dT"] < 0
@@ -39,7 +41,7 @@ CB = BECHER["C_T"]; CKB = CK + CB; CGB = CG + CB
 T10B = (CKB * r["T_K0"] + CM * r["T_M"]) / CGB
 eB = _m.exp(-BECHER["kA"] * P["t_end"] / CGB)
 T10S = (CK * r["T_K0"] + CM * T_S) / CG
-QM_RAUS = CM * (P["th_U"] - P["th_M"])                                     # h (2): Milch draußen, höchstens bis Raumtemperatur
+QM_RAUS = CM * (P["th_U"] - P["th_M"])                                     # Zusatzfrage (2): Milch draußen, höchstens bis Raumtemperatur
 DMIN_RAUS = ((r["Q2"] - r["Q1"]) - QM_RAUS) / CG
 T2_RAUS = (CK * T2K + CM * (P["th_U"] + K)) / CG
 assert abs((T1 - T2_RAUS) - DMIN_RAUS) < 1e-9
@@ -59,7 +61,8 @@ EFF2_B = CM * (r["T_M"] - r["T_U"]) * (eB - 1) / CGB                     # Milch
 assert abs(EFF1_B + EFF2_B - BECHER["dT"]) < 1e-9
 KA_VERH = BECHER["kA"] / r["kA"]
 TAU_B = CKB / BECHER["kA"]
-FEHLER_F1 = r["T_U"] + (T10 - r["T_U"]) * eB                              # f ohne Becher im Mischen
+TAU1_B = CGB / BECHER["kA"]                                               # g: Zeitkonstante von Tasse 1 mit Becher
+FEHLER_F1 = r["T_U"] + (T10 - r["T_U"]) * eB                              # g ohne Becher im Mischen
 Q66, Q68 = rechne(dict(P, th_mess=66.0)), rechne(dict(P, th_mess=68.0))
 TH_TAU = P["th_U"] + (P["th_K0"] - P["th_U"]) * _m.exp(-1)
 D_BECHER = 0.08                                                            # m, Innendurchmesser (Annahme für die Abschätzung)
@@ -111,7 +114,7 @@ $m_K = \rho_K V_K = {de(mK, 3)}{U('kg')}$, $\quad m_M = \rho_M V_M = {de(mM, 4)}
 
 $m_K c_{{p,K}} = {de(CK, 1)}{U('J/K')}$, $\quad m_M c_{{p,M}} = {de(CM, 1)}{U('J/K')}$
 
-**Ges.:** $\vartheta_{{1,0}}$, $kA$, $\vartheta_1$ und $\vartheta_2$ nach 60 min, $Q_1$ und $Q_2$; dazu $kA$, $\vartheta_1$ und $\vartheta_2$ mit Becher (f), mit erwärmter Milch (g) und die Milchtemperatur aus h
+**Ges.:** $\vartheta_{{1,0}}$, $kA$, $\vartheta_1$ und $\vartheta_2$ nach 60 min, $Q_1$ und $Q_2$; dazu $\vartheta_1$ und $\vartheta_2$ mit erwärmter Milch (f) sowie $kA$, $\vartheta_1$ und $\vartheta_2$ mit Becher (g)
 
 **Skizze:** Bilanzraum um den Tasseninhalt (Abb. L1)
 
@@ -121,7 +124,7 @@ $m_K c_{{p,K}} = {de(CK, 1)}{U('J/K')}$, $\quad m_M c_{{p,M}} = {de(CM, 1)}{U('J
 
 ![](grafik/AbbL1_Bilanzraum.png){{width=50%}}
 
-**Abb. L1:** Bilanzraum um den Tasseninhalt (in Teil f: Inhalt und Becher)
+**Abb. L1:** Bilanzraum um den Tasseninhalt (in Teil g: Inhalt und Becher)
 
 **a)** Energiebilanz um Kaffee und Milch zusammen (geschlossenes System, keine Wärmeabgabe während des Mischens): Die innere Energie bleibt gleich, $U_{{nachher}} = U_{{vorher}}$.
 
@@ -149,13 +152,13 @@ Umstellen nach $T$:
 
 $$T(t) = T_u + (T_0 - T_u)\cdot \exp\left(-\frac{{kA}}{{m\,c_p}}\,t\right)$$
 
-Für Tasse 1 gilt $m\,c_p = m_K c_{{p,K}} + m_M c_{{p,M}}$, für Tasse 2 bis zum Zugießen $m\,c_p = m_K c_{{p,K}}$.
+Für Tasse 1 gilt $m\,c_p = m_K c_{{p,K}} + m_M c_{{p,M}}$, für Tasse 2 bis zum Zugießen $m\,c_p = m_K c_{{p,K}}$. Da nur Temperaturdifferenzen vorkommen, darf man auch mit $\vartheta$ in °C rechnen.
 
 **c)** Lösung aus b) für den Kaffee ohne Milch nach $kA$ umstellen und die Messung in Tasse 2 einsetzen:
 
 $$kA = -\frac{{m_K c_{{p,K}}}}{{t}}\,\ln\frac{{T_K(t) - T_u}}{{T_{{K,0}} - T_u}} =-\frac{{{de(CK,1)}{U('J/K')}}}{{{de(P['t_mess'],0)}{U('s')}}}\,\ln\frac{{{de(P['th_mess']-P['th_U'],0)}{U('K')}}}{{{de(P['th_K0']-P['th_U'],0)}{U('K')}}} = {de(r['kA'],4)}{U('W/K')}$$
 
-Annahme für Tasse 1: $kA$ ist mit und ohne Milch gleich. Das ist plausibel, weil es dieselbe Tasse mit derselben freien Oberfläche ist, über die Strahlung und Verdunstung laufen. Mit Milch steht der Inhalt aber höher (bei {dt(D_BECHER*100,0)} cm Innendurchmesser {dt(HM*100,1)} statt {dt(H0*100,1)} cm), die wärmeabgebende Fläche wächst um {dt((AM/A0-1)*100,1)} %; $kA$ ist in Tasse 1 also eher um 3 bis 5 % größer. Dann sinkt der Unterschied aus d) auf {dt(DT_KA103)} bis {dt(DT_KA105)} K; umkehren würde ihn erst ein um {dt((KIPP_KA-1)*100,0)} % größeres $kA$ (mit Becher {dt((KIPP_KA_B-1)*100,0)} %). Die Messung kalibriert das Modell; ob $kA$ auch für den Milchkaffee gilt, zeigt erst eine eigene Messung.
+Annahme für Tasse 1: $kA$ ist mit und ohne Milch gleich. Das ist plausibel, weil es dieselbe Tasse mit derselben freien Oberfläche ist, über die Strahlung und Verdunstung laufen (dafür genügt eine qualitative Begründung; die folgenden Zahlen sind für die Besprechung). Mit Milch steht der Inhalt aber höher (bei {dt(D_BECHER*100,0)} cm Innendurchmesser {dt(HM*100,1)} statt {dt(H0*100,1)} cm), die wärmeabgebende Fläche wächst um {dt((AM/A0-1)*100,1)} %; $kA$ ist in Tasse 1 also eher um 3 bis 5 % größer. Dann sinkt der Unterschied aus d) auf {dt(DT_KA103)} bis {dt(DT_KA105)} K; umkehren würde ihn erst ein um {dt((KIPP_KA-1)*100,0)} % größeres $kA$ (mit Becher {dt((KIPP_KA_B-1)*100,0)} %). Die Messung kalibriert das Modell; ob $kA$ auch für den Milchkaffee gilt, zeigt erst eine eigene Messung.
 
 Zur Einordnung: Zeitkonstante $\tau = m\,c_p/kA$ ohne Milch ${de(r['tau_K']/60,1)}{U('min')}$, mit Milch ${de(r['tau_G']/60,1)}{U('min')}$; nach der Zeit $\tau$ hat der schwarze Kaffee noch {dt(TH_TAU,1)} °C. Das passt zu Messungen an einem offenen, nicht umgerührten Keramikbecher ($\tau \approx 41\,\mathrm{{min}}$ aus der Steigung in Abb. 6 bei Ferreira 2025). Bezogen auf rund {dt(A0*1e4,0)} cm² Oberfläche ist $kA/A \approx {de(r['kA']/A0,0)}{U('W/(m^2\\,K)')}$: freie Konvektion, Strahlung und Verdunstung zusammen.
 
@@ -193,27 +196,7 @@ Erklärung: Der Wärmestrom $\dot{{Q}}_{{ab}} = kA\,(T - T_u)$ ist umso größer
 
 **Abb. L2:** Temperaturverlauf beider Tassen (Ausschnitt: Schnittpunkt bei etwa {dt(r['t_schnitt']/60,0)} min)
 
-**f)** Der Bilanzraum umfasst jetzt Inhalt und Becher (Abb. L1): Kaffee und vorgewärmter Becher bilden eine gemeinsame Speicherkapazität, auch beim Zugießen der Milch. Das ist gerechtfertigt, weil die Widerstände innen (Kaffee zur Wand) und in der dünnen Keramikwand klein sind gegenüber dem Widerstand außen zur Luft. $C_B = m_B c_B = {de(P['m_B'],3)}{U('kg')} \cdot {de(P['c_B'],0)}{U('J/(kg\\,K)')} = {de(CB,1)}{U('J/K')}$ ({dt(CB/CK*100,1)} % von $m_K c_{{p,K}}$). Messung in Tasse 2 wie in c), jetzt mit $m_K c_{{p,K}} + C_B$:
-
-$$kA = -\frac{{m_K c_{{p,K}} + C_B}}{{t}}\,\ln\frac{{T_K(t) - T_u}}{{T_{{K,0}} - T_u}} = -\frac{{{de(CKB,1)}{U('J/K')}}}{{{de(P['t_mess'],0)}{U('s')}}}\,\ln\frac{{{de(P['th_mess']-P['th_U'],0)}{U('K')}}}{{{de(P['th_K0']-P['th_U'],0)}{U('K')}}} = {de(BECHER['kA'],4)}{U('W/K')}$$
-
-$kA$ ist ein an die Messung angepasster Modellparameter: In c) musste es auch die Wärme erklären, die der Becher abgegeben hat; mit Becher im Bilanzraum ist es um {dt((KA_VERH-1)*100,0)} % größer. Die Zeitkonstante $\tau = (m_K c_{{p,K}} + C_B)/kA = {de(TAU_B/60,1)}{U('min')}$ bleibt gleich.
-
-Tasse 1: Mischen mit Becher (er hat vorher die Kaffeetemperatur), dann Abkühlen:
-
-$$T_{{1,0}} = \frac{{(m_K c_{{p,K}} + C_B)\,T_{{K,0}} + m_M c_{{p,M}}\,T_M}}{{m_K c_{{p,K}} + C_B + m_M c_{{p,M}}}} = {de(T10B)}{U('K')}$$
-
-$$T_1 = T_u + (T_{{1,0}} - T_u)\cdot \exp\left(-\frac{{kA\,t}}{{m_K c_{{p,K}} + C_B + m_M c_{{p,M}}}}\right)$$
-
-$$T_1 = {de(r['T_U'])}{U('K')} + {de(T10B-r['T_U'])}{U('K')} \cdot {de(eB,4)} = {de(BECHER['T1'])}{U('K')} = {de(BECHER['T1']-K)}{U('°C')}$$
-
-Tasse 2: Der schwarze Kaffee kühlt mit derselben Zeitkonstante ab wie in der Messung, also wie in d) auf $T_K(60\,\mathrm{{min}}) = {de(T2K)}{U('K')}$. Dann Mischen mit Becher:
-
-$$T_2 = \frac{{(m_K c_{{p,K}} + C_B)\,T_K(60\,\mathrm{{min}}) + m_M c_{{p,M}}\,T_M}}{{m_K c_{{p,K}} + C_B + m_M c_{{p,M}}}} = {de(BECHER['T2'])}{U('K')} = {de(BECHER['T2']-K)}{U('°C')}$$
-
-Die Aussage aus d) gilt weiter, der Unterschied sinkt aber von {dt(r['dT'])} K auf {dt(BECHER['dT'])} K. Beide Anteile aus der Zerlegung in g) werden kleiner: Die Milch erhöht die Wärmekapazität nur noch um {dt(CM/CKB*100,0)} % statt {dt(CM/CK*100,0)} % (Kaffee-Effekt {dt(EFF1_B)} statt {dt(EFF1)} K), und der Becher gibt beim Mischen Wärme an die kalte Milch ab und dämpft den Mischsprung (Milch-Effekt {dt(EFF2_B)} statt {dt(EFF2_5)} K).
-
-**g)** Rechnung wie in a) und d), nur mit $T_{{M,h}} = {de(T_S)}{U('K')}$ statt $T_M$:
+**f)** Rechnung wie in a) und d), nur mit $T_{{M,h}} = {de(T_S)}{U('K')}$ statt $T_M$:
 
 $$T_{{1,0}} = \frac{{m_K c_{{p,K}}\,T_{{K,0}} + m_M c_{{p,M}}\,T_{{M,h}}}}{{m_K c_{{p,K}} + m_M c_{{p,M}}}} = {de(T10S)}{U('K')}$$
 
@@ -229,7 +212,62 @@ $$\vartheta_1 - \vartheta_2 = \underbrace{{\frac{{m_K c_{{p,K}}\,(\vartheta_{{K,
 
 mit $e_G = \exp(-kA\,t/(m_K c_{{p,K}} + m_M c_{{p,M}})) = {de(r['e_G'],4)}$ und $e_K = \exp(-kA\,t/(m_K c_{{p,K}})) = {de(r['e_K'],4)}$. Kaffee-Effekt {dt(EFF1)} K; Milch-Effekt {dt(EFF2_5)} K für kalte Milch (für „sofort“), {dt(EFF2_60)} K für erwärmte Milch (für „später“).
 
-**h)** (1) Beide Anteile heben sich auf, wenn $\vartheta_1 = \vartheta_2$:
+**g)** Der Bilanzraum umfasst jetzt Inhalt und Becher (Abb. L1): Kaffee und vorgewärmter Becher bilden eine gemeinsame Speicherkapazität, auch beim Zugießen der Milch. Das ist gerechtfertigt, weil die Widerstände innen (Kaffee zur Wand) und in der dünnen Keramikwand klein sind gegenüber dem Widerstand außen zur Luft. $C_B = m_B c_B = {de(P['m_B'],3)}{U('kg')} \cdot {de(P['c_B'],0)}{U('J/(kg\\,K)')} = {de(CB,1)}{U('J/K')}$ ({dt(CB/CK*100,1)} % von $m_K c_{{p,K}}$). Messung in Tasse 2 wie in c), jetzt mit $m_K c_{{p,K}} + C_B$:
+
+$$kA = -\frac{{m_K c_{{p,K}} + C_B}}{{t}}\,\ln\frac{{T_K(t) - T_u}}{{T_{{K,0}} - T_u}} = -\frac{{{de(CKB,1)}{U('J/K')}}}{{{de(P['t_mess'],0)}{U('s')}}}\,\ln\frac{{{de(P['th_mess']-P['th_U'],0)}{U('K')}}}{{{de(P['th_K0']-P['th_U'],0)}{U('K')}}} = {de(BECHER['kA'],4)}{U('W/K')}$$
+
+$kA$ ist ein an die Messung angepasster Modellparameter: In c) musste es auch die Wärme erklären, die der Becher abgegeben hat; mit Becher im Bilanzraum ist es um {dt((KA_VERH-1)*100,0)} % größer. Die Zeitkonstante $\tau = (m_K c_{{p,K}} + C_B)/kA = {de(TAU_B/60,1)}{U('min')}$ bleibt gleich.
+
+Tasse 1: Mischen mit Becher (er hat vorher die Kaffeetemperatur), dann Abkühlen:
+
+$$T_{{1,0}} = \frac{{(m_K c_{{p,K}} + C_B)\,T_{{K,0}} + m_M c_{{p,M}}\,T_M}}{{m_K c_{{p,K}} + C_B + m_M c_{{p,M}}}} = {de(T10B)}{U('K')}$$
+
+$$T_1 = T_u + (T_{{1,0}} - T_u)\cdot \exp\left(-\frac{{kA\,t}}{{m_K c_{{p,K}} + C_B + m_M c_{{p,M}}}}\right)$$
+
+$$T_1 = {de(r['T_U'])}{U('K')} + {de(T10B-r['T_U'])}{U('K')} \cdot {de(eB,4)} = {de(BECHER['T1'])}{U('K')} = {de(BECHER['T1']-K)}{U('°C')}$$
+
+Dass $\vartheta_1$ fast gleich bleibt ({dt(BECHER['T1']-K)} statt {dt(T1-K)} °C), liegt an zwei Effekten, die sich fast aufheben: Die Mischtemperatur steigt ({dt(T10B-K)} statt {dt(T10-K)} °C), die Zeitkonstante von Tasse 1 sinkt ({dt(TAU1_B/60,1)} statt {dt(r['tau_G']/60,1)} min).
+
+Tasse 2: Der schwarze Kaffee kühlt mit derselben Zeitkonstante ab wie in der Messung, also wie in d) auf $T_K(60\,\mathrm{{min}}) = {de(T2K)}{U('K')}$. Dann Mischen mit Becher:
+
+$$T_2 = \frac{{(m_K c_{{p,K}} + C_B)\,T_K(60\,\mathrm{{min}}) + m_M c_{{p,M}}\,T_M}}{{m_K c_{{p,K}} + C_B + m_M c_{{p,M}}}} = {de(BECHER['T2'])}{U('K')} = {de(BECHER['T2']-K)}{U('°C')}$$
+
+Die Aussage aus d) gilt weiter, der Unterschied sinkt aber von {dt(r['dT'])} K auf {dt(BECHER['dT'])} K. Beide Anteile aus der Zerlegung in f) werden kleiner: Die Milch erhöht die Wärmekapazität nur noch um {dt(CM/CKB*100,0)} % statt {dt(CM/CK*100,0)} % (Kaffee-Effekt {dt(EFF1_B)} statt {dt(EFF1)} K), und der Becher gibt beim Mischen Wärme an die kalte Milch ab und dämpft den Mischsprung (Milch-Effekt {dt(EFF2_B)} statt {dt(EFF2_5)} K).
+
+"""
+
+HINWEISE = rf"""::: seitenumbruch
+:::
+
+**[Hinweise für die Tutoriumsleitung]{{.underline}}**
+
+*Ablauf im Tutorium:* Kern sind Frage 1, a bis f und der Versuch; g ist Vertiefung; die Zusatzfrage (unten) steht nicht auf dem Blatt. Frage 1 vor dem Austeilen stellen: Vermutung mit Begründung notieren lassen, Handzeichen (Tasse 1, Tasse 2, gleich warm), Verteilung an die Tafel und am Ende wieder zeigen; die Ergebniszeilen späterer Teile verraten sonst die Antwort. Zeitplan als Schätzung, beim ersten Einsatz messen:
+
+| Minute | Ablauf |
+|:--------------|:------------------------------------------------------------------------------------------|
+| 0 bis 5 | Ausgangssituation, Frage 1 (Vermutung, Handzeichen), dann Blatt austeilen |
+| 5 bis 12 | Studierende: Frage 3 der Sammlung zu Tutorium 5 (Biot) oder Beginn von a. TL startet mit zwei Freiwilligen den Versuch ($t = 0$ etwa in Minute 10) |
+| 12 bis 50 | a bis e; b nach etwa 8 min Einzelarbeit gemeinsam an der Tafel (Bilanz vereinfachen, Trennung der Variablen), dann c bis e allein; etwa Minute 20 Messung bei $t = 10\,\mathrm{{min}}$; nach d) Vorhersage für $t = {T_V}\,\mathrm{{min}}$ an der Tafel. Haltepunkt: Sind um Minute 50 viele noch nicht bei e), e) gemeinsam besprechen und f zuerst als Vorhersage mit Handzeichen |
+| 50 bis 58 | Messung bei $t = {T_V}\,\mathrm{{min}}$, Vergleich mit der Vorhersage, Auflösung von Frage 1 |
+| 58 bis 72 | f mit Vorhersage und Erklärung |
+| 72 bis 85 | g für Schnelle, sonst Besprechung; Zusatzfrage für ganz Schnelle |
+| 85 bis 90 | Zusammenfassung |
+
+- *Typische Fehler:* Mischtemperatur nach dem Volumen statt nach $m\,c_p$ gewichtet; in Tasse 1 nur mit $m_K c_{{p,K}}$ gerechnet; in Tasse 2 schon während der 60 Minuten mit $m_K c_{{p,K}} + m_M c_{{p,M}}$ gerechnet; Zeit in Minuten eingesetzt ($kA = {de(-CK/10*r['ln_mess'],2)}$ statt ${de(r['kA'],4)}{U('W/K')}$); Vorzeichen in der Bilanz vergessen (die Temperatur stiege); $Q_2$ mit Kaffee und Milch gerechnet ({dt(CG*(r['T_K0']-T2K)/1e3)} statt {dt(r['Q2']/1e3)} kJ); in g) das alte $kA$ weiterverwendet (dann {dt(becher(kA_neu=False)['T1']-K,1)} und {dt(becher(kA_neu=False)['T2']-K,1)} °C: Aussage gleich, aber nicht mehr passend zur Messung) oder den Becher beim Zugießen nicht mitgemischt ({dt(FEHLER_F1-K)} und {dt(T2-K)} °C); in der Zusatzfrage (2) nur mit dem Kipppunkt argumentiert ({dt(P['th_U'],0)} °C < {dt(r['th_M_gleich'],0)} °C), obwohl Tasse 1 weiter die kalte Milch bekommt.
+- *Fehlvorstellungen:* „Energieerhaltung, also egal“: Erhalten bleibt die Energie von Kaffee, Milch und Umgebung zusammen, nicht die des Tasseninhalts (Teil e). „Erwärmte Milch ist kälter als der Kaffee, wirkt also wie kalte Milch“: Entscheidend ist nicht der Vergleich mit dem Kaffee, sondern ob die Milch wärmer als der Kipppunkt aus der Zusatzfrage (1) ist. „Milchkaffee ist heller und strahlt deshalb weniger ab“: Im Infraroten strahlen schwarzer Kaffee und Milchkaffee gleich; die sichtbare Farbe spielt keine Rolle.
+- *Zu e:* Hilfe bei Bedarf: „Womit starten beide Tassen, womit enden sie? Stellen Sie die Energiebilanz um Kaffee und Milch zusammen auf.“
+- *Zu f:* Hilfe bei Bedarf: „Was bewirkt die Milch während der 60 Minuten, und was beim Zugießen?“ Die späte Portion muss frisch erwärmt sein; unter {dt(G_SPAET_MIN,1)} °C wäre Tasse 2 nicht mehr wärmer. Ein echter Cappuccino verhält sich anders: Der Schaum mischt sich nicht und liegt als dämmende Schicht oben. Schon {dt((1-G_SCHAUM)*100,1)} % weniger $kA$ in Tasse 1 gleichen den Vorsprung von Tasse 2 aus, bei 10 % weniger ist Tasse 1 um {dt(G_SCHAUM10)} K wärmer.
+- *Was die Rechnung weglässt:* (1) Die Verdunstung wächst mit dem Dampfdruck, also viel stärker als linear mit $T - T_u$; bei 80 °C trägt sie rund die Hälfte der Wärmeabgabe (Condoret 2007, Tab. 2), bei 35 °C deutlich weniger. Mit $kA$ aus der 10-Minuten-Messung liegen die berechneten Temperaturen nach 60 min deshalb einige Kelvin zu tief (Abschätzung mit einem Verdunstungsmodell: 38 bis 40 statt 34 °C), der Unterschied wächst auf rund 4,5 K. Das Potenzgesetz $\dot{{Q}}_{{ab}} \propto (T - T_u)^{{4/3}}$ (freie Konvektion), angepasst an dieselbe Messung, bildet das nur teilweise ab: $\vartheta_1 = {de(nl1-K)}{U('°C')}$ und $\vartheta_2 = {de(nl2-K)}{U('°C')}$, also {dt(nl1-nl2)} K. (2) Mit Milch ist die Tasse voller, $kA$ steigt um einige Prozent; je 5 % sinkt der Unterschied um rund {dt(r['dT']-DT_KA105,1)} K. Beide Effekte heben sich etwa auf.
+- *Zum Weiterdenken:* Hätte die Milch in beiden Tassen Raumtemperatur, wäre der Unterschied mit {dt(MILCH20['dT'],1)} K kleiner, aber vorhanden. Der schwarze Kaffee ist bis etwa {dt(r['t_schnitt']/60,0)} min heißer als das Gemisch in Tasse 1 (Abb. L2) und verliert deshalb mehr Wärme; am größten ist der Unterschied, wenn die Milch nach etwa {T_MAX} min kommt ({dt(DT_MAX)} K). Wie viel Kaffee verdunstet? Geht die Hälfte von $Q_2$ in die Verdunstung, sind es höchstens rund {dt(M_VERD*1e3,0)} g ({dt(M_VERD/mK*100,0)} %); die Annahme ist vertretbar.
+- *Impulse:* Zu c): „Wie warm ist der schwarze Kaffee nach der Zeit $\tau$, und passt das zu Ihrer Erfahrung?“ ({dt(TH_TAU,1)} °C). Zu e) (Tafelimpuls statt Auftrag): „Skizzieren Sie den Verlauf $\vartheta(t)$ beider Tassen in einem Diagramm. Welche Tasse ist wann wärmer?“ Danach Abb. L2 zeigen. Umgekehrtes Ziel: Wer den Kaffee möglichst bald bei Trinktemperatur haben will, gießt die kalte Milch spät dazu, aus demselben Grund. Technisch ist die Reihenfolge von Mischen und Kühlen eine Frage der Prozessführung: Soll ein heißer Ansatz schnell abkühlen, gibt man eine kalte Komponente spät zu. Quellterm als Impuls: Ein Tassenwärmer soll den Kaffee bei 60 °C halten; nötig ist $P = kA\,(\vartheta - \vartheta_u)$, also {dt(P60_C,1)} W mit $kA$ aus c) und {dt(P60_F,1)} W mit $kA$ aus g). Wer den Becher bei der Bestimmung von $kA$ vernachlässigt, unterschätzt die Leistung um {dt((1-P60_C/P60_F)*100,0)} %.
+- *Fachlicher Beleg* für die Hauptaussage: Rees & Viney (1988, Am. J. Phys. 56, 434); im Netz kursieren auch Fehlschlüsse („der Zeitpunkt ist egal“), Teil e widerlegt sie.
+- *Versuch, Ablauf:* Material: drei gleiche Becher, heißes Wasser oder Kaffee aus der Thermoskanne, Milch aus der Kühltasche, ein kleines Glas, Messbecher, ein Einstichthermometer für alle Messungen, Löffel, Uhr. $t = 0$: Raumtemperatur messen; Becher vorwärmen, je 200 ml einfüllen, Start- und Milchtemperatur messen; Becher 1 bekommt die Milch sofort, nach dem Umrühren Mischtemperatur messen (Vergleich mit a). Die Milch für Becher 2 bleibt in der Kühltasche, die für Becher 3 steht im Glas mit Abstand zu den Bechern (sonst erwärmt sie auch der heiße Becher, Zusatzfrage (2)). $t = 10\,\mathrm{{min}}$: Becher 2 und 3 messen; der Unterschied zeigt die Streuung gleicher Becher. Vorhersage nach d) mit dem Mittelwert, für Becher 3 mit Raumtemperatur als obere Grenze; Abkürzung für den schwarzen Kaffee: $\vartheta_K(t) = \vartheta_u + (\vartheta_{{K,0}} - \vartheta_u)\,r^{{t/10\,\mathrm{{min}}}}$ mit $r$ aus der 10-Minuten-Messung. $t = {T_V}\,\mathrm{{min}}$: Milchtemperaturen messen, Milch zugießen, alle drei Becher umrühren und in fester Reihenfolge zügig messen. Messregel: vor jeder Messung umrühren, Thermometer mittig und halb tief, warten, bis die Anzeige steht, Uhrzeit notieren (bei 40 °C kühlt ein Becher um rund {dt(RATE40,1)} K je Minute ab); alle Becher offen nebeneinander auf derselben Unterlage, ohne Zugluft. Ein Thermometer für alle Messungen hebt seinen festen Fehler im Vergleich auf. Heißes Wasser verhält sich wie Kaffee; Verbrühungsgefahr beachten.
+- *Versuch, Erwartung:* Mit vorgewärmten Bechern sind nach {T_V} Minuten zwischen Becher 1 und 2 rund 2 bis 3 K zu erwarten (Modell mit Becher {dt(V40['dT'])} K; das Modell aus d) ohne Becher sagt {dt(V40_D['dT'])} K voraus, der Unterschied ist ein Anlass für g), mit einem Thermometer für alle Messungen gut messbar. Becher 3 liegt dazwischen: rund 1 bis 2 K kühler als Becher 1 und oft nur 0,5 bis 1,5 K wärmer als Becher 2, kaum mehr als die Streuung zwischen zwei Bechern. Die Werte sind Modellwerte: Ist $kA$ beim volleren Milchkaffee nur 3 bis 5 % größer, sinkt der Unterschied zwischen Becher 1 und 2 im Modell auf {dt(V40_105['dT'],1)} bis {dt(V40_103['dT'],1)} K; die Verdunstung hebt ihn wieder etwas an. Die gemessenen Temperaturen liegen meist einige Kelvin über der Vorhersage, weil $kA$ mit sinkender Temperatur kleiner wird (Verdunstung). Das ist die Grenze des Modells, kein Messfehler.
+- *Probelauf:* Den Versuch einmal vorab mit den Tutoriumsbechern und dem Thermometer machen (Becher wiegen, Zeitkonstante, Streuung und Wiederholgenauigkeit ansehen, dazu eine Abkühlreihe mit fertigem Milchkaffee, um gleiches $kA$ zu prüfen) und die Messreihe als Reserve bereithalten. Wer Zeit hat, misst Becher 2 zusätzlich nach 5, 20 und 30 min und trägt $\ln(\vartheta - \vartheta_u)$ über $t$ auf: Die Punkte liegen nicht ganz auf einer Geraden (Verdunstung).
+
+*Zusatzfrage für Schnelle* (steht nicht auf dem Blatt; an der Tafel oder mündlich stellen): (1) Bei welcher Milchtemperatur sind beide Tassen nach 60 Minuten gleich warm (ohne Becher)? (2) Die Milch für Tasse 2 steht ab $t = 0$ neben der Tasse und wird nur von der Raumluft erwärmt. Kann Tasse 2 so wärmer werden als Tasse 1? Schätzen Sie ab, wie viel Wärme die Milch höchstens aufnehmen kann, und vergleichen Sie mit $Q_2 - Q_1$ aus e). Kontrollwerte: $\vartheta_M = {de(r['th_M_gleich'],1)}{U('°C')}$, $\quad Q_M \le {de(QM_RAUS/1e3)}{U('kJ')}$.
+
+Zu (1): Beide Anteile aus der Zerlegung in f) heben sich auf, wenn $\vartheta_1 = \vartheta_2$:
 
 $$\vartheta_M = \vartheta_u + \frac{{m_K c_{{p,K}}\,(\vartheta_{{K,0}} - \vartheta_u)\,(e_G - e_K)}}{{m_M c_{{p,M}}\,(1 - e_G)}} = {de(P['th_U'],0)}{U('°C')} + {de(r['th_M_gleich']-P['th_U'],1)}{U('K')} = {de(r['th_M_gleich'],1)}{U('°C')}$$
 
@@ -249,36 +287,7 @@ kühler (mit Milch von 20 °C: $\vartheta_2 = {de(T2_RAUS-K)}{U('°C')}$ gegenü
 
 """
 
-HINWEISE = rf"""```{{=latex}}
-\needspace{{7\baselineskip}}
-```
-
-**[Hinweise für die Tutoriumsleitung]{{.underline}}**
-
-*Ablauf im Tutorium:* Kern sind Frage 1, a bis e, g und der Versuch; f ist Vertiefung, h Zusatz oder Hausaufgabe. Frage 1 vor dem Austeilen stellen: Vermutung mit Begründung notieren lassen, Handzeichen (Tasse 1, Tasse 2, gleich warm), Verteilung an die Tafel und am Ende wieder zeigen; die Ergebnisse in d) verraten sonst die Antwort. Zeitplan als Schätzung, beim ersten Einsatz messen:
-
-| Minute | Ablauf |
-|:--------------|:------------------------------------------------------------------------------------------|
-| 0 bis 5 | Ausgangssituation, Frage 1 (Vermutung, Handzeichen), dann Blatt austeilen |
-| 5 bis 12 | Studierende: Frage 3 der Sammlung zu Tutorium 5 (Biot) oder Beginn von a. TL startet mit zwei Freiwilligen den Versuch ($t = 0$ etwa in Minute 10) |
-| 12 bis 50 | a bis e; etwa Minute 20 Messung bei $t = 10\,\mathrm{{min}}$; nach d) Vorhersage für $t = {T_V}\,\mathrm{{min}}$ an der Tafel |
-| 50 bis 58 | Messung bei $t = {T_V}\,\mathrm{{min}}$, Vergleich mit der Vorhersage, Auflösung von Frage 1 |
-| 58 bis 72 | g mit Vorhersage und Erklärung |
-| 72 bis 85 | f für Schnelle, sonst Besprechung; h als Zusatz |
-| 85 bis 90 | Zusammenfassung |
-
-- *Typische Fehler:* Mischtemperatur nach dem Volumen statt nach $m\,c_p$ gewichtet; in Tasse 1 nur mit $m_K c_{{p,K}}$ gerechnet; in Tasse 2 schon während der 60 Minuten mit $m_K c_{{p,K}} + m_M c_{{p,M}}$ gerechnet; Zeit in Minuten eingesetzt ($kA = {de(-CK/10*r['ln_mess'],2)}$ statt ${de(r['kA'],4)}{U('W/K')}$); Vorzeichen in der Bilanz vergessen (die Temperatur stiege); $Q_2$ mit Kaffee und Milch gerechnet ({dt(CG*(r['T_K0']-T2K)/1e3)} statt {dt(r['Q2']/1e3)} kJ); in f) das alte $kA$ weiterverwendet (dann {dt(becher(kA_neu=False)['T1']-K,1)} und {dt(becher(kA_neu=False)['T2']-K,1)} °C: Aussage gleich, aber nicht mehr passend zur Messung) oder den Becher beim Zugießen nicht mitgemischt ({dt(FEHLER_F1-K)} und {dt(T2-K)} °C); in h) (2) nur mit dem Kipppunkt argumentiert ({dt(P['th_U'],0)} °C < {dt(r['th_M_gleich'],0)} °C), obwohl Tasse 1 weiter die kalte Milch bekommt.
-- *Fehlvorstellungen:* „Energieerhaltung, also egal“: Erhalten bleibt die Energie von Kaffee, Milch und Umgebung zusammen, nicht die des Tasseninhalts (Teil e). „Erwärmte Milch ist kälter als der Kaffee, wirkt also wie kalte Milch“: Entscheidend ist nicht der Vergleich mit dem Kaffee, sondern ob die Milch wärmer als der Kipppunkt aus h ist. „Milchkaffee ist heller und strahlt deshalb weniger ab“: Im Infraroten strahlen schwarzer Kaffee und Milchkaffee gleich; die sichtbare Farbe spielt keine Rolle.
-- *Zu g:* Hilfe bei Bedarf: „Was bewirkt die Milch während der 60 Minuten, und was beim Zugießen?“ Die späte Portion muss frisch erwärmt sein; unter {dt(G_SPAET_MIN,1)} °C wäre Tasse 2 nicht mehr wärmer. Ein echter Cappuccino verhält sich anders: Der Schaum mischt sich nicht und liegt als dämmende Schicht oben. Schon {dt((1-G_SCHAUM)*100,1)} % weniger $kA$ in Tasse 1 gleichen den Vorsprung von Tasse 2 aus, bei 10 % weniger ist Tasse 1 um {dt(G_SCHAUM10)} K wärmer.
-- *Was die Rechnung weglässt:* (1) Die Verdunstung wächst mit dem Dampfdruck, also viel stärker als linear mit $T - T_u$; bei 80 °C trägt sie rund die Hälfte der Wärmeabgabe (Condoret 2007, Tab. 2), bei 35 °C deutlich weniger. Mit $kA$ aus der 10-Minuten-Messung liegen die berechneten Temperaturen nach 60 min deshalb einige Kelvin zu tief (Abschätzung mit einem Verdunstungsmodell: 38 bis 40 statt 34 °C), der Unterschied wächst auf rund 4,5 K. Das Potenzgesetz $\dot{{Q}}_{{ab}} \propto (T - T_u)^{{4/3}}$ (freie Konvektion), angepasst an dieselbe Messung, bildet das nur teilweise ab: $\vartheta_1 = {de(nl1-K)}{U('°C')}$ und $\vartheta_2 = {de(nl2-K)}{U('°C')}$, also {dt(nl1-nl2)} K. (2) Mit Milch ist die Tasse voller, $kA$ steigt um einige Prozent; je 5 % sinkt der Unterschied um rund {dt(r['dT']-DT_KA105,1)} K. Beide Effekte heben sich etwa auf.
-- *Zum Weiterdenken:* Hätte die Milch in beiden Tassen Raumtemperatur, wäre der Unterschied mit {dt(MILCH20['dT'],1)} K kleiner, aber vorhanden. Der schwarze Kaffee ist bis etwa {dt(r['t_schnitt']/60,0)} min heißer als das Gemisch in Tasse 1 (Abb. L2) und verliert deshalb mehr Wärme; am größten ist der Unterschied, wenn die Milch nach etwa {T_MAX} min kommt ({dt(DT_MAX)} K). Wie viel Kaffee verdunstet? Geht die Hälfte von $Q_2$ in die Verdunstung, sind es höchstens rund {dt(M_VERD*1e3,0)} g ({dt(M_VERD/mK*100,0)} %); die Annahme ist vertretbar.
-- *Impulse:* Zu c): „Wie warm ist der schwarze Kaffee nach der Zeit $\tau$, und passt das zu Ihrer Erfahrung?“ ({dt(TH_TAU,1)} °C). Zu e) (Tafelimpuls statt Auftrag): „Skizzieren Sie den Verlauf $\vartheta(t)$ beider Tassen in einem Diagramm. Welche Tasse ist wann wärmer?“ Danach Abb. L2 zeigen. Umgekehrtes Ziel: Wer den Kaffee möglichst bald bei Trinktemperatur haben will, gießt die kalte Milch spät dazu, aus demselben Grund. Technisch ist die Reihenfolge von Mischen und Kühlen eine Frage der Prozessführung: Soll ein heißer Ansatz schnell abkühlen, gibt man eine kalte Komponente spät zu. Quellterm als Impuls: Ein Tassenwärmer soll den Kaffee bei 60 °C halten; nötig ist $P = kA\,(\vartheta - \vartheta_u)$, also {dt(P60_C,1)} W mit $kA$ aus c) und {dt(P60_F,1)} W mit $kA$ aus f). Wer den Becher bei der Bestimmung von $kA$ vernachlässigt, unterschätzt die Leistung um {dt((1-P60_C/P60_F)*100,0)} %.
-- *Fachlicher Beleg* für die Hauptaussage: Rees & Viney (1988, Am. J. Phys. 56, 434); im Netz kursieren auch Fehlschlüsse („der Zeitpunkt ist egal“), Teil e widerlegt sie.
-- *Versuch, Ablauf:* Material: drei gleiche Becher, heißes Wasser oder Kaffee aus der Thermoskanne, Milch aus der Kühltasche, ein kleines Glas, Messbecher, ein Einstichthermometer für alle Messungen, Löffel, Uhr. $t = 0$: Raumtemperatur messen; Becher vorwärmen, je 200 ml einfüllen, Start- und Milchtemperatur messen; Becher 1 bekommt die Milch sofort, nach dem Umrühren Mischtemperatur messen (Vergleich mit a). Die Milch für Becher 2 bleibt in der Kühltasche, die für Becher 3 steht im Glas mit Abstand zu den Bechern (sonst erwärmt sie auch der heiße Becher, h (2)). $t = 10\,\mathrm{{min}}$: Becher 2 und 3 messen; der Unterschied zeigt die Streuung gleicher Becher. Vorhersage nach d) mit dem Mittelwert, für Becher 3 mit Raumtemperatur als obere Grenze; Abkürzung für den schwarzen Kaffee: $\vartheta_K(t) = \vartheta_u + (\vartheta_{{K,0}} - \vartheta_u)\,r^{{t/10\,\mathrm{{min}}}}$ mit $r$ aus der 10-Minuten-Messung. $t = {T_V}\,\mathrm{{min}}$: Milchtemperaturen messen, Milch zugießen, alle drei Becher umrühren und in fester Reihenfolge zügig messen. Messregel: vor jeder Messung umrühren, Thermometer mittig und halb tief, warten, bis die Anzeige steht, Uhrzeit notieren (bei 40 °C kühlt ein Becher um rund {dt(RATE40,1)} K je Minute ab); alle Becher offen nebeneinander auf derselben Unterlage, ohne Zugluft. Ein Thermometer für alle Messungen hebt seinen festen Fehler im Vergleich auf. Heißes Wasser verhält sich wie Kaffee; Verbrühungsgefahr beachten.
-- *Versuch, Erwartung:* Mit vorgewärmten Bechern sind nach {T_V} Minuten zwischen Becher 1 und 2 rund 2 bis 3 K zu erwarten (Modell mit Becher {dt(V40['dT'])} K; das Modell aus d) ohne Becher sagt {dt(V40_D['dT'])} K voraus, der Unterschied ist ein Anlass für f), mit einem Thermometer für alle Messungen gut messbar. Becher 3 liegt dazwischen: rund 1 bis 2 K kühler als Becher 1 und oft nur 0,5 bis 1,5 K wärmer als Becher 2, kaum mehr als die Streuung zwischen zwei Bechern. Die Werte sind Modellwerte: Ist $kA$ beim volleren Milchkaffee nur 3 bis 5 % größer, sinkt der Unterschied zwischen Becher 1 und 2 im Modell auf {dt(V40_105['dT'],1)} bis {dt(V40_103['dT'],1)} K; die Verdunstung hebt ihn wieder etwas an. Die gemessenen Temperaturen liegen meist einige Kelvin über der Vorhersage, weil $kA$ mit sinkender Temperatur kleiner wird (Verdunstung). Das ist die Grenze des Modells, kein Messfehler.
-- *Probelauf:* Den Versuch einmal vorab mit den Tutoriumsbechern und dem Thermometer machen (Becher wiegen, Zeitkonstante, Streuung und Wiederholgenauigkeit ansehen, dazu eine Abkühlreihe mit fertigem Milchkaffee, um gleiches $kA$ zu prüfen) und die Messreihe als Reserve bereithalten. Wer Zeit hat, misst Becher 2 zusätzlich nach 5, 20 und 30 min und trägt $\ln(\vartheta - \vartheta_u)$ über $t$ auf: Die Punkte liegen nicht ganz auf einer Geraden (Verdunstung).
-
-```{{=latex}}
+QUELLEN = rf"""```{{=latex}}
 \needspace{{7\baselineskip}}
 ```
 
@@ -301,6 +310,7 @@ def schreibe(name, text):
 
 # Einleitungssatz und folgende Formeln in einen Absatz: kein Seitenumbruch dazwischen, keine Leerzeile vor der zweiten Formel
 LOESUNG = re.sub(r"([^\n])\n\n(\$\$)", r"\1\n\2", LOESUNG)
+HINWEISE = re.sub(r"([^\n])\n\n(\$\$)", r"\1\n\2", HINWEISE)
 # Aufgabentext genau wie in der Aufgabensammlung (Ausgangssituation, Frage 1, Aufgabe 1, Versuch)
 with open(SAMMLUNG_BLOCK, encoding="utf-8") as _f:
     BLOCK = _f.read()
@@ -311,20 +321,22 @@ BLOCK = BLOCK.replace("**[Versuch zu Aufgabe 1]", "::: seitenumbruch\n:::\n\n**[
 md_aufgabe = KOPF + BLOCK
 KOPF_L = KOPF.replace("(instationär global)]", "(instationär global), Lösung]")
 assert KOPF_L != KOPF
-md_loesung = KOPF_L + BLOCK + "::: seitenumbruch\n:::\n\n" + LOESUNG + HINWEISE
+md_loesung = KOPF_L + BLOCK + "::: seitenumbruch\n:::\n\n" + LOESUNG + HINWEISE + QUELLEN
+md_loesung_stud = KOPF_L + BLOCK + "::: seitenumbruch\n:::\n\n" + LOESUNG + QUELLEN       # für Studierende, ohne Hinweise
 schreibe("Kaffee_Aufgabe.md", md_aufgabe)
 schreibe("Kaffee_Loesung.md", md_loesung)
+schreibe("Kaffee_Loesung_Studierende.md", md_loesung_stud)
 
 # Lösung: Kopfzeile rechts mit „Lösung“ (aus kopf.tex abgeleitet, damit beide gleich bleiben)
 with open(os.path.join(B, "kopf.tex"), encoding="utf-8") as _f:
     _kopf = _f.read()
-assert "Entwurf, Stand" in _kopf
+assert KOPF_RECHTS in _kopf
 with open(os.path.join(B, "kopf_loesung.tex"), "w", encoding="utf-8") as _f:
-    _f.write(_kopf.replace("Entwurf, Stand", "Lösung, Entwurf, Stand"))
-for name in ("Kaffee_Aufgabe", "Kaffee_Loesung"):
+    _f.write(_kopf.replace(KOPF_RECHTS, "Lösung, " + KOPF_RECHTS))
+for name in ("Kaffee_Aufgabe", "Kaffee_Loesung", "Kaffee_Loesung_Studierende"):
     md = os.path.join(HIER, name + ".md")
     subprocess.run(["pandoc", md, "-o", os.path.join(HIER, name + ".pdf"), "--pdf-engine=xelatex",
-                    "-H", os.path.join(B, "kopf_loesung.tex" if name == "Kaffee_Loesung" else "kopf.tex"), "--lua-filter", os.path.join(B, "lehrstuhl.lua"),
+                    "-H", os.path.join(B, "kopf_loesung.tex" if name.startswith("Kaffee_Loesung") else "kopf.tex"), "--lua-filter", os.path.join(B, "lehrstuhl.lua"),
                     "-V", "documentclass=article", "-V", "fontsize=11pt", "-V", "mainfont=Carlito",
                     "-V", "mathfont=Latin Modern Math", "--resource-path", HIER + ":" + os.path.join(os.path.dirname(HIER), "sammlung")], check=True)
     subprocess.run(["pandoc", md, "-o", os.path.join(HIER, name + ".docx"),
@@ -376,9 +388,9 @@ def word_zusammenhalten(pfad):
     for k in range(0, len(teile), 2):
         teile[k] = re.sub(r"<w:p>(?:(?!</w:p>).)*?</w:p>|<w:p .*?</w:p>", absatz, teile[k], flags=re.S)
     inhalt["word/document.xml"] = "".join(teile).encode("utf-8")
-    if pfad.endswith("Kaffee_Loesung.docx"):
+    if os.path.basename(pfad).startswith("Kaffee_Loesung"):
         for n in [n for n in inhalt if n.startswith("word/header")]:
-            inhalt[n] = inhalt[n].decode("utf-8").replace("Entwurf, Stand", "Lösung, Entwurf, Stand").encode("utf-8")
+            inhalt[n] = inhalt[n].decode("utf-8").replace(KOPF_RECHTS, "Lösung, " + KOPF_RECHTS).encode("utf-8")
     tmp = pfad + ".tmp"
     with zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as z:
         for n, b in inhalt.items():
@@ -386,6 +398,6 @@ def word_zusammenhalten(pfad):
     shutil.move(tmp, pfad)
 
 
-for name in ("Kaffee_Aufgabe", "Kaffee_Loesung"):
+for name in ("Kaffee_Aufgabe", "Kaffee_Loesung", "Kaffee_Loesung_Studierende"):
     word_zusammenhalten(os.path.join(HIER, name + ".docx"))
 print("fertig:", r["T1"] - K, r["T2"] - K)

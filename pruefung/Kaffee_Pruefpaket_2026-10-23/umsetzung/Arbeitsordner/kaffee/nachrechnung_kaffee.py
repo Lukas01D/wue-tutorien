@@ -55,7 +55,7 @@ print(f"   Becher 300 g, gleiches kA (passt nicht mehr zur Messung):  theta_1 = 
 z("   Anteil Becher an der Wärmekapazität des Kaffees", b["anteil"] * 100, "%", ".0f")
 z("Milchtemperatur, bei der beide Tassen gleich warm wären", r["th_M_gleich"], "°C", ".1f")
 s60 = rechne(dict(P, th_M=P["th_Mh"]))
-print(f"   g) erwärmte Milch {P['th_Mh']:.0f} °C: theta_1 = {s60['T1']-K_:5.2f} °C, theta_2 = {s60['T2']-K_:5.2f} °C, Unterschied {s60['dT']:5.2f} K")
+print(f"   f) erwärmte Milch {P['th_Mh']:.0f} °C: theta_1 = {s60['T1']-K_:5.2f} °C, theta_2 = {s60['T2']-K_:5.2f} °C, Unterschied {s60['dT']:5.2f} K")
 # allgemeine Prüfung
 ok = True
 for rr in (0.5, 0.8, 0.95):
@@ -68,7 +68,7 @@ print("\nAllgemeine Prüfung (Tasse 2 immer kälter, wenn die Milch nicht wärme
 
 # ---------------------------------------------------------------- Ergänzungen nach der Prüfung (Oktober 2026)
 C_B = P["m_B"] * P["c_B"]
-print("\nf) kA als Modellparameter")
+print("\ng) kA als Modellparameter (Becher)")
 z("kA mit Becher / kA ohne Becher", b["kA"] / r["kA"], "", ".3f")
 z("Zeitkonstante mit Becher (C_K + C_B)/kA", (r["C_K"] + C_B) / b["kA"] / 60, "min", ".1f")
 z("Anteil Becher an C_K", C_B / r["C_K"] * 100, "%", ".1f")
@@ -100,19 +100,19 @@ z("kA-Faktor in Tasse 1, bei dem beide gleich warm sind (ohne Becher)", gleichst
 z("dto. mit Becher", gleichstand(lambda f: zwei_tassen(C_T=C_B, kA1_faktor=f)["dT"], 1.0, 2.0), "", ".3f")
 z("Größter Unterschied bei Zugabe nach (min)", max(range(1, 121), key=lambda m: zwei_tassen(t_end=m * 60.0)["dT"]), "min", ".0f")
 
-print("\ng) und h) Grenzwerte")
-z("g: Tasse 1 mit erwärmter Milch kA um 5,6 % kleiner (Schaumschicht), Unterschied",
+print("\nf) und Zusatzfrage: Grenzwerte")
+z("f: Tasse 1 mit erwärmter Milch kA um 5,6 % kleiner (Schaumschicht), Unterschied",
   zwei_tassen(th_M1=P["th_Mh"], kA1_faktor=0.944)["dT"], "K", ".2f")
-z("g: Tasse 1 mit kA um 10 % kleiner, Unterschied", zwei_tassen(th_M1=P["th_Mh"], kA1_faktor=0.90)["dT"], "K", ".2f")
-z("g: späte Portion muss mindestens so warm sein", gleichstand(lambda t2: zwei_tassen(th_M1=P["th_Mh"], th_M2=t2)["dT"]), "°C", ".1f")
+z("f: Tasse 1 mit kA um 10 % kleiner, Unterschied", zwei_tassen(th_M1=P["th_Mh"], kA1_faktor=0.90)["dT"], "K", ".2f")
+z("f: späte Portion muss mindestens so warm sein", gleichstand(lambda t2: zwei_tassen(th_M1=P["th_Mh"], th_M2=t2)["dT"]), "°C", ".1f")
 for f in (1.05, 0.95):
-    z(f"h (1): Kipppunkt bei kA in Tasse 1 x {f}", gleichstand(lambda tm: zwei_tassen(th_M1=tm, kA1_faktor=f)["dT"]), "°C", ".1f")
-z("h (1): Kipppunkt mit Exponent 4/3", gleichstand(lambda tm: (lambda a: a[0] - a[1])(nichtlinear(4 / 3, dict(P, th_M=tm))), 0.0, 100.0), "°C", ".1f")
-z("h (2): nur die späte Portion erwärmt, Gleichstand bei", gleichstand(lambda t2: zwei_tassen(th_M2=t2)["dT"]), "°C", ".1f")
+    z(f"Zusatzfrage (1): Kipppunkt bei kA in Tasse 1 x {f}", gleichstand(lambda tm: zwei_tassen(th_M1=tm, kA1_faktor=f)["dT"]), "°C", ".1f")
+z("Zusatzfrage (1): Kipppunkt mit Exponent 4/3", gleichstand(lambda tm: (lambda a: a[0] - a[1])(nichtlinear(4 / 3, dict(P, th_M=tm))), 0.0, 100.0), "°C", ".1f")
+z("Zusatzfrage (2): nur die späte Portion erwärmt, Gleichstand bei", gleichstand(lambda t2: zwei_tassen(th_M2=t2)["dT"]), "°C", ".1f")
 z("Verdunstete Masse in Tasse 2 höchstens (Hälfte von Q_2)", 0.5 * r["Q2"] / P["dh_v"] * 1e3, "g", ".1f")
 z("dto. Anteil an m_K", 0.5 * r["Q2"] / P["dh_v"] / r["m_K"] * 100, "%", ".1f")
 z("Tassenwärmer: Leistung für 60 °C mit kA aus c", r["kA"] * (60.0 - P["th_U"]), "W", ".1f")
-z("Tassenwärmer: Leistung für 60 °C mit kA aus f", b["kA"] * (60.0 - P["th_U"]), "W", ".1f")
+z("Tassenwärmer: Leistung für 60 °C mit kA aus g", b["kA"] * (60.0 - P["th_U"]), "W", ".1f")
 
 print("\nVersuch: vorgewärmte Becher, Vorhersage nach 40 min")
 for t_min in (30, 40, 60):

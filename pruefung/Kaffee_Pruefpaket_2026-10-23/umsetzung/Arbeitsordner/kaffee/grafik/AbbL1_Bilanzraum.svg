@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-30T09:37:58.343525</dc:date>
+    <dc:date>2026-10-30T12:09:27.050925</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -35,14 +35,14 @@ L 136.081655 120.613
 L 136.081655 60.758333 
 L 67.223172 60.758333 
 z
-" clip-path="url(#p7eab5f1663)" style="fill: #c49a6c"/>
+" clip-path="url(#pf0b9e203be)" style="fill: #c49a6c"/>
    </g>
    <g id="patch_3">
     <path d="M 64.965517 38.171667 
 L 64.965517 122.871667 
 L 138.33931 122.871667 
 L 138.33931 38.171667 
-" clip-path="url(#p7eab5f1663)" style="fill: none; stroke: #222222; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#pf0b9e203be)" style="fill: none; stroke: #222222; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 138.33931 100.285 
@@ -50,7 +50,7 @@ C 142.828343 100.285 147.138109 98.201376 150.312335 94.496454
 C 153.486561 90.791531 155.271724 85.761218 155.271724 80.521667 
 C 155.271724 75.282115 153.486561 70.251802 150.312335 66.54688 
 C 147.138109 62.841957 142.828343 60.758333 138.33931 60.758333 
-" clip-path="url(#p7eab5f1663)" style="fill: none; stroke: #222222; stroke-width: 1.6; stroke-linejoin: miter"/>
+" clip-path="url(#pf0b9e203be)" style="fill: none; stroke: #222222; stroke-width: 1.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 69.763034 118.072 
@@ -59,7 +59,7 @@ L 133.541793 55.958667
 L 69.763034 55.958667 
 L 69.763034 118.072 
 z
-" clip-path="url(#p7eab5f1663)" style="fill: none; stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: #1f4e9e; stroke-width: 1.3; stroke-linejoin: miter"/>
+" clip-path="url(#pf0b9e203be)" style="fill: none; stroke-dasharray: 5.2,3.9; stroke-dashoffset: 0; stroke: #1f4e9e; stroke-width: 1.3; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 58.756966 129.083 
@@ -68,37 +68,37 @@ L 163.737931 49.465
 L 58.756966 49.465 
 L 58.756966 129.083 
 z
-" clip-path="url(#p7eab5f1663)" style="fill: none; stroke-dasharray: 1.5,2.5; stroke-dashoffset: 0; stroke: #1f4e9e; stroke-linejoin: miter"/>
+" clip-path="url(#pf0b9e203be)" style="fill: none; stroke-dasharray: 1.5,2.5; stroke-dashoffset: 0; stroke: #1f4e9e; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 101.652414 51.697611 
 Q 101.652414 33.936334 101.652414 17.6285 
-" clip-path="url(#p7eab5f1663)" style="fill: none; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
+" clip-path="url(#pf0b9e203be)" style="fill: none; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
     <path d="M 99.452414 22.0285 
 L 101.652414 17.6285 
 L 103.852414 22.0285 
 z
-" clip-path="url(#p7eab5f1663)" style="fill: #b03a2e; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
+" clip-path="url(#pf0b9e203be)" style="fill: #b03a2e; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
    </g>
    <g id="patch_8">
     <path d="M 54.499713 101.696667 
 Q 43.095627 101.696667 33.144985 101.696667 
-" clip-path="url(#p7eab5f1663)" style="fill: none; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
+" clip-path="url(#pf0b9e203be)" style="fill: none; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
     <path d="M 37.544985 103.896667 
 L 33.144985 101.696667 
 L 37.544985 99.496667 
 z
-" clip-path="url(#p7eab5f1663)" style="fill: #b03a2e; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
+" clip-path="url(#pf0b9e203be)" style="fill: #b03a2e; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
    </g>
    <g id="patch_9">
     <path d="M 167.148563 101.696667 
 Q 178.552649 101.696667 188.503291 101.696667 
-" clip-path="url(#p7eab5f1663)" style="fill: none; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
+" clip-path="url(#pf0b9e203be)" style="fill: none; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
     <path d="M 184.103291 99.496667 
 L 188.503291 101.696667 
 L 184.103291 103.896667 
 z
-" clip-path="url(#p7eab5f1663)" style="fill: #b03a2e; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
+" clip-path="url(#pf0b9e203be)" style="fill: #b03a2e; stroke: #b03a2e; stroke-width: 1.3; stroke-linecap: round"/>
    </g>
    <g id="text_1">
     <!-- $T(t),\ m,\ c_p$ -->
@@ -922,8 +922,8 @@ z
     </g>
    </g>
    <g id="text_4">
-    <!-- Bilanzraum (a bis e) -->
-    <g style="fill: #1f4e9e" transform="translate(63.929992 139.363333) scale(0.095 -0.095)">
+    <!-- Bilanzraum (a bis f) -->
+    <g style="fill: #1f4e9e" transform="translate(64.773859 139.363333) scale(0.095 -0.095)">
      <defs>
       <path id="Carlito-Regular-6" d="M 450 0 
 L 450 4106 
@@ -1144,33 +1144,6 @@ Q 2081 2916 2244 2747
 L 2122 2550 
 z
 " transform="scale(0.015625)"/>
-     </defs>
-     <use xlink:href="#Carlito-Regular-6"/>
-     <use xlink:href="#Carlito-Regular-62" transform="translate(54.390625 0)"/>
-     <use xlink:href="#Carlito-Regular-474" transform="translate(77.34375 0)"/>
-     <use xlink:href="#Carlito-Regular-2d" transform="translate(100.296875 0)"/>
-     <use xlink:href="#Carlito-Regular-6d" transform="translate(148.203125 0)"/>
-     <use xlink:href="#Carlito-Regular-8c" transform="translate(200.75 0)"/>
-     <use xlink:href="#Carlito-Regular-75" transform="translate(240.25 0)"/>
-     <use xlink:href="#Carlito-Regular-2d" transform="translate(273.0625 0)"/>
-     <use xlink:href="#Carlito-Regular-86" transform="translate(320.96875 0)"/>
-     <use xlink:href="#Carlito-Regular-6c" transform="translate(373.515625 0)"/>
-     <use xlink:href="#Carlito-Regular-2" transform="translate(453.40625 0)"/>
-     <use xlink:href="#Carlito-Regular-150" transform="translate(476.015625 0)"/>
-     <use xlink:href="#Carlito-Regular-2d" transform="translate(506.34375 0)"/>
-     <use xlink:href="#Carlito-Regular-2" transform="translate(554.25 0)"/>
-     <use xlink:href="#Carlito-Regular-30" transform="translate(576.859375 0)"/>
-     <use xlink:href="#Carlito-Regular-62" transform="translate(629.40625 0)"/>
-     <use xlink:href="#Carlito-Regular-76" transform="translate(652.359375 0)"/>
-     <use xlink:href="#Carlito-Regular-2" transform="translate(691.46875 0)"/>
-     <use xlink:href="#Carlito-Regular-3b" transform="translate(714.078125 0)"/>
-     <use xlink:href="#Carlito-Regular-151" transform="translate(763.828125 0)"/>
-    </g>
-   </g>
-   <g id="text_5">
-    <!-- in f mit Becher -->
-    <g style="fill: #1f4e9e" transform="translate(166.56 139.363333) scale(0.095 -0.095)">
-     <defs>
       <path id="Carlito-Regular-3d" d="M 531 0 
 L 531 2597 
 L 222 2638 
@@ -1200,6 +1173,33 @@ L 1081 0
 L 531 0 
 z
 " transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#Carlito-Regular-6"/>
+     <use xlink:href="#Carlito-Regular-62" transform="translate(54.390625 0)"/>
+     <use xlink:href="#Carlito-Regular-474" transform="translate(77.34375 0)"/>
+     <use xlink:href="#Carlito-Regular-2d" transform="translate(100.296875 0)"/>
+     <use xlink:href="#Carlito-Regular-6d" transform="translate(148.203125 0)"/>
+     <use xlink:href="#Carlito-Regular-8c" transform="translate(200.75 0)"/>
+     <use xlink:href="#Carlito-Regular-75" transform="translate(240.25 0)"/>
+     <use xlink:href="#Carlito-Regular-2d" transform="translate(273.0625 0)"/>
+     <use xlink:href="#Carlito-Regular-86" transform="translate(320.96875 0)"/>
+     <use xlink:href="#Carlito-Regular-6c" transform="translate(373.515625 0)"/>
+     <use xlink:href="#Carlito-Regular-2" transform="translate(453.40625 0)"/>
+     <use xlink:href="#Carlito-Regular-150" transform="translate(476.015625 0)"/>
+     <use xlink:href="#Carlito-Regular-2d" transform="translate(506.34375 0)"/>
+     <use xlink:href="#Carlito-Regular-2" transform="translate(554.25 0)"/>
+     <use xlink:href="#Carlito-Regular-30" transform="translate(576.859375 0)"/>
+     <use xlink:href="#Carlito-Regular-62" transform="translate(629.40625 0)"/>
+     <use xlink:href="#Carlito-Regular-76" transform="translate(652.359375 0)"/>
+     <use xlink:href="#Carlito-Regular-2" transform="translate(691.46875 0)"/>
+     <use xlink:href="#Carlito-Regular-3d" transform="translate(714.078125 0)"/>
+     <use xlink:href="#Carlito-Regular-151" transform="translate(746.0625 0)"/>
+    </g>
+   </g>
+   <g id="text_5">
+    <!-- in g mit Becher -->
+    <g style="fill: #1f4e9e" transform="translate(166.56 139.363333) scale(0.095 -0.095)">
+     <defs>
       <path id="Carlito-Regular-7c" d="M 1303 -47 
 Q 950 -47 759 156 
 Q 569 359 569 738 
@@ -1294,24 +1294,24 @@ z
      <use xlink:href="#Carlito-Regular-62"/>
      <use xlink:href="#Carlito-Regular-6d" transform="translate(22.953125 0)"/>
      <use xlink:href="#Carlito-Regular-2" transform="translate(75.5 0)"/>
-     <use xlink:href="#Carlito-Regular-3d" transform="translate(98.109375 0)"/>
-     <use xlink:href="#Carlito-Regular-2" transform="translate(128.625 0)"/>
-     <use xlink:href="#Carlito-Regular-6c" transform="translate(151.234375 0)"/>
-     <use xlink:href="#Carlito-Regular-62" transform="translate(231.125 0)"/>
-     <use xlink:href="#Carlito-Regular-7c" transform="translate(254.078125 0)"/>
-     <use xlink:href="#Carlito-Regular-2" transform="translate(287.578125 0)"/>
-     <use xlink:href="#Carlito-Regular-6" transform="translate(310.1875 0)"/>
-     <use xlink:href="#Carlito-Regular-3b" transform="translate(364.578125 0)"/>
-     <use xlink:href="#Carlito-Regular-31" transform="translate(414.328125 0)"/>
-     <use xlink:href="#Carlito-Regular-5f" transform="translate(456.609375 0)"/>
-     <use xlink:href="#Carlito-Regular-3b" transform="translate(509.15625 0)"/>
-     <use xlink:href="#Carlito-Regular-75" transform="translate(558.90625 0)"/>
+     <use xlink:href="#Carlito-Regular-5d" transform="translate(98.109375 0)"/>
+     <use xlink:href="#Carlito-Regular-2" transform="translate(145.1875 0)"/>
+     <use xlink:href="#Carlito-Regular-6c" transform="translate(167.796875 0)"/>
+     <use xlink:href="#Carlito-Regular-62" transform="translate(247.6875 0)"/>
+     <use xlink:href="#Carlito-Regular-7c" transform="translate(270.640625 0)"/>
+     <use xlink:href="#Carlito-Regular-2" transform="translate(304.140625 0)"/>
+     <use xlink:href="#Carlito-Regular-6" transform="translate(326.75 0)"/>
+     <use xlink:href="#Carlito-Regular-3b" transform="translate(381.140625 0)"/>
+     <use xlink:href="#Carlito-Regular-31" transform="translate(430.890625 0)"/>
+     <use xlink:href="#Carlito-Regular-5f" transform="translate(473.171875 0)"/>
+     <use xlink:href="#Carlito-Regular-3b" transform="translate(525.71875 0)"/>
+     <use xlink:href="#Carlito-Regular-75" transform="translate(575.46875 0)"/>
     </g>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p7eab5f1663">
+  <clipPath id="pf0b9e203be">
    <rect x="2.88" y="2.88" width="245.52" height="152.46"/>
   </clipPath>
  </defs>
