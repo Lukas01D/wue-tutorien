@@ -74,9 +74,9 @@ h) *Zusatzfrage:* (1) Bei welcher Milchtemperatur sind beide Tassen nach 60 Minu
 
 **[Versuch zu Aufgabe 1]{.underline}** (im Tutorium, läuft neben der Rechnung)
 
-Drei gleiche, vorgewärmte Becher mit je 200 ml heißem Wasser oder Kaffee: Becher 1 bekommt die Milch sofort, Becher 2 und 3 erst nach 40 Minuten (Milch aus der Kühltasche bzw. aus einem Glas neben den Bechern). Nach 10 Minuten werden Becher 2 und 3 gemessen.
+Drei gleiche, vorgewärmte Becher mit je 200 ml heißem Wasser oder Kaffee und je 30 ml Milch: Becher 1 bekommt die Milch sofort, Becher 2 und 3 erst nach 40 Minuten (Milch aus der Kühltasche bzw. aus einem Glas mit etwas Abstand zu den Bechern). Nach 10 Minuten werden Becher 2 und 3 gemessen.
 
-1. Bestimmen Sie $kA$ aus dem Mittelwert wie in Teil c und sagen Sie mit den Gleichungen aus d) die Temperaturen nach 40 Minuten voraus (Becher 3 mit Milch bei Raumtemperatur).
+1. Bestimmen Sie $kA$ wie in Teil c aus dem Mittelwert der beiden Messungen und sagen Sie mit den Gleichungen aus d) die Temperaturen nach 40 Minuten voraus (Becher 3 mit Milch bei Raumtemperatur).
 2. Ist der gemessene Unterschied zwischen Becher 1 und 2 größer als die Messunsicherheit? Nennen Sie zwei Gründe für Abweichungen vom Modell.
 
 | Becher | Start $\vartheta(0)$ | $\vartheta(10\,\mathrm{min})$ | Milch $\vartheta_M$ | Vorhersage $\vartheta(40\,\mathrm{min})$ | Messung $\vartheta(40\,\mathrm{min})$ |

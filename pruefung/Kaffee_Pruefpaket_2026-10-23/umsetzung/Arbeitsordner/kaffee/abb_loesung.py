@@ -87,7 +87,7 @@ for s_ in ("top", "right"):
 ins = ax.inset_axes([0.50, 0.50, 0.48, 0.48])
 zeichne(ins, False)
 ins.set_xlim(39, 67); ins.set_ylim(29, 44)
-ins.set_xticks([40, 50, 60]); ins.set_yticks([30, 35, 40])
+ins.set_xticks([50, 60]); ins.set_yticks([30, 35, 40])
 ins.tick_params(labelsize=8)
 ins.annotate(f"etwa {TS:.0f} min", (TS, thS), xytext=(43.0, 31.0),
              fontsize=8, arrowprops=dict(arrowstyle="-", color="#666666", linewidth=0.8))

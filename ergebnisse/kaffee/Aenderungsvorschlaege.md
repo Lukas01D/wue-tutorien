@@ -78,6 +78,35 @@ Herkunft: Prof = Professorin, Tech = Technik, Did = Didaktik, Rech = Recherche, 
 | V2 | Did9 | Alle gegebenen Größen in der Tabelle, nach Objekt | Becher- und Milchwerte in die Teile f und g verlegen | **nein:** Gruppenköpfe mit Teilverweis (Ä22) entlasten genauso. | **nein** | TL 30.10.2026: wie empfohlen, Vorgabe bleibt |
 | V3 | Gest2 | Titel zentriert | linksbündig wie in der FVT-Vorlage | **nein, jetzt nicht:** nur zusammen mit dem FVT-Rahmen (Ä23) zu entscheiden. | **nein** | TL 30.10.2026: wie empfohlen, Vorgabe bleibt |
 
+## Zweite Runde Rolle S (30.10.2026)
+
+Prüferin S hat die umgesetzte Fassung geprüft (Bericht `ergebnisse/kaffee/S2_BERICHT.md`). Urteil: mit kleinen Änderungen einsatzbereit; alle Zahlen auf dem Blatt bestätigt; Kern (Frage 1, a bis e, g, Versuch) geschätzt 70 bis 100 min. Alle Zahlen des Berichts hat die Koordination nachgerechnet (u. a. 1,83 kJ und 1,95 K in h (2); 72,47 °C und 45,5 statt 46,9 min in f; 17,0 W/(m²·K); Versuch nach 40 min 2,97 K mit, 3,70 K ohne Becher).
+
+**Sofort behoben** (eindeutige Fehler oder Lücken der Umsetzung):
+
+- Versuch: Die Milchmenge fehlte (jetzt „und je 30 ml Milch“); „Glas neben den Bechern“ widersprach dem Hinweis „mit Abstand“ (jetzt „mit etwas Abstand zu den Bechern“); „aus dem Mittelwert“ war mehrdeutig (jetzt „aus dem Mittelwert der beiden Messungen“). Aus Stud5.
+- Lösung: „Frage 3 (Biot)“ im Zeitplan heißt jetzt „Frage 3 der Sammlung zu Tutorium 5 (Biot)“; in b) stammt Gl. (4-1) jetzt ausdrücklich „aus der Einleitung zum bisherigen Tutorium 5“. Offene Fragen 2 und 3 von S.
+- Abb. L2: Die Achsbeschriftung „40“ des Ausschnitts lag auf der gestrichelten Kurve; entfernt (Stud11).
+- Hinweise, Impulse: Der entschiedene Tafelimpuls zu e) (W6: Verlauf *ϑ*(*t*) skizzieren lassen, dann Abb. L2 zeigen) fehlte; nachgetragen (Stud8).
+
+**Zur Entscheidung:**
+
+| Nr. | Herkunft | Vorschlag | Folgen | Empfehlung | Entscheidung | Anmerkung |
+|---|---|---|---|---|---|---|
+| S1 | Stud1 | **Ergebnis in d) ohne Zuordnung:** „34,05 °C und 30,19 °C (Zuordnung selbst bestimmen)“ wie in g. Bisher steht die Antwort auf Frage 1 eine Seite später, auch für alle, die das Blatt allein nacharbeiten. | eine Ergebniszeile (Blatt, Sammlung, Lösung, Claude-Dokument); Satz in „Ablauf im Tutorium“ anpassen | **ja:** gleiches Muster wie Ä2, Vorgabe V1 bleibt erfüllt | | |
+| S2 | Stud2 | **g vor f:** Bisher steht die Vertiefung f vor dem Kernteil g; wer von oben arbeitet, erreicht g oft nicht. A: tauschen (Milchkaffee wird f, Becher wird g als Vertiefung). B: f mit „*Vertiefung* (kann übersprungen werden, weiter mit g)“ überschreiben. | A: Annahme „bis Teil e“ wird „außer in Teil g“, Tabellenköpfe, Abb. L1, Lösung, Hinweise und Zeitplan umnummerieren; keine Zahl ändert sich. B: ein Halbsatz. | **A:** Kern vor Vertiefung passt zu W2 und zum Zeitplan; die Lösung von f verweist heute nach vorn auf g | | |
+| S3 | Stud3 | **Ausgangspunkt in b) nennen:** „Vereinfachen Sie die allgemeine Energiebilanz (Foliensatz 05, Folie 8) zur globalen instationären Bilanz …“ | +4 Wörter | **ja**, mit Folie 8 (haben alle); Gl. (4-1) nur, wenn die Einleitung des bisherigen Tutoriums 5 bleibt | | |
+| S4 | Stud4 | **h (2) eindeutiger:** „… Schätzen Sie ab, wie viel Wärme die Milch höchstens aufnehmen kann, und vergleichen Sie mit Q_2 − Q_1 aus e).“ Ergebniszeile ergänzt um Q_M ≤ 1,83 kJ (Tasse 2 bleibt mindestens 1,95 K kühler). | +12 Wörter | **ja, Ergebnis nur als Kontrollwert Q_M ≤ 1,83 kJ:** „mindestens 1,95 K kühler“ verriete die Antwort (wie Ä2) | | |
+| S5 | Stud5 (Rest) | **Versuch:** „wie in Teil c (ohne Becher)“, weil „vorgewärmte Becher“ an f denken lässt | +2 Wörter | **ja** | | |
+| S6 | Stud6 | **Zeitplan entlasten:** „b) nach etwa 8 min Einzelarbeit gemeinsam an der Tafel“; Haltepunkt „Sind um Minute 50 viele noch nicht bei e), e) gemeinsam besprechen, g) zuerst als Vorhersage mit Handzeichen“ | nur Hinweise | **ja:** S schätzt a bis e auf 45 bis 60 statt 38 min | | |
+| S7 | Stud7 | **Denkanstoß in e):** „Zeigen Sie mit einer Energiebilanz um Kaffee und Milch zusammen (Anfang: Kaffee 80 °C, Milch 5 °C, noch getrennt), dass …“ | +15 Wörter | **nein auf dem Blatt** (Umfang), **ja als Hilfe bei Bedarf in den Hinweisen** | | |
+| S8 | Stud9 | **Lösung ergänzen:** in f „Dass ϑ_1 fast gleich bleibt, liegt an zwei Effekten, die sich fast aufheben: Die Mischtemperatur steigt (72,47 statt 70,47 °C), die Zeitkonstante von Tasse 1 sinkt (45,5 statt 46,9 min).“ In b „Da nur Temperaturdifferenzen vorkommen, darf man auch in °C rechnen.“ | nur Lösung | **ja** | | |
+| S9 | Stud10 | **Innendurchmesser 8 cm auf das Blatt** für die Plausibilität in c | eine Tabellenzeile | **nein** (Umfang, V2); stattdessen Hinweis „qualitative Begründung genügt, die Zahlen sind für die Besprechung“: **ja** | | |
+| S10 | Stud11 | **Abb. 1:** seitliche Pfeile für Q̇_ab wie in Abb. L1 (bisher nur nach oben, die Annahme sagt „gesamte Wärmeabgabe“). „(neu)“ hinter Aufgabe 1 bleibt (Herkunftsangabe nach der Strukturvorlage). | Abbildung neu | **ja** | | |
+| S11 | Koordination | **Umfang:** Mit S1, S3, S4 und S5 hat Aufgabe 1 rund 461 Wörter (Richtwert etwa 175 bis 425; heute 441). h als Zusatzfrage in die Hinweise: dann rund 395. | h fehlt auf dem Blatt; die TL stellt h bei Bedarf mündlich oder an der Tafel | **ja:** h gehört nicht zum Kern, und der Auftrag war, Nicht-Zwingendes vom Blatt zu nehmen. Variante: h bleibt, dann S4 nur in den Hinweisen | | |
+
+**Offene Fragen von S:** (1) Bekommen die Studierenden die Lösung mit den „Hinweisen für die Tutoriumsleitung“? Empfehlung: nein; dafür eine Fassung der Lösung ohne Hinweise bauen (kleine Erweiterung des Bauskripts). (2) Quellen nennen für *c*_p der Milch „Tutorium 8“: Das ist ein Verweis innerhalb der Sammlung für die TL, kein Text für Studierende; bleibt.
+
 ## Was bleiben sollte
 
 - Ausgangssituation in der WG und Frage 1 mit einer echten, belegten Fehlvorstellung (Wärmestrom und abgegebene Wärme werden verwechselt; Miller et al. 2006). Alle sechs Rollen.
