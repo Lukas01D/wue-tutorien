@@ -10,8 +10,8 @@ import os, re, sys, subprocess
 HIER = os.path.dirname(os.path.abspath(__file__))
 S = os.path.dirname(HIER)
 AUS = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(S, "ausgabe")
-NAME = "Aufgabensammlung_Tutorien_WUE_2026-10-21"
-STAND = "21.10.2026"
+NAME = "Aufgabensammlung_Tutorien_WUE_2026-10-30"
+STAND = "30.10.2026"
 
 THEMEN = {
     1: ("Wärmeleitung", "Fourier, mehrschichtige Wand, mittlere Wärmeleitfähigkeit, Randbedingungen", "keine"),
@@ -173,6 +173,17 @@ def word_zusammenhalten(pfad):
         t = t.replace("<w:trPr>", "<w:trPr><w:cantSplit/>")
         return re.sub(r"<w:tr>(?!<w:trPr>)", "<w:tr><w:trPr><w:cantSplit/></w:trPr>", t)
     d = re.sub(r"<w:tbl>.*?</w:tbl>", tabelle, d, flags=re.S)
+
+    # Kaffee-Aufgabe wie im Einzelblatt: Tabelle der gegebenen Größen ohne wiederholte Kopfzeile,
+    # Versuchstabelle mit Datenzeilen von mindestens 10 mm zum Ausfüllen von Hand
+    def kaffee(m):
+        t = m.group(0)
+        if "Milch in Teil g" in t:
+            t = t.replace("<w:tblHeader/>", "").replace('<w:tblHeader w:val="true"/>', "")
+        if "Milch sofort" in t:
+            t = t.replace("<w:trPr><w:cantSplit/>", '<w:trPr><w:cantSplit/><w:trHeight w:val="567" w:hRule="atLeast"/>')
+        return t
+    d = re.sub(r"<w:tbl>.*?</w:tbl>", kaffee, d, flags=re.S)
 
     # 2) Zwischenüberschriften und Bilder mit dem Folgeabsatz zusammenhalten
     muster = re.compile(r"^(Gegebene Größen|Annahmen|Aufgabenstellung|Frage \d|Aufgabe \d|Zusatzaufgabe \d|Ausgangssituation|Versuch zu|Übersicht)")

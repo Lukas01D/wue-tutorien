@@ -3,10 +3,10 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[C]{\small Wärmeübertragung}
-\fancyhead[R]{\small Entwurf, Stand 23.10.2026}
+\fancyhead[R]{\small Entwurf, Stand 30.10.2026}
 \fancyfoot[R]{\small\thepage}
 \renewcommand{\headrulewidth}{0.5pt}
-\fancypagestyle{plain}{\fancyhf{}\fancyhead[C]{\small Wärmeübertragung}\fancyhead[R]{\small Entwurf, Stand 23.10.2026}\fancyfoot[R]{\small\thepage}\renewcommand{\headrulewidth}{0.5pt}}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[C]{\small Wärmeübertragung}\fancyhead[R]{\small Entwurf, Stand 30.10.2026}\fancyfoot[R]{\small\thepage}\renewcommand{\headrulewidth}{0.5pt}}
 \usepackage{setspace}
 \setstretch{1.25}
 \setlength{\parskip}{4pt plus 1pt}
@@ -15,6 +15,7 @@
 \setlist{itemsep=2pt,topsep=3pt}
 \usepackage{array}
 \renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4pt}
 \usepackage{ragged2e}
 \setmathrm{Latin Modern Roman}
 \usepackage{graphicx}
@@ -25,3 +26,7 @@
 \displaywidowpenalty=10000
 % Aufzählung zweiter Ebene mit Kreis statt Strich
 \renewcommand{\labelitemii}{$\circ$}
+% Formeln in Textgröße (Höhe der Kleinbuchstaben wie die Textschrift), Abstände um = und + nicht dehnen
+\setmathfont{Latin Modern Math}[Scale=MatchLowercase]
+\thickmuskip=5mu
+\medmuskip=4mu

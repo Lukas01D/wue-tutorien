@@ -6,10 +6,13 @@ set -e
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
 apt-get install -y -qq --no-install-recommends \
-  pandoc texlive-xetex texlive-latex-recommended texlive-latex-extra fonts-lmodern \
+  pandoc texlive-xetex texlive-latex-recommended texlive-latex-extra fonts-lmodern lmodern \
+  texlive-plain-generic texlive-fonts-recommended \
   fonts-crosextra-carlito fonts-crosextra-caladea poppler-utils imagemagick
 apt-get install -y -qq --no-install-recommends libreoffice-writer-nogui || \
   apt-get install -y -qq --no-install-recommends libreoffice-writer
+# Word-Formeln bleiben beim Umwandeln nach PDF nur mit LibreOffice Math erhalten
+apt-get install -y -qq --no-install-recommends libreoffice-math
 python3 -m pip install -q --break-system-packages numpy scipy matplotlib CoolProp || \
   python3 -m pip install -q numpy scipy matplotlib CoolProp
 fc-cache -f >/dev/null
