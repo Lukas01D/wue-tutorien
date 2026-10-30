@@ -1,0 +1,195 @@
+{
+  "hinweis": "Sichtprüfung erforderlich. Word-Ansicht über LibreOffice, nicht Microsoft Word.",
+  "pdf": [
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/Arbeitsordner/kaffee/Kaffee_Aufgabe.pdf",
+      "sha256": "dad2023b8e2279043ed519470b9b6cc8c1cc57bd98f5a61aead2449097fc5d7f",
+      "seiten": 4,
+      "gerenderte_seiten": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/pdf/Kaffee_Aufgabe"
+    },
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/Arbeitsordner/kaffee/Kaffee_Loesung.pdf",
+      "sha256": "7015f7c3d8d862c943a75c5db7191154dbf6fc906b966ea90bd74d37fceb59ab",
+      "seiten": 13,
+      "gerenderte_seiten": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/pdf/Kaffee_Loesung"
+    },
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/Arbeitsordner/kaffee/Kaffee_Loesung_Studierende.pdf",
+      "sha256": "ef36d9a8d92e27f933bf881d8738bf00036a2482702d891f8d61ab898637a9e2",
+      "seiten": 10,
+      "gerenderte_seiten": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/pdf/Kaffee_Loesung_Studierende"
+    },
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/Arbeitsordner/sammlung/ausgabe/Aufgabensammlung_Tutorien_WUE_2026-10-30.pdf",
+      "sha256": "8555e1346d07bc2ae5584d866b299041e3db2d8b32e0a1357e200a92ddf789df",
+      "seiten": 66,
+      "gerenderte_seiten": [
+        22,
+        23,
+        24,
+        25,
+        58
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/pdf/Aufgabensammlung_Tutorien_WUE_2026-10-30"
+    }
+  ],
+  "alte_pdf": [
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/material/A_aufgabe/Kaffee_Aufgabe.pdf",
+      "sha256": "0abedf90ae30a2641a6193bf4f598696c8a4d7f0fdb34c231fc5c2c77811a89e",
+      "seiten": 3,
+      "gerenderte_seiten": [
+        1,
+        2,
+        3
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/alt/Kaffee_Aufgabe"
+    },
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/material/B_loesung/Kaffee_Loesung.pdf",
+      "sha256": "1400384bd6b57b02b39b682993e8b6d166aef93795969bfd4f1877951a7af298",
+      "seiten": 9,
+      "gerenderte_seiten": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/alt/Kaffee_Loesung"
+    }
+  ],
+  "docx": [
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/Arbeitsordner/kaffee/Kaffee_Aufgabe.docx",
+      "sha256": "30b375fa1ce1edc38de1d7f299a56c2c989f915db52aeda2e08c868ced7bad22",
+      "formeln": 46,
+      "bilder": 1,
+      "tabellen": 2
+    },
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/Arbeitsordner/kaffee/Kaffee_Loesung.docx",
+      "sha256": "d7d1aaf3b356364dfe66fab008625ff0f984ef390e57f8704ffa7aa6b954a2e0",
+      "formeln": 187,
+      "bilder": 3,
+      "tabellen": 3
+    },
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/Arbeitsordner/kaffee/Kaffee_Loesung_Studierende.docx",
+      "sha256": "d17c1d55f3226a822ea024ef9cfeb93e43a4805aebfcd5b372e9ea24016f0a93",
+      "formeln": 136,
+      "bilder": 3,
+      "tabellen": 2
+    },
+    {
+      "datei": "pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/Arbeitsordner/sammlung/ausgabe/Aufgabensammlung_Tutorien_WUE_2026-10-30.docx",
+      "sha256": "017d91a54e80224775060c1cd8d2cd810c13c8599a3b79be6dec214bd1851872",
+      "formeln": 931,
+      "bilder": 15,
+      "tabellen": 17
+    }
+  ],
+  "word_pdf": [
+    {
+      "datei": "/tmp/x2_abnahme_render/word_pdf/Kaffee_Aufgabe.pdf",
+      "sha256": "63ffca037e70363d572459198e179921fa2a72a6a67035b76165bf0539cd4858",
+      "seiten": 4,
+      "gerenderte_seiten": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/word_bilder/Kaffee_Aufgabe"
+    },
+    {
+      "datei": "/tmp/x2_abnahme_render/word_pdf/Kaffee_Loesung.pdf",
+      "sha256": "9d5cdce44048172258fef556756d06c565e8834aa7d116278a61cf15b36c5f4f",
+      "seiten": 14,
+      "gerenderte_seiten": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/word_bilder/Kaffee_Loesung"
+    },
+    {
+      "datei": "/tmp/x2_abnahme_render/word_pdf/Kaffee_Loesung_Studierende.pdf",
+      "sha256": "852a1bbc2640c3886b2cc09ae76da74297429ea813b3e693dfa964a2346bdfb4",
+      "seiten": 10,
+      "gerenderte_seiten": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/word_bilder/Kaffee_Loesung_Studierende"
+    },
+    {
+      "datei": "/tmp/x2_abnahme_render/word_pdf/Aufgabensammlung_Tutorien_WUE_2026-10-30.pdf",
+      "sha256": "58f6f96140dd959aee9681b4d8bfda2e3a372405a295322e0c9905d7d6b73877",
+      "seiten": 76,
+      "gerenderte_seiten": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "bilderordner": "/tmp/x2_abnahme_render/word_bilder/Aufgabensammlung_Tutorien_WUE_2026-10-30"
+    }
+  ]
+}
