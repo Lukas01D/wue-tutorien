@@ -1,14 +1,16 @@
 # Bündelung der Prüfberichte zur Kaffee-Aufgabe
 
-Stand 29.10.2026. Gebündelt nach `04_BUENDELUNG.md` aus den Berichten P, T, D, R, S und G (`ergebnisse/kaffee/<Kürzel>_BERICHT.md`). Die Entscheidungsvorlage steht in `Aenderungsvorschlaege.md` und als Tab „Änderungsvorschläge“ im Claude-Dokument „Kaffee mit Milch (Tutorium 5)“. Die Rechenskripte der Koordination liegen in `nachrechnung_koordination/`.
+Stand 29.10.2026. Gebündelt nach `04_BUENDELUNG.md` aus den Berichten P, T, D, R, S und G (`ergebnisse/kaffee/<Kürzel>_BERICHT.md`) und dem Bericht von Codex als siebtem Bericht (`X_CODEX_BERICHT.md`, Skripte in `codex_skripte/`, übernommen vom Zweig `codex/gegenpruefung-rolle-x`). Die Entscheidungsvorlage steht in `Aenderungsvorschlaege.md` und als Tab „Änderungsvorschläge“ im Claude-Dokument „Kaffee mit Milch (Tutorium 5)“. Die Rechenskripte der Koordination liegen in `nachrechnung_koordination/`.
 
-**Codex (Rolle X):** Beim Bündeln lag auf keinem Zweig ein `X_CODEX_BERICHT.md`. Kommt der Bericht nach, wird er als siebter Bericht nachgerechnet und hier, in der Vorlage und im Protokoll ergänzt.
+**Codex (Rolle X):** Der Bericht kam nach der ersten Bündelung der sechs Berichte und ist als siebter Bericht eingearbeitet (Präfix „Codex“, Zahlen nachgerechnet).
 
 ## 1. Gesamturteil
 
-Alle sechs Rollen halten die Aufgabe für fachlich richtig und didaktisch stark; P gibt sie „unter Bedingungen“ frei, alle anderen nennen sie nach kleinen Änderungen einsatzbereit. Alle Zahlen auf Blatt und Lösung sind von P, T, D, R und S und von der Koordination bestätigt; falsch ist nur „mindestens 1,6 K“ im Hinweis zum Versuch (1,57 K). Das größte Problem ist Teil g (Milchschaum widerspricht den Annahmen, vier Rollen), danach Umfang und Versuch (drei bis fünf Rollen) und die verratene Vorhersage in g (zwei Rollen). 29 Vorschläge: 5 muss, 18 sollte, 6 kann; 6 Widersprüche, 3 Vorgaben in Frage gestellt.
+Alle sechs Rollen halten die Aufgabe für fachlich richtig und didaktisch stark; P gibt sie „unter Bedingungen“ frei, alle anderen nennen sie nach kleinen Änderungen einsatzbereit. Alle Zahlen auf Blatt und Lösung sind von P, T, D, R, S, Codex und der Koordination bestätigt; falsch ist nur „mindestens 1,6 K“ im Hinweis zum Versuch (1,57 K). Das größte Problem ist Teil g (Milchschaum widerspricht den Annahmen, vier Rollen), danach Umfang und Versuch (drei bis fünf Rollen) und die verratene Vorhersage in g (zwei Rollen). 30 Vorschläge: 5 muss, 19 sollte, 6 kann; 6 Widersprüche, 3 Vorgaben in Frage gestellt.
 
-Starke Signale (Zahl der Rollen): Versuchsablauf und Messtabelle (5), Teil g ohne Schaum (4), Erwartungswerte im Hinweis „Versuch“ (4), eine Annahme selbst begründen lassen (4), Hinweis zur Verdunstung (4), Kleinigkeiten in Form und Notation (4).
+**Codex und die Claude-Prüfer.** Codex hat ohne Websuche und ohne Didaktik- oder Gestaltungsauftrag geprüft, alle Zahlen in a bis h bestätigt und sechs Vorschläge gemacht (5 sollte, 1 kann), keinen als „muss“. Übereinstimmung: gleiches *kA* mit und ohne Milch ist die entscheidende Modellgrenze (Codex1 wie Did6, Prof3, Tech2; dieselben Kipppunkte 1,251 und 1,188); der Versuch braucht ein genaueres Protokoll und eine Vorprüfung (Codex2 wie Tech3, Stud8, Gest1, Rech5); die Schaumvariante idealisiert (Codex3 wie Prof2, Tech1, Rech1, Stud7); das Ein-Körper-Modell mit Becher ist zu begründen (Codex5 wie Prof6, Tech6); der Zusatzlauf im Skript ist zu kennzeichnen (Codex6 wie Tech2). Unterschiede: Codex stuft g nur als „sollte“ ein und will den Schaum mit ausdrücklicher Idealisierung behalten (wie Rech1), P und T halten g für „muss“ und wollen erwärmte Milch (Empfehlung bleibt A, W1); Codex sieht in Abb. L2 keinen Änderungsbedarf, T und G schon (Ä18 bleibt, weil der Mischsprung von Tasse 2 tatsächlich verdeckt ist). Neu von Codex: Wärmequelle in h (2) eingrenzen (Ä30). Aus der Kombination Codex1 und Tech2 folgt, dass das Signal im Versuch kleiner sein kann als im Entwurf angekündigt (Ä6).
+
+Starke Signale (Zahl der Rollen, Codex mitgezählt): Versuchsablauf und Messtabelle (6), Teil g ohne Schaum oder mit ausdrücklicher Idealisierung (5), Erwartungswerte im Hinweis „Versuch“ (5), eine Annahme selbst begründen lassen (5), Hinweis zur Verdunstung (5), Kleinigkeiten in Form und Notation (4).
 
 Beim Umfang ist zu beachten: Die Sollte-Vorschläge zum Aufgabentext (Ä7 bis Ä14) verlängern das Blatt um grob 100 Wörter (gut die Hälfte davon im Versuch, Ä5) und die Bearbeitung um etwa 5 bis 10 Minuten. Deshalb gehören Ä3 (f als Vertiefung) und Ä4 (kürzerer Versuch) dazu.
 
@@ -83,10 +85,16 @@ Priorität wie im Bericht (m = muss, s = sollte, k = kann).
 | Gest8 | s | Bauweg mit FVT-Vorlage | Ä23 |
 | Gest9 | k | Abb. 1 und L1 | Ä24 |
 | Gest10 | k | Kopfzeile, Versuch auf eigener Seite | Ä21, Ä5 |
+| Codex1 | s | gleiches kA als entscheidende Annahme kennzeichnen, Abkühlreihe mit Milchkaffee | Ä8, Ä6, Ä29 |
+| Codex2 | s | Messprotokoll und Versuchsvorhersage vervollständigen | Ä5, Ä29 |
+| Codex3 | s | Idealisierung der Schaumvariante benennen | Ä1 (Variante B), W1 |
+| Codex4 | s | h (2): Wärmequelle auf die Raumluft beschränken | Ä30 |
+| Codex5 | s | Ein-Körper-Modell mit Becher erklären | Ä13 |
+| Codex6 | k | Zusatzlauf im Skript benennen, genauer integrieren | Ä15 |
 
 ## 3. Nachrechnung
 
-Mit eigenen Skripten (`nachrechnung_koordination/nachrechnen_koord.py`, `nachrechnen_nichtlinear.py`, `nachrechnen_rest.py`, `nachrechnen_40min.py`; Ausgaben daneben). Lineares Modell wie `kaffee_modell.py`, Becher 300 g mit 0,85 kJ/(kg K) = 255 J/K, *kA* jeweils aus derselben Messung.
+Mit eigenen Skripten (`nachrechnung_koordination/nachrechnen_koord.py`, `nachrechnen_nichtlinear.py`, `nachrechnen_rest.py`, `nachrechnen_40min.py`, `nachrechnen_codex.py`; Ausgaben daneben). Lineares Modell wie `kaffee_modell.py`, Becher 300 g mit 0,85 kJ/(kg K) = 255 J/K, *kA* jeweils aus derselben Messung.
 
 | Behauptung | Rolle | Ergebnis |
 |---|---|---|
@@ -125,6 +133,14 @@ Mit eigenen Skripten (`nachrechnung_koordination/nachrechnen_koord.py`, `nachrec
 | ϑ(τ) = 42,1 °C; größter Unterschied 3,86 K bei Zugabe nach 56 min | D | bestätigt |
 | Anfangswärmeströme 20,41 und 17,17 W (+19 %) | R, P | bestätigt |
 | Ferreira: 1/0,0241 1/min = 41,5 min; Deckel 0,0135 1/min, also −44 % | R | Rechnung bestätigt (Steigungen aus dem Bericht) |
+| Alle Ergebnisse a bis h, Nebenrechnungen, Exponent 4/3 | Codex | bestätigt |
+| Becher, kA in Tasse 1 +15 / +20 %: 0,5595 / −0,1755 K | Codex | bestätigt |
+| Becher, Messung 66 / 68 °C: 3,0493 / 3,0898 K, Endwerte 32,50/29,46 bzw. 35,73/32,64 °C; Abkühlrate am Schluss 0,31 K/min; 15 ml Milch: 1,6518 K | Codex | bestätigt |
+| späte Portion in g mindestens 50,6206 °C; bei 20 °C Tasse 2 nur 32,10 °C | Codex | bestätigt |
+| h (2): nur die späte Portion erwärmt, Gleichstand bei 35,3122 °C | Codex | bestätigt |
+| C_B/C_K = 30,50 % | Codex | bestätigt |
+| Exponent 1,6 exakt 39,95443 °C (Paket 39,96 °C) | Codex | bestätigt (adaptiver Integrator) |
+| Versuch nach 40 min mit Becher, kA in Becher 1 +3 / +5 %: Becher 1 − 2 2,21 bis 2,41 / 1,84 bis 2,04 K, Becher 1 − 3 0,90 / 0,53 K (für Ä6) | Koordination | eigene Rechnung (`nachrechnen_codex.py`) |
 
 Nicht nachgerechnet, weil eigene Messungen oder Literaturwerte: Biot-Zahlen von T (0,2 bis 0,27 bzw. 0,05), Thermometergenauigkeit, Milchtemperatur im Glas nach 60 min (13 bis 17 °C). Sie sind in den Vorschlägen als Abschätzung gekennzeichnet oder werden nicht als Zahl übernommen.
 
@@ -133,6 +149,7 @@ Von der Koordination geöffnete Quellen (Ä19, Ä27): PubMed-Eintrag Brown & Dil
 ## 4. Abhängigkeiten
 
 - Ä4 (40 min) bestimmt die Zeiten in Ä5 (Tabelle) und die Zahlen in Ä6 (Hinweis); ohne Ä4 bleiben Ä5 und Ä6 bei 60 min.
+- Ä30 und Ä5 teilen den Satz zum Milchglas im Versuch.
 - Ä3 (Ablaufplan) setzt Ä4 voraus; Ä13 übernimmt den Vermerk „Vertiefung“ aus Ä3.
 - Ä7 und Ä8 ändern beide Annahme 3; zusammen ergibt sich: „Die gesamte Wärmeabgabe an die Umgebung (…) wird mit Q̇_ab = kA (ϑ − ϑ_u) beschrieben; *kA* ist konstant. Die verdunstete Masse wird vernachlässigt.“
 - Ä1 bestimmt Symbol und Gruppenkopf in Ä22 („Erwärmte Milch (Teil g)“) und den Wortlaut, an den Ä14 anschließt.
@@ -156,7 +173,7 @@ Nach Did7, angepasst an den Versuch über 40 Minuten. Zeiten geschätzt, beim er
 
 1. Ist die Kaffee-Aufgabe die Hauptaufgabe der Sitzung, oder laufen weitere Blöcke (AMOC, Ozean, Sverdrup) in denselben 90 Minuten? (P, D, S)
 2. Übt Tutorium 5 sonst eine instationäre globale Bilanz mit Enthalpiestrom oder Quellterm? Laut Überblick kommen Enthalpieströme vermutlich in der AMOC-Aufgabe und in der Zusatzaufgabe „Kraftwerk am Fluss“ vor. (P, zu Ä28)
-3. Ist heißes Wasser im Raum erlaubt, wer stellt Thermoskanne, drei gleiche Becher und Thermometer, und gibt es mehr als ein Thermometer? (P, D, S, T)
+3. Ist heißes Wasser im Raum erlaubt, wer stellt Thermoskanne, drei gleiche Becher und Thermometer, und gibt es mehr als ein Thermometer? Soll der Versuch nur die Reihenfolge zeigen oder auch die Endtemperaturen bestätigen? (P, D, S, T, Codex)
 4. Bekommen die Studierenden Blatt oder Lösung vorab? Dann wirken Frage 1 und g nur mit Ä2 und Ä11; die Hinweise für die Tutoriumsleitung sollten dann abgetrennt werden. (D, S)
 5. Aus welcher Quelle stammt c_p,M = 3,94 kJ/(kg K) in Tutorium 8? (R, zu Ä19)
 6. Welches Semester steht in der Endfassung im Kopf? (G, zu Ä21)

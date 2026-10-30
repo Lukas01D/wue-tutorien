@@ -1,0 +1,14 @@
+Codex1: Becher, kA Tasse 1 *1,15 / *1,20: 0.5595 -0.1755
+Codex2: Becher, Messung 66/68 °C: diff 3.0493 3.0898 Endwerte [32.5, 29.46] [35.73, 32.64]
+Codex2: Abkühlrate Tasse 1 mit Becher bei 60 min [K/min]: 0.309
+Codex2: 15 ml Milch mit Becher: diff 1.6518
+Codex3: späte Portion mindestens [°C]: 50.6206 ; späte Portion 20 °C: th2 32.1
+Codex4: nur späte Portion, Gleichstand bei [°C]: 35.3122
+Codex5: C_B/C_K = 30.5 %
+Codex6: n = 1,6 exakt: th1 = 39.95443
+40 min Becher kA1*1.0 Kuehltasche 5.0: B1-B2 2.97, B1-B3(20) 1.47
+40 min Becher kA1*1.0 Kuehltasche 7.0: B1-B2 2.77, B1-B3(20) 1.47
+40 min Becher kA1*1.03 Kuehltasche 5.0: B1-B2 2.41, B1-B3(20) 0.90
+40 min Becher kA1*1.03 Kuehltasche 7.0: B1-B2 2.21, B1-B3(20) 0.90
+40 min Becher kA1*1.05 Kuehltasche 5.0: B1-B2 2.04, B1-B3(20) 0.53
+40 min Becher kA1*1.05 Kuehltasche 7.0: B1-B2 1.84, B1-B3(20) 0.53
