@@ -1,10 +1,9 @@
 Protokolle der Tutorien Wärmeübertragung: Quellen und Bauanleitung
 =================================================================
 
-Stand: Version 9 vom 29.10.2026 (KI-Protokoll und Entscheidungsprotokoll).
-Zuletzt vergeben: K34 (KI-Protokoll), G40 und D92 (Entscheidungsprotokoll).
-Vorgesehen für die unabhängige Prüfung der Kaffee-Aufgabe: K34 (Prüfung) und K35 (Umsetzung),
-G40, D93 ff., Abschnitt 3.7 im KI-Protokoll und Abschnitt 3.10 im Entscheidungsprotokoll.
+Stand: Version 10 vom 30.10.2026 (KI-Protokoll und Entscheidungsprotokoll).
+Zuletzt vergeben: K35 (KI-Protokoll), G41 und D102 (Entscheidungsprotokoll), Abschnitt 3.7 im
+KI-Protokoll und Abschnitt 3.10 im Entscheidungsprotokoll.
 Danach jeweils die nächste freie Nummer. Vor jedem Eintrag die neueste Fassung in der Projektablage
 ansehen (claude/KI-Protokoll_Tutorien_WUE.md, Kopfzeile „Version“, letzte Einträge).
 
