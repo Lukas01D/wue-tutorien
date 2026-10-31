@@ -1,0 +1,34 @@
+Browsertest des Simulationstools (Chromium, Playwright)
+
+ok     handy: Standardwerte zeigen 34,05 °C und 30,19 °C
+ok     handy: Aussage Tasse 1 um 3,85 K wärmer
+ok     handy: Schnittpunkt 55,7 min, Q1 34,88 kJ, Q2 38,57 kJ
+ok     handy: kein waagerechtes Scrollen
+ok     handy: erwärmte Milch 60 °C, Tasse 2 um 1,19 K wärmer
+ok     handy: Milch 47 °C, beide gleich warm
+ok     handy: Becher an, kA 0,4440 W/K, 34,04 und 30,96 °C
+ok     handy: Milch für Tasse 2 bei Raumtemperatur, Tasse 1 um 1,95 K wärmer
+ok     handy: Zugabe nach 40 min, Unterschied 3,70 K
+ok     handy: 8 Messwerte in der Tabelle
+ok     handy: Messpunkte im Diagramm  (11 Marken)
+ok     handy: kein waagerechtes Scrollen mit Messwerten
+ok     handy: Übernahme Start 80,5 °C, 10 min 67 °C, 40 min, Becher an  ["80.5","67","40",true]
+ok     handy: Messwerte nach dem Neuladen noch da
+ok     handy: keine Fehler in der Konsole
+ok     laptop: Standardwerte zeigen 34,05 °C und 30,19 °C
+ok     laptop: Aussage Tasse 1 um 3,85 K wärmer
+ok     laptop: Schnittpunkt 55,7 min, Q1 34,88 kJ, Q2 38,57 kJ
+ok     laptop: kein waagerechtes Scrollen
+ok     laptop: erwärmte Milch 60 °C, Tasse 2 um 1,19 K wärmer
+ok     laptop: Milch 47 °C, beide gleich warm
+ok     laptop: Becher an, kA 0,4440 W/K, 34,04 und 30,96 °C
+ok     laptop: Milch für Tasse 2 bei Raumtemperatur, Tasse 1 um 1,95 K wärmer
+ok     laptop: Zugabe nach 40 min, Unterschied 3,70 K
+ok     laptop: 8 Messwerte in der Tabelle
+ok     laptop: Messpunkte im Diagramm  (11 Marken)
+ok     laptop: kein waagerechtes Scrollen mit Messwerten
+ok     laptop: Übernahme Start 80,5 °C, 10 min 67 °C, 40 min, Becher an  ["80.5","67","40",true]
+ok     laptop: Messwerte nach dem Neuladen noch da
+ok     laptop: keine Fehler in der Konsole
+
+Ergebnis: 30 von 30 Prüfungen bestanden.
