@@ -18,7 +18,7 @@ ax.add_patch(Circle((cx, cy), r_iso, fill=False, edgecolor=LINIE, linewidth=1.2,
 ax.add_patch(Circle((cx, cy), r_st, facecolor=METALL, edgecolor=LINIE, linewidth=1.0, zorder=2))
 ax.add_patch(Circle((cx, cy), r_oel, facecolor=OEL, edgecolor=LINIE, linewidth=1.0, zorder=3))
 text(ax, cx - 0.45, cy - 0.15, "Öl:", fs=11, farbe="white")
-text(ax, cx - 0.45, cy - 0.75, r"$\vartheta_i$, $\alpha_i$", fs=11, farbe="white")
+text(ax, cx - 0.45, cy - 0.75, r"$\vartheta_\mathrm{i}$, $\alpha_\mathrm{i}$", fs=11, farbe="white")
 
 # Wärmestrom radial nach außen (rechts oben)
 w = math.radians(38)
@@ -29,7 +29,7 @@ text(ax, cx + 3.75 * math.cos(w) + 0.05, cy + 3.75 * math.sin(w) + 0.25, r"$\dot
 for y in (1.6, 2.85, 4.1, 5.35):
     stroemungspfeil(ax, (0.35, y), (2.25, y))
 text(ax, 1.3, 6.35, r"Wind: $w$", fs=10.5, farbe=KALT)
-text(ax, 1.3, 0.75, r"Luft: $\vartheta_u$", fs=10.5)
+text(ax, 1.3, 0.75, r"Luft: $\vartheta_\mathrm{u}$", fs=10.5)
 
 # Beschriftung der Schichten rechts mit Hinweislinien
 def hinweis(winkel, r, xt, yt, s):
@@ -39,9 +39,9 @@ def hinweis(winkel, r, xt, yt, s):
     ax.add_patch(Circle((xp, yp), 0.05, color=GRAU, zorder=6))
     text(ax, xt, yt, s, fs=10.5, ha="left")
 
-hinweis(-8, (r_oel + r_st) / 2, 10.0, 3.0, r"Stahlrohr: $d_{St}$, $s_{St}$, $\lambda_{St}$")
-hinweis(-32, (r_st + r_iso) / 2, 10.0, 1.75, r"Dämmung: $s_{Iso}$, $\lambda_{Iso}$")
-hinweis(-58, r_iso, 10.0, 0.6, r"Außenseite: $\alpha_a$ = ?")
+hinweis(-8, (r_oel + r_st) / 2, 10.0, 3.0, r"Stahlrohr: $d_{\mathrm{St}}$, $s_{\mathrm{St}}$, $\lambda_{\mathrm{St}}$")
+hinweis(-32, (r_st + r_iso) / 2, 10.0, 1.75, r"Dämmung: $s_{\mathrm{Iso}}$, $\lambda_{\mathrm{Iso}}$")
+hinweis(-58, r_iso, 10.0, 0.6, r"Außenseite: $\alpha_\mathrm{a}$ = ?")
 text(ax, 13.9, 6.9, "nicht maßstäblich", fs=8.5, farbe=GRAU, ha="right")
 
 print(speichern(fig, "t3_oelleitung"))

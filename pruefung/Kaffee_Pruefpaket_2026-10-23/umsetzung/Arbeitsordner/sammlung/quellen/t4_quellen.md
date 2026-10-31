@@ -7,11 +7,11 @@
 - Kopp, G., & Lean, J. L. (2011). A new, lower value of total solar irradiance: Evidence and climate significance. *Geophysical Research Letters, 38*, L01706. <https://doi.org/10.1029/2010GL045777>
   $S_0 = 1361\,\mathrm{W/m^2}$ (Ausgangssituation, Tabelle). Holman (2010) nennt noch 1395 W/m², einen älteren Wert.
 - Stephens, G. L., et al. (2015). The albedo of Earth. *Reviews of Geophysics, 53*(1), 141 bis 163. <https://doi.org/10.1002/2014RG000449>
-  Planetare Albedo 0,29 bis 0,30; Arbeitswert $\rho_p = 0{,}30$.
+  Planetare Albedo 0,29 bis 0,30; Arbeitswert $\rho_\mathrm{p} = 0{,}30$.
 - Copernicus Climate Change Service. (2025). *Global climate highlights 2024*. <https://climate.copernicus.eu/global-climate-highlights-2024>
-  Mittlere Oberflächentemperatur 15,1 °C im Jahr 2024; Arbeitswert $T_O = 288\,\mathrm{K}$ („rund 15 °C“).
+  Mittlere Oberflächentemperatur 15,1 °C im Jahr 2024; Arbeitswert $T_\mathrm{O} = 288\,\mathrm{K}$ („rund 15 °C“).
 - Davies, J. H., & Davies, D. R. (2010). Earth’s surface heat flux. *Solid Earth, 1*, 5 bis 24. <https://doi.org/10.5194/se-1-5-2010>
-  Gesamter Erdwärmestrom 47 TW, im Mittel 92 mW/m² (eigene Rechnung); mit 44,2 TW nach Pollack et al. (1993) 87 mW/m². Arbeitswert $\dot{q}_E = 0{,}09\,\mathrm{W/m^2}$ (Teil d).
+  Gesamter Erdwärmestrom 47 TW, im Mittel 92 mW/m² (eigene Rechnung); mit 44,2 TW nach Pollack et al. (1993) 87 mW/m². Arbeitswert $\dot{q}_\mathrm{E} = 0{,}09\,\mathrm{W/m^2}$ (Teil d).
 - Pollack, H. N., Hurter, S. J., & Johnson, J. R. (1993). Heat flow from the Earth’s interior: Analysis of the global data set. *Reviews of Geophysics, 31*(3), 267 bis 280. <https://doi.org/10.1029/93RG01249>
   Wie oben.
 - Forster, P., et al. (2021). The Earth’s energy budget, climate feedbacks, and climate sensitivity. In *Climate change 2021: The physical science basis* (Kapitel 7). IPCC; Cambridge University Press. <https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-7/>
@@ -21,7 +21,7 @@
 - Riese, J. (2026). *Wärmeübertragung: Foliensätze 01 bis 08* [Vorlesungsfolien]. Lehrstuhl für Fluidverfahrenstechnik, Universität Paderborn, Sommersemester 2026.
   V04 F. 7 bis 19: $\alpha + \rho + \tau = 1$, schwarzer und grauer Strahler, $\sigma = 5{,}6705\cdot 10^{-8}\,\mathrm{W/(m^2\,K^4)}$, Kirchhoff’sches Gesetz, Nettowärmestrom eines Körpers mit seiner Umgebung.
 - Holman, J. P. (2010). *Heat transfer* (10. Aufl.). McGraw-Hill. Abschnitt 8-15 (Strahlung der Umwelt).
-- Schichtmodell und Linearisierung $4\sigma T_e^3$: Zusatzwissen nach Ideensammlung 4.4 (in der Aufgabe als gegeben gekennzeichnet).
+- Schichtmodell und Linearisierung $4\sigma T_\mathrm{e}^3$: Zusatzwissen nach Ideensammlung 4.4 (in der Aufgabe als gegeben gekennzeichnet).
 
 ## Fragen
 
@@ -36,5 +36,5 @@
 ## Zusatzaufgaben
 
 - Zusatzaufgabe 1 (Eis aus der Nacht): Barker, R. (1775). The process of making ice in the East Indies. *Philosophical Transactions of the Royal Society of London, 65*, 252 bis 257. <https://doi.org/10.1098/rstl.1775.0023>
-  Arbeitswerte aus nachrechnung_leitphaenomene.py: Luft 5 °C, Himmel $-20\,\mathrm{°C}$, $\alpha_L = 2$ bis $5\,\mathrm{W/(m^2\,K)}$, Wasser $\varepsilon = 0{,}96$.
-- Zusatzaufgabe 2 (Autoscheibe und Reif): Werte wie in V08 Teil g (Riese, 2026): Glas $\varepsilon = 0{,}95$, $-5\,\mathrm{°C}$ (dort Temperatur des Himmels über einem Solarpanel am Tag; hier Arbeitswert für die wirksame Temperatur der Umgebung aus klarem Himmel, Häusern und Bäumen, die die schräge Scheibe sieht; der klare Himmel allein wirkt kälter, vgl. $-20\,\mathrm{°C}$ in Zusatzaufgabe 1), freie Konvektion $\alpha = 5\,\mathrm{W/(m^2\,K)}$; Wind mit $\alpha_L = 10\,\mathrm{W/(m^2\,K)}$ als eigener Arbeitswert.
+  Arbeitswerte aus nachrechnung_leitphaenomene.py: Luft 5 °C, Himmel $-20\,\mathrm{°C}$, $\alpha_\mathrm{L} = 2$ bis $5\,\mathrm{W/(m^2\,K)}$, Wasser $\varepsilon = 0{,}96$.
+- Zusatzaufgabe 2 (Autoscheibe und Reif): Werte wie in V08 Teil g (Riese, 2026): Glas $\varepsilon = 0{,}95$, $-5\,\mathrm{°C}$ (dort Temperatur des Himmels über einem Solarpanel am Tag; hier Arbeitswert für die wirksame Temperatur der Umgebung aus klarem Himmel, Häusern und Bäumen, die die schräge Scheibe sieht; der klare Himmel allein wirkt kälter, vgl. $-20\,\mathrm{°C}$ in Zusatzaufgabe 1), freie Konvektion $\alpha = 5\,\mathrm{W/(m^2\,K)}$; Wind mit $\alpha_\mathrm{L} = 10\,\mathrm{W/(m^2\,K)}$ als eigener Arbeitswert.

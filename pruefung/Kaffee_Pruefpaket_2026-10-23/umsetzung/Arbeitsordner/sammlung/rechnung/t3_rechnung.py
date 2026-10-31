@@ -16,6 +16,9 @@ ob jeder Tabellenwert und jede Ergebniszahl genau so in ../teile/t3.md steht)
 """
 import math
 import os
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "build"))
+from indizes_aufrecht import ohne_mathrm   # Schreibweise prüfen unabhängig davon, ob Indizes aufrecht oder kursiv stehen
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 AUS = []                                   # (Name, Wert, Einheit, Anzeige im Blatt)
@@ -278,9 +281,9 @@ abgleich = ["", "ABGLEICH mit teile/t3.md (jede Zeichenkette muss im Markdown st
 fehlt = 0
 if os.path.exists(TEIL):
     with open(TEIL, encoding="utf-8") as f:
-        md = f.read()
+        md = ohne_mathrm(f.read())
     for soll in SOLL:
-        ok = soll in md
+        ok = ohne_mathrm(soll) in md
         fehlt += 0 if ok else 1
         abgleich.append(f"{'ok   ' if ok else 'FEHLT'} {soll}")
 else:

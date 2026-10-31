@@ -22,7 +22,7 @@ text(ax, x_q, cy - R - 0.45, r"Querschnitt $\pi R^2$", fs=10.5, farbe=GRAU)
 # Erde und Atmosphärenschicht
 ax.add_patch(Circle((cx, cy), R_atm, facecolor="#E6EFF8", edgecolor="#8FA9C4", linewidth=1.0, zorder=2))
 ax.add_patch(Circle((cx, cy), R, facecolor=MEER, edgecolor=LINIE, linewidth=1.2, zorder=3))
-text(ax, cx + 0.55, cy, r"Erde: $T_O$", fs=11)
+text(ax, cx + 0.55, cy, r"Erde: $T_\mathrm{O}$", fs=11)
 
 # Sonnenstrahlen (parallel, bis zur Oberfläche, die Schicht ist für Sonnenlicht durchlässig)
 for dy in (-1.7, -0.85, 0.0, 0.85, 1.7):
@@ -33,7 +33,7 @@ text(ax, 0.3, cy + R + 0.3, r"Sonnenstrahlung: $S_0$", fs=10.5, farbe=SONNE_TEXT
 # Reflexion (planetare Albedo)
 x_r = cx - math.sqrt(R_atm**2 - 1.7**2)
 pfeil(ax, (x_r, cy + 1.75), (x_r - 1.0, cy + 2.85), farbe=SONNE, breite=1.4, groesse=10, z=5)
-text(ax, x_r - 1.05, cy + 3.05, r"reflektiert: $\rho_p$", fs=10, farbe=SONNE_TEXT, ha="right")
+text(ax, x_r - 1.05, cy + 3.05, r"reflektiert: $\rho_\mathrm{p}$", fs=10, farbe=SONNE_TEXT, ha="right")
 
 
 # Wärmestrahlung nach allen Seiten (gewellte rote Pfeile)
@@ -58,7 +58,7 @@ xp, yp = cx + (R + R_atm) / 2 * math.cos(w), cy + (R + R_atm) / 2 * math.sin(w)
 ax.plot([xp, 11.05], [yp, 4.3], color=GRAU, linewidth=0.8, zorder=6)
 ax.add_patch(Circle((xp, yp), 0.05, color=GRAU, zorder=6))
 text(ax, 11.15, 4.55, "Atmosphärenschicht:", fs=10.5, ha="left")
-text(ax, 11.15, 4.0, r"$T_A$, $\varepsilon_A$", fs=10.5, ha="left")
+text(ax, 11.15, 4.0, r"$T_\mathrm{A}$, $\varepsilon_\mathrm{A}$", fs=10.5, ha="left")
 text(ax, 14.3, 0.3, r"Weltall: $T \approx 0\,\mathrm{K}$", fs=10, farbe=GRAU, ha="right")
 text(ax, 0.3, 0.3, "nicht maßstäblich", fs=8.5, farbe=GRAU, ha="left")
 text(ax, 14.3, 7.6 - 0.05, "", fs=1)

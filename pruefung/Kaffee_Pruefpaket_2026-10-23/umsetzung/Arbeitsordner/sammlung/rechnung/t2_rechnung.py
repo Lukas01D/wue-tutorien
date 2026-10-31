@@ -16,6 +16,9 @@ import math
 import os
 
 from CoolProp.CoolProp import PropsSI
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "build"))
+from indizes_aufrecht import ohne_mathrm   # Schreibweise prüfen unabhängig davon, ob Indizes aufrecht oder kursiv stehen
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 TEIL = os.path.join(os.path.dirname(HIER), "teile", "t2.md")
@@ -217,11 +220,11 @@ def main():
     fehlt = 0
     if os.path.exists(TEIL):
         with open(TEIL, encoding="utf-8") as f:
-            md = f.read()
+            md = ohne_mathrm(f.read())
         for name, wert, fmt, einheit, soll in ZEILEN:
             if soll is None:
                 continue
-            ok = soll in md
+            ok = ohne_mathrm(soll) in md
             fehlt += 0 if ok else 1
             zeilen.append(f"{'ok   ' if ok else 'FEHLT'} {soll}")
     else:

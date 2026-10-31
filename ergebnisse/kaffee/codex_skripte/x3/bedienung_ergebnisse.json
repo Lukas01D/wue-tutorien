@@ -1,0 +1,2858 @@
+{
+  "target": "ergebnisse/kaffee/simulation/Kaffee_Simulation.html",
+  "started": "2026-10-31T17:07:11.486Z",
+  "requests": [
+    {
+      "width": 1366,
+      "url": "http://localhost:31460/x3-simulation.html"
+    },
+    {
+      "width": 1366,
+      "url": "http://localhost:31460/x3-simulation.html"
+    },
+    {
+      "width": 1366,
+      "url": "http://localhost:31460/x3-simulation.html"
+    },
+    {
+      "width": 390,
+      "url": "http://localhost:31460/x3-simulation.html"
+    },
+    {
+      "width": 390,
+      "url": "http://localhost:31460/x3-simulation.html"
+    },
+    {
+      "width": 390,
+      "url": "http://localhost:31460/x3-simulation.html"
+    }
+  ],
+  "errors": [],
+  "checks": [
+    {
+      "name": "1366 Standard offline",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler tEnd=1",
+      "value": {
+        "sliders": {
+          "tEnd": "1",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 1 min\nϑ₁ = 69,40 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 1 min\nϑ₂ = 69,20 °C\nvor dem Zugießen: 78,55 °C\nUnterschied\nϑ₁ − ϑ₂ = 0,20 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 1,02 kJ\nQ₂ = 1,21 kJ, Q₂ − Q₁ = 0,19 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 0,20 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler tEnd=120",
+      "value": {
+        "sliders": {
+          "tEnd": "120",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 120 min\nϑ₁ = 23,91 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 120 min\nϑ₂ = 20,89 °C\nvor dem Zugießen: 23,20 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,02 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 44,59 kJ\nQ₂ = 47,48 kJ, Q₂ − Q₁ = 2,89 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,02 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler thM=2",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "2",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 33,94 °C\nMischung bei 0 min: 70,08 °C\nTasse 2 nach 60 min\nϑ₂ = 29,81 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 4,13 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,62 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,95 kJ\nSchnittpunkt\n58,2 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 4,13 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler thM=65",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "65",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 36,17 °C\nMischung bei 0 min: 78,09 °C\nTasse 2 nach 60 min\nϑ₂ = 37,82 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = −1,65 K\nTasse 2 ist wärmer\nAbgegebene Wärme\nQ₁ = 40,15 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = −1,58 kJ\nSchnittpunkt\n10,4 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 2 (Milch später) ist um 1,65 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler VM=5",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "5",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 33,93 °C\nMischung bei 0 min: 78,22 °C\nTasse 2 nach 60 min\nϑ₂ = 33,18 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 0,75 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 37,93 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 0,64 kJ\nSchnittpunkt\n52,0 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 0,75 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler VM=100",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "100",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 33,24 °C\nMischung bei 0 min: 55,49 °C\nTasse 2 nach 60 min\nϑ₂ = 24,43 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 8,81 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 27,64 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 10,93 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 8,81 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler thU=10",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "10",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 30,62 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 27,18 °C\nvor dem Zugießen: 30,41 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,44 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 38,17 kJ\nQ₂ = 41,46 kJ, Q₂ − Q₁ = 3,30 kJ\nSchnittpunkt\n56,1 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,2863 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,44 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler thU=30",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "30",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 38,36 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 33,99 °C\nvor dem Zugießen: 38,21 °C\nUnterschied\nϑ₁ − ϑ₂ = 4,37 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 30,75 kJ\nQ₂ = 34,94 kJ, Q₂ − Q₁ = 4,19 kJ\nSchnittpunkt\n55,3 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4195 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 4,37 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler thK0=60",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "60",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler thK0=95",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "95",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 25,50 °C\nMischung bei 0 min: 83,56 °C\nTasse 2 nach 60 min\nϑ₂ = 22,06 °C\nvor dem Zugießen: 24,54 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,44 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 55,61 kJ\nQ₂ = 58,90 kJ, Q₂ − Q₁ = 3,29 kJ\nSchnittpunkt\n27,9 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,6512 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,44 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler thMess=30",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "30",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 20,00 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 18,09 °C\nvor dem Zugießen: 20,00 °C\nUnterschied\nϑ₁ − ϑ₂ = 1,91 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 48,33 kJ\nQ₂ = 50,16 kJ, Q₂ − Q₁ = 1,83 kJ\nSchnittpunkt\n7,6 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n2,4965 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 1,91 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler thMess=90",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "90",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler VK=100",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "100",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 33,85 °C\nMischung bei 0 min: 63,08 °C\nTasse 2 nach 60 min\nϑ₂ = 27,35 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 6,50 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 15,78 kJ\nQ₂ = 19,29 kJ, Q₂ − Q₁ = 3,51 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,1701 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 6,50 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler VK=400",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "400",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,01 °C\nMischung bei 0 min: 74,91 °C\nTasse 2 nach 60 min\nϑ₂ = 31,90 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,11 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 73,36 kJ\nQ₂ = 77,14 kJ, Q₂ − Q₁ = 3,78 kJ\nSchnittpunkt\n53,5 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,6805 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,11 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler kA1=90",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "90",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 35,96 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 5,77 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 33,05 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 5,53 kJ\nSchnittpunkt\n33,1 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 5,77 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler kA1=110",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "110",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 32,36 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,17 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 36,50 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 2,08 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,17 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler mB=100",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "100"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler mB=600",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "600"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Milch Raum",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": true,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 32,10 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 1,95 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 1,95 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Becher",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,04 °C\nMischung bei 0 min: 72,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,96 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,08 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 46,60 kJ\nQ₂ = 50,34 kJ, Q₂ − Q₁ = 3,73 kJ\nSchnittpunkt\n54,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4440 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,08 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Versuchsknopf",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 41,79 °C\nMischung bei 0 min: 72,47 °C\nTasse 2 nach 40 min\nϑ₂ = 38,82 °C\nvor dem Zugießen: 42,59 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,97 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 37,21 kJ\nQ₂ = 40,81 kJ, Q₂ − Q₁ = 3,61 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4440 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,97 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Übernehmen ohne Daten",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 41,79 °C\nMischung bei 0 min: 72,47 °C\nTasse 2 nach 40 min\nϑ₂ = 38,82 °C\nvor dem Zugießen: 42,59 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,97 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 37,21 kJ\nQ₂ = 40,81 kJ, Q₂ − Q₁ = 3,61 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4440 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,97 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start nicht gefunden, Messwert nach 10 min nicht gefunden, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Komma und Punkt",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start nicht gefunden, Messwert nach 10 min nicht gefunden, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "1\t40,0 min\t39,8 °C\tLöschen",
+          "2\t0,0 min\t80,2 °C\tLöschen",
+          "2\t10,0 min\t66,5 °C\tLöschen",
+          "2\t40,0 min\t36,1 °C\tLöschen",
+          "3\t0,0 min\t81,2 °C\tLöschen",
+          "3\t10,0 min\t67,5 °C\tLöschen",
+          "3\t40,0 min\t38,2 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Neuladen mit Daten",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "1\t40,0 min\t39,8 °C\tLöschen",
+          "2\t0,0 min\t80,2 °C\tLöschen",
+          "2\t10,0 min\t66,5 °C\tLöschen",
+          "2\t40,0 min\t36,1 °C\tLöschen",
+          "3\t0,0 min\t81,2 °C\tLöschen",
+          "3\t10,0 min\t67,5 °C\tLöschen",
+          "3\t40,0 min\t38,2 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Mittelwerte übernehmen",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80.5",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 41,33 °C\nMischung bei 0 min: 72,92 °C\nTasse 2 nach 40 min\nϑ₂ = 38,32 °C\nvor dem Zugießen: 42,04 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,01 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 38,31 kJ\nQ₂ = 41,96 kJ, Q₂ − Q₁ = 3,66 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4591 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,01 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start 80,5 °C, nach 10 min 67,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "1\t40,0 min\t39,8 °C\tLöschen",
+          "2\t0,0 min\t80,2 °C\tLöschen",
+          "2\t10,0 min\t66,5 °C\tLöschen",
+          "2\t40,0 min\t36,1 °C\tLöschen",
+          "3\t0,0 min\t81,2 °C\tLöschen",
+          "3\t10,0 min\t67,5 °C\tLöschen",
+          "3\t40,0 min\t38,2 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Einzelwert löschen",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80.5",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 41,33 °C\nMischung bei 0 min: 72,92 °C\nTasse 2 nach 40 min\nϑ₂ = 38,32 °C\nvor dem Zugießen: 42,04 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,01 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 38,31 kJ\nQ₂ = 41,96 kJ, Q₂ − Q₁ = 3,66 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4591 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,01 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start 80,5 °C, nach 10 min 67,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "2\t0,0 min\t80,2 °C\tLöschen",
+          "2\t10,0 min\t66,5 °C\tLöschen",
+          "2\t40,0 min\t36,1 °C\tLöschen",
+          "3\t0,0 min\t81,2 °C\tLöschen",
+          "3\t10,0 min\t67,5 °C\tLöschen",
+          "3\t40,0 min\t38,2 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Alle löschen und neu laden",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"-1\",\"50\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"241\",\"50\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"10\",\"-11\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"10\",\"101\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"abc\",\"50\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"10\",\"Infinity\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"\",\"50\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"10\",\"\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"10min\",\"67°C\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "2\t10,0 min\t67,0 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"10,5,9\",\"66.5xyz\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "2\t10,5 min\t66,5 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"0\",\"-10\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "2\t0,0 min\t−10,0 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Eingabe [\"240\",\"100\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "2\t240,0 min\t100,0 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Messwert größer als Start",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "60",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Nach Korrektur gültig",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "60",
+          "thMess": "55",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 36,40 °C\nMischung bei 0 min: 53,01 °C\nTasse 2 nach 60 min\nϑ₂ = 33,76 °C\nvor dem Zugießen: 37,95 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,64 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 15,90 kJ\nQ₂ = 18,43 kJ, Q₂ − Q₁ = 2,53 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,1861 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,64 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Messwert gleich Raum",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "30",
+          "thK0": "60",
+          "thMess": "30",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 38,86 °C\nMischung bei 0 min: 53,01 °C\nTasse 2 nach 60 min\nϑ₂ = 35,59 °C\nvor dem Zugießen: 40,05 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,26 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 13,56 kJ\nQ₂ = 16,68 kJ, Q₂ − Q₁ = 3,13 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,2540 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,26 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Übernahme außerhalb Reglerbereich",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "95",
+          "thMess": "30",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 20,05 °C\nMischung bei 0 min: 85,97 °C\nTasse 2 nach 40 min\nϑ₂ = 18,52 °C\nvor dem Zugießen: 20,02 °C\nUnterschied\nϑ₁ − ϑ₂ = 1,53 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 79,94 kJ\nQ₂ = 81,80 kJ, Q₂ − Q₁ = 1,86 kJ\nSchnittpunkt\n6,3 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n3,6638 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 1,53 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start 95,0 °C, nach 10 min 30,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "2\t0,0 min\t100,0 °C\tLöschen",
+          "2\t10,0 min\t15,0 °C\tLöschen",
+          "3\t0,0 min\t100,0 °C\tLöschen",
+          "3\t10,0 min\t15,0 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Widersprüchliche Messreihe übernehmen",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "65",
+          "thMess": "70",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Übernommen: Start 65,0 °C, nach 10 min 70,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "2\t0,0 min\t65,0 °C\tLöschen",
+          "2\t10,0 min\t70,0 °C\tLöschen",
+          "3\t0,0 min\t65,0 °C\tLöschen",
+          "3\t10,0 min\t70,0 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "1366 Regler per Tastatur",
+      "value": {
+        "sliders": {
+          "tEnd": "2",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 2 min\nϑ₁ = 68,36 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 2 min\nϑ₂ = 67,97 °C\nvor dem Zugießen: 77,14 °C\nUnterschied\nϑ₁ − ϑ₂ = 0,39 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 2,02 kJ\nQ₂ = 2,39 kJ, Q₂ − Q₁ = 0,37 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 0,39 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start 65,0 °C, nach 10 min 70,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "2\t0,0 min\t65,0 °C\tLöschen",
+          "2\t10,0 min\t70,0 °C\tLöschen",
+          "3\t0,0 min\t65,0 °C\tLöschen",
+          "3\t10,0 min\t70,0 °C\tLöschen"
+        ],
+        "width": 1366,
+        "documentWidth": 1366,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Standard offline",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler tEnd=1",
+      "value": {
+        "sliders": {
+          "tEnd": "1",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 1 min\nϑ₁ = 69,40 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 1 min\nϑ₂ = 69,20 °C\nvor dem Zugießen: 78,55 °C\nUnterschied\nϑ₁ − ϑ₂ = 0,20 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 1,02 kJ\nQ₂ = 1,21 kJ, Q₂ − Q₁ = 0,19 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 0,20 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler tEnd=120",
+      "value": {
+        "sliders": {
+          "tEnd": "120",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 120 min\nϑ₁ = 23,91 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 120 min\nϑ₂ = 20,89 °C\nvor dem Zugießen: 23,20 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,02 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 44,59 kJ\nQ₂ = 47,48 kJ, Q₂ − Q₁ = 2,89 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,02 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler thM=2",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "2",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 33,94 °C\nMischung bei 0 min: 70,08 °C\nTasse 2 nach 60 min\nϑ₂ = 29,81 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 4,13 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,62 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,95 kJ\nSchnittpunkt\n58,2 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 4,13 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler thM=65",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "65",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 36,17 °C\nMischung bei 0 min: 78,09 °C\nTasse 2 nach 60 min\nϑ₂ = 37,82 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = −1,65 K\nTasse 2 ist wärmer\nAbgegebene Wärme\nQ₁ = 40,15 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = −1,58 kJ\nSchnittpunkt\n10,4 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 2 (Milch später) ist um 1,65 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler VM=5",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "5",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 33,93 °C\nMischung bei 0 min: 78,22 °C\nTasse 2 nach 60 min\nϑ₂ = 33,18 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 0,75 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 37,93 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 0,64 kJ\nSchnittpunkt\n52,0 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 0,75 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler VM=100",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "100",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 33,24 °C\nMischung bei 0 min: 55,49 °C\nTasse 2 nach 60 min\nϑ₂ = 24,43 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 8,81 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 27,64 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 10,93 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 8,81 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler thU=10",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "10",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 30,62 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 27,18 °C\nvor dem Zugießen: 30,41 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,44 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 38,17 kJ\nQ₂ = 41,46 kJ, Q₂ − Q₁ = 3,30 kJ\nSchnittpunkt\n56,1 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,2863 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,44 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler thU=30",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "30",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 38,36 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 33,99 °C\nvor dem Zugießen: 38,21 °C\nUnterschied\nϑ₁ − ϑ₂ = 4,37 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 30,75 kJ\nQ₂ = 34,94 kJ, Q₂ − Q₁ = 4,19 kJ\nSchnittpunkt\n55,3 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4195 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 4,37 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler thK0=60",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "60",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler thK0=95",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "95",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 25,50 °C\nMischung bei 0 min: 83,56 °C\nTasse 2 nach 60 min\nϑ₂ = 22,06 °C\nvor dem Zugießen: 24,54 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,44 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 55,61 kJ\nQ₂ = 58,90 kJ, Q₂ − Q₁ = 3,29 kJ\nSchnittpunkt\n27,9 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,6512 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,44 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler thMess=30",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "30",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 20,00 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 18,09 °C\nvor dem Zugießen: 20,00 °C\nUnterschied\nϑ₁ − ϑ₂ = 1,91 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 48,33 kJ\nQ₂ = 50,16 kJ, Q₂ − Q₁ = 1,83 kJ\nSchnittpunkt\n7,6 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n2,4965 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 1,91 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler thMess=90",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "90",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler VK=100",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "100",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 33,85 °C\nMischung bei 0 min: 63,08 °C\nTasse 2 nach 60 min\nϑ₂ = 27,35 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 6,50 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 15,78 kJ\nQ₂ = 19,29 kJ, Q₂ − Q₁ = 3,51 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,1701 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 6,50 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler VK=400",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "400",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,01 °C\nMischung bei 0 min: 74,91 °C\nTasse 2 nach 60 min\nϑ₂ = 31,90 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,11 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 73,36 kJ\nQ₂ = 77,14 kJ, Q₂ − Q₁ = 3,78 kJ\nSchnittpunkt\n53,5 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,6805 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,11 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler kA1=90",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "90",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 35,96 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 5,77 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 33,05 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 5,53 kJ\nSchnittpunkt\n33,1 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 5,77 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler kA1=110",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "110",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 32,36 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,17 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 36,50 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 2,08 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,17 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler mB=100",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "100"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler mB=600",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "600"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Milch Raum",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": true,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 32,10 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 1,95 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 1,95 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Becher",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,04 °C\nMischung bei 0 min: 72,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,96 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,08 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 46,60 kJ\nQ₂ = 50,34 kJ, Q₂ − Q₁ = 3,73 kJ\nSchnittpunkt\n54,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4440 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,08 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Versuchsknopf",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 41,79 °C\nMischung bei 0 min: 72,47 °C\nTasse 2 nach 40 min\nϑ₂ = 38,82 °C\nvor dem Zugießen: 42,59 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,97 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 37,21 kJ\nQ₂ = 40,81 kJ, Q₂ − Q₁ = 3,61 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4440 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,97 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Übernehmen ohne Daten",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 41,79 °C\nMischung bei 0 min: 72,47 °C\nTasse 2 nach 40 min\nϑ₂ = 38,82 °C\nvor dem Zugießen: 42,59 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,97 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 37,21 kJ\nQ₂ = 40,81 kJ, Q₂ − Q₁ = 3,61 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4440 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,97 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start nicht gefunden, Messwert nach 10 min nicht gefunden, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Komma und Punkt",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start nicht gefunden, Messwert nach 10 min nicht gefunden, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "1\t40,0 min\t39,8 °C\tLöschen",
+          "2\t0,0 min\t80,2 °C\tLöschen",
+          "2\t10,0 min\t66,5 °C\tLöschen",
+          "2\t40,0 min\t36,1 °C\tLöschen",
+          "3\t0,0 min\t81,2 °C\tLöschen",
+          "3\t10,0 min\t67,5 °C\tLöschen",
+          "3\t40,0 min\t38,2 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Neuladen mit Daten",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "1\t40,0 min\t39,8 °C\tLöschen",
+          "2\t0,0 min\t80,2 °C\tLöschen",
+          "2\t10,0 min\t66,5 °C\tLöschen",
+          "2\t40,0 min\t36,1 °C\tLöschen",
+          "3\t0,0 min\t81,2 °C\tLöschen",
+          "3\t10,0 min\t67,5 °C\tLöschen",
+          "3\t40,0 min\t38,2 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Mittelwerte übernehmen",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80.5",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 41,33 °C\nMischung bei 0 min: 72,92 °C\nTasse 2 nach 40 min\nϑ₂ = 38,32 °C\nvor dem Zugießen: 42,04 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,01 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 38,31 kJ\nQ₂ = 41,96 kJ, Q₂ − Q₁ = 3,66 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4591 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,01 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start 80,5 °C, nach 10 min 67,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "1\t40,0 min\t39,8 °C\tLöschen",
+          "2\t0,0 min\t80,2 °C\tLöschen",
+          "2\t10,0 min\t66,5 °C\tLöschen",
+          "2\t40,0 min\t36,1 °C\tLöschen",
+          "3\t0,0 min\t81,2 °C\tLöschen",
+          "3\t10,0 min\t67,5 °C\tLöschen",
+          "3\t40,0 min\t38,2 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Einzelwert löschen",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80.5",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 41,33 °C\nMischung bei 0 min: 72,92 °C\nTasse 2 nach 40 min\nϑ₂ = 38,32 °C\nvor dem Zugießen: 42,04 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,01 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 38,31 kJ\nQ₂ = 41,96 kJ, Q₂ − Q₁ = 3,66 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,4591 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,01 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start 80,5 °C, nach 10 min 67,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "2\t0,0 min\t80,2 °C\tLöschen",
+          "2\t10,0 min\t66,5 °C\tLöschen",
+          "2\t40,0 min\t36,1 °C\tLöschen",
+          "3\t0,0 min\t81,2 °C\tLöschen",
+          "3\t10,0 min\t67,5 °C\tLöschen",
+          "3\t40,0 min\t38,2 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Alle löschen und neu laden",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"-1\",\"50\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"241\",\"50\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"10\",\"-11\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"10\",\"101\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"abc\",\"50\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"10\",\"Infinity\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"\",\"50\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"10\",\"\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"10min\",\"67°C\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "2\t10,0 min\t67,0 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"10,5,9\",\"66.5xyz\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "2\t10,5 min\t66,5 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"0\",\"-10\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "2\t0,0 min\t−10,0 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Eingabe [\"240\",\"100\"]",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "2\t240,0 min\t100,0 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Messwert größer als Start",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "60",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Nach Korrektur gültig",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "60",
+          "thMess": "55",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 36,40 °C\nMischung bei 0 min: 53,01 °C\nTasse 2 nach 60 min\nϑ₂ = 33,76 °C\nvor dem Zugießen: 37,95 °C\nUnterschied\nϑ₁ − ϑ₂ = 2,64 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 15,90 kJ\nQ₂ = 18,43 kJ, Q₂ − Q₁ = 2,53 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,1861 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 2,64 K wärmer.",
+        "warning": "",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Messwert gleich Raum",
+      "value": {
+        "sliders": {
+          "tEnd": "60",
+          "thM": "5",
+          "VM": "30",
+          "thU": "30",
+          "thK0": "60",
+          "thMess": "30",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 38,86 °C\nMischung bei 0 min: 53,01 °C\nTasse 2 nach 60 min\nϑ₂ = 35,59 °C\nvor dem Zugießen: 40,05 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,26 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 13,56 kJ\nQ₂ = 16,68 kJ, Q₂ − Q₁ = 3,13 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,2540 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,26 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.",
+        "measurements": [
+          "Noch keine Messwerte."
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Übernahme außerhalb Reglerbereich",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "95",
+          "thMess": "30",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 40 min\nϑ₁ = 20,05 °C\nMischung bei 0 min: 85,97 °C\nTasse 2 nach 40 min\nϑ₂ = 18,52 °C\nvor dem Zugießen: 20,02 °C\nUnterschied\nϑ₁ − ϑ₂ = 1,53 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 79,94 kJ\nQ₂ = 81,80 kJ, Q₂ − Q₁ = 1,86 kJ\nSchnittpunkt\n6,3 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n3,6638 W/K\nmit Becher (wie Teil g)",
+        "statement": "Tasse 1 (Milch sofort) ist um 1,53 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start 95,0 °C, nach 10 min 30,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "2\t0,0 min\t100,0 °C\tLöschen",
+          "2\t10,0 min\t15,0 °C\tLöschen",
+          "3\t0,0 min\t100,0 °C\tLöschen",
+          "3\t10,0 min\t15,0 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Widersprüchliche Messreihe übernehmen",
+      "value": {
+        "sliders": {
+          "tEnd": "40",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "65",
+          "thMess": "70",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": true
+        },
+        "values": "Tasse 1 nach 60 min\nϑ₁ = 34,05 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 60 min\nϑ₂ = 30,19 °C\nvor dem Zugießen: 33,86 °C\nUnterschied\nϑ₁ − ϑ₂ = 3,85 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 34,88 kJ\nQ₂ = 38,57 kJ, Q₂ − Q₁ = 3,69 kJ\nSchnittpunkt\n55,7 min\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 3,85 K wärmer.",
+        "warning": "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.",
+        "info": "Übernommen: Start 65,0 °C, nach 10 min 70,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "2\t0,0 min\t65,0 °C\tLöschen",
+          "2\t10,0 min\t70,0 °C\tLöschen",
+          "3\t0,0 min\t65,0 °C\tLöschen",
+          "3\t10,0 min\t70,0 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    },
+    {
+      "name": "390 Regler per Tastatur",
+      "value": {
+        "sliders": {
+          "tEnd": "2",
+          "thM": "5",
+          "VM": "30",
+          "thU": "20",
+          "thK0": "80",
+          "thMess": "67",
+          "VK": "200",
+          "kA1": "100",
+          "mB": "300"
+        },
+        "toggles": {
+          "milch2Raum": false,
+          "becher": false
+        },
+        "values": "Tasse 1 nach 2 min\nϑ₁ = 68,36 °C\nMischung bei 0 min: 70,47 °C\nTasse 2 nach 2 min\nϑ₂ = 67,97 °C\nvor dem Zugießen: 77,14 °C\nUnterschied\nϑ₁ − ϑ₂ = 0,39 K\nTasse 1 ist wärmer\nAbgegebene Wärme\nQ₁ = 2,02 kJ\nQ₂ = 2,39 kJ, Q₂ − Q₁ = 0,37 kJ\nSchnittpunkt\nkeiner bis zur Zugabe\nab hier ist der schwarze Kaffee kühler\nkA aus der Messung\n0,3402 W/K\nohne Becher (wie Teil c)",
+        "statement": "Tasse 1 (Milch sofort) ist um 0,39 K wärmer.",
+        "warning": "",
+        "info": "Übernommen: Start 65,0 °C, nach 10 min 70,0 °C, Zugabe nach 40 min, Becher an.",
+        "measurements": [
+          "2\t0,0 min\t65,0 °C\tLöschen",
+          "2\t10,0 min\t70,0 °C\tLöschen",
+          "3\t0,0 min\t65,0 °C\tLöschen",
+          "3\t10,0 min\t70,0 °C\tLöschen"
+        ],
+        "width": 390,
+        "documentWidth": 390,
+        "invalidSVG": false
+      }
+    }
+  ],
+  "finished": "2026-10-31T17:07:38.435Z"
+}

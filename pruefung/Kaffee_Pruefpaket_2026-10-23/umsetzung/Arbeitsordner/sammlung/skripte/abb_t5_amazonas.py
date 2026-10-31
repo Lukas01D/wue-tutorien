@@ -24,7 +24,7 @@ ax.add_patch(Polygon([(X_KUESTE, Y_MEER), (12.7, Y_MEER), (12.3, Y_MEER - 0.22),
                      closed=True, facecolor=FAHNE, edgecolor="none", zorder=1))
 ax.plot([X_KUESTE - 0.1, 13.2], [Y_MEER, Y_MEER], color=KALT, lw=1.1, zorder=3)
 text(ax, 12.15, 1.22, "Atlantik", fs=9.5, farbe=LINIE)
-text(ax, 11.55, 2.25, r"Flussfahne: $\vartheta_F$", fs=9.5, farbe=LINIE)
+text(ax, 11.55, 2.25, r"Flussfahne: $\vartheta_\mathrm{F}$", fs=9.5, farbe=LINIE)
 
 # Land mit Anden im Westen
 land = [(0, Y_UNTEN), (X_KUESTE + 0.25, Y_UNTEN), (X_KUESTE + 0.25, Y_MEER - 0.1), (X_KUESTE, Y_LAND - 0.12),
@@ -36,7 +36,7 @@ text(ax, 0.75, 4.45, "Anden", fs=9, farbe=GRAU)
 ax.add_patch(Polygon([(2.0, Y_LAND), (X_KUESTE, Y_LAND - 0.12), (X_KUESTE, Y_LAND - 0.3), (2.0, Y_LAND - 0.14)],
                      closed=True, facecolor=KALT, edgecolor="none", zorder=3))
 pfeil(ax, (X_KUESTE - 0.6, Y_LAND - 0.2), (X_KUESTE + 1.1, Y_MEER - 0.16), farbe=KALT, breite=2.2, groesse=13, z=6)
-text(ax, 6.2, 1.35, r"Amazonas: Abfluss $\dot{V}_A$, Temperatur $\vartheta_A$", fs=9.5, farbe=KALT)
+text(ax, 6.2, 1.35, r"Amazonas: Abfluss $\dot{V}_\mathrm{A}$, Temperatur $\vartheta_\mathrm{A}$", fs=9.5, farbe=KALT)
 
 # Regenwald
 for xb in np.arange(2.3, 9.9, 0.52):
@@ -63,7 +63,7 @@ text(ax, 8.3, 4.95, "Verdunstung", fs=9.5, farbe="#3F6E99")
 
 # Ausdehnung des Beckens
 masslinie(ax, (1.9, 0.5), (X_KUESTE, 0.5), "", fs=9)
-text(ax, 6.1, 0.2, r"Becken mit der Fläche $A_B$", fs=9.5, farbe=GRAU)
+text(ax, 6.1, 0.2, r"Becken mit der Fläche $A_\mathrm{B}$", fs=9.5, farbe=GRAU)
 text(ax, 13.2, 6.15, "nicht maßstäblich", fs=8.5, farbe=GRAU, ha="right")
 text(ax, 0.0, 0.2, "Westen", fs=9, farbe=GRAU, ha="left")
 text(ax, 13.2, 0.2, "Osten", fs=9, farbe=GRAU, ha="right")

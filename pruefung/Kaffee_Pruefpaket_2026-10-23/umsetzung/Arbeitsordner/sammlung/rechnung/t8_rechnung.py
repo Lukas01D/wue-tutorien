@@ -13,6 +13,9 @@ Prüfung, ob jede Ergebniszahl in genau dieser Schreibweise in ../teile/t8.md st
 """
 import math
 import os
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "build"))
+from indizes_aufrecht import ohne_mathrm   # Schreibweise prüfen unabhängig davon, ob Indizes aufrecht oder kursiv stehen
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 TEIL = os.path.join(os.path.dirname(HIER), "teile", "t8.md")
@@ -253,14 +256,14 @@ vergleich("Flugzeit ohne Wind", t_0, 6.11, "6,11 h")
 # =============================================================================
 # Ausgabe und Prüfung gegen teile/t8.md
 # =============================================================================
-md = open(TEIL, encoding="utf-8").read() if os.path.exists(TEIL) else ""
+md = ohne_mathrm(open(TEIL, encoding="utf-8").read()) if os.path.exists(TEIL) else ""
 fehlt = []
 zeilen = ["Tutorium 8: Wärmeübertrager und Verdampfer, Nachrechnung (t8_rechnung.py)",
           "Spalten: Name | Wert | Einheit | Schreibweise im Aufgabentext (Prüfung gegen teile/t8.md)", ""]
 for name, wert, einheit, schreib in ZEILEN:
     s = f"{name:66s} {wert:14.6g} {einheit:10s}"
     if schreib:
-        ok = schreib in md
+        ok = ohne_mathrm(schreib) in md
         if not ok:
             fehlt.append(schreib)
         s += f"  {schreib}  [{'steht im Text' if ok else 'FEHLT im Text'}]"

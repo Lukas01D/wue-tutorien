@@ -15,6 +15,9 @@ Zahl der Tabellen und Ergebniszeilen genau so in teile/t6.md steht.
 """
 import math
 import os
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "build"))
+from indizes_aufrecht import ohne_mathrm   # Schreibweise prüfen unabhängig davon, ob Indizes aufrecht oder kursiv stehen
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 TEIL = os.path.join(os.path.dirname(HIER), "teile", "t6.md")
@@ -176,9 +179,9 @@ for name, ist, soll in KERN:
 # ---------- Abgleich mit dem Markdown ----------
 fehlend = []
 if os.path.exists(TEIL):
-    md = open(TEIL, encoding="utf-8").read()
+    md = ohne_mathrm(open(TEIL, encoding="utf-8").read())
     for teil, name, wert, einheit, tex in werte:
-        if tex and tex not in md:
+        if tex and ohne_mathrm(tex) not in md:
             fehlend.append(f"{teil}: {name}: {tex}")
     zeilen += ["", f"Abgleich mit {os.path.relpath(TEIL, os.path.dirname(HIER))}: "
                + ("alle Werte gefunden" if not fehlend else f"{len(fehlend)} Werte fehlen")]
