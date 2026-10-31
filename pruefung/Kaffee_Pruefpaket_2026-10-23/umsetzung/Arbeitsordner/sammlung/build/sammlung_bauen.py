@@ -16,7 +16,7 @@ STAND = "31.10.2026"
 THEMEN = {
     1: ("Wärmeleitung", "Fourier, mehrschichtige Wand, mittlere Wärmeleitfähigkeit, Randbedingungen", "keine"),
     2: ("Konvektion", r"Platte erzwungen und frei, Grenzschicht, lokales und mittleres $\alpha$, charakteristische Länge", "keine"),
-    3: ("Wärmedurchgang", r"thermische Widerstände in Reihe, $kA = 1/R_{\mathrm{th}}$, Rohr mit $k_i$ und $k_a$", "stationär global"),
+    3: ("Wärmedurchgang", r"thermische Widerstände in Reihe, $kA = 1/R_{\mathrm{th}}$, Rohr mit $k_\mathrm{i}$ und $k_\mathrm{a}$", "stationär global"),
     4: ("Strahlung", r"Stefan-Boltzmann, grauer Strahler, $\alpha + \rho + \tau = 1$, Kirchhoff", "stationär global"),
     5: ("Wärmebilanzen (instationär global)", r"$\mathrm{d}U/\mathrm{d}t$-Bilanz, Mischen, $T(t)$, Zeitkonstante, Massenbilanz", "instationär global; stationär global"),
     6: ("Wärmebilanzen (stationär differentiell)", r"Bilanz am Element $\mathrm{d}z$ und $\mathrm{d}r$ mit Quelle, $T(z)$, $T(r)$", "stationär differentiell"),

@@ -27,7 +27,7 @@ ax.add_patch(Polygon([(0, Y_LAND - 0.62), (X_KUESTE - 0.22, Y_LAND - 0.62), (X_K
                      closed=True, facecolor=BODEN, edgecolor="none", zorder=2))
 ax.plot([0, X_KUESTE, X_KUESTE + 0.2, X_KUESTE + 1.6], [Y_LAND, Y_LAND, Y_MEER - 0.35, Y_GRUND], color=LINIE, lw=1.0, zorder=3)
 text(ax, 1.15, Y_LAND - 0.31, "Boden", fs=9)
-masslinie(ax, (2.55, Y_LAND - 0.62), (2.55, Y_LAND), r"$h_B$", fs=9.5, versatz=(0.1, 0.0))
+masslinie(ax, (2.55, Y_LAND - 0.62), (2.55, Y_LAND), r"$h_\mathrm{B}$", fs=9.5, versatz=(0.1, 0.0))
 text(ax, 1.4, 1.6, "Land", fs=9.5, farbe=LINIE)
 
 # Ozean: Deckschicht und Tiefsee
@@ -56,8 +56,8 @@ masslinie(ax, (12.6, Y_SPRUNG), (12.6, Y_MEER - 0.05), r"$h$", fs=10, versatz=(0
 # zusätzliche Strahlungsflussdichte
 for xq in (1.4, 5.3, 7.0):
     waermepfeil(ax, (xq, 5.4), (xq, Y_LAND + 0.12 if xq < X_KUESTE else Y_MEER + 0.15))
-text(ax, 1.55, 4.8, r"$\dot{q}_F$", fs=10.5, farbe=WAERME, ha="left")
-text(ax, 7.15, 4.75, r"$\dot{q}_F$", fs=10.5, farbe=WAERME, ha="left")
+text(ax, 1.55, 4.8, r"$\dot{q}_\mathrm{F}$", fs=10.5, farbe=WAERME, ha="left")
+text(ax, 7.15, 4.75, r"$\dot{q}_\mathrm{F}$", fs=10.5, farbe=WAERME, ha="left")
 
 if __name__ == "__main__":
     print(speichern(fig, "t5_deckschicht"))

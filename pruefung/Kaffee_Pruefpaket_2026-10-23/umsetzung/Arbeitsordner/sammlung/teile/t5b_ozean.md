@@ -26,19 +26,19 @@ Angenommen, die AMOC bringt 20\ % weniger Wärme nach Norden. Um wie viel wird d
 
 | ***AMOC bei 26,5°\ N:*** | | ***Meerwasser:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Volumenstrom: | $\dot{V} = 17\,\mathrm{Sv}$ | Dichte: | $\rho_M = 1025\,\mathrm{kg/m^3}$ |
-| Wärmestrom: | $\dot{Q}_{AMOC} = 1{,}2\,\mathrm{PW}$ | Spez. Wärmekapazität: | $c_{p,M} = 3990\,\mathrm{J/(kg\,K)}$ |
-| 1 Sverdrup: | $1\,\mathrm{Sv} = 10^{6}\,\mathrm{m^3/s}$ | Oberflächenwasser: | $\vartheta_w \approx 20\,\mathrm{°C}$ |
-| | | Tiefenwasser: | $\vartheta_k \approx 3\,\mathrm{°C}$ |
+| Volumenstrom: | $\dot{V} = 17\,\mathrm{Sv}$ | Dichte: | $\rho_\mathrm{M} = 1025\,\mathrm{kg/m^3}$ |
+| Wärmestrom: | $\dot{Q}_{\mathrm{AMOC}} = 1{,}2\,\mathrm{PW}$ | Spez. Wärmekapazität: | $c_{p,\mathrm{M}} = 3990\,\mathrm{J/(kg\,K)}$ |
+| 1 Sverdrup: | $1\,\mathrm{Sv} = 10^{6}\,\mathrm{m^3/s}$ | Oberflächenwasser: | $\vartheta_\mathrm{w} \approx 20\,\mathrm{°C}$ |
+| | | Tiefenwasser: | $\vartheta_\mathrm{k} \approx 3\,\mathrm{°C}$ |
 | | | | |
 | ***Vergleichsströme:*** | | ***Flächen:*** | |
-| Amazonas: | $\dot{V}_A = 0{,}206\,\mathrm{Sv}$ | Gürtel: | $A_G = 7{,}6\cdot 10^{13}\,\mathrm{m^2}$ |
-| Golfstrom (60°\ W): | $\dot{V}_G \geq 150\,\mathrm{Sv}$ | Viertel: | $A_V = 1{,}9\cdot 10^{13}\,\mathrm{m^2}$ |
+| Amazonas: | $\dot{V}_\mathrm{A} = 0{,}206\,\mathrm{Sv}$ | Gürtel: | $A_\mathrm{G} = 7{,}6\cdot 10^{13}\,\mathrm{m^2}$ |
+| Golfstrom (60°\ W): | $\dot{V}_\mathrm{G} \geq 150\,\mathrm{Sv}$ | Viertel: | $A_\mathrm{V} = 1{,}9\cdot 10^{13}\,\mathrm{m^2}$ |
 | | | | |
 | ***Januar, 51,7°\ N:*** | | ***Januarmittel:*** | |
-| Sonne am Oberrand: | $\dot{q}_S = 93\,\mathrm{W/m^2}$ | Paderborn: | $\vartheta_{PB} = 2{,}1\,\mathrm{°C}$ |
-| Albedo (Winter): | $\rho_p = 0{,}4$ | Goose Bay: | $\vartheta_{GB} = -17{,}6\,\mathrm{°C}$ |
-| Atmosphäre: | $\varepsilon_A = 0{,}78$ | | |
+| Sonne am Oberrand: | $\dot{q}_\mathrm{S} = 93\,\mathrm{W/m^2}$ | Paderborn: | $\vartheta_{\mathrm{PB}} = 2{,}1\,\mathrm{°C}$ |
+| Albedo (Winter): | $\rho_\mathrm{p} = 0{,}4$ | Goose Bay: | $\vartheta_{\mathrm{GB}} = -17{,}6\,\mathrm{°C}$ |
+| Atmosphäre: | $\varepsilon_\mathrm{A} = 0{,}78$ | | |
 | | | | |
 | ***Deckschicht:*** | | | |
 | Tiefe im Winter: | $h = 100\,\mathrm{m}$ bis $350\,\mathrm{m}$ | | |
@@ -48,30 +48,30 @@ Die Stefan-Boltzmann-Konstante ${\sigma = 5{,}6705\cdot 10^{-8}\,\mathrm{W/(m^2\
 **Aufgabenstellung:**
 
 a) Zeichnen Sie in Abb. 2 den Bilanzraum „Atlantik nördlich von 26,5°\ N“ ein. Rechnen Sie den Volumenstrom der AMOC in $\mathrm{m^3/s}$ und den Massenstrom in $\mathrm{kg/s}$ um. Warum muss in der Tiefe genauso viel Wasser nach Süden fließen, wie oben nach Norden strömt? Prüfen Sie die Angabe „etwa 80 Amazonas-Ströme“.\
-   $\dot{V} = 1{,}7\cdot 10^{7}\,\mathrm{m^3/s}$, $\quad\dot{m} = 1{,}74\cdot 10^{10}\,\mathrm{kg/s}$, $\quad\dot{V}/\dot{V}_A = 82{,}5$
+   $\dot{V} = 1{,}7\cdot 10^{7}\,\mathrm{m^3/s}$, $\quad\dot{m} = 1{,}74\cdot 10^{10}\,\mathrm{kg/s}$, $\quad\dot{V}/\dot{V}_\mathrm{A} = 82{,}5$
 
-b) Berechnen Sie den Wärmekapazitätsstrom ${\dot{C} = \dot{m}\,c_{p,M}}$ und die mittlere Temperaturdifferenz $\Delta T$ zwischen Hin- und Rückstrom, die $\dot{Q}_{AMOC}$ erklärt. Passt sie zu $\vartheta_w$ und $\vartheta_k$? Der Golfstrom führt nahe 60°\ W mindestens $\dot{V}_G$. Warum folgt daraus kein neunmal so großer Wärmestrom nach Norden?\
-   $\dot{C} = 69{,}5\,\mathrm{TW/K}$, $\quad\Delta T = 17{,}3\,\mathrm{K}$, $\quad\dot{C}\,(\vartheta_w - \vartheta_k) = 1{,}18\,\mathrm{PW}$
+b) Berechnen Sie den Wärmekapazitätsstrom ${\dot{C} = \dot{m}\,c_{p,\mathrm{M}}}$ und die mittlere Temperaturdifferenz $\Delta T$ zwischen Hin- und Rückstrom, die $\dot{Q}_{\mathrm{AMOC}}$ erklärt. Passt sie zu $\vartheta_\mathrm{w}$ und $\vartheta_\mathrm{k}$? Der Golfstrom führt nahe 60°\ W mindestens $\dot{V}_\mathrm{G}$. Warum folgt daraus kein neunmal so großer Wärmestrom nach Norden?\
+   $\dot{C} = 69{,}5\,\mathrm{TW/K}$, $\quad\Delta T = 17{,}3\,\mathrm{K}$, $\quad\dot{C}\,(\vartheta_\mathrm{w} - \vartheta_\mathrm{k}) = 1{,}18\,\mathrm{PW}$
 
-c) Nehmen Sie an, der ganze Wärmestrom $\dot{Q}_{AMOC}$ geht zwischen 40° und 70°\ N an die Luft. Welche Wärmestromdichte ergibt sich, wenn sich die Wärme auf den ganzen Breitengürtel verteilt ($A_G$), und welche, wenn sie nur dem Viertel über Nordatlantik und Europa zugutekommt ($A_V$, 50°\ W bis 40°\ O)?\
-   $\dot{q}_G = 15{,}8\,\mathrm{W/m^2}$, $\quad\dot{q}_V = 63{,}2\,\mathrm{W/m^2}$
+c) Nehmen Sie an, der ganze Wärmestrom $\dot{Q}_{\mathrm{AMOC}}$ geht zwischen 40° und 70°\ N an die Luft. Welche Wärmestromdichte ergibt sich, wenn sich die Wärme auf den ganzen Breitengürtel verteilt ($A_\mathrm{G}$), und welche, wenn sie nur dem Viertel über Nordatlantik und Europa zugutekommt ($A_\mathrm{V}$, 50°\ W bis 40°\ O)?\
+   $\dot{q}_\mathrm{G} = 15{,}8\,\mathrm{W/m^2}$, $\quad\dot{q}_\mathrm{V} = 63{,}2\,\mathrm{W/m^2}$
 
-d) Wie kalt wäre Paderborn im Januar ohne jede Wärmezufuhr außer der Sonne? Stellen Sie die stationäre Strahlungsbilanz der Oberfläche auf, (1) ohne Atmosphäre und (2) mit dem Schichtmodell aus Tutorium 4, ${T_O = T_e\,\left(2/(2 - \varepsilon_A)\right)^{1/4}}$.\
-   Zu (1): $\dot{q}_{abs} = 55{,}8\,\mathrm{W/m^2}$, $\quad\vartheta_e = -96{,}0\,\mathrm{°C}$; zu (2): $\vartheta_O = -72{,}7\,\mathrm{°C}$
+d) Wie kalt wäre Paderborn im Januar ohne jede Wärmezufuhr außer der Sonne? Stellen Sie die stationäre Strahlungsbilanz der Oberfläche auf, (1) ohne Atmosphäre und (2) mit dem Schichtmodell aus Tutorium 4, ${T_\mathrm{O} = T_\mathrm{e}\,\left(2/(2 - \varepsilon_\mathrm{A})\right)^{1/4}}$.\
+   Zu (1): $\dot{q}_{\mathrm{abs}} = 55{,}8\,\mathrm{W/m^2}$, $\quad\vartheta_\mathrm{e} = -96{,}0\,\mathrm{°C}$; zu (2): $\vartheta_\mathrm{O} = -72{,}7\,\mathrm{°C}$
 
-e) Welche Wärmestromdichte $\dot{q}_{zu}$ muss im Januar zusätzlich ankommen, damit es in Paderborn $\vartheta_{PB}$ warm ist? Die Abstrahlung nach dem Schichtmodell ist $\sigma\,(1 - \varepsilon_A/2)\,T^4$. Welchen Anteil kann die AMOC nach c) höchstens liefern? Wie stark hängt das Ergebnis von der Albedo ab (0,3 oder 0,5 statt 0,4)?\
-   Abstrahlung $198{,}5\,\mathrm{W/m^2}$, $\quad\dot{q}_{zu} = 142{,}7\,\mathrm{W/m^2}$, AMOC-Anteil $11\,\%$ bis $44\,\%$\
-   Mit $\rho_p = 0{,}3$ bzw. $0{,}5$: $\dot{q}_{zu} = 133{,}4$ bzw. $152{,}0\,\mathrm{W/m^2}$, Anteil $10$ bis $47\,\%$
+e) Welche Wärmestromdichte $\dot{q}_{\mathrm{zu}}$ muss im Januar zusätzlich ankommen, damit es in Paderborn $\vartheta_{\mathrm{PB}}$ warm ist? Die Abstrahlung nach dem Schichtmodell ist $\sigma\,(1 - \varepsilon_\mathrm{A}/2)\,T^4$. Welchen Anteil kann die AMOC nach c) höchstens liefern? Wie stark hängt das Ergebnis von der Albedo ab (0,3 oder 0,5 statt 0,4)?\
+   Abstrahlung $198{,}5\,\mathrm{W/m^2}$, $\quad\dot{q}_{\mathrm{zu}} = 142{,}7\,\mathrm{W/m^2}$, AMOC-Anteil $11\,\%$ bis $44\,\%$\
+   Mit $\rho_\mathrm{p} = 0{,}3$ bzw. $0{,}5$: $\dot{q}_{\mathrm{zu}} = 133{,}4$ bzw. $152{,}0\,\mathrm{W/m^2}$, Anteil $10$ bis $47\,\%$
 
 f) Seager et al. (2002) schätzen für den Winter nördlich von 35°\ N im Mittel: 54\ W/m² bringt die Atmosphäre, 11\ W/m² der Wärmetransport im Ozean, und 53\ W/m² gibt der Ozean aus seinem Sommerspeicher ab. Passt das zu d) und e)? Welche Annahme aus c) ist am fragwürdigsten?\
    Summe nach Seager et al.: $118\,\mathrm{W/m^2}$
 
-g) Linearisieren Sie die Abstrahlung wie in Tutorium 4: Ändert sich die Temperatur um $\Delta T$, ändert sich die Abstrahlung um $\alpha_S\,\Delta T$ mit ${\alpha_S = 4\sigma T^3\,(1 - \varepsilon_A/2)}$, ausgewertet bei $\vartheta_{PB}$. Im neuen Gleichgewicht gilt ${\alpha_S\,\Delta T = \Delta\dot{q}_{AMOC}}$, die Änderung der Wärmezufuhr durch die AMOC. (1) Wie viele Kelvin Erwärmung entsprechen der ganzen AMOC-Wärme aus c)? Kann sie den Unterschied zu Goose Bay erklären? Beachten Sie, wo Goose Bay liegt (60,4°\ W): im Gürtel, aber außerhalb des Viertels. (2) Die AMOC transportiert 20\ % weniger Wärme. Um wie viel ändert sich die Januartemperatur in Paderborn im neuen Gleichgewicht?\
-   $\alpha_S = 2{,}89\,\mathrm{W/(m^2\,K)}$; zu (1): $\Delta T_G = 5{,}5\,\mathrm{K}$, $\quad\Delta T_V = 21{,}9\,\mathrm{K}$\
-   Zu (2): $\Delta\dot{q}_G = -3{,}2\,\mathrm{W/m^2}$, $\quad\Delta\dot{q}_V = -12{,}6\,\mathrm{W/m^2}$\
-   $\Delta T_G = -1{,}1\,\mathrm{K}$, $\quad\Delta T_V = -4{,}4\,\mathrm{K}$
+g) Linearisieren Sie die Abstrahlung wie in Tutorium 4: Ändert sich die Temperatur um $\Delta T$, ändert sich die Abstrahlung um $\alpha_\mathrm{S}\,\Delta T$ mit ${\alpha_\mathrm{S} = 4\sigma T^3\,(1 - \varepsilon_\mathrm{A}/2)}$, ausgewertet bei $\vartheta_{\mathrm{PB}}$. Im neuen Gleichgewicht gilt ${\alpha_\mathrm{S}\,\Delta T = \Delta\dot{q}_{\mathrm{AMOC}}}$, die Änderung der Wärmezufuhr durch die AMOC. (1) Wie viele Kelvin Erwärmung entsprechen der ganzen AMOC-Wärme aus c)? Kann sie den Unterschied zu Goose Bay erklären? Beachten Sie, wo Goose Bay liegt (60,4°\ W): im Gürtel, aber außerhalb des Viertels. (2) Die AMOC transportiert 20\ % weniger Wärme. Um wie viel ändert sich die Januartemperatur in Paderborn im neuen Gleichgewicht?\
+   $\alpha_\mathrm{S} = 2{,}89\,\mathrm{W/(m^2\,K)}$; zu (1): $\Delta T_\mathrm{G} = 5{,}5\,\mathrm{K}$, $\quad\Delta T_\mathrm{V} = 21{,}9\,\mathrm{K}$\
+   Zu (2): $\Delta\dot{q}_\mathrm{G} = -3{,}2\,\mathrm{W/m^2}$, $\quad\Delta\dot{q}_\mathrm{V} = -12{,}6\,\mathrm{W/m^2}$\
+   $\Delta T_\mathrm{G} = -1{,}1\,\mathrm{K}$, $\quad\Delta T_\mathrm{V} = -4{,}4\,\mathrm{K}$
 
-h) Wie schnell stellt sich das neue Gleichgewicht ein? Die Deckschicht des Ozeans (Tiefe $h$) wird als ideal durchmischter Speicher mit der Wärmekapazität ${C = \rho_M\,c_{p,M}\,h}$ je Quadratmeter behandelt: ${C\,\mathrm{d}\Delta T/\mathrm{d}t = \Delta\dot{q}_{AMOC} - \alpha_S\,\Delta T}$ mit $\Delta\dot{q}_{AMOC}$ aus g) (negativ, weil die Zufuhr sinkt). Lösen Sie die Gleichung für ${\Delta T(t = 0) = 0}$ und bestimmen Sie die Zeitkonstante ${\tau = C/\alpha_S}$ für 100\ m und 350\ m. Welcher Anteil der Abkühlung ist nach 10\ Jahren erreicht? Warum darf man der Deckschicht eine einzige Temperatur geben?\
+h) Wie schnell stellt sich das neue Gleichgewicht ein? Die Deckschicht des Ozeans (Tiefe $h$) wird als ideal durchmischter Speicher mit der Wärmekapazität ${C = \rho_\mathrm{M}\,c_{p,\mathrm{M}}\,h}$ je Quadratmeter behandelt: ${C\,\mathrm{d}\Delta T/\mathrm{d}t = \Delta\dot{q}_{\mathrm{AMOC}} - \alpha_\mathrm{S}\,\Delta T}$ mit $\Delta\dot{q}_{\mathrm{AMOC}}$ aus g) (negativ, weil die Zufuhr sinkt). Lösen Sie die Gleichung für ${\Delta T(t = 0) = 0}$ und bestimmen Sie die Zeitkonstante ${\tau = C/\alpha_\mathrm{S}}$ für 100\ m und 350\ m. Welcher Anteil der Abkühlung ist nach 10\ Jahren erreicht? Warum darf man der Deckschicht eine einzige Temperatur geben?\
    Für $h = 100\,\mathrm{m}$: $C = 4{,}09\cdot 10^{8}\,\mathrm{J/(m^2\,K)}$, $\quad\tau = 4{,}5\,\mathrm{Jahre}$, nach 10\ Jahren $89\,\%$\
    Für $h = 350\,\mathrm{m}$: $C = 1{,}43\cdot 10^{9}\,\mathrm{J/(m^2\,K)}$, $\quad\tau = 15{,}7\,\mathrm{Jahre}$, nach 10\ Jahren $47\,\%$
 
@@ -99,22 +99,22 @@ Dasselbe Modell steckt in den letzten Teilen von Aufgabe 2 (g und h); die beiden
 
 - Die Deckschicht wird als ideal durchmischt angenommen.
 - Ein Wärmeaustausch mit der Tiefsee wird bis Teil f vernachlässigt.
-- Die zusätzliche Strahlungsflussdichte $\dot{q}_F$ setzt bei ${t = 0}$ ein und bleibt danach konstant.
-- Die zusätzliche Wärmeabgabe nach oben ist proportional zur Erwärmung: ${\dot{q}_{ab} = \alpha_{eff}\,\Delta T}$.
+- Die zusätzliche Strahlungsflussdichte $\dot{q}_\mathrm{F}$ setzt bei ${t = 0}$ ein und bleibt danach konstant.
+- Die zusätzliche Wärmeabgabe nach oben ist proportional zur Erwärmung: ${\dot{q}_{\mathrm{ab}} = \alpha_{\mathrm{eff}}\,\Delta T}$.
 - Die Stoffdaten sind unabhängig von der Temperatur.
 
 ***Gegebene Größen:***
 
 | ***Deckschicht:*** | | ***Wärmeströme:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Tiefe: | $h = 70\,\mathrm{m}$ | Zufuhr: | $\dot{q}_F = 3{,}93\,\mathrm{W/m^2}$ |
-| Dichte: | $\rho_M = 1025\,\mathrm{kg/m^3}$ | Abgabe nach oben: | $\alpha_{eff} = 1{,}3\,\mathrm{W/(m^2\,K)}$ |
-| Spez. Wärmekapazität: | $c_{p,M} = 3990\,\mathrm{J/(kg\,K)}$ | Abgabe an Tiefsee: | $\gamma = 0{,}7\,\mathrm{W/(m^2\,K)}$ |
-| Wärmeleitfähigkeit: | $\lambda_M = 0{,}6\,\mathrm{W/(m\,K)}$ | | |
+| Tiefe: | $h = 70\,\mathrm{m}$ | Zufuhr: | $\dot{q}_\mathrm{F} = 3{,}93\,\mathrm{W/m^2}$ |
+| Dichte: | $\rho_\mathrm{M} = 1025\,\mathrm{kg/m^3}$ | Abgabe nach oben: | $\alpha_{\mathrm{eff}} = 1{,}3\,\mathrm{W/(m^2\,K)}$ |
+| Spez. Wärmekapazität: | $c_{p,\mathrm{M}} = 3990\,\mathrm{J/(kg\,K)}$ | Abgabe an Tiefsee: | $\gamma = 0{,}7\,\mathrm{W/(m^2\,K)}$ |
+| Wärmeleitfähigkeit: | $\lambda_\mathrm{M} = 0{,}6\,\mathrm{W/(m\,K)}$ | | |
 | | | | |
 | ***Boden an Land:*** | | ***Tutorium 4:*** | |
-| Tiefe: | $h_B = 2\,\mathrm{m}$ | Erde: | $T_e = 254{,}6\,\mathrm{K}$ |
-| Wärmekapazität: | $\rho_B c_B = 2{,}2\,\mathrm{MJ/(m^3\,K)}$ | | |
+| Tiefe: | $h_\mathrm{B} = 2\,\mathrm{m}$ | Erde: | $T_\mathrm{e} = 254{,}6\,\mathrm{K}$ |
+| Wärmekapazität: | $\rho_\mathrm{B} c_\mathrm{B} = 2{,}2\,\mathrm{MJ/(m^3\,K)}$ | | |
 
 Die Stefan-Boltzmann-Konstante ${\sigma = 5{,}6705\cdot 10^{-8}\,\mathrm{W/(m^2\,K^4)}}$ ist hier gegeben (nicht in der Formelsammlung).
 
@@ -124,18 +124,18 @@ a) Zeichnen Sie in Abb. 3 den Bilanzraum ein: eine Wassersäule der Deckschicht 
 
 b) Was bedeutet „ideal durchmischt“ für die Temperatur in der Deckschicht? Warum prüft man bei einem Festkörper stattdessen die Biot-Zahl?
 
-c) Berechnen Sie die Wärmekapazität der Deckschicht je Quadratmeter, ${C = \rho_M\,c_{p,M}\,h}$, und vergleichen Sie mit der Bodenschicht an Land.\
-   $C = 2{,}86\cdot 10^{8}\,\mathrm{J/(m^2\,K)}$, $\quad C_B = 4{,}4\cdot 10^{6}\,\mathrm{J/(m^2\,K)}$, $\quad C/C_B = 65$
+c) Berechnen Sie die Wärmekapazität der Deckschicht je Quadratmeter, ${C = \rho_\mathrm{M}\,c_{p,\mathrm{M}}\,h}$, und vergleichen Sie mit der Bodenschicht an Land.\
+   $C = 2{,}86\cdot 10^{8}\,\mathrm{J/(m^2\,K)}$, $\quad C_\mathrm{B} = 4{,}4\cdot 10^{6}\,\mathrm{J/(m^2\,K)}$, $\quad C/C_\mathrm{B} = 65$
 
 d) Stellen Sie die instationäre Energiebilanz für die Erwärmung $\Delta T(t)$ der Deckschicht auf und benennen Sie die Terme (Speicherung, Zufuhr, Abgabe).\
-   $C\,\frac{\mathrm{d}\Delta T}{\mathrm{d}t} = \dot{q}_F - \alpha_{eff}\,\Delta T$
+   $C\,\frac{\mathrm{d}\Delta T}{\mathrm{d}t} = \dot{q}_\mathrm{F} - \alpha_{\mathrm{eff}}\,\Delta T$
 
 e) Lösen Sie die Differentialgleichung durch Trennung der Variablen für ${\Delta T(t = 0) = 0}$. Bestimmen Sie die Zeitkonstante $\tau$, die Erwärmung nach 10\ Jahren und den Endwert $\Delta T_\infty$.\
-   $\Delta T(t) = \frac{\dot{q}_F}{\alpha_{eff}}\left(1 - \exp\left(-\frac{t}{\tau}\right)\right)$ mit $\tau = \frac{C}{\alpha_{eff}}$\
+   $\Delta T(t) = \frac{\dot{q}_\mathrm{F}}{\alpha_{\mathrm{eff}}}\left(1 - \exp\left(-\frac{t}{\tau}\right)\right)$ mit $\tau = \frac{C}{\alpha_{\mathrm{eff}}}$\
    $\tau = 6{,}98\,\mathrm{Jahre}$, $\quad\Delta T(10\,\mathrm{Jahre}) = 2{,}30\,\mathrm{K}$, $\quad\Delta T_\infty = 3{,}02\,\mathrm{K}$
 
-f) Prüfen Sie Ihr Ergebnis: (1) Welche Einheit hat $\tau$? (2) Was ergibt sich für ${t \to 0}$ und für ${t \to \infty}$? (3) Gäbe die Erde die zusätzliche Wärme nur durch Abstrahlung ab, wäre ${\alpha_S = 4\sigma T_e^3}$ mit der Emissionstemperatur $T_e$ der Erde (Linearisierung aus Tutorium 4). Wie ändern sich $\tau$ und $\Delta T_\infty$?\
-   Zu (3): $\alpha_S = 3{,}74\,\mathrm{W/(m^2\,K)}$, $\quad\tau = 2{,}42\,\mathrm{Jahre}$, $\quad\Delta T_\infty = 1{,}05\,\mathrm{K}$
+f) Prüfen Sie Ihr Ergebnis: (1) Welche Einheit hat $\tau$? (2) Was ergibt sich für ${t \to 0}$ und für ${t \to \infty}$? (3) Gäbe die Erde die zusätzliche Wärme nur durch Abstrahlung ab, wäre ${\alpha_\mathrm{S} = 4\sigma T_\mathrm{e}^3}$ mit der Emissionstemperatur $T_\mathrm{e}$ der Erde (Linearisierung aus Tutorium 4). Wie ändern sich $\tau$ und $\Delta T_\infty$?\
+   Zu (3): $\alpha_\mathrm{S} = 3{,}74\,\mathrm{W/(m^2\,K)}$, $\quad\tau = 2{,}42\,\mathrm{Jahre}$, $\quad\Delta T_\infty = 1{,}05\,\mathrm{K}$
 
 g) Prüfen Sie zwei Annahmen: (1) Wie lange bräuchte die Wärme, um allein durch Wärmeleitung 70\ m tief vorzudringen (${t \approx h^2/a}$)? Was mischt die Deckschicht stattdessen? (2) Die Tiefsee nimmt als zweiter, langsamer Speicher zusätzlich $\gamma\,\Delta T$ auf. Wie ändern sich $\tau$ und $\Delta T_\infty$?\
    Zu (1): $a = 1{,}47\cdot 10^{-7}\,\mathrm{m^2/s}$, $\quad t \approx 1{,}1\cdot 10^{3}\,\mathrm{Jahre}$\
@@ -166,32 +166,32 @@ Sie stehen in Paderborn an der Pader, die mit rund 4\ km als kürzester Fluss De
 
 | ***Mittlere Abflüsse:*** | | ***Amazonas:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Pader: | $\dot{V}_P = 5\,\mathrm{m^3/s}$ | Abfluss: | $\dot{V}_A = 206\,000\,\mathrm{m^3/s}$ |
-| Weser: | $\dot{V}_W = 313\,\mathrm{m^3/s}$ | Unterlauf: | $\vartheta_A = 27{,}5$ bis $28{,}5\,\mathrm{°C}$ |
-| Rhein: | $\dot{V}_R = 2260\,\mathrm{m^3/s}$ | Flussfahne: | $\vartheta_F = 28{,}5\,\mathrm{°C}$ |
-| Alle Flüsse: | $\dot{V}_{Fl} = 1{,}18\,\mathrm{Sv}$ | Beckenfläche: | $A_B = 6\cdot 10^{12}\,\mathrm{m^2}$ |
-| AMOC: | $\dot{V}_{AMOC} = 17\,\mathrm{Sv}$ | Niederschlag: | $N = 2200\,\mathrm{mm/a}$ |
+| Pader: | $\dot{V}_\mathrm{P} = 5\,\mathrm{m^3/s}$ | Abfluss: | $\dot{V}_\mathrm{A} = 206\,000\,\mathrm{m^3/s}$ |
+| Weser: | $\dot{V}_\mathrm{W} = 313\,\mathrm{m^3/s}$ | Unterlauf: | $\vartheta_\mathrm{A} = 27{,}5$ bis $28{,}5\,\mathrm{°C}$ |
+| Rhein: | $\dot{V}_\mathrm{R} = 2260\,\mathrm{m^3/s}$ | Flussfahne: | $\vartheta_\mathrm{F} = 28{,}5\,\mathrm{°C}$ |
+| Alle Flüsse: | $\dot{V}_{\mathrm{Fl}} = 1{,}18\,\mathrm{Sv}$ | Beckenfläche: | $A_\mathrm{B} = 6\cdot 10^{12}\,\mathrm{m^2}$ |
+| AMOC: | $\dot{V}_{\mathrm{AMOC}} = 17\,\mathrm{Sv}$ | Niederschlag: | $N = 2200\,\mathrm{mm/a}$ |
 | | | | |
 | ***Süßwasser:*** | | ***Energieumsatz:*** | |
-| Dichte: | $\rho_W = 1000\,\mathrm{kg/m^3}$ | Menschheit: | $\dot{Q}_{M} = 19\,\mathrm{TW}$ |
-| Spez. Wärmekapazität: | $c_{p,W} = 4180\,\mathrm{J/(kg\,K)}$ | | |
-| Verdampfung: | $\Delta h_v = 2{,}43\,\mathrm{MJ/kg}$ | | |
+| Dichte: | $\rho_\mathrm{W} = 1000\,\mathrm{kg/m^3}$ | Menschheit: | $\dot{Q}_{\mathrm{M}} = 19\,\mathrm{TW}$ |
+| Spez. Wärmekapazität: | $c_{p,\mathrm{W}} = 4180\,\mathrm{J/(kg\,K)}$ | | |
+| Verdampfung: | $\Delta h_\mathrm{v} = 2{,}43\,\mathrm{MJ/kg}$ | | |
 
 **Aufgabenstellung:**
 
 a) Rechnen Sie die Abflüsse von Pader, Weser, Rhein und Amazonas in Sverdrup um und ordnen Sie alle Ströme der Tabelle der Größe nach. Wie viele Rheine ergeben einen Amazonas, wie viele Amazonas-Ströme die AMOC?\
    Pader $5\cdot 10^{-6}\,\mathrm{Sv}$, Weser $3{,}13\cdot 10^{-4}\,\mathrm{Sv}$, Rhein $2{,}26\cdot 10^{-3}\,\mathrm{Sv}$, Amazonas $0{,}206\,\mathrm{Sv}$\
-   $\dot{V}_A/\dot{V}_R = 91$, $\quad\dot{V}_{AMOC}/\dot{V}_A = 82{,}5$
+   $\dot{V}_\mathrm{A}/\dot{V}_\mathrm{R} = 91$, $\quad\dot{V}_{\mathrm{AMOC}}/\dot{V}_\mathrm{A} = 82{,}5$
 
-b) Berechnen Sie den Wärmekapazitätsstrom $\dot{C}_A$ des Amazonas. Wie groß ist der Wärmestrom zwischen Fluss und Meer höchstens, und in welche Richtung fließt er? Um wie viel müsste der Fluss wärmer sein als das Meer, um den Energieumsatz der Menschheit abzugeben?\
-   $\dot{C}_A = 0{,}861\,\mathrm{TW/K}$, $\quad|\dot{Q}| \leq 0{,}861\,\mathrm{TW}$, $\quad\Delta T = 22{,}1\,\mathrm{K}$
+b) Berechnen Sie den Wärmekapazitätsstrom $\dot{C}_\mathrm{A}$ des Amazonas. Wie groß ist der Wärmestrom zwischen Fluss und Meer höchstens, und in welche Richtung fließt er? Um wie viel müsste der Fluss wärmer sein als das Meer, um den Energieumsatz der Menschheit abzugeben?\
+   $\dot{C}_\mathrm{A} = 0{,}861\,\mathrm{TW/K}$, $\quad|\dot{Q}| \leq 0{,}861\,\mathrm{TW}$, $\quad\Delta T = 22{,}1\,\mathrm{K}$
 
 c) Stellen Sie die stationäre Massenbilanz des Beckens auf (Niederschlag gleich Abfluss plus Verdunstung). Wie viel Wasser verdunstet, in Sverdrup und in Millimetern pro Jahr? Vergleichen Sie mit dem Abfluss und mit dem Messwert $1083 \pm 37\,\mathrm{mm/a}$ (Baker et al., 2021).\
-   $\dot{V}_N = 0{,}418\,\mathrm{Sv}$, $\quad\dot{V}_V = 0{,}212\,\mathrm{Sv}$, $\quad 1117\,\mathrm{mm/a}$, Abweichung $3\,\%$
+   $\dot{V}_\mathrm{N} = 0{,}418\,\mathrm{Sv}$, $\quad\dot{V}_\mathrm{V} = 0{,}212\,\mathrm{Sv}$, $\quad 1117\,\mathrm{mm/a}$, Abweichung $3\,\%$
 
 d) Welche Wärmestromdichte steckt in dieser Verdunstung? Vergleichen Sie den Wärmestrom des ganzen Beckens mit b) und mit dem Energieumsatz der Menschheit, die Wärmestromdichte mit der gemessenen Nettostrahlung des Waldes von 117 bis 153\ W/m² (da Rocha et al., 2009). Erklären Sie in zwei Sätzen, warum gerodete Flächen wärmer werden.\
-   $\dot{q}_V = 86\,\mathrm{W/m^2}$, $\quad\dot{Q}_V = 516\,\mathrm{TW}$, Anteil an der Nettostrahlung $56$ bis $73\,\%$\
-   $\dot{Q}_V/|\dot{Q}| = 599$, $\quad\dot{Q}_V/\dot{Q}_M = 27$
+   $\dot{q}_\mathrm{V} = 86\,\mathrm{W/m^2}$, $\quad\dot{Q}_\mathrm{V} = 516\,\mathrm{TW}$, Anteil an der Nettostrahlung $56$ bis $73\,\%$\
+   $\dot{Q}_\mathrm{V}/|\dot{Q}| = 599$, $\quad\dot{Q}_\mathrm{V}/\dot{Q}_\mathrm{M} = 27$
 
 ## Zusatzaufgaben
 
@@ -202,15 +202,15 @@ Ein Kraftwerk gibt im Hitzesommer ${\dot{Q} = 2\,\mathrm{GW}}$ Abwärme an einen
 a) Stellen Sie die Massenbilanz und die stationäre Energiebilanz für den Flussabschnitt am Kraftwerk auf. Um wie viel erwärmt sich der Fluss?\
    $\Delta T = 2{,}39\,\mathrm{K}$
 
-b) Vor dem Kraftwerk ist der Fluss schon ${\vartheta_{ein} = 26\,\mathrm{°C}}$ warm. Wie warm ist er hinter dem Kraftwerk? Was bedeutet das für Fische und andere Lebewesen im Fluss und für den Betrieb des Kraftwerks?\
-   $\vartheta_{aus} = 28{,}39\,\mathrm{°C}$
+b) Vor dem Kraftwerk ist der Fluss schon ${\vartheta_{\mathrm{ein}} = 26\,\mathrm{°C}}$ warm. Wie warm ist er hinter dem Kraftwerk? Was bedeutet das für Fische und andere Lebewesen im Fluss und für den Betrieb des Kraftwerks?\
+   $\vartheta_{\mathrm{aus}} = 28{,}39\,\mathrm{°C}$
 
 **[Zusatzaufgabe 2]{.underline}** (neu): Eisberg
 
-Ein Tafeleisberg mit quadratischer Grundfläche von $1\,\mathrm{km}$ Kantenlänge und der Dicke ${H = 250\,\mathrm{m}}$ treibt im Meer; sein Tiefgang beträgt ${h_T = 224\,\mathrm{m}}$. Das Meerwasser ist 2 bis 3\ K wärmer als die Eisoberfläche, der Wärmeübergangskoeffizient beträgt ${\alpha = 20}$ bis $50\,\mathrm{W/(m^2\,K)}$. Das Eis hat überall seine Schmelztemperatur (${\rho_E = 917\,\mathrm{kg/m^3}}$, ${\Delta h_s = 333{,}5\,\mathrm{kJ/kg}}$). Wärme nimmt der Eisberg nur über die Unterseite und die Seitenflächen unter Wasser auf.
+Ein Tafeleisberg mit quadratischer Grundfläche von $1\,\mathrm{km}$ Kantenlänge und der Dicke ${H = 250\,\mathrm{m}}$ treibt im Meer; sein Tiefgang beträgt ${h_\mathrm{T} = 224\,\mathrm{m}}$. Das Meerwasser ist 2 bis 3\ K wärmer als die Eisoberfläche, der Wärmeübergangskoeffizient beträgt ${\alpha = 20}$ bis $50\,\mathrm{W/(m^2\,K)}$. Das Eis hat überall seine Schmelztemperatur (${\rho_\mathrm{E} = 917\,\mathrm{kg/m^3}}$, ${\Delta h_\mathrm{s} = 333{,}5\,\mathrm{kJ/kg}}$). Wärme nimmt der Eisberg nur über die Unterseite und die Seitenflächen unter Wasser auf.
 
 a) Berechnen Sie die Masse des Eisbergs und die Wärme, die zum vollständigen Schmelzen nötig ist.\
-   $m_E = 2{,}29\cdot 10^{11}\,\mathrm{kg}$, $\quad Q = 7{,}65\cdot 10^{16}\,\mathrm{J}$
+   $m_\mathrm{E} = 2{,}29\cdot 10^{11}\,\mathrm{kg}$, $\quad Q = 7{,}65\cdot 10^{16}\,\mathrm{J}$
 
 b) Stellen Sie die instationäre Energiebilanz für den Eisberg auf: Die zugeführte Wärme schmilzt Eis. Wie lange dauert das Schmelzen, wenn die Fläche unter Wasser gleich bleibt? Rechnen Sie mit dem kleinsten (${\alpha = 20\,\mathrm{W/(m^2\,K)}}$, 2\ K) und mit dem größten Wärmestrom (${\alpha = 50\,\mathrm{W/(m^2\,K)}}$, 3\ K).\
    $A = 1{,}90\cdot 10^{6}\,\mathrm{m^2}$, $\quad\dot{Q} = 75{,}8$ bis $284\,\mathrm{MW}$, $\quad t = 31{,}9\,\mathrm{Jahre}$ bzw. $8{,}5\,\mathrm{Jahre}$

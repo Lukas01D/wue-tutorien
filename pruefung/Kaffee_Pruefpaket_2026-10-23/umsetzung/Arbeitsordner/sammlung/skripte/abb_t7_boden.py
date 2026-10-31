@@ -69,7 +69,7 @@ for (y, _), lab in zip(tiefen, labels):
 
 # Beschriftung der oberen Welle: T_m, Amplitude, Periodendauer
 y0 = tiefen[0][0]
-text(ax, px0 - 0.1, y0 + 0.02, r"$T_m$", fs=9.5, ha="right", va="bottom", farbe=GRAU)
+text(ax, px0 - 0.1, y0 + 0.02, r"$T_\mathrm{m}$", fs=9.5, ha="right", va="bottom", farbe=GRAU)
 x_max2 = px0 + 0.2 + (px1 - px0 - 0.5) * (2 * math.pi) / (perioden * 2 * math.pi)
 masslinie(ax, (x_max2, y0), (x_max2, y0 + amp0), "")
 text(ax, x_max2 + 0.12, y0 + 0.17, r"$\Delta T_0$", fs=9.5, ha="left", farbe=GRAU)

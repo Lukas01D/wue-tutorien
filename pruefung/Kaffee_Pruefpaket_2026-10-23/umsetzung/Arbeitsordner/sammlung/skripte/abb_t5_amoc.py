@@ -32,15 +32,15 @@ ax.plot([0.5, x(70.0) + 0.3], [Y_OBEN, Y_OBEN], color=KALT, lw=1.2, zorder=2)
 
 # Strömungen
 pfeil(ax, (0.9, 3.4), (x(63.5), 3.4), farbe=WARM, breite=2.0, groesse=13)
-text(ax, x(30), 3.12, r"warmes Oberflächenwasser: $\dot{V}$, $\vartheta_w$", fs=9.5, farbe=WARM, ha="left")
+text(ax, x(30), 3.12, r"warmes Oberflächenwasser: $\dot{V}$, $\vartheta_\mathrm{w}$", fs=9.5, farbe=WARM, ha="left")
 pfeil(ax, (x(64.2), 3.35), (x(64.2), 1.75), farbe=KALT, breite=2.0, groesse=13, connectionstyle="arc3,rad=-0.55")
 text(ax, x(64.2) - 0.2, 2.55, "Absinken", fs=9, farbe=KALT, ha="right")
 pfeil(ax, (x(63.0), 1.55), (0.9, 1.55), farbe=KALT, breite=2.0, groesse=13)
-text(ax, x(30), 1.83, r"kaltes Tiefenwasser: $\dot{V}$, $\vartheta_k$", fs=9.5, farbe=KALT, ha="left")
+text(ax, x(30), 1.83, r"kaltes Tiefenwasser: $\dot{V}$, $\vartheta_\mathrm{k}$", fs=9.5, farbe=KALT, ha="left")
 
 # Messlinie bei 26,5° N
 ax.plot([x(26.5), x(26.5)], [Y_BODEN - 0.22, Y_LUFT - 0.35], color=GRAU, lw=1.0, ls=(0, (4, 3)), zorder=3)
-text(ax, x(26.5), Y_LUFT - 0.1, r"26,5° N: $\dot{V}$ und $\dot{Q}_{AMOC}$", fs=9.5, farbe=LINIE)
+text(ax, x(26.5), Y_LUFT - 0.1, r"26,5° N: $\dot{V}$ und $\dot{Q}_{\mathrm{AMOC}}$", fs=9.5, farbe=LINIE)
 
 # Wärmeabgabe an die Luft zwischen 40° und 70° N
 for phi in (42.0, 46.5, 57.5, 62.0, 66.5):

@@ -13,29 +13,29 @@ y_W, y_E, y_S, y_L = 0.35, 1.75, 4.45, 5.2   # Unterkanten: Meerwasser, Eis, Sch
 
 # Luft (nur Fläche, oben offen)
 ax.add_patch(Rectangle((x0, y_L), b, 1.55, facecolor=LUFT, edgecolor="none", zorder=0))
-text(ax, x0 + 2.0, y_L + 0.85, r"Luft: $\vartheta_u$, $\alpha_a$", fs=10.5)
+text(ax, x0 + 2.0, y_L + 0.85, r"Luft: $\vartheta_\mathrm{u}$, $\alpha_\mathrm{a}$", fs=10.5)
 stroemungspfeil(ax, (x0 + 3.9, y_L + 0.75), (x0 + 5.7, y_L + 0.75), text="Wind", farbe=KALT, fs=9.5)
 
 # Schnee mit Punktraster, Meereis, Meerwasser
 schicht(ax, x0, y_S, b, y_L - y_S, SCHNEE)
 ax.add_patch(Rectangle((x0, y_S), b, y_L - y_S, fill=False, hatch="..", edgecolor=HELLGRAU, linewidth=0, zorder=1))
-text(ax, x0 + 2.4, (y_S + y_L) / 2, r"Schnee: $s_S$, $\lambda_S$", fs=10.5,
+text(ax, x0 + 2.4, (y_S + y_L) / 2, r"Schnee: $s_\mathrm{S}$, $\lambda_\mathrm{S}$", fs=10.5,
      bbox=dict(facecolor=SCHNEE, edgecolor="none", pad=1.0))
-schicht(ax, x0, y_E, b, y_S - y_E, "#DCEAF5", text=r"Meereis: $s_E$, $\lambda_E$", fs=10.5)
+schicht(ax, x0, y_E, b, y_S - y_E, "#DCEAF5", text=r"Meereis: $s_\mathrm{E}$, $\lambda_\mathrm{E}$", fs=10.5)
 ax.texts[-1].set_x(x0 + 2.4)
-schicht(ax, x0, y_W, b, y_E - y_W, MEER, text=r"Meerwasser: $\vartheta_W$", fs=10.5)
+schicht(ax, x0, y_W, b, y_E - y_W, MEER, text=r"Meerwasser: $\vartheta_\mathrm{W}$", fs=10.5)
 ax.texts[-1].set_x(x0 + 2.4)
 
 # Wärmestrom vom Ozean in die Luft
 waermepfeil(ax, (x0 + 6.9, y_W + 0.45), (x0 + 6.9, y_L + 1.25), text=r"$\dot{Q}$", versatz=(0.18, -0.45), fs=11.5)
 
 # Grenzflächentemperaturen rechts
-for y, s in ((y_L, r"$\vartheta_O$ = ?"), (y_S, r"$\vartheta_{SE}$ = ?"), (y_E, r"$\vartheta_W$")):
+for y, s in ((y_L, r"$\vartheta_\mathrm{O}$ = ?"), (y_S, r"$\vartheta_{\mathrm{SE}}$ = ?"), (y_E, r"$\vartheta_\mathrm{W}$")):
     ax.plot([x0 + b, x0 + b + 0.35], [y, y], color=LINIE, linewidth=1.0, zorder=3)
     text(ax, x0 + b + 0.45, y, s, fs=10.5, ha="left")
 
 # Dicken links
-for y1, y2, s in ((y_S, y_L, r"$s_S$"), (y_E, y_S, r"$s_E$")):
+for y1, y2, s in ((y_S, y_L, r"$s_\mathrm{S}$"), (y_E, y_S, r"$s_\mathrm{E}$")):
     pfeil(ax, (x0 - 0.35, y1), (x0 - 0.35, y2), farbe=GRAU, breite=0.9, groesse=7, stil="<|-|>")
     text(ax, x0 - 0.5, (y1 + y2) / 2, s, fs=10.5, farbe=GRAU, ha="right")
 text(ax, x0 + b, 0.08, "nicht maßstäblich", fs=8.5, farbe=GRAU, ha="right")

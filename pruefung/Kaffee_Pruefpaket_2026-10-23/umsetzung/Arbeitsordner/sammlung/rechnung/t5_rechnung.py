@@ -15,6 +15,9 @@ Aufruf: python3 t5_rechnung.py
 """
 import math
 import os
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "build"))
+from indizes_aufrecht import ohne_mathrm   # Schreibweise prüfen unabhängig davon, ob Indizes aufrecht oder kursiv stehen
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 SAMMLUNG = os.path.dirname(HIER)
@@ -261,9 +264,9 @@ def pruefe_markdown():
     if not os.path.exists(MD):
         return ["(teile/t5b_ozean.md fehlt noch)"]
     with open(MD, encoding="utf-8") as f:
-        text = f.read()
+        text = ohne_mathrm(f.read())
     return [f"fehlt im Markdown: {name}: {anzeige}" for _, name, _, _, anzeige in zeilen
-            if name is not None and anzeige is not None and anzeige not in text]
+            if name is not None and anzeige is not None and ohne_mathrm(anzeige) not in text]
 
 
 if __name__ == "__main__":
