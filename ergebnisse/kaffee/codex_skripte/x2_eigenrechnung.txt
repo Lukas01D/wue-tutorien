@@ -1,0 +1,121 @@
+X2-Eigenrechnung: unabhaengige Ableitung aus Aufgabedaten
+Einheiten intern: kg, J, s, W; Temperaturdifferenzen in K.
+Stellen beziehen sich auf Kaffee_Loesung.md des Pruefstands 560b8d4.
+
+OK | 104 | m_K | 0.20000000  | Text 0.2, Toleranz 0.0005
+OK | 104 | m_M | 0.03090000  | Text 0.0309, Toleranz 5e-05
+OK | 106 | C_K | 836.00000000  | Text 836, Toleranz 0.05
+OK | 106 | C_M | 121.74600000  | Text 121.7, Toleranz 0.05
+OK | 125 | C_G | 957.74600000  | Text 957.7, Toleranz 0.05
+OK | 125 | T_K0 | 353.15000000  | Text 353.15, Toleranz 0.005
+OK | 125 | T_M | 278.15000000  | Text 278.15, Toleranz 0.005
+OK | 125 | T_1,0 | 343.61620920  | Text 343.62, Toleranz 0.005
+OK | a/49 | theta_1,0 | 70.46620920  | Text 70.47, Toleranz 0.005
+OK | 142 | Messung-Uebertemperatur | 47.00000000  | Text 47, Toleranz 0.5
+OK | 142 | Start-Uebertemperatur | 60.00000000  | Text 60, Toleranz 0.5
+OK | c/55,142 | kA | 0.34024776  | Text 0.3402, Toleranz 5e-05
+OK | 146 | tau_K in min | 40.95055065  | Text 41, Toleranz 0.05
+OK | 146 | tau_G in min | 46.91414603  | Text 46.9, Toleranz 0.05
+OK | 146,226 | theta_K(tau) | 42.07276647  | Text 42.1, Toleranz 0.05
+OK | 150,184 | e_G | 0.27833442  | Text 0.2783, Toleranz 5e-05
+OK | 154,184 | e_K | 0.23103599  | Text 0.231, Toleranz 5e-05
+OK | 150 | T_1 | 307.19648299  | Text 307.2, Toleranz 0.005
+OK | d/58,98,150 | theta_1 | 34.04648299  | Text 34.05, Toleranz 0.005
+OK | 154 | T_K(60) | 307.01215963  | Text 307.01, Toleranz 0.005
+OK | 154,Abb.L2 | theta_K(60) | 33.86215963  | Text 33.86, Toleranz 0.005
+OK | 156 | T_2 | 303.34328241  | Text 303.34, Toleranz 0.005
+OK | d/58,98,156 | theta_2 | 30.19328241  | Text 30.19, Toleranz 0.005
+OK | 158,166 | theta_1-theta_2 | 3.85320058  | Text 3.85, Toleranz 0.005
+OK | 163 | Abkuehlung Tasse 1 | 36.41972622  | Text 36.42, Toleranz 0.005
+OK | 164 | Abkuehlung Tasse 2 | 46.13784037  | Text 46.14, Toleranz 0.005
+OK | e/61,163 | Q_1 in kJ | 34.88084710  | Text 34.88, Toleranz 0.005
+OK | e/61,164 | Q_2 in kJ | 38.57123455  | Text 38.57, Toleranz 0.005
+OK | 244 | Q_2-Q_1 in kJ | 3.69038744  | Text 3.69, Toleranz 0.005
+OK | 166 | Energiekontrolle | 3.85320058  | Text 3.8532, Toleranz 5e-11
+OK | 168 | Qdot_1(0) | 17.17101489  | Text 17.2, Toleranz 0.05
+OK | 168 | Qdot_2(0) | 20.41486590  | Text 20.4, Toleranz 0.05
+OK | 174 | T_M,h | 333.15000000  | Text 333.15, Toleranz 0.005
+OK | 175 | T_1,0 warm | 350.60765579  | Text 350.61, Toleranz 0.005
+OK | 176 | T_1 warm | 309.14244321  | Text 309.14, Toleranz 0.005
+OK | f/64,176 | theta_1 warm | 35.99244321  | Text 35.99, Toleranz 0.005
+OK | 177 | T_2 warm | 310.33472899  | Text 310.33, Toleranz 0.005
+OK | f/64,177 | theta_2 warm | 37.18472899  | Text 37.18, Toleranz 0.005
+OK | 179 | Vorsprung Tasse 2 warm | 1.19228578  | Text 1.19, Toleranz 0.005
+OK | 184 | Kaffee-Effekt | 2.47715885  | Text 2.48, Toleranz 0.005
+OK | 184 | Milch-Effekt kalt | 1.37604174  | Text 1.38, Toleranz 0.005
+OK | 184 | Milch-Effekt warm | -3.66944463  | Text -3.67, Toleranz 0.005
+OK | 186 | C_B | 255.00000000  | Text 255, Toleranz 0.05
+OK | 186 | C_B/C_K Prozent | 30.50239234  | Text 30.5, Toleranz 0.05
+OK | 187 | C_K+C_B | 1091.00000000  | Text 1091, Toleranz 0.05
+OK | g/67,187 | kA Becher | 0.44403147  | Text 0.444, Toleranz 5e-05
+OK | 189 | tau Becher schwarz min | 40.95055065  | Text 41, Toleranz 0.05
+OK | 192 | T_1,0 Becher | 345.62084715  | Text 345.62, Toleranz 0.005
+OK | 194 | Uebertemperatur Becher | 52.47084715  | Text 52.47, Toleranz 0.005
+OK | 194 | e_G Becher | 0.26764493  | Text 0.2676, Toleranz 5e-05
+OK | 194 | T_1 Becher | 307.19355623  | Text 307.19, Toleranz 0.005
+OK | g/67,194 | theta_1 Becher | 34.04355623  | Text 34.04, Toleranz 0.005
+OK | 196 | theta_1,0 Becher | 72.47084715  | Text 72.47, Toleranz 0.005
+OK | 196 | tau_G Becher min | 45.52027177  | Text 45.5, Toleranz 0.05
+OK | 198 | T_K(60) Becher | 307.01215963  | Text 307.01, Toleranz 0.005
+OK | 199 | T_2 Becher | 304.11472481  | Text 304.11, Toleranz 0.005
+OK | g/67,199 | theta_2 Becher | 30.96472481  | Text 30.96, Toleranz 0.005
+OK | 201 | Differenz Becher | 3.07883142  | Text 3.08, Toleranz 0.005
+OK | 201 | Milchzuwachs Becher Prozent | 11.15912007  | Text 11, Toleranz 0.5
+OK | 201 | Milchzuwachs ohne Becher Prozent | 14.56291866  | Text 15, Toleranz 0.5
+OK | 201 | Kaffee-Effekt Becher | 1.97602877  | Text 1.98, Toleranz 0.005
+OK | 201 | Milch-Effekt Becher | 1.10280265  | Text 1.1, Toleranz 0.005
+OK | 220 | Fehler kA mit Minuten | 20.41486590  | Text 20.41, Toleranz 0.005
+OK | 220 | Fehler Q_2 mit Gemisch kJ | 44.18833206  | Text 44.19, Toleranz 0.005
+OK | 220 | Fehler altes kA: theta_1 | 39.11058698  | Text 39.1, Toleranz 0.05
+OK | 220 | Fehler altes kA: theta_2 | 36.05775918  | Text 36.1, Toleranz 0.05
+OK | 220 | Fehler Becher nicht mitgemischt: theta_1 | 33.50702505  | Text 33.51, Toleranz 0.005
+OK | 223 | Spate Milch, Grenzwert warm | 50.62057941  | Text 50.6, Toleranz 0.05
+OK | 223 | 10 Prozent weniger kA, Vorsprung Tasse 1 | 0.98958914  | Text 0.99, Toleranz 0.005
+OK | 224 | Potenz 4/3, theta_1 | 37.65328016  | Text 37.65, Toleranz 0.005
+OK | 224 | Potenz 4/3, theta_2 | 33.34055548  | Text 33.34, Toleranz 0.005
+OK | 224 | Potenz 4/3, Differenz | 4.31272468  | Text 4.31, Toleranz 0.005
+OK | 226 | Tassenwaermer ohne Becher W | 13.60991060  | Text 13.6, Toleranz 0.05
+OK | 226 | Tassenwaermer mit Becher W | 17.76125893  | Text 17.8, Toleranz 0.05
+OK | 226 | Unterschaetzung Prozent | 23.37305225  | Text 23, Toleranz 0.5
+OK | 228 | Abkuehlrate bei 40 C, K/min | 0.43936469  | Text 0.4, Toleranz 0.05
+OK | 229 | 40 min, Unterschied mit Becher | 2.97428989  | Text 2.97, Toleranz 0.005
+OK | 229 | 40 min, Unterschied ohne Becher | 3.70090606  | Text 3.7, Toleranz 0.005
+OK | 229 | 40 min, 3 Prozent mehr kA | 2.40732610  | Text 2.4, Toleranz 0.05
+OK | 229 | 40 min, 5 Prozent mehr kA | 2.03756911  | Text 2, Toleranz 0.05
+OK | 232,242 | Q_M maximal kJ | 1.82619000  | Text 1.83, Toleranz 0.005
+OK | 245 | Untergrenze Abstand K | 1.94644242  | Text 1.95, Toleranz 0.005
+OK | 247 | theta_2 bei spaeter Milch 20 C | 32.10004057  | Text 32.1, Toleranz 0.005
+OK | 247 | Spaete Milch, Gleichstand mit kalter Tasse 1 | 35.31218639  | Text 35.3, Toleranz 0.05
+OK | 168,225,Abb.L2 | Schnittpunkt min | 55.74466887  | Text 55.7, Toleranz 0.05
+OK | 225 | Maximale Differenz K | 3.86183792  | Text 3.86, Toleranz 0.005
+OK | 160 | Differenz Messung 66 C | 3.82174683  | Text 3.82, Toleranz 0.005
+INFO | 160 | Messung 66: kA 0.37021308, Aenderung 8.807 %, Temperaturen (32.55021334357437, 28.728466508973032)
+OK | 160 | Differenz Messung 68 C | 3.86140349  | Text 3.86, Toleranz 0.005
+INFO | 160 | Messung 68: kA 0.31091335, Aenderung -8.621 %, Temperaturen (35.683904487628716, 31.82250099713285)
+OK | 144 | Fuellhoehe Kaffee cm | 3.97887358  | Text 4, Toleranz 0.05
+OK | 144 | Fuellhoehe mit Milch cm | 4.57570461  | Text 4.6, Toleranz 0.05
+OK | 144 | Flaechenzuwachs Prozent | 7.48014154  | Text 7.5, Toleranz 0.05
+OK | 146 | Flaeche cm2 | 200.53096491  | Text 201, Toleranz 0.5
+OK | 146 | kA/A W/(m2 K) | 16.96734293  | Text 17, Toleranz 0.5
+OK | 144 | Differenz kA Faktor 1.03 | 3.32447365  | Text 3.32, Toleranz 0.005
+OK | 144 | Differenz kA Faktor 1.05 | 2.98309250  | Text 2.98, Toleranz 0.005
+OK | 144 | kA-Kipppunkt Prozent, Becher 0 | 25.07116419  | Text 25, Toleranz 0.5
+OK | 144 | kA-Kipppunkt Prozent, Becher 255 | 18.77562318  | Text 19, Toleranz 0.5
+OK | 223 | kA-Reduktion warm, Gleichstand Prozent | 5.62225607  | Text 5.6, Toleranz 0.05
+OK | 235,239 | Milchkipppunkt kA Faktor 1 | 47.00309280  | Text 47, Toleranz 0.05
+OK | 235,239 | Milchkipppunkt kA Faktor 1.05 | 36.75942243  | Text 37, Toleranz 0.5
+OK | 235,239 | Milchkipppunkt kA Faktor 0.95 | 58.47631146  | Text 58, Toleranz 0.5
+OK | 239 | Milchkipppunkt Potenz 4/3 | 49.71332086  | Text 50, Toleranz 0.5
+OK | 225 | Differenz beide Milchportionen 20 C | 2.47715885  | Text 2.5, Toleranz 0.05
+OK | 225 | Verdunstete Masse g bei dh_v=2380 kJ/kg | 8.10320054  | Text 8, Toleranz 0.5
+OK | 225 | Verdunsteter Massenanteil Prozent | 4.05160027  | Text 4, Toleranz 0.5
+OK | 189 | Zunahme kA Prozent | 30.50239234  | Text 31, Toleranz 0.5
+
+INFO | 229 | Becher 3 bei Milch 20 C ist eine obere Temperaturgrenze.
+INFO | 229 | 40 min: B1=41.79168221, B2=38.81739233, B3_max=40.32322290 C; B1-B3=1.46845932, B3-B2=1.50583057 K
+INFO | 224 | Verdunstungsmodell 38 bis 40 C und empirische Bereiche sind Schaetzungen, ohne festgelegte Modellparameter nicht eindeutig nachrechenbar.
+INFO | 255-258 | Quellen-, Stoffdaten- und Versuchsangaben sind Vorgaben oder Fremdmessungen, keine aus dieser Aufgabe ableitbaren Zahlen.
+INFO | 237 | Nur mit gedruckten Zwischenwerten: 5+55*3.85/5.05=46.93069307 C; mit ungerundeten Zwischenwerten 47.00309280 C. Die Gleichheit ist eine Naeherung.
+INFO | 245 | Nur mit gedruckten Zwischenwerten: (3.69-1.83)*1000/957.7=1.94215308 K; mit ungerundeten Zwischenwerten 1.94644242 K.
+
+Ergebnis: 106/106 Zahlenvergleiche innerhalb der angegebenen Rundung/Toleranz.
