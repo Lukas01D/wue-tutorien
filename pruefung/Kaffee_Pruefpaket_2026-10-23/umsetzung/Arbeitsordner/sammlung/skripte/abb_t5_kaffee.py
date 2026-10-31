@@ -40,7 +40,7 @@ def tasse(x, y, fuell, text=None, stand=1.25):
     # Wärmestrom an die Umgebung
     ax.add_patch(FancyArrowPatch((x + b / 2, y + h + 0.1), (x + b / 2, y + h + 0.75), arrowstyle="-|>",
                                  mutation_scale=10, color="#B03A2E", linewidth=1.2))
-    ax.text(x + b / 2 + 0.12, y + h + 0.45, r"$\dot{Q}_{ab}$", fontsize=10, color="#B03A2E", va="center")
+    ax.text(x + b / 2 + 0.12, y + h + 0.45, r"$\dot{Q}_\mathrm{ab}$", fontsize=10, color="#B03A2E", va="center")
     # auch durch die Wand: kleine Pfeile zu beiden Seiten (gesamte Wärmeabgabe, wie Abb. L1)
     for x1, x2 in ((x - 0.08, x - 0.55), (x + b + 0.08, x + b + 0.55)):
         ax.add_patch(FancyArrowPatch((x1, y + 0.3), (x2, y + 0.3), arrowstyle="-|>",
@@ -76,13 +76,13 @@ tasse(11.4, 3.75, GEMISCH, r"$\vartheta_{1}$ = ?")
 
 # Tasse 2: Milch nach 60 min
 ax.text(0.0, 0.85, "Tasse 2", fontsize=11, fontweight="bold", va="center")
-tasse(2.2, 0.45, KAFFEE, r"$\vartheta_{K{,}0}$", stand=1.05)
+tasse(2.2, 0.45, KAFFEE, r"$\vartheta_{\mathrm{K}{,}0}$", stand=1.05)
 pfeil(4.6, 10.6, 1.3, "Abkühlen 60 min")
 milch(10.3, 1.85)
 ax.add_patch(FancyArrowPatch((11.1, 2.1), (11.6, 1.7), arrowstyle="-|>", mutation_scale=9, color=LINIE, linewidth=1.0))
 tasse(11.4, 0.45, GEMISCH, r"$\vartheta_{2}$ = ?")
 
-ax.text(0.0, 6.55, r"Umgebung: $\vartheta_u$", ha="left", va="center", fontsize=9.5, color="#555555")
+ax.text(0.0, 6.55, r"Umgebung: $\vartheta_\mathrm{u}$", ha="left", va="center", fontsize=9.5, color="#555555")
 
 os.makedirs(out, exist_ok=True)
 for ext in ("png", "svg"):

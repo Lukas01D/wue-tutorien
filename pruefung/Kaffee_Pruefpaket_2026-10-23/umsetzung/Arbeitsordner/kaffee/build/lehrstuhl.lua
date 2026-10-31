@@ -1,6 +1,7 @@
 -- Lua-Filter der Aufgabensammlung (LaTeX und Word)
 -- 1) ::: center und ::: seitenumbruch; Blatttitel („Tutorium …“) 18 pt
--- 2) Bausteine (Ausgangssituation, Frage n, Aufgabe n, Versuch, Lösung, Hinweise, Quellen) 14 pt mit Abstand davor
+-- 2) Bausteine (Ausgangssituation, Frage n, Aufgabe n, Versuch, Lösung, Hinweise, Quellen) 14 pt, 18 pt davor und 6 pt danach
+--    (mit \parskip von 4 pt: 14 pt davor, 2 pt danach zusätzlich)
 -- 3) Bild und folgende Bildunterschrift („Abb. …“) zentriert und zusammen (LaTeX: minipage; Word: Formatvorlagen)
 -- 4) LaTeX: vor „Gegebene Größen“, „Annahmen“ und „Aufgabenstellung“ genug Platz auf der Seite (needspace)
 -- 5) LaTeX: Datenzeilen der Versuchstabelle (erste Kopfzelle „Becher“) mindestens 10 mm hoch
@@ -119,8 +120,9 @@ local function zusammenhalten(blocks)
       if ist_baustein(b) then
         local inl = { pandoc.RawInline("latex", "{\\fontsize{14}{17}\\selectfont "), b.content[1], pandoc.RawInline("latex", "}") }
         for _, x in ipairs(rest_von(b)) do inl[#inl + 1] = x end
-        table.insert(out, pandoc.RawBlock("latex", "\\addvspace{10pt}"))
+        table.insert(out, pandoc.RawBlock("latex", "\\addvspace{14pt}"))
         table.insert(out, pandoc.Para(inl))
+        table.insert(out, pandoc.RawBlock("latex", "\\vspace{2pt}"))
       else
         table.insert(out, b)
       end

@@ -26,6 +26,21 @@ def dt(x, n=2):
 
 
 U = lambda s: r"\,\mathrm{" + s + "}"
+
+
+def aufrecht(text):
+    """Beschreibende Indizes in Formeln aufrecht setzen (Ä24); Größen als Index (p, v) und Zahlen bleiben."""
+    paare = [("_{ab}", r"_{\mathrm{ab}}"), ("_{zu}", r"_{\mathrm{zu}}"), ("_{KV}", r"_{\mathrm{KV}}"),
+             ("_{nachher}", r"_{\mathrm{nachher}}"), ("_{vorher}", r"_{\mathrm{vorher}}"),
+             ("_{p,K}", r"_{p,\mathrm{K}}"), ("_{p,M}", r"_{p,\mathrm{M}}"), ("_{K,0}", r"_{\mathrm{K},0}"),
+             ("_{M,h}", r"_{\mathrm{M,h}}")]
+
+    def formel(m):
+        f = m.group(0)
+        for a, b in paare:
+            f = f.replace(a, b)
+        return re.sub(r"_([KMuBG])(?![A-Za-z])", r"_\\mathrm{\1}", f)
+    return re.sub(r"\$\$.*?\$\$|\$[^$]+?\$", formel, text, flags=re.S)
 # häufige Werte
 mK, mM = r["m_K"], r["m_M"]
 CK, CM, CG = r["C_K"], r["C_M"], r["C_G"]
@@ -190,7 +205,7 @@ $$Q_2 = m_K c_{{p,K}}\,(T_{{K,0}} - T_K(60\,\mathrm{{min}})) = {de(CK,1)}{U('J/K
 
 Kontrolle: Beide Tassen enthalten am Ende dieselbe Menge Kaffee und Milch. Der Temperaturunterschied folgt allein aus der Mehrabgabe: $(Q_2 - Q_1)/(m_K c_{{p,K}} + m_M c_{{p,M}}) = {de((r['Q2']-r['Q1'])/CG)}{U('K')}$, wie in d).
 
-Erklärung: Der Wärmestrom $\dot{{Q}}_{{ab}} = kA\,(T - T_u)$ ist umso größer, je heißer der Tasseninhalt ist. Der Kaffee in Tasse 2 startet ohne Milch heißer (Wärmestrom am Anfang {dt(r['Qdot2_0'],1)} W gegenüber {dt(r['Qdot1_0'],1)} W in Tasse 1) und bleibt es bis etwa {dt(r['t_schnitt']/60,0)} min (Abb. L2). Er gibt deshalb mehr Wärme ab. Wärme ist eine Prozessgröße: Wie viel abgegeben wird, hängt vom Temperaturverlauf ab, nicht nur von Anfangs- und Endzustand. Der Denkfehler des Mitbewohners: Erhalten bleibt die Energie von Tasseninhalt und Umgebung zusammen, nicht die des Tasseninhalts. Wer seinen Kaffee später möglichst warm trinken will, gibt die Milch sofort hinein.
+Erklärung: Der Wärmestrom $\dot{{Q}}_{{ab}} = kA\,(T - T_u)$ ist umso größer, je heißer der Tasseninhalt ist. Der Kaffee in Tasse 2 startet ohne Milch heißer (Wärmestrom am Anfang {dt(r['Qdot2_0'],1)} W gegenüber {dt(r['Qdot1_0'],1)} W in Tasse 1) und bleibt es bis etwa {dt(r['t_schnitt']/60,0)} min (Abb. L2). Er gibt deshalb mehr Wärme ab. Wärme ist eine Prozessgröße: Wie viel abgegeben wird, entscheidet der Ablauf. Weil keine Arbeit verrichtet wird, ist die abgegebene Wärme gleich der Abnahme der inneren Energie von Kaffee und Milch. Am Anfang ist diese Energie in beiden Fällen gleich; der unterschiedliche Temperaturverlauf führt aber zu verschiedenen Endtemperaturen und damit zu verschiedener Wärmeabgabe. Der Denkfehler des Mitbewohners: Erhalten bleibt die Energie von Tasseninhalt und Umgebung zusammen, nicht die des Tasseninhalts. Wer seinen Kaffee später möglichst warm trinken will, gibt die Milch sofort hinein.
 
 ![](grafik/AbbL2_Temperaturverlauf.png){{width=78%}}
 
@@ -241,17 +256,16 @@ HINWEISE = rf"""::: seitenumbruch
 
 **[Hinweise für die Tutoriumsleitung]{{.underline}}**
 
-*Ablauf im Tutorium:* Kern sind Frage 1, a bis f und der Versuch; g ist Vertiefung; die Zusatzfrage (unten) steht nicht auf dem Blatt. Frage 1 vor dem Austeilen stellen: Vermutung mit Begründung notieren lassen, Handzeichen (Tasse 1, Tasse 2, gleich warm), Verteilung an die Tafel und am Ende wieder zeigen; die Ergebniszeilen späterer Teile verraten sonst die Antwort. Zeitplan als Schätzung, beim ersten Einsatz messen:
+*Ablauf im Tutorium:* Die Sitzung hat drei Ebenen: zuerst der Versuch (er startet zu Beginn), dann die Rechnung, am Ende ein Simulationstool, mit dem die Studierenden die Parameter des Kaffee-Vorgangs selbst verändern (Milchtemperatur, Zeitpunkt des Zugießens, $kA$, Becher). Kern sind Frage 1, a bis f und der Versuch; g ist Vertiefung; die Zusatzfrage (unten) steht nicht auf dem Blatt. Frage 1 vor dem Austeilen stellen: Vermutung mit Begründung notieren lassen, Handzeichen (Tasse 1, Tasse 2, gleich warm), Verteilung an die Tafel und am Ende wieder zeigen; die Ergebniszeilen späterer Teile verraten sonst die Antwort. Zeitplan als Schätzung, beim ersten Einsatz messen:
 
 | Minute | Ablauf |
 |:--------------|:------------------------------------------------------------------------------------------|
-| 0 bis 5 | Ausgangssituation, Frage 1 (Vermutung, Handzeichen), dann Blatt austeilen |
-| 5 bis 12 | Studierende: Frage 3 der Sammlung zu Tutorium 5 (Biot) oder Beginn von a. TL startet mit zwei Freiwilligen den Versuch ($t = 0$ etwa in Minute 10) |
-| 12 bis 50 | a bis e; b nach etwa 8 min Einzelarbeit gemeinsam an der Tafel (Bilanz vereinfachen, Trennung der Variablen), dann c bis e allein; etwa Minute 20 Messung bei $t = 10\,\mathrm{{min}}$; nach d) Vorhersage für $t = {T_V}\,\mathrm{{min}}$ an der Tafel. Haltepunkt: Sind um Minute 50 viele noch nicht bei e), e) gemeinsam besprechen und f zuerst als Vorhersage mit Handzeichen |
-| 50 bis 58 | Messung bei $t = {T_V}\,\mathrm{{min}}$, Vergleich mit der Vorhersage, Auflösung von Frage 1 |
-| 58 bis 72 | f mit Vorhersage und Erklärung |
-| 72 bis 85 | g für Schnelle, sonst Besprechung; Zusatzfrage für ganz Schnelle |
-| 85 bis 90 | Zusammenfassung |
+| 0 bis 5 | Ausgangssituation, Frage 1 (Vermutung, Handzeichen); TL startet mit zwei Freiwilligen den Versuch ($t = 0$ etwa in Minute 5), dann Blatt austeilen |
+| 5 bis 45 | a bis e; b nach etwa 8 min Einzelarbeit gemeinsam an der Tafel (Bilanz vereinfachen, Trennung der Variablen), dann c bis e allein; etwa Minute 15 Messung bei $t = 10\,\mathrm{{min}}$; nach d) Vorhersage für $t = {T_V}\,\mathrm{{min}}$ an der Tafel. Haltepunkt: Sind um Minute 40 viele noch nicht bei e), e) gemeinsam besprechen und f zuerst als Vorhersage mit Handzeichen |
+| 45 bis 52 | Messung bei $t = {T_V}\,\mathrm{{min}}$, Vergleich mit der Vorhersage, Auflösung von Frage 1 |
+| 52 bis 65 | f mit Vorhersage und Erklärung |
+| 65 bis 75 | g für Schnelle, sonst Besprechung; Zusatzfrage für ganz Schnelle |
+| 75 bis 90 | Simulation (10 bis 15 min): Die Studierenden verändern die Parameter selbst und prüfen ihre Erklärungen aus d) bis g); zum Schluss kurze Zusammenfassung. Frage 3 der Sammlung zu Tutorium 5 (Biot) als Hausaufgabe |
 
 - *Typische Fehler:* Mischtemperatur nach dem Volumen statt nach $m\,c_p$ gewichtet; in Tasse 1 nur mit $m_K c_{{p,K}}$ gerechnet; in Tasse 2 schon während der 60 Minuten mit $m_K c_{{p,K}} + m_M c_{{p,M}}$ gerechnet; Zeit in Minuten eingesetzt ($kA = {de(-CK/10*r['ln_mess'],2)}$ statt ${de(r['kA'],4)}{U('W/K')}$); Vorzeichen in der Bilanz vergessen (die Temperatur stiege); $Q_2$ mit Kaffee und Milch gerechnet ({dt(CG*(r['T_K0']-T2K)/1e3)} statt {dt(r['Q2']/1e3)} kJ); in g) das alte $kA$ weiterverwendet (dann {dt(becher(kA_neu=False)['T1']-K,1)} und {dt(becher(kA_neu=False)['T2']-K,1)} °C: Aussage gleich, aber nicht mehr passend zur Messung) oder den Becher beim Zugießen nicht mitgemischt ({dt(FEHLER_F1-K)} und {dt(T2-K)} °C); in der Zusatzfrage (2) nur mit dem Kipppunkt argumentiert ({dt(P['th_U'],0)} °C < {dt(r['th_M_gleich'],0)} °C), obwohl Tasse 1 weiter die kalte Milch bekommt.
 - *Fehlvorstellungen:* „Energieerhaltung, also egal“: Erhalten bleibt die Energie von Kaffee, Milch und Umgebung zusammen, nicht die des Tasseninhalts (Teil e). „Erwärmte Milch ist kälter als der Kaffee, wirkt also wie kalte Milch“: Entscheidend ist nicht der Vergleich mit dem Kaffee, sondern ob die Milch wärmer als der Kipppunkt aus der Zusatzfrage (1) ist. „Milchkaffee ist heller und strahlt deshalb weniger ab“: Im Infraroten strahlen schwarzer Kaffee und Milchkaffee gleich; die sichtbare Farbe spielt keine Rolle.
@@ -271,7 +285,7 @@ Zu (1): Beide Anteile aus der Zerlegung in f) heben sich auf, wenn $\vartheta_1 
 
 $$\vartheta_M = \vartheta_u + \frac{{m_K c_{{p,K}}\,(\vartheta_{{K,0}} - \vartheta_u)\,(e_G - e_K)}}{{m_M c_{{p,M}}\,(1 - e_G)}} = {de(P['th_U'],0)}{U('°C')} + {de(r['th_M_gleich']-P['th_U'],1)}{U('K')} = {de(r['th_M_gleich'],1)}{U('°C')}$$
 
-Zweiter Weg: $\vartheta_1$ und $\vartheta_2$ hängen linear von der Milchtemperatur ab. Der Unterschied ist {dt(r['dT'])} K bei {dt(P['th_M'],0)} °C und {dt(MILCH60['dT'])} K bei {dt(P['th_Mh'],0)} °C, null also bei {dt(P['th_M'],0)} °C + {dt(P['th_Mh']-P['th_M'],0)} K · {dt(r['dT'])}/{dt(r['dT']-MILCH60['dT'])} = {dt(ZERL_LIN,1)} °C.
+Zweiter Weg: $\vartheta_1$ und $\vartheta_2$ hängen linear von der Milchtemperatur ab. Der Unterschied ist {dt(r['dT'])} K bei {dt(P['th_M'],0)} °C und {dt(MILCH60['dT'])} K bei {dt(P['th_Mh'],0)} °C, null also bei {dt(P['th_M'],0)} °C + {dt(P['th_Mh']-P['th_M'],0)} K · {dt(r['dT'])}/{dt(r['dT']-MILCH60['dT'])} ≈ {dt(ZERL_LIN,1)} °C (mit ungerundeten Werten).
 
 Erst Milch über etwa {dt(r['th_M_gleich'],0)} °C dreht das Ergebnis um. Der Wert gilt im Modell mit gleichem $kA$ und ist empfindlich: Ist $kA$ mit Milch 5 % größer, liegt er bei etwa {dt(KIPP_105,0)} °C, bei 5 % kleinerem $kA$ bei {dt(KIPP_095,0)} °C; mit überlinearer Wärmeabgabe (Exponent 4/3) bei rund {dt(KIPP_43,0)} °C.
 
@@ -281,9 +295,9 @@ $$Q_M = m_M c_{{p,M}}\,(\vartheta_u - \vartheta_M) = {de(CM,1)}{U('J/K')} \cdot 
 
 auf. Tasse 2 hat nach e) aber $Q_2 - Q_1 = {de((r['Q2']-r['Q1'])/1e3)}{U('kJ')}$ mehr abgegeben als Tasse 1. Selbst im günstigsten Fall bleibt Tasse 2 deshalb um mindestens
 
-$$\frac{{(Q_2 - Q_1) - Q_M}}{{m_K c_{{p,K}} + m_M c_{{p,M}}}} = \frac{{{de((r['Q2']-r['Q1'])/1e3)}{U('kJ')} - {de(QM_RAUS/1e3)}{U('kJ')}}}{{{de(CG,1)}{U('J/K')}}} = {de(DMIN_RAUS)}{U('K')}$$
+$$\frac{{(Q_2 - Q_1) - Q_M}}{{m_K c_{{p,K}} + m_M c_{{p,M}}}} = \frac{{{de((r['Q2']-r['Q1'])/1e3)}{U('kJ')} - {de(QM_RAUS/1e3)}{U('kJ')}}}{{{de(CG,1)}{U('J/K')}}} \approx {de(DMIN_RAUS)}{U('K')}$$
 
-kühler (mit Milch von 20 °C: $\vartheta_2 = {de(T2_RAUS-K)}{U('°C')}$ gegenüber $\vartheta_1 = {de(T1-K)}{U('°C')}$). Der Kipppunkt aus (1) entscheidet die Frage nicht allein, weil er für gleich warme Milch in beiden Tassen gilt. Die Schranke gilt nur ohne weitere Wärmequelle: Käme Wärme vom heißen Becher dazu, würde schon eine späte Portion von {dt(H2_NUR_SPAET,1)} °C Tasse 2 auf die Temperatur von Tasse 1 bringen.
+kühler (mit ungerundeten Werten gerechnet; mit Milch von 20 °C: $\vartheta_2 = {de(T2_RAUS-K)}{U('°C')}$ gegenüber $\vartheta_1 = {de(T1-K)}{U('°C')}$). Der Kipppunkt aus (1) entscheidet die Frage nicht allein, weil er für gleich warme Milch in beiden Tassen gilt. Die Schranke gilt nur ohne weitere Wärmequelle: Käme Wärme vom heißen Becher dazu, würde schon eine späte Portion von {dt(H2_NUR_SPAET,1)} °C Tasse 2 auf die Temperatur von Tasse 1 bringen.
 
 """
 
@@ -317,12 +331,16 @@ with open(SAMMLUNG_BLOCK, encoding="utf-8") as _f:
 BLOCK = re.sub(r"^## .*\n+", "", BLOCK, count=1).replace("<!-- T5_FRAGEN -->\n\n", "").replace("<!-- T5_FRAGEN -->", "")
 # Einzelblatt: Versuch auf eigener Seite (Messblatt zum Kopieren, Ä5)
 assert BLOCK.count("**[Versuch zu Aufgabe 1]") == 1
+# Einzelblatt: Teil f mit Ergebniszeile nicht über den Seitenwechsel trennen (Abnahme 3)
+BLOCK, _n = re.subn(r"(\n   \$Q_1 = [^\n]*\$)(\n)", r"\1`\\needspace{6\\baselineskip}`{=latex}\2", BLOCK, count=1)
+assert _n == 1
 BLOCK = BLOCK.replace("**[Versuch zu Aufgabe 1]", "::: seitenumbruch\n:::\n\n**[Versuch zu Aufgabe 1]")
 md_aufgabe = KOPF + BLOCK
 KOPF_L = KOPF.replace("(instationär global)]", "(instationär global), Lösung]")
 assert KOPF_L != KOPF
 md_loesung = KOPF_L + BLOCK + "::: seitenumbruch\n:::\n\n" + LOESUNG + HINWEISE + QUELLEN
 md_loesung_stud = KOPF_L + BLOCK + "::: seitenumbruch\n:::\n\n" + LOESUNG + QUELLEN       # für Studierende, ohne Hinweise
+md_aufgabe, md_loesung, md_loesung_stud = aufrecht(md_aufgabe), aufrecht(md_loesung), aufrecht(md_loesung_stud)
 schreibe("Kaffee_Aufgabe.md", md_aufgabe)
 schreibe("Kaffee_Loesung.md", md_loesung)
 schreibe("Kaffee_Loesung_Studierende.md", md_loesung_stud)
@@ -342,6 +360,18 @@ for name in ("Kaffee_Aufgabe", "Kaffee_Loesung", "Kaffee_Loesung_Studierende"):
     subprocess.run(["pandoc", md, "-o", os.path.join(HIER, name + ".docx"),
                     "--reference-doc", os.path.join(B, "referenz_lehrstuhl.docx"),
                     "--lua-filter", os.path.join(B, "lehrstuhl.lua"), "--resource-path", HIER + ":" + os.path.join(os.path.dirname(HIER), "sammlung")], check=True)
+
+
+def kaffee_breiten(t):
+    """Tabelle der gegebenen Größen (Kaffee-Aufgabe): Spalten 3,9 / 4,1 / 3,9 / 4,1 cm (Ä22)."""
+    if "Messung in Tasse 2" not in t:
+        return t
+    t = re.sub(r'<w:tblW w:type="pct" w:w="\d+" />', '<w:tblW w:type="dxa" w:w="9070" />', t, count=1)
+    # feste Breiten und Zellränder von 4 pt wie im PDF (\tabcolsep), sonst bricht „Spez. Wärmekapazität“ um
+    t = t.replace("<w:tblLook ", '<w:tblLayout w:type="fixed" /><w:tblCellMar><w:left w:w="80" w:type="dxa" />'
+                  '<w:right w:w="80" w:type="dxa" /></w:tblCellMar><w:tblLook ', 1)
+    return re.sub(r"<w:tblGrid>.*?</w:tblGrid>", '<w:tblGrid><w:gridCol w:w="2211" /><w:gridCol w:w="2324" />'
+                  '<w:gridCol w:w="2211" /><w:gridCol w:w="2324" /></w:tblGrid>', t, count=1, flags=re.S)
 
 
 def word_zusammenhalten(pfad):
@@ -367,11 +397,12 @@ def word_zusammenhalten(pfad):
         t = t.replace("<w:trPr>", "<w:trPr><w:cantSplit/>")
         return re.sub(r"<w:tr>(?!<w:trPr>)", "<w:tr><w:trPr><w:cantSplit/></w:trPr>", t)
     d = re.sub(r"<w:tbl>.*?</w:tbl>", tabelle, d, flags=re.S)
-    d = d.replace("<w:tblHeader/>", "").replace('<w:tblHeader w:val="true"/>', "")
+    d = re.sub(r"<w:tblHeader[^>]*/>", "", d)
 
     def messtabelle(m):
         """Versuchstabelle: Datenzeilen mindestens 10 mm hoch (567 Twips) zum Ausfüllen von Hand."""
         t = m.group(0)
+        t = kaffee_breiten(t)
         if "Milch sofort" not in t:
             return t
         return t.replace("<w:trPr><w:cantSplit/>", '<w:trPr><w:cantSplit/><w:trHeight w:val="567" w:hRule="atLeast"/>')
@@ -387,7 +418,24 @@ def word_zusammenhalten(pfad):
     teile = re.split(r"(<w:tbl>.*?</w:tbl>)", d, flags=re.S)
     for k in range(0, len(teile), 2):
         teile[k] = re.sub(r"<w:p>(?:(?!</w:p>).)*?</w:p>|<w:p .*?</w:p>", absatz, teile[k], flags=re.S)
-    inhalt["word/document.xml"] = "".join(teile).encode("utf-8")
+    d = "".join(teile)
+    # Quellenblock als Einheit (Abnahme 3): keine einzelnen Quellenpunkte allein auf der letzten Seite
+    k = d.rfind("Quellen der Arbeitswerte")
+    if k > 0:
+        anfang = max(d.rfind("<w:p>", 0, k), d.rfind("<w:p ", 0, k))
+        ende = d.rfind("<w:sectPr")
+        absaetze = re.findall(r"<w:p>(?:(?!</w:p>).)*?</w:p>|<w:p .*?</w:p>", d[anfang:ende], flags=re.S)
+        rest = d[anfang:ende]
+        for par in absaetze[:-1]:
+            rest = rest.replace(par, keep(par), 1)
+        d = d[:anfang] + rest + d[ende:]
+    inhalt["word/document.xml"] = d.encode("utf-8")
+    # Marken nummerierter Aufzählungen fett (a), b), …) wie im PDF (Ä20)
+    if "word/numbering.xml" in inhalt:
+        nb = inhalt["word/numbering.xml"].decode("utf-8")
+        nb = re.sub(r'(<w:lvl w:ilvl="\d+">(?:(?!</w:lvl>).)*?<w:numFmt w:val="(?!bullet)[^"]+" />(?:(?!</w:lvl>).)*?)</w:lvl>',
+                    r"\1<w:rPr><w:b /><w:bCs /></w:rPr></w:lvl>", nb, flags=re.S)
+        inhalt["word/numbering.xml"] = nb.encode("utf-8")
     if os.path.basename(pfad).startswith("Kaffee_Loesung"):
         for n in [n for n in inhalt if n.startswith("word/header")]:
             inhalt[n] = inhalt[n].decode("utf-8").replace(KOPF_RECHTS, "Lösung, " + KOPF_RECHTS).encode("utf-8")

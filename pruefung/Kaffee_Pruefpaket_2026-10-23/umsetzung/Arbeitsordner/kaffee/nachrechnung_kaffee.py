@@ -79,9 +79,9 @@ k0, m0 = kaf(0.0, r["e_G"], r["e_K"], P["th_M"]); kB, mB = kaf(C_B, eGB, eKB, P[
 z("Kaffee-Effekt ohne / mit Becher", k0, "K", ".2f"); z("", kB, "K", ".2f")
 z("Milch-Effekt ohne / mit Becher", m0, "K", ".2f"); z("", mB, "K", ".2f")
 z("Milch-Effekt mit erwärmter Milch (ohne Becher)", kaf(0.0, r["e_G"], r["e_K"], P["th_Mh"])[1], "K", ".2f")
-z("Typischer Fehler f: Becher nicht mitgemischt, theta_1",
+z("Typischer Fehler g: Becher nicht mitgemischt, theta_1",
   r["T_U"] - K + (r["T1_0"] - r["T_U"]) * math.exp(-b["kA"] * P["t_end"] / (r["C_G"] + C_B)), "°C", ".2f")
-z("Typischer Fehler f: Becher nicht mitgemischt, theta_2", r["T2"] - K, "°C", ".2f")
+z("Typischer Fehler g: Becher nicht mitgemischt, theta_2", r["T2"] - K, "°C", ".2f")
 
 print("\nc) und d) Robustheit und Plausibilität")
 for tm in (66.0, 68.0):

@@ -5,6 +5,7 @@ Aufruf: python3 t5_kaffee_teil.py
 """
 import math
 import os
+import re
 from kaffee_modell import P, rechne, becher, zwei_tassen
 
 HIER = os.path.dirname(os.path.abspath(__file__))
@@ -38,6 +39,21 @@ def dt(x, n=2):
 
 
 U = lambda s: r"\,\mathrm{" + s + "}"
+
+
+def aufrecht(text):
+    """Beschreibende Indizes in Formeln aufrecht setzen (Ä24); Größen als Index (p, v) und Zahlen bleiben."""
+    paare = [("_{ab}", r"_{\mathrm{ab}}"), ("_{zu}", r"_{\mathrm{zu}}"), ("_{KV}", r"_{\mathrm{KV}}"),
+             ("_{nachher}", r"_{\mathrm{nachher}}"), ("_{vorher}", r"_{\mathrm{vorher}}"),
+             ("_{p,K}", r"_{p,\mathrm{K}}"), ("_{p,M}", r"_{p,\mathrm{M}}"), ("_{K,0}", r"_{\mathrm{K},0}"),
+             ("_{M,h}", r"_{\mathrm{M,h}}")]
+
+    def formel(m):
+        f = m.group(0)
+        for a, b in paare:
+            f = f.replace(a, b)
+        return re.sub(r"_([KMuBG])(?![A-Za-z])", r"_\\mathrm{\1}", f)
+    return re.sub(r"\$\$.*?\$\$|\$[^$]+?\$", formel, text, flags=re.S)
 
 AUSGABE = [
     ("Mischtemperatur Tasse 1", r["T1_0"] - K, "°C"),
@@ -148,6 +164,7 @@ $kA$ aus Becher 2 und 3: \_\_\_\_\_\_\_\_\_\_ W/K
 
 """
 
+md = aufrecht(md)
 with open(os.path.join(TEILE, "t5a_kaffee.md"), "w", encoding="utf-8") as f:
     f.write(md)
 with open(os.path.join(HIER, "t5_kaffee_ausgabe.txt"), "w", encoding="utf-8") as f:

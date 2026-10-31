@@ -10,8 +10,8 @@ import os, re, sys, subprocess
 HIER = os.path.dirname(os.path.abspath(__file__))
 S = os.path.dirname(HIER)
 AUS = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(S, "ausgabe")
-NAME = "Aufgabensammlung_Tutorien_WUE_2026-10-30"
-STAND = "30.10.2026"
+NAME = "Aufgabensammlung_Tutorien_WUE_2026-10-31"
+STAND = "31.10.2026"
 
 THEMEN = {
     1: ("Wärmeleitung", "Fourier, mehrschichtige Wand, mittlere Wärmeleitfähigkeit, Randbedingungen", "keine"),
@@ -147,6 +147,19 @@ subprocess.run(["pandoc", pfad_md_docx, "-o", os.path.join(AUS, NAME + ".docx"),
 os.remove(pfad_md_docx)
 
 
+
+def kaffee_breiten(t):
+    """Tabelle der gegebenen Größen (Kaffee-Aufgabe): Spalten 3,9 / 4,1 / 3,9 / 4,1 cm (Ä22)."""
+    if "Messung in Tasse 2" not in t:
+        return t
+    t = re.sub(r'<w:tblW w:type="pct" w:w="\d+" />', '<w:tblW w:type="dxa" w:w="9070" />', t, count=1)
+    # feste Breiten und Zellränder von 4 pt wie im PDF (\tabcolsep), sonst bricht „Spez. Wärmekapazität“ um
+    t = t.replace("<w:tblLook ", '<w:tblLayout w:type="fixed" /><w:tblCellMar><w:left w:w="80" w:type="dxa" />'
+                  '<w:right w:w="80" w:type="dxa" /></w:tblCellMar><w:tblLook ', 1)
+    return re.sub(r"<w:tblGrid>.*?</w:tblGrid>", '<w:tblGrid><w:gridCol w:w="2211" /><w:gridCol w:w="2324" />'
+                  '<w:gridCol w:w="2211" /><w:gridCol w:w="2324" /></w:tblGrid>', t, count=1, flags=re.S)
+
+
 def word_zusammenhalten(pfad):
     """Word: Tabellen der gegebenen Größen nicht über den Seitenwechsel trennen, Zwischenüberschriften
     („Annahmen:“, „Gegebene Größen:“, „Frage 1“ …) und Bilder mit dem Folgeabsatz zusammenhalten."""
@@ -177,9 +190,9 @@ def word_zusammenhalten(pfad):
     # Kaffee-Aufgabe wie im Einzelblatt: Tabelle der gegebenen Größen ohne wiederholte Kopfzeile,
     # Versuchstabelle mit Datenzeilen von mindestens 10 mm zum Ausfüllen von Hand
     def kaffee(m):
-        t = m.group(0)
+        t = kaffee_breiten(m.group(0))
         if "Becher in Teil g" in t:
-            t = t.replace("<w:tblHeader/>", "").replace('<w:tblHeader w:val="true"/>', "")
+            t = re.sub(r"<w:tblHeader[^>]*/>", "", t)
         if "Milch sofort" in t:
             t = t.replace("<w:trPr><w:cantSplit/>", '<w:trPr><w:cantSplit/><w:trHeight w:val="567" w:hRule="atLeast"/>')
         return t
@@ -200,6 +213,12 @@ def word_zusammenhalten(pfad):
         teile[k] = re.sub(r"<w:p>(?:(?!</w:p>).)*?</w:p>|<w:p .*?</w:p>", absatz, teile[k], flags=re.S)
     d = "".join(teile)
     inhalt["word/document.xml"] = d.encode("utf-8")
+    # Marken nummerierter Aufzählungen fett (a), b), …) wie im PDF (Ä20)
+    if "word/numbering.xml" in inhalt:
+        nb = inhalt["word/numbering.xml"].decode("utf-8")
+        nb = re.sub(r'(<w:lvl w:ilvl="\d+">(?:(?!</w:lvl>).)*?<w:numFmt w:val="(?!bullet)[^"]+" />(?:(?!</w:lvl>).)*?)</w:lvl>',
+                    r"\1<w:rPr><w:b /><w:bCs /></w:rPr></w:lvl>", nb, flags=re.S)
+        inhalt["word/numbering.xml"] = nb.encode("utf-8")
     tmp = pfad + ".tmp"
     with zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as z:
         for n, b in inhalt.items():

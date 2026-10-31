@@ -63,8 +63,8 @@ Kaffee-Effekt ohne / mit Becher                                    2.48 K
 Milch-Effekt ohne / mit Becher                                     1.38 K
                                                                    1.10 K
 Milch-Effekt mit erwärmter Milch (ohne Becher)                     -3.67 K
-Typischer Fehler f: Becher nicht mitgemischt, theta_1              33.51 °C
-Typischer Fehler f: Becher nicht mitgemischt, theta_2              30.19 °C
+Typischer Fehler g: Becher nicht mitgemischt, theta_1              33.51 °C
+Typischer Fehler g: Becher nicht mitgemischt, theta_2              30.19 °C
 
 c) und d) Robustheit und Plausibilität
    Messung 66 °C: kA 0.3702 W/K (+8.8 %), theta_1 = 32.55 °C, theta_2 = 28.73 °C, Unterschied 3.82 K

@@ -3,5 +3,6 @@ node_modules/
 __pycache__/
 *.pyc
 .DS_Store
-package.json
-package-lock.json
+# Bauhilfen von „npm install docx“ für die Protokolle (nicht Teil der Quellen)
+pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/protokolle_quelle/package.json
+pruefung/Kaffee_Pruefpaket_2026-10-23/umsetzung/protokolle_quelle/package-lock.json
