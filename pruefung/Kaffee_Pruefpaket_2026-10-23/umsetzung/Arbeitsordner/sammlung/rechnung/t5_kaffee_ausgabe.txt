@@ -8,14 +8,14 @@ Q_2                                              38.5712 kJ
 Becher: kA neu                                    0.4440 W/K
 Becher: theta_1                                  34.0436 °C
 Becher: theta_2                                  30.9647 °C
-Milchschaum 60 °C: theta_1                       35.9924 °C
-Milchschaum 60 °C: theta_2                       37.1847 °C
-Milchtemperatur für gleich warme Tassen          47.0031 °C
-Info h (2): theta_2 mit Milch bei Raumtemperatur    32.1000 °C
-Info h (2): Tasse 2 mindestens kühler um          1.9464 K
-Info h (2): Milch nimmt höchstens auf, C_M (20 - 5) K     1.8262 kJ
-Info h (2): Q_2 - Q_1                             3.6904 kJ
-Info h (2): Milchtemperatur für Gleichstand mit Tasse 1    35.3122 °C
-Info Versuch: Becher 1 (wie f)                   34.0436 °C
-Info Versuch: Becher 2 (wie f)                   30.9647 °C
-Info Versuch: Becher 3, Milch bei Raumtemperatur    32.4706 °C
+Erwärmte Milch 60 °C: theta_1                    35.9924 °C
+Erwärmte Milch 60 °C: theta_2                    37.1847 °C
+Zusatzfrage (1): Milchtemperatur für gleich warme Tassen    47.0031 °C
+Info Zusatzfrage (2): theta_2 mit Milch bei Raumtemperatur    32.1000 °C
+Info Zusatzfrage (2): Tasse 2 mindestens kühler um     1.9464 K
+Info Zusatzfrage (2): Milch nimmt höchstens auf, C_M (20 - 5) K     1.8262 kJ
+Info Zusatzfrage (2): Q_2 - Q_1                   3.6904 kJ
+Info Zusatzfrage (2): Milchtemperatur für Gleichstand mit Tasse 1    35.3122 °C
+Info Versuch nach 40 min: Becher 1 (wie g)       41.7917 °C
+Info Versuch nach 40 min: Becher 2 (wie g)       38.8174 °C
+Info Versuch nach 40 min: Becher 3, Milch 20 °C    40.3232 °C

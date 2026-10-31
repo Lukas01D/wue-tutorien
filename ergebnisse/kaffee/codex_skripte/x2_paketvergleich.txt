@@ -1,0 +1,15 @@
+OK | Kaffee- und Sammlungsmodell bytegleich
+OK | Aufgabentext konsistent: Lehrloesung
+OK | Aufgabentext konsistent: Studierendenloesung
+OK | Aufgabentext konsistent: Sammlungsteil
+OK | Studierendenloesung ohne TL-Hinweise
+OK | Studierendenloesung ohne zusaetzliche TL-Frage
+OK | Loesungsteil fuer Studierende vollstaendig
+OK | Quellenblock in beiden Loesungen gleich
+OK | Nachrechnung reproduziert gespeicherte Ausgabe bytegenau
+OK | Sammlungsgenerator reproduziert Kaffee-Teil bytegenau
+OK | Sammlungsgenerator reproduziert Zahlenausgabe bytegenau
+BEFUND | S2-Folgefehler: Typischer Fehler f: Becher nicht mitgemischt, theta_1              33.51 °C (muss Teil g heissen)
+BEFUND | S2-Folgefehler: Typischer Fehler f: Becher nicht mitgemischt, theta_2              30.19 °C (muss Teil g heissen)
+
+11/11 Konsistenzchecks bestanden. Bekannte Beschriftungsbefunde stehen im Bericht.

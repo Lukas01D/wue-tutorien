@@ -1,0 +1,134 @@
+== Grundfall
+a) theta_1,0                                                 70.466
+c) kA, tau_K, tau_G [min]                                    0.340  40.951  46.914
+d) th1, th2, diff                                            34.046  30.193  3.853
+e) Q1, Q2 [kJ], (Q2-Q1)/C_G                                  34.881  38.571  3.853
+Wärmestrom t=0 Tasse 1/2 [W]                                 17.171  20.415
+Schnitt [min]                                                55.745
+f) kA, th1, th2, diff                                        0.444  34.044  30.965  3.079
+g) Schaum 60 °C: th1, th2, diff                              35.992  37.185  -1.192
+Kipppunkt th_M                                               47.003
+
+== Prof/Tech/Rech: kA-Faktor in Tasse 1
+g) kA1*0.944: th1, th2, diff                                 37.180  37.185  -0.005
+g) kA1*0.9: th1, th2, diff                                   38.174  37.185  0.990
+g) kA1*0.8: th1, th2, diff                                   40.654  37.185  3.469
+g) kA1-Faktor für Gleichstand                                0.944
+d) kA1-Faktor für Gleichstand ohne Becher                    1.251
+d) kA1-Faktor für Gleichstand mit Becher                     1.188
+d) kA1*1.03: diff                                            3.324
+d) kA1*1.05: diff                                            2.983
+d) kA1*1.1: diff                                             2.167
+d) kA1*1.15: diff                                            1.401
+d) mit Becher kA1*1.05: diff                                 2.183
+
+== Kipppunkt (h1) bei kA-Faktor Tasse 1
+Kipppunkt kA1*0.95                                           58.476
+Kipppunkt kA1*1.0                                            47.003
+Kipppunkt kA1*1.05                                           36.759
+Kipppunkt mit Becher                                         46.877
+Kipppunkt bei t_end=30 min                                   60.912
+Kipppunkt bei t_end=40 min                                   55.748
+Kipppunkt bei t_end=60 min                                   47.003
+Kipppunkt Milch 5 g                                          46.518
+Kipppunkt Milch 79 g                                         47.696
+
+== Tech5: Empfindlichkeit
+Messung 66.0: th1, th2, diff, kA/kA0                         32.550  28.728  3.822  1.088
+Messung 68.0: th1, th2, diff, kA/kA0                         35.684  31.823  3.861  0.914
+Messung 64.0: th1, th2, diff, kA/kA0                         29.944  26.239  3.705  1.270
+Messung 70.0: th1, th2, diff, kA/kA0                         39.422  35.633  3.790  0.747
+Start 79.0: diff                                             3.820
+Start 81.0: diff                                             3.871
+Start 85.0: diff                                             3.833
+Raum 18.0: diff                                              3.763
+Raum 22.0: diff                                              3.947
+Milch 25 ml: diff                                            3.308
+Milch 35 ml: diff                                            4.365
+Milch 40 ml: diff                                            4.847
+Milch 7 °C: diff                                             3.670
+Milch 20 °C (beide): diff                                    2.477
+Rech: Milch 5 g / 79 g: diff                                 0.727  7.601
+Stud8: ±5 ml Milch -> th2 (Becher-Modell)                    31.407  30.965  30.537
+Rech8: Becher 0.25 kg, 800.0: diff                           3.219
+Rech8: Becher 0.4 kg, 1080.0: diff                           2.701
+Rech8: Becher 0.25 kg, 1080.0: diff                          3.043
+Rech8: Becher 0.4 kg, 800.0: diff                            2.928
+Rech8: c_p,M = 3,77: diff                                    3.715
+
+== Versuch (Becher 255 J/K)
+t=30: B1, B2, B1-B2, B1-B3                                   47.145  44.439  2.707  1.201
+t=40: B1, B2, B1-B2, B1-B3                                   41.792  38.817  2.974  1.468
+t=60: B1, B2, B1-B2, B1-B3                                   34.044  30.965  3.079  1.573
+ohne Becher 40 min: th1, th2, diff                           41.514  37.813  3.701
+Abkühlrate bei 40 °C mit Becher [K/min] Gemisch, schwarz     0.439  0.488
+Abkühlrate bei 34 °C ohne Becher, Tasse 1 [K/min]            0.299
+Did6: Becher 1 bei 10 min, kA*1.0                            62.122
+Did6: Becher 1 bei 10 min, kA*1.15                           60.757
+Tech4: 50 ml, B1-B2, B1-B3 (Glas 13.0)                       4.688  3.433
+Tech4: 50 ml, B1-B2, B1-B3 (Glas 20.0)                       4.688  2.335
+Tech4: Kühltasche 7.0, Glas 13.0: B1-B2, B1-B3, B3-B2        2.878  2.276  0.602
+Tech4: Kühltasche 7.0, Glas 17.0: B1-B2, B1-B3, B3-B2        2.878  1.874  1.004
+Tech4: Kühltasche 10.0, Glas 13.0: B1-B2, B1-B3, B3-B2       2.577  2.276  0.301
+Tech4: Kühltasche 10.0, Glas 17.0: B1-B2, B1-B3, B3-B2       2.577  1.874  0.703
+
+== Rech2: tau-Varianten (mit Becher 255 J/K)
+tau=20: th(10), B1-B2 60, B1-B2 30, B1-B3                    56.392  2.349  3.072  0.843
+tau=30: th(10), B1-B2 60, B1-B2 30, B1-B3                    62.992  2.881  2.990  1.375
+tau=41: th(10), B1-B2 60, B1-B2 30, B1-B3                    67.014  3.079  2.705  1.573
+tau=75: th(10), B1-B2 60, B1-B2 30, B1-B3                    72.510  2.801  1.938  1.295
+
+== Verdunstete Masse, Tassenwärmer, Zeitkonstante
+m_v = 0,5 Q2 / 2400 kJ/kg [g], Anteil                        8.036  0.040
+m_v = 0,5 Q2 / 2380 kJ/kg [g], Anteil                        8.103  0.041
+m_v Tasse 1 [g]                                              7.328
+Tasse 2 mit verdunsteter Masse: th2                          30.059
+Tassenwärmer P ohne/mit Becher [W], Verhältnis               13.610  17.761  0.766
+tau mit Becher [min]                                         40.951
+theta(tau)                                                   42.073
+Füllhöhe 200/230 ml [cm]                                     3.979  4.576
+Fläche 200/230 ml [cm²], Zuwachs                             200.559  215.531  0.075
+k = kA/A ohne/mit Becher [W/m²K]                             16.965  22.140
+(47/60)^6                                                    0.231
+
+== Zerlegung (Kaffee-Effekt, Milch-Effekt)
+ohne Becher: Kaffee, Milch, Summe                            2.477  1.376  3.853
+ohne Becher Schaum: Kaffee, Milch, Summe                     2.477  -3.669  -1.192
+mit Becher: Kaffee, Milch, Summe, e_G                        1.976  1.103  3.079  0.268
+
+== Stud5: f ohne Becher im Mischen
+th1, th2 (Becher nicht mitgemischt)                          33.507  30.193
+th1,0 mit Becher                                             72.471
+Stud12: Q2 mit Kaffee+Milch [kJ]                             44.188
+Stud12: kA mit t in min                                      20.415
+
+== h(2)
+Milch nimmt höchstens auf [kJ]                               1.826
+Q2-Q1 [kJ]                                                   3.690
+Mindestunterschied (3,69-1,83)/C_G                           1.946
+
+== Did11: Unterschied bei Zugabe zum Zeitpunkt t (Maximum)
+Maximum bei min, Wert                                        56  3.862
+
+== nichtlinear n = 4/3
+n=4/3 ohne Becher: th1, th2                                  37.654  33.341
+Rech2 n=4/3 mit Becher: B1 37.66, B2 34.21, B3 35.71, B1-B2 3.45, B1-B3 1.94
+Tech2 Rest linear f_v 0.0: th1 34.05, th2 30.19, diff 3.85 K; mit Becher 3.08 K; Tasse 1 kA*1,05: diff 2.98 K
+Tech2 Rest linear f_v 0.3: th1 36.15, th2 32.01, diff 4.14 K; mit Becher 3.32 K; Tasse 1 kA*1,05: diff 3.29 K
+Tech2 Rest linear f_v 0.5: th1 37.77, th2 33.40, diff 4.36 K; mit Becher 3.50 K; Tasse 1 kA*1,05: diff 3.53 K
+Tech2 Rest linear f_v 0.6: th1 38.64, th2 34.16, diff 4.48 K; mit Becher 3.59 K; Tasse 1 kA*1,05: diff 3.66 K
+Tech2 Rest 4/3    f_v 0.0: th1 37.65, th2 33.34, diff 4.31 K; mit Becher 3.45 K; Tasse 1 kA*1,05: diff 3.55 K
+Tech2 Rest 4/3    f_v 0.3: th1 38.91, th2 34.42, diff 4.49 K; mit Becher 3.60 K; Tasse 1 kA*1,05: diff 3.73 K
+Tech2 Rest 4/3    f_v 0.5: th1 39.84, th2 35.23, diff 4.62 K; mit Becher 3.70 K; Tasse 1 kA*1,05: diff 3.87 K
+Tech2 Rest 4/3    f_v 0.6: th1 40.35, th2 35.66, diff 4.69 K; mit Becher 3.76 K; Tasse 1 kA*1,05: diff 3.95 K
+Kipppunkt n=4/3: 49.72 °C
+Tech t6: Tasse 1 37.60, Tasse 2 37.18, diff 0.42 K
+Verdunstung Rest linear: Q_v 13.3 kJ, m_v 5.6 g, Anteil an Q 0.38
+Verdunstung Rest 4/3: Q_v 14.0 kJ, m_v 5.9 g, Anteil an Q 0.42
+Becher 0.25 kg: c=800: 3.22  c=850: 3.19  c=900: 3.15  c=1080: 3.04
+Becher 0.3 kg: c=800: 3.12  c=850: 3.08  c=900: 3.04  c=1080: 2.92
+Becher 0.4 kg: c=800: 2.93  c=850: 2.89  c=900: 2.84  c=1080: 2.70
+40 min, 50 ml, Becher: B1-B2 4.47
+Abkürzung: theta_K(40 min) = 42.59, (47/60)^4 = 0.3765
+40 min mit Becher: B1-B3 (Milch 20) 1.47; Glas 15 °C: 1.97
+40 min ohne Becher: B1-B3 (Milch 20) 1.79

@@ -1,0 +1,71 @@
+CODEx: Unabhängige Sensitivitätsrechnung aus Aufgabe allein
+C_K=836.000000 J/K; C_M=121.746000 J/K; C_B=255.000000 J/K
+
+BECHERKAPAZITÄT 0.0 J/K
+Basis: kA=0.340247765 W/K; T1=34.046483 °C; T2=30.193282 °C; T1-T2=3.853201 K
+Nur 10-min-Messung variiert, übrige Eingaben fest:
+T10=66 °C: kA=0.370213078 W/K; T1=32.550213 °C; T2=28.728467 °C; T1-T2=3.821747 K
+T10=67 °C: kA=0.340247765 W/K; T1=34.046483 °C; T2=30.193282 °C; T1-T2=3.853201 K
+T10=68 °C: kA=0.310913348 W/K; T1=35.683904 °C; T2=31.822501 °C; T1-T2=3.861403 K
+Gemeinsame 16 Eckkombinationen unabhängiger Eingabefehler ±1 K
+(Gap, T0, T10, Tu, Tm), Minimum: (3.6697283507203693, 79.0, 66.0, 19.0, 6.0)
+(Gap, T0, T10, Tu, Tm), Maximum: (4.036672813638138, 81.0, 68.0, 21.0, 4.0)
+Gemeinsamer Offset +1 K aller vier Temperaturangaben: Gap unverändert.
+Milchvolumen variiert, kA fest auf Basiswert:
+V_M=15 ml: kA=0.340247765 W/K; T1=34.012521 °C; T2=31.903213 °C; T1-T2=2.109308 K
+V_M=30 ml: kA=0.340247765 W/K; T1=34.046483 °C; T2=30.193282 °C; T1-T2=3.853201 K
+V_M=45 ml: kA=0.340247765 W/K; T1=33.986727 °C; T2=28.687724 °C; T1-T2=5.299003 K
+V_M=60 ml: kA=0.340247765 W/K; T1=33.852042 °C; T2=27.351963 °C; T1-T2=6.500079 K
+Starttemperatur variiert, kA fest auf Basiswert:
+T0=70 °C: kA=0.340247765 W/K; T1=31.616950 °C; T2=28.176609 °C; T1-T2=3.440341 K
+T0=80 °C: kA=0.340247765 W/K; T1=34.046483 °C; T2=30.193282 °C; T1-T2=3.853201 K
+T0=90 °C: kA=0.340247765 W/K; T1=36.476016 °C; T2=32.209956 °C; T1-T2=4.266060 K
+Kippverhältnis kA_mit_Milch/kA_ohne_Milch=1.250711642
+Verhältnis kA1/kA2=0.80: kA=0.340247765 W/K; T1=38.140707 °C; T2=30.193282 °C; T1-T2=7.947425 K
+Verhältnis kA1/kA2=1.00: kA=0.340247765 W/K; T1=34.046483 °C; T2=30.193282 °C; T1-T2=3.853201 K
+Verhältnis kA1/kA2=1.15: kA=0.340247765 W/K; T1=31.594516 °C; T2=30.193282 °C; T1-T2=1.401234 K
+Verhältnis kA1/kA2=1.20: kA=0.340247765 W/K; T1=30.876295 °C; T2=30.193282 °C; T1-T2=0.683013 K
+Verhältnis kA1/kA2=1.30: kA=0.340247765 W/K; T1=29.570567 °C; T2=30.193282 °C; T1-T2=-0.622715 K
+Temperaturabfall Tasse 1 zu Beginn der Schlussmessung: 0.299408 K/min (momentan)
+Hypothetische GEMEINSAME temperaturabhängige Verlustgesetze:
+linear: T1=34.046483 °C; T2=30.193282 °C; Gap=3.853201 K
+reine Strahlungsform, Koeffizient kalibriert: T1=36.160455 °C; T2=32.027058 °C; Gap=4.133398 K
+Formtest (T-Tu)*exp(0,02*(T-60)), keine Stoffwertprognose: T1=41.380801 °C; T2=36.562219 °C; Gap=4.818583 K
+Formtest (T-Tu)*exp(0,05*(T-60)), keine Stoffwertprognose: T1=48.135628 °C; T2=42.441981 °C; Gap=5.693646 K
+
+BECHERKAPAZITÄT 255.0 J/K
+Basis: kA=0.444031473 W/K; T1=34.043556 °C; T2=30.964725 °C; T1-T2=3.078831 K
+Nur 10-min-Messung variiert, übrige Eingaben fest:
+T10=66 °C: kA=0.483136923 W/K; T1=32.504397 °C; T2=29.455055 °C; T1-T2=3.049342 K
+T10=67 °C: kA=0.444031473 W/K; T1=34.043556 °C; T2=30.964725 °C; T1-T2=3.078831 K
+T10=68 °C: kA=0.405749357 W/K; T1=35.733669 °C; T2=32.643832 °C; T1-T2=3.089838 K
+Gemeinsame 16 Eckkombinationen unabhängiger Eingabefehler ±1 K
+(Gap, T0, T10, Tu, Tm), Minimum: (2.931791063310854, 79.0, 66.0, 19.0, 6.0)
+(Gap, T0, T10, Tu, Tm), Maximum: (3.225871770448059, 81.0, 68.0, 21.0, 4.0)
+Gemeinsamer Offset +1 K aller vier Temperaturangaben: Gap unverändert.
+Milchvolumen variiert, kA fest auf Basiswert:
+V_M=15 ml: kA=0.444031473 W/K; T1=33.988723 °C; T2=32.336882 °C; T1-T2=1.651841 K
+V_M=30 ml: kA=0.444031473 W/K; T1=34.043556 °C; T2=30.964725 °C; T1-T2=3.078831 K
+V_M=45 ml: kA=0.444031473 W/K; T1=34.037523 °C; T2=29.723733 °C; T1-T2=4.313790 K
+V_M=60 ml: kA=0.444031473 W/K; T1=33.980058 °C; T2=28.595957 °C; T1-T2=5.384101 K
+Starttemperatur variiert, kA fest auf Basiswert:
+T0=70 °C: kA=0.444031473 W/K; T1=31.635792 °C; T2=28.886299 °C; T1-T2=2.749493 K
+T0=80 °C: kA=0.444031473 W/K; T1=34.043556 °C; T2=30.964725 °C; T1-T2=3.078831 K
+T0=90 °C: kA=0.444031473 W/K; T1=36.451320 °C; T2=33.043151 °C; T1-T2=3.408170 K
+Kippverhältnis kA_mit_Milch/kA_ohne_Milch=1.187756232
+Verhältnis kA1/kA2=0.80: kA=0.444031473 W/K; T1=38.279541 °C; T2=30.964725 °C; T1-T2=7.314816 K
+Verhältnis kA1/kA2=1.00: kA=0.444031473 W/K; T1=34.043556 °C; T2=30.964725 °C; T1-T2=3.078831 K
+Verhältnis kA1/kA2=1.15: kA=0.444031473 W/K; T1=31.524204 °C; T2=30.964725 °C; T1-T2=0.559480 K
+Verhältnis kA1/kA2=1.20: kA=0.444031473 W/K; T1=30.789192 °C; T2=30.964725 °C; T1-T2=-0.175533 K
+Verhältnis kA1/kA2=1.30: kA=0.444031473 W/K; T1=29.456813 °C; T2=30.964725 °C; T1-T2=-1.507912 K
+Temperaturabfall Tasse 1 zu Beginn der Schlussmessung: 0.308512 K/min (momentan)
+Hypothetische GEMEINSAME temperaturabhängige Verlustgesetze:
+linear: T1=34.043556 °C; T2=30.964725 °C; Gap=3.078831 K
+reine Strahlungsform, Koeffizient kalibriert: T1=36.162150 °C; T2=32.854652 °C; Gap=3.307498 K
+Formtest (T-Tu)*exp(0,02*(T-60)), keine Stoffwertprognose: T1=41.393141 °C; T2=37.528684 °C; Gap=3.864457 K
+Formtest (T-Tu)*exp(0,05*(T-60)), keine Stoffwertprognose: T1=48.157570 °C; T2=43.588490 °C; Gap=4.569079 K
+
+Modellgrenzen und mathematische Kontrolle:
+Ein gemeinsames monoton wachsendes Verlustgesetz q(T) kann bei kalter Milch die Reihenfolge nicht allein umdrehen, solange der reine Kaffee wärmer als die Milch bleibt: Sei F(t) die frühe Mischtemperatur und G(t) die hypothetische späte Mischung zum Zeitpunkt t. An jedem Kontakt F=G ist (F-G)'=[q(T_rein)-q(G)]/(C_K+C_B+C_M)>0.
+Bei tatsächlicher Verdunstung können Masse, Gleichgewichtstemperatur und q(T) zwischen Kaffee und Milchkaffee abweichen. Diese Effekte sind mit einem Messpunkt nicht identifizierbar.
+Kein Zahlenwert für Biot aus dem Material bestimmbar: Geometrie, Wärmeleitfähigkeit und interner Wärmeübergang fehlen. Für Flüssigkeit ist eine Aussage über Durchmischung/Zirkulation erforderlich; kA ist kein separat gemessener lokaler Wärmeübergangskoeffizient.

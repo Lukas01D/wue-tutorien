@@ -1,0 +1,54 @@
+{
+  "Qdot_1_start_W": 17.171014888575247,
+  "Qdot_2_start_W": 20.41486589880672,
+  "Schnittzeit_min": 55.74466887347626,
+  "e_G": 0.27833441841694917,
+  "e_K": 0.23103599384859397,
+  "g_Kaffee_Anteil_K": 2.477158846237621,
+  "g_Milch_Anteil_kalt_K": 1.376041735941629,
+  "g_Milch_Anteil_heiss_K": -3.669444629177678,
+  "g_Anfangstemperatur_C": 77.45765578765142,
+  "g_spaete_Temperatur_fuer_Gleichstand_C": 50.620579407391524,
+  "g_spaete_Temperatur_20_C_ergibt_Tasse_2_C": 32.100040565500116,
+  "f_Becherkapazitaet_Anteil_an_Kaffee_prozent": 30.502392344497608,
+  "f_altes_kA_theta1_theta2_Differenz": [
+    39.11058697528261,
+    36.057759182783606,
+    3.052827792499002
+  ],
+  "Versuch_30_min_theta1_theta2_Differenz": [
+    47.14548383017518,
+    44.438709296459805,
+    2.7067745337153752
+  ],
+  "Versuch_60_min_theta1_theta2_Differenz": [
+    34.043556229271296,
+    30.96472481239185,
+    3.0788314168794457
+  ],
+  "Versuch_Milch20_theta1_theta3_Differenz": [
+    34.043556229271296,
+    32.47055538202473,
+    1.5730008472465684
+  ],
+  "Nichtlinear_exakt": [
+    {
+      "n": 1.0,
+      "theta_1_C": 34.046482988417935,
+      "theta_2_C": 30.193282406238687,
+      "Differenz_K": 3.853200582179248
+    },
+    {
+      "n": 1.3333333333333333,
+      "theta_1_C": 37.65328016116572,
+      "theta_2_C": 33.340555481208064,
+      "Differenz_K": 4.312724679957654
+    },
+    {
+      "n": 1.6,
+      "theta_1_C": 39.95442681900737,
+      "theta_2_C": 35.34820079694129,
+      "Differenz_K": 4.606226022066075
+    }
+  ]
+}

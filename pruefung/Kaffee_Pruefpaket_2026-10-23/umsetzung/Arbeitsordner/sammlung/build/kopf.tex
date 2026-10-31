@@ -3,25 +3,28 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[C]{\small Wärmeübertragung: Aufgabensammlung der Tutorien}
-\fancyhead[R]{\small Entwurf, Stand 21.10.2026}
+\fancyhead[R]{\small Entwurf, Stand 31.10.2026}
 \fancyfoot[R]{\small\thepage}
 \renewcommand{\headrulewidth}{0.5pt}
-\fancypagestyle{plain}{\fancyhf{}\fancyhead[C]{\small Wärmeübertragung: Aufgabensammlung der Tutorien}\fancyhead[R]{\small Entwurf, Stand 21.10.2026}\fancyfoot[R]{\small\thepage}\renewcommand{\headrulewidth}{0.5pt}}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[C]{\small Wärmeübertragung: Aufgabensammlung der Tutorien}\fancyhead[R]{\small Entwurf, Stand 31.10.2026}\fancyfoot[R]{\small\thepage}\renewcommand{\headrulewidth}{0.5pt}}
 \usepackage{setspace}
 \setstretch{1.25}
 \setlength{\parskip}{4pt plus 1pt}
 \setlength{\parindent}{0pt}
 \usepackage{enumitem}
 \setlist{itemsep=2pt,topsep=3pt}
+% Marken nummerierter Aufzählungen fett (a), b), … wie im Tutoriumsblatt, Ä20)
+\setlist[enumerate]{font=\bfseries}
 \usepackage{array}
 \renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4pt}
 \usepackage{ragged2e}
 \setmathrm{Latin Modern Roman}
 \usepackage{graphicx}
 \usepackage{needspace}
 % Überschriften: Tutorium (section) zentriert auf neuer Seite, Aufgabenblock (subsection) fett
 \usepackage{titlesec}
-\titleformat{\section}{\centering\normalfont\large\bfseries}{}{0pt}{}
+\titleformat{\section}{\centering\normalfont\fontsize{18}{22}\selectfont\bfseries}{}{0pt}{\underline}
 \titlespacing*{\section}{0pt}{0pt}{10pt}
 \newcommand{\sectionbreak}{\clearpage}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
@@ -33,3 +36,7 @@
 \displaywidowpenalty=10000
 % Aufzählung zweiter Ebene mit Kreis statt Strich
 \renewcommand{\labelitemii}{$\circ$}
+% Formeln in Textgröße (Höhe der Kleinbuchstaben wie die Textschrift), Abstände um = und + nicht dehnen
+\setmathfont{Latin Modern Math}[Scale=MatchLowercase]
+\thickmuskip=5mu
+\medmuskip=4mu

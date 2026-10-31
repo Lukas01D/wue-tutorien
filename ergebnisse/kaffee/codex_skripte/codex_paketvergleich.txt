@@ -1,0 +1,13 @@
+Paketlauf stimmt exakt mit mitgelieferter Textausgabe überein: True
+Lineare Kernzahlen und Becher-/Heißmilchvariante: Übereinstimmung < 1e-9 in jeweiliger Einheit.
+n=1.00000000: Euler minus exakt, T1=0.00046476 K, T2=-0.00000000 K
+n=1.33333333: Euler minus exakt, T1=0.00120188 K, T2=0.00066053 K
+n=1.60000000: Euler minus exakt, T1=0.00169556 K, T2=0.00110317 K
+
+SHA256 der geprüften Kerndateien:
+866830ecf2b4593ae03c944c47fb4f12509e080db19ac47407ba17e48f2b808a A_aufgabe/Kaffee_Aufgabe.md
+0abedf90ae30a2641a6193bf4f598696c8a4d7f0fdb34c231fc5c2c77811a89e A_aufgabe/Kaffee_Aufgabe.pdf
+9a8e7b4dd9be8208052b48ab831917143707c6abf9efb8ecbff9472c1f8172f3 B_loesung/Kaffee_Loesung.md
+1400384bd6b57b02b39b682993e8b6d166aef93795969bfd4f1877951a7af298 B_loesung/Kaffee_Loesung.pdf
+013afc67f5e5ab2756bb60161795d9f83633c804427c0d432d244b0611c12e4c C_modell/kaffee_modell.py
+7d43fa6eea5a9b87ef06b3330ff4bf5a1bdd1f5457a55e7182a5fcf997296f82 C_modell/nachrechnung_kaffee.py

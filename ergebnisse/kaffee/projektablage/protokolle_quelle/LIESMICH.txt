@@ -1,0 +1,43 @@
+Protokolle der Tutorien Wärmeübertragung: Quellen und Bauanleitung
+=================================================================
+
+Stand: Version 11 vom 31.10.2026 (KI-Protokoll und Entscheidungsprotokoll).
+Zuletzt vergeben: K36 (KI-Protokoll), G44 und D112 (Entscheidungsprotokoll), Abschnitt 3.8 im
+KI-Protokoll und Abschnitt 3.12 im Entscheidungsprotokoll.
+Danach jeweils die nächste freie Nummer. Vor jedem Eintrag die neueste Fassung in der Projektablage
+ansehen (claude/KI-Protokoll_Tutorien_WUE.md, Kopfzeile „Version“, letzte Einträge).
+
+Dateien
+  protokoll_ki.js                 KI-Protokoll (Einträge K01 ff., Abschnitte 1 bis 6)
+  protokoll_entscheidungen.js     Entscheidungsprotokoll (G01 ff., D01 ff.)
+  fvt_doc.js                      gemeinsames Layout im FVT-Stil (Logos, Tabellen, Schrift)
+  pruefergebnisse*.js             Tabellen der Prüfabschnitte 3.1 ff. im KI-Protokoll
+  logo_upb.jpg, logo_fvt.jpg      Logos für die Kopfzeile
+  md_export.py, flatten.lua       Word nach Markdown für die Projektablage
+  *_Tutorien_WUE.md               aktuelle Markdown-Fassungen
+
+Neuen Eintrag schreiben
+  KI-Protokoll: in protokoll_ki.js in der Tabelle unter „2. Einsatzprotokoll“ eine Zeile anhängen:
+    ["K..", "TT.MM.", "Auftrag", "Tätigkeit der KI", "Ergebnis", "Prüfung", "Probleme und Korrekturen"],
+  Prüfergebnisse als neuer Abschnitt 3.x (Muster: Abschnitt 3.6 mit eigener Datei
+  pruefergebnisse_<name>.js), Kopfzeile „Version“ und „Stand“ anpassen, Zeile im „Änderungsverlauf“.
+  Entscheidungsprotokoll: Grundlage als ["G..", "...", "Art", "verwendet in"] (Art: V, L, F, G, D, N, M
+  wie in der Legende; M = Vorgabe oder Rückmeldung der Tutoriumsleitung), Entscheidungen als
+  ["D..", "Gegenstand und Entscheidung", "Grundlage", "Von", "Status", "Rückweg"] in einem neuen
+  Abschnitt 3.x je Sitzung; Offene Punkte und Änderungsverlauf anpassen, Kopfzeile „Version“ und „Stand“.
+
+Bauen (Node.js mit dem Paket docx 9.x; falls es fehlt: im Ordner mit diesen Dateien npm install docx@9.7.1)
+  node protokoll_ki.js KI-Protokoll_JJJJ-MM-TT.docx
+  node protokoll_entscheidungen.js Entscheidungsprotokoll_JJJJ-MM-TT.docx
+  soffice --headless --convert-to pdf KI-Protokoll_JJJJ-MM-TT.docx Entscheidungsprotokoll_JJJJ-MM-TT.docx
+  python3 md_export.py KI-Protokoll_JJJJ-MM-TT.docx KI-Protokoll_Tutorien_WUE.md "Fortlaufendes KI-Protokoll (Markdown-Fassung, Stand ..., Version ...)."
+  python3 md_export.py Entscheidungsprotokoll_JJJJ-MM-TT.docx Entscheidungsprotokoll_Tutorien_WUE.md "Fortlaufendes Entscheidungsprotokoll (Markdown-Fassung, Stand ..., Version ...)."
+  Danach die neuen Seiten als Bild ansehen und die beiden Markdown-Dateien in die Projektablage
+  schreiben (claude/KI-Protokoll_Tutorien_WUE.md und claude/Entscheidungsprotokoll_Tutorien_WUE.md,
+  jeweils ersetzen). Die geänderten Quelldateien (*.js) zusätzlich nach claude/protokolle_quelle/ in
+  die Projektablage legen, damit sie eine Pause oder einen neuen Chat überstehen. Vor dem nächsten Bau
+  die Fassung aus der Projektablage über die Fassung aus dem ZIP legen, wenn sie neuer ist (Kopfzeile
+  „Version“ vergleichen).
+
+Regeln: Deutsch, keine Gedankenstriche, Formatierung im Text: **fett**, *kursiv*, _{tief}, ^{hoch}
+(siehe Kommentar in fvt_doc.js).
