@@ -1,0 +1,217 @@
+{
+  "cases": 29,
+  "externalRequests": [],
+  "pageErrors": [],
+  "results": [
+    {
+      "name": "standard",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "f_milch60",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 8.526512829121202e-14,
+      "warning": ""
+    },
+    {
+      "name": "g_becher",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.5579538487363607e-13,
+      "warning": ""
+    },
+    {
+      "name": "zeit_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.04999041843545626,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "zeit_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "milch_temp_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "milch_temp_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 8.526512829121202e-14,
+      "warning": ""
+    },
+    {
+      "name": "milch_menge_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.842170943040401e-14,
+      "warning": ""
+    },
+    {
+      "name": "milch_menge_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 5.684341886080802e-14,
+      "warning": ""
+    },
+    {
+      "name": "raum_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.049839486356333396,
+      "maxJumpError": 2.2737367544323206e-13,
+      "warning": ""
+    },
+    {
+      "name": "raum_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.049917405166667095,
+      "maxJumpError": 2.8421709430404007e-13,
+      "warning": ""
+    },
+    {
+      "name": "kaffee_start_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.049839486356333396,
+      "maxJumpError": 3.268496584496461e-13,
+      "warning": ""
+    },
+    {
+      "name": "kaffee_start_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.049839486356333396,
+      "maxJumpError": 2.2737367544323206e-13,
+      "warning": ""
+    },
+    {
+      "name": "mess_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.049885832639290584,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "mess_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.04997593686938728,
+      "maxJumpError": 2.2737367544323206e-13,
+      "warning": ""
+    },
+    {
+      "name": "kaffee_menge_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.2737367544323206e-13,
+      "warning": ""
+    },
+    {
+      "name": "kaffee_menge_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 0,
+      "warning": ""
+    },
+    {
+      "name": "faktor_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "faktor_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "becher_masse_min",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 4.831690603168681e-13,
+      "warning": ""
+    },
+    {
+      "name": "becher_masse_max",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 5.684341886080802e-14,
+      "warning": ""
+    },
+    {
+      "name": "milch2_raum",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.5579538487363607e-13,
+      "warning": ""
+    },
+    {
+      "name": "kombiniert_klein",
+      "numberMismatches": [],
+      "maxPixelError": 0.04988040723802101,
+      "maxJumpError": 2.5579538487363607e-13,
+      "warning": ""
+    },
+    {
+      "name": "kombiniert_gross",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998122912266467,
+      "maxJumpError": 3.694822225952521e-13,
+      "warning": ""
+    },
+    {
+      "name": "umgekehrter_schnitt",
+      "numberMismatches": [
+        {
+          "card": 4,
+          "line": 1,
+          "expected": "1,4 min",
+          "actual": "keiner bis zur Zugabe"
+        }
+      ],
+      "maxPixelError": 0.049903549022189964,
+      "maxJumpError": 3.268496584496461e-13,
+      "warning": ""
+    },
+    {
+      "name": "kein_schnitt",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 4.831690603168681e-13,
+      "warning": ""
+    },
+    {
+      "name": "milch_raum",
+      "numberMismatches": [],
+      "maxPixelError": 0.04998851245765934,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "selbst30",
+      "numberMismatches": [],
+      "maxPixelError": 0.04999804986522349,
+      "maxJumpError": 2.4158453015843406e-13,
+      "warning": ""
+    },
+    {
+      "name": "selbst90",
+      "numberMismatches": [],
+      "maxPixelError": 0.04981223175965965,
+      "maxJumpError": 2.7000623958883807e-13,
+      "warning": ""
+    }
+  ]
+}
