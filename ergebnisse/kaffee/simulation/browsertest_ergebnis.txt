@@ -1,34 +1,66 @@
 Browsertest des Simulationstools (Chromium, Playwright)
 
-ok     handy: Standardwerte zeigen 34,05 °C und 30,19 °C
-ok     handy: Aussage Tasse 1 um 3,85 K wärmer
-ok     handy: Schnittpunkt 55,7 min, Q1 34,88 kJ, Q2 38,57 kJ
-ok     handy: kein waagerechtes Scrollen
-ok     handy: erwärmte Milch 60 °C, Tasse 2 um 1,19 K wärmer
-ok     handy: Milch 47 °C, beide gleich warm
-ok     handy: Becher an, kA 0,4440 W/K, 34,04 und 30,96 °C
-ok     handy: Milch für Tasse 2 bei Raumtemperatur, Tasse 1 um 1,95 K wärmer
-ok     handy: Zugabe nach 40 min, Unterschied 3,70 K
-ok     handy: 8 Messwerte in der Tabelle
-ok     handy: Messpunkte im Diagramm  (11 Marken)
-ok     handy: kein waagerechtes Scrollen mit Messwerten
-ok     handy: Übernahme Start 80,5 °C, 10 min 67 °C, 40 min, Becher an  ["80.5","67","40",true]
-ok     handy: Messwerte nach dem Neuladen noch da
+ok     handy A: Standardwerte zeigen 34,05 °C und 30,19 °C
+ok     handy A: Aussage Tasse 1 um 3,85 K wärmer
+ok     handy A: Schnittpunkt 55,7 min mit Richtung, Q1 34,88 kJ, Q2 38,57 kJ
+ok     handy A: kein waagerechtes Scrollen
+ok     handy A: Indizes ab und u im Kasten Modell aufrecht  ["normal","normal","normal","normal","normal"]
+ok     handy A: erwärmte Milch 60 °C, Tasse 2 um 1,19 K wärmer
+ok     handy A: Becher an, kA 0,4440 W/K, 34,04 und 30,96 °C
+ok     handy A: Milch für Tasse 2 bei Raumtemperatur, Tasse 1 um 1,95 K wärmer
+ok     handy A: Zugabe nach 40 min, Unterschied 3,70 K
+ok     handy B: Schnitt in Gegenrichtung bei 1,4 min, danach schwarzer Kaffee wärmer, Marke im Diagramm
+ok     handy B: kein Schnitt vor der Zugabe nach 30 min
+ok     handy C: Anfang 60 °C unter dem Messwert 67 °C: keine Ergebniszahlen, Hinweis am Ergebnis
+ok     handy C: Messwert eintragen bei ungültiger Einstellung zeigt keine alten Ergebnisse
+ok     handy C: wieder gültig, Ergebnisse wieder da
+ok     handy C: Messwert gleich Raumtemperatur ist ungültig
+ok     handy D: unmögliche Reihe (100 °C und 15 °C) abgelehnt, Einstellungen unverändert  Nicht übernommen, nichts verändert: Starttemperatur 100,0 °C liegt außerhalb des Reglerber
+ok     handy D: unmögliche Reihe (65 °C und 70 °C) abgelehnt, Einstellungen unverändert  Nicht übernommen, nichts verändert: Der Messwert nach 10 min (70,0 °C) muss zwischen Raumt
+ok     handy D: unmögliche Reihe (10 min unter Raum) abgelehnt, Einstellungen unverändert  Nicht übernommen, nichts verändert: Messwert nach 10 min 18,0 °C liegt außerhalb des Regle
+ok     handy D: Mittelwerte ungerundet übernommen (80,7 und 66,95 °C), 40 min, Becher an  [80.7,66.94999999999999]
+ok     handy E: „10,5,9“ und „66.5xyz“ abgelehnt
+ok     handy E: „10,5“ und „66.5“ angenommen, Fehlermeldung ersetzt  Eingetragen: Becher 2, 10,5 min, 66,5 °C.
+ok     handy E: leere Zeit abgelehnt
+ok     handy F: vier Fragen im Werkzeug
+ok     handy F1: größter Unterschied ungefähr bei 56 min (3,86 K), danach kleiner (120 min: 3,02 K)  [[53,3.86],3.02]
+ok     handy F2: ungefähr gleich warm bei 47,0 °C Milch nach 60 min  47
+ok     handy F2: bei Zugabe nach 30 min passt 47 °C nicht mehr (Temperatur hängt vom Zeitpunkt ab)  0.84
+ok     handy F3: Unterschied 3,85 → 3,08 K, Wärme 34,88/38,57 → 46,60/50,34 kJ, Tasse 1 bleibt wärmer
+ok     handy F4: Übernahme Start 80,3 °C, 10 min 66,9 °C, 40 min, Becher an, 8 Messpunkte im Diagramm  [80.3,66.9,10]
+ok     handy F4: kein waagerechtes Scrollen mit Messwerten
+ok     handy F4: Messwerte nach dem Neuladen noch da
 ok     handy: keine Fehler in der Konsole
-ok     laptop: Standardwerte zeigen 34,05 °C und 30,19 °C
-ok     laptop: Aussage Tasse 1 um 3,85 K wärmer
-ok     laptop: Schnittpunkt 55,7 min, Q1 34,88 kJ, Q2 38,57 kJ
-ok     laptop: kein waagerechtes Scrollen
-ok     laptop: erwärmte Milch 60 °C, Tasse 2 um 1,19 K wärmer
-ok     laptop: Milch 47 °C, beide gleich warm
-ok     laptop: Becher an, kA 0,4440 W/K, 34,04 und 30,96 °C
-ok     laptop: Milch für Tasse 2 bei Raumtemperatur, Tasse 1 um 1,95 K wärmer
-ok     laptop: Zugabe nach 40 min, Unterschied 3,70 K
-ok     laptop: 8 Messwerte in der Tabelle
-ok     laptop: Messpunkte im Diagramm  (11 Marken)
-ok     laptop: kein waagerechtes Scrollen mit Messwerten
-ok     laptop: Übernahme Start 80,5 °C, 10 min 67 °C, 40 min, Becher an  ["80.5","67","40",true]
-ok     laptop: Messwerte nach dem Neuladen noch da
+ok     laptop A: Standardwerte zeigen 34,05 °C und 30,19 °C
+ok     laptop A: Aussage Tasse 1 um 3,85 K wärmer
+ok     laptop A: Schnittpunkt 55,7 min mit Richtung, Q1 34,88 kJ, Q2 38,57 kJ
+ok     laptop A: kein waagerechtes Scrollen
+ok     laptop A: Indizes ab und u im Kasten Modell aufrecht  ["normal","normal","normal","normal","normal"]
+ok     laptop A: erwärmte Milch 60 °C, Tasse 2 um 1,19 K wärmer
+ok     laptop A: Becher an, kA 0,4440 W/K, 34,04 und 30,96 °C
+ok     laptop A: Milch für Tasse 2 bei Raumtemperatur, Tasse 1 um 1,95 K wärmer
+ok     laptop A: Zugabe nach 40 min, Unterschied 3,70 K
+ok     laptop B: Schnitt in Gegenrichtung bei 1,4 min, danach schwarzer Kaffee wärmer, Marke im Diagramm
+ok     laptop B: kein Schnitt vor der Zugabe nach 30 min
+ok     laptop C: Anfang 60 °C unter dem Messwert 67 °C: keine Ergebniszahlen, Hinweis am Ergebnis
+ok     laptop C: Messwert eintragen bei ungültiger Einstellung zeigt keine alten Ergebnisse
+ok     laptop C: wieder gültig, Ergebnisse wieder da
+ok     laptop C: Messwert gleich Raumtemperatur ist ungültig
+ok     laptop D: unmögliche Reihe (100 °C und 15 °C) abgelehnt, Einstellungen unverändert  Nicht übernommen, nichts verändert: Starttemperatur 100,0 °C liegt außerhalb des Reglerber
+ok     laptop D: unmögliche Reihe (65 °C und 70 °C) abgelehnt, Einstellungen unverändert  Nicht übernommen, nichts verändert: Der Messwert nach 10 min (70,0 °C) muss zwischen Raumt
+ok     laptop D: unmögliche Reihe (10 min unter Raum) abgelehnt, Einstellungen unverändert  Nicht übernommen, nichts verändert: Messwert nach 10 min 18,0 °C liegt außerhalb des Regle
+ok     laptop D: Mittelwerte ungerundet übernommen (80,7 und 66,95 °C), 40 min, Becher an  [80.7,66.94999999999999]
+ok     laptop E: „10,5,9“ und „66.5xyz“ abgelehnt
+ok     laptop E: „10,5“ und „66.5“ angenommen, Fehlermeldung ersetzt  Eingetragen: Becher 2, 10,5 min, 66,5 °C.
+ok     laptop E: leere Zeit abgelehnt
+ok     laptop F: vier Fragen im Werkzeug
+ok     laptop F1: größter Unterschied ungefähr bei 56 min (3,86 K), danach kleiner (120 min: 3,02 K)  [[53,3.86],3.02]
+ok     laptop F2: ungefähr gleich warm bei 47,0 °C Milch nach 60 min  47
+ok     laptop F2: bei Zugabe nach 30 min passt 47 °C nicht mehr (Temperatur hängt vom Zeitpunkt ab)  0.84
+ok     laptop F3: Unterschied 3,85 → 3,08 K, Wärme 34,88/38,57 → 46,60/50,34 kJ, Tasse 1 bleibt wärmer
+ok     laptop F4: Übernahme Start 80,3 °C, 10 min 66,9 °C, 40 min, Becher an, 8 Messpunkte im Diagramm  [80.3,66.9,10]
+ok     laptop F4: kein waagerechtes Scrollen mit Messwerten
+ok     laptop F4: Messwerte nach dem Neuladen noch da
 ok     laptop: keine Fehler in der Konsole
 
-Ergebnis: 30 von 30 Prüfungen bestanden.
+Ergebnis: 62 von 62 Prüfungen bestanden.

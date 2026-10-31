@@ -7,7 +7,7 @@ const C = [];
 
 C.push(new Paragraph({ style: "Title", children: [new TextRun("Tutorien Wärmeübertragung: Entscheidungsprotokoll")] }));
 C.push(P("Grundlagen und Entscheidungen der Aufgabenentwicklung, fortlaufend geführt", { size: 24, color: h.GREY, align: AlignmentType.LEFT, before: 0, after: 120 }));
-C.push(Small("**Version:** 11 · **Stand:** 31.10.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)"));
+C.push(Small("**Version:** 13 · **Stand:** 31.10.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)"));
 C.push(Small("**Begleitdokumente:** „Lernziele, Vorab-Fragen und Bilanz-Systematik“ (16.10.2026), „Leitaufgaben aus Klima und Erde“ (17.10.2026), „Aufgabenideen: Meeresströmungen, Sverdrup und Luftströmungen“ (20.10.2026), „Kaffee mit Milch“ (Aufgabe und Lösung, 21.10.2026), „Strukturvorlage: Aufgaben im Stil des Lehrstuhls“ (21.10.2026), „Aufgabensammlung der Tutorien“ (21.10.2026), Plan und Prüfpaket zur Prüfung der Kaffee-Aufgabe (23.10.2026), Prüfberichte, Bündelung und Änderungsvorschläge zur Kaffee-Aufgabe (29.10.2026), KI-Protokoll", { after: 160 }));
 
 C.push(box([
@@ -77,6 +77,9 @@ C.push(grid(
     ["G42", "Entscheidung der Tutoriumsleitung vom 30.10.2026 im Chat über die Vorschläge der zweiten Runde der Rolle S: S1 bis S11 wie empfohlen (Bericht ergebnisse/kaffee/S2_BERICHT.md, Vorlage in Aenderungsvorschlaege.md). Antworten: heißes Wasser im Raum erlaubt, Becher und Thermometer bringt die Tutoriumsleitung; Kopf der Endfassung „Sommersemester 2027“; Lösung für Studierende als eigene Fassung ohne Hinweise; Kaffee bleibt Hauptaufgabe der Sitzung (Vorschlag ohne Widerspruch)", "M", "D67, D103 bis D109"],
     ["G43", "Abnahmebericht von Codex (Rolle X2) vom 30.10.2026 zur umgesetzten Kaffee-Aufgabe (ergebnisse/kaffee/X2_CODEX_ABNAHME.md, Zweig codex/kaffee-abnahme-x2): Urteil „mit kleinen Korrekturen“, 106 von 106 Zahlen bestätigt, alle 50 Entscheidungen abgeglichen, sechs Befunde (KI-Protokoll K36, Abschnitt 3.8)", "N, F", "D111"],
     ["G44", "Rückmeldung der Tutoriumsleitung vom 31.10.2026 im Chat: alle sechs Befunde nachrechnen und beheben, neu bauen und alle Seiten ansehen; D67 bestätigt; Konzept der Sitzung auf drei Ebenen: zuerst der Versuch (startet zu Beginn der Sitzung), dann die Rechnung, am Ende ein Simulationstool, mit dem die Studierenden die Parameter des Kaffee-Vorgangs selbst verändern; Zeitplan in den Hinweisen anpassen (Versuch am Anfang, am Ende 10 bis 15 Minuten Simulation), am Aufgabenblatt nichts ändern; Seite 3 mit dem Messblatt bleibt wie empfohlen", "M", "D67, D110 bis D112"],
+    ["G45", "Auftrag der Tutoriumsleitung vom 31.10.2026 nach dem Merge von Lukas01D/wue-tutorien#3: Frage 3 (Biot) als Hausaufgabe bestätigt; in allen übrigen Tutorien der Sammlung beschreibende Indizes aufrecht wie beim Kaffee (Ä24), mit Textvergleich; Simulationstool für die dritte Ebene (eine HTML-Datei, offline, Modell aus kaffee_modell.py, Regler nur für Größen des Modells, Messwerte aus dem Versuch, 3 bis 4 Fragen, Testskript und Browsertest); dritter Auftrag für Codex (Rolle X3); neuer Zweig und neuer Pull Request", "M", "D110, D113 bis D115"],
+    ["G46", "Prüfbericht von Codex (Rolle X3) vom 31.10.2026 zum Simulationstool (ergebnisse/kaffee/X3_CODEX_SIMULATION.md, Zweig codex/kaffee-x3-simulation): Urteil „mit kleinen Korrekturen“, sechs Befunde (KI-Protokoll K38, Abschnitt 3.9)", "N, F", "D116"],
+    ["G47", "Auftrag der Tutoriumsleitung vom 31.10.2026: alle sechs Befunde nachrechnen und beheben, auch die Formulierungsvorschläge zu Frage 1 und 2; Tests so erweitern, dass Befund 1 bis 5 künftig auffallen; Indizes ab und u im Kasten „Modell“ aufrecht; die drei nicht eingebauten Größen (Exponent n, Verdunstung, Abkühlen nach dem Zugießen) für diese Sitzung nicht; danach bauen, ansehen, Protokolle, Übergabe, Pull Request", "M", "D115, D116"],
   ],
   [600, 4300, 600, 3570], { firstColBold: true },
 ));
@@ -246,9 +249,21 @@ C.push(TAB([
 
 C.push(H2("3.12 Abnahme durch Codex und Konzept der Sitzung vom 31.10.2026"));
 C.push(TAB([
-  ["D110", "Die Sitzung zu Tutorium 5 hat drei Ebenen: zuerst der Versuch, der zu Beginn startet; dann die Rechnung (Aufgabe 1); am Ende 10 bis 15 Minuten ein Simulationstool, mit dem die Studierenden die Parameter des Kaffee-Vorgangs selbst verändern (z. B. Milchtemperatur, Zeitpunkt des Zugießens, *kA*, Becher). Zeitplan in den Hinweisen angepasst: *t* = 0 des Versuchs etwa in Minute 5, a bis e bis Minute 45, Messung nach 40 min in Minute 45, Simulation ab Minute 75; Frage 3 der Sammlung (Biot) als Hausaufgabe. Am Aufgabenblatt nichts geändert.", "G44", "TL", "Zeitplan umgesetzt (31.10.2026, K36); Simulationstool noch zu erstellen", "Zeitplan vom 30.10.2026 ohne Simulation"],
+  ["D110", "Die Sitzung zu Tutorium 5 hat drei Ebenen: zuerst der Versuch, der zu Beginn startet; dann die Rechnung (Aufgabe 1); am Ende 10 bis 15 Minuten ein Simulationstool, mit dem die Studierenden die Parameter des Kaffee-Vorgangs selbst verändern (z. B. Milchtemperatur, Zeitpunkt des Zugießens, *kA*, Becher). Zeitplan in den Hinweisen angepasst: *t* = 0 des Versuchs etwa in Minute 5, a bis e bis Minute 45, Messung nach 40 min in Minute 45, Simulation ab Minute 75; Frage 3 der Sammlung (Biot) als Hausaufgabe. Am Aufgabenblatt nichts geändert.", "G44", "TL", "Zeitplan umgesetzt (31.10.2026, K36); Biot als Hausaufgabe bestätigt (G45); Simulationstool erstellt (D114)", "Zeitplan vom 30.10.2026 ohne Simulation"],
   ["D111", "Befunde der Abnahme durch Codex behoben: Erklärung der Prozessgröße in e) (Abnahme 1); Bilanzraum in Abb. L1 um den ganzen Becher (2); Teil f im Einzelblatt nicht getrennt, Quellenblock in Word als Einheit (3); Teilverweis in der Nachrechnung (4); Gestaltung nach Ä18, Ä20, Ä22 und Ä24 mit Teilaufgabenmarken fett, Abständen 18/6 pt und 4 pt vor Bildern, Spalten 3,9/4,1 cm, beschreibenden Indizes aufrecht, *ϑ*_{u} in Abb. 1 und L1 und Beschriftungen in Abb. L2 (5); .gitignore nur für die Bauhilfen der Protokolle (6). Dazu Rundungshinweise in der Zusatzfrage und die bisher unwirksame Abschaltung der Kopfzeilenwiederholung in Word (Ä22).", "G43, G44", "TL", "umgesetzt (31.10.2026, K36)", "einzeln zurücknehmen"],
   ["D112", "Layout des Blatts: Seite 3 bleibt nur teilweise gefüllt, weil der Versuch als Messblatt auf einer eigenen Seite steht.", "G44", "TL", "entschieden", "Versuch direkt nach g (bricht in Word über zwei Seiten)"],
+]));
+
+C.push(H2("3.13 Indizes der Sammlung und Simulationstool vom 31.10.2026"));
+C.push(TAB([
+  ["D113", "Beschreibende Indizes in allen übrigen Tutorien der Sammlung aufrecht wie in der Kaffee-Aufgabe (Ä24): Bezeichnungen (z. B. Eis, Luft, außen, innen, mittel, th, AMOC) aufrecht; Größen und Zahlen als Index bleiben kursiv (p in *c*_{p}, Koordinate *z*, ∞, α, Ziffern). Gilt für Aufgabentexte, Quellen und Abbildungen. Der Textvergleich belegt, dass sich nur die Schrift geändert hat.", "G45", "TL", "umgesetzt (31.10.2026, K37)", "Umstellung mit der Gegenprobe des Skripts rückgängig machen (ohne \\mathrm-Hülle)"],
+  ["D114", "Simulationstool für die dritte Ebene der Sitzung: Kaffee_Simulation.html, eine Datei, offline auf Handy und Laptop, mit genau dem Modell aus kaffee_modell.py. Regler: Zeitpunkt der Milchzugabe, Milchtemperatur (2 bis 65 °C), Milch für Tasse 2 bei Raumtemperatur (Grenzfall wie Becher 3), Milchmenge, Raumtemperatur, Becher an oder aus; dazu Anfangstemperatur, Messwert nach 10 min, Kaffeemenge, *kA* von Tasse 1 relativ und Bechermasse. Anzeige: Verlauf beider Tassen, Schnittpunkt, Endtemperaturen, Unterschied, abgegebene Wärme, *kA*. Messwerte aus dem Versuch als Punkte im Diagramm, Übernahme in die Einstellungen. Vier Fragen im Werkzeug und mit erwarteten Antworten in den Hinweisen; am Aufgabenblatt nichts geändert.", "G44, G45", "TL", "umgesetzt (31.10.2026, K37); geprüft durch Codex und korrigiert (D116, K38)", "Simulation an der Tafel mit den Abbildungen der Lösung"],
+  ["D115", "Unabhängige Prüfung des Simulationstools durch Codex (Rolle X3, dritter Auftrag in AGENTS.md): eigene Nachrechnung ohne das Modell des Werkzeugs, Bedienung im Browser, Lösbarkeit der Fragen ohne Hilfe. Danach Übergabe und Pull Request.", "G45", "TL", "umgesetzt (31.10.2026, G46, K38)", "ohne zweite Prüfung einsetzen"],
+]));
+
+C.push(H2("3.14 Prüfung des Simulationstools vom 31.10.2026"));
+C.push(TAB([
+  ["D116", "Befunde der Prüfung X3 behoben: Schnitt der Kurven in beiden Richtungen mit Angabe, welche Tasse danach wärmer ist; ungültige Einstellungen blenden Ergebnisse und Diagramm sichtbar aus; Übernahme prüft die ungerundeten Mittelwerte und übernimmt sie unverändert oder gar nicht; Zahlen nur als vollständige Eingabe; Fragen nennen den Ausgangszustand und sagen „ungefähr“ (Frage 1 und 2); Hinweis zu Frage 1 unterscheidet vor und nach dem Mischen (Grenzwert 1,91 K). Indizes im Kasten „Modell“ aufrecht (Ä24). Tests erweitert, sodass Befund 1 bis 5 künftig auffallen. Keine weiteren Modellgrößen für diese Sitzung (Exponent n, Verdunstung, Abkühlen nach dem Zugießen).", "G46, G47", "TL", "umgesetzt (31.10.2026, K38)", "Fassung 53a78d5 des Werkzeugs"],
 ]));
 
 C.push(H1("4. Offene Punkte"));
@@ -262,8 +277,7 @@ C.push(H1("4. Offene Punkte"));
   "Zitate der Ozean- und Atmosphärenquellen vor dem Druck im Original gegenlesen (Johns 2023, Caesar 2018, Seager 2002, van Westen 2024)",
   "Auswahl und Kürzung je Tutorium aus der Aufgabensammlung (D77); danach Lösungsband (D80, D85)",
   "Entscheidung über D79 (keine Lernziele auf den Blättern, Abweichung von D20) und D84 (bewusst belassene Punkte)",
-  "Simulationstool für die Kaffee-Sitzung erstellen (D110)",
-  "Indexschreibweise der übrigen Tutorien der Sammlung an die Kaffee-Aufgabe angleichen (beschreibende Indizes aufrecht, Ä24), falls gewünscht",
+  "Simulationstool beim ersten Einsatz mit Studierenden beobachten: Zeit für die vier Fragen messen, reale Messwerte aus dem Versuch eintragen (D114, D116)",
   "Aussehen der Blätter (bisherige Tutoriumsblätter oder FVT-Vorlage) als eigenes Vorhaben für alle Tutorien (D90, D100)",
   "Werkzeugkasten nach der Umsetzung der Kaffee-Prüfung auf den neuen Arbeitsstand bringen (D91)",
   "Offene fachliche Punkte der Sammlung: Normwerte für Stahlbeton und PUR-Hartschaum (DIN EN ISO 10456, DIN 4108-4) nicht eingesehen; *λ* = 2,9 W/(m K) der KTB ohne Primärquelle; Arbeitswerte in Tutorium 6 und 7 ohne eigene Quelle; England et al. (2007) nicht abrufbar; VDI 4640 nur über eine Sekundärquelle; Abschätzung zum Entenfuß als eigene Rechnung gekennzeichnet",
@@ -285,6 +299,8 @@ C.push(grid(
     ["9", "29.10.2026", "Unabhängige Prüfung der Kaffee-Aufgabe durchgeführt: Grundlage G40, Status von D88 und D89 auf „umgesetzt“, offene Punkte aktualisiert; Entscheidungen D93 ff. folgen nach der Auswahl der Tutoriumsleitung"],
     ["10", "30.10.2026", "Entscheidung der Tutoriumsleitung über die Änderungsvorschläge und Umsetzung: Grundlage G41, Entscheidungen D93 bis D102 (Abschnitt 3.10), Status von D89 und D90 angepasst; zweite Runde der Rolle S: Grundlage G42, Entscheidungen D103 bis D109 (Abschnitt 3.11), Status von D67 und D102 angepasst; offene Punkte aktualisiert"],
     ["11", "31.10.2026", "Abnahme durch Codex und Konzept der Sitzung: Grundlagen G43 und G44, Entscheidungen D110 bis D112 (Abschnitt 3.12), Status von D67 angepasst, offene Punkte aktualisiert"],
+    ["12", "31.10.2026", "Indizes der Sammlung und Simulationstool: Grundlage G45, Entscheidungen D113 bis D115 (Abschnitt 3.13), Status von D110 angepasst, offene Punkte aktualisiert"],
+    ["13", "31.10.2026", "Prüfung des Simulationstools: Grundlagen G46 und G47, Entscheidung D116 (Abschnitt 3.14), Status von D114 und D115 angepasst, offene Punkte aktualisiert"],
   ],
   [1200, 1500, 6370], { firstColBold: true },
 ));

@@ -30,6 +30,8 @@
   .zahl b { display: block; font-size: clamp(1rem, 4.4vw, 1.2rem); font-variant-numeric: tabular-nums; }
   .zahl small { color: var(--grau); }
   .aussage { margin: 10px 0 0; font-weight: 600; }
+  .aussage.fehler, .status.fehler { color: var(--rot); }
+  .status { font-size: 0.9rem; min-height: 1.2em; margin: 6px 0 0; color: var(--grau); }
   .regler { display: grid; gap: 12px; }
   .regler label { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; font-size: 0.95rem; }
   .regler output { font-variant-numeric: tabular-nums; font-weight: 600; }
@@ -54,8 +56,9 @@
   .warnung { color: var(--rot); font-size: 0.9rem; min-height: 1.2em; margin: 6px 0 0; }
   ol.fragen { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
   .klein { font-size: 0.88rem; color: var(--grau); }
-  .formel { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
-  .formel sub { font-style: normal; }
+  /* Formeln: nur die Formelzeichen kursiv (<i>), beschreibende Indizes und Zahlen aufrecht (Ä24) */
+  .formel { font-family: Georgia, "Times New Roman", serif; font-style: normal; }
+  .formel i { font-style: italic; }
 </style>
 </head>
 <body>
@@ -93,18 +96,18 @@
       <label>Raumtemperatur <output id="o_thU"></output>
         <input type="range" id="thU" min="10" max="30" step="0.5"></label>
       <div class="schalter"><input type="checkbox" id="becher"><label for="becher">Wärmekapazität des Bechers berücksichtigen
-        (vorgewärmter Keramikbecher wie in Teil g; <span class="formel">kA</span> wird aus derselben Messung neu bestimmt)</label></div>
+        (vorgewärmter Keramikbecher wie in Teil g; <span class="formel"><i>kA</i></span> wird aus derselben Messung neu bestimmt)</label></div>
       <details>
         <summary>Weitere Größen des Modells</summary>
         <div class="regler" style="margin-top:8px">
           <label>Anfangstemperatur des Kaffees <output id="o_thK0"></output>
-            <input type="range" id="thK0" min="60" max="95" step="0.5"></label>
+            <input type="range" id="thK0" min="60" max="95" step="0.1"></label>
           <label>Messung in Tasse 2 nach 10 min <output id="o_thMess"></output>
-            <input type="range" id="thMess" min="30" max="90" step="0.5">
-            <span class="hilfe">Daraus folgt <span class="formel">kA</span> wie in Teil c (mit Becher wie in Teil g).</span></label>
+            <input type="range" id="thMess" min="30" max="90" step="0.1">
+            <span class="hilfe">Daraus folgt <span class="formel"><i>kA</i></span> wie in Teil c (mit Becher wie in Teil g).</span></label>
           <label>Kaffeemenge <output id="o_VK"></output>
             <input type="range" id="VK" min="100" max="400" step="10"></label>
-          <label><span><span class="formel">kA</span> von Tasse 1 gegenüber der Messung</span> <output id="o_kA1"></output>
+          <label><span><span class="formel"><i>kA</i></span> von Tasse 1 gegenüber der Messung</span> <output id="o_kA1"></output>
             <input type="range" id="kA1" min="90" max="110" step="1">
             <span class="hilfe">Zum Beispiel etwas größer, weil die Tasse mit Milch voller ist (Diskussion in Teil c).</span></label>
           <label>Masse des Bechers <output id="o_mB"></output>
@@ -128,33 +131,34 @@
       <label>Temperatur in °C<input id="m_th" type="text" inputmode="decimal" autocomplete="off" placeholder="z. B. 66,5" required></label>
       <button class="haupt" type="submit">Eintragen</button>
     </form>
+    <p class="status" id="eingabe_info" role="status"></p>
     <table id="messtabelle"><thead><tr><th>Becher</th><th>Zeit</th><th>Temperatur</th><th></th></tr></thead><tbody></tbody></table>
     <div class="knoepfe" style="margin-top:10px">
       <button type="button" id="uebernehmen">Einstellungen aus den Messwerten übernehmen</button>
       <button type="button" id="leeren">Alle Messwerte löschen</button>
     </div>
-    <p class="klein" id="uebernahme_info">Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.</p>
+    <p class="status" id="uebernahme_info" role="status">Übernommen werden die Starttemperatur (Mittel von Becher 2 und 3 bei 0 min), der Messwert nach 10 min (Mittel von Becher 2 und 3) und die Einstellung „wie im Versuch“. Raum- und Milchtemperatur stellen Sie mit den Reglern ein.</p>
   </section>
 
   <section>
     <h2>Zum Ausprobieren (10 bis 15 Minuten)</h2>
     <ol class="fragen">
-      <li><b>Zeitpunkt.</b> Verschieben Sie die Zugabe der Milch in Tasse 2. Bei welchem Zeitpunkt ist der Unterschied zwischen den Tassen am größten? Warum wird er bei sehr später Zugabe wieder kleiner?</li>
-      <li><b>Milchtemperatur.</b> Stellen Sie die Milch so warm ein, dass beide Tassen nach 60 Minuten gleich warm sind. Hängt diese Temperatur vom Zeitpunkt der Zugabe ab?</li>
-      <li><b>Becher.</b> Schalten Sie den Becher ein. Wie ändern sich der Unterschied und die abgegebene Wärme? Gilt die Aussage „Tasse 1 ist wärmer“ weiter?</li>
-      <li><b>Versuch.</b> Tragen Sie Ihre Messwerte ein und übernehmen Sie die Einstellungen aus den Messwerten. Wo liegen die Messpunkte über oder unter den Kurven, und woran könnte das liegen?</li>
+      <li><b>Zeitpunkt.</b> Laden Sie zuerst die Standardwerte. Verschieben Sie dann die Zugabe der Milch in Tasse 2. Bei welchem Zeitpunkt ist der Unterschied zwischen den Tassen ungefähr am größten? Warum wird er bei späterer Zugabe wieder kleiner?</li>
+      <li><b>Milchtemperatur.</b> Stellen Sie die Zugabe wieder auf 60 Minuten und die Milch so warm ein, dass beide Tassen ungefähr gleich warm sind. Hängt diese Temperatur vom Zeitpunkt der Zugabe ab?</li>
+      <li><b>Becher.</b> Laden Sie zuerst die Standardwerte und notieren Sie den Unterschied und die abgegebene Wärme. Schalten Sie dann den Becher ein. Wie ändern sich beide? Gilt die Aussage „Tasse 1 ist wärmer“ weiter?</li>
+      <li><b>Versuch.</b> Tragen Sie Ihre Messwerte ein, stellen Sie Raum- und Milchtemperatur wie im Versuch ein und übernehmen Sie die Einstellungen aus den Messwerten. Wo liegen die Messpunkte über oder unter den Kurven, und woran könnte das liegen?</li>
     </ol>
   </section>
 
   <section class="breit">
     <h2>Modell</h2>
     <p class="klein">Dasselbe Modell wie in der Lösung (Rechenskript kaffee_modell.py): Inhalt ideal durchmischt, gesamte Wärmeabgabe
-      <span class="formel">Q̇<sub>ab</sub> = kA (ϑ − ϑ<sub>u</sub>)</span> mit konstantem <span class="formel">kA</span>, Stoffdaten konstant.
-      Abkühlen: <span class="formel">ϑ(t) = ϑ<sub>u</sub> + (ϑ<sub>0</sub> − ϑ<sub>u</sub>) · exp(−kA t / C)</span> mit der Wärmekapazität
-      <span class="formel">C</span> des Bilanzraums (Inhalt, mit Becher auch der Becher). <span class="formel">kA</span> folgt aus der Messung
+      <span class="formel"><i>Q̇</i><sub>ab</sub> = <i>kA</i> (<i>ϑ</i> − <i>ϑ</i><sub>u</sub>)</span> mit konstantem <span class="formel"><i>kA</i></span>, Stoffdaten konstant.
+      Abkühlen: <span class="formel"><i>ϑ</i>(<i>t</i>) = <i>ϑ</i><sub>u</sub> + (<i>ϑ</i><sub>0</sub> − <i>ϑ</i><sub>u</sub>) · exp(−<i>kA t</i> / <i>C</i>)</span> mit der Wärmekapazität
+      <span class="formel"><i>C</i></span> des Bilanzraums (Inhalt, mit Becher auch der Becher). <span class="formel"><i>kA</i></span> folgt aus der Messung
       in Tasse 2 nach 10 min. Mischen ohne Wärmeverlust; die abgegebene Wärme folgt aus der Energiebilanz um den Bilanzraum wie in Teil e.
-      Der Schnittpunkt ist der Zeitpunkt, ab dem der schwarze Kaffee kühler ist als Tasse 1. Nicht im Modell: Verdunstung als eigener
-      Vorgang (sie steckt pauschal in <span class="formel">kA</span>), Wärmeabgabe, die mit der Temperatur stärker als linear wächst.</p>
+      Am Schnittpunkt sind der schwarze Kaffee in Tasse 2 und Tasse 1 gleich warm; das Werkzeug zeigt an, welche Tasse danach wärmer ist. Nicht im Modell: Verdunstung als eigener
+      Vorgang (sie steckt pauschal in <span class="formel"><i>kA</i></span>), Wärmeabgabe, die mit der Temperatur stärker als linear wächst.</p>
     <p class="klein">Stoffdaten wie in der Aufgabe: Kaffee 1000 kg/m³ und 4,18 kJ/(kg K), Milch 1030 kg/m³ und 3,94 kJ/(kg K), Becher 0,85 kJ/(kg K).</p>
   </section>
 </main>
@@ -219,11 +223,13 @@ function berechne(e) {
   const a1 = e.kA1Faktor * z.kA / CGT, a2 = z.kA / CKT;          // Abklingraten von Tasse 1 und vom schwarzen Kaffee
   // abgegebene Wärme bis zur Zugabe: Energiebilanz um den Bilanzraum (Inhalt, mit Becher auch der Becher), wie Teil e
   const Q1 = CGT * (z.T1_0 - z.T1), Q2 = CKT * (r.T_K0 - z.T2_K);
-  // Schnittpunkt wie t_schnitt in rechne(): ab hier ist der schwarze Kaffee kühler als Tasse 1
-  const d = a2 - a1;
-  const tS = d > 0 ? Math.log((r.T_K0 - r.T_U) / (z.T1_0 - r.T_U)) / d : Infinity;
+  // Schnittpunkt der beiden Kurven vor der Zugabe, in beiden Richtungen (wie t_schnitt in rechne(), dort nur für a2 > a1):
+  // (T_K0 - T_U) exp(-a2 t) = (T1_0 - T_U) exp(-a1 t)  =>  t = ln((T_K0 - T_U) / (T1_0 - T_U)) / (a2 - a1), gültig für t > 0
+  const d = a2 - a1, q = (r.T_K0 - r.T_U) / (z.T1_0 - r.T_U);
+  let tS = Infinity;
+  if (d !== 0 && q > 0) { const t = Math.log(q) / d; if (t > 0) tS = t; }
   return { kA: z.kA, T1_0: z.T1_0, T1: z.T1, T2_K: z.T2_K, T2: z.T2, dT: z.dT, th1: z.th1, th2: z.th2, Q1: Q1, Q2: Q2,
-           t_schnitt: tS, T_K0: r.T_K0, T_U: r.T_U,
+           t_schnitt: tS, kaffee_danach_kuehler: d > 0, T_K0: r.T_K0, T_U: r.T_U,
            kurve1: t => r.T_U + (z.T1_0 - r.T_U) * Math.exp(-a1 * t),          // Tasse 1, t in s
            kurve2: t => r.T_U + (r.T_K0 - r.T_U) * Math.exp(-a2 * t) };        // Tasse 2 vor der Zugabe
 }
@@ -232,22 +238,37 @@ function berechne(e) {
 const STANDARD = { tEnd_min: 60, thM: 5, milch2Raum: false, VM_ml: 30, thU: 20, becher: false, thK0: 80, thMess: 67, VK_ml: 200,
                    kA1Faktor: 1.0, mB_g: 300 };
 const zahl = (x, n) => x.toFixed(n).replace(".", ",").replace("-", "−");
+const genau = v => zahl(v, Math.abs(v * 10 - Math.round(v * 10)) > 1e-9 ? 2 : 1);   // übernommene Mittelwerte unverändert zeigen
 const el = id => document.getElementById(id);
 const REGLER = [
   ["tEnd", "tEnd_min", v => zahl(v, 0) + " min", 1], ["thM", "thM", v => zahl(v, 1) + " °C", 1], ["VM", "VM_ml", v => zahl(v, 0) + " ml", 1],
-  ["thU", "thU", v => zahl(v, 1) + " °C", 1], ["thK0", "thK0", v => zahl(v, 1) + " °C", 1], ["thMess", "thMess", v => zahl(v, 1) + " °C", 1],
+  ["thU", "thU", v => zahl(v, 1) + " °C", 1], ["thK0", "thK0", v => genau(v) + " °C", 1], ["thMess", "thMess", v => genau(v) + " °C", 1],
   ["VK", "VK_ml", v => zahl(v, 0) + " ml", 1], ["kA1", "kA1Faktor", v => zahl(v * 100, 0) + " %", 100], ["mB", "mB_g", v => zahl(v, 0) + " g", 1]];
 let E = Object.assign({}, STANDARD);
 let messwerte = [];
 try { messwerte = JSON.parse(localStorage.getItem("kaffee-simulation-messwerte") || "[]"); } catch (err) { messwerte = []; }
 
+// Die Einstellungen stehen in E. Ein Regler ändert nur seinen eigenen Wert; übernommene Messwerte bleiben so ungerundet.
 function reglerSetzen() {
   for (const [id, key, , f] of REGLER) el(id).value = E[key] * f;
   el("milch2Raum").checked = E.milch2Raum; el("becher").checked = E.becher;
 }
-function reglerLesen() {
-  for (const [id, key, , f] of REGLER) E[key] = parseFloat(el(id).value) / f;
-  E.milch2Raum = el("milch2Raum").checked; E.becher = el("becher").checked;
+
+// Gültigkeit des Modells: kA aus der Messung braucht Raum < Messwert nach 10 min < Anfangstemperatur
+function fehlerDerEinstellung(e) {
+  if (!(e.thK0 > e.thU)) return `Die Anfangstemperatur (${genau(e.thK0)} °C) muss über der Raumtemperatur (${zahl(e.thU, 1)} °C) liegen.`;
+  if (!(e.thMess > e.thU && e.thMess < e.thK0))
+    return `Der Messwert nach 10 min (${genau(e.thMess)} °C) muss zwischen Raumtemperatur (${zahl(e.thU, 1)} °C) und Anfangstemperatur (${genau(e.thK0)} °C) liegen.`;
+  return "";
+}
+
+function zeichneUngueltig() {
+  const svg = el("diagramm"), W = Math.round(Math.min(760, Math.max(300, svg.getBoundingClientRect().width || 640)));
+  const H = Math.round(W < 520 ? W * 0.85 : W * 0.6);
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.innerHTML = `<rect x="1" y="1" width="${W - 2}" height="${H - 2}" fill="#fbf3f2" stroke="#b03a2e" stroke-dasharray="6 5"/>` +
+    `<text x="${W / 2}" y="${H / 2 - 6}" text-anchor="middle" font-size="15" fill="#b03a2e">Keine Rechnung: Einstellung ungültig</text>` +
+    `<text x="${W / 2}" y="${H / 2 + 16}" text-anchor="middle" font-size="12" fill="#5f5f5a">Hinweis unter dem Diagramm</text>`;
 }
 
 function zeichne(m) {
@@ -292,10 +313,13 @@ function zeichne(m) {
          `<line x1="${X(tEnd)}" x2="${X(tEnd)}" y1="${Y(m.T2_K - K)}" y2="${Y(m.th2)}" stroke="#222" stroke-width="2" stroke-dasharray="2 3"/>`,
          `<circle cx="${X(tEnd)}" cy="${Y(m.th1)}" r="5" fill="#8b5a2b"/>`,
          `<rect x="${X(tEnd) - 5}" y="${Y(m.th2) - 5}" width="10" height="10" fill="#222"/>`);
-  if (isFinite(m.t_schnitt) && m.t_schnitt > 0 && m.t_schnitt / 60 < tEnd) {
+  if (isFinite(m.t_schnitt) && m.t_schnitt / 60 < tEnd) {
     const ts = m.t_schnitt / 60, th = m.kurve1(m.t_schnitt) - K;
     s.push(`<circle cx="${X(ts)}" cy="${Y(th)}" r="6" fill="#fff" stroke="#222" stroke-width="1.8"/>`,
-           `<text x="${X(ts)}" y="${Y(th) - 12}" text-anchor="middle" font-size="12" fill="#1d1d1b">${zahl(ts, 1)} min</text>`);
+           // Beschriftung am Rand nach innen rücken, damit sie keine Achsenzahl überdeckt
+           X(ts) < L + 40 ? `<text x="${X(ts) + 10}" y="${Y(th) - 10}" text-anchor="start" font-size="12" fill="#1d1d1b">${zahl(ts, 1)} min</text>`
+           : X(ts) > W - R - 40 ? `<text x="${X(ts) - 10}" y="${Y(th) - 10}" text-anchor="end" font-size="12" fill="#1d1d1b">${zahl(ts, 1)} min</text>`
+           : `<text x="${X(ts)}" y="${Y(th) - 12}" text-anchor="middle" font-size="12" fill="#1d1d1b">${zahl(ts, 1)} min</text>`);
   }
   // Messpunkte
   for (const p of pkte) {
@@ -308,20 +332,28 @@ function zeichne(m) {
 }
 
 function zeige() {
-  reglerLesen();
   for (const [id, key, fmt] of REGLER) el("o_" + id).textContent = fmt(E[key]);
-  const ok = E.thMess > E.thU && E.thMess < E.thK0;
-  el("warnung").textContent = ok ? "" : "Der Messwert nach 10 min muss zwischen Raumtemperatur und Anfangstemperatur liegen.";
-  if (!ok) return;
+  const fehler = fehlerDerEinstellung(E);
+  el("warnung").textContent = fehler;
+  el("aussage").classList.toggle("fehler", !!fehler);
+  if (fehler) {                                   // keine alten Ergebnisse stehen lassen (Befund Simulation 2)
+    el("zahlen").innerHTML = "";
+    el("aussage").textContent = "Keine Rechnung: " + fehler;
+    zeichneUngueltig();
+    return;
+  }
   const m = berechne(E);
   const tEnd = E.tEnd_min, dT = m.dT;
-  const schnitt = isFinite(m.t_schnitt) && m.t_schnitt > 0 && m.t_schnitt / 60 < tEnd ? zahl(m.t_schnitt / 60, 1) + " min" : "keiner bis zur Zugabe";
+  const hatSchnitt = isFinite(m.t_schnitt) && m.t_schnitt / 60 < tEnd;
+  const schnitt = hatSchnitt ? zahl(m.t_schnitt / 60, 1) + " min" : "keiner bis zur Zugabe";
+  const danach = hatSchnitt ? (m.kaffee_danach_kuehler ? "danach ist der schwarze Kaffee kühler als Tasse 1" : "danach ist der schwarze Kaffee wärmer als Tasse 1")
+                            : "die Kurven schneiden sich vor der Zugabe nicht";
   el("zahlen").innerHTML = [
     ["Tasse 1 nach " + zahl(tEnd, 0) + " min", "ϑ₁ = " + zahl(m.th1, 2) + " °C", "Mischung bei 0 min: " + zahl(m.T1_0 - K, 2) + " °C"],
     ["Tasse 2 nach " + zahl(tEnd, 0) + " min", "ϑ₂ = " + zahl(m.th2, 2) + " °C", "vor dem Zugießen: " + zahl(m.T2_K - K, 2) + " °C"],
     ["Unterschied", "ϑ₁ − ϑ₂ = " + zahl(dT, 2) + " K", Math.abs(dT) < 0.005 ? "gleich warm" : dT > 0 ? "Tasse 1 ist wärmer" : "Tasse 2 ist wärmer"],
     ["Abgegebene Wärme", "Q₁ = " + zahl(m.Q1 / 1000, 2) + " kJ", "Q₂ = " + zahl(m.Q2 / 1000, 2) + " kJ, Q₂ − Q₁ = " + zahl((m.Q2 - m.Q1) / 1000, 2) + " kJ"],
-    ["Schnittpunkt", schnitt, "ab hier ist der schwarze Kaffee kühler"],
+    ["Schnittpunkt", schnitt, danach],
     ["kA aus der Messung", zahl(m.kA, 4) + " W/K", E.becher ? "mit Becher (wie Teil g)" : "ohne Becher (wie Teil c)"],
   ].map(([k, w, z]) => `<div class="zahl"><small>${k}</small><b>${w}</b><small>${z}</small></div>`).join("");
   el("aussage").textContent = Math.abs(dT) < 0.005 ? "Beide Tassen sind gleich warm." :
@@ -337,36 +369,64 @@ function messtabelle() {
   try { localStorage.setItem("kaffee-simulation-messwerte", JSON.stringify(messwerte)); } catch (err) { /* ohne Speicher */ }
 }
 
-document.querySelectorAll("input[type=range], input[type=checkbox]").forEach(i => { i.addEventListener("input", zeige); i.addEventListener("change", zeige); });
+function meldung(id, text, fehler) { el(id).textContent = text; el(id).classList.toggle("fehler", !!fehler); }
+
+// Eine Zahl nur, wenn der ganze Text eine Zahl ist (Komma oder Punkt), sonst NaN (Befund Simulation 5)
+function zahlLesen(text) {
+  const t = text.trim().replace("−", "-").replace(",", ".");
+  return /^[+-]?\d+(\.\d+)?$/.test(t) ? Number(t) : NaN;
+}
+
+for (const [id, key, , f] of REGLER) el(id).addEventListener("input", () => { E[key] = parseFloat(el(id).value) / f; zeige(); });
+for (const id of ["milch2Raum", "becher"]) {
+  const neu = () => { E.milch2Raum = el("milch2Raum").checked; E.becher = el("becher").checked; zeige(); };
+  el(id).addEventListener("input", neu); el(id).addEventListener("change", neu);
+}
 el("standard").addEventListener("click", () => { E = Object.assign({}, STANDARD); reglerSetzen(); zeige(); });
 el("versuch").addEventListener("click", () => { E.tEnd_min = 40; E.becher = true; reglerSetzen(); zeige(); });
 el("messform").addEventListener("submit", ev => {
   ev.preventDefault();
-  const t = parseFloat(el("m_t").value.replace(",", ".")), th = parseFloat(el("m_th").value.replace(",", "."));
+  const t = zahlLesen(el("m_t").value), th = zahlLesen(el("m_th").value);
   if (!isFinite(t) || !isFinite(th) || t < 0 || t > 240 || th < -10 || th > 100) {
-    el("uebernahme_info").textContent = "Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als Zahl eingeben, z. B. 66,5.";
+    meldung("eingabe_info", "Nicht eingetragen: Bitte Zeit (0 bis 240 min) und Temperatur (−10 bis 100 °C) als eine Zahl eingeben, z. B. 66,5.", true);
     return;
   }
-  messwerte.push({ becher: parseInt(el("m_becher").value, 10), t: t, th: th });
-  messwerte.sort((a, b) => a.becher - b.becher || a.t - b.t);
+  const b = parseInt(el("m_becher").value, 10);
+  messwerte.push({ becher: b, t: t, th: th });
+  messwerte.sort((a, c) => a.becher - c.becher || a.t - c.t);
   el("m_t").value = ""; el("m_th").value = "";
+  meldung("eingabe_info", `Eingetragen: Becher ${b}, ${zahl(t, 1)} min, ${zahl(th, 1)} °C.`, false);
   messtabelle(); zeige();
 });
 el("messtabelle").addEventListener("click", ev => {
   const i = ev.target.getAttribute("data-i");
   if (i !== null) { messwerte.splice(parseInt(i, 10), 1); messtabelle(); zeige(); }
 });
-el("leeren").addEventListener("click", () => { messwerte = []; messtabelle(); zeige(); });
+el("leeren").addEventListener("click", () => { messwerte = []; messtabelle(); zeige(); meldung("eingabe_info", "", false); });
+// Übernahme: erst die ungerundeten Mittelwerte prüfen, dann unverändert übernehmen; unmögliche Reihen ablehnen (Befund Simulation 3)
 el("uebernehmen").addEventListener("click", () => {
-  const mittel = (t0) => { const v = messwerte.filter(p => (p.becher === 2 || p.becher === 3) && Math.abs(p.t - t0) < 0.5).map(p => p.th);
-                           return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null; };
+  const mittel = t0 => { const v = messwerte.filter(p => (p.becher === 2 || p.becher === 3) && Math.abs(p.t - t0) < 0.5).map(p => p.th);
+                         return v.length ? v.reduce((a, c) => a + c, 0) / v.length : null; };
   const start = mittel(0), zehn = mittel(10);
-  if (start !== null) E.thK0 = Math.min(95, Math.max(60, Math.round(start * 2) / 2));
-  if (zehn !== null) E.thMess = Math.min(90, Math.max(30, Math.round(zehn * 2) / 2));
-  E.tEnd_min = 40; E.becher = true;
-  reglerSetzen(); zeige();
-  el("uebernahme_info").textContent = "Übernommen: " + (start !== null ? "Start " + zahl(E.thK0, 1) + " °C, " : "Start nicht gefunden, ") +
-    (zehn !== null ? "nach 10 min " + zahl(E.thMess, 1) + " °C, " : "Messwert nach 10 min nicht gefunden, ") + "Zugabe nach 40 min, Becher an.";
+  if (start === null && zehn === null) {
+    meldung("uebernahme_info", "Nicht übernommen: Es fehlen Messwerte von Becher 2 oder 3 bei 0 min und bei 10 min.", true);
+    return;
+  }
+  const neu = Object.assign({}, E, start !== null ? { thK0: start } : {}, zehn !== null ? { thMess: zehn } : {}, { tEnd_min: 40, becher: true });
+  const probleme = [];
+  if (start !== null && (start < 60 || start > 95)) probleme.push(`Starttemperatur ${genau(start)} °C liegt außerhalb des Reglerbereichs 60 bis 95 °C`);
+  if (zehn !== null && (zehn < 30 || zehn > 90)) probleme.push(`Messwert nach 10 min ${genau(zehn)} °C liegt außerhalb des Reglerbereichs 30 bis 90 °C`);
+  const modell = fehlerDerEinstellung(neu);
+  if (modell) probleme.push(modell.replace(/\.$/, ""));
+  if (probleme.length) {
+    meldung("uebernahme_info", "Nicht übernommen, nichts verändert: " + probleme.join("; ") + ". Bitte Messwerte und Raumtemperatur prüfen.", true);
+    return;
+  }
+  E = neu; reglerSetzen(); zeige();
+  meldung("uebernahme_info", "Übernommen (Mittel von Becher 2 und 3, ungerundet): " +
+    (start !== null ? "Start " + genau(start) + " °C, " : "Start nicht gemessen, bisheriger Wert bleibt, ") +
+    (zehn !== null ? "nach 10 min " + genau(zehn) + " °C, " : "Messwert nach 10 min nicht gemessen, bisheriger Wert bleibt, ") +
+    "Zugabe nach 40 min, Becher an.", false);
 });
 window.addEventListener("resize", zeige);
 reglerSetzen(); messtabelle(); zeige();

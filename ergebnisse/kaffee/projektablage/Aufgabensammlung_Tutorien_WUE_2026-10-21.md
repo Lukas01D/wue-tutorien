@@ -1,4 +1,4 @@
-> Aufgabensammlung der Tutorien Wärmeübertragung, Markdown-Fassung ohne Steuerblöcke für LaTeX und Word. Stand 31.10.2026 (Kaffee-Aufgabe nach Prüfung und Abnahme). Quelle: Aufgabensammlung_Tutorien_WUE_2026-10-31.md aus dem Arbeitsordner.
+> Aufgabensammlung der Tutorien Wärmeübertragung, Markdown-Fassung ohne Steuerblöcke für LaTeX und Word. Stand 31.10.2026 (Kaffee-Aufgabe nach Prüfung und Abnahme; beschreibende Indizes in allen Tutorien aufrecht). Quelle: Aufgabensammlung_Tutorien_WUE_2026-10-31.md aus dem Arbeitsordner.
 
 Entwurf zur Auswahl · Stand 31.10.2026 · Lehrstuhl für Fluidverfahrenstechnik, Universität Paderborn
 
@@ -12,7 +12,7 @@ Die Sammlung ist bewusst umfangreich: Sie ist die Grundlage für die Auswahl und
 |:------|:------------------|:------------------------------|:-----------------|:-----------------------------|
 | 1 | Wärmeleitung | Seen unter dem Eisschild; Kühlhauswand | 3 Fragen, 1 Zusatzaufgabe | Fourier, mehrschichtige Wand, mittlere Wärmeleitfähigkeit, Randbedingungen |
 | 2 | Konvektion | Offene Rinnen im Meereis | 4 Fragen, 1 Zusatzaufgabe | Platte erzwungen und frei, Grenzschicht, lokales und mittleres $\alpha$, charakteristische Länge |
-| 3 | Wärmedurchgang | Meereis und Schnee als Deckel; Ölleitung im Permafrost | 3 Fragen, 1 Zusatzaufgabe | thermische Widerstände in Reihe, $kA = 1/R_{\mathrm{th}}$, Rohr mit $k_i$ und $k_a$ |
+| 3 | Wärmedurchgang | Meereis und Schnee als Deckel; Ölleitung im Permafrost | 3 Fragen, 1 Zusatzaufgabe | thermische Widerstände in Reihe, $kA = 1/R_{\mathrm{th}}$, Rohr mit $k_\mathrm{i}$ und $k_\mathrm{a}$ |
 | 4 | Strahlung | Die Strahlungsbilanz der Erde | 4 Fragen, 2 Zusatzaufgaben | Stefan-Boltzmann, grauer Strahler, $\alpha + \rho + \tau = 1$, Kirchhoff |
 | 5 | Wärmebilanzen (instationär global) | Kaffee mit Milch; Die AMOC und Europas milde Winter; Der Ozean als Wärmespeicher; Sverdrup und der Amazonas | 5 Fragen, 2 Zusatzaufgaben | $\mathrm{d}U/\mathrm{d}t$-Bilanz, Mischen, $T(t)$, Zeitkonstante, Massenbilanz |
 | 6 | Wärmebilanzen (stationär differentiell) | Woher kommt die Erdwärme? | 4 Fragen, 1 Zusatzaufgabe | Bilanz am Element $\mathrm{d}z$ und $\mathrm{d}r$ mit Quelle, $T(z)$, $T(r)$ |
@@ -289,7 +289,7 @@ Was dämmt den Ozean besser gegen die kalte Luft? Notieren Sie Ihre Vermutung, b
 
 **Frage 2**
 
-Ordnen Sie in der elektrischen Analogie dem Wärmestrom $\dot{Q}$, der Temperaturdifferenz $\Delta T$ und dem thermischen Widerstand $R_{th}$ jeweils eine elektrische Größe zu: Spannung, Strom oder ohmscher Widerstand. Wie berechnen Sie den Gesamtwiderstand zweier Widerstände in Reihe, wie bei einer Parallelschaltung?
+Ordnen Sie in der elektrischen Analogie dem Wärmestrom $\dot{Q}$, der Temperaturdifferenz $\Delta T$ und dem thermischen Widerstand $R_{\mathrm{th}}$ jeweils eine elektrische Größe zu: Spannung, Strom oder ohmscher Widerstand. Wie berechnen Sie den Gesamtwiderstand zweier Widerstände in Reihe, wie bei einer Parallelschaltung?
 
 **Aufgabe 1** (neu)
 
@@ -299,45 +299,45 @@ Betrachten Sie einen Ausschnitt der Scholle mit der Fläche $A$.
 
 - Der Wärmetransport wird als stationär und eindimensional angenommen.
 - Die Wärmeleitfähigkeiten von Schnee und Eis werden als konstant angenommen.
-- Der Wärmeübergang an die Luft wird mit dem konstanten Wärmeübergangskoeffizienten $\alpha_a$ beschrieben (Arbeitswert für eine große Scholle). Strahlung an der Schneeoberfläche wird vernachlässigt.
+- Der Wärmeübergang an die Luft wird mit dem konstanten Wärmeübergangskoeffizienten $\alpha_\mathrm{a}$ beschrieben (Arbeitswert für eine große Scholle). Strahlung an der Schneeoberfläche wird vernachlässigt.
 - Die Unterseite des Eises hat die Temperatur des Meerwassers.
 
 ***Gegebene Größen:***
 
 | ***Luft:*** | | ***Meerwasser:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Temperatur: | $\vartheta_u = -30\,\mathrm{°C}$ | Temperatur: | $\vartheta_W = -1{,}8\,\mathrm{°C}$ |
-| Wärmeübergang: | $\alpha_a = 15\,\mathrm{W/(m^2\,K)}$ | | |
+| Temperatur: | $\vartheta_\mathrm{u} = -30\,\mathrm{°C}$ | Temperatur: | $\vartheta_\mathrm{W} = -1{,}8\,\mathrm{°C}$ |
+| Wärmeübergang: | $\alpha_\mathrm{a} = 15\,\mathrm{W/(m^2\,K)}$ | | |
 | | | | |
 | ***Schnee:*** | | ***Meereis:*** | |
-| Dicke: | $s_S = 0{,}2\,\mathrm{m}$ | Dicke: | $s_E = 1{,}4\,\mathrm{m}$ |
-| Wärmeleitfähigkeit: | $\lambda_S = 0{,}2\,\mathrm{W/(m\,K)}$ | Wärmeleitfähigkeit: | $\lambda_E = 2{,}1\,\mathrm{W/(m\,K)}$ |
-| | | Dichte: | $\rho_E = 917\,\mathrm{kg/m^3}$ |
-| | | Schmelzenthalpie: | $\Delta h_{schm} = 333{,}5\,\mathrm{kJ/kg}$ |
+| Dicke: | $s_\mathrm{S} = 0{,}2\,\mathrm{m}$ | Dicke: | $s_\mathrm{E} = 1{,}4\,\mathrm{m}$ |
+| Wärmeleitfähigkeit: | $\lambda_\mathrm{S} = 0{,}2\,\mathrm{W/(m\,K)}$ | Wärmeleitfähigkeit: | $\lambda_\mathrm{E} = 2{,}1\,\mathrm{W/(m\,K)}$ |
+| | | Dichte: | $\rho_\mathrm{E} = 917\,\mathrm{kg/m^3}$ |
+| | | Schmelzenthalpie: | $\Delta h_{\mathrm{schm}} = 333{,}5\,\mathrm{kJ/kg}$ |
 | | | | |
 | ***Ausschnitt:*** | | ***Jungeis (Teil f):*** | |
-| Fläche: | $A = 1\,\mathrm{m^2}$ | Dicke: | $s_J = 0{,}1\,\mathrm{m}$ |
+| Fläche: | $A = 1\,\mathrm{m^2}$ | Dicke: | $s_\mathrm{J} = 0{,}1\,\mathrm{m}$ |
 
 **Aufgabenstellung:**
 
-a) Warum hat die Unterseite des Eises genau die Temperatur $\vartheta_W$? Zeichnen Sie neben Abb.\ 1 das Ersatzschaltbild der thermischen Widerstände zwischen Meerwasser und Luft.
+a) Warum hat die Unterseite des Eises genau die Temperatur $\vartheta_\mathrm{W}$? Zeichnen Sie neben Abb.\ 1 das Ersatzschaltbild der thermischen Widerstände zwischen Meerwasser und Luft.
 
 b) Welche der Annahmen halten Sie für am fragwürdigsten? Begründen Sie Ihre Wahl in zwei Sätzen.
 
-c) Berechnen Sie die thermischen Widerstände des Wärmeübergangs an die Luft $R_{th,\alpha}$, der Schneeschicht $R_{th,S}$ und der Eisschicht $R_{th,E}$. Welcher ist am größten? Prüfen Sie damit Ihre Vermutung zu Frage\ 1. Je nach Dichte liegt $\lambda_S$ zwischen $0{,}14$ und $0{,}3\,\mathrm{W/(m\,K)}$: In welchem Bereich liegt dann $R_{th,S}$?\
-   $R_{th,\alpha} = 0{,}0667\,\mathrm{K/W}$, $\quad R_{th,S} = 1{,}00\,\mathrm{K/W}$, $\quad R_{th,E} = 0{,}667\,\mathrm{K/W}$\
-   Bereich: $R_{th,S} = 0{,}667$ bis $1{,}43\,\mathrm{K/W}$
+c) Berechnen Sie die thermischen Widerstände des Wärmeübergangs an die Luft $R_{\mathrm{th},\alpha}$, der Schneeschicht $R_{\mathrm{th,S}}$ und der Eisschicht $R_{\mathrm{th,E}}$. Welcher ist am größten? Prüfen Sie damit Ihre Vermutung zu Frage\ 1. Je nach Dichte liegt $\lambda_\mathrm{S}$ zwischen $0{,}14$ und $0{,}3\,\mathrm{W/(m\,K)}$: In welchem Bereich liegt dann $R_{\mathrm{th,S}}$?\
+   $R_{\mathrm{th},\alpha} = 0{,}0667\,\mathrm{K/W}$, $\quad R_{\mathrm{th,S}} = 1{,}00\,\mathrm{K/W}$, $\quad R_{\mathrm{th,E}} = 0{,}667\,\mathrm{K/W}$\
+   Bereich: $R_{\mathrm{th,S}} = 0{,}667$ bis $1{,}43\,\mathrm{K/W}$
 
-d) Berechnen Sie den Gesamtwiderstand $R_{th,ges}$, das Produkt $kA$ und den Wärmestrom $\dot{Q}$. Bestimmen Sie die Temperatur $\vartheta_O$ an der Schneeoberfläche und die Temperatur $\vartheta_{SE}$ an der Grenze zwischen Schnee und Eis.\
-   $R_{th,ges} = 1{,}73\,\mathrm{K/W}$, $\quad kA = 0{,}577\,\mathrm{W/K}$, $\quad \dot{Q} = 16{,}3\,\mathrm{W}$\
-   $\vartheta_O = -28{,}9\,\mathrm{°C}$, $\quad \vartheta_{SE} = -12{,}6\,\mathrm{°C}$
+d) Berechnen Sie den Gesamtwiderstand $R_{\mathrm{th,ges}}$, das Produkt $kA$ und den Wärmestrom $\dot{Q}$. Bestimmen Sie die Temperatur $\vartheta_\mathrm{O}$ an der Schneeoberfläche und die Temperatur $\vartheta_{\mathrm{SE}}$ an der Grenze zwischen Schnee und Eis.\
+   $R_{\mathrm{th,ges}} = 1{,}73\,\mathrm{K/W}$, $\quad kA = 0{,}577\,\mathrm{W/K}$, $\quad \dot{Q} = 16{,}3\,\mathrm{W}$\
+   $\vartheta_\mathrm{O} = -28{,}9\,\mathrm{°C}$, $\quad \vartheta_{\mathrm{SE}} = -12{,}6\,\mathrm{°C}$
 
-e) Prüfen Sie Ihr Ergebnis an drei Stellen. (1) Über welcher Schicht fällt die größte Temperaturdifferenz ab, und ergeben die drei Teildifferenzen zusammen die Gesamtdifferenz? (2) Welche Wärmestromdichte $\dot{q}_W$ gibt offenes Wasser bei gleichem $\alpha_a$ an die Luft ab, und um welchen Faktor ist sie größer als mit Eis und Schnee? (3) Für die 10\ m breite Rinne aus Tutorium\ 2 (Aufgabe\ 1, Teil\ e) ergaben sich $\alpha = 19{,}6\,\mathrm{W/(m^2\,K)}$ und $\dot{q} = 554\,\mathrm{W/m^2}$. Wie ändert sich $\dot{Q}$ mit Eis und Schnee, wenn Sie dieses $\alpha$ verwenden? Warum ändert er sich so wenig?\
-   Zu (1): $\Delta T_S = 16{,}3\,\mathrm{K}$, $\quad 1{,}08\,\mathrm{K} + 16{,}3\,\mathrm{K} + 10{,}8\,\mathrm{K} = 28{,}2\,\mathrm{K}$\
-   Zu (2): $\dot{q}_W = 423\,\mathrm{W/m^2}$, Faktor 26; $\quad$ zu (3): $\dot{Q} = 16{,}4\,\mathrm{W}$
+e) Prüfen Sie Ihr Ergebnis an drei Stellen. (1) Über welcher Schicht fällt die größte Temperaturdifferenz ab, und ergeben die drei Teildifferenzen zusammen die Gesamtdifferenz? (2) Welche Wärmestromdichte $\dot{q}_\mathrm{W}$ gibt offenes Wasser bei gleichem $\alpha_\mathrm{a}$ an die Luft ab, und um welchen Faktor ist sie größer als mit Eis und Schnee? (3) Für die 10\ m breite Rinne aus Tutorium\ 2 (Aufgabe\ 1, Teil\ e) ergaben sich $\alpha = 19{,}6\,\mathrm{W/(m^2\,K)}$ und $\dot{q} = 554\,\mathrm{W/m^2}$. Wie ändert sich $\dot{Q}$ mit Eis und Schnee, wenn Sie dieses $\alpha$ verwenden? Warum ändert er sich so wenig?\
+   Zu (1): $\Delta T_\mathrm{S} = 16{,}3\,\mathrm{K}$, $\quad 1{,}08\,\mathrm{K} + 16{,}3\,\mathrm{K} + 10{,}8\,\mathrm{K} = 28{,}2\,\mathrm{K}$\
+   Zu (2): $\dot{q}_\mathrm{W} = 423\,\mathrm{W/m^2}$, Faktor 26; $\quad$ zu (3): $\dot{Q} = 16{,}4\,\mathrm{W}$
 
-f) Die Wärme, die durch Schnee und Eis entweicht, wird an der Unterseite des Eises beim Gefrieren von Meerwasser frei. Berechnen Sie mit einer Energiebilanz, um wie viele Zentimeter das Eis pro Tag wächst. Vergleichen Sie mit Jungeis der Dicke $s_J$ ohne Schnee, wie es in einer frisch zugefrorenen Rinne entsteht: Wie groß sind dort die Wärmestromdichte $\dot{q}_J$ und das Wachstum? Was folgt daraus für eine Arktis, in der das Eis im Mittel dünner wird?\
-   $\mathrm{d}s_E/\mathrm{d}t = 0{,}46\,\mathrm{cm/d}$; $\quad$ Jungeis: $\dot{q}_J = 247\,\mathrm{W/m^2}$, $\quad \mathrm{d}s_J/\mathrm{d}t = 6{,}97\,\mathrm{cm/d}$
+f) Die Wärme, die durch Schnee und Eis entweicht, wird an der Unterseite des Eises beim Gefrieren von Meerwasser frei. Berechnen Sie mit einer Energiebilanz, um wie viele Zentimeter das Eis pro Tag wächst. Vergleichen Sie mit Jungeis der Dicke $s_\mathrm{J}$ ohne Schnee, wie es in einer frisch zugefrorenen Rinne entsteht: Wie groß sind dort die Wärmestromdichte $\dot{q}_\mathrm{J}$ und das Wachstum? Was folgt daraus für eine Arktis, in der das Eis im Mittel dünner wird?\
+   $\mathrm{d}s_\mathrm{E}/\mathrm{d}t = 0{,}46\,\mathrm{cm/d}$; $\quad$ Jungeis: $\dot{q}_\mathrm{J} = 247\,\mathrm{W/m^2}$, $\quad \mathrm{d}s_\mathrm{J}/\mathrm{d}t = 6{,}97\,\mathrm{cm/d}$
 
 ## Ölleitung im Permafrost
 
@@ -353,9 +353,9 @@ Die Trans-Alaska-Pipeline bringt Rohöl von der Nordküste Alaskas quer durch da
 
 Welche Aussagen über ein gedämmtes Rohr sind richtig? Notieren Sie Ihre Vermutung, bevor Sie Aufgabe\ 2 rechnen.
 
-- [ ] Der Wärmedurchgangskoeffizient $k_a$, bezogen auf die Außenfläche, ist kleiner als $k_i$, bezogen auf die Innenfläche.
+- [ ] Der Wärmedurchgangskoeffizient $k_\mathrm{a}$, bezogen auf die Außenfläche, ist kleiner als $k_\mathrm{i}$, bezogen auf die Innenfläche.
 - [ ] Das Produkt $kA$ hängt davon ab, auf welche Fläche $k$ bezogen wird.
-- [ ] Bei einem dünnwandigen Rohr ohne Dämmung sind $k_i$ und $k_a$ fast gleich.
+- [ ] Bei einem dünnwandigen Rohr ohne Dämmung sind $k_\mathrm{i}$ und $k_\mathrm{a}$ fast gleich.
 
 **Aufgabe 2** (neu)
 
@@ -365,44 +365,44 @@ Betrachten Sie einen Abschnitt der Leitung mit der Länge $L$ im Winter. Der Win
 
 - Der Wärmetransport wird als stationär und rein radial angenommen.
 - Die Öltemperatur wird im betrachteten Abschnitt als konstant angenommen.
-- Die Stoffwerte sind unabhängig von der Temperatur. Für die Luft gelten sie bei der Filmtemperatur $\vartheta_m = -29\,\mathrm{°C}$ (die Oberfläche der Dämmung ist nur wenig wärmer als die Luft).
+- Die Stoffwerte sind unabhängig von der Temperatur. Für die Luft gelten sie bei der Filmtemperatur $\vartheta_\mathrm{m} = -29\,\mathrm{°C}$ (die Oberfläche der Dämmung ist nur wenig wärmer als die Luft).
 - Strahlung an der Oberfläche der Dämmung wird vernachlässigt.
 
 ***Gegebene Größen:***
 
 | ***Öl:*** | | ***Luft:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Temperatur: | $\vartheta_i = 30\,\mathrm{°C}$ | Temperatur: | $\vartheta_u = -30\,\mathrm{°C}$ |
-| Wärmeübergang: | $\alpha_i = 500\,\mathrm{W/(m^2\,K)}$ | Geschwindigkeit: | $w = 5\,\mathrm{m/s}$ |
-| | | Kinem. Viskosität: | $\nu_L = 1{,}087\cdot 10^{-5}\,\mathrm{m^2/s}$ |
-| | | Wärmeleitfähigkeit: | $\lambda_L = 0{,}0221\,\mathrm{W/(m\,K)}$ |
+| Temperatur: | $\vartheta_\mathrm{i} = 30\,\mathrm{°C}$ | Temperatur: | $\vartheta_\mathrm{u} = -30\,\mathrm{°C}$ |
+| Wärmeübergang: | $\alpha_\mathrm{i} = 500\,\mathrm{W/(m^2\,K)}$ | Geschwindigkeit: | $w = 5\,\mathrm{m/s}$ |
+| | | Kinem. Viskosität: | $\nu_\mathrm{L} = 1{,}087\cdot 10^{-5}\,\mathrm{m^2/s}$ |
+| | | Wärmeleitfähigkeit: | $\lambda_\mathrm{L} = 0{,}0221\,\mathrm{W/(m\,K)}$ |
 | | | Prandtl-Zahl: | $Pr = 0{,}716$ |
 | | | | |
 | ***Stahlrohr:*** | | ***Dämmung:*** | |
-| Außendurchmesser: | $d_{St} = 1{,}22\,\mathrm{m}$ | Dicke: | $s_{Iso} = 9{,}5\,\mathrm{cm}$ |
-| Wanddicke: | $s_{St} = 14{,}3\,\mathrm{mm}$ | Wärmeleitfähigkeit: | $\lambda_{Iso} = 0{,}04\,\mathrm{W/(m\,K)}$ |
-| Wärmeleitfähigkeit: | $\lambda_{St} = 45\,\mathrm{W/(m\,K)}$ | | |
+| Außendurchmesser: | $d_{\mathrm{St}} = 1{,}22\,\mathrm{m}$ | Dicke: | $s_{\mathrm{Iso}} = 9{,}5\,\mathrm{cm}$ |
+| Wanddicke: | $s_{\mathrm{St}} = 14{,}3\,\mathrm{mm}$ | Wärmeleitfähigkeit: | $\lambda_{\mathrm{Iso}} = 0{,}04\,\mathrm{W/(m\,K)}$ |
+| Wärmeleitfähigkeit: | $\lambda_{\mathrm{St}} = 45\,\mathrm{W/(m\,K)}$ | | |
 | | | | |
 | ***Abschnitt:*** | | | |
 | Länge: | $L = 1\,\mathrm{m}$ | | |
 
 **Aufgabenstellung:**
 
-a) Berechnen Sie den Wärmeübergangskoeffizienten $\alpha_a$ an der Außenseite der Dämmung.\
-   $Re = 1{,}02\cdot 10^{6}$, $\quad Nu_m = 2024$, $\quad \alpha_a = 20{,}2\,\mathrm{W/(m^2\,K)}$
+a) Berechnen Sie den Wärmeübergangskoeffizienten $\alpha_\mathrm{a}$ an der Außenseite der Dämmung.\
+   $Re = 1{,}02\cdot 10^{6}$, $\quad Nu_\mathrm{m} = 2024$, $\quad \alpha_\mathrm{a} = 20{,}2\,\mathrm{W/(m^2\,K)}$
 
 b) Berechnen Sie die vier thermischen Widerstände zwischen Öl und Luft und den Wärmestrom $\dot{Q}$. Welcher Widerstand bestimmt den Wärmestrom?\
-   $R_{th,i} = 5{,}34\cdot 10^{-4}\,\mathrm{K/W}$, $\quad R_{th,St} = 8{,}39\cdot 10^{-5}\,\mathrm{K/W}$, $\quad R_{th,Iso} = 0{,}576\,\mathrm{K/W}$\
-   $R_{th,a} = 0{,}0112\,\mathrm{K/W}$, $\quad R_{th,ges} = 0{,}588\,\mathrm{K/W}$, $\quad \dot{Q} = 102\,\mathrm{W}$
+   $R_{\mathrm{th,i}} = 5{,}34\cdot 10^{-4}\,\mathrm{K/W}$, $\quad R_{\mathrm{th,St}} = 8{,}39\cdot 10^{-5}\,\mathrm{K/W}$, $\quad R_{\mathrm{th,Iso}} = 0{,}576\,\mathrm{K/W}$\
+   $R_{\mathrm{th,a}} = 0{,}0112\,\mathrm{K/W}$, $\quad R_{\mathrm{th,ges}} = 0{,}588\,\mathrm{K/W}$, $\quad \dot{Q} = 102\,\mathrm{W}$
 
-c) Berechnen Sie die Temperatur $\vartheta_O$ an der Oberfläche der Dämmung. War die Annahme zur Filmtemperatur berechtigt?\
-   $\vartheta_O = -28{,}9\,\mathrm{°C}$, $\quad \vartheta_m = -29{,}4\,\mathrm{°C}$
+c) Berechnen Sie die Temperatur $\vartheta_\mathrm{O}$ an der Oberfläche der Dämmung. War die Annahme zur Filmtemperatur berechtigt?\
+   $\vartheta_\mathrm{O} = -28{,}9\,\mathrm{°C}$, $\quad \vartheta_\mathrm{m} = -29{,}4\,\mathrm{°C}$
 
-d) Berechnen Sie den Wärmedurchgangskoeffizienten $k_i$, bezogen auf die Innenfläche $A_i$ des Stahlrohrs, und $k_a$, bezogen auf die Außenfläche $A_a$ der Dämmung. Warum gibt es zwei Werte? Zeigen Sie, dass $k_i A_i = k_a A_a$ gilt, und prüfen Sie Ihre Antworten zu Frage\ 3.\
-   $k_i = 0{,}455\,\mathrm{W/(m^2\,K)}$, $\quad k_a = 0{,}384\,\mathrm{W/(m^2\,K)}$, $\quad k_i A_i = k_a A_a = 1{,}70\,\mathrm{W/K}$
+d) Berechnen Sie den Wärmedurchgangskoeffizienten $k_\mathrm{i}$, bezogen auf die Innenfläche $A_\mathrm{i}$ des Stahlrohrs, und $k_\mathrm{a}$, bezogen auf die Außenfläche $A_\mathrm{a}$ der Dämmung. Warum gibt es zwei Werte? Zeigen Sie, dass $k_\mathrm{i} A_\mathrm{i} = k_\mathrm{a} A_\mathrm{a}$ gilt, und prüfen Sie Ihre Antworten zu Frage\ 3.\
+   $k_\mathrm{i} = 0{,}455\,\mathrm{W/(m^2\,K)}$, $\quad k_\mathrm{a} = 0{,}384\,\mathrm{W/(m^2\,K)}$, $\quad k_\mathrm{i} A_\mathrm{i} = k_\mathrm{a} A_\mathrm{a} = 1{,}70\,\mathrm{W/K}$
 
-e) Um ein sehr dünnes Rohr kann eine Dämmung den Wärmestrom sogar vergrößern. Leiten Sie aus $R_{th,ges}$ den kritischen Außenradius $r_{krit}$ der Dämmung her, bei dem der Wärmestrom am größten ist. Berechnen Sie ihn und begründen Sie, warum die Dämmung der Ölleitung trotzdem wirkt.\
-   $r_{krit} = \lambda_{Iso}/\alpha_a = 1{,}98\,\mathrm{mm}$
+e) Um ein sehr dünnes Rohr kann eine Dämmung den Wärmestrom sogar vergrößern. Leiten Sie aus $R_{\mathrm{th,ges}}$ den kritischen Außenradius $r_{\mathrm{krit}}$ der Dämmung her, bei dem der Wärmestrom am größten ist. Berechnen Sie ihn und begründen Sie, warum die Dämmung der Ölleitung trotzdem wirkt.\
+   $r_{\mathrm{krit}} = \lambda_{\mathrm{Iso}}/\alpha_\mathrm{a} = 1{,}98\,\mathrm{mm}$
 
 f) Warum steht die Leitung im Permafrost auf Stützen, statt im Boden zu liegen? In vielen Stützen stecken zusätzlich Wärmerohre, die im Winter Wärme aus dem Boden an die Luft abgeben. Wozu dienen sie, und was bedeutet eine weitere Erwärmung der Arktis für Straßen, Leitungen und Häuser auf Permafrost?
 
@@ -412,8 +412,8 @@ f) Warum steht die Leitung im Permafrost auf Stützen, statt im Boden zu liegen?
 
 Der Wind hat den Schnee von 10\ % der Scholle aus Aufgabe\ 1 weggeweht. Dort liegt nur das Eis; alle anderen Werte bleiben gleich. Betrachten Sie wieder einen Ausschnitt mit $A = 1\,\mathrm{m^2}$, davon $0{,}9\,\mathrm{m^2}$ mit und $0{,}1\,\mathrm{m^2}$ ohne Schnee.
 
-a) Zeichnen Sie das Ersatzschaltbild und berechnen Sie den Gesamtwiderstand $R_{th,ges}$.\
-   $R_{th,ges} = 1{,}53\,\mathrm{K/W}$
+a) Zeichnen Sie das Ersatzschaltbild und berechnen Sie den Gesamtwiderstand $R_{\mathrm{th,ges}}$.\
+   $R_{\mathrm{th,ges}} = 1{,}53\,\mathrm{K/W}$
 
 b) Berechnen Sie den Wärmestrom $\dot{Q}$. Um wie viel Prozent steigt er gegenüber der geschlossenen Schneedecke?\
    $\dot{Q} = 18{,}5\,\mathrm{W}$, $\quad$ Zunahme: $13{,}6\,\%$
@@ -462,17 +462,17 @@ Prüfen Sie Ihre Vermutung zu Frage\ 1 mit Strahlungsbilanzen: zuerst für eine 
 
 - Die Erde wird als stationär angenommen; ihre Oberfläche hat überall dieselbe Temperatur.
 - Die Erde strahlt im Infraroten wie ein schwarzer Körper ab. Das Weltall hat etwa 0\ K.
-- Die planetare Albedo $\rho_p$ wird als konstant angenommen.
+- Die planetare Albedo $\rho_\mathrm{p}$ wird als konstant angenommen.
 - Der Wärmestrom aus dem Erdinneren wird vernachlässigt.
-- Ab Teil\ e ist die Atmosphäre eine dünne Schicht mit einheitlicher Temperatur $T_A$. Sie lässt das Sonnenlicht vollständig durch und ist für Wärmestrahlung ein grauer Strahler mit dem Emissionsgrad $\varepsilon_A$.
+- Ab Teil\ e ist die Atmosphäre eine dünne Schicht mit einheitlicher Temperatur $T_\mathrm{A}$. Sie lässt das Sonnenlicht vollständig durch und ist für Wärmestrahlung ein grauer Strahler mit dem Emissionsgrad $\varepsilon_\mathrm{A}$.
 
 ***Gegebene Größen:***
 
 | ***Sonne:*** | | ***Erde:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Solarkonstante: | $S_0 = 1361\,\mathrm{W/m^2}$ | Planetare Albedo: | $\rho_p = 0{,}30$ |
-| | | Mitteltemperatur: | $T_O = 288\,\mathrm{K}$ |
-| | | Erdwärme: | $\dot{q}_E = 0{,}09\,\mathrm{W/m^2}$ |
+| Solarkonstante: | $S_0 = 1361\,\mathrm{W/m^2}$ | Planetare Albedo: | $\rho_\mathrm{p} = 0{,}30$ |
+| | | Mitteltemperatur: | $T_\mathrm{O} = 288\,\mathrm{K}$ |
+| | | Erdwärme: | $\dot{q}_\mathrm{E} = 0{,}09\,\mathrm{W/m^2}$ |
 | | | | |
 | ***CO~2~ verdoppelt:*** | | | |
 | Strahlungsantrieb: | $\Delta\dot{q} = 3{,}93\,\mathrm{W/m^2}$ | | |
@@ -486,22 +486,22 @@ a) Die Sonnenstrahlung trifft die Erde auf ihrer Querschnittsfläche $\pi R^2$, 
 
 b) Welche der Annahmen halten Sie für am fragwürdigsten? Begründen Sie Ihre Wahl.
 
-c) Ordnen Sie die planetare Albedo $\rho_p$ in die Beziehung $\alpha + \rho + \tau = 1$ ein. Berechnen Sie die Strahlungsflussdichte $\dot{q}_{abs}$, die die Erde im Mittel absorbiert.\
-   $\dot{q}_{abs} = 238\,\mathrm{W/m^2}$
+c) Ordnen Sie die planetare Albedo $\rho_\mathrm{p}$ in die Beziehung $\alpha + \rho + \tau = 1$ ein. Berechnen Sie die Strahlungsflussdichte $\dot{q}_{\mathrm{abs}}$, die die Erde im Mittel absorbiert.\
+   $\dot{q}_{\mathrm{abs}} = 238\,\mathrm{W/m^2}$
 
-d) Berechnen Sie (1) die Gleichgewichtstemperatur $T_e$ der Erde ohne Atmosphäre in K und °C und (2) die Temperatur $T$, die die Oberfläche ohne Sonne nur mit der Wärme aus dem Erdinneren hätte. Vergleichen Sie (1) mit dem Wert aus Frage\ 1. Ist die vierte Annahme gerechtfertigt?\
-   Zu (1): $T_e = 254{,}6\,\mathrm{K} = -18{,}6\,\mathrm{°C}$; zu (2): $T = 35{,}5\,\mathrm{K}$
+d) Berechnen Sie (1) die Gleichgewichtstemperatur $T_\mathrm{e}$ der Erde ohne Atmosphäre in K und °C und (2) die Temperatur $T$, die die Oberfläche ohne Sonne nur mit der Wärme aus dem Erdinneren hätte. Vergleichen Sie (1) mit dem Wert aus Frage\ 1. Ist die vierte Annahme gerechtfertigt?\
+   Zu (1): $T_\mathrm{e} = 254{,}6\,\mathrm{K} = -18{,}6\,\mathrm{°C}$; zu (2): $T = 35{,}5\,\mathrm{K}$
 
-e) Begründen Sie mit dem Kirchhoff’schen Gesetz, warum die Atmosphärenschicht Wärmestrahlung mit dem Absorptionsgrad $\alpha_A = \varepsilon_A$ absorbiert. Ordnen Sie $\alpha$, $\rho$ und $\tau$ der Schicht getrennt für Sonnenlicht und für Wärmestrahlung zu.
+e) Begründen Sie mit dem Kirchhoff’schen Gesetz, warum die Atmosphärenschicht Wärmestrahlung mit dem Absorptionsgrad $\alpha_\mathrm{A} = \varepsilon_\mathrm{A}$ absorbiert. Ordnen Sie $\alpha$, $\rho$ und $\tau$ der Schicht getrennt für Sonnenlicht und für Wärmestrahlung zu.
 
-f) Stellen Sie die stationären Energiebilanzen für die Erdoberfläche und für die Atmosphärenschicht auf. Leiten Sie daraus die Oberflächentemperatur $T_O$ als Funktion von $T_e$ und $\varepsilon_A$ her. Welcher Emissionsgrad $\varepsilon_A$ ergibt $T_O = 288\,\mathrm{K}$, und welche Temperatur $T_A$ hat die Schicht dann?\
-   $T_O = T_e\left(\frac{2}{2-\varepsilon_A}\right)^{1/4}$, $\quad\varepsilon_A = 0{,}78$, $\quad T_A = 242{,}2\,\mathrm{K}$
+f) Stellen Sie die stationären Energiebilanzen für die Erdoberfläche und für die Atmosphärenschicht auf. Leiten Sie daraus die Oberflächentemperatur $T_\mathrm{O}$ als Funktion von $T_\mathrm{e}$ und $\varepsilon_\mathrm{A}$ her. Welcher Emissionsgrad $\varepsilon_\mathrm{A}$ ergibt $T_\mathrm{O} = 288\,\mathrm{K}$, und welche Temperatur $T_\mathrm{A}$ hat die Schicht dann?\
+   $T_\mathrm{O} = T_\mathrm{e}\left(\frac{2}{2-\varepsilon_\mathrm{A}}\right)^{1/4}$, $\quad\varepsilon_\mathrm{A} = 0{,}78$, $\quad T_\mathrm{A} = 242{,}2\,\mathrm{K}$
 
-g) Prüfen Sie das Schichtmodell. (1) Welche Oberflächentemperaturen ergeben die Grenzfälle ${\varepsilon_A = 0}$ und ${\varepsilon_A = 1}$? (2) Im globalen Mittel werden eine Gegenstrahlung (Wärmestrahlung der Atmosphäre zur Oberfläche) von 342\ W/m² und eine Abstrahlung der Oberfläche von 398\ W/m² gemessen. Die Atmosphäre absorbiert rund 80\ W/m² der Sonnenstrahlung, und die Oberfläche verliert rund 21\ W/m² durch Konvektion und 82\ W/m² durch Verdunstung (Forster et al., 2021). Berechnen Sie die Gegenstrahlung $\dot{q}_G$ der Schicht im Modell und vergleichen Sie. Erklären Sie den Unterschied mit einer Energiebilanz der Oberfläche aus den Messwerten. Welchen Anteil der Abstrahlung machen Konvektion und Verdunstung zusammen aus? Dürfen sie neben der Strahlung vernachlässigt werden?\
-   Zu (1): $T_O = 254{,}6\,\mathrm{K}$ bzw. $302{,}7\,\mathrm{K}$; zu (2): $\dot{q}_G = 152\,\mathrm{W/m^2}$, Anteil $26\,\%$
+g) Prüfen Sie das Schichtmodell. (1) Welche Oberflächentemperaturen ergeben die Grenzfälle ${\varepsilon_\mathrm{A} = 0}$ und ${\varepsilon_\mathrm{A} = 1}$? (2) Im globalen Mittel werden eine Gegenstrahlung (Wärmestrahlung der Atmosphäre zur Oberfläche) von 342\ W/m² und eine Abstrahlung der Oberfläche von 398\ W/m² gemessen. Die Atmosphäre absorbiert rund 80\ W/m² der Sonnenstrahlung, und die Oberfläche verliert rund 21\ W/m² durch Konvektion und 82\ W/m² durch Verdunstung (Forster et al., 2021). Berechnen Sie die Gegenstrahlung $\dot{q}_\mathrm{G}$ der Schicht im Modell und vergleichen Sie. Erklären Sie den Unterschied mit einer Energiebilanz der Oberfläche aus den Messwerten. Welchen Anteil der Abstrahlung machen Konvektion und Verdunstung zusammen aus? Dürfen sie neben der Strahlung vernachlässigt werden?\
+   Zu (1): $T_\mathrm{O} = 254{,}6\,\mathrm{K}$ bzw. $302{,}7\,\mathrm{K}$; zu (2): $\dot{q}_\mathrm{G} = 152\,\mathrm{W/m^2}$, Anteil $26\,\%$
 
-h) Eine Verdopplung von CO~2~ wirkt ohne Rückkopplungen wie eine zusätzliche Strahlungsflussdichte $\Delta\dot{q}$, die die Erde aufnimmt (Strahlungsantrieb). Für kleine Änderungen gilt $\Delta\dot{q} \approx 4\sigma T_e^3\,\Delta T$ (hier gegeben, nicht in der Formelsammlung). Um wie viel erwärmt sich die Erde? Mit Rückkopplungen nennt die Forschung etwa 3\ K (IPCC, 2021): Welche Effekte fehlen in Ihrer Rechnung?\
-   $4\sigma T_e^3 = 3{,}74\,\mathrm{W/(m^2\,K)}$, $\quad \Delta T = 1{,}05\,\mathrm{K}$
+h) Eine Verdopplung von CO~2~ wirkt ohne Rückkopplungen wie eine zusätzliche Strahlungsflussdichte $\Delta\dot{q}$, die die Erde aufnimmt (Strahlungsantrieb). Für kleine Änderungen gilt $\Delta\dot{q} \approx 4\sigma T_\mathrm{e}^3\,\Delta T$ (hier gegeben, nicht in der Formelsammlung). Um wie viel erwärmt sich die Erde? Mit Rückkopplungen nennt die Forschung etwa 3\ K (IPCC, 2021): Welche Effekte fehlen in Ihrer Rechnung?\
+   $4\sigma T_\mathrm{e}^3 = 3{,}74\,\mathrm{W/(m^2\,K)}$, $\quad \Delta T = 1{,}05\,\mathrm{K}$
 
 i) Erklären Sie in drei Sätzen für Laien, warum mehr CO~2~ die Oberfläche erwärmt, obwohl CO~2~ selbst keine Wärme erzeugt.
 
@@ -509,24 +509,24 @@ i) Erklären Sie in drei Sätzen für Laien, warum mehr CO~2~ die Oberfläche er
 
 **Zusatzaufgabe 1** (neu): Eis aus der Nacht
 
-In Indien wurde im 18. Jahrhundert in flachen Schalen Eis hergestellt, obwohl die Luft wärmer als 0\ °C war. Eine flache Schale mit Wasser steht in einer klaren Nacht auf einer dicken Lage Stroh. Die Luft hat $\vartheta_L = 5\,\mathrm{°C}$. Der klare Himmel wirkt für die Strahlung wie ein schwarzer Körper mit $\vartheta_H = -20\,\mathrm{°C}$. Das Wasser ist ein grauer Strahler mit $\varepsilon = 0{,}96$. Der Wärmeübergangskoeffizient zur Luft liegt je nach Wind zwischen $\alpha_L = 2$ und $5\,\mathrm{W/(m^2\,K)}$. Wärme aus dem Boden wird vernachlässigt.
+In Indien wurde im 18. Jahrhundert in flachen Schalen Eis hergestellt, obwohl die Luft wärmer als 0\ °C war. Eine flache Schale mit Wasser steht in einer klaren Nacht auf einer dicken Lage Stroh. Die Luft hat $\vartheta_\mathrm{L} = 5\,\mathrm{°C}$. Der klare Himmel wirkt für die Strahlung wie ein schwarzer Körper mit $\vartheta_\mathrm{H} = -20\,\mathrm{°C}$. Das Wasser ist ein grauer Strahler mit $\varepsilon = 0{,}96$. Der Wärmeübergangskoeffizient zur Luft liegt je nach Wind zwischen $\alpha_\mathrm{L} = 2$ und $5\,\mathrm{W/(m^2\,K)}$. Wärme aus dem Boden wird vernachlässigt.
 
 a) Stellen Sie die stationäre Energiebilanz für die Wasseroberfläche auf.
 
-b) Berechnen Sie die Gleichgewichtstemperatur $\vartheta$ des Wassers für beide Werte von $\alpha_L$ (iterativ, etwa mit dem Taschenrechner).\
-   $\alpha_L = 2\,\mathrm{W/(m^2\,K)}$: $\vartheta = -11{,}3\,\mathrm{°C}$; $\quad \alpha_L = 5\,\mathrm{W/(m^2\,K)}$: $\vartheta = -5{,}9\,\mathrm{°C}$
+b) Berechnen Sie die Gleichgewichtstemperatur $\vartheta$ des Wassers für beide Werte von $\alpha_\mathrm{L}$ (iterativ, etwa mit dem Taschenrechner).\
+   $\alpha_\mathrm{L} = 2\,\mathrm{W/(m^2\,K)}$: $\vartheta = -11{,}3\,\mathrm{°C}$; $\quad \alpha_\mathrm{L} = 5\,\mathrm{W/(m^2\,K)}$: $\vartheta = -5{,}9\,\mathrm{°C}$
 
 c) Warum gelingt das nur in klaren, möglichst windstillen Nächten? Was passiert, sobald das Wasser 0\ °C erreicht?
 
 **Zusatzaufgabe 2** (neu): Autoscheibe und Reif
 
-Rechnen Sie Frage\ 2 nach. Ein Auto steht nachts im Freien. Die Windschutzscheibe aus Glas ($\varepsilon = 0{,}95$) tauscht Strahlung mit ihrer Umgebung aus. Die schräge Scheibe sieht neben dem klaren Himmel auch Häuser und Bäume; zusammen wirkt diese Umgebung für die Strahlung wie ein schwarzer Körper mit $\vartheta_H = -5\,\mathrm{°C}$. Die Luft mit der Temperatur $\vartheta_L$ gibt über $\alpha_L = 5\,\mathrm{W/(m^2\,K)}$ Wärme an die Scheibe ab. Wärme aus dem Wageninneren wird vernachlässigt.
+Rechnen Sie Frage\ 2 nach. Ein Auto steht nachts im Freien. Die Windschutzscheibe aus Glas ($\varepsilon = 0{,}95$) tauscht Strahlung mit ihrer Umgebung aus. Die schräge Scheibe sieht neben dem klaren Himmel auch Häuser und Bäume; zusammen wirkt diese Umgebung für die Strahlung wie ein schwarzer Körper mit $\vartheta_\mathrm{H} = -5\,\mathrm{°C}$. Die Luft mit der Temperatur $\vartheta_\mathrm{L}$ gibt über $\alpha_\mathrm{L} = 5\,\mathrm{W/(m^2\,K)}$ Wärme an die Scheibe ab. Wärme aus dem Wageninneren wird vernachlässigt.
 
-a) Stellen Sie die stationäre Energiebilanz für die Scheibe auf. Bis zu welcher Lufttemperatur $\vartheta_L$ kühlt die Scheibe auf 0\ °C oder darunter ab, sodass sie vereisen kann?\
-   $\vartheta_L = 4{,}27\,\mathrm{°C}$
+a) Stellen Sie die stationäre Energiebilanz für die Scheibe auf. Bis zu welcher Lufttemperatur $\vartheta_\mathrm{L}$ kühlt die Scheibe auf 0\ °C oder darunter ab, sodass sie vereisen kann?\
+   $\vartheta_\mathrm{L} = 4{,}27\,\mathrm{°C}$
 
-b) Bei Wind steigt der Wärmeübergangskoeffizient auf $\alpha_L = 10\,\mathrm{W/(m^2\,K)}$. Wie verschiebt sich die Grenze? Warum vereisen Scheiben vor allem in windstillen Nächten?\
-   $\vartheta_L = 2{,}14\,\mathrm{°C}$
+b) Bei Wind steigt der Wärmeübergangskoeffizient auf $\alpha_\mathrm{L} = 10\,\mathrm{W/(m^2\,K)}$. Wie verschiebt sich die Grenze? Warum vereisen Scheiben vor allem in windstillen Nächten?\
+   $\vartheta_\mathrm{L} = 2{,}14\,\mathrm{°C}$
 
 c) Welche Annahme halten Sie für am fragwürdigsten? Liegt die wahre Grenze dadurch höher oder tiefer?
 
@@ -664,19 +664,19 @@ Angenommen, die AMOC bringt 20\ % weniger Wärme nach Norden. Um wie viel wird d
 
 | ***AMOC bei 26,5°\ N:*** | | ***Meerwasser:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Volumenstrom: | $\dot{V} = 17\,\mathrm{Sv}$ | Dichte: | $\rho_M = 1025\,\mathrm{kg/m^3}$ |
-| Wärmestrom: | $\dot{Q}_{AMOC} = 1{,}2\,\mathrm{PW}$ | Spez. Wärmekapazität: | $c_{p,M} = 3990\,\mathrm{J/(kg\,K)}$ |
-| 1 Sverdrup: | $1\,\mathrm{Sv} = 10^{6}\,\mathrm{m^3/s}$ | Oberflächenwasser: | $\vartheta_w \approx 20\,\mathrm{°C}$ |
-| | | Tiefenwasser: | $\vartheta_k \approx 3\,\mathrm{°C}$ |
+| Volumenstrom: | $\dot{V} = 17\,\mathrm{Sv}$ | Dichte: | $\rho_\mathrm{M} = 1025\,\mathrm{kg/m^3}$ |
+| Wärmestrom: | $\dot{Q}_{\mathrm{AMOC}} = 1{,}2\,\mathrm{PW}$ | Spez. Wärmekapazität: | $c_{p,\mathrm{M}} = 3990\,\mathrm{J/(kg\,K)}$ |
+| 1 Sverdrup: | $1\,\mathrm{Sv} = 10^{6}\,\mathrm{m^3/s}$ | Oberflächenwasser: | $\vartheta_\mathrm{w} \approx 20\,\mathrm{°C}$ |
+| | | Tiefenwasser: | $\vartheta_\mathrm{k} \approx 3\,\mathrm{°C}$ |
 | | | | |
 | ***Vergleichsströme:*** | | ***Flächen:*** | |
-| Amazonas: | $\dot{V}_A = 0{,}206\,\mathrm{Sv}$ | Gürtel: | $A_G = 7{,}6\cdot 10^{13}\,\mathrm{m^2}$ |
-| Golfstrom (60°\ W): | $\dot{V}_G \geq 150\,\mathrm{Sv}$ | Viertel: | $A_V = 1{,}9\cdot 10^{13}\,\mathrm{m^2}$ |
+| Amazonas: | $\dot{V}_\mathrm{A} = 0{,}206\,\mathrm{Sv}$ | Gürtel: | $A_\mathrm{G} = 7{,}6\cdot 10^{13}\,\mathrm{m^2}$ |
+| Golfstrom (60°\ W): | $\dot{V}_\mathrm{G} \geq 150\,\mathrm{Sv}$ | Viertel: | $A_\mathrm{V} = 1{,}9\cdot 10^{13}\,\mathrm{m^2}$ |
 | | | | |
 | ***Januar, 51,7°\ N:*** | | ***Januarmittel:*** | |
-| Sonne am Oberrand: | $\dot{q}_S = 93\,\mathrm{W/m^2}$ | Paderborn: | $\vartheta_{PB} = 2{,}1\,\mathrm{°C}$ |
-| Albedo (Winter): | $\rho_p = 0{,}4$ | Goose Bay: | $\vartheta_{GB} = -17{,}6\,\mathrm{°C}$ |
-| Atmosphäre: | $\varepsilon_A = 0{,}78$ | | |
+| Sonne am Oberrand: | $\dot{q}_\mathrm{S} = 93\,\mathrm{W/m^2}$ | Paderborn: | $\vartheta_{\mathrm{PB}} = 2{,}1\,\mathrm{°C}$ |
+| Albedo (Winter): | $\rho_\mathrm{p} = 0{,}4$ | Goose Bay: | $\vartheta_{\mathrm{GB}} = -17{,}6\,\mathrm{°C}$ |
+| Atmosphäre: | $\varepsilon_\mathrm{A} = 0{,}78$ | | |
 | | | | |
 | ***Deckschicht:*** | | | |
 | Tiefe im Winter: | $h = 100\,\mathrm{m}$ bis $350\,\mathrm{m}$ | | |
@@ -686,30 +686,30 @@ Die Stefan-Boltzmann-Konstante ${\sigma = 5{,}6705\cdot 10^{-8}\,\mathrm{W/(m^2\
 **Aufgabenstellung:**
 
 a) Zeichnen Sie in Abb. 2 den Bilanzraum „Atlantik nördlich von 26,5°\ N“ ein. Rechnen Sie den Volumenstrom der AMOC in $\mathrm{m^3/s}$ und den Massenstrom in $\mathrm{kg/s}$ um. Warum muss in der Tiefe genauso viel Wasser nach Süden fließen, wie oben nach Norden strömt? Prüfen Sie die Angabe „etwa 80 Amazonas-Ströme“.\
-   $\dot{V} = 1{,}7\cdot 10^{7}\,\mathrm{m^3/s}$, $\quad\dot{m} = 1{,}74\cdot 10^{10}\,\mathrm{kg/s}$, $\quad\dot{V}/\dot{V}_A = 82{,}5$
+   $\dot{V} = 1{,}7\cdot 10^{7}\,\mathrm{m^3/s}$, $\quad\dot{m} = 1{,}74\cdot 10^{10}\,\mathrm{kg/s}$, $\quad\dot{V}/\dot{V}_\mathrm{A} = 82{,}5$
 
-b) Berechnen Sie den Wärmekapazitätsstrom ${\dot{C} = \dot{m}\,c_{p,M}}$ und die mittlere Temperaturdifferenz $\Delta T$ zwischen Hin- und Rückstrom, die $\dot{Q}_{AMOC}$ erklärt. Passt sie zu $\vartheta_w$ und $\vartheta_k$? Der Golfstrom führt nahe 60°\ W mindestens $\dot{V}_G$. Warum folgt daraus kein neunmal so großer Wärmestrom nach Norden?\
-   $\dot{C} = 69{,}5\,\mathrm{TW/K}$, $\quad\Delta T = 17{,}3\,\mathrm{K}$, $\quad\dot{C}\,(\vartheta_w - \vartheta_k) = 1{,}18\,\mathrm{PW}$
+b) Berechnen Sie den Wärmekapazitätsstrom ${\dot{C} = \dot{m}\,c_{p,\mathrm{M}}}$ und die mittlere Temperaturdifferenz $\Delta T$ zwischen Hin- und Rückstrom, die $\dot{Q}_{\mathrm{AMOC}}$ erklärt. Passt sie zu $\vartheta_\mathrm{w}$ und $\vartheta_\mathrm{k}$? Der Golfstrom führt nahe 60°\ W mindestens $\dot{V}_\mathrm{G}$. Warum folgt daraus kein neunmal so großer Wärmestrom nach Norden?\
+   $\dot{C} = 69{,}5\,\mathrm{TW/K}$, $\quad\Delta T = 17{,}3\,\mathrm{K}$, $\quad\dot{C}\,(\vartheta_\mathrm{w} - \vartheta_\mathrm{k}) = 1{,}18\,\mathrm{PW}$
 
-c) Nehmen Sie an, der ganze Wärmestrom $\dot{Q}_{AMOC}$ geht zwischen 40° und 70°\ N an die Luft. Welche Wärmestromdichte ergibt sich, wenn sich die Wärme auf den ganzen Breitengürtel verteilt ($A_G$), und welche, wenn sie nur dem Viertel über Nordatlantik und Europa zugutekommt ($A_V$, 50°\ W bis 40°\ O)?\
-   $\dot{q}_G = 15{,}8\,\mathrm{W/m^2}$, $\quad\dot{q}_V = 63{,}2\,\mathrm{W/m^2}$
+c) Nehmen Sie an, der ganze Wärmestrom $\dot{Q}_{\mathrm{AMOC}}$ geht zwischen 40° und 70°\ N an die Luft. Welche Wärmestromdichte ergibt sich, wenn sich die Wärme auf den ganzen Breitengürtel verteilt ($A_\mathrm{G}$), und welche, wenn sie nur dem Viertel über Nordatlantik und Europa zugutekommt ($A_\mathrm{V}$, 50°\ W bis 40°\ O)?\
+   $\dot{q}_\mathrm{G} = 15{,}8\,\mathrm{W/m^2}$, $\quad\dot{q}_\mathrm{V} = 63{,}2\,\mathrm{W/m^2}$
 
-d) Wie kalt wäre Paderborn im Januar ohne jede Wärmezufuhr außer der Sonne? Stellen Sie die stationäre Strahlungsbilanz der Oberfläche auf, (1) ohne Atmosphäre und (2) mit dem Schichtmodell aus Tutorium 4, ${T_O = T_e\,\left(2/(2 - \varepsilon_A)\right)^{1/4}}$.\
-   Zu (1): $\dot{q}_{abs} = 55{,}8\,\mathrm{W/m^2}$, $\quad\vartheta_e = -96{,}0\,\mathrm{°C}$; zu (2): $\vartheta_O = -72{,}7\,\mathrm{°C}$
+d) Wie kalt wäre Paderborn im Januar ohne jede Wärmezufuhr außer der Sonne? Stellen Sie die stationäre Strahlungsbilanz der Oberfläche auf, (1) ohne Atmosphäre und (2) mit dem Schichtmodell aus Tutorium 4, ${T_\mathrm{O} = T_\mathrm{e}\,\left(2/(2 - \varepsilon_\mathrm{A})\right)^{1/4}}$.\
+   Zu (1): $\dot{q}_{\mathrm{abs}} = 55{,}8\,\mathrm{W/m^2}$, $\quad\vartheta_\mathrm{e} = -96{,}0\,\mathrm{°C}$; zu (2): $\vartheta_\mathrm{O} = -72{,}7\,\mathrm{°C}$
 
-e) Welche Wärmestromdichte $\dot{q}_{zu}$ muss im Januar zusätzlich ankommen, damit es in Paderborn $\vartheta_{PB}$ warm ist? Die Abstrahlung nach dem Schichtmodell ist $\sigma\,(1 - \varepsilon_A/2)\,T^4$. Welchen Anteil kann die AMOC nach c) höchstens liefern? Wie stark hängt das Ergebnis von der Albedo ab (0,3 oder 0,5 statt 0,4)?\
-   Abstrahlung $198{,}5\,\mathrm{W/m^2}$, $\quad\dot{q}_{zu} = 142{,}7\,\mathrm{W/m^2}$, AMOC-Anteil $11\,\%$ bis $44\,\%$\
-   Mit $\rho_p = 0{,}3$ bzw. $0{,}5$: $\dot{q}_{zu} = 133{,}4$ bzw. $152{,}0\,\mathrm{W/m^2}$, Anteil $10$ bis $47\,\%$
+e) Welche Wärmestromdichte $\dot{q}_{\mathrm{zu}}$ muss im Januar zusätzlich ankommen, damit es in Paderborn $\vartheta_{\mathrm{PB}}$ warm ist? Die Abstrahlung nach dem Schichtmodell ist $\sigma\,(1 - \varepsilon_\mathrm{A}/2)\,T^4$. Welchen Anteil kann die AMOC nach c) höchstens liefern? Wie stark hängt das Ergebnis von der Albedo ab (0,3 oder 0,5 statt 0,4)?\
+   Abstrahlung $198{,}5\,\mathrm{W/m^2}$, $\quad\dot{q}_{\mathrm{zu}} = 142{,}7\,\mathrm{W/m^2}$, AMOC-Anteil $11\,\%$ bis $44\,\%$\
+   Mit $\rho_\mathrm{p} = 0{,}3$ bzw. $0{,}5$: $\dot{q}_{\mathrm{zu}} = 133{,}4$ bzw. $152{,}0\,\mathrm{W/m^2}$, Anteil $10$ bis $47\,\%$
 
 f) Seager et al. (2002) schätzen für den Winter nördlich von 35°\ N im Mittel: 54\ W/m² bringt die Atmosphäre, 11\ W/m² der Wärmetransport im Ozean, und 53\ W/m² gibt der Ozean aus seinem Sommerspeicher ab. Passt das zu d) und e)? Welche Annahme aus c) ist am fragwürdigsten?\
    Summe nach Seager et al.: $118\,\mathrm{W/m^2}$
 
-g) Linearisieren Sie die Abstrahlung wie in Tutorium 4: Ändert sich die Temperatur um $\Delta T$, ändert sich die Abstrahlung um $\alpha_S\,\Delta T$ mit ${\alpha_S = 4\sigma T^3\,(1 - \varepsilon_A/2)}$, ausgewertet bei $\vartheta_{PB}$. Im neuen Gleichgewicht gilt ${\alpha_S\,\Delta T = \Delta\dot{q}_{AMOC}}$, die Änderung der Wärmezufuhr durch die AMOC. (1) Wie viele Kelvin Erwärmung entsprechen der ganzen AMOC-Wärme aus c)? Kann sie den Unterschied zu Goose Bay erklären? Beachten Sie, wo Goose Bay liegt (60,4°\ W): im Gürtel, aber außerhalb des Viertels. (2) Die AMOC transportiert 20\ % weniger Wärme. Um wie viel ändert sich die Januartemperatur in Paderborn im neuen Gleichgewicht?\
-   $\alpha_S = 2{,}89\,\mathrm{W/(m^2\,K)}$; zu (1): $\Delta T_G = 5{,}5\,\mathrm{K}$, $\quad\Delta T_V = 21{,}9\,\mathrm{K}$\
-   Zu (2): $\Delta\dot{q}_G = -3{,}2\,\mathrm{W/m^2}$, $\quad\Delta\dot{q}_V = -12{,}6\,\mathrm{W/m^2}$\
-   $\Delta T_G = -1{,}1\,\mathrm{K}$, $\quad\Delta T_V = -4{,}4\,\mathrm{K}$
+g) Linearisieren Sie die Abstrahlung wie in Tutorium 4: Ändert sich die Temperatur um $\Delta T$, ändert sich die Abstrahlung um $\alpha_\mathrm{S}\,\Delta T$ mit ${\alpha_\mathrm{S} = 4\sigma T^3\,(1 - \varepsilon_\mathrm{A}/2)}$, ausgewertet bei $\vartheta_{\mathrm{PB}}$. Im neuen Gleichgewicht gilt ${\alpha_\mathrm{S}\,\Delta T = \Delta\dot{q}_{\mathrm{AMOC}}}$, die Änderung der Wärmezufuhr durch die AMOC. (1) Wie viele Kelvin Erwärmung entsprechen der ganzen AMOC-Wärme aus c)? Kann sie den Unterschied zu Goose Bay erklären? Beachten Sie, wo Goose Bay liegt (60,4°\ W): im Gürtel, aber außerhalb des Viertels. (2) Die AMOC transportiert 20\ % weniger Wärme. Um wie viel ändert sich die Januartemperatur in Paderborn im neuen Gleichgewicht?\
+   $\alpha_\mathrm{S} = 2{,}89\,\mathrm{W/(m^2\,K)}$; zu (1): $\Delta T_\mathrm{G} = 5{,}5\,\mathrm{K}$, $\quad\Delta T_\mathrm{V} = 21{,}9\,\mathrm{K}$\
+   Zu (2): $\Delta\dot{q}_\mathrm{G} = -3{,}2\,\mathrm{W/m^2}$, $\quad\Delta\dot{q}_\mathrm{V} = -12{,}6\,\mathrm{W/m^2}$\
+   $\Delta T_\mathrm{G} = -1{,}1\,\mathrm{K}$, $\quad\Delta T_\mathrm{V} = -4{,}4\,\mathrm{K}$
 
-h) Wie schnell stellt sich das neue Gleichgewicht ein? Die Deckschicht des Ozeans (Tiefe $h$) wird als ideal durchmischter Speicher mit der Wärmekapazität ${C = \rho_M\,c_{p,M}\,h}$ je Quadratmeter behandelt: ${C\,\mathrm{d}\Delta T/\mathrm{d}t = \Delta\dot{q}_{AMOC} - \alpha_S\,\Delta T}$ mit $\Delta\dot{q}_{AMOC}$ aus g) (negativ, weil die Zufuhr sinkt). Lösen Sie die Gleichung für ${\Delta T(t = 0) = 0}$ und bestimmen Sie die Zeitkonstante ${\tau = C/\alpha_S}$ für 100\ m und 350\ m. Welcher Anteil der Abkühlung ist nach 10\ Jahren erreicht? Warum darf man der Deckschicht eine einzige Temperatur geben?\
+h) Wie schnell stellt sich das neue Gleichgewicht ein? Die Deckschicht des Ozeans (Tiefe $h$) wird als ideal durchmischter Speicher mit der Wärmekapazität ${C = \rho_\mathrm{M}\,c_{p,\mathrm{M}}\,h}$ je Quadratmeter behandelt: ${C\,\mathrm{d}\Delta T/\mathrm{d}t = \Delta\dot{q}_{\mathrm{AMOC}} - \alpha_\mathrm{S}\,\Delta T}$ mit $\Delta\dot{q}_{\mathrm{AMOC}}$ aus g) (negativ, weil die Zufuhr sinkt). Lösen Sie die Gleichung für ${\Delta T(t = 0) = 0}$ und bestimmen Sie die Zeitkonstante ${\tau = C/\alpha_\mathrm{S}}$ für 100\ m und 350\ m. Welcher Anteil der Abkühlung ist nach 10\ Jahren erreicht? Warum darf man der Deckschicht eine einzige Temperatur geben?\
    Für $h = 100\,\mathrm{m}$: $C = 4{,}09\cdot 10^{8}\,\mathrm{J/(m^2\,K)}$, $\quad\tau = 4{,}5\,\mathrm{Jahre}$, nach 10\ Jahren $89\,\%$\
    Für $h = 350\,\mathrm{m}$: $C = 1{,}43\cdot 10^{9}\,\mathrm{J/(m^2\,K)}$, $\quad\tau = 15{,}7\,\mathrm{Jahre}$, nach 10\ Jahren $47\,\%$
 
@@ -737,22 +737,22 @@ Dasselbe Modell steckt in den letzten Teilen von Aufgabe 2 (g und h); die beiden
 
 - Die Deckschicht wird als ideal durchmischt angenommen.
 - Ein Wärmeaustausch mit der Tiefsee wird bis Teil f vernachlässigt.
-- Die zusätzliche Strahlungsflussdichte $\dot{q}_F$ setzt bei ${t = 0}$ ein und bleibt danach konstant.
-- Die zusätzliche Wärmeabgabe nach oben ist proportional zur Erwärmung: ${\dot{q}_{ab} = \alpha_{eff}\,\Delta T}$.
+- Die zusätzliche Strahlungsflussdichte $\dot{q}_\mathrm{F}$ setzt bei ${t = 0}$ ein und bleibt danach konstant.
+- Die zusätzliche Wärmeabgabe nach oben ist proportional zur Erwärmung: ${\dot{q}_{\mathrm{ab}} = \alpha_{\mathrm{eff}}\,\Delta T}$.
 - Die Stoffdaten sind unabhängig von der Temperatur.
 
 ***Gegebene Größen:***
 
 | ***Deckschicht:*** | | ***Wärmeströme:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Tiefe: | $h = 70\,\mathrm{m}$ | Zufuhr: | $\dot{q}_F = 3{,}93\,\mathrm{W/m^2}$ |
-| Dichte: | $\rho_M = 1025\,\mathrm{kg/m^3}$ | Abgabe nach oben: | $\alpha_{eff} = 1{,}3\,\mathrm{W/(m^2\,K)}$ |
-| Spez. Wärmekapazität: | $c_{p,M} = 3990\,\mathrm{J/(kg\,K)}$ | Abgabe an Tiefsee: | $\gamma = 0{,}7\,\mathrm{W/(m^2\,K)}$ |
-| Wärmeleitfähigkeit: | $\lambda_M = 0{,}6\,\mathrm{W/(m\,K)}$ | | |
+| Tiefe: | $h = 70\,\mathrm{m}$ | Zufuhr: | $\dot{q}_\mathrm{F} = 3{,}93\,\mathrm{W/m^2}$ |
+| Dichte: | $\rho_\mathrm{M} = 1025\,\mathrm{kg/m^3}$ | Abgabe nach oben: | $\alpha_{\mathrm{eff}} = 1{,}3\,\mathrm{W/(m^2\,K)}$ |
+| Spez. Wärmekapazität: | $c_{p,\mathrm{M}} = 3990\,\mathrm{J/(kg\,K)}$ | Abgabe an Tiefsee: | $\gamma = 0{,}7\,\mathrm{W/(m^2\,K)}$ |
+| Wärmeleitfähigkeit: | $\lambda_\mathrm{M} = 0{,}6\,\mathrm{W/(m\,K)}$ | | |
 | | | | |
 | ***Boden an Land:*** | | ***Tutorium 4:*** | |
-| Tiefe: | $h_B = 2\,\mathrm{m}$ | Erde: | $T_e = 254{,}6\,\mathrm{K}$ |
-| Wärmekapazität: | $\rho_B c_B = 2{,}2\,\mathrm{MJ/(m^3\,K)}$ | | |
+| Tiefe: | $h_\mathrm{B} = 2\,\mathrm{m}$ | Erde: | $T_\mathrm{e} = 254{,}6\,\mathrm{K}$ |
+| Wärmekapazität: | $\rho_\mathrm{B} c_\mathrm{B} = 2{,}2\,\mathrm{MJ/(m^3\,K)}$ | | |
 
 Die Stefan-Boltzmann-Konstante ${\sigma = 5{,}6705\cdot 10^{-8}\,\mathrm{W/(m^2\,K^4)}}$ ist hier gegeben (nicht in der Formelsammlung).
 
@@ -762,18 +762,18 @@ a) Zeichnen Sie in Abb. 3 den Bilanzraum ein: eine Wassersäule der Deckschicht 
 
 b) Was bedeutet „ideal durchmischt“ für die Temperatur in der Deckschicht? Warum prüft man bei einem Festkörper stattdessen die Biot-Zahl?
 
-c) Berechnen Sie die Wärmekapazität der Deckschicht je Quadratmeter, ${C = \rho_M\,c_{p,M}\,h}$, und vergleichen Sie mit der Bodenschicht an Land.\
-   $C = 2{,}86\cdot 10^{8}\,\mathrm{J/(m^2\,K)}$, $\quad C_B = 4{,}4\cdot 10^{6}\,\mathrm{J/(m^2\,K)}$, $\quad C/C_B = 65$
+c) Berechnen Sie die Wärmekapazität der Deckschicht je Quadratmeter, ${C = \rho_\mathrm{M}\,c_{p,\mathrm{M}}\,h}$, und vergleichen Sie mit der Bodenschicht an Land.\
+   $C = 2{,}86\cdot 10^{8}\,\mathrm{J/(m^2\,K)}$, $\quad C_\mathrm{B} = 4{,}4\cdot 10^{6}\,\mathrm{J/(m^2\,K)}$, $\quad C/C_\mathrm{B} = 65$
 
 d) Stellen Sie die instationäre Energiebilanz für die Erwärmung $\Delta T(t)$ der Deckschicht auf und benennen Sie die Terme (Speicherung, Zufuhr, Abgabe).\
-   $C\,\frac{\mathrm{d}\Delta T}{\mathrm{d}t} = \dot{q}_F - \alpha_{eff}\,\Delta T$
+   $C\,\frac{\mathrm{d}\Delta T}{\mathrm{d}t} = \dot{q}_\mathrm{F} - \alpha_{\mathrm{eff}}\,\Delta T$
 
 e) Lösen Sie die Differentialgleichung durch Trennung der Variablen für ${\Delta T(t = 0) = 0}$. Bestimmen Sie die Zeitkonstante $\tau$, die Erwärmung nach 10\ Jahren und den Endwert $\Delta T_\infty$.\
-   $\Delta T(t) = \frac{\dot{q}_F}{\alpha_{eff}}\left(1 - \exp\left(-\frac{t}{\tau}\right)\right)$ mit $\tau = \frac{C}{\alpha_{eff}}$\
+   $\Delta T(t) = \frac{\dot{q}_\mathrm{F}}{\alpha_{\mathrm{eff}}}\left(1 - \exp\left(-\frac{t}{\tau}\right)\right)$ mit $\tau = \frac{C}{\alpha_{\mathrm{eff}}}$\
    $\tau = 6{,}98\,\mathrm{Jahre}$, $\quad\Delta T(10\,\mathrm{Jahre}) = 2{,}30\,\mathrm{K}$, $\quad\Delta T_\infty = 3{,}02\,\mathrm{K}$
 
-f) Prüfen Sie Ihr Ergebnis: (1) Welche Einheit hat $\tau$? (2) Was ergibt sich für ${t \to 0}$ und für ${t \to \infty}$? (3) Gäbe die Erde die zusätzliche Wärme nur durch Abstrahlung ab, wäre ${\alpha_S = 4\sigma T_e^3}$ mit der Emissionstemperatur $T_e$ der Erde (Linearisierung aus Tutorium 4). Wie ändern sich $\tau$ und $\Delta T_\infty$?\
-   Zu (3): $\alpha_S = 3{,}74\,\mathrm{W/(m^2\,K)}$, $\quad\tau = 2{,}42\,\mathrm{Jahre}$, $\quad\Delta T_\infty = 1{,}05\,\mathrm{K}$
+f) Prüfen Sie Ihr Ergebnis: (1) Welche Einheit hat $\tau$? (2) Was ergibt sich für ${t \to 0}$ und für ${t \to \infty}$? (3) Gäbe die Erde die zusätzliche Wärme nur durch Abstrahlung ab, wäre ${\alpha_\mathrm{S} = 4\sigma T_\mathrm{e}^3}$ mit der Emissionstemperatur $T_\mathrm{e}$ der Erde (Linearisierung aus Tutorium 4). Wie ändern sich $\tau$ und $\Delta T_\infty$?\
+   Zu (3): $\alpha_\mathrm{S} = 3{,}74\,\mathrm{W/(m^2\,K)}$, $\quad\tau = 2{,}42\,\mathrm{Jahre}$, $\quad\Delta T_\infty = 1{,}05\,\mathrm{K}$
 
 g) Prüfen Sie zwei Annahmen: (1) Wie lange bräuchte die Wärme, um allein durch Wärmeleitung 70\ m tief vorzudringen (${t \approx h^2/a}$)? Was mischt die Deckschicht stattdessen? (2) Die Tiefsee nimmt als zweiter, langsamer Speicher zusätzlich $\gamma\,\Delta T$ auf. Wie ändern sich $\tau$ und $\Delta T_\infty$?\
    Zu (1): $a = 1{,}47\cdot 10^{-7}\,\mathrm{m^2/s}$, $\quad t \approx 1{,}1\cdot 10^{3}\,\mathrm{Jahre}$\
@@ -804,32 +804,32 @@ Sie stehen in Paderborn an der Pader, die mit rund 4\ km als kürzester Fluss De
 
 | ***Mittlere Abflüsse:*** | | ***Amazonas:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Pader: | $\dot{V}_P = 5\,\mathrm{m^3/s}$ | Abfluss: | $\dot{V}_A = 206\,000\,\mathrm{m^3/s}$ |
-| Weser: | $\dot{V}_W = 313\,\mathrm{m^3/s}$ | Unterlauf: | $\vartheta_A = 27{,}5$ bis $28{,}5\,\mathrm{°C}$ |
-| Rhein: | $\dot{V}_R = 2260\,\mathrm{m^3/s}$ | Flussfahne: | $\vartheta_F = 28{,}5\,\mathrm{°C}$ |
-| Alle Flüsse: | $\dot{V}_{Fl} = 1{,}18\,\mathrm{Sv}$ | Beckenfläche: | $A_B = 6\cdot 10^{12}\,\mathrm{m^2}$ |
-| AMOC: | $\dot{V}_{AMOC} = 17\,\mathrm{Sv}$ | Niederschlag: | $N = 2200\,\mathrm{mm/a}$ |
+| Pader: | $\dot{V}_\mathrm{P} = 5\,\mathrm{m^3/s}$ | Abfluss: | $\dot{V}_\mathrm{A} = 206\,000\,\mathrm{m^3/s}$ |
+| Weser: | $\dot{V}_\mathrm{W} = 313\,\mathrm{m^3/s}$ | Unterlauf: | $\vartheta_\mathrm{A} = 27{,}5$ bis $28{,}5\,\mathrm{°C}$ |
+| Rhein: | $\dot{V}_\mathrm{R} = 2260\,\mathrm{m^3/s}$ | Flussfahne: | $\vartheta_\mathrm{F} = 28{,}5\,\mathrm{°C}$ |
+| Alle Flüsse: | $\dot{V}_{\mathrm{Fl}} = 1{,}18\,\mathrm{Sv}$ | Beckenfläche: | $A_\mathrm{B} = 6\cdot 10^{12}\,\mathrm{m^2}$ |
+| AMOC: | $\dot{V}_{\mathrm{AMOC}} = 17\,\mathrm{Sv}$ | Niederschlag: | $N = 2200\,\mathrm{mm/a}$ |
 | | | | |
 | ***Süßwasser:*** | | ***Energieumsatz:*** | |
-| Dichte: | $\rho_W = 1000\,\mathrm{kg/m^3}$ | Menschheit: | $\dot{Q}_{M} = 19\,\mathrm{TW}$ |
-| Spez. Wärmekapazität: | $c_{p,W} = 4180\,\mathrm{J/(kg\,K)}$ | | |
-| Verdampfung: | $\Delta h_v = 2{,}43\,\mathrm{MJ/kg}$ | | |
+| Dichte: | $\rho_\mathrm{W} = 1000\,\mathrm{kg/m^3}$ | Menschheit: | $\dot{Q}_{\mathrm{M}} = 19\,\mathrm{TW}$ |
+| Spez. Wärmekapazität: | $c_{p,\mathrm{W}} = 4180\,\mathrm{J/(kg\,K)}$ | | |
+| Verdampfung: | $\Delta h_\mathrm{v} = 2{,}43\,\mathrm{MJ/kg}$ | | |
 
 **Aufgabenstellung:**
 
 a) Rechnen Sie die Abflüsse von Pader, Weser, Rhein und Amazonas in Sverdrup um und ordnen Sie alle Ströme der Tabelle der Größe nach. Wie viele Rheine ergeben einen Amazonas, wie viele Amazonas-Ströme die AMOC?\
    Pader $5\cdot 10^{-6}\,\mathrm{Sv}$, Weser $3{,}13\cdot 10^{-4}\,\mathrm{Sv}$, Rhein $2{,}26\cdot 10^{-3}\,\mathrm{Sv}$, Amazonas $0{,}206\,\mathrm{Sv}$\
-   $\dot{V}_A/\dot{V}_R = 91$, $\quad\dot{V}_{AMOC}/\dot{V}_A = 82{,}5$
+   $\dot{V}_\mathrm{A}/\dot{V}_\mathrm{R} = 91$, $\quad\dot{V}_{\mathrm{AMOC}}/\dot{V}_\mathrm{A} = 82{,}5$
 
-b) Berechnen Sie den Wärmekapazitätsstrom $\dot{C}_A$ des Amazonas. Wie groß ist der Wärmestrom zwischen Fluss und Meer höchstens, und in welche Richtung fließt er? Um wie viel müsste der Fluss wärmer sein als das Meer, um den Energieumsatz der Menschheit abzugeben?\
-   $\dot{C}_A = 0{,}861\,\mathrm{TW/K}$, $\quad|\dot{Q}| \leq 0{,}861\,\mathrm{TW}$, $\quad\Delta T = 22{,}1\,\mathrm{K}$
+b) Berechnen Sie den Wärmekapazitätsstrom $\dot{C}_\mathrm{A}$ des Amazonas. Wie groß ist der Wärmestrom zwischen Fluss und Meer höchstens, und in welche Richtung fließt er? Um wie viel müsste der Fluss wärmer sein als das Meer, um den Energieumsatz der Menschheit abzugeben?\
+   $\dot{C}_\mathrm{A} = 0{,}861\,\mathrm{TW/K}$, $\quad|\dot{Q}| \leq 0{,}861\,\mathrm{TW}$, $\quad\Delta T = 22{,}1\,\mathrm{K}$
 
 c) Stellen Sie die stationäre Massenbilanz des Beckens auf (Niederschlag gleich Abfluss plus Verdunstung). Wie viel Wasser verdunstet, in Sverdrup und in Millimetern pro Jahr? Vergleichen Sie mit dem Abfluss und mit dem Messwert $1083 \pm 37\,\mathrm{mm/a}$ (Baker et al., 2021).\
-   $\dot{V}_N = 0{,}418\,\mathrm{Sv}$, $\quad\dot{V}_V = 0{,}212\,\mathrm{Sv}$, $\quad 1117\,\mathrm{mm/a}$, Abweichung $3\,\%$
+   $\dot{V}_\mathrm{N} = 0{,}418\,\mathrm{Sv}$, $\quad\dot{V}_\mathrm{V} = 0{,}212\,\mathrm{Sv}$, $\quad 1117\,\mathrm{mm/a}$, Abweichung $3\,\%$
 
 d) Welche Wärmestromdichte steckt in dieser Verdunstung? Vergleichen Sie den Wärmestrom des ganzen Beckens mit b) und mit dem Energieumsatz der Menschheit, die Wärmestromdichte mit der gemessenen Nettostrahlung des Waldes von 117 bis 153\ W/m² (da Rocha et al., 2009). Erklären Sie in zwei Sätzen, warum gerodete Flächen wärmer werden.\
-   $\dot{q}_V = 86\,\mathrm{W/m^2}$, $\quad\dot{Q}_V = 516\,\mathrm{TW}$, Anteil an der Nettostrahlung $56$ bis $73\,\%$\
-   $\dot{Q}_V/|\dot{Q}| = 599$, $\quad\dot{Q}_V/\dot{Q}_M = 27$
+   $\dot{q}_\mathrm{V} = 86\,\mathrm{W/m^2}$, $\quad\dot{Q}_\mathrm{V} = 516\,\mathrm{TW}$, Anteil an der Nettostrahlung $56$ bis $73\,\%$\
+   $\dot{Q}_\mathrm{V}/|\dot{Q}| = 599$, $\quad\dot{Q}_\mathrm{V}/\dot{Q}_\mathrm{M} = 27$
 
 ## Zusatzaufgaben
 
@@ -840,15 +840,15 @@ Ein Kraftwerk gibt im Hitzesommer ${\dot{Q} = 2\,\mathrm{GW}}$ Abwärme an einen
 a) Stellen Sie die Massenbilanz und die stationäre Energiebilanz für den Flussabschnitt am Kraftwerk auf. Um wie viel erwärmt sich der Fluss?\
    $\Delta T = 2{,}39\,\mathrm{K}$
 
-b) Vor dem Kraftwerk ist der Fluss schon ${\vartheta_{ein} = 26\,\mathrm{°C}}$ warm. Wie warm ist er hinter dem Kraftwerk? Was bedeutet das für Fische und andere Lebewesen im Fluss und für den Betrieb des Kraftwerks?\
-   $\vartheta_{aus} = 28{,}39\,\mathrm{°C}$
+b) Vor dem Kraftwerk ist der Fluss schon ${\vartheta_{\mathrm{ein}} = 26\,\mathrm{°C}}$ warm. Wie warm ist er hinter dem Kraftwerk? Was bedeutet das für Fische und andere Lebewesen im Fluss und für den Betrieb des Kraftwerks?\
+   $\vartheta_{\mathrm{aus}} = 28{,}39\,\mathrm{°C}$
 
 **Zusatzaufgabe 2** (neu): Eisberg
 
-Ein Tafeleisberg mit quadratischer Grundfläche von $1\,\mathrm{km}$ Kantenlänge und der Dicke ${H = 250\,\mathrm{m}}$ treibt im Meer; sein Tiefgang beträgt ${h_T = 224\,\mathrm{m}}$. Das Meerwasser ist 2 bis 3\ K wärmer als die Eisoberfläche, der Wärmeübergangskoeffizient beträgt ${\alpha = 20}$ bis $50\,\mathrm{W/(m^2\,K)}$. Das Eis hat überall seine Schmelztemperatur (${\rho_E = 917\,\mathrm{kg/m^3}}$, ${\Delta h_s = 333{,}5\,\mathrm{kJ/kg}}$). Wärme nimmt der Eisberg nur über die Unterseite und die Seitenflächen unter Wasser auf.
+Ein Tafeleisberg mit quadratischer Grundfläche von $1\,\mathrm{km}$ Kantenlänge und der Dicke ${H = 250\,\mathrm{m}}$ treibt im Meer; sein Tiefgang beträgt ${h_\mathrm{T} = 224\,\mathrm{m}}$. Das Meerwasser ist 2 bis 3\ K wärmer als die Eisoberfläche, der Wärmeübergangskoeffizient beträgt ${\alpha = 20}$ bis $50\,\mathrm{W/(m^2\,K)}$. Das Eis hat überall seine Schmelztemperatur (${\rho_\mathrm{E} = 917\,\mathrm{kg/m^3}}$, ${\Delta h_\mathrm{s} = 333{,}5\,\mathrm{kJ/kg}}$). Wärme nimmt der Eisberg nur über die Unterseite und die Seitenflächen unter Wasser auf.
 
 a) Berechnen Sie die Masse des Eisbergs und die Wärme, die zum vollständigen Schmelzen nötig ist.\
-   $m_E = 2{,}29\cdot 10^{11}\,\mathrm{kg}$, $\quad Q = 7{,}65\cdot 10^{16}\,\mathrm{J}$
+   $m_\mathrm{E} = 2{,}29\cdot 10^{11}\,\mathrm{kg}$, $\quad Q = 7{,}65\cdot 10^{16}\,\mathrm{J}$
 
 b) Stellen Sie die instationäre Energiebilanz für den Eisberg auf: Die zugeführte Wärme schmilzt Eis. Wie lange dauert das Schmelzen, wenn die Fläche unter Wasser gleich bleibt? Rechnen Sie mit dem kleinsten (${\alpha = 20\,\mathrm{W/(m^2\,K)}}$, 2\ K) und mit dem größten Wärmestrom (${\alpha = 50\,\mathrm{W/(m^2\,K)}}$, 3\ K).\
    $A = 1{,}90\cdot 10^{6}\,\mathrm{m^2}$, $\quad\dot{Q} = 75{,}8$ bis $284\,\mathrm{MW}$, $\quad t = 31{,}9\,\mathrm{Jahre}$ bzw. $8{,}5\,\mathrm{Jahre}$
@@ -894,7 +894,7 @@ Ergänzen Sie die Taylor-Reihe (Abbruch nach dem ersten Glied) für den Wärmest
 
 **Aufgabe 1** (neu)
 
-Betrachten Sie die Erdkruste unter einem Kontinent als ebene Schicht der Dicke $s$ (Abb. 1, links). An der Oberfläche tritt die Wärmestromdichte $\dot{q}_O$ aus.
+Betrachten Sie die Erdkruste unter einem Kontinent als ebene Schicht der Dicke $s$ (Abb. 1, links). An der Oberfläche tritt die Wärmestromdichte $\dot{q}_\mathrm{O}$ aus.
 
 **Annahmen:**
 
@@ -907,39 +907,39 @@ Betrachten Sie die Erdkruste unter einem Kontinent als ebene Schicht der Dicke $
 
 | ***Erdkruste:*** | | ***Oberfläche:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Dicke: | $s = 30\,\mathrm{km}$ | Temperatur: | $\vartheta_O = 10\,\mathrm{°C}$ |
-| Wärmeleitfähigkeit: | $\lambda = 2{,}5\,\mathrm{W/(m\,K)}$ | Wärmestromdichte: | $\dot{q}_O = 65\,\mathrm{mW/m^2}$ |
-| Wärmequelle: | $\dot{q}_{KV} = 1\,\mathrm{µW/m^3}$ | | |
+| Dicke: | $s = 30\,\mathrm{km}$ | Temperatur: | $\vartheta_\mathrm{O} = 10\,\mathrm{°C}$ |
+| Wärmeleitfähigkeit: | $\lambda = 2{,}5\,\mathrm{W/(m\,K)}$ | Wärmestromdichte: | $\dot{q}_\mathrm{O} = 65\,\mathrm{mW/m^2}$ |
+| Wärmequelle: | $\dot{q}_{\mathrm{KV}} = 1\,\mathrm{µW/m^3}$ | | |
 | | | | |
 | ***Granit (Teil h):*** | | ***Tiefbohrung (Teil f):*** | |
-| Wärmequelle: | $\dot{q}_{KV,G} = 2{,}5\,\mathrm{µW/m^3}$ | Tiefe: | $z_B = 9{,}1\,\mathrm{km}$ |
-| | | Temperatur: | $\vartheta_B = 265\,\mathrm{°C}$ |
+| Wärmequelle: | $\dot{q}_{\mathrm{KV,G}} = 2{,}5\,\mathrm{µW/m^3}$ | Tiefe: | $z_\mathrm{B} = 9{,}1\,\mathrm{km}$ |
+| | | Temperatur: | $\vartheta_\mathrm{B} = 265\,\mathrm{°C}$ |
 
 **Aufgabenstellung:**
 
 a) Begründen Sie zwei der Annahmen. Welche Ableitung ist hier null, $dT/dt$ oder $dT/dz$? Erklären Sie, was jede der beiden Ableitungen beschreibt.
 
 b) Stellen Sie für das Element in Abb. 1 die stationäre Energiebilanz auf. Leiten Sie mit der Taylor-Reihe und dem Fourier'schen Gesetz die Differentialgleichung für $T(z)$ her.\
-   $\dfrac{d^2T}{dz^2} = -\dfrac{\dot{q}_{KV}}{\lambda}$
+   $\dfrac{d^2T}{dz^2} = -\dfrac{\dot{q}_{\mathrm{KV}}}{\lambda}$
 
 c) Formulieren Sie die beiden Randbedingungen an der Oberfläche und ordnen Sie sie ein (Dirichlet, von Neumann). Achten Sie auf das Vorzeichen, denn $z$ zeigt nach unten. Welches Vorzeichen hat $\dot{Q}_z$ in Abb. 1?\
-   $T(z = 0) = T_O$, $\quad\left.\dfrac{dT}{dz}\right|_{z=0} = \dfrac{\dot{q}_O}{\lambda}$
+   $T(z = 0) = T_\mathrm{O}$, $\quad\left.\dfrac{dT}{dz}\right|_{z=0} = \dfrac{\dot{q}_\mathrm{O}}{\lambda}$
 
 d) Integrieren Sie die Differentialgleichung zweimal und bestimmen Sie die Integrationskonstanten.\
-   $T(z) = T_O + \dfrac{\dot{q}_O}{\lambda}\,z - \dfrac{\dot{q}_{KV}}{2\lambda}\,z^2$
+   $T(z) = T_\mathrm{O} + \dfrac{\dot{q}_\mathrm{O}}{\lambda}\,z - \dfrac{\dot{q}_{\mathrm{KV}}}{2\lambda}\,z^2$
 
-e) Berechnen Sie die Temperaturen in 10, 20 und 30\ km Tiefe, einmal mit Wärmequelle und einmal ohne ($\dot{q}_{KV} = 0$, gleiches $\dot{q}_O$). Skizzieren Sie beide Profile. Warum ist es mit Quelle in der Tiefe kühler, obwohl dort zusätzlich Wärme entsteht?\
+e) Berechnen Sie die Temperaturen in 10, 20 und 30\ km Tiefe, einmal mit Wärmequelle und einmal ohne ($\dot{q}_{\mathrm{KV}} = 0$, gleiches $\dot{q}_\mathrm{O}$). Skizzieren Sie beide Profile. Warum ist es mit Quelle in der Tiefe kühler, obwohl dort zusätzlich Wärme entsteht?\
    Mit Quelle: $\vartheta(10\,\mathrm{km}) = 250\,\mathrm{°C}$, $\quad\vartheta(20\,\mathrm{km}) = 450\,\mathrm{°C}$, $\quad\vartheta(30\,\mathrm{km}) = 610\,\mathrm{°C}$\
    Ohne Quelle: $\vartheta(10\,\mathrm{km}) = 270\,\mathrm{°C}$, $\quad\vartheta(20\,\mathrm{km}) = 530\,\mathrm{°C}$, $\quad\vartheta(30\,\mathrm{km}) = 790\,\mathrm{°C}$
 
-f) Welche Temperatur ergibt Ihr Profil in der Tiefe $z_B$? Vergleichen Sie mit $\vartheta_B$ (GFZ, 2024) und nennen Sie mögliche Gründe für den Unterschied.\
-   $\vartheta(z_B) = 230\,\mathrm{°C}$
+f) Welche Temperatur ergibt Ihr Profil in der Tiefe $z_\mathrm{B}$? Vergleichen Sie mit $\vartheta_\mathrm{B}$ (GFZ, 2024) und nennen Sie mögliche Gründe für den Unterschied.\
+   $\vartheta(z_\mathrm{B}) = 230\,\mathrm{°C}$
 
-g) Bestimmen Sie die Wärmestromdichte $\dot{q}_M$, die aus dem Erdmantel in die Kruste eintritt, (1) mit dem Profil und (2) mit einer globalen Energiebilanz um die ganze Kruste. Welche Frage kann nur die differentielle Bilanz beantworten?\
-   $\dot{q}_M = 35\,\mathrm{mW/m^2}$
+g) Bestimmen Sie die Wärmestromdichte $\dot{q}_\mathrm{M}$, die aus dem Erdmantel in die Kruste eintritt, (1) mit dem Profil und (2) mit einer globalen Energiebilanz um die ganze Kruste. Welche Frage kann nur die differentielle Bilanz beantworten?\
+   $\dot{q}_\mathrm{M} = 35\,\mathrm{mW/m^2}$
 
-h) Granit erzeugt mehr Wärme ($\dot{q}_{KV,G}$). Nehmen Sie diesen Wert für die ganze Kruste an. In welcher Tiefe hat das Profil sein Maximum, und welche Wärmestromdichte ergibt sich an der Krustenbasis? Warum kann das nicht stimmen, und welche Annahme ist falsch?\
-   $z_{max} = 26\,\mathrm{km}$, $\quad\dot{q}_M = -10\,\mathrm{mW/m^2}$
+h) Granit erzeugt mehr Wärme ($\dot{q}_{\mathrm{KV,G}}$). Nehmen Sie diesen Wert für die ganze Kruste an. In welcher Tiefe hat das Profil sein Maximum, und welche Wärmestromdichte ergibt sich an der Krustenbasis? Warum kann das nicht stimmen, und welche Annahme ist falsch?\
+   $z_{\mathrm{max}} = 26\,\mathrm{km}$, $\quad\dot{q}_\mathrm{M} = -10\,\mathrm{mW/m^2}$
 
 **Aufgabe 2** (neu)
 
@@ -955,28 +955,28 @@ Kann die Wärme aus dem radioaktiven Zerfall auch den Wärmestrom der ganzen Erd
 
 | ***Erde:*** | | ***Vergleichswerte:*** | |
 |:---------------------|:-----------------------------|:---------------------|:-----------------------------|
-| Radius: | $R = 6371\,\mathrm{km}$ | Innerer Kern: | $\vartheta_K = 6000\,\mathrm{°C}$ |
-| Wärmestrom: | $\dot{Q} = 47\,\mathrm{TW}$ | Sonne (absorbiert): | $\dot{q}_S = 238\,\mathrm{W/m^2}$ |
+| Radius: | $R = 6371\,\mathrm{km}$ | Innerer Kern: | $\vartheta_\mathrm{K} = 6000\,\mathrm{°C}$ |
+| Wärmestrom: | $\dot{Q} = 47\,\mathrm{TW}$ | Sonne (absorbiert): | $\dot{q}_\mathrm{S} = 238\,\mathrm{W/m^2}$ |
 | Wärmeleitfähigkeit: | $\lambda = 3$ bis $4\,\mathrm{W/(m\,K)}$ | | |
 
 **Aufgabenstellung:**
 
 a) Zeichnen Sie in Abb. 1 eine dünne Kugelschale zwischen $r$ und $r + dr$ ein. Stellen Sie die stationäre Energiebilanz für die Schale auf und leiten Sie die Differentialgleichung für $T(r)$ her.\
-   $\dfrac{d}{dr}\left(r^2\,\dfrac{dT}{dr}\right) = -\dfrac{\dot{q}_{KV}}{\lambda}\,r^2$
+   $\dfrac{d}{dr}\left(r^2\,\dfrac{dT}{dr}\right) = -\dfrac{\dot{q}_{\mathrm{KV}}}{\lambda}\,r^2$
 
 b) Integrieren Sie zweimal. Welche Bedingung gilt in der Erdmitte, welche an der Oberfläche? Vergleichen Sie das Profil mit Ihrer Vermutung zu Frage 1.\
-   $T(r) = T_O + \dfrac{\dot{q}_{KV}}{6\lambda}\,(R^2 - r^2)$
+   $T(r) = T_\mathrm{O} + \dfrac{\dot{q}_{\mathrm{KV}}}{6\lambda}\,(R^2 - r^2)$
 
-c) Berechnen Sie die Wärmequelle $\dot{q}_{KV}$ der Erde und den Temperaturunterschied $\Delta T$ zwischen Erdmitte und Oberfläche für $\lambda = 3$ und $4\,\mathrm{W/(m\,K)}$.\
-   $\dot{q}_{KV} = 4{,}34\cdot 10^{-8}\,\mathrm{W/m^3}$, $\quad\Delta T = 97\,800\,\mathrm{K}$ bzw. $73\,400\,\mathrm{K}$
+c) Berechnen Sie die Wärmequelle $\dot{q}_{\mathrm{KV}}$ der Erde und den Temperaturunterschied $\Delta T$ zwischen Erdmitte und Oberfläche für $\lambda = 3$ und $4\,\mathrm{W/(m\,K)}$.\
+   $\dot{q}_{\mathrm{KV}} = 4{,}34\cdot 10^{-8}\,\mathrm{W/m^3}$, $\quad\Delta T = 97\,800\,\mathrm{K}$ bzw. $73\,400\,\mathrm{K}$
 
-d) Prüfen Sie das Profil mit einer globalen Energiebilanz: Welche Wärmestromdichte $\dot{q}_O$ tritt an der Oberfläche aus? Vergleichen Sie mit der Erdkruste aus Aufgabe 1.\
-   $\dot{q}_O = 92{,}1\,\mathrm{mW/m^2}$
+d) Prüfen Sie das Profil mit einer globalen Energiebilanz: Welche Wärmestromdichte $\dot{q}_\mathrm{O}$ tritt an der Oberfläche aus? Vergleichen Sie mit der Erdkruste aus Aufgabe 1.\
+   $\dot{q}_\mathrm{O} = 92{,}1\,\mathrm{mW/m^2}$
 
-e) Vergleichen Sie Ihr Ergebnis aus c) mit der Temperatur $\vartheta_K$ am inneren Kern (Anzellini et al., 2013). Welche Annahmen versagen, und wie wird die Wärme im Erdmantel tatsächlich transportiert?
+e) Vergleichen Sie Ihr Ergebnis aus c) mit der Temperatur $\vartheta_\mathrm{K}$ am inneren Kern (Anzellini et al., 2013). Welche Annahmen versagen, und wie wird die Wärme im Erdmantel tatsächlich transportiert?
 
-f) Erklären Sie in zwei Sätzen, warum die Erdwärme die Erwärmung der Meere nicht erklären kann. Vergleichen Sie dazu $\dot{q}_O$ aus d) mit $\dot{q}_S$.\
-   $\dot{q}_S/\dot{q}_O \approx 2600$
+f) Erklären Sie in zwei Sätzen, warum die Erdwärme die Erwärmung der Meere nicht erklären kann. Vergleichen Sie dazu $\dot{q}_\mathrm{O}$ aus d) mit $\dot{q}_\mathrm{S}$.\
+   $\dot{q}_\mathrm{S}/\dot{q}_\mathrm{O} \approx 2600$
 
 ## Zusatzaufgaben
 
@@ -984,7 +984,7 @@ f) Erklären Sie in zwei Sätzen, warum die Erdwärme die Erwärmung der Meere n
 
 Ohne Sonne müsste die Erdoberfläche die Wärme aus dem Erdinneren allein abstrahlen, als schwarzer Körper ($\varepsilon = 1$, $\sigma = 5{,}6705\cdot 10^{-8}\,\mathrm{W/(m^2\,K^4)}$) und ohne Atmosphäre.
 
-a) Berechnen Sie die Oberflächentemperatur, bei der die Erde $\dot{q}_O$ aus Aufgabe 2 abstrahlt.\
+a) Berechnen Sie die Oberflächentemperatur, bei der die Erde $\dot{q}_\mathrm{O}$ aus Aufgabe 2 abstrahlt.\
    $T = 35{,}7\,\mathrm{K}$
 
 b) Ältere Auswertungen ergeben nur $87\,\mathrm{mW/m^2}$. Warum ändert sich die Temperatur so wenig?\
@@ -1009,7 +1009,7 @@ In 3\ m Tiefe ist der Boden nicht im Juli am wärmsten, sondern im Herbst. Warum
 **Frage 2**
 
 Die eindimensionale Wärmeleitungsgleichung mit Wärmequelle lautet
-$$\rho\,c\,\frac{\partial T}{\partial t} = \lambda\,\frac{\partial^2 T}{\partial z^2} + \dot{q}_{KV}.$$
+$$\rho\,c\,\frac{\partial T}{\partial t} = \lambda\,\frac{\partial^2 T}{\partial z^2} + \dot{q}_{\mathrm{KV}}.$$
 Welche Terme fallen in den folgenden Fällen weg? Welche Form hat das Temperaturprofil in den beiden stationären Fällen?
 
 - Eisschild in Tutorium 1 (stationär, ohne Wärmequelle)
@@ -1045,12 +1045,12 @@ Betrachten Sie den Boden als halbunendlichen Körper, dessen Oberflächentempera
 | Temperatur­leitfähigkeit: | $a = 5\cdot 10^{-7}\,\mathrm{m^2/s}$ | Amplitude Jahresgang: | $\Delta T_0 = 10\,\mathrm{K}$ |
 | | | | |
 | ***Gestein:*** | | ***Permafrost:*** | |
-| Temperatur­leitfähigkeit: | $a_G = 1\cdot 10^{-6}\,\mathrm{m^2/s}$ | Jahresmittel: | $\vartheta_{m,P} = -8\,\mathrm{°C}$ |
-| | | Amplitude: | $\Delta T_{0,P} = 15\,\mathrm{K}$ |
-| | | Erwärmung: | $\Delta\vartheta_P = 3\,\mathrm{K}$ |
+| Temperatur­leitfähigkeit: | $a_\mathrm{G} = 1\cdot 10^{-6}\,\mathrm{m^2/s}$ | Jahresmittel: | $\vartheta_{\mathrm{m,P}} = -8\,\mathrm{°C}$ |
+| | | Amplitude: | $\Delta T_{0,\mathrm{P}} = 15\,\mathrm{K}$ |
+| | | Erwärmung: | $\Delta\vartheta_\mathrm{P} = 3\,\mathrm{K}$ |
 
-Schwankt die Oberflächentemperatur periodisch, $T(0,t) = T_m + \Delta T_0\cos(\omega t)$ mit $\omega = 2\pi/t_P$ und der Periodendauer $t_P$ (Jahr: $t_J = 365{,}25\,\mathrm{Tage}$, Tag: $t_T = 24\,\mathrm{h}$), stellt sich nach einigen Perioden im Boden die Temperaturwelle
-$$T(z,t) = T_m + \Delta T_0\,e^{-z/d}\cos\left(\omega t - \frac{z}{d}\right)$$
+Schwankt die Oberflächentemperatur periodisch, $T(0,t) = T_\mathrm{m} + \Delta T_0\cos(\omega t)$ mit $\omega = 2\pi/t_\mathrm{P}$ und der Periodendauer $t_\mathrm{P}$ (Jahr: $t_\mathrm{J} = 365{,}25\,\mathrm{Tage}$, Tag: $t_\mathrm{T} = 24\,\mathrm{h}$), stellt sich nach einigen Perioden im Boden die Temperaturwelle
+$$T(z,t) = T_\mathrm{m} + \Delta T_0\,e^{-z/d}\cos\left(\omega t - \frac{z}{d}\right)$$
 mit der Dämpfungstiefe $d$ ein. Die Lösung ist gegeben (nicht in der Formelsammlung). Wie tief eine plötzliche Temperaturänderung an der Oberfläche nach der Zeit $t$ etwa eingedrungen ist, gibt die Eindringtiefe $\delta \approx \sqrt{a\,t}$ an (nicht in der Formelsammlung).
 
 **Aufgabenstellung:**
@@ -1064,8 +1064,8 @@ c) Leiten Sie die gegebene Lösung einmal nach $t$ und zweimal nach $z$ ab und s
    $d = \sqrt{2a/\omega}$
 
 d) Berechnen Sie $\omega$ und $d$ für den Tagesgang und für den Jahresgang.\
-   Tag: $\omega_T = 7{,}27\cdot 10^{-5}\,\mathrm{1/s}$, $\quad d_T = 0{,}117\,\mathrm{m}$\
-   Jahr: $\omega_J = 1{,}99\cdot 10^{-7}\,\mathrm{1/s}$, $\quad d_J = 2{,}24\,\mathrm{m}$
+   Tag: $\omega_\mathrm{T} = 7{,}27\cdot 10^{-5}\,\mathrm{1/s}$, $\quad d_\mathrm{T} = 0{,}117\,\mathrm{m}$\
+   Jahr: $\omega_\mathrm{J} = 1{,}99\cdot 10^{-7}\,\mathrm{1/s}$, $\quad d_\mathrm{J} = 2{,}24\,\mathrm{m}$
 
 e) Welcher Anteil der Amplitude des Jahresgangs kommt in 1, 5 und 10\ m Tiefe an, welcher Anteil des Tagesgangs in 0,5\ m Tiefe? Wie groß ist die Amplitude des Jahresgangs in 10\ m Tiefe? Bis in welche Tiefe erwarten Sie in den Messreihen des Deutschen Wetterdienstes einen deutlichen Tagesgang?\
    Jahresgang: $64\,\%$, $\quad 11\,\%$, $\quad 1{,}2\,\%$, $\quad\Delta T(10\,\mathrm{m}) = 0{,}12\,\mathrm{K}$\
@@ -1074,21 +1074,21 @@ e) Welcher Anteil der Amplitude des Jahresgangs kommt in 1, 5 und 10\ m Tiefe an
 f) Um wie viele Tage ist das Maximum des Jahresgangs in 2, 3 und 5\ m Tiefe gegenüber der Oberfläche verzögert? Beantworten Sie damit Frage 1.\
    $\Delta t = 52\,\mathrm{Tage}$, $\quad 78\,\mathrm{Tage}$, $\quad 130\,\mathrm{Tage}$
 
-g) Eine Kälteperiode dauert $t_K = 14\,\mathrm{Tage}$. Schätzen Sie ab, wie tief der Frost in dieser Zeit in den Boden eindringt. Wie tief sollte ein Fundament mindestens gegründet sein?\
-   $\delta = \sqrt{a\,t_K} = 0{,}78\,\mathrm{m}$
+g) Eine Kälteperiode dauert $t_\mathrm{K} = 14\,\mathrm{Tage}$. Schätzen Sie ab, wie tief der Frost in dieser Zeit in den Boden eindringt. Wie tief sollte ein Fundament mindestens gegründet sein?\
+   $\delta = \sqrt{a\,t_\mathrm{K}} = 0{,}78\,\mathrm{m}$
 
-h) Über dem Permafrost taut der Boden im Sommer oben auf. Bestimmen Sie mit der Lösung für den Jahresgang die Tiefe $z_0$, bis zu der die höchste Temperatur des Jahres über 0\ °C steigt, für $\vartheta_{m,P}$ und nach einer Erwärmung um $\Delta\vartheta_P$ (gleicher Boden). Warum ist das Ergebnis eine obere Abschätzung, und welche Annahme ist dafür verantwortlich?\
+h) Über dem Permafrost taut der Boden im Sommer oben auf. Bestimmen Sie mit der Lösung für den Jahresgang die Tiefe $z_0$, bis zu der die höchste Temperatur des Jahres über 0\ °C steigt, für $\vartheta_{\mathrm{m,P}}$ und nach einer Erwärmung um $\Delta\vartheta_\mathrm{P}$ (gleicher Boden). Warum ist das Ergebnis eine obere Abschätzung, und welche Annahme ist dafür verantwortlich?\
    $z_0 = 1{,}41\,\mathrm{m}$ (bei $-8\,\mathrm{°C}$), $\quad z_0 = 2{,}46\,\mathrm{m}$ (bei $-5\,\mathrm{°C}$)
 
-i) Die Oberfläche über dem Permafrost hat sich vor der Zeit $t_E = 100\,\mathrm{Jahre}$ um einige Kelvin erwärmt. Schätzen Sie ab, bis in welche Tiefe sich diese Erwärmung im Gestein bis heute ausgebreitet hat. Skizzieren Sie das Temperaturprofil im Bohrloch vor der Erwärmung und heute; in den oberen 100\ m ist das Profil aus Tutorium 6 nahezu linear. Wie lässt sich aus solchen Profilen die Klimageschichte ablesen?\
-   $\delta = \sqrt{a_G\,t_E} = 56\,\mathrm{m}$
+i) Die Oberfläche über dem Permafrost hat sich vor der Zeit $t_\mathrm{E} = 100\,\mathrm{Jahre}$ um einige Kelvin erwärmt. Schätzen Sie ab, bis in welche Tiefe sich diese Erwärmung im Gestein bis heute ausgebreitet hat. Skizzieren Sie das Temperaturprofil im Bohrloch vor der Erwärmung und heute; in den oberen 100\ m ist das Profil aus Tutorium 6 nahezu linear. Wie lässt sich aus solchen Profilen die Klimageschichte ablesen?\
+   $\delta = \sqrt{a_\mathrm{G}\,t_\mathrm{E}} = 56\,\mathrm{m}$
 
 ## Zusatzaufgaben
 
 **Zusatzaufgabe 1** (neu): Lord Kelvin und das Alter der Erde
 
-Lord Kelvin schätzte 1862 das Alter der Erde mit der Wärmeleitung ab. Er nahm an, die Erde sei anfangs überall gleich heiß gewesen ($\vartheta_A = 3870\,\mathrm{°C}$, das sind 7000\ °F) und kühle seitdem wie ein halbunendlicher Körper ohne Wärmequellen ab, während ihre Oberfläche auf $\vartheta_O = 0\,\mathrm{°C}$ bleibt. Für den Temperaturgradienten an der Oberfläche gilt dann
-$$\left.\frac{\partial T}{\partial z}\right|_{z=0} = \frac{T_A - T_O}{\sqrt{\pi\,a\,t}}.$$
+Lord Kelvin schätzte 1862 das Alter der Erde mit der Wärmeleitung ab. Er nahm an, die Erde sei anfangs überall gleich heiß gewesen ($\vartheta_\mathrm{A} = 3870\,\mathrm{°C}$, das sind 7000\ °F) und kühle seitdem wie ein halbunendlicher Körper ohne Wärmequellen ab, während ihre Oberfläche auf $\vartheta_\mathrm{O} = 0\,\mathrm{°C}$ bleibt. Für den Temperaturgradienten an der Oberfläche gilt dann
+$$\left.\frac{\partial T}{\partial z}\right|_{z=0} = \frac{T_\mathrm{A} - T_\mathrm{O}}{\sqrt{\pi\,a\,t}}.$$
 Die Lösung ist gegeben (nicht in der Formelsammlung). In Bergwerken nahm die Temperatur um $36{,}5\,\mathrm{K/km}$ zu, und für Gestein setzte Kelvin $a = 1{,}18\cdot 10^{-6}\,\mathrm{m^2/s}$ an.
 
 a) Berechnen Sie das Alter der Erde nach Kelvin.\
@@ -1358,38 +1358,38 @@ Quellen der Arbeitswerte und Fakten in `teile/t2.md`, übernommen aus den Quelle
 **Aufgabe 1: Meereis und Schnee als Deckel**
 
 - Itkin, P., et al. (2023). Sea ice and snow characteristics from year-long transects at the MOSAiC Central Observatory. *Elementa: Science of the Anthropocene, 11*(1). <https://doi.org/10.1525/elementa.2022.00048>
-  Einjähriges Meereis im Februar meist etwa 1,4 m dick, darauf 10 bis 30 cm Schnee (Ausgangssituation; $s_E = 1{,}4\,\mathrm{m}$, $s_S = 0{,}2\,\mathrm{m}$).
+  Einjähriges Meereis im Februar meist etwa 1,4 m dick, darauf 10 bis 30 cm Schnee (Ausgangssituation; $s_\mathrm{E} = 1{,}4\,\mathrm{m}$, $s_\mathrm{S} = 0{,}2\,\mathrm{m}$).
 - Sturm, M., Holmgren, J., König, M., & Morris, K. (1997). The thermal conductivity of seasonal snow. *Journal of Glaciology, 43*(143), 26 bis 41. <https://doi.org/10.3189/S0022143000002781>
-  Wärmeleitfähigkeit von Schnee rund 0,03 bis 0,7 W/(m·K) je nach Dichte und Gefüge; Arbeitswert $\lambda_S = 0{,}2\,\mathrm{W/(m\,K)}$, Spannbreite 0,14 bis 0,3 W/(m·K) in Teil c und Frage 1.
+  Wärmeleitfähigkeit von Schnee rund 0,03 bis 0,7 W/(m·K) je nach Dichte und Gefüge; Arbeitswert $\lambda_\mathrm{S} = 0{,}2\,\mathrm{W/(m\,K)}$, Spannbreite 0,14 bis 0,3 W/(m·K) in Teil c und Frage 1.
 - Damseaux, A., et al. (2025). [Titel nicht erfasst; Wärmeleitfähigkeit von Schnee]. *The Cryosphere, 19*, 1539 ff. <https://doi.org/10.5194/tc-19-1539-2025>
   Wie oben (Spannbreite der Wärmeleitfähigkeit von Schnee).
 - Maykut, G. A. (1978). Energy exchange over young sea ice in the central Arctic. *Journal of Geophysical Research, 83*(C7), 3646 bis 3658. <https://doi.org/10.1029/JC083iC07p03646>
   Dünnes Eis verliert viel mehr Wärme als dickes und wächst schnell nach (Teil f, Vergleich mit Jungeis).
 - National Snow and Ice Data Center. (2026, 7. Oktober). *Arctic sea ice news and analysis*. <https://nsidc.org/sea-ice-today/analyses/stranger-things-2026-arctic>
   Hintergrund zur Reflexionsfrage in Teil f (Rückgang des arktischen Meereises); keine Zahl im Blatt.
-- Arbeitswerte (Ideensammlung 4.2 und 4.3): Luft $-30\,\mathrm{°C}$, Meerwasser $-1{,}8\,\mathrm{°C}$ (Gefrierpunkt), $\lambda_E = 2{,}1\,\mathrm{W/(m\,K)}$, $\rho_E = 917\,\mathrm{kg/m^3}$, $\Delta h_{schm} = 333{,}5\,\mathrm{kJ/kg}$, Jungeis $s_J = 0{,}1\,\mathrm{m}$ ohne Schnee (Teil f; Kernzahlen 4.3). Für die Stoffwerte von Eis nennt die Ideensammlung keine eigene Quelle. Die Fläche $A = 1\,\mathrm{m^2}$ ist eine frei gewählte Bezugsfläche.
-- Arbeitswert $\alpha_a = 15\,\mathrm{W/(m^2\,K)}$ für eine große Scholle (Ideensammlung E16, Entscheidungsprotokoll D46), begründet mit Tutorium 2: Rinne von 10 m Breite bei 8 m/s mit $\alpha = 19{,}6\,\mathrm{W/(m^2\,K)}$ und $554\,\mathrm{W/m^2}$ (Nachrechnung mit der Formelsammlung SoSe 2026 und CoolProp, Teil e).
+- Arbeitswerte (Ideensammlung 4.2 und 4.3): Luft $-30\,\mathrm{°C}$, Meerwasser $-1{,}8\,\mathrm{°C}$ (Gefrierpunkt), $\lambda_\mathrm{E} = 2{,}1\,\mathrm{W/(m\,K)}$, $\rho_\mathrm{E} = 917\,\mathrm{kg/m^3}$, $\Delta h_{\mathrm{schm}} = 333{,}5\,\mathrm{kJ/kg}$, Jungeis $s_\mathrm{J} = 0{,}1\,\mathrm{m}$ ohne Schnee (Teil f; Kernzahlen 4.3). Für die Stoffwerte von Eis nennt die Ideensammlung keine eigene Quelle. Die Fläche $A = 1\,\mathrm{m^2}$ ist eine frei gewählte Bezugsfläche.
+- Arbeitswert $\alpha_\mathrm{a} = 15\,\mathrm{W/(m^2\,K)}$ für eine große Scholle (Ideensammlung E16, Entscheidungsprotokoll D46), begründet mit Tutorium 2: Rinne von 10 m Breite bei 8 m/s mit $\alpha = 19{,}6\,\mathrm{W/(m^2\,K)}$ und $554\,\mathrm{W/m^2}$ (Nachrechnung mit der Formelsammlung SoSe 2026 und CoolProp, Teil e).
 
 **Aufgabe 2: Ölleitung im Permafrost**
 
 - Alyeska Pipeline Service Company. (2024). *TAPS factbook*. <https://www.alyeska-pipe.com/wp-content/uploads/2025/01/24-APSC-0352-FACTBOOK-UPDATE-FOR-WEB-FINAL1_AA.pdf>
-  Außendurchmesser 48 Zoll ($d_{St} = 1{,}22\,\mathrm{m}$); Wanddicke 0,462 Zoll (466 Meilen) und 0,562 Zoll (334 Meilen), gewählt 0,562 Zoll ($s_{St} = 14{,}3\,\mathrm{mm}$); Dämmung der aufgeständerten Leitung 3,75 Zoll ($s_{Iso} = 9{,}5\,\mathrm{cm}$); Länge 800 Meilen (1288 km), davon 420 Meilen auf Stützen („etwa die Hälfte“ in der Ausgangssituation); 124 300 Wärmerohre in den Stützen (Teil f); Öl 2024 mindestens 85 °F (29 °C) bei der Einspeisung an Pump Station 1 (Arbeitswert $\vartheta_i = 30\,\mathrm{°C}$).
+  Außendurchmesser 48 Zoll ($d_{\mathrm{St}} = 1{,}22\,\mathrm{m}$); Wanddicke 0,462 Zoll (466 Meilen) und 0,562 Zoll (334 Meilen), gewählt 0,562 Zoll ($s_{\mathrm{St}} = 14{,}3\,\mathrm{mm}$); Dämmung der aufgeständerten Leitung 3,75 Zoll ($s_{\mathrm{Iso}} = 9{,}5\,\mathrm{cm}$); Länge 800 Meilen (1288 km), davon 420 Meilen auf Stützen („etwa die Hälfte“ in der Ausgangssituation); 124 300 Wärmerohre in den Stützen (Teil f); Öl 2024 mindestens 85 °F (29 °C) bei der Einspeisung an Pump Station 1 (Arbeitswert $\vartheta_\mathrm{i} = 30\,\mathrm{°C}$).
 - Hjort, J., et al. (2018). Degrading permafrost puts Arctic infrastructure at risk by mid-century. *Nature Communications, 9*, 5147. <https://doi.org/10.1038/s41467-018-07557-4>
   Hintergrund zu Teil f (Bauwerke auf tauendem Permafrost); keine Zahl im Blatt.
 - Bell, I. H., Wronski, J., Quoilin, S., & Lemort, V. (2014). Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library CoolProp. *Industrial & Engineering Chemistry Research, 53*(6), 2498 bis 2508. <https://doi.org/10.1021/ie4033999>
-  Stoffwerte der Luft bei $-29\,\mathrm{°C}$ und 1,01325 bar ($\nu_L$, $\lambda_L$, $Pr$), berechnet mit CoolProp 8.0.
+  Stoffwerte der Luft bei $-29\,\mathrm{°C}$ und 1,01325 bar ($\nu_\mathrm{L}$, $\lambda_\mathrm{L}$, $Pr$), berechnet mit CoolProp 8.0.
 - Lemmon, E. W., Jacobsen, R. T., Penoncello, S. G., & Friend, D. G. (2000). Thermodynamic properties of air and mixtures of nitrogen, argon, and oxygen from 60 to 2000 K at pressures to 2000 MPa. *Journal of Physical and Chemical Reference Data, 29*(3), 331 bis 385. <https://doi.org/10.1063/1.1285884>
   Zustandsgleichung der Luft in CoolProp (Dichte, Wärmekapazität).
 - Lemmon, E. W., & Jacobsen, R. T. (2004). Viscosity and thermal conductivity equations for nitrogen, oxygen, argon, and air. *International Journal of Thermophysics, 25*(1), 21 bis 69. <https://doi.org/10.1023/B:IJOT.0000022327.04529.f3>
   Viskosität und Wärmeleitfähigkeit der Luft in CoolProp.
 - Lehrstuhl für Fluidverfahrenstechnik. (2026). *Formelsammlung Wärmeübertragung* (Stand SoSe 2026) und Zusatzblatt *Charakteristische Längen*. Universität Paderborn.
   Querumströmter Zylinder (Übergangsbereich) mit $L = \pi d/2$, Stoffwerte bei der Filmtemperatur (Teil a).
-- Arbeitswerte aus nachrechnung_leitphaenomene.py (ohne Primärquelle): $\lambda_{St} = 45\,\mathrm{W/(m\,K)}$, $\lambda_{Iso} = 0{,}04\,\mathrm{W/(m\,K)}$ (auch Ideensammlung 4.3), $\alpha_i = 500\,\mathrm{W/(m^2\,K)}$, Wind 5 m/s, Luft $-30\,\mathrm{°C}$.
+- Arbeitswerte aus nachrechnung_leitphaenomene.py (ohne Primärquelle): $\lambda_{\mathrm{St}} = 45\,\mathrm{W/(m\,K)}$, $\lambda_{\mathrm{Iso}} = 0{,}04\,\mathrm{W/(m\,K)}$ (auch Ideensammlung 4.3), $\alpha_\mathrm{i} = 500\,\mathrm{W/(m^2\,K)}$, Wind 5 m/s, Luft $-30\,\mathrm{°C}$.
 
 **Fragen und Zusatzaufgabe**
 
 - Riese, J. (2026). *Wärmeübertragung: Foliensätze 01 bis 08* [Vorlesungsfolien]. Lehrstuhl für Fluidverfahrenstechnik, Universität Paderborn, Sommersemester 2026.
-  V05 F. 22 bis 27: elektrische Analogie, Reihen- und Parallelschaltung (Frage 2, Zusatzaufgabe 1); V05 F. 29 bis 38: Wärmedurchgangskoeffizient, Rohr, $k_i$ und $k_a$ (Frage 3, Aufgabe 2); V05 Beispiel 6: Isolationsdicke und kritischer Radius (Aufgabe 2, Teil e).
+  V05 F. 22 bis 27: elektrische Analogie, Reihen- und Parallelschaltung (Frage 2, Zusatzaufgabe 1); V05 F. 29 bis 38: Wärmedurchgangskoeffizient, Rohr, $k_\mathrm{i}$ und $k_\mathrm{a}$ (Frage 3, Aufgabe 2); V05 Beispiel 6: Isolationsdicke und kritischer Radius (Aufgabe 2, Teil e).
 - Frage 1 (Vorab-Frage) und Zusatzaufgabe 1 (Parallelschaltung) nach Ideensammlung 4.3; Werte wie in Aufgabe 1.
 
 ## Tutorium 4: Strahlung
@@ -1403,11 +1403,11 @@ Quellen der Arbeitswerte und Fakten in `teile/t2.md`, übernommen aus den Quelle
 - Kopp, G., & Lean, J. L. (2011). A new, lower value of total solar irradiance: Evidence and climate significance. *Geophysical Research Letters, 38*, L01706. <https://doi.org/10.1029/2010GL045777>
   $S_0 = 1361\,\mathrm{W/m^2}$ (Ausgangssituation, Tabelle). Holman (2010) nennt noch 1395 W/m², einen älteren Wert.
 - Stephens, G. L., et al. (2015). The albedo of Earth. *Reviews of Geophysics, 53*(1), 141 bis 163. <https://doi.org/10.1002/2014RG000449>
-  Planetare Albedo 0,29 bis 0,30; Arbeitswert $\rho_p = 0{,}30$.
+  Planetare Albedo 0,29 bis 0,30; Arbeitswert $\rho_\mathrm{p} = 0{,}30$.
 - Copernicus Climate Change Service. (2025). *Global climate highlights 2024*. <https://climate.copernicus.eu/global-climate-highlights-2024>
-  Mittlere Oberflächentemperatur 15,1 °C im Jahr 2024; Arbeitswert $T_O = 288\,\mathrm{K}$ („rund 15 °C“).
+  Mittlere Oberflächentemperatur 15,1 °C im Jahr 2024; Arbeitswert $T_\mathrm{O} = 288\,\mathrm{K}$ („rund 15 °C“).
 - Davies, J. H., & Davies, D. R. (2010). Earth’s surface heat flux. *Solid Earth, 1*, 5 bis 24. <https://doi.org/10.5194/se-1-5-2010>
-  Gesamter Erdwärmestrom 47 TW, im Mittel 92 mW/m² (eigene Rechnung); mit 44,2 TW nach Pollack et al. (1993) 87 mW/m². Arbeitswert $\dot{q}_E = 0{,}09\,\mathrm{W/m^2}$ (Teil d).
+  Gesamter Erdwärmestrom 47 TW, im Mittel 92 mW/m² (eigene Rechnung); mit 44,2 TW nach Pollack et al. (1993) 87 mW/m². Arbeitswert $\dot{q}_\mathrm{E} = 0{,}09\,\mathrm{W/m^2}$ (Teil d).
 - Pollack, H. N., Hurter, S. J., & Johnson, J. R. (1993). Heat flow from the Earth’s interior: Analysis of the global data set. *Reviews of Geophysics, 31*(3), 267 bis 280. <https://doi.org/10.1029/93RG01249>
   Wie oben.
 - Forster, P., et al. (2021). The Earth’s energy budget, climate feedbacks, and climate sensitivity. In *Climate change 2021: The physical science basis* (Kapitel 7). IPCC; Cambridge University Press. <https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-7/>
@@ -1417,7 +1417,7 @@ Quellen der Arbeitswerte und Fakten in `teile/t2.md`, übernommen aus den Quelle
 - Riese, J. (2026). *Wärmeübertragung: Foliensätze 01 bis 08* [Vorlesungsfolien]. Lehrstuhl für Fluidverfahrenstechnik, Universität Paderborn, Sommersemester 2026.
   V04 F. 7 bis 19: $\alpha + \rho + \tau = 1$, schwarzer und grauer Strahler, $\sigma = 5{,}6705\cdot 10^{-8}\,\mathrm{W/(m^2\,K^4)}$, Kirchhoff’sches Gesetz, Nettowärmestrom eines Körpers mit seiner Umgebung.
 - Holman, J. P. (2010). *Heat transfer* (10. Aufl.). McGraw-Hill. Abschnitt 8-15 (Strahlung der Umwelt).
-- Schichtmodell und Linearisierung $4\sigma T_e^3$: Zusatzwissen nach Ideensammlung 4.4 (in der Aufgabe als gegeben gekennzeichnet).
+- Schichtmodell und Linearisierung $4\sigma T_\mathrm{e}^3$: Zusatzwissen nach Ideensammlung 4.4 (in der Aufgabe als gegeben gekennzeichnet).
 
 **Fragen**
 
@@ -1432,8 +1432,8 @@ Quellen der Arbeitswerte und Fakten in `teile/t2.md`, übernommen aus den Quelle
 **Zusatzaufgaben**
 
 - Zusatzaufgabe 1 (Eis aus der Nacht): Barker, R. (1775). The process of making ice in the East Indies. *Philosophical Transactions of the Royal Society of London, 65*, 252 bis 257. <https://doi.org/10.1098/rstl.1775.0023>
-  Arbeitswerte aus nachrechnung_leitphaenomene.py: Luft 5 °C, Himmel $-20\,\mathrm{°C}$, $\alpha_L = 2$ bis $5\,\mathrm{W/(m^2\,K)}$, Wasser $\varepsilon = 0{,}96$.
-- Zusatzaufgabe 2 (Autoscheibe und Reif): Werte wie in V08 Teil g (Riese, 2026): Glas $\varepsilon = 0{,}95$, $-5\,\mathrm{°C}$ (dort Temperatur des Himmels über einem Solarpanel am Tag; hier Arbeitswert für die wirksame Temperatur der Umgebung aus klarem Himmel, Häusern und Bäumen, die die schräge Scheibe sieht; der klare Himmel allein wirkt kälter, vgl. $-20\,\mathrm{°C}$ in Zusatzaufgabe 1), freie Konvektion $\alpha = 5\,\mathrm{W/(m^2\,K)}$; Wind mit $\alpha_L = 10\,\mathrm{W/(m^2\,K)}$ als eigener Arbeitswert.
+  Arbeitswerte aus nachrechnung_leitphaenomene.py: Luft 5 °C, Himmel $-20\,\mathrm{°C}$, $\alpha_\mathrm{L} = 2$ bis $5\,\mathrm{W/(m^2\,K)}$, Wasser $\varepsilon = 0{,}96$.
+- Zusatzaufgabe 2 (Autoscheibe und Reif): Werte wie in V08 Teil g (Riese, 2026): Glas $\varepsilon = 0{,}95$, $-5\,\mathrm{°C}$ (dort Temperatur des Himmels über einem Solarpanel am Tag; hier Arbeitswert für die wirksame Temperatur der Umgebung aus klarem Himmel, Häusern und Bäumen, die die schräge Scheibe sieht; der klare Himmel allein wirkt kälter, vgl. $-20\,\mathrm{°C}$ in Zusatzaufgabe 1), freie Konvektion $\alpha = 5\,\mathrm{W/(m^2\,K)}$; Wind mit $\alpha_\mathrm{L} = 10\,\mathrm{W/(m^2\,K)}$ als eigener Arbeitswert.
 
 ## Tutorium 5: Wärmebilanzen (instationär global)
 

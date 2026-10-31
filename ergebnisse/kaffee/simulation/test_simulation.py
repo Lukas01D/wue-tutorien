@@ -5,6 +5,9 @@
 2. Standardwerte: Das Tool trifft die Zahlen der Lösung (gerundet wie gedruckt), und jede dieser Zahlen steht in Kaffee_Loesung.md.
 3. Weitere Parametersätze: Endtemperaturen, kA, Mischtemperatur, Kurvenpunkte, abgegebene Wärme und Schnittpunkt stimmen
    mit dem Python-Modell überein (relative Abweichung unter 1e-9).
+4. Schnittpunkt unabhängig gesucht (Befund Simulation 1 der Prüfung X3): Vorzeichenwechsel von T1(t) - T2_K(t) der Python-Kurven
+   auf (0, t_Zugabe] und Bisektion, in beiden Richtungen; das Tool muss genau diesen Schnitt melden (oder keinen, wenn es keinen
+   gibt) und die richtige Richtung danach angeben. Dazu Grenzfälle: Schnitt in Gegenrichtung, gleiche Abklingraten, Schnitt nach der Zugabe.
 Aufruf vom Repository aus: python3 ergebnisse/kaffee/simulation/test_simulation.py   (braucht node)
 """
 import json, math, os, re, subprocess, sys, tempfile
@@ -28,7 +31,7 @@ def tool(einstellungen, zeiten_s):
     js = modell_js + """
 const S = JSON.parse(process.argv[2]), Z = JSON.parse(process.argv[3]);
 console.log(JSON.stringify(S.map(e => { const m = berechne(e); const o = {};
-  for (const k in m) if (typeof m[k] === "number") o[k] = isFinite(m[k]) ? m[k] : null;
+  for (const k in m) if (typeof m[k] === "number") o[k] = isFinite(m[k]) ? m[k] : null; else if (typeof m[k] === "boolean") o[k] = m[k];
   o.k1 = Z.map(t => m.kurve1(t)); o.k2 = Z.map(t => m.kurve2(t)); return o; })));
 """
     with tempfile.TemporaryDirectory() as d:
@@ -118,7 +121,14 @@ saetze = [
     dict(STANDARD, tEnd_min=60, thM=20, VM_ml=40, thU=25, becher=True, thK0=90, thMess=80, VK_ml=150, kA1Faktor=0.95, mB_g=200),
     dict(STANDARD, tEnd_min=5, thM=5, VM_ml=5, thU=10, thK0=60, thMess=50, VK_ml=400),
     dict(STANDARD, tEnd_min=75, thM=55, milch2Raum=True, becher=True, kA1Faktor=1.10, mB_g=600),
+    dict(STANDARD, thK0=60, thMess=50, thM=65, VM_ml=5, kA1Faktor=1.10),                 # Schnitt in Gegenrichtung (X3, Simulation 1)
+    dict(STANDARD, thK0=60, thMess=50, thM=65, VM_ml=5, kA1Faktor=1.10, becher=True),   # dto. mit Becher
+    dict(STANDARD, tEnd_min=30),                                                         # Schnitt erst nach der Zugabe
+    dict(STANDARD, thM=60, kA1Faktor=0.92),                                              # warme Milch, Tasse 1 träger
 ]
+# gleiche Abklingraten (kA1 so, dass a1 = a2): kein eigentlicher Schnitt
+_p, _r, _, _, _ = None, rechne(dict(P)), None, None, None
+saetze.append(dict(STANDARD, thM=30, kA1Faktor=_r["C_G"] / _r["C_K"]))
 for i, e in enumerate(saetze, 1):
     p, r, C_T, z, kurve = python(e)
     zeiten = [0.0, 600.0, 0.37 * p["t_end"], p["t_end"]]
@@ -140,7 +150,33 @@ for i, e in enumerate(saetze, 1):
             k = kurve(t["t_schnitt"])                                       # am Schnittpunkt sind beide Kurven gleich
             werte.append(("Schnittpunkt: Kurven gleich (Python)", k["T1"], k["T2_K"]))
     abw = [(n, a, b_) for n, a, b_ in werte if not gleich(a, b_)]
-    pruefe(f"Satz {i}: {len(werte)} Werte gleich dem Python-Modell", not abw,
+    # Schnitt unabhängig im Python-Modell suchen: Vorzeichenwechsel von T1 - T2_K auf (0, t_Zugabe], dann Bisektion
+    f = lambda tz: kurve(tz)["T1"] - kurve(tz)["T2_K"]
+    n_schritte, ref = 4000, None
+    for k in range(1, n_schritte + 1):
+        t0, t1 = p["t_end"] * (k - 1) / n_schritte, p["t_end"] * k / n_schritte
+        f0, f1 = f(t0), f(t1)
+        if (k > 1 or abs(f0) > 1e-9) and f0 * f1 < 0:
+            lo_, hi_ = t0, t1
+            for _ in range(200):
+                mid = (lo_ + hi_) / 2
+                lo_, hi_ = (mid, hi_) if f(mid) * f0 > 0 else (lo_, mid)
+            ref = (lo_ + hi_) / 2
+            break
+    ts = t["t_schnitt"]
+    if ref is None:
+        if ts is not None and ts < p["t_end"]:
+            abw.append(("Schnitt: Tool meldet einen, Python-Kurven haben keinen", ts, float("nan")))
+    else:
+        if ts is None or not gleich(ts, ref, 1e-6):
+            abw.append(("Schnitt: Zeitpunkt (unabhängige Suche)", ts if ts is not None else float("nan"), ref))
+        danach_kuehler = f(min(p["t_end"], ref * 1.01 + 1.0)) > 0          # T1 > T2_K nach dem Schnitt
+        if t.get("kaffee_danach_kuehler") != danach_kuehler:
+            abw.append(("Schnitt: Richtung danach", float(t.get("kaffee_danach_kuehler", float("nan"))), float(danach_kuehler)))
+    werte.append(("Schnitt unabhängig gesucht", 0.0, 0.0))
+    schnitt_info = "kein Schnitt bis zur Zugabe" if ref is None else f"Schnitt {ref / 60:.4f} min, danach " + \
+        ("schwarzer Kaffee kühler" if t.get("kaffee_danach_kuehler") else "schwarzer Kaffee wärmer")
+    pruefe(f"Satz {i}: {len(werte)} Werte gleich dem Python-Modell ({schnitt_info})", not abw,
            "; ".join(f"{n}: Tool {a:.10g}, Python {b_:.10g}" for n, a, b_ in abw[:3]) if abw else
            ", ".join(f"{k}={v}" for k, v in e.items() if STANDARD.get(k) != v) or "Standardwerte")
 

@@ -18,13 +18,18 @@ ok     Lösung: Zusatzfrage (2): Tasse 2 mindestens kühler um = 1,95  (in Kaffe
 ok     Lösung: Versuch 40 min, Modell mit Becher = 2,97  (in Kaffee_Loesung.md: „2,97 K“)
 ok     Lösung: Versuch 40 min, Modell aus d) = 3,70  (in Kaffee_Loesung.md: „3,70 K“)
 ok     Lösung: Zusatzfrage (1) Milchtemperatur für Gleichstand = 47,0 °C
-ok     Satz 1: 17 Werte gleich dem Python-Modell  Standardwerte
-ok     Satz 2: 17 Werte gleich dem Python-Modell  tEnd_min=15, thM=8, VM_ml=50, thU=22
-ok     Satz 3: 17 Werte gleich dem Python-Modell  tEnd_min=90, thM=45, VM_ml=20, thU=18, becher=True, mB_g=450
-ok     Satz 4: 17 Werte gleich dem Python-Modell  tEnd_min=120, thM=62, milch2Raum=True, thK0=85, thMess=70
-ok     Satz 5: 17 Werte gleich dem Python-Modell  tEnd_min=35, thM=3, VM_ml=100, thU=12, thK0=70, thMess=58, VK_ml=300, kA1Faktor=1.05
-ok     Satz 6: 17 Werte gleich dem Python-Modell  thM=20, VM_ml=40, thU=25, becher=True, thK0=90, thMess=80, VK_ml=150, kA1Faktor=0.95, mB_g=200
-ok     Satz 7: 17 Werte gleich dem Python-Modell  tEnd_min=5, VM_ml=5, thU=10, thK0=60, thMess=50, VK_ml=400
-ok     Satz 8: 16 Werte gleich dem Python-Modell  tEnd_min=75, thM=55, milch2Raum=True, becher=True, kA1Faktor=1.1, mB_g=600
+ok     Satz 1: 18 Werte gleich dem Python-Modell (Schnitt 55.7447 min, danach schwarzer Kaffee kühler)  Standardwerte
+ok     Satz 2: 18 Werte gleich dem Python-Modell (kein Schnitt bis zur Zugabe)  tEnd_min=15, thM=8, VM_ml=50, thU=22
+ok     Satz 3: 18 Werte gleich dem Python-Modell (Schnitt 24.4230 min, danach schwarzer Kaffee kühler)  tEnd_min=90, thM=45, VM_ml=20, thU=18, becher=True, mB_g=450
+ok     Satz 4: 18 Werte gleich dem Python-Modell (Schnitt 13.7996 min, danach schwarzer Kaffee kühler)  tEnd_min=120, thM=62, milch2Raum=True, thK0=85, thMess=70
+ok     Satz 5: 18 Werte gleich dem Python-Modell (kein Schnitt bis zur Zugabe)  tEnd_min=35, thM=3, VM_ml=100, thU=12, thK0=70, thMess=58, VK_ml=300, kA1Faktor=1.05
+ok     Satz 6: 18 Werte gleich dem Python-Modell (Schnitt 57.1398 min, danach schwarzer Kaffee kühler)  thM=20, VM_ml=40, thU=25, becher=True, thK0=90, thMess=80, VK_ml=150, kA1Faktor=0.95, mB_g=200
+ok     Satz 7: 18 Werte gleich dem Python-Modell (kein Schnitt bis zur Zugabe)  tEnd_min=5, VM_ml=5, thU=10, thK0=60, thMess=50, VK_ml=400
+ok     Satz 8: 17 Werte gleich dem Python-Modell (kein Schnitt bis zur Zugabe)  tEnd_min=75, thM=55, milch2Raum=True, becher=True, kA1Faktor=1.1, mB_g=600
+ok     Satz 9: 18 Werte gleich dem Python-Modell (Schnitt 1.3906 min, danach schwarzer Kaffee wärmer)  thM=65, VM_ml=5, thK0=60, thMess=50, kA1Faktor=1.1
+ok     Satz 10: 18 Werte gleich dem Python-Modell (Schnitt 0.9916 min, danach schwarzer Kaffee wärmer)  thM=65, VM_ml=5, becher=True, thK0=60, thMess=50, kA1Faktor=1.1
+ok     Satz 11: 18 Werte gleich dem Python-Modell (kein Schnitt bis zur Zugabe)  tEnd_min=30
+ok     Satz 12: 18 Werte gleich dem Python-Modell (Schnitt 9.0024 min, danach schwarzer Kaffee kühler)  thM=60, kA1Faktor=0.92
+ok     Satz 13: 18 Werte gleich dem Python-Modell (kein Schnitt bis zur Zugabe)  thM=30, kA1Faktor=1.1456291866028707
 
-Ergebnis: 26 von 26 Prüfungen bestanden.
+Ergebnis: 31 von 31 Prüfungen bestanden.
