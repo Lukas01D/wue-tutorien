@@ -7,7 +7,7 @@ const C = [];
 
 C.push(new Paragraph({ style: "Title", children: [new TextRun("Tutorien Wärmeübertragung: Entscheidungsprotokoll")] }));
 C.push(P("Grundlagen und Entscheidungen der Aufgabenentwicklung, fortlaufend geführt", { size: 24, color: h.GREY, align: AlignmentType.LEFT, before: 0, after: 120 }));
-C.push(Small("**Version:** 14 · **Stand:** 03.11.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)"));
+C.push(Small("**Version:** 14.1 · **Stand:** 03.11.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)"));
 C.push(Small("**Begleitdokumente:** „Lernziele, Vorab-Fragen und Bilanz-Systematik“ (16.10.2026), „Leitaufgaben aus Klima und Erde“ (17.10.2026), „Aufgabenideen: Meeresströmungen, Sverdrup und Luftströmungen“ (20.10.2026), „Kaffee mit Milch“ (Aufgabe und Lösung, 21.10.2026), „Strukturvorlage: Aufgaben im Stil des Lehrstuhls“ (21.10.2026), „Aufgabensammlung der Tutorien“ (21.10.2026), Plan und Prüfpaket zur Prüfung der Kaffee-Aufgabe (23.10.2026), Prüfberichte, Bündelung und Änderungsvorschläge zur Kaffee-Aufgabe (29.10.2026), KI-Protokoll", { after: 160 }));
 
 C.push(box([
@@ -281,6 +281,7 @@ C.push(TAB([
   ["D123", "Hausaufgabe zur Verdunstung als kreatives Problemlösen, zusammen mit Frage 3 der Sammlung (Biot), in A und B im freien Platz vor dem Messblatt: „Wie groß ist der Anteil der Verdunstung an der Wärmeabgabe Ihrer Tasse? …“ In den Hinweisen eine Lösungsidee (zwei gleiche Becher mit und ohne Deckel, *kA* aus beiden Abkühlkurven, Anteil etwa 1 − *kA*_{Deckel}/*kA*_{offen}; Grenzen), als zweiter Weg die Küchenwaage, Vergleichswerte Condoret (2007): rund 53 % bei 79 °C, Ferreira (2025): Deckel senkt *kA* um 44 %. Die Sammlung bleibt bis zur Entscheidung zwischen A und B unverändert.", "G48, G51", "TL", "umgesetzt (03.11.2026, K40)", "Hausaufgabe streichen"],
   ["D124", "Simulation: Jede der vier Fragen beginnt mit einer Vorhersage zu zweit („Sagen Sie erst zu zweit voraus und notieren Sie …“), dann wird geprüft; im Werkzeug, in den Hinweisen (mit Abfrage der Vorhersagen vor dem Prüfen) und im Browsertest.", "G49, G51", "TL", "umgesetzt (03.11.2026, K40)", "Fragen vom 31.10.2026 (D116)"],
   ["D125", "Hinweise für die TL mit einer Tabelle zum Anspruch der Teile (Frage 1, a bis g, Versuch, Simulation, beide Hausaufgaben): Stufe und Wissensart nach Maier et al., gemessen an Übung und Tutorium (z. B. b nach dem Wassertank aus Übung 6 naher Transfer).", "G48, G51", "TL", "umgesetzt (03.11.2026, K40)", "Tabelle streichen"],
+  ["D126", "Alle PDFs (Blatt A und B, Lösungen, Sammlung) mit deutscher Silbentrennung: texlive-lang-german im Setup-Skript; kein Seitenwechsel nach einer getrennten Zeile; fette Zwischenzeilen nicht allein am Seitenende; in Variante B Blocksatz neben dem Schild statt Flattersatz. Die Sammlung wird inhaltlich erst nach der Entscheidung zwischen A und B angeglichen.", "G51; Auftrag der TL vom 03.11.2026", "TL", "umgesetzt (03.11.2026, K41)", "Fassung ohne Trennung (Commit 174e613)"],
 ]));
 
 C.push(H1("4. Offene Punkte"));
@@ -295,7 +296,6 @@ C.push(H1("4. Offene Punkte"));
   "Auswahl und Kürzung je Tutorium aus der Aufgabensammlung (D77); danach Lösungsband (D80, D85)",
   "Entscheidung über D79 (keine Lernziele auf den Blättern, Abweichung von D20; Variante B zeigt Lernziele, D117) und D84 (bewusst belassene Punkte)",
   "Entscheidung zwischen Variante A und B des Kaffee-Blatts (D117); danach die Sammlung angleichen (Hausaufgabe D123, bei B Aufbau und Lernziele) und die Hinweise auf die gewählte Variante zuschneiden",
-  "Bauumgebung: deutsche Trennmuster fehlen (Paket texlive-lang-german), die PDFs werden ohne Silbentrennung gesetzt; nachinstallieren und Seitenumbrüche aller Blätter neu prüfen",
   "Simulationstool beim ersten Einsatz mit Studierenden beobachten: Zeit für die vier Fragen messen, reale Messwerte aus dem Versuch eintragen (D114, D116)",
   "Aussehen der Blätter (bisherige Tutoriumsblätter oder FVT-Vorlage) als eigenes Vorhaben für alle Tutorien (D90, D100)",
   "Werkzeugkasten nach der Umsetzung der Kaffee-Prüfung auf den neuen Arbeitsstand bringen (D91)",
@@ -321,6 +321,7 @@ C.push(grid(
     ["12", "31.10.2026", "Indizes der Sammlung und Simulationstool: Grundlage G45, Entscheidungen D113 bis D115 (Abschnitt 3.13), Status von D110 angepasst, offene Punkte aktualisiert"],
     ["13", "31.10.2026", "Prüfung des Simulationstools: Grundlagen G46 und G47, Entscheidung D116 (Abschnitt 3.14), Status von D114 und D115 angepasst, offene Punkte aktualisiert"],
     ["14", "03.11.2026", "Variante B des Kaffee-Blatts und didaktische Ergänzungen: Grundlagen G48 bis G51, Entscheidungen D117 bis D125 (Abschnitt 3.15), offene Punkte aktualisiert"],
+    ["14.1", "03.11.2026", "Deutsche Silbentrennung: Entscheidung D126, offener Punkt zur Bauumgebung erledigt"],
   ],
   [1200, 1500, 6370], { firstColBold: true },
 ));

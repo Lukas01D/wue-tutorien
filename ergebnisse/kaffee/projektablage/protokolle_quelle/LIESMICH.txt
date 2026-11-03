@@ -1,8 +1,8 @@
 Protokolle der Tutorien Wärmeübertragung: Quellen und Bauanleitung
 =================================================================
 
-Stand: Version 14 vom 03.11.2026 (KI-Protokoll und Entscheidungsprotokoll).
-Zuletzt vergeben: K40 (KI-Protokoll), G51 und D125 (Entscheidungsprotokoll), Abschnitt 3.9 im
+Stand: Version 14.1 vom 03.11.2026 (KI-Protokoll und Entscheidungsprotokoll).
+Zuletzt vergeben: K41 (KI-Protokoll), G51 und D126 (Entscheidungsprotokoll), Abschnitt 3.9 im
 KI-Protokoll und Abschnitt 3.15 im Entscheidungsprotokoll.
 Danach jeweils die nächste freie Nummer. Vor jedem Eintrag die neueste Fassung in der Projektablage
 ansehen (claude/KI-Protokoll_Tutorien_WUE.md, Kopfzeile „Version“, letzte Einträge).

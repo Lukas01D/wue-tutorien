@@ -183,6 +183,10 @@ Annahme für Tasse 1: $kA$ ist mit und ohne Milch gleich. Das ist plausibel, wei
 
 Zur Einordnung: Zeitkonstante $\tau = m\,c_p/kA$ ohne Milch ${de(r['tau_K']/60,1)}{U('min')}$, mit Milch ${de(r['tau_G']/60,1)}{U('min')}$; nach der Zeit $\tau$ hat der schwarze Kaffee noch {dt(TH_TAU,1)} °C. Das passt zu Messungen an einem offenen, nicht umgerührten Keramikbecher ($\tau \approx 41\,\mathrm{{min}}$ aus der Steigung in Abb. 6 bei Ferreira 2025). Bezogen auf rund {dt(A0*1e4,0)} cm² Oberfläche ist $kA/A \approx {de(r['kA']/A0,0)}{U('W/(m^2\\,K)')}$: freie Konvektion, Strahlung und Verdunstung zusammen.
 
+```{{=latex}}
+\needspace{{9\baselineskip}}
+```
+
 **d)** Tasse 1: Anfangsbedingung $T(0\,\mathrm{{s}}) = T_{{1,0}}$ und $m\,c_p = m_K c_{{p,K}} + m_M c_{{p,M}}$:
 
 $$T_1 = T_u + (T_{{1,0}} - T_u)\cdot \exp\left(-\frac{{kA\,t}}{{m_K c_{{p,K}} + m_M c_{{p,M}}}}\right)$$

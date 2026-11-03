@@ -73,6 +73,6 @@ Gezählt wie bisher mit `woerter_b.py` (eine Formel zählt als ein Wort). Zum Ve
 
 ## Hinweise
 
-- **Silbentrennung:** In der Bauumgebung fehlen deutsche Trennmuster (`texlive-lang-german`), deshalb setzt das PDF ohne Silbentrennung. Das betrifft alle PDFs, auch A und die Sammlung. Damit neben dem Schild keine großen Wortabstände entstehen, steht der umflossene Absatz im Flattersatz.
+- **Silbentrennung:** Seit dem 03.11.2026 setzen alle PDFs (A, B, Lösungen, Sammlung) mit deutscher Silbentrennung (`texlive-lang-german` im Setup-Skript, D126). Neben dem Schild steht deshalb wieder Blocksatz wie im übrigen Blatt; der Flattersatz ist entfernt.
 - **Word-Ansicht:** LibreOffice setzt Einheiten in Formeln kursiv und lässt Abstände (\qquad) weg. Das betrifft A genauso; Word zeigt die Formeln aufrecht wie im PDF.
 - **Hinweise der Lösung** sind für beide Varianten geschrieben. Die Tabelle zum Anspruch der Teile nennt bei b, dass b in Variante B näher an die Reproduktion rückt.

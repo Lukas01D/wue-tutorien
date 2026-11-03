@@ -152,6 +152,8 @@ with tempfile.TemporaryDirectory() as tmp:
     with open(os.path.join(tmp, NAME + ".log"), encoding="utf-8", errors="replace") as f:
         log = f.read()
     print("PDF: Zeilen mit Überlänge (Overfull \\hbox):", log.count("Overfull \\hbox"))
+    for m in re.finditer(r"Overfull \\hbox \(([\d.]+)pt too wide\)[^\n]*\n([^\n]*)", log):
+        print("   ", m.group(1), "pt:", m.group(2)[:100])
     shutil.copyfile(os.path.join(tmp, NAME + ".pdf"), os.path.join(HIER, NAME + ".pdf"))
 subprocess.run(["pandoc", NAME + ".md", "-o", NAME + ".docx",
                 "--reference-doc", os.path.join(KAFFEE, "build", "referenz_lehrstuhl.docx"),
