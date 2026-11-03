@@ -1,8 +1,8 @@
 -- Lua-Filter der Aufgabensammlung (LaTeX und Word), Kopie für Variante B des Kaffee-Blatts
 -- Abweichungen vom Original (kaffee/build/lehrstuhl.lua):
 --   a) weitere Bausteine: Grundlagen, Lernziele, Einführung, Gegeben, Gesucht, Versuch
---   b) ::: zweispaltig: links Text (etwa 2/3), rechts das letzte Bild des Blocks (etwa 1/3);
---      LaTeX: zwei Minipages (links Flattersatz, weil die Spalte schmal ist), Bild als PDF (gleicher Name wie das PNG); Word: Tabelle mit zwei Zellen ohne Rahmen
+--   b) ::: umfliessen: letztes Bild des Blocks rechts, der Text fließt links daneben und darunter weiter;
+--      LaTeX: wrapfigure (kopf_b.tex), Bild als PDF (gleicher Name wie das PNG); Word: umflossenes Bild (Nachbearbeitung)
 --   c) LaTeX: needspace auch vor „Werte:“ (Tabelle) und „Frage 1 …:“
 -- 1) ::: center und ::: seitenumbruch; Blatttitel („Tutorium …“) 18 pt
 -- 2) Bausteine (Ausgangssituation, Frage n, Aufgabe n, Versuch, Lösung, Hinweise, Quellen) 14 pt, 18 pt davor und 6 pt danach
@@ -27,22 +27,27 @@ function Div(el)
       return el
     end
   end
-  if el.classes:includes("zweispaltig") then
+  if el.classes:includes("umfliessen") then
+    -- letzter Block ist das Bild; es steht rechts, der Text fließt links daneben und darunter weiter
     local bild = el.content[#el.content]
-    assert(bild.t == "Para" and bild.content[1].t == "Image", "zweispaltig: letzter Block muss ein Bild sein")
-    local links = {}
-    for i = 1, #el.content - 1 do links[#links + 1] = el.content[i] end
+    assert(bild.t == "Para" and bild.content[1].t == "Image", "umfliessen: letzter Block muss ein Bild sein")
+    local text = {}
+    for i = 1, #el.content - 1 do text[#text + 1] = el.content[i] end
+    local breite = bild.content[1].attributes["width"] or "6cm"
+    local cm = tonumber(breite:match("^([%d%.]+)cm$"))
     if FORMAT:match("latex") then
       local pdf = bild.content[1].src:gsub("%.png$", ".pdf")
-      local out = { pandoc.RawBlock("latex", "\\par\\noindent\\begin{minipage}[t]{0.65\\linewidth}\\vspace{0pt}\\setlength{\\parskip}{4pt plus 1pt}\\RaggedRight") }
-      for _, b in ipairs(links) do out[#out + 1] = b end
-      out[#out + 1] = pandoc.RawBlock("latex", "\\end{minipage}\\hfill\\begin{minipage}[t]{0.33\\linewidth}\\vspace{2pt}\\includegraphics[width=\\linewidth]{" .. pdf .. "}\\end{minipage}\\par")
+      local out = { pandoc.RawBlock("latex", "\\begin{wrapfigure}{r}{" .. string.format("%.2f", cm + 0.35) .. "cm}\\vspace{-12pt}\\includegraphics[width=" .. breite .. "]{" .. pdf .. "}\\vspace{-14pt}\\end{wrapfigure}") }
+      -- erster Absatz (neben dem Bild, schmale Zeilen) im Flattersatz, sonst große Wortabstände
+      out[#out + 1] = pandoc.RawBlock("latex", "\\begingroup\\RaggedRight")
+      out[#out + 1] = text[1]
+      out[#out + 1] = pandoc.RawBlock("latex", "\\par\\endgroup")
+      for i = 2, #text do out[#out + 1] = text[i] end
       return pandoc.Div(out)
     elseif FORMAT:match("docx") then
-      local zeile = pandoc.Row({ pandoc.Cell(links), pandoc.Cell({ bild }) })
-      local koerper = { attr = pandoc.Attr(), body = { zeile }, head = {}, row_head_columns = 0 }
-      return pandoc.Table({ long = {} }, { { pandoc.AlignLeft, 0.66 }, { pandoc.AlignLeft, 0.34 } },
-                          pandoc.TableHead(), { koerper }, pandoc.TableFoot())
+      -- Bild an den Anfang des ersten Absatzes; build_variante_b.py setzt es als umflossenes Bild rechts (wp:anchor)
+      table.insert(text[1].content, 1, bild.content[1])
+      return pandoc.Div(text)
     end
   end
   if el.classes:includes("seitenumbruch") then
@@ -74,7 +79,7 @@ local function nur_bild(b)
 end
 
 local BAUSTEINE = { "^Ausgangssituation", "^Frage %d", "^Aufgabe %d", "^Zusatzaufgabe %d", "^Zusatzaufgaben",
-                    "^Versuch", "^Lösung", "^Hinweise für", "^Quellen der",
+                    "^Versuch", "^Lösung", "^Hinweise für", "^Quellen der", "^Hausaufgabe",
                     "^Grundlagen", "^Lernziele", "^Einführung", "^Gegeben", "^Gesucht" }
 
 local function ist_baustein(b)

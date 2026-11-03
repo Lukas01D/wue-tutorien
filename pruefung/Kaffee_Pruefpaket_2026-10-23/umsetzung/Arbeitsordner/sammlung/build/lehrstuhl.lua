@@ -1,6 +1,6 @@
 -- Lua-Filter der Aufgabensammlung (LaTeX und Word)
 -- 1) ::: center und ::: seitenumbruch; Blatttitel („Tutorium …“) 18 pt
--- 2) Bausteine (Ausgangssituation, Frage n, Aufgabe n, Versuch, Lösung, Hinweise, Quellen) 14 pt, 18 pt davor und 6 pt danach
+-- 2) Bausteine (Ausgangssituation, Frage n, Aufgabe n, Versuch, Lösung, Hinweise, Quellen, Hausaufgabe) 14 pt, 18 pt davor und 6 pt danach
 --    (mit \parskip von 4 pt: 14 pt davor, 2 pt danach zusätzlich)
 -- 3) Bild und folgende Bildunterschrift („Abb. …“) zentriert und zusammen (LaTeX: minipage; Word: Formatvorlagen)
 -- 4) LaTeX: vor „Gegebene Größen“, „Annahmen“ und „Aufgabenstellung“ genug Platz auf der Seite (needspace)
@@ -51,7 +51,7 @@ local function nur_bild(b)
 end
 
 local BAUSTEINE = { "^Ausgangssituation", "^Frage %d", "^Aufgabe %d", "^Zusatzaufgabe %d", "^Zusatzaufgaben",
-                    "^Versuch zu", "^Lösung", "^Hinweise für", "^Quellen der" }
+                    "^Versuch zu", "^Lösung", "^Hinweise für", "^Quellen der", "^Hausaufgabe" }
 
 local function ist_baustein(b)
   -- Bausteine sind fett und unterstrichen geschrieben: **[Frage 1]{.underline}**

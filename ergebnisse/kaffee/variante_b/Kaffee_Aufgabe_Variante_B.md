@@ -8,19 +8,19 @@ lang: de
 
 **[Grundlagen]{.underline}** (Energiebilanz: instationär, global)
 
-::: zweispaltig
+::: umfliessen
 **Voraussetzung:** Die Temperatur ist im ganzen Kontrollvolumen gleich (homogen) und ändert sich nur mit der Zeit. Das gilt, wenn der Inhalt ideal durchmischt ist oder wenn in einem Festkörper die Wärmeleitung Unterschiede viel schneller ausgleicht, als Wärme über die Oberfläche abgeht (Biot-Zahl $Bi \ll 1$, Foliensatz 02, Folie 16).
 
 **Bilanz** für ein ruhendes Kontrollvolumen ohne innere Wärmequellen (Foliensatz 05, Folie 8), mit der inneren Energie eines inkompressiblen Stoffs mit konstanten Stoffdaten:
 $$\frac{dU}{dt} = \dot{Q}_{\mathrm{zu}} - \dot{Q}_{\mathrm{ab}}, \qquad dU = m\,c_p\,dT$$
 $m\,c_p$ (in J/K) ist die Wärmekapazität des Inhalts. Die Wärmeabgabe an die Umgebung beschreibt ein Wärmedurchgang:
 $$\dot{Q}_{\mathrm{ab}} = kA\,(T - T_\mathrm{u})$$
-$kA$ (in W/K), das Produkt aus Wärmedurchgangskoeffizient $k$ und Fläche $A$, ist der abgegebene Wärmestrom je Kelvin Temperaturunterschied zur Umgebung; es fasst alle Wege nach außen zusammen.
+$kA$ (in W/K), das Produkt aus Wärmedurchgangskoeffizient $k$ und Fläche $A$, ist der abgegebene Wärmestrom je Kelvin Temperaturunterschied zur Umgebung; es fasst alle Wege nach außen zusammen. Temperaturdifferenzen sind in K und °C gleich; Werte in °C heißen auf dem Blatt $\vartheta$.
 
-**Lösungsweg:** Eingesetzt entsteht eine gewöhnliche DGL erster Ordnung in der Zeit, $dT/dt = f(T)$. Trennung der Variablen: alle Terme mit $T$ auf eine Seite, $dt$ auf die andere, dann vom Anfang ($t = 0$, $T = T_0$) bis zur Zeit $t$ integrieren (zur Kontrolle: Formelsammlung, Kap. 5, Gl. 5.1):
+**Lösungsweg:** Eingesetzt entsteht eine gewöhnliche DGL erster Ordnung in der Zeit, $dT/dt = f(T)$. Trennung der Variablen: alle Terme mit $T$ auf eine Seite, $dt$ auf die andere, dann vom Anfang ($t = 0$, $T = T_0$) bis zur Zeit $t$ integrieren:
 $$\int_{T_0}^{T} \frac{dT}{f(T)} = \int_{0}^{t} dt$$
 
-![](grafik/Bilanzformen_kompakt_3_instationaer_global.png){width=5.2cm}
+![](grafik/Bilanzformen_kompakt_3_instationaer_global.png){width=6cm}
 :::
 
 **[Lernziele]{.underline}**
@@ -28,7 +28,7 @@ $$\int_{T_0}^{T} \frac{dT}{f(T)} = \int_{0}^{t} dt$$
 Nach diesem Tutorium können Sie …
 
 - den Temperaturverlauf $T(t)$ einer ideal durchmischten Flüssigkeit, etwa Kaffee in einer Tasse, aus einer instationären globalen Energiebilanz berechnen.
-- mit der Durchmischung oder der Biot-Zahl beurteilen, ob bei einem Abkühlvorgang (Kaffee in der Tasse, Becher in Teil g) eine überall gleiche Temperatur angenommen werden darf.
+- Abweichungen zwischen der Vorhersage des Modells und Ihren Messwerten (Versuch und Simulationstool) mit den Annahmen des Modells begründen.
 
 **[Einführung]{.underline}**
 
@@ -50,7 +50,7 @@ Um die Frage zu klären, messen Sie nach 10 Minuten die Temperatur in Tasse 2 (n
 
 - Der Tasseninhalt ist ideal durchmischt, die Milch mischt sich sofort und ohne Wärmeverlust.
 - Die Wärmekapazität der Tasse wird außer in Teil g vernachlässigt.
-- Die gesamte Wärmeabgabe (auch durch Strahlung und Verdunstung) ist $\dot{Q}_{\mathrm{ab}} = kA\,(\vartheta - \vartheta_\mathrm{u})$ mit konstantem $kA$; die verdunstete Masse wird vernachlässigt.
+- Die gesamte Wärmeabgabe (auch durch Strahlung und Verdunstung) ist $\dot{Q}_{\mathrm{ab}} = kA\,(T - T_\mathrm{u})$ mit konstantem $kA$; die verdunstete Masse wird vernachlässigt.
 - Kaffee (Stoffdaten von Wasser) und Milch sind inkompressibel ($c_p = c_v$); die Stoffdaten sind konstant.
 
 **Werte:**
@@ -91,6 +91,10 @@ f) Am nächsten Tag gibt es Milchkaffee: Die Milch wird je Tasse kurz vorher auf
 
 g) *Vertiefung:* Die Tassen sind vorgewärmte Keramikbecher, die immer die Temperatur ihres Inhalts haben, auch beim Zugießen der Milch. Passen Sie Bilanzraum und Bilanz aus b) an, bestimmen Sie $kA$ neu und berechnen Sie $\vartheta_1$ und $\vartheta_2$ wie in d). Gilt die Aussage aus d) weiter?\
    $kA = 0{,}4440\,\mathrm{W/K}$, $\quad\vartheta_1 = 34{,}04\,\mathrm{°C}$, $\quad\vartheta_2 = 30{,}96\,\mathrm{°C}$
+
+**[Hausaufgabe]{.underline}**
+
+Wie groß ist der Anteil der Verdunstung an der Wärmeabgabe Ihrer Tasse? Entwerfen Sie mit Küchenmaterial einen Versuch, mit dem Sie ihn bestimmen. Was messen Sie, und wie berechnen Sie daraus den Anteil?
 
 ::: seitenumbruch
 :::

@@ -23,6 +23,7 @@ ok     handy E: „10,5,9“ und „66.5xyz“ abgelehnt
 ok     handy E: „10,5“ und „66.5“ angenommen, Fehlermeldung ersetzt  Eingetragen: Becher 2, 10,5 min, 66,5 °C.
 ok     handy E: leere Zeit abgelehnt
 ok     handy F: vier Fragen im Werkzeug
+ok     handy F: jede Frage beginnt mit einer Vorhersage zu zweit, dann prüfen  Zeitpunkt. Sagen Sie erst zu zweit vorau | Milchtemperatur. Sagen Sie erst zu zweit | Becher. Sagen Sie erst zu zweit voraus u | Versuch. Sagen Sie erst zu zweit voraus 
 ok     handy F1: größter Unterschied ungefähr bei 56 min (3,86 K), danach kleiner (120 min: 3,02 K)  [[53,3.86],3.02]
 ok     handy F2: ungefähr gleich warm bei 47,0 °C Milch nach 60 min  47
 ok     handy F2: bei Zugabe nach 30 min passt 47 °C nicht mehr (Temperatur hängt vom Zeitpunkt ab)  0.84
@@ -54,6 +55,7 @@ ok     laptop E: „10,5,9“ und „66.5xyz“ abgelehnt
 ok     laptop E: „10,5“ und „66.5“ angenommen, Fehlermeldung ersetzt  Eingetragen: Becher 2, 10,5 min, 66,5 °C.
 ok     laptop E: leere Zeit abgelehnt
 ok     laptop F: vier Fragen im Werkzeug
+ok     laptop F: jede Frage beginnt mit einer Vorhersage zu zweit, dann prüfen  Zeitpunkt. Sagen Sie erst zu zweit vorau | Milchtemperatur. Sagen Sie erst zu zweit | Becher. Sagen Sie erst zu zweit voraus u | Versuch. Sagen Sie erst zu zweit voraus 
 ok     laptop F1: größter Unterschied ungefähr bei 56 min (3,86 K), danach kleiner (120 min: 3,02 K)  [[53,3.86],3.02]
 ok     laptop F2: ungefähr gleich warm bei 47,0 °C Milch nach 60 min  47
 ok     laptop F2: bei Zugabe nach 30 min passt 47 °C nicht mehr (Temperatur hängt vom Zeitpunkt ab)  0.84
@@ -63,4 +65,4 @@ ok     laptop F4: kein waagerechtes Scrollen mit Messwerten
 ok     laptop F4: Messwerte nach dem Neuladen noch da
 ok     laptop: keine Fehler in der Konsole
 
-Ergebnis: 62 von 62 Prüfungen bestanden.
+Ergebnis: 64 von 64 Prüfungen bestanden.

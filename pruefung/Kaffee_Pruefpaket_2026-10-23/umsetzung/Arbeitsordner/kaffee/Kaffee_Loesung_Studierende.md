@@ -66,6 +66,10 @@ f) Am nächsten Tag gibt es Milchkaffee: Die Milch wird je Tasse kurz vorher auf
 g) *Vertiefung:* Die Tassen sind vorgewärmte Keramikbecher, die immer die Temperatur ihres Inhalts haben, auch beim Zugießen der Milch. Passen Sie Bilanzraum und Bilanz aus b) an, bestimmen Sie $kA$ neu und berechnen Sie $\vartheta_1$ und $\vartheta_2$ wie in d). Gilt die Aussage aus d) weiter?\
    $kA = 0{,}4440\,\mathrm{W/K}$, $\quad\vartheta_1 = 34{,}04\,\mathrm{°C}$, $\quad\vartheta_2 = 30{,}96\,\mathrm{°C}$
 
+**[Hausaufgabe]{.underline}**
+
+Wie groß ist der Anteil der Verdunstung an der Wärmeabgabe Ihrer Tasse? Entwerfen Sie mit Küchenmaterial einen Versuch, mit dem Sie ihn bestimmen. Was messen Sie, und wie berechnen Sie daraus den Anteil?
+
 ::: seitenumbruch
 :::
 
@@ -201,7 +205,7 @@ $$T_2 = \frac{(m_\mathrm{K} c_{p,\mathrm{K}} + C_\mathrm{B})\,T_\mathrm{K}(60\,\
 Die Aussage aus d) gilt weiter, der Unterschied sinkt aber von 3,85 K auf 3,08 K. Beide Anteile aus der Zerlegung in f) werden kleiner: Die Milch erhöht die Wärmekapazität nur noch um 11 % statt 15 % (Kaffee-Effekt 1,98 statt 2,48 K), und der Becher gibt beim Mischen Wärme an die kalte Milch ab und dämpft den Mischsprung (Milch-Effekt 1,10 statt 1,38 K).
 
 ```{=latex}
-\needspace{7\baselineskip}
+\needspace{19\baselineskip}
 ```
 
 **[Quellen der Arbeitswerte]{.underline}**

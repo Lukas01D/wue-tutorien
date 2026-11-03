@@ -66,6 +66,10 @@ f) Am nächsten Tag gibt es Milchkaffee: Die Milch wird je Tasse kurz vorher auf
 g) *Vertiefung:* Die Tassen sind vorgewärmte Keramikbecher, die immer die Temperatur ihres Inhalts haben, auch beim Zugießen der Milch. Passen Sie Bilanzraum und Bilanz aus b) an, bestimmen Sie $kA$ neu und berechnen Sie $\vartheta_1$ und $\vartheta_2$ wie in d). Gilt die Aussage aus d) weiter?\
    $kA = 0{,}4440\,\mathrm{W/K}$, $\quad\vartheta_1 = 34{,}04\,\mathrm{°C}$, $\quad\vartheta_2 = 30{,}96\,\mathrm{°C}$
 
+**[Hausaufgabe]{.underline}**
+
+Wie groß ist der Anteil der Verdunstung an der Wärmeabgabe Ihrer Tasse? Entwerfen Sie mit Küchenmaterial einen Versuch, mit dem Sie ihn bestimmen. Was messen Sie, und wie berechnen Sie daraus den Anteil?
+
 ::: seitenumbruch
 :::
 

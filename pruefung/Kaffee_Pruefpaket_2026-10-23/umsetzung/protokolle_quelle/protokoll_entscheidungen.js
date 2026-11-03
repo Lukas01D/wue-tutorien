@@ -7,7 +7,7 @@ const C = [];
 
 C.push(new Paragraph({ style: "Title", children: [new TextRun("Tutorien Wärmeübertragung: Entscheidungsprotokoll")] }));
 C.push(P("Grundlagen und Entscheidungen der Aufgabenentwicklung, fortlaufend geführt", { size: 24, color: h.GREY, align: AlignmentType.LEFT, before: 0, after: 120 }));
-C.push(Small("**Version:** 13 · **Stand:** 31.10.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)"));
+C.push(Small("**Version:** 14 · **Stand:** 03.11.2026 · **Geführt von:** Tutoriumsleitung, Einträge vorbereitet mit KI-Unterstützung (Claude, Anthropic)"));
 C.push(Small("**Begleitdokumente:** „Lernziele, Vorab-Fragen und Bilanz-Systematik“ (16.10.2026), „Leitaufgaben aus Klima und Erde“ (17.10.2026), „Aufgabenideen: Meeresströmungen, Sverdrup und Luftströmungen“ (20.10.2026), „Kaffee mit Milch“ (Aufgabe und Lösung, 21.10.2026), „Strukturvorlage: Aufgaben im Stil des Lehrstuhls“ (21.10.2026), „Aufgabensammlung der Tutorien“ (21.10.2026), Plan und Prüfpaket zur Prüfung der Kaffee-Aufgabe (23.10.2026), Prüfberichte, Bündelung und Änderungsvorschläge zur Kaffee-Aufgabe (29.10.2026), KI-Protokoll", { after: 160 }));
 
 C.push(box([
@@ -80,6 +80,10 @@ C.push(grid(
     ["G45", "Auftrag der Tutoriumsleitung vom 31.10.2026 nach dem Merge von Lukas01D/wue-tutorien#3: Frage 3 (Biot) als Hausaufgabe bestätigt; in allen übrigen Tutorien der Sammlung beschreibende Indizes aufrecht wie beim Kaffee (Ä24), mit Textvergleich; Simulationstool für die dritte Ebene (eine HTML-Datei, offline, Modell aus kaffee_modell.py, Regler nur für Größen des Modells, Messwerte aus dem Versuch, 3 bis 4 Fragen, Testskript und Browsertest); dritter Auftrag für Codex (Rolle X3); neuer Zweig und neuer Pull Request", "M", "D110, D113 bis D115"],
     ["G46", "Prüfbericht von Codex (Rolle X3) vom 31.10.2026 zum Simulationstool (ergebnisse/kaffee/X3_CODEX_SIMULATION.md, Zweig codex/kaffee-x3-simulation): Urteil „mit kleinen Korrekturen“, sechs Befunde (KI-Protokoll K38, Abschnitt 3.9)", "N, F", "D116"],
     ["G47", "Auftrag der Tutoriumsleitung vom 31.10.2026: alle sechs Befunde nachrechnen und beheben, auch die Formulierungsvorschläge zu Frage 1 und 2; Tests so erweitern, dass Befund 1 bis 5 künftig auffallen; Indizes ab und u im Kasten „Modell“ aufrecht; die drei nicht eingebauten Größen (Exponent n, Verdunstung, Abkühlen nach dem Zugießen) für diese Sitzung nicht; danach bauen, ansehen, Protokolle, Übergabe, Pull Request", "M", "D115, D116"],
+    ["G48", "Maier, Kleinknecht, Metz und Bohl (2010), Ein allgemeindidaktisches Kategoriensystem zur Analyse des kognitiven Potenzials von Aufgaben, Beiträge zur Lehrerbildung 28(1), 84 bis 96: kognitiver Prozess (Reproduktion, naher Transfer, weiter Transfer, kreatives Problemlösen) und Wissensart (Fakten, Prozeduren, Konzepte, Metakognition); geprüft an der Beschreibung des Kategoriensystems der Universität Tübingen (Volltext beim Abruf am 03.11.2026 nicht erreichbar)", "F", "D123, D125"],
+    ["G49", "Chi und Wylie (2014), The ICAP Framework: Linking Cognitive Engagement to Active Learning Outcomes, Educational Psychologist 49(4), 219 bis 243: interaktiv, konstruktiv, aktiv, passiv, mit der Hypothese steigenden Lernerfolgs in dieser Reihenfolge; geprüft über Abstract und Verlagsangaben. Eine spätere Laborstudie bestätigt die Reihenfolge nicht (Hinweis aus der Websuche, nicht geprüft)", "F", "D124"],
+    ["G50", "Auftrag der Tutoriumsleitung vom 31.10.2026: Variante des Kaffee-Blatts (nur Einzelblatt) mit Grundlagen und Schild, Lernzielen, Einführung, Gegeben, Gesucht und Messblatt; Sammlung und Lösung unverändert; R29 gilt für diese Variante nicht; Protokolle erst nach der Entscheidung", "M", "D117"],
+    ["G51", "Rückmeldung und Auftrag der Tutoriumsleitung vom 03.11.2026: Folie 16 bestätigt; Verweis auf Gl. 5.1 streichen (D24); Lernziel 2 auf Versuch und Simulation; Formelzeichen nach R17; Schild etwa 6 cm, Text darunter, 4 Seiten wenn ohne Gedränge; Hausaufgabe zur Verdunstung, Vorhersage zu zweit in der Simulation, Tabelle zum Anspruch der Teile, jeweils für A und B; keine Abnahme durch Codex; gemergt erst nach der Entscheidung zwischen A und B", "M", "D118 bis D125"],
   ],
   [600, 4300, 600, 3570], { firstColBold: true },
 ));
@@ -266,6 +270,19 @@ C.push(TAB([
   ["D116", "Befunde der Prüfung X3 behoben: Schnitt der Kurven in beiden Richtungen mit Angabe, welche Tasse danach wärmer ist; ungültige Einstellungen blenden Ergebnisse und Diagramm sichtbar aus; Übernahme prüft die ungerundeten Mittelwerte und übernimmt sie unverändert oder gar nicht; Zahlen nur als vollständige Eingabe; Fragen nennen den Ausgangszustand und sagen „ungefähr“ (Frage 1 und 2); Hinweis zu Frage 1 unterscheidet vor und nach dem Mischen (Grenzwert 1,91 K). Indizes im Kasten „Modell“ aufrecht (Ä24). Tests erweitert, sodass Befund 1 bis 5 künftig auffallen. Keine weiteren Modellgrößen für diese Sitzung (Exponent n, Verdunstung, Abkühlen nach dem Zugießen).", "G46, G47", "TL", "umgesetzt (31.10.2026, K38)", "Fassung 53a78d5 des Werkzeugs"],
 ]));
 
+C.push(H2("3.15 Variante B und didaktische Ergänzungen vom 31.10. und 03.11.2026"));
+C.push(TAB([
+  ["D117", "Variante B des Kaffee-Blatts als eigener Ordner (ergebnisse/kaffee/variante_b): Grundlagen „Energiebilanz: instationär, global“ mit kompaktem Schild Variante 3, Lernziele auf dem Blatt (Abweichung von D79), Einführung mit Ausgangssituation, Abb. 1 und Frage 1, Gegeben, Gesucht mit a bis g, Versuch als Messblatt. Variante A bleibt; R29 gilt für B nicht. Geändert gegenüber A nur der Aufbau und die Verweise auf „Aufgabe 1“.", "G50", "TL", "umgesetzt als Entwurf (31.10.2026, K39); Entscheidung zwischen A und B offen", "Variante A"],
+  ["D118", "Fundstelle für *Bi* ≪ 1 in den Grundlagen: Foliensatz 02, Folie 16.", "G51", "TL", "entschieden", "keiner nötig"],
+  ["D119", "Verweis „zur Kontrolle: Formelsammlung, Kap. 5, Gl. 5.1“ aus den Grundlagen gestrichen: keine DGL über Kapitel 5 (D24), und die Gleichung verrät die Lösungsform von Teil b.", "D24, G51", "TL", "umgesetzt (03.11.2026, K40)", "Verweis wieder aufnehmen"],
+  ["D120", "Lernziel 2 in Variante B auf das, was Versuch und Simulation üben: „Abweichungen zwischen der Vorhersage des Modells und Ihren Messwerten (Versuch und Simulationstool) mit den Annahmen des Modells begründen“ (ein Verb nach Regel 1; Vergleichen steckt im Begründen der Abweichung).", "G51", "TL", "umgesetzt (03.11.2026, K40)", "Lernziel 2 zur Biot-Zahl (Fassung vom 31.10.2026)"],
+  ["D121", "Formelzeichen in Variante B einheitlich (R17): In Formeln steht *T* (Grundlagen, Annahme zur Wärmeabgabe, Teil b), Werte in °C heißen *ϑ* (Tabelle, Ergebnisse); ein Satz in den Grundlagen erklärt das.", "G51", "TL", "umgesetzt (03.11.2026, K40)", "Annahme mit *ϑ* wie in A"],
+  ["D122", "Schild in Variante B 6 cm breit, der Grundlagentext fließt daneben und darunter weiter. 4 Seiten mit Messblatt gehen nicht ohne Gedränge (Abb. 1 und Tabelle sind nicht teilbar, jede Seite ist voll); B bleibt bei 5 Seiten.", "G51", "TL", "umgesetzt (03.11.2026, K40)", "Schild 5,3 cm neben dem Text (Fassung vom 31.10.2026)"],
+  ["D123", "Hausaufgabe zur Verdunstung als kreatives Problemlösen, zusammen mit Frage 3 der Sammlung (Biot), in A und B im freien Platz vor dem Messblatt: „Wie groß ist der Anteil der Verdunstung an der Wärmeabgabe Ihrer Tasse? …“ In den Hinweisen eine Lösungsidee (zwei gleiche Becher mit und ohne Deckel, *kA* aus beiden Abkühlkurven, Anteil etwa 1 − *kA*_{Deckel}/*kA*_{offen}; Grenzen), als zweiter Weg die Küchenwaage, Vergleichswerte Condoret (2007): rund 53 % bei 79 °C, Ferreira (2025): Deckel senkt *kA* um 44 %. Die Sammlung bleibt bis zur Entscheidung zwischen A und B unverändert.", "G48, G51", "TL", "umgesetzt (03.11.2026, K40)", "Hausaufgabe streichen"],
+  ["D124", "Simulation: Jede der vier Fragen beginnt mit einer Vorhersage zu zweit („Sagen Sie erst zu zweit voraus und notieren Sie …“), dann wird geprüft; im Werkzeug, in den Hinweisen (mit Abfrage der Vorhersagen vor dem Prüfen) und im Browsertest.", "G49, G51", "TL", "umgesetzt (03.11.2026, K40)", "Fragen vom 31.10.2026 (D116)"],
+  ["D125", "Hinweise für die TL mit einer Tabelle zum Anspruch der Teile (Frage 1, a bis g, Versuch, Simulation, beide Hausaufgaben): Stufe und Wissensart nach Maier et al., gemessen an Übung und Tutorium (z. B. b nach dem Wassertank aus Übung 6 naher Transfer).", "G48, G51", "TL", "umgesetzt (03.11.2026, K40)", "Tabelle streichen"],
+]));
+
 C.push(H1("4. Offene Punkte"));
 [
   "Auswahl der Leitphänomene für Tutorium 2 bis 8 und die übrigen Entscheidungen E7 bis E17 (Tutoriumsleitung)",
@@ -276,7 +293,9 @@ C.push(H1("4. Offene Punkte"));
   "Entscheidung über E18 bis E22 (Aufgabenideen Meeresströmungen und Luftströmungen)",
   "Zitate der Ozean- und Atmosphärenquellen vor dem Druck im Original gegenlesen (Johns 2023, Caesar 2018, Seager 2002, van Westen 2024)",
   "Auswahl und Kürzung je Tutorium aus der Aufgabensammlung (D77); danach Lösungsband (D80, D85)",
-  "Entscheidung über D79 (keine Lernziele auf den Blättern, Abweichung von D20) und D84 (bewusst belassene Punkte)",
+  "Entscheidung über D79 (keine Lernziele auf den Blättern, Abweichung von D20; Variante B zeigt Lernziele, D117) und D84 (bewusst belassene Punkte)",
+  "Entscheidung zwischen Variante A und B des Kaffee-Blatts (D117); danach die Sammlung angleichen (Hausaufgabe D123, bei B Aufbau und Lernziele) und die Hinweise auf die gewählte Variante zuschneiden",
+  "Bauumgebung: deutsche Trennmuster fehlen (Paket texlive-lang-german), die PDFs werden ohne Silbentrennung gesetzt; nachinstallieren und Seitenumbrüche aller Blätter neu prüfen",
   "Simulationstool beim ersten Einsatz mit Studierenden beobachten: Zeit für die vier Fragen messen, reale Messwerte aus dem Versuch eintragen (D114, D116)",
   "Aussehen der Blätter (bisherige Tutoriumsblätter oder FVT-Vorlage) als eigenes Vorhaben für alle Tutorien (D90, D100)",
   "Werkzeugkasten nach der Umsetzung der Kaffee-Prüfung auf den neuen Arbeitsstand bringen (D91)",
@@ -301,6 +320,7 @@ C.push(grid(
     ["11", "31.10.2026", "Abnahme durch Codex und Konzept der Sitzung: Grundlagen G43 und G44, Entscheidungen D110 bis D112 (Abschnitt 3.12), Status von D67 angepasst, offene Punkte aktualisiert"],
     ["12", "31.10.2026", "Indizes der Sammlung und Simulationstool: Grundlage G45, Entscheidungen D113 bis D115 (Abschnitt 3.13), Status von D110 angepasst, offene Punkte aktualisiert"],
     ["13", "31.10.2026", "Prüfung des Simulationstools: Grundlagen G46 und G47, Entscheidung D116 (Abschnitt 3.14), Status von D114 und D115 angepasst, offene Punkte aktualisiert"],
+    ["14", "03.11.2026", "Variante B des Kaffee-Blatts und didaktische Ergänzungen: Grundlagen G48 bis G51, Entscheidungen D117 bis D125 (Abschnitt 3.15), offene Punkte aktualisiert"],
   ],
   [1200, 1500, 6370], { firstColBold: true },
 ));

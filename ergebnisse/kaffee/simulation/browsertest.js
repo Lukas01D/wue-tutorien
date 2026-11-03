@@ -153,6 +153,10 @@ const zeilen = seite => seite.$$eval("#messtabelle tbody tr td[class=n]", r => r
     // Die Schritte folgen dem Wortlaut der Fragen: Standardwerte nur laden, wenn die Frage es verlangt (wie Studierende)
     const fragen = await seite.$$eval("ol.fragen li", l => l.map(x => x.textContent));
     pruefe(`${name} F: vier Fragen im Werkzeug`, fragen.length === 4);
+    // ICAP (Chi und Wylie 2014): jede Frage beginnt mit einer Vorhersage zu zweit, geprüft wird erst danach
+    pruefe(`${name} F: jede Frage beginnt mit einer Vorhersage zu zweit, dann prüfen`,
+           fragen.every(f => /^\S+\.\s+Sagen Sie erst zu zweit voraus und notieren Sie:/.test(f.trim()) &&
+                             f.indexOf("Prüfen Sie dann:") > f.indexOf("Sagen Sie erst zu zweit voraus")), fragen.map(f => f.slice(0, 40)).join(" | "));
     if (fragen[0].includes("Standardwerte")) await seite.click("#standard");   // Frage 1
     let best = [0, -1];
     for (let t = 1; t <= 120; t++) { await regler(seite, "tEnd", t); const d = await unterschied(seite); if (d > best[1]) best = [t, d]; }
