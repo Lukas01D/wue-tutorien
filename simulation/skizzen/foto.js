@@ -5,5 +5,6 @@ const { chromium } = require('playwright');
   await (await p.$('#laptop')).screenshot({ path: 'skizze_laptop_1366.png' });
   const h1 = await p.$('#handy1'), h2 = await p.$('#handy2');
   await h1.screenshot({ path: 'skizze_handy_start.png' }); await h2.screenshot({ path: 'skizze_handy_arbeit.png' });
+  await (await p.$('#vertiefung')).screenshot({ path: 'skizze_vertiefung.png' });
   await b.close();
 })();
