@@ -1,0 +1,23 @@
+{
+  "realeBedienelemente": 0,
+  "frames": [
+    {
+      "id": "laptop",
+      "breite": 1366,
+      "hoehe": 1378.65625
+    },
+    {
+      "id": "handy1",
+      "breite": 390,
+      "hoehe": 844
+    },
+    {
+      "id": "handy2",
+      "breite": 390,
+      "hoehe": 844
+    }
+  ],
+  "diagrammPosition": "relative",
+  "handyDiagrammHoehe": 293.703125,
+  "fremdeAnfragen": []
+}

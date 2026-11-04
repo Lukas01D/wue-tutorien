@@ -1,0 +1,20 @@
+== Konzept 2: Milch für Tasse 2 bei Raumtemperatur
+th2 32.10004, dT 1.94644 K; (Q2-Q1)/C_G = 3.85320 K; (Q2-Q1 + C_M (thM1-thM2))/C_G = 1.94644 K
+== Konzept 3: ungleiches kA (f1 = 1,05)
+dT(60) 2.98309 K, dT(90) richtig 1.35506 K, mit gemeinsamem Abklingfaktor 1.57380 K
+Maximum 2.9834 K bei 60.95 min: Tasse 1 32.899 °C, schwarz 33.544 °C; Wärmeströme 4.6084 und 4.6084 W
+  Vergleich nach 120 min: dT 0.6031 K
+  Vergleich nach 240 min: dT 0.0147 K
+  Vergleich nach 480 min: dT -0.0002 K
+== Konzept 1: Vorzeichen von Qdot2 - Qdot1 und Teilflächen
+Zugabe  30 min: Fläche positiv 3.2158 kJ, negativ 0.0000 kJ, Summe 3.2158 kJ, Q2-Q1 3.2158 kJ
+Zugabe  60 min: Fläche positiv 3.6987 kJ, negativ -0.0083 kJ, Summe 3.6904 kJ, Q2-Q1 3.6904 kJ
+Zugabe 120 min: Fläche positiv 3.6987 kJ, negativ -0.8055 kJ, Summe 2.8932 kJ, Q2-Q1 2.8932 kJ
+== Konzept 4: formaler Standardfehler der Ursprungsgeraden gegen tatsächliche Streuung
+Mittel kA 0.34025 W/K, tatsächliche Streuung 0.00175 W/K, mittlerer formaler Standardfehler 0.00106 W/K
+== Kontrolle der Tabelle in X4
+Standard        th1 34.04648 th2 30.19328 dT 3.85320 kA 0.340248
+Keramik 60      th1 34.04356 th2 30.96472 dT 3.07883 kA 0.444031
+Keramik 40      th1 41.79168 th2 38.81739 dT 2.97429 kA 0.444031
+Deckel          th1 44.65802 th2 41.14838 dT 3.50963 kA 0.190539
+Deckel Keramik  th1 45.08136 th2 42.25528 dT 2.82608 kA 0.248658
