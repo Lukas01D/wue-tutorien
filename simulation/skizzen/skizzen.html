@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><title>Skizzen Kaffee-Simulation</title>
+<style>
+:root{--ink:#142337;--muted:#5a6b7f;--line:#d8e1ea;--soft:#eef5fb;--navy:#102d49;--navy2:#173d5e;--hb:#39718e;--cyan:#a9d5ef;--t1:#8b5a2b;--t2:#222;--b3:#4a7fb0}
+*{box-sizing:border-box} body{margin:0;background:#e9ecef;font:14px/1.35 "Fira Sans",system-ui,sans-serif;color:var(--ink)}
+.frame{background:#fff;margin:16px;border:1px solid #9aa6b2;position:relative;overflow:hidden}
+.note{position:absolute;background:#fff6c9;border:1px solid #d9b84a;color:#5b4500;font-size:12px;padding:3px 6px;border-radius:3px;z-index:5}
+.kopf{background:var(--navy);color:#eef7fc;display:flex;align-items:center;gap:12px;padding:10px 20px}
+.logo{width:38px;height:38px;border-radius:4px;background:var(--cyan);color:var(--navy);display:grid;place-items:center;font-weight:700}
+.kopf small{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}.kopf b{font-size:19px}
+.kopf .re{margin-left:auto;font-size:12px;opacity:.85}
+.frage{background:var(--soft);border-bottom:1px solid var(--line);padding:10px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.frage .nr{font-weight:700;color:var(--hb)} .feld{border:1px solid #9aa6b2;border-radius:4px;background:#fff;padding:5px 8px;color:#8a96a3;min-width:120px}
+.btn{border:1px solid var(--navy2);border-radius:4px;padding:7px 10px;background:#eaf4fc;color:var(--navy2);font-weight:600;text-align:center}
+.btn.p{background:var(--navy);color:#fff}
+.box{border:1px dashed #8aa0b4;border-radius:4px;background:#fafcfe;padding:8px}
+.box h4{margin:0 0 6px;font-size:13px;color:var(--hb)}
+.tabs{display:flex;gap:16px;border-bottom:1px solid var(--line);padding:0 0 6px;font-weight:700;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.tabs span.a{color:var(--navy2);border-bottom:3px solid var(--navy2);padding-bottom:3px}
+.regler{display:grid;gap:6px}.r{font-size:12px}.r .bar{height:6px;background:#d3dce5;border-radius:3px;position:relative;margin:6px 60px 2px 0}
+.r .bar:after{content:"";position:absolute;left:var(--p,40%);top:-5px;width:16px;height:16px;border-radius:50%;background:var(--navy2)}
+.r .wert{float:right;border:1px solid var(--line);padding:0 6px;border-radius:3px;margin-top:-14px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12px}.kv b{display:block;font-size:15px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mt{border-collapse:collapse;font-size:12px}.mt td,.mt th{border:1px solid var(--line);padding:3px 8px}.mt th{background:var(--navy2);color:#fff}
+.mt td.e{color:#8a96a3}
+svg text{font-family:"Fira Sans",system-ui,sans-serif}
+.cap{font-size:12px;color:var(--muted)}
+.dim{position:absolute;inset:0;background:rgba(255,255,255,.72);display:grid;place-items:center}
+.karte{background:#fff;border:2px solid var(--navy2);border-radius:6px;padding:14px 16px;max-width:430px;box-shadow:0 4px 14px rgba(16,45,73,.18)}
+.karte h3{margin:0 0 6px;color:var(--navy2);font-size:16px}
+.wahl{display:flex;gap:8px;margin:8px 0}.wahl span{flex:1;border:1px solid var(--navy2);border-radius:4px;padding:8px 4px;text-align:center;font-weight:600;color:var(--navy2)}
+.sticky{position:relative;border-bottom:3px solid var(--cyan);background:#fff}
+</style></head><body>
+
+<!-- ===================== LAPTOP 1366 ===================== -->
+<div class="frame" id="laptop" style="width:1366px">
+  <div class="kopf"><div class="logo">WÜ</div><div><small>Tutorium 5 · Wärmebilanzen, instationär global</small><b>Kaffee mit Milch: Simulation</b></div>
+    <div class="re">Stand 2026-11 · Werte bleiben nur in diesem Browser</div></div>
+  <div class="frage"><span class="nr">Frage 2 von 5 · Milchtemperatur</span>
+    <span>Wie warm müsste die Milch sein, damit beide Tassen nach 60 min gleich warm sind?</span>
+    <span>Unsere Vorhersage:</span><span class="feld">°C</span><span class="btn p">Vorhersage festhalten, dann prüfen</span><span class="btn">◀</span><span class="btn">▶</span></div>
+  <div style="padding:14px 40px 20px">
+    <div style="display:flex;gap:8px;margin-bottom:10px"><span class="btn" style="background:#dcecf8">Temperatur</span><span class="btn">Energie</span><span class="btn">Messwerte linear (ln)</span>
+      <span class="cap" style="align-self:center;margin-left:8px">Ansicht des Diagramms (Reiter wie „Stationär · Instationär“ im Lernzentrum)</span></div>
+    <div style="display:grid;grid-template-columns:780px 1fr;gap:28px">
+      <div><svg id="dia" width="780" height="440"></svg>
+        <div class="cap">Kurven direkt beschriftet, Linienart zusätzlich zur Farbe, Schnittpunkt, Raumlinie, Messpunkte, blass: gemerkter Vergleichslauf</div></div>
+      <div style="display:grid;gap:8px;align-content:start">
+        <span class="btn p">Standardwerte (Aufgabe)</span><span class="btn">Wie im Versuch (40 min, Becher)</span>
+        <span class="btn">Lauf zum Vergleich merken</span><span class="btn">Vorhersage neu</span>
+        <div class="box" style="margin-top:8px"><h4>Energie bis zur Zugabe</h4><svg id="saeulen" width="230" height="170"></svg>
+          <div class="cap"><i>Q</i><sub>2</sub> − <i>Q</i><sub>1</sub> = 3,69 kJ entspricht 3,85 K Unterschied</div></div>
+        <div class="box"><h4>Bilanzraum</h4><svg id="bilanz" width="230" height="96"></svg></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 330px;gap:28px;margin-top:16px">
+      <div class="grid3">
+        <div class="regler"><h4 style="margin:0;color:var(--hb)">Milch</h4>
+          <div class="r">Zugabe in Tasse 2 nach <i>t</i><sub>Z</sub> ? <div class="bar" style="--p:48%"></div><span class="wert">60 min</span></div>
+          <div class="r">Milchtemperatur <i>ϑ</i><sub>M</sub> ? <div class="bar" style="--p:5%"></div><span class="wert">5,0 °C</span></div>
+          <div class="r">Milchmenge <i>V</i><sub>M</sub> ? <div class="bar" style="--p:26%"></div><span class="wert">30 ml</span></div>
+          <div class="r">☐ Milch für Tasse 2 bei Raumtemperatur</div></div>
+        <div class="regler"><h4 style="margin:0;color:var(--hb)">Tasse und Raum</h4>
+          <div class="r">Raumtemperatur <i>ϑ</i><sub>u</sub> ? <div class="bar" style="--p:50%"></div><span class="wert">20,0 °C</span></div>
+          <div class="r">Becher: ( ) ohne ( ) Keramik 300 g</div>
+          <div class="r">Deckel: ( ) offen ( ) mit Deckel (<i>kA</i> · 0,56)</div>
+          <div class="r">Weitere Größen ▸</div></div>
+        <div class="regler"><h4 style="margin:0;color:var(--hb)">Messung und <i>kA</i></h4>
+          <div class="r">Anfangstemperatur <i>ϑ</i><sub>K,0</sub> ? <div class="bar" style="--p:57%"></div><span class="wert">80,0 °C</span></div>
+          <div class="r">Messung nach 10 min ? <div class="bar" style="--p:62%"></div><span class="wert">67,0 °C</span></div>
+          <div class="r">Kaffeemenge <i>V</i><sub>K</sub> ? <div class="bar" style="--p:33%"></div><span class="wert">200 ml</span></div>
+          <div class="r"><i>kA</i> von Tasse 1 relativ ? <div class="bar" style="--p:50%"></div><span class="wert">100 %</span></div></div>
+      </div>
+      <div class="box" style="background:var(--soft);border-style:solid"><h4>Rechenwerte (nach 60 min)</h4>
+        <div class="kv"><span>Tasse 1 <i>ϑ</i><sub>1</sub><b>34,05 °C</b></span><span>Tasse 2 <i>ϑ</i><sub>2</sub><b>30,19 °C</b></span>
+        <span>Unterschied<b>3,85 K · Tasse 1 wärmer</b></span><span>Schnitt der Kurven<b>nach 55,8 min</b></span>
+        <span>abgegeben <i>Q</i><sub>1</sub> / <i>Q</i><sub>2</sub><b>34,88 / 38,57 kJ</b></span><span><i>kA</i> aus der Messung<b>0,3402 W/K</b></span>
+        <span>Mischtemperatur <i>ϑ</i><sub>1,0</sub><b>70,47 °C</b></span><span>Ihre Vorhersage<b>Tasse 1, etwa 3 K</b></span></div></div>
+    </div>
+    <div class="box" style="margin-top:16px"><h4>Messwerte aus dem Versuch (Messblatt)</h4>
+      <div style="display:flex;gap:24px;align-items:flex-start">
+      <table class="mt"><tr><th><i>t</i> in min</th><th>Becher 1 (sofort)</th><th>Becher 2 (Kühltasche)</th><th>Becher 3 (Glas)</th></tr>
+        <tr><td>0</td><td>71,0</td><td>80,5</td><td>80,0</td></tr><tr><td>10</td><td class="e">°C</td><td>68,0</td><td>67,5</td></tr>
+        <tr><td>20</td><td class="e">°C</td><td class="e">°C</td><td class="e">°C</td></tr><tr><td>30</td><td class="e">°C</td><td class="e">°C</td><td class="e">°C</td></tr>
+        <tr><td>40</td><td class="e">°C</td><td class="e">°C</td><td class="e">°C</td></tr></table>
+      <div style="display:grid;gap:8px;max-width:420px"><span class="r">Raum <span class="feld" style="min-width:60px">°C</span> Milch <span class="feld" style="min-width:60px">°C</span></span>
+        <span class="btn">Einstellungen aus den Messwerten übernehmen</span><span class="btn"><i>kA</i> aus allen Punkten (Ausgleichsgerade)</span>
+        <span class="btn">Beispielmessung laden</span><span class="cap">Zeilen alle 10 min wie im Versuch; Komma oder Punkt; Werte bleiben im Browser</span></div></div></div>
+    <div style="margin-top:18px"><div class="tabs"><span class="a">Probier aus</span><span>Ergebnisse lesen</span><span>Auflösungen</span><span>Parameter</span><span>Physikalisches Problem</span><span>Annahmen</span><span>Was die Simulation macht</span><span>Modell im Detail</span><span>So rechnet der Code</span></div>
+      <div class="cap" style="padding:8px 0">Reiterleiste wie im Lernzentrum; „Versuche“ heißt hier „Auflösungen“, damit es nicht mit dem Becherversuch verwechselt wird (Entscheidung der TL)</div></div>
+  </div>
+</div>
+
+<!-- ===================== HANDY 390 ===================== -->
+<div style="display:flex;gap:24px;margin:16px">
+<div class="frame" id="handy1" style="width:390px;height:844px;margin:0">
+  <div class="kopf" style="padding:8px 12px"><div class="logo" style="width:30px;height:30px">WÜ</div><div><small style="font-size:9px">Tutorium 5</small><b style="font-size:15px">Kaffee mit Milch</b></div></div>
+  <div style="padding:10px 12px;position:relative">
+    <svg id="diaH0" width="366" height="300"></svg>
+    <div class="dim" style="inset:10px 12px auto 12px;height:300px"><div class="karte" style="max-width:340px;padding:12px">
+      <h3>Erst vorhersagen</h3><div>Welche Tasse ist nach 60 min wärmer?</div>
+      <div class="wahl"><span>Tasse 1</span><span>Tasse 2</span><span>gleich</span></div>
+      <div class="r">um etwa <span class="feld" style="min-width:70px">K</span></div>
+      <div class="btn p" style="margin-top:8px">Kurven zeigen</div></div></div>
+    <div class="cap" style="margin-top:8px">Startzustand: Achsen, Raumlinie und Start bei 80 °C sichtbar, Ergebnis verdeckt. Die Vorhersage bleibt danach als Marke im Diagramm.</div>
+    <div class="frage" style="margin:10px -12px 0;padding:8px 12px"><span class="nr">Frage 1 von 5 · Zeitpunkt ▸</span></div>
+    <div style="display:grid;gap:8px;margin-top:10px"><span class="btn p">Standardwerte (Aufgabe)</span><span class="btn">Wie im Versuch</span></div>
+  </div>
+</div>
+<div class="frame" id="handy2" style="width:390px;height:844px;margin:0">
+  <div class="sticky" style="padding:6px 12px 6px"><svg id="diaH" width="366" height="236"></svg>
+    <div class="kv" style="grid-template-columns:1fr 1fr 1fr;font-size:11px"><span><i>ϑ</i><sub>1</sub><b>34,05 °C</b></span><span><i>ϑ</i><sub>2</sub><b>30,19 °C</b></span><span>Unterschied<b>3,85 K</b></span></div>
+    <div class="note" style="right:6px;top:6px">Bild bleibt oben (angeheftet)</div></div>
+  <div style="padding:10px 12px;display:grid;gap:10px">
+    <div class="frage" style="margin:0 -12px;padding:8px 12px;display:block"><span class="nr">Frage 1 von 5 · Zeitpunkt</span><div style="font-size:12px">Bei welchem Zeitpunkt der Zugabe ist der Unterschied am größten?</div>
+      <div style="display:flex;gap:6px;margin-top:6px"><span class="feld" style="min-width:90px">min</span><span class="btn p" style="flex:1">Festhalten, dann prüfen</span></div></div>
+    <div class="regler"><h4 style="margin:0;color:var(--hb)">Milch ▾</h4>
+      <div class="r">Zugabe in Tasse 2 nach <i>t</i><sub>Z</sub><div class="bar" style="--p:48%;margin-right:96px"></div><span class="wert">− 60 min +</span></div>
+      <div class="r">Milchtemperatur <i>ϑ</i><sub>M</sub><div class="bar" style="--p:5%;margin-right:96px"></div><span class="wert">− 5,0 °C +</span></div>
+      <div class="r">Milchmenge <i>V</i><sub>M</sub><div class="bar" style="--p:26%;margin-right:96px"></div><span class="wert">− 30 ml +</span></div></div>
+    <div class="btn" style="text-align:left">Tasse und Raum ▸</div><div class="btn" style="text-align:left">Messung und <i>kA</i> ▸</div>
+    <div class="btn" style="text-align:left">Rechenwerte ▸</div><div class="btn" style="text-align:left">Messwerte aus dem Versuch ▸</div>
+    <div class="btn" style="text-align:left">Erklärungen (Probier aus, Annahmen, Modell …) ▸</div>
+    <div class="cap">Am Handy: eine Spalte, Gruppen aufklappbar, Regler mit Minus- und Plusknopf (mindestens 44 px), Reiter als aufklappbare Abschnitte</div>
+  </div>
+</div>
+</div>
+
+<script>
+// Kurven aus dem Modell der Aufgabe (nur für die Skizze; Standardwerte)
+const C_K=200e-6*1000*4180, C_M=30e-6*1030*3940, C_G=C_K+C_M, TU=20, TK0=80, TM=5;
+const kA=-C_K/600*Math.log((67-TU)/(TK0-TU)), T10=(C_K*TK0+C_M*TM)/C_G;
+const k1=t=>TU+(T10-TU)*Math.exp(-kA*t*60/C_G), k2=t=>TU+(TK0-TU)*Math.exp(-kA*t*60/C_K);
+const kB1=t=>{const CKT=C_K+255,CGT=C_G+255,kAb=-CKT/600*Math.log(47/60),T=(CKT*TK0+C_M*TM)/CGT;return TU+(T-TU)*Math.exp(-kAb*t*60/CGT)};
+const kB2=t=>{const CKT=C_K+255,kAb=-CKT/600*Math.log(47/60);return TU+(TK0-TU)*Math.exp(-kAb*t*60/CKT)};
+function dia(id,W,H,opt={}){const s=document.getElementById(id),L=44,R=10,O=10,U=36,xm=62,y0=15,y1=85;
+ const X=t=>L+(W-L-R)*t/xm, Y=v=>O+(H-O-U)*(y1-v)/(y1-y0); let h='';
+ for(let v=20;v<=80;v+=10)h+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#ecebe7"/><text x="${L-6}" y="${Y(v)+4}" font-size="11" text-anchor="end" fill="#5a6b7f">${v}</text>`;
+ for(let t=0;t<=60;t+=10)h+=`<text x="${X(t)}" y="${H-U+15}" font-size="11" text-anchor="middle" fill="#5a6b7f">${t}</text>`;
+ h+=`<line x1="${L}" x2="${W-R}" y1="${H-U}" y2="${H-U}" stroke="#5a6b7f"/><line x1="${L}" x2="${L}" y1="${O}" y2="${H-U}" stroke="#5a6b7f"/>`;
+ h+=`<text x="${(L+W)/2}" y="${H-4}" font-size="12" text-anchor="middle">Zeit t in min</text><text x="12" y="${(H-U)/2}" font-size="12" text-anchor="middle" transform="rotate(-90 12 ${(H-U)/2})">Temperatur ϑ in °C</text>`;
+ h+=`<line x1="${L}" x2="${W-R}" y1="${Y(TU)}" y2="${Y(TU)}" stroke="#9a9993" stroke-dasharray="6 5"/><text x="${W-R-4}" y="${Y(TU)-5}" font-size="11" text-anchor="end" fill="#5a6b7f">Raum 20 °C</text>`;
+ if(opt.verdeckt){h+=`<circle cx="${X(0)}" cy="${Y(80)}" r="4" fill="#222"/><text x="${X(0)+8}" y="${Y(80)+4}" font-size="11">80 °C</text>`;s.innerHTML=h;return;}
+ const pl=(f,c,d,w,op)=>{let p=[];for(let i=0;i<=120;i++){const t=60*i/120;p.push(X(t).toFixed(1)+','+Y(f(t)).toFixed(1))}return `<polyline points="${p.join(' ')}" fill="none" stroke="${c}" stroke-width="${w}" ${d?`stroke-dasharray="${d}"`:''} opacity="${op}"/>`};
+ if(opt.vergleich){h+=pl(kB1,'#8b5a2b','',2,0.3)+pl(kB2,'#222','8 4',2,0.3);}
+ h+=pl(k2,'#222','9 5',2.6,1)+pl(k1,'#8b5a2b','',2.8,1);
+ h+=`<line x1="${X(0)}" x2="${X(0)}" y1="${Y(80)}" y2="${Y(T10)}" stroke="#8b5a2b" stroke-dasharray="2 3" stroke-width="2"/>`;
+ const T2K=k2(60),T2=(C_K*T2K+C_M*TM)/C_G;h+=`<line x1="${X(60)}" x2="${X(60)}" y1="${Y(T2K)}" y2="${Y(T2)}" stroke="#222" stroke-dasharray="2 3" stroke-width="2"/><circle cx="${X(60)}" cy="${Y(T2)}" r="4" fill="#222"/><circle cx="${X(60)}" cy="${Y(k1(60))}" r="4" fill="#8b5a2b"/>`;
+ const ts=55.8;h+=`<circle cx="${X(ts)}" cy="${Y(k1(ts))}" r="5" fill="#fff" stroke="#222" stroke-width="1.6"/>`;
+ h+=`<text x="${X(14)}" y="${Y(k1(14))+24}" font-size="13" fill="#8b5a2b" font-weight="700">Tasse 1: Milch sofort</text><text x="${X(9)}" y="${Y(k2(9))-14}" font-size="13" fill="#222" font-weight="700">Tasse 2: Milch nach 60 min</text>`;
+ if(opt.mess){[[0,71,'●','#8b5a2b'],[0,80.5,'■','#222'],[10,68,'■','#222'],[0,80,'▲','#4a7fb0'],[10,67.5,'▲','#4a7fb0']].forEach(([t,v,z,c])=>h+=`<text x="${X(t)+(t?0:6)}" y="${Y(v)+5}" font-size="13" text-anchor="middle" fill="${c}">${z}</text>`);}
+ if(opt.vorh){h+=`<rect x="${X(41)}" y="${Y(29.5)-13}" width="${X(59)-X(41)}" height="20" rx="3" fill="#e8f5ef" stroke="#1e8b64"/><text x="${X(50)}" y="${Y(29.5)+1}" font-size="11" text-anchor="middle" fill="#14603f">Ihre Vorhersage: Tasse 1, etwa 3 K</text>`;}
+ if(opt.vergleich){h+=`<text x="${X(3)}" y="${Y(27)}" font-size="11" fill="#7a7a7a">blass: gemerkter Lauf (mit Becher)</text>`}
+ s.innerHTML=h;}
+dia('dia',780,440,{mess:true,vorh:true,vergleich:true}); dia('diaH0',366,300,{verdeckt:true}); dia('diaH',366,236,{mess:true});
+// Säulen
+(function(){const s=document.getElementById('saeulen');const Q1=34.88,Q2=38.57,H=130,B=150,Y=q=>B-H*q/45;
+ let h=`<line x1="30" x2="220" y1="${B}" y2="${B}" stroke="#5a6b7f"/>`;
+ h+=`<rect x="55" y="${Y(Q1)}" width="50" height="${B-Y(Q1)}" fill="#8b5a2b"/><rect x="140" y="${Y(Q2)}" width="50" height="${B-Y(Q2)}" fill="#fff" stroke="#222" stroke-width="2" style="fill:url(#sch)"/>`;
+ h+=`<defs><pattern id="sch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#222" stroke-width="2"/></pattern></defs>`;
+ h+=`<text x="80" y="${Y(Q1)-5}" font-size="12" text-anchor="middle">34,88 kJ</text><text x="165" y="${Y(Q2)-5}" font-size="12" text-anchor="middle">38,57 kJ</text>`;
+ h+=`<text x="80" y="${B+14}" font-size="12" text-anchor="middle">Tasse 1</text><text x="165" y="${B+14}" font-size="12" text-anchor="middle">Tasse 2</text>`;s.innerHTML=h})();
+// Bilanzraum
+(function(){const s=document.getElementById('bilanz');let h='';
+ [[30,'Tasse 1','#8b5a2b'],[140,'Tasse 2','#222']].forEach(([x,n,c])=>{h+=`<path d="M${x} 22 L${x+6} 70 L${x+46} 70 L${x+52} 20" fill="#f3e9df" stroke="${c}" stroke-width="2"/><rect x="${x-6}" y="12" width="64" height="66" fill="none" stroke="#1f4e9e" stroke-dasharray="5 4"/><path d="M${x+58} 40 h22" stroke="#b03a2e" stroke-width="${c=='#222'?3.2:2.4}" marker-end="url(#pf)"/><text x="${x+26}" y="90" font-size="11" text-anchor="middle">${n}</text>`});
+ h=`<defs><marker id="pf" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#b03a2e"/></marker></defs>`+h+`<text x="115" y="8" font-size="10" text-anchor="middle" fill="#b03a2e">Q̇ab = kA (ϑ − ϑu), Pfeil wächst mit Q̇</text>`;s.innerHTML=h})();
+</script></body></html>

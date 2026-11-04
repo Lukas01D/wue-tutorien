@@ -1,0 +1,4 @@
+ohne Becher, exakt: Punkte [67.0, 56.82, 48.84, 42.59] -> kA 0.3402 W/K (s 0.0000), gleichwertiger Messwert nach 10 min 67.00 °C
+ohne Becher, n = 1,25: Punkte [67.0, 57.34, 50.04, 44.43] -> kA 0.3187 W/K (s 0.0042), gleichwertiger Messwert nach 10 min 67.73 °C
+mit Becher 300 g, exakt: Punkte [67.0, 56.82, 48.84, 42.59] -> kA 0.4440 W/K (s 0.0000), gleichwertiger Messwert nach 10 min 67.00 °C
+mit Becher 300 g, n = 1,25: Punkte [67.0, 57.34, 50.04, 44.43] -> kA 0.4159 W/K (s 0.0055), gleichwertiger Messwert nach 10 min 67.73 °C
