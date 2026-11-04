@@ -1,0 +1,21 @@
+Becher Pappe 11 J/K:  dT 3.81 K, th1 34.05
+Porzellan 332 J/K:    dT 2.90 K, th1 34.04
+kA Tasse 1 +5 %:     th1 33.18, dT 2.98 K
+kA Tasse 1 +10 %:    th1 32.36, dT 2.17 K
+kA beider x 0.9: th1 35.96, dT 3.860 K (Standard 3.853)
+kA beider x 1.1: th1 32.36, dT 3.816 K (Standard 3.853)
+Milch 60 °C: größtes dT 0.34 K bei Zugabe nach 14 min; nach 60 min -1.19 K
+Trinken nach 60 min, Zugabe nach 10 min: dT 0.57 K
+Trinken nach 60 min, Zugabe nach 30 min: dT 1.77 K
+Trinken nach 60 min, Zugabe nach 60 min: dT 3.85 K
+Becher kalt: Ausgleich 65.98 °C, nach 10 min 56.01 °C, Zwei-Punkte-kA ohne Becher 0.7112 W/K (x 2.09)
+Modell nichtlinear(1.25): th1 36.84, th2 32.63, dT 4.21 K
+Modell zwei_tassen(kA1 1,05): th1 33.18, dT 2.98
+Modell becher(310 g, 1070): dT 2.90
+Becher: th1 34.0436, th2 30.9647, dT 3.0788 K, (C_G + C_B) dT = 3.7338 kJ
+Becher, Zugabe 60, Vergleich 90: dT 1.59 K
+ohne Becher, Zugabe 40, Vergleich 50: dT 2.99 K
+mit Becher, Zugabe 40, Vergleich 50: th1 37.49, th2 35.11, dT 2.39 K
+ohne Becher, Zugabe 40, Vergleich 60: dT 2.42 K
+mit Becher, Zugabe 40, Vergleich 60: th1 34.04, th2 32.13, dT 1.92 K
+Qdot bei 60 min: 4.78 W und 4.72 W
