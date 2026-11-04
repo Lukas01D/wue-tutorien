@@ -474,6 +474,17 @@ z("Referenz: Deckel im Modell (beta*A = 0): theta(10 min)", th10_ohne, "°C", "{
 z("Referenz: Qdot_v bei 79 °C", ref["qv79"], "W", "{:.2f}")
 z("Referenz: Qdot gesamt bei 79 °C", ref["qtot79"], "W", "{:.2f}")
 z("Condoret (2007, Tab. 2, Sekundärquelle): 12,0 / 22,7", 100 * 12.0 / 22.7, "%", "{:.1f}")
+print("  Referenz: Wärmeströme über der Temperatur (Verdunstung, trocken, Anteil, scheinbares kA = Qdot/(theta - theta_u)):")
+for th in (80.0, 70.0, 60.0, 50.0, 40.0, 30.0):
+    qv = ref["bA"] * (rho_v(th) - 0.5 * rho_v(TH_U)) * dh_v(th)
+    qt = ref["kA_tr"] * (th - TH_U)
+    print(f"    {th:4.0f} °C: Qdot_v = {qv:6.2f} W, Qdot_tr = {qt:6.2f} W, Anteil {100 * qv / (qv + qt):5.1f} %, kA_schein = {(qv + qt) / (th - TH_U):.4f} W/K")
+print("  Stefan-Faktor ln((1 - w_u)/(1 - w_s)) / (w_s - w_u) (hohe Stoffübergangsraten, nicht im Modell):")
+for th in (80.0, 60.0, 40.0):
+    def w(thx, pv):
+        return pv * MW / ((101325.0 - pv) * 0.028965 + pv * MW)
+    ws, wu = w(th, p_s(th)), w(TH_U, 0.5 * p_s(TH_U))
+    print(f"    {th:4.0f} °C: w_s = {ws:.4f}, w_u = {wu:.4f}, Faktor {math.log((1 - wu) / (1 - ws)) / (ws - wu):.3f}")
 z("Obergrenze der Masse: Q_2 / Delta h_v(50 °C), alle Wärme verdunstet", r0["Q2"] / dh_v(50) * 1000, "g", "{:.1f}")
 test("Verdunstung, Referenzvariante (nur Größenordnung, nicht gegen Messung getestet)",
      f"beta*A = {ref['bA']:.3e} m³/s, phi = 0,5, kA_tr = {ref['kA_tr']:.4f} W/K (aus 67 °C nach 10 min), RK4 2 s",

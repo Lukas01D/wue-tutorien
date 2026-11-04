@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de"><head><meta charset="utf-8"><title>Skizzen Kaffee-Simulation</title>
 <style>
-:root{--ink:#142337;--muted:#5a6b7f;--line:#d8e1ea;--soft:#eef5fb;--navy:#102d49;--navy2:#173d5e;--hb:#39718e;--cyan:#a9d5ef;--t1:#8b5a2b;--t2:#222;--b3:#4a7fb0}
+:root{--ink:#142337;--muted:#5a6b7f;--line:#d8e1ea;--soft:#eef5fb;--navy:#102d49;--navy2:#173d5e;--hb:#39718e;--cyan:#a9d5ef;--t1:#8b5a2b;--t2:#222;--b3:#3d70a3}
 *{box-sizing:border-box} body{margin:0;background:#e9ecef;font:14px/1.35 "Fira Sans",system-ui,sans-serif;color:var(--ink)}
 .frame{background:#fff;margin:16px;border:1px solid #9aa6b2;position:relative;overflow:hidden}
 .note{position:absolute;background:#fff6c9;border:1px solid #d9b84a;color:#5b4500;font-size:12px;padding:3px 6px;border-radius:3px;z-index:5}
@@ -60,17 +60,13 @@ svg text{font-family:"Fira Sans",system-ui,sans-serif}
           <div class="r">Zugabe in Tasse 2 nach <i>t</i><sub>Z</sub> ? <div class="bar" style="--p:48%"></div><span class="wert">60 min</span></div>
           <div class="r">Milchtemperatur <i>ϑ</i><sub>M</sub> ? <div class="bar" style="--p:5%"></div><span class="wert">5,0 °C</span></div>
           <div class="r">Milchmenge <i>V</i><sub>M</sub> ? <div class="bar" style="--p:26%"></div><span class="wert">30 ml</span></div>
-          <div class="r">☐ Milch für Tasse 2 bei Raumtemperatur</div></div>
+          </div>
         <div class="regler"><h4 style="margin:0;color:var(--hb)">Tasse und Raum</h4>
-          <div class="r">Raumtemperatur <i>ϑ</i><sub>u</sub> ? <div class="bar" style="--p:50%"></div><span class="wert">20,0 °C</span></div>
-          <div class="r">Becher: ( ) ohne ( ) Keramik 300 g</div>
-          <div class="r">Deckel: ( ) offen ( ) mit Deckel (<i>kA</i> · 0,56)</div>
-          <div class="r">Weitere Größen ▸</div></div>
-        <div class="regler"><h4 style="margin:0;color:var(--hb)">Messung und <i>kA</i></h4>
-          <div class="r">Anfangstemperatur <i>ϑ</i><sub>K,0</sub> ? <div class="bar" style="--p:57%"></div><span class="wert">80,0 °C</span></div>
-          <div class="r">Messung nach 10 min ? <div class="bar" style="--p:62%"></div><span class="wert">67,0 °C</span></div>
-          <div class="r">Kaffeemenge <i>V</i><sub>K</sub> ? <div class="bar" style="--p:33%"></div><span class="wert">200 ml</span></div>
-          <div class="r"><i>kA</i> von Tasse 1 relativ ? <div class="bar" style="--p:50%"></div><span class="wert">100 %</span></div></div>
+          <div class="btn" style="text-align:left;color:#5a6b7f;border-color:#b7c3cf;background:#fff">Raumtemperatur, Becher, Deckel: ab Frage 3 ▸</div>
+          <div class="cap">Stufen: Frage 1 zeigt nur den Zeitpunkt der Zugabe, Frage 2 dazu die Milch, Frage 3 Tasse und Raum, Frage 4 das Messblatt.</div></div>
+        <div class="regler"><h4 style="margin:0;color:var(--hb)">Weitere Größen</h4>
+          <div class="btn" style="text-align:left;color:#5a6b7f;border-color:#b7c3cf;background:#fff">Anfangstemperatur, Messung nach 10 min, Kaffeemenge, <i>kA</i> von Tasse 1, Bechermasse, Milch für Tasse 2 bei Raumtemperatur ▸</div>
+          <div class="r" style="margin-top:6px"><span class="btn">Alle Regler zeigen</span></div></div>
       </div>
       <div class="box" style="background:var(--soft);border-style:solid"><h4>Rechenwerte (nach 60 min)</h4>
         <div class="kv"><span>Tasse 1 <i>ϑ</i><sub>1</sub><b>34,05 °C</b></span><span>Tasse 2 <i>ϑ</i><sub>2</sub><b>30,19 °C</b></span>
@@ -140,7 +136,7 @@ function dia(id,W,H,opt={}){const s=document.getElementById(id),L=44,R=10,O=10,U
  for(let t=0;t<=60;t+=10)h+=`<text x="${X(t)}" y="${H-U+15}" font-size="11" text-anchor="middle" fill="#5a6b7f">${t}</text>`;
  h+=`<line x1="${L}" x2="${W-R}" y1="${H-U}" y2="${H-U}" stroke="#5a6b7f"/><line x1="${L}" x2="${L}" y1="${O}" y2="${H-U}" stroke="#5a6b7f"/>`;
  h+=`<text x="${(L+W)/2}" y="${H-4}" font-size="12" text-anchor="middle">Zeit t in min</text><text x="12" y="${(H-U)/2}" font-size="12" text-anchor="middle" transform="rotate(-90 12 ${(H-U)/2})">Temperatur ϑ in °C</text>`;
- h+=`<line x1="${L}" x2="${W-R}" y1="${Y(TU)}" y2="${Y(TU)}" stroke="#9a9993" stroke-dasharray="6 5"/><text x="${W-R-4}" y="${Y(TU)-5}" font-size="11" text-anchor="end" fill="#5a6b7f">Raum 20 °C</text>`;
+ h+=`<line x1="${L}" x2="${W-R}" y1="${Y(TU)}" y2="${Y(TU)}" stroke="#8a8984" stroke-width="1.5" stroke-dasharray="1.5 4" stroke-linecap="round"/><text x="${W-R-4}" y="${Y(TU)-5}" font-size="11" text-anchor="end" fill="#5a6b7f">Raum 20 °C</text>`;
  if(opt.verdeckt){h+=`<circle cx="${X(0)}" cy="${Y(80)}" r="4" fill="#222"/><text x="${X(0)+8}" y="${Y(80)+4}" font-size="11">80 °C</text>`;s.innerHTML=h;return;}
  const pl=(f,c,d,w,op)=>{let p=[];for(let i=0;i<=120;i++){const t=60*i/120;p.push(X(t).toFixed(1)+','+Y(f(t)).toFixed(1))}return `<polyline points="${p.join(' ')}" fill="none" stroke="${c}" stroke-width="${w}" ${d?`stroke-dasharray="${d}"`:''} opacity="${op}"/>`};
  if(opt.vergleich){h+=pl(kB1,'#8b5a2b','',2,0.3)+pl(kB2,'#222','8 4',2,0.3);}
@@ -148,8 +144,8 @@ function dia(id,W,H,opt={}){const s=document.getElementById(id),L=44,R=10,O=10,U
  h+=`<line x1="${X(0)}" x2="${X(0)}" y1="${Y(80)}" y2="${Y(T10)}" stroke="#8b5a2b" stroke-dasharray="2 3" stroke-width="2"/>`;
  const T2K=k2(60),T2=(C_K*T2K+C_M*TM)/C_G;h+=`<line x1="${X(60)}" x2="${X(60)}" y1="${Y(T2K)}" y2="${Y(T2)}" stroke="#222" stroke-dasharray="2 3" stroke-width="2"/><circle cx="${X(60)}" cy="${Y(T2)}" r="4" fill="#222"/><circle cx="${X(60)}" cy="${Y(k1(60))}" r="4" fill="#8b5a2b"/>`;
  const ts=55.8;h+=`<circle cx="${X(ts)}" cy="${Y(k1(ts))}" r="5" fill="#fff" stroke="#222" stroke-width="1.6"/>`;
- h+=`<text x="${X(14)}" y="${Y(k1(14))+24}" font-size="13" fill="#8b5a2b" font-weight="700">Tasse 1: Milch sofort</text><text x="${X(9)}" y="${Y(k2(9))-14}" font-size="13" fill="#222" font-weight="700">Tasse 2: Milch nach 60 min</text>`;
- if(opt.mess){[[0,71,'●','#8b5a2b'],[0,80.5,'■','#222'],[10,68,'■','#222'],[0,80,'▲','#4a7fb0'],[10,67.5,'▲','#4a7fb0']].forEach(([t,v,z,c])=>h+=`<text x="${X(t)+(t?0:6)}" y="${Y(v)+5}" font-size="13" text-anchor="middle" fill="${c}">${z}</text>`);}
+ h+=`<text x="${X(2)}" y="${Y(48)}" font-size="13" fill="#8b5a2b" font-weight="700">Tasse 1: Milch sofort</text><text x="${X(9)}" y="${Y(k2(9))-14}" font-size="13" fill="#222" font-weight="700">Tasse 2: Milch nach 60 min</text>`;
+ if(opt.mess){[[0,71,'●','#8b5a2b'],[0,80.5,'■','#222'],[10,68,'■','#222'],[0,80,'▲','#3d70a3'],[10,67.5,'▲','#3d70a3']].forEach(([t,v,z,c])=>h+=`<text x="${X(t)+(t?0:6)}" y="${Y(v)+5}" font-size="13" text-anchor="middle" fill="${c}">${z}</text>`);}
  if(opt.vorh){h+=`<rect x="${X(41)}" y="${Y(29.5)-13}" width="${X(59)-X(41)}" height="20" rx="3" fill="#e8f5ef" stroke="#1e8b64"/><text x="${X(50)}" y="${Y(29.5)+1}" font-size="11" text-anchor="middle" fill="#14603f">Ihre Vorhersage: Tasse 1, etwa 3 K</text>`;}
  if(opt.vergleich){h+=`<text x="${X(3)}" y="${Y(27)}" font-size="11" fill="#7a7a7a">blass: gemerkter Lauf (mit Becher)</text>`}
  s.innerHTML=h;}

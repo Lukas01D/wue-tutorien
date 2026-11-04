@@ -130,6 +130,17 @@
   Referenz: Qdot_v bei 79 °C                                        11.93 W
   Referenz: Qdot gesamt bei 79 °C                                   21.31 W
   Condoret (2007, Tab. 2, Sekundärquelle): 12,0 / 22,7               52.9 %
+  Referenz: Wärmeströme über der Temperatur (Verdunstung, trocken, Anteil, scheinbares kA = Qdot/(theta - theta_u)):
+      80 °C: Qdot_v =  12.40 W, Qdot_tr =   9.53 W, Anteil  56.5 %, kA_schein = 0.3655 W/K
+      70 °C: Qdot_v =   8.36 W, Qdot_tr =   7.95 W, Anteil  51.3 %, kA_schein = 0.3261 W/K
+      60 °C: Qdot_v =   5.43 W, Qdot_tr =   6.36 W, Anteil  46.1 %, kA_schein = 0.2947 W/K
+      50 °C: Qdot_v =   3.36 W, Qdot_tr =   4.77 W, Anteil  41.4 %, kA_schein = 0.2710 W/K
+      40 °C: Qdot_v =   1.94 W, Qdot_tr =   3.18 W, Anteil  37.9 %, kA_schein = 0.2561 W/K
+      30 °C: Qdot_v =   1.00 W, Qdot_tr =   1.59 W, Anteil  38.7 %, kA_schein = 0.2593 W/K
+  Stefan-Faktor ln((1 - w_u)/(1 - w_s)) / (w_s - w_u) (hohe Stoffübergangsraten, nicht im Modell):
+      80 °C: w_s = 0.3536, w_u = 0.0072, Faktor 1.239
+      60 °C: w_s = 0.1323, w_u = 0.0072, Faktor 1.077
+      40 °C: w_s = 0.0466, w_u = 0.0072, Faktor 1.028
   Obergrenze der Masse: Q_2 / Delta h_v(50 °C), alle Wärme verdunstet         16.2 g
 
 ==============================================================================
