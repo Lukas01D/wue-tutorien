@@ -66,6 +66,10 @@ f) Am nächsten Tag gibt es Milchkaffee: Die Milch wird je Tasse kurz vorher auf
 g) *Vertiefung:* Die Tassen sind vorgewärmte Keramikbecher, die immer die Temperatur ihres Inhalts haben, auch beim Zugießen der Milch. Passen Sie Bilanzraum und Bilanz aus b) an, bestimmen Sie $kA$ neu und berechnen Sie $\vartheta_1$ und $\vartheta_2$ wie in d). Gilt die Aussage aus d) weiter?\
    $kA = 0{,}4440\,\mathrm{W/K}$, $\quad\vartheta_1 = 34{,}04\,\mathrm{°C}$, $\quad\vartheta_2 = 30{,}96\,\mathrm{°C}$
 
+**[Hausaufgabe]{.underline}**
+
+Wie groß ist der Anteil der Verdunstung an der Wärmeabgabe Ihrer Tasse? Entwerfen Sie mit Küchenmaterial einen Versuch, mit dem Sie ihn bestimmen. Was messen Sie, und wie berechnen Sie daraus den Anteil?
+
 ::: seitenumbruch
 :::
 
@@ -145,6 +149,10 @@ Annahme für Tasse 1: $kA$ ist mit und ohne Milch gleich. Das ist plausibel, wei
 
 Zur Einordnung: Zeitkonstante $\tau = m\,c_p/kA$ ohne Milch $41{,}0\,\mathrm{min}$, mit Milch $46{,}9\,\mathrm{min}$; nach der Zeit $\tau$ hat der schwarze Kaffee noch 42,1 °C. Das passt zu Messungen an einem offenen, nicht umgerührten Keramikbecher ($\tau \approx 41\,\mathrm{min}$ aus der Steigung in Abb. 6 bei Ferreira 2025). Bezogen auf rund 201 cm² Oberfläche ist $kA/A \approx 17\,\mathrm{W/(m^2\,K)}$: freie Konvektion, Strahlung und Verdunstung zusammen.
 
+```{=latex}
+\needspace{9\baselineskip}
+```
+
 **d)** Tasse 1: Anfangsbedingung $T(0\,\mathrm{s}) = T_{1,0}$ und $m\,c_p = m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}$:
 $$T_1 = T_\mathrm{u} + (T_{1,0} - T_\mathrm{u})\cdot \exp\left(-\frac{kA\,t}{m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}}\right)$$
 $$T_1 = 293{,}15\,\mathrm{K} + 50{,}47\,\mathrm{K} \cdot 0{,}2783 = 307{,}20\,\mathrm{K} = 34{,}05\,\mathrm{°C}$$
@@ -201,7 +209,7 @@ $$T_2 = \frac{(m_\mathrm{K} c_{p,\mathrm{K}} + C_\mathrm{B})\,T_\mathrm{K}(60\,\
 Die Aussage aus d) gilt weiter, der Unterschied sinkt aber von 3,85 K auf 3,08 K. Beide Anteile aus der Zerlegung in f) werden kleiner: Die Milch erhöht die Wärmekapazität nur noch um 11 % statt 15 % (Kaffee-Effekt 1,98 statt 2,48 K), und der Becher gibt beim Mischen Wärme an die kalte Milch ab und dämpft den Mischsprung (Milch-Effekt 1,10 statt 1,38 K).
 
 ```{=latex}
-\needspace{7\baselineskip}
+\needspace{19\baselineskip}
 ```
 
 **[Quellen der Arbeitswerte]{.underline}**

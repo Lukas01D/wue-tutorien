@@ -1,9 +1,9 @@
 -- Lua-Filter der Aufgabensammlung (LaTeX und Word)
 -- 1) ::: center und ::: seitenumbruch; Blatttitel („Tutorium …“) 18 pt
--- 2) Bausteine (Ausgangssituation, Frage n, Aufgabe n, Versuch, Lösung, Hinweise, Quellen) 14 pt, 18 pt davor und 6 pt danach
+-- 2) Bausteine (Ausgangssituation, Frage n, Aufgabe n, Versuch, Lösung, Hinweise, Quellen, Hausaufgabe) 14 pt, 18 pt davor und 6 pt danach
 --    (mit \parskip von 4 pt: 14 pt davor, 2 pt danach zusätzlich)
 -- 3) Bild und folgende Bildunterschrift („Abb. …“) zentriert und zusammen (LaTeX: minipage; Word: Formatvorlagen)
--- 4) LaTeX: vor „Gegebene Größen“, „Annahmen“ und „Aufgabenstellung“ genug Platz auf der Seite (needspace)
+-- 4) LaTeX: vor „Gegebene Größen“, „Annahmen“, „Aufgabenstellung“ und fetten Zwischenzeilen genug Platz auf der Seite (needspace)
 -- 5) LaTeX: Datenzeilen der Versuchstabelle (erste Kopfzelle „Becher“) mindestens 10 mm hoch
 
 local function txt(el)
@@ -51,7 +51,7 @@ local function nur_bild(b)
 end
 
 local BAUSTEINE = { "^Ausgangssituation", "^Frage %d", "^Aufgabe %d", "^Zusatzaufgabe %d", "^Zusatzaufgaben",
-                    "^Versuch zu", "^Lösung", "^Hinweise für", "^Quellen der" }
+                    "^Versuch zu", "^Lösung", "^Hinweise für", "^Quellen der", "^Hausaufgabe" }
 
 local function ist_baustein(b)
   -- Bausteine sind fett und unterstrichen geschrieben: **[Frage 1]{.underline}**
@@ -71,9 +71,10 @@ local function rest_von(b)
   return rest
 end
 
-local function platz(out, n)
+local function platz(out, n, befehl)
   -- needspace vor dem Block einfügen; steht davor eine Überschrift, dann vor die Überschrift
-  local raw = pandoc.RawBlock("latex", "\\needspace{" .. n .. "\\baselineskip}")
+  -- (befehl „platzfrei“ aus kopf.tex: ohne bevorzugte Umbruchstelle, für fette Zwischenzeilen)
+  local raw = pandoc.RawBlock("latex", "\\" .. (befehl or "needspace") .. "{" .. n .. "\\baselineskip}")
   if #out > 0 and out[#out].t == "Header" then
     table.insert(out, #out, raw)
   else
@@ -115,6 +116,10 @@ local function zusammenhalten(blocks)
           platz(out, 6)
         elseif ist_baustein(b) then
           platz(out, 5)
+        elseif #b.content == 1 and b.content[1].t == "Strong" and nxt and nxt.t ~= "Header" then
+          -- fette Zwischenzeile allein im Absatz (z. B. „Quellen Tutorium 2: …“): nicht allein am Seitenende
+          -- Platz für Zwischenzeile und die ersten drei Zeilen (nicht teilbar), nach einer Überschrift auch für diese
+          platz(out, (#out > 0 and out[#out].t == "Header") and 8 or 6, "platzfrei")
         end
       end
       if ist_baustein(b) then

@@ -34,6 +34,13 @@
 \widowpenalty=10000
 \clubpenalty=10000
 \displaywidowpenalty=10000
+% kein Seitenwechsel nach einer getrennten Zeile (deutsche Silbentrennung, TL 03.11.2026)
+\brokenpenalty=10000
+% wie \Needspace, aber ohne \penalty-100: neuer Platz nur, wenn er fehlt, keine bevorzugte Umbruchstelle
+% (bei \raggedbottom bricht TeX sonst dort um und lässt die Seite halb leer); für fette Zwischenzeilen
+\makeatletter
+\newcommand{\platzfrei}[1]{\par\begingroup\setlength{\dimen@}{#1}\dimen@ii\pagegoal\advance\dimen@ii-\pagetotal\ifdim\dimen@>\dimen@ii\ifdim\dimen@ii>\z@\vfil\fi\break\fi\endgroup}
+\makeatother
 % Aufzählung zweiter Ebene mit Kreis statt Strich
 \renewcommand{\labelitemii}{$\circ$}
 % Formeln in Textgröße (Höhe der Kleinbuchstaben wie die Textschrift), Abstände um = und + nicht dehnen
