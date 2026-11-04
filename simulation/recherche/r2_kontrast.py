@@ -230,7 +230,20 @@ def bericht(name, pal):
         print(f"{p + ' / ' + q:<24}{kontrast(luminance(pal[p]), luminance(pal[q])):6.2f}:1")
 
 
+def selbsttest():
+    """Bekannte Werte: Schwarz/Weiss 21:1; #767676 auf Weiss 4,54:1 (gaengiger
+    Grenzwert fuer 4,5:1); #777777 auf Weiss knapp darunter (4,48:1);
+    CIEDE2000-Pruefpaar 1 aus Sharma, Wu und Dalal (2005): 2,0425."""
+    assert abs(kontrast(luminance("#000000"), luminance("#ffffff")) - 21.0) < 1e-9
+    assert round(kontrast(luminance("#767676"), 1.0), 2) == 4.54
+    assert round(kontrast(luminance("#777777"), 1.0), 2) == 4.48
+    de = ciede2000(np.array([50.0, 2.6772, -79.7751]), np.array([50.0, 0.0, -82.7485]))
+    assert abs(de - 2.0425) < 1e-3, de
+    print("Selbsttest bestanden (21:1, 4,54:1, 4,48:1, CIEDE2000 2,0425).")
+
+
 if __name__ == "__main__":
+    selbsttest()
     bericht("HEUTIGE FARBEN", HEUTE)
     bericht("VORSCHLAG", VORSCHLAG)
     bericht("VERGLEICH: OKABE-ITO ABGEDUNKELT", OKABE_ITO_DUNKEL)

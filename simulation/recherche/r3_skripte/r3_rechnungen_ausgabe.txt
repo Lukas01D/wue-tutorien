@@ -1,0 +1,360 @@
+
+==============================================================================
+0  Grundwerte (eigene Rechnung) und Vergleich mit kaffee_modell.py
+==============================================================================
+  m_K c_p,K                                                        836.00 J/K
+  m_M c_p,M                                                       121.746 J/K
+  C_G = Summe                                                     957.746 J/K
+  kA aus Messung (ohne Becher)                                    0.34025 W/K
+  tau_K = m_K c_p,K / kA                                            40.95 min
+  tau_G = C_G / kA                                                  46.91 min
+  theta_1,0                                                        70.466 °C
+  theta_1 (60 min)                                                 34.046 °C
+  theta_2 (60 min, direkt nach dem Zugießen)                       30.193 °C
+  Unterschied theta_1 - theta_2                                     3.853 K
+  Q_1                                                              34.881 kJ
+  Q_2                                                              38.571 kJ
+  Becher: C_B = m_B c_B                                             255.0 J/K
+  Becher: kA aus derselben Messung                                0.44403 W/K
+  Becher: theta_1                                                  34.044 °C
+  Becher: theta_2                                                  30.965 °C
+  Becher: Unterschied                                               3.079 K
+  Becher: Q_1 (Inhalt und Becher)                                  46.603 kJ
+  Becher: Q_2 (Inhalt und Becher)                                  50.336 kJ
+  Vergleich mit kaffee_modell.py (Abweichung eigene Rechnung minus Modell):
+  kA                                                             0.00e+00 W/K
+  theta_1                                                       -1.42e-14 K
+  theta_2                                                       -3.55e-14 K
+  Q_1                                                           -1.46e-11 J
+  Q_2                                                            0.00e+00 J
+  Becher theta_1                                                -7.11e-15 K
+  Becher theta_2                                                -1.42e-14 K
+
+==============================================================================
+1  Deckel (Ferreira 2025, Abb. 6: Steigungen von ln(T_w - T_a) über t)
+==============================================================================
+  Steigung offen (y = -0,0241x + 4,1422, R² = 0,99)                0.0241 1/min
+  Steigung mit Styropordeckel (y = -0,0135x + 4,2152)              0.0135 1/min
+  Faktor kA_Deckel / kA_offen                                      0.5602 
+  Abnahme des scheinbaren kA                                        43.98 %
+  tau offen = 1/Steigung                                            41.49 min
+  tau mit Deckel                                                    74.07 min
+  Kontrolle über h aus Tab. 1: 1 - 9,9/18                           45.00 %
+  kA mit Deckel = 0.5602 * 0.34025 = 0.19060 W/K
+  Fall (60 min)                               theta_1  theta_2   Delta
+  A beide offen                                 34.05    30.19    3.85
+  B beide mit Deckel                            44.65    41.14    3.51
+  C nur Tasse 2 (schwarz) mit Deckel            34.05    41.14   -7.10
+  D nur Tasse 1 (Milch sofort) mit Deckel       44.65    30.19   14.46
+  A beide offen (40 min, Versuch)               41.51    37.81    3.70
+  B beide mit Deckel (40 min, Versuch)          51.30    48.40    2.91
+  gleichwertige Messung mit Deckel: theta(10 min)                   72.33 °C
+  größter Unterschied offen: Zeitpunkt                              55.74 min
+  größter Unterschied mit Deckel (beide): Zeitpunkt                 99.51 min
+  größter Unterschied mit Deckel (beide): Wert                      3.862 K
+  Vergleich Fall D mit zwei_tassen(kA1_faktor): theta_1 Abw.    -2.84e-14 K
+  Vergleich Fall D mit zwei_tassen(kA1_faktor): theta_2 Abw.    -3.55e-14 K
+
+==============================================================================
+2  Bechermaterial: Wärmekapazität C_T und (geschätztes) kA
+==============================================================================
+  (i) gleiche Messung (67 °C nach 10 min), kA neu mit C_T (Funktion becher):
+  Becher                               C_T J/K C_T/C_K  kA W/K   th_1   th_2  Delta  D_max t* min
+  Keramik, Arbeitswert Aufgabe           255.0   0.305  0.4440  34.04  30.96   3.08   3.09   54.7
+      Vergleich becher(): Abw. theta_1, theta_2                   1.4e-14 K
+  Porzellan 310 g, c 1070                331.7   0.397  0.4752  34.04  31.14   2.90   2.91   54.5
+  Steinzeug 310 g, c 800                 248.0   0.297  0.4412  34.04  30.95   3.10   3.11   54.7
+  Glas 250 g (Beispiel), c 840           210.0   0.251  0.4257  34.05  30.85   3.19   3.20   54.8
+  Edelstahl einwandig 150 g, c 500        75.0   0.090  0.3708  34.05  30.46   3.59   3.60   55.4
+  Edelstahl Vakuum, Innenwand 70 g        35.0   0.042  0.3545  34.05  30.32   3.72   3.73   55.6
+  Pappbecher 8,3 g, c 1340                11.1   0.013  0.3448  34.05  30.24   3.81   3.82   55.7
+  (ii) Schätzung: kA = Faktor * kA des Keramikbechers (0,4440 W/K, Becher eingeschlossen):
+  Becher                               Faktor  kA W/K  th(10)   th_1   th_2  Delta t* min
+  Keramik, Arbeitswert Aufgabe           1.00  0.4440   67.00  34.04  30.96   3.08   54.7
+  Porzellan 310 g, c 1070                1.00  0.4440   67.76  35.32  32.41   2.91   58.3
+  Steinzeug 310 g, c 800                 1.00  0.4440   66.93  33.92  30.83   3.09   54.4
+  Glas 250 g (Beispiel), c 840           1.00  0.4440   66.51  33.27  30.09   3.18   52.6
+  Edelstahl einwandig 150 g, c 500       0.85  0.3774   66.79  33.73  30.14   3.58   54.4
+  Edelstahl Vakuum, Innenwand 70 g       0.45  0.1998   72.28  44.61  41.21   3.41   98.6
+  Pappbecher 8,3 g, c 1340               1.00  0.4440   63.81  29.71  26.06   3.65   43.2
+  Herleitung der Faktoren (Ferreira 2025a/b, Steigungen mit Deckel, also ohne Verdunstung):
+  Aluminiumbecher / Keramik (Radiation, Abb. 5)                     0.728 
+  Glas mit Alufolie / Glas (Radiation, Abb. 8)                      0.704 
+  Edelstahl blank offen: 0,44 + 0,56 * 0,728                        0.848 
+  Vakuum doppelwandig offen: nur Oberseite, rund 0,44                0.44 
+
+==============================================================================
+3  Verdunstung als eigener Term
+==============================================================================
+  Kontrolle Dampfdruck: theta, p_s IF97 (eigene Umsetzung), p_s NIST, Abweichung
+      20 °C     2.3392 kPa     2.3393 kPa  -0.004 %
+      30 °C     4.2467 kPa     4.2470 kPa  -0.007 %
+      40 °C     7.3844 kPa     7.3849 kPa  -0.006 %
+      50 °C    12.3513 kPa    12.3520 kPa  -0.006 %
+      60 °C    19.9458 kPa    19.9460 kPa  -0.001 %
+      70 °C    31.2006 kPa    31.2010 kPa  -0.001 %
+      80 °C    47.4147 kPa    47.4140 kPa  +0.002 %
+      90 °C    70.1824 kPa    70.1820 kPa  +0.001 %
+     100 °C   101.4180 kPa   101.4200 kPa  -0.002 %
+  Delta h_v bei 50 °C (NIST)                                       2382.0 kJ/kg
+  Delta h_v bei 80 °C (NIST)                                       2308.0 kJ/kg
+  Ferreira-Becher: m_w c_w aus h A tau (abgeleitet)                1020.8 J/K
+  Ferreira-Becher: Wassermasse (abgeleitet)                           244 g
+  Ferreira-Becher: kA mit Deckel ohne Becher-C                     0.2297 W/K
+  Kalibrierung beta*A (m³/s) am offenen Lauf, phi 0,5; kA_tr = (m_w c_w + C_Becher) * 0,0135/min:
+  Variante                                     betaA Zeit min   dm g  Steig.   Achse      R²
+  C_Becher 0 J/K, Ziel Steigung 0,0241     2.323e-05     52.0    9.6  0.0241  4.2109  0.9974
+  C_Becher 0 J/K, Ziel 11 g                3.063e-05     45.8   11.0  0.0274  4.2055  0.9965
+  C_Becher 300 J/K, Ziel Steigung 0,0241   3.006e-05     52.0   12.4  0.0241  4.2109  0.9974
+  C_Becher 300 J/K, Ziel 11 g              2.418e-05     56.8   11.0  0.0221  4.2151  0.9980
+  Kontrolle offen/Deckel-Verhältnis im kalibrierten Modell (Zielwert 0,56)        0.560 
+  Wasseroberfläche Ferreira-Becher A_s (randvoll)                    40.3 cm²
+  Abschätzung beta aus freier Konvektion über der Oberfläche (Nu = 0,54 Ra^(1/4), L = D/4) und
+  Lewis-Analogie beta = h/(rho c_p) Le^(-2/3), Auftrieb aus Temperatur und Wasserdampf:
+      80 °C: Ra = 5.094e+04, h = 12.15 W/(m² K), beta = 0.0120 m/s, beta*A = 4.843e-05 m³/s  (kalibriert/theoretisch = 0.62)
+      60 °C: Ra = 2.740e+04, h = 10.40 W/(m² K), beta = 0.0103 m/s, beta*A = 4.148e-05 m³/s  (kalibriert/theoretisch = 0.72)
+      40 °C: Ra = 1.225e+04, h =  8.51 W/(m² K), beta = 0.0084 m/s, beta*A = 3.391e-05 m³/s  (kalibriert/theoretisch = 0.89)
+  kalibriertes beta*A (Referenz: C_Becher 300 J/K, Steigung)    3.006e-05 m³/s
+    entspricht beta bei randvoller Öffnung                         0.0075 m/s
+  Übertragung auf die Aufgabe (kA_tr so, dass 67 °C nach 10 min; Milch verdunstet nicht, Wasser schon):
+  Variante                                 betaA   kA_tr   th_1   th_2  Delta  dm1 g  dm2 g Ant.80 Ant.60  Qv79  Qg79
+  R ohne Becher, proportional, phi 0,5 1.903e-05  0.1589  37.61  33.00   4.60   5.72   6.84  56.5%  45.9% 11.93 21.31
+  ohne Becher, proportional, phi 0,3   1.903e-05  0.1560  37.42  32.83   4.59   5.94   7.06  57.3%  47.2% 12.09 21.29
+  ohne Becher, proportional, phi 0,7   1.903e-05  0.1619  37.79  33.17   4.62   5.49   6.62  55.8%  44.6% 11.78 21.33
+  ohne Becher, gleiche Öffnung, phi 0,5 3.006e-05  0.0543  39.85  34.79   5.06   9.49  11.15  85.7%  79.7% 18.86 22.06
+  ohne Becher, prop. aus Ziel 11 g     1.531e-05  0.1943  36.87  32.42   4.45   4.52   5.44  46.1%  35.8%  9.60 21.06
+  Becher 255 J/K, proportional, phi 0,5 2.483e-05  0.2074  37.59  33.89   3.70   7.77   8.92  56.5%  45.9% 15.58 27.81
+  Becher 255 J/K, gleiche Öffnung      3.006e-05  0.1577  38.39  34.55   3.83   9.57  10.93  67.4%  57.5% 18.86 28.16
+  Referenz: kA_tr / kA (Anteil trocken im 10-min-Wert)              0.467 
+  Referenz: Deckel im Modell (beta*A = 0): theta(10 min)            73.53 °C
+  Referenz: Qdot_v bei 79 °C                                        11.93 W
+  Referenz: Qdot gesamt bei 79 °C                                   21.31 W
+  Condoret (2007, Tab. 2, Sekundärquelle): 12,0 / 22,7               52.9 %
+  Obergrenze der Masse: Q_2 / Delta h_v(50 °C), alle Wärme verdunstet         16.2 g
+
+==============================================================================
+4  Nichtlineare Wärmeabgabe
+==============================================================================
+  Exponent n               c    th_1    th_2   Delta   RK4-Abw. th_2  Modell-Abw.
+  1.0000         3.40248e-01  34.046  30.193   3.853        0.00e+00     3.55e-14
+  1.2500         1.26061e-01  36.839  32.630   4.209        7.11e-15     3.55e-14
+  1.3333         9.05469e-02  37.653  33.341   4.313       -1.42e-14     3.55e-14
+  Konvektion 5/4 + Strahlung (33 % bei 65 °C): Wärmestrom bei 65 °C       14.696 W
+    theta_1                                                        36.618 °C
+    theta_2                                                        32.434 °C
+    Delta                                                           4.184 K
+  lineares h_r = eps sigma (T^4 - T_u^4)/(T - T_u), eps 0,93, T 90 °C         7.54 W/(m² K)
+  lineares h_r, T 40 °C                                              5.88 W/(m² K)
+  Zusammenstellung (60 min):
+  Modell                                            th_1    th_2   Delta
+  linear (Aufgabe)                                 34.05   30.19    3.85
+  Potenz n = 5/4                                   36.84   32.63    4.21
+  Potenz n = 4/3                                   37.65   33.34    4.31
+  Konvektion 5/4 + Strahlung                       36.62   32.43    4.18
+  Verdunstung (Referenzvariante Abschnitt 3)       37.61   33.00    4.60
+
+==============================================================================
+5  kA aus allen Messpunkten (synthetische Datensätze)
+==============================================================================
+  Datensatz n = 1.0 (Rauschen gleichverteilt +-0,3 K, dann auf 0,1 K gerundet), Samen 20261104:
+    t/min        0     10     20     30     40     50     60
+    wahr     80.00  67.00  56.82  48.84  42.59  37.70  33.86
+    Messung   80.1   67.3   56.9   49.1   42.7   37.4   33.7
+    kA je Intervall (W/K): 0.334, 0.346, 0.331, 0.346, 0.370, 0.333
+    2 Punkte                 kA = 0.3337 W/K          ; Vorhersage th_K(60) = 34.26 °C, Delta = 3.86 K
+    Ursprungsgerade          kA = 0.3423 W/K +- 0.0013, Achsenabschnitt-ln(theta_0) = +0.0000; Vorhersage th_K(60) = 33.74 °C, Delta = 3.85 K
+    freier Achsenabschnitt   kA = 0.3444 W/K +- 0.0021, Achsenabschnitt-ln(theta_0) = +0.0067; Vorhersage th_K(60) = 33.61 °C, Delta = 3.85 K
+    gewichtet, frei          kA = 0.3416 W/K          , Achsenabschnitt-ln(theta_0) = +0.0025; Vorhersage th_K(60) = 33.78 °C, Delta = 3.85 K
+    wahres th_K(60) = 33.86 °C
+  Datensatz n = 1.25 (Rauschen gleichverteilt +-0,3 K, dann auf 0,1 K gerundet), Samen 20261104:
+    t/min        0     10     20     30     40     50     60
+    wahr     80.00  67.00  57.34  50.04  44.43  40.08  36.65
+    Messung   80.2   67.1   57.5   50.0   44.7   39.9   36.4
+    kA je Intervall (W/K): 0.342, 0.318, 0.311, 0.271, 0.301, 0.270
+    2 Punkte                 kA = 0.3419 W/K          ; Vorhersage th_K(60) = 33.76 °C, Delta = 3.85 K
+    Ursprungsgerade          kA = 0.3090 W/K +- 0.0038, Achsenabschnitt-ln(theta_0) = +0.0000; Vorhersage th_K(60) = 35.86 °C, Delta = 3.86 K
+    freier Achsenabschnitt   kA = 0.3007 W/K +- 0.0051, Achsenabschnitt-ln(theta_0) = -0.0260; Vorhersage th_K(60) = 36.44 °C, Delta = 3.86 K
+    gewichtet, frei          kA = 0.3094 W/K          , Achsenabschnitt-ln(theta_0) = -0.0118; Vorhersage th_K(60) = 35.83 °C, Delta = 3.86 K
+    Residuen der freien Geraden (ln): +0.0260, -0.0036, -0.0158, -0.0231, -0.0017, -0.0020, +0.0203
+    wahres th_K(60) = 36.65 °C
+  Monte-Carlo (20 000 Reihen je Fall, Rauschen gleichverteilt +-0,3 K, ohne Runden):
+    n = 1.0  2 Punkte                 Mittel 0.3402 W/K, Streuung 0.0065 W/K (1.92 %)
+    n = 1.0  Ursprungsgerade          Mittel 0.3402 W/K, Streuung 0.0018 W/K (0.52 %)
+    n = 1.0  freier Achsenabschnitt   Mittel 0.3402 W/K, Streuung 0.0022 W/K (0.66 %)
+    n = 1.0  gewichtet, frei          Mittel 0.3402 W/K, Streuung 0.0017 W/K (0.49 %)
+    n = 1.25 2 Punkte                 Mittel 0.3402 W/K, Streuung 0.0065 W/K (1.92 %)
+    n = 1.25 Ursprungsgerade          Mittel 0.3066 W/K, Streuung 0.0016 W/K (0.52 %)
+    n = 1.25 freier Achsenabschnitt   Mittel 0.2971 W/K, Streuung 0.0019 W/K (0.64 %)
+    n = 1.25 gewichtet, frei          Mittel 0.3074 W/K, Streuung 0.0016 W/K (0.51 %)
+  Ableitung d theta_K(60 min) / d kA                                -59.7 K/(W/K)
+    Streuung theta_K(60 min) aus sigma_kA (2 Punkte, 0.0065 W/K)         0.39 K
+    Streuung theta_K(60 min) aus sigma_kA (Ursprungsgerade, 0.0018 W/K)         0.11 K
+    Streuung theta_K(60 min) aus sigma_kA (frei, 0.0022 W/K)         0.13 K
+  Empfindlichkeit von Delta(60 min) gegen kA (linear):
+    kA = 0.90 * kA0: theta_1 = 35.96, theta_2 = 32.10, Delta = 3.860 K
+    kA = 0.95 * kA0: theta_1 = 34.97, theta_2 = 31.11, Delta = 3.861 K
+    kA = 1.00 * kA0: theta_1 = 34.05, theta_2 = 30.19, Delta = 3.853 K
+    kA = 1.05 * kA0: theta_1 = 33.18, theta_2 = 29.34, Delta = 3.838 K
+    kA = 1.10 * kA0: theta_1 = 32.36, theta_2 = 28.54, Delta = 3.816 K
+
+==============================================================================
+6  Energie sichtbar machen
+==============================================================================
+  Q_1 geschlossen                                                 34.8808 kJ
+  Q_1 als Fläche unter Qdot_1(t) (Trapez, 1 s)                    34.8808 kJ
+  Q_2 geschlossen                                                 38.5712 kJ
+  Q_2 als Fläche unter Qdot_2(t)                                  38.5712 kJ
+  Qdot_1(0)                                                         17.17 W
+  Qdot_2(0)                                                         20.41 W
+  Qdot_1(60 min)                                                     4.78 W
+  Qdot_2(60 min, vor dem Zugießen)                                   4.72 W
+  Q_2 - Q_1                                                        3.6904 kJ
+  C_G (theta_1 - theta_2)                                          3.6904 kJ
+  Zerlegung (Milch 5 °C): Kaffee-Effekt                             2.477 K
+  Zerlegung (Milch 5 °C): Milch-Effekt                              1.376 K
+    Summe / direkt                                                  3.853 K
+    direkt aus zwei()                                               3.853 K
+  Zerlegung (Milch 60 °C): Kaffee-Effekt                            2.477 K
+  Zerlegung (Milch 60 °C): Milch-Effekt                            -3.669 K
+    Summe / direkt                                                 -1.192 K
+    direkt aus zwei()                                              -1.192 K
+  Kaffee-Effekt * C_G                                               2.372 kJ
+  Milch-Effekt * C_G (kalte Milch)                                  1.318 kJ
+  Becher: Q_1, Q_2 und C_GT Delta                                  46.603 kJ
+                                                                   50.336 kJ
+                                                                    3.734 kJ
+  Becher: davon gibt der Becher in Tasse 2 ab: C_B (80 - th_K)       11.765 kJ
+
+==============================================================================
+7  Größter Unterschied über dem Zeitpunkt der Zugabe
+==============================================================================
+  Fall                                          t* ana  t* num   th_K* D_max ana D_max num
+  ohne Becher, kA0                               55.74   55.75   35.38    3.8618    3.8618
+  ohne Becher, 0,5 kA0                          111.49  111.48   35.38    3.8618    3.8618
+  ohne Becher, 2 kA0                             27.87   27.87   35.38    3.8618    3.8618
+  ohne Becher, Deckel 0,56 kA0                   99.51   99.52   35.38    3.8618    3.8618
+  Becher 255 J/K, kA 0,4440                      54.70   54.70   35.78    3.0898    3.0898
+  Becher 255 J/K, 0,5 * 0,4440                  109.39  109.40   35.78    3.0898    3.0898
+  Vakuumbecher 35 J/K, 0,45 * 0,4440             98.58   98.58   35.45    3.7340    3.7340
+  Pappbecher 11,1 J/K                            55.69   55.68   35.40    3.8203    3.8203
+  erwärmte Milch 60 °C (Maximum für sofort)      13.95   13.95   62.68    0.3407    0.3407
+  Milch 0.0 °C                                   59.83           33.92    4.3119
+  Milch 10.0 °C                                  51.71           36.97    3.4285
+  Milch 20.0 °C                                  43.80           40.59    2.6174
+  Kaffee 70.0 °C am Anfang                       58.19           32.07    3.4416
+  Kaffee 90.0 °C am Anfang                       54.01           38.72    4.2863
+  nichtlinear (n = 5/4), c skaliert: Höchstwert bleibt, Zeitpunkt skaliert mit 1/c:
+    n = 1.2500, c-Faktor 0.5: D_max (Raster 1 s) = 4.2181 K bei 110.50 min; Schnittpunkt 110.49 min, th_K = th_1 = 38.183 °C, C_M (th_K - th_M)/C_G = 4.2181 K
+    n = 1.2500, c-Faktor 1.0: D_max (Raster 1 s) = 4.2181 K bei 55.25 min; Schnittpunkt 55.25 min, th_K = th_1 = 38.183 °C, C_M (th_K - th_M)/C_G = 4.2181 K
+    n = 1.2500, c-Faktor 2.0: D_max (Raster 1 s) = 4.2181 K bei 27.62 min; Schnittpunkt 27.62 min, th_K = th_1 = 38.183 °C, C_M (th_K - th_M)/C_G = 4.2181 K
+    n = 1.3333, c-Faktor 0.5: D_max (Raster 1 s) = 4.3221 K bei 110.17 min; Schnittpunkt 110.16 min, th_K = th_1 = 39.001 °C, C_M (th_K - th_M)/C_G = 4.3221 K
+    n = 1.3333, c-Faktor 1.0: D_max (Raster 1 s) = 4.3221 K bei 55.08 min; Schnittpunkt 55.08 min, th_K = th_1 = 39.001 °C, C_M (th_K - th_M)/C_G = 4.3221 K
+    n = 1.3333, c-Faktor 2.0: D_max (Raster 1 s) = 4.3221 K bei 27.53 min; Schnittpunkt 27.54 min, th_K = th_1 = 39.001 °C, C_M (th_K - th_M)/C_G = 4.3221 K
+  Verdunstungsmodell (Referenz): Kurven bis 300 min, Unterschied über dem Zugabezeitpunkt:
+    Referenz                           D_max = 4.616 K bei 54 min, th_K dort 39.30 °C
+    nur Wand gedämmt (kA_tr * 0,5)     D_max = 4.856 K bei 71 min, th_K dort 40.22 °C
+    Verdunstung aus (beta*A = 0)       D_max = 3.862 K bei 119 min, th_K dort 35.44 °C
+
+==============================================================================
+8  Beide Tassen kühlen nach dem Zugießen weiter ab
+==============================================================================
+  Zugabe  60 min, Vergleich  60 min: Delta = 3.853 K (direkt 3.853 K), th_1 = 34.05, th_2 = 30.19 °C
+  Zugabe  60 min, Vergleich  70 min: Delta = 3.114 K (direkt 3.114 K), th_1 = 31.35, th_2 = 28.24 °C
+  Zugabe  60 min, Vergleich  90 min: Delta = 2.033 K (direkt 2.033 K), th_1 = 27.41, th_2 = 25.38 °C
+  Zugabe  60 min, Vergleich 120 min: Delta = 1.072 K (direkt 1.072 K), th_1 = 23.91, th_2 = 22.84 °C
+  Zugabe  40 min, Vergleich  40 min: Delta = 3.701 K (direkt 3.701 K), th_1 = 41.51, th_2 = 37.81 °C
+  Zugabe  40 min, Vergleich  50 min: Delta = 2.990 K (direkt 2.990 K), th_1 = 37.38, th_2 = 34.39 °C
+  Zugabe  40 min, Vergleich  60 min: Delta = 2.416 K (direkt 2.416 K), th_1 = 34.05, th_2 = 31.63 °C
+  Abklingzeit des Unterschieds tau_G                                46.91 min
+  Halbwertszeit tau_G ln 2                                          32.52 min
+  mit Becher: tau_GT = (C_G + C_B) / kA_B                           45.52 min
+  mit Becher: Delta(90 min) bei Zugabe 60 min                       1.593 K
+  Fester Vergleich bei 60 min, Zugabe früher (lineares Modell):
+    Zugabe  0 min: Delta(60 min) = 0.000 K
+    Zugabe 10 min: Delta(60 min) = 0.572 K
+    Zugabe 20 min: Delta(60 min) = 1.160 K
+    Zugabe 30 min: Delta(60 min) = 1.771 K
+    Zugabe 40 min: Delta(60 min) = 2.416 K
+    Zugabe 50 min: Delta(60 min) = 3.106 K
+    Zugabe 60 min: Delta(60 min) = 3.853 K
+  nichtlinear n = 5/4: Unterschied nach Zugabe bei 60 min, Vergleich später (numerisch):
+     60 min: Delta = 4.209 K (Exponentialansatz mit tau_G: 4.209 K)
+     70 min: Delta = 3.482 K (Exponentialansatz mit tau_G: 3.401 K)
+     90 min: Delta = 2.432 K (Exponentialansatz mit tau_G: 2.221 K)
+    120 min: Delta = 1.484 K (Exponentialansatz mit tau_G: 1.172 K)
+
+==============================================================================
+9  Sonstiges: Füllhöhe, Biot-Zahl, nicht vorgewärmter Becher
+==============================================================================
+  Füllhöhe (kA von Tasse 1 um Faktor größer):
+    Faktor 1.00: theta_1 = 34.05 °C, theta_2 = 30.19 °C, Delta = 3.85 K  (zwei_tassen: 34.05, Abw. -1.4e-14)
+    Faktor 1.05: theta_1 = 33.18 °C, theta_2 = 30.19 °C, Delta = 2.98 K  (zwei_tassen: 33.18, Abw. 1.4e-14)
+    Faktor 1.10: theta_1 = 32.36 °C, theta_2 = 30.19 °C, Delta = 2.17 K  (zwei_tassen: 32.36, Abw. 7.1e-15)
+    Faktor 1.15: theta_1 = 31.59 °C, theta_2 = 30.19 °C, Delta = 1.40 K  (zwei_tassen: 31.59, Abw. -2.1e-14)
+  Bi Wand Keramik = h e / k (h 10, e 5,2 mm, k 1,5)                 0.035 
+  Bi Kaffee nur Wärmeleitung = h (V/A) / k_w (V/A ~ 1 cm, k 0,6)        0.167 
+  innerer Wärmeübergang aus Ferreira (3,5 K Abstand bei 90 °C)          190 W/(m² K)
+  wirksame Biot-Zahl h_a / h_i                                      0.053 
+  nicht vorgewärmt, C_T = 255 J/K: Ausgleichstemperatur             65.98 °C
+  nicht vorgewärmt, C_T = 332 J/K: Ausgleichstemperatur             62.96 °C
+    dann nach 10 min (Becher eingeschlossen, kA 0,4440)             56.01 °C
+    Zwei-Punkte-kA ohne Becher aus 80 °C und diesem Wert           0.7112 W/K
+    Verhältnis zum richtigen kA ohne Becher (0,3402)                 2.09 
+
+==============================================================================
+Testfälle (Eingabe und erwartete Ausgabe)
+==============================================================================
+  T01 Grundfall
+      Eingabe: Standardwerte, 60 min
+      erwartet: theta_1 = 34.05 °C, theta_2 = 30.19 °C, Delta = 3.85 K, Q_1 = 34.88 kJ, Q_2 = 38.57 kJ
+  T02 Becher (Teil g)
+      Eingabe: m_B 300 g, c_B 850 J/(kg K), kA neu aus Messung
+      erwartet: kA = 0.4440 W/K, theta_1 = 34.04 °C, theta_2 = 30.96 °C, Q_1 = 46.60 kJ, Q_2 = 50.34 kJ
+  T03 Deckel auf beiden Tassen
+      Eingabe: kA = 0,5602 * 0,3402 = 0.1906 W/K (oder Messung 72.33 °C nach 10 min), 60 min
+      erwartet: theta_1 = 44.65 °C, theta_2 = 41.14 °C, Delta = 3.51 K; Maximum 3.86 K bei 99.5 min
+  T04 Deckel nur auf Tasse 2
+      Eingabe: kA_1 = 0.3402, kA_2 = 0.1906 W/K, 60 min
+      erwartet: theta_1 = 34.05 °C, theta_2 = 41.14 °C, Delta = -7.10 K
+  T05 Pappbecher
+      Eingabe: C_T = 8,3 g * 1340 J/(kg K) = 11.1 J/K, gleiche Messung
+      erwartet: kA = 0.3448 W/K, theta_1 = 34.05 °C, theta_2 = 30.24 °C
+  T06 Edelstahl einwandig, gleiche Messung
+      Eingabe: C_T = 150 g * 500 J/(kg K) = 75.0 J/K
+      erwartet: kA = 0.3708 W/K, theta_1 = 34.05 °C, theta_2 = 30.46 °C, Delta = 3.59 K
+  T07 Verdunstung, Referenzvariante (nur Größenordnung, nicht gegen Messung getestet)
+      Eingabe: beta*A = 1.903e-05 m³/s, phi = 0,5, kA_tr = 0.1589 W/K (aus 67 °C nach 10 min), RK4 2 s
+      erwartet: theta_1 = 37.61 °C, theta_2 = 33.00 °C, Delta = 4.60 K, verdunstet 5.72 g und 6.84 g
+  T08 nichtlinear n = 5/4
+      Eingabe: c aus der Messung = 1.26061e-01 W/K^1,25, 60 min
+      erwartet: theta_1 = 36.84 °C, theta_2 = 32.63 °C, Delta = 4.21 K
+  T09 Ausgleich, exakte Daten (n = 1, alle 10 min)
+      Eingabe: theta = 80.00; 67.00; 56.82; 48.84; 42.59; 37.70; 33.86 °C
+      erwartet: kA = 0.3402 W/K (Ursprungsgerade) = 0.3402 W/K (frei) = 2 Punkte
+  T10 Ausgleich, verrauschte Reihe n = 1 (Samen 20261104, gerundet auf 0,1 K)
+      Eingabe: theta = 80.1; 67.3; 56.9; 49.1; 42.7; 37.4; 33.7 °C
+      erwartet: kA = 0.3337 (2 Punkte), 0.3423 +- 0.0013 (Ursprung), 0.3444 +- 0.0021 W/K (frei)
+  T11 Energie
+      Eingabe: Standardwerte, 60 min
+      erwartet: Q_1 = 34.88 kJ, Q_2 = 38.57 kJ, Q_2 - Q_1 = 3.69 kJ = C_G * 3.85 K; Qdot(0) = 17.17 W und 20.41 W
+  T12 Maximum nichtlinear n = 5/4
+      Eingabe: c aus der Messung, Zugabezeitpunkt frei
+      erwartet: Delta_max = 4.22 K bei theta_K* = 38.18 °C, t* = 55.25 min (Schnittpunkt)
+  T13 Extremum bei erwärmter Milch 60 °C
+      Eingabe: Standardwerte, Milch 60 °C, Zugabezeitpunkt frei
+      erwartet: Delta_max = +0.34 K (sofort wärmer) bei t* = 13.95 min, theta_K* = 62.68 °C; bei 60 min Delta = -1.19 K
+  T14 Maximum ohne Becher
+      Eingabe: Standardwerte, beliebiges kA
+      erwartet: Delta_max = 3.86 K bei theta_K* = 35.38 °C, t* = 55.74 min * (0,3402 W/K / kA)
+  T15 Maximum mit Becher
+      Eingabe: C_B = 255 J/K, beliebiges kA
+      erwartet: Delta_max = 3.09 K bei theta_K* = 35.78 °C, t* = 54.70 min bei kA = 0,4440 W/K
+  T16 Abkühlen nach der Zugabe
+      Eingabe: Zugabe 60 min, Vergleich 90 min
+      erwartet: Delta = 2.03 K = 3.85 K * exp(-30 min/46.91 min)
+  T17 Nicht vorgewärmter Becher
+      Eingabe: C_B = 255 J/K bei 20 °C, Kaffee 80 °C
+      erwartet: Ausgleich auf 65.98 °C (Absenkung 14.02 K)
+  T18 Füllhöhe
+      Eingabe: kA_1 = 1,05 * kA0, kA_2 = kA0
+      erwartet: theta_1 = 33.18 °C, Delta = 2.98 K
