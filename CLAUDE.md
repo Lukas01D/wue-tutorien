@@ -2,7 +2,11 @@
 
 > Für Claude in einer Cloud-Sitzung von Claude Code. Die Tutoriumsleitung (TL) ist Lukas; er leitet die Tutorien Wärmeübertragung am Lehrstuhl für Fluidverfahrenstechnik der Universität Paderborn. Die TL entscheidet, du empfiehlst klar. Deutsch. Keine Gedankenstriche (– oder —), stattdessen Komma, Punkt, Doppelpunkt oder Klammern.
 
-## Aktueller Auftrag: unabhängige Prüfung der Kaffee-Aufgabe
+## Zweiter Auftrag (ab 04.11.2026): Simulation als eigene Website
+
+Startsatz der TL: „Arbeite am Simulationstool nach simulation/AUFTRAG_Simulation_Kaffee.md.“ Dann gilt nur diese Datei (Rollen, Phasen, Haltepunkte, Regeln); die Abschnitte zur Kaffee-Prüfung unten betreffen dich dann nicht. Parallel kann eine zweite Sitzung an der Kaffee-Aufgabe arbeiten: eigener Zweig, keine Protokollnummern vergeben (siehe Auftrag).
+
+## Auftrag: unabhängige Prüfung der Kaffee-Aufgabe
 
 Startsatz der TL: „Führe die Kaffee-Prüfung durch.“ Dann arbeitest du nach `pruefung/Kaffee_Pruefpaket_2026-10-23/01_STARTPROMPT.md`, mit den Anpassungen unten. Das Paket ist für einen Chat in der Claude-App geschrieben; hier gibt es keine Projektablage, keinen Ordner auf dem Mac der TL und vielleicht keine Docs-Werkzeuge. Alles, was dort in die Projektablage oder in ein Claude-Dokument geht, kommt hier in dieses Repository.
 

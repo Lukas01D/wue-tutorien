@@ -72,3 +72,18 @@ Startsatz der Tutoriumsleitung: „Führe die Prüfung des Simulationstools nach
 ## Ergebnis
 
 Bericht nach `ergebnisse/kaffee/X3_CODEX_SIMULATION.md`: Urteil (einsatzbereit, mit kleinen Korrekturen oder nicht einsatzbereit), dann Befunde nach Wichtigkeit mit Stelle und Korrekturvorschlag („Simulation 1“, „Simulation 2“, …). Skripte und Bildschirmfotos nach `ergebnisse/kaffee/codex_skripte/x3/`. Nichts am Werkzeug, an Aufgabe oder Lösung ändern. Committen und auf einem eigenen Zweig pushen.
+
+---
+
+# Vierter und fünfter Auftrag: Simulation als eigene Website (Rollen X4 und S-Bau)
+
+Grundlage für beide: `simulation/AUFTRAG_Simulation_Kaffee.md` und, sobald vorhanden, `simulation/KONZEPT.md` mit den Entscheidungen der Tutoriumsleitung. Arbeite auf dem Zweig, den die Tutoriumsleitung nennt (vorher `git fetch` und `git checkout <zweig>`), und pushe auf einen eigenen Zweig.
+
+## Rolle X4: Prüfung des Konzepts
+
+Startsatz: „Prüfe das Konzept der Simulation nach AGENTS.md (Rolle X4).“ Prüfe unabhängig: Stimmt jede Literaturangabe an der Quelle (Fundstelle, Aussage, Prüfstatus)? Trägt der Beleg die Anforderung, die damit begründet wird? Sind Modell und Erweiterungen physikalisch richtig (eigene Rechnung, nicht das Modell der Datei)? Ist das Konzept in 10 bis 15 Minuten zu zweit nutzbar und am Handy bedienbar? Fehlt Wichtiges? Bericht nach `simulation/X4_CODEX_KONZEPT.md`: Urteil (tragfähig, mit Änderungen, nicht tragfähig), Befunde nach Wichtigkeit mit Stelle und Vorschlag („Konzept 1“, „Konzept 2“, …). Nichts am Konzept ändern.
+
+## Rolle S-Bau: Programmierung
+
+Startsatz: „Baue die Simulation nach AGENTS.md (Rolle S-Bau).“ Baue genau das entschiedene Konzept in `simulation/site/` (offline lauffähig, keine fremden Server, Deutsch, Indizes nach Ä24), mit Tests in `simulation/tests/`: Zahlen gegen `kaffee_modell.py` und gegen eine eigene Rechnung, Bedienung im Browser bei 390 und 1366 px ohne waagerechtes Scrollen, Tastatur und Kontrast. Seiten als Bildschirmfotos ansehen. Bericht nach `simulation/BAU_BERICHT.md` (was gebaut, Abweichungen vom Konzept mit Grund, Testergebnisse, offene Punkte). Danach prüft Claude ab; Befunde arbeitest du im nächsten Lauf ab. Veröffentlicht wird erst nach Freigabe der Tutoriumsleitung (Sites, eigene Adresse, Baunachweis wie beim Lernzentrum).
+
