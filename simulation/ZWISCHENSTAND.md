@@ -32,7 +32,7 @@ Getrennte Rollenprüfungen desselben Modells, alle auf dem Stand aus Abschnitt 1
 | G5 Barrierefreiheit | `simulation/gutachten/G5_Barrierefreiheit.md` | **unvollständig** (wie G2) |
 | G6 Gestaltung | `simulation/gutachten/G6_Gestaltung.md` | **unvollständig**, Zwischenbericht: 17 Befunde (0 blocker, 3 high, 4 medium, 10 low); Vergleich mit dem Lernzentrum nach „Berechnen“ nicht möglich (Pyodide offline blockiert); offene Prüfungen im Bericht |
 | G7 Tutorin | `simulation/gutachten/G7_Tutorin.md` | **vollständig**: 15 Befunde (1 blocker, 3 high, 8 medium, 3 low) |
-| G8 Technik | `simulation/gutachten/G8_Technik.md` | **unvollständig** (wie G2) |
+| G8 Technik | `simulation/gutachten/G8_Technik.md` | **unvollständig**, Zwischenbericht: 25 Angriffe und Prüfungen, 16 Befunde (0 blocker, 2 high, 5 medium, 9 low); ohne Befund: keine HTML-Einschleusung, keine fremden Anfragen, keine CSP-Verletzung, gesperrter Speicher, Dauerlauf 36 s, M-5 auch mit gedrosselter CPU |
 
 Welche Zwischenberichte tatsächlich geschrieben wurden, zeigt Abschnitt 6 (wird beim letzten Commit nachgetragen).
 
@@ -42,7 +42,7 @@ Welche Zwischenberichte tatsächlich geschrieben wurden, zeigt Abschnitt 6 (wird
 |:--|:--|:--|
 | blocker | Frage 2: Sobald Kurswerte geladen sind, zeigt das Diagramm die Messpunkte schon vor der Vorhersage zu Frage 2 (auch während Frage 1); „über, unter, auf den Kurven“ ist dann ablesbar | G1-01, G4-01, G7-01 |
 | high | Handy (M-6): Frage und Vorhersage stehen über dem angehefteten Diagramm; Frage, Vorhersage und Diagramm nie zugleich sichtbar; Anheften nicht abschaltbar | G1-02, G4-10 |
-| high | Zwei offene Tabs überschreiben sich den Speicher (Vorhersage zu Frage 2 und Kurswerte gehen verloren) | G7-02 |
+| high | Zwei offene Tabs überschreiben sich den Speicher (Vorhersage zu Frage 2 und Kurswerte gehen verloren) | G7-02, G8-01 |
 | high | Beamer 1280 × 720 und 1366 × 768: Frage, Diagramm und Regler nie zugleich im Bild (M-6) | G7-03 |
 | high | Hinweis „Werte werden nicht gespeichert“ am Handy ausgeblendet | G7-04 |
 | blocker | Achsenbeschriftung rundet Teilstriche im Abstand 2,5 auf ganze Zahlen (2,5 wird „3“), Zeitachse in Frage 1 bei Zugabe um 11 bis 14 min und Wärmestrom-Ansicht | G2-01 |
@@ -53,6 +53,8 @@ Welche Zwischenberichte tatsächlich geschrieben wurden, zeigt Abschnitt 6 (wird
 | medium | „Becher beim Eingießen kalt“ ändert Kurven, Rechenwerte und Energie nicht, nur eine Zusatzzeile | G3-03 |
 | high | Angeheftetes Diagramm verdeckt am Handy den Tastaturfokus (WCAG 2.4.11, M-6), `scroll-padding-top` fehlt | G6-02 |
 | high | Beschriftungen im Diagramm überlappen in Einzelfällen (EN „intersection“ auf den Kurven, Zugabe 5 min unter dem Vorhersagekasten, Raumlinie bei 120 min) (M-11) | G6-03 |
+| high | `aria-valuetext` fehlt an allen 8 Reglern (M-12; deckt sich mit dem eigenen Befund) | G8-02 |
+| medium | Manipulierte Werte im Speicher legen die Seite ohne Ausweg lahm (7 von 24 Fällen); erster Klick nach Messblatt-Eingabe geht verloren; Messblatt nimmt Werte an, die die Übernahme mit falscher Begründung ablehnt; Link endet auf Komma | G8-03 bis G8-07 |
 | medium | „Kurven zeigen“ scrollt die Kurven nicht ins Bild; Laptop: Frage, Diagramm und Regler nie zugleich (deckt sich mit G7-03); Energiesäulen ab 768 px nur 8 bis 8,8 px Schrift; Aufklappbereichen fehlt das ▶ | G6-04 bis G6-07 |
 | medium (Auswahl) | Einheit im Zahlenfeld („3 K“) sperrt den Knopf mit falschem Hinweis (G1, G2); *kA* heißt im Englischen „heat loss“ statt „heat loss coefficient“; deutsche Indizes (ab, misch, mess) im Englischen nicht erklärt; Ausgangslage-Meldung bleibt nach DE → EN deutsch; Säulentitel „Energie bis zur Zugabe“ ohne „abgegeben“; Fehlvorstellung „Energie bleibt erhalten“ nur indirekt angegangen; „passt“ bewertet nur die Richtung; Eingaben wie „4 K“ sperren den Knopf mit irreführendem Hinweis; Prüfen in Frage 2 grau ohne Erklärung; Hinweise auf Frage 1 schon vor ihrer Vorhersage (Schnitt in Rechenwerten); Vorhersage-Marke zeigt immer die Startvorhersage; Ausgangslage V3 falsch benannt; Kurslink im offenen Tab ohne Wirkung; Schrift am Beamer zu klein; Messpunkte bei 60 min übereinander; Messblatt erst nach dem Aufdecken | G1, G4, G7 |
 
