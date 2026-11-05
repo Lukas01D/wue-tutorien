@@ -30,7 +30,7 @@ Getrennte Rollenprüfungen desselben Modells, alle auf dem Stand aus Abschnitt 1
 | G3 Fachgutachter | `simulation/gutachten/G3_Fachgutachter.md` | **unvollständig**, Zwischenbericht: 30 von 30 Zuständen stimmen in allen angezeigten Zahlen mit der unabhängigen Rechnung überein, Auflösungen DE und EN richtig; 13 Befunde (0 blocker, 1 high, 3 medium, 9 low); offen: Becher 3 und Deckel im Messblatt, Kurslink, CSV, Wertetabelle, Vergleichslauf, englische Texte außer Auflösungen |
 | G4 Lernpsychologie | `simulation/gutachten/G4_Lernpsychologie.md` | **vollständig**: 24 Befunde (1 blocker, 1 high, 14 medium, 8 low) |
 | G5 Barrierefreiheit | `simulation/gutachten/G5_Barrierefreiheit.md` | **unvollständig** (wie G2) |
-| G6 Gestaltung | `simulation/gutachten/G6_Gestaltung.md` | **unvollständig** (wie G2) |
+| G6 Gestaltung | `simulation/gutachten/G6_Gestaltung.md` | **unvollständig**, Zwischenbericht: 17 Befunde (0 blocker, 3 high, 4 medium, 10 low); Vergleich mit dem Lernzentrum nach „Berechnen“ nicht möglich (Pyodide offline blockiert); offene Prüfungen im Bericht |
 | G7 Tutorin | `simulation/gutachten/G7_Tutorin.md` | **vollständig**: 15 Befunde (1 blocker, 3 high, 8 medium, 3 low) |
 | G8 Technik | `simulation/gutachten/G8_Technik.md` | **unvollständig** (wie G2) |
 
@@ -51,6 +51,9 @@ Welche Zwischenberichte tatsächlich geschrieben wurden, zeigt Abschnitt 6 (wird
 | high (INFERRED) | nur drei Reiter, erster heißt „Versuche“ statt „Auflösungen“ (M-18, E6); nach Bauauftrag und Lernzentrum K5 so gebaut, Frage an die TL | G3-13 |
 | medium | Start-Auflösung „Tasse 2 war bis zur Zugabe heißer“ stimmt nur bis 55,7 min (Wortlaut aus Konzept 6.1, Lösung sagt „bis etwa 56 min“): Frage an die TL | G3-02 |
 | medium | „Becher beim Eingießen kalt“ ändert Kurven, Rechenwerte und Energie nicht, nur eine Zusatzzeile | G3-03 |
+| high | Angeheftetes Diagramm verdeckt am Handy den Tastaturfokus (WCAG 2.4.11, M-6), `scroll-padding-top` fehlt | G6-02 |
+| high | Beschriftungen im Diagramm überlappen in Einzelfällen (EN „intersection“ auf den Kurven, Zugabe 5 min unter dem Vorhersagekasten, Raumlinie bei 120 min) (M-11) | G6-03 |
+| medium | „Kurven zeigen“ scrollt die Kurven nicht ins Bild; Laptop: Frage, Diagramm und Regler nie zugleich (deckt sich mit G7-03); Energiesäulen ab 768 px nur 8 bis 8,8 px Schrift; Aufklappbereichen fehlt das ▶ | G6-04 bis G6-07 |
 | medium (Auswahl) | Einheit im Zahlenfeld („3 K“) sperrt den Knopf mit falschem Hinweis (G1, G2); *kA* heißt im Englischen „heat loss“ statt „heat loss coefficient“; deutsche Indizes (ab, misch, mess) im Englischen nicht erklärt; Ausgangslage-Meldung bleibt nach DE → EN deutsch; Säulentitel „Energie bis zur Zugabe“ ohne „abgegeben“; Fehlvorstellung „Energie bleibt erhalten“ nur indirekt angegangen; „passt“ bewertet nur die Richtung; Eingaben wie „4 K“ sperren den Knopf mit irreführendem Hinweis; Prüfen in Frage 2 grau ohne Erklärung; Hinweise auf Frage 1 schon vor ihrer Vorhersage (Schnitt in Rechenwerten); Vorhersage-Marke zeigt immer die Startvorhersage; Ausgangslage V3 falsch benannt; Kurslink im offenen Tab ohne Wirkung; Schrift am Beamer zu klein; Messpunkte bei 60 min übereinander; Messblatt erst nach dem Aufdecken | G1, G4, G7 |
 
 **Eigene Befunde des Baus** (vor der Zusammenführung notiert): `aria-valuetext` an den Schiebereglern fehlt (M-12); Anheften nicht abschaltbar (M-6, deckt sich mit G1-02); Lesehilfe ist ein Satz und nicht wegklickbar (S-7, Abweichung zu begründen); drei Reiter statt neun (M-18, nach Bauauftrag und Lernzentrum K5, als Abweichung zu dokumentieren); Name des ersten Reiters „Versuche“ (Bauauftrag, Lernzentrum) gegen E6 „Auflösungen“ (offene Frage an die TL mit Empfehlung „Versuche“).
