@@ -4,7 +4,7 @@
 
 ## 0 Rahmen
 
-**Rollentausch.** Das Codex-Kontingent der TL ist knapp. Deshalb baust du (Claude) die Simulation; Codex nimmt danach unabhängig ab (Rolle X5, Teil 7). Wer baut, nimmt nicht selbst ab.
+**Rollentausch (Entscheidung der TL, 05.11.2026).** Diesmal baust du (Claude) die Simulation, nicht Codex wie in `AUFTRAG_Simulation_Kaffee.md`, `AGENTS.md` (Rolle S-Bau) und Konzept Abschnitt 11 vorgesehen; Codex nimmt danach unabhängig ab (Rolle X5, Teil 7). Wer baut, nimmt nicht selbst ab. Grundlage ist der Stand der Konzeptphase auf diesem Zweig (Fassung 2, Commit 93cb32e).
 
 **Unbeaufsichtigt.** Die TL ist bis morgen nicht erreichbar. Arbeite alle Teile nacheinander durch. Bei einem Konflikt oder einer fehlenden Voraussetzung: Konflikt dokumentieren und die davon unabhängigen Aufgaben weiterbearbeiten.
 
