@@ -376,9 +376,15 @@ async function domOhneSkript(p) {
       r1 === 80.4 && r2 === 67.8 && r3 === 57 && r4 === null && m4.length > 5 && r5 === null && r6 === null && /Tausender/i.test(m6) && r7 === null,
       [r1, r2, r3, r4, r5, r6, r7].join(", ") + " | " + m4.slice(0, 60));
     pruefe("Messblatt: Becher 1 hat keine Zeile „60 nach der Milch“", await p.isDisabled('input[data-b="1"][data-i="7"]'));
+    await z(2, 1, "");                       // Becher 2 ohne Wert bei 10 min: Übernahme muss abgelehnt werden
+    const vorU = await p.evaluate(() => JSON.stringify(window.KAFFEE.zustand().e));
     await p.click("#mess-ueber"); await warte(50);
     const info = await text(p, "#mess-info");
-    pruefe("Übernahme mit unvollständigen Werten: Meldung, Einstellungen unverändert (D116: ganz oder gar nicht)", /nicht übernommen/i.test(info) || (await p.evaluate(() => window.KAFFEE.zustand().e.kAQuelle)) === "messung", info.slice(0, 90));
+    const nachU = await p.evaluate(() => JSON.stringify(window.KAFFEE.zustand().e));
+    pruefe("Übernahme ohne Wert bei 10 min: Meldung „nicht übernommen“, Einstellungen unverändert (D116: ganz oder gar nicht)", /nicht übernommen/i.test(info) && vorU === nachU, info.slice(0, 90));
+    await z(2, 1, "67,8"); await p.click("#mess-ueber"); await warte(50);
+    const zU = await p.evaluate(() => window.KAFFEE.zustand().e);
+    pruefe("Übernahme mit Werten bei 0 und 10 min: übernommen (80,4 und 67,8 °C, kA aus der Messung, Becher an)", zU.thK0 === 80.4 && zU.thMess === 67.8 && zU.kAQuelle === "messung" && zU.becher === true, (await text(p, "#mess-info")).slice(0, 90));
     await p.click("#mess-weg"); await p.click("#rueck-ja"); await warte(50);
     pruefe("Kurswerte löschen (mit Rückfrage): Werte weg, Antworten bleiben", (await p.evaluate(() => window.KAFFEE.zustand().kurs.werte.b2.every(x => x === null))) && (await p.evaluate(() => window.KAFFEE.zustand().antworten.start.fest)));
     pruefe("Messblatt: keine Konsolenfehler", !fehler.length, fehler.join("; "));
