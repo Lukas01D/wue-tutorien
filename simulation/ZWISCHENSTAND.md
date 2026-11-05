@@ -26,10 +26,10 @@ Getrennte Rollenprüfungen desselben Modells, alle auf dem Stand aus Abschnitt 1
 | Rolle | Datei | Stand |
 |:--|:--|:--|
 | G1 Studentin (Handy, Deutsch) | `simulation/gutachten/G1_Studentin.md` | **vollständig**: 19 Befunde (1 blocker, 1 high, 8 medium, 9 low) |
-| G2 Internationaler Student | `simulation/gutachten/G2_International.md` | **unvollständig**, Zwischenbericht (Durchlauf auf Englisch fast fertig): 20 Befunde (1 blocker, 2 high, 9 medium, 9 low); offen: nur Tastatur, Bildschirmtastatur, 768 und 1024 px, Kurslink mit Becher 3 oder Deckel, gesperrter Speicher |
+| G2 Internationaler Student | `simulation/gutachten/G2_International.md` | **unvollständig**, Zwischenbericht (Durchlauf auf Englisch fast fertig): 20 Befunde (1 blocker, 2 high, 8 medium, 9 low); offen: nur Tastatur, Bildschirmtastatur, 768 und 1024 px, Kurslink mit Becher 3 oder Deckel, gesperrter Speicher |
 | G3 Fachgutachter | `simulation/gutachten/G3_Fachgutachter.md` | **unvollständig**, Zwischenbericht: 30 von 30 Zuständen stimmen in allen angezeigten Zahlen mit der unabhängigen Rechnung überein, Auflösungen DE und EN richtig; 13 Befunde (0 blocker, 1 high, 3 medium, 9 low); offen: Becher 3 und Deckel im Messblatt, Kurslink, CSV, Wertetabelle, Vergleichslauf, englische Texte außer Auflösungen |
 | G4 Lernpsychologie | `simulation/gutachten/G4_Lernpsychologie.md` | **vollständig**: 24 Befunde (1 blocker, 1 high, 14 medium, 8 low) |
-| G5 Barrierefreiheit | `simulation/gutachten/G5_Barrierefreiheit.md` | **unvollständig** (wie G2) |
+| G5 Barrierefreiheit | `simulation/gutachten/G5_Barrierefreiheit.md` | **unvollständig**, Zwischenbericht mit Prüfliste WCAG 2.2 A/AA: axe-core in 48 Läufen ohne Verstoß; 22 Befunde aus der Prüfung von Hand (1 blocker, 4 high, 10 medium, 7 low); offen: echter Bildschirmleser, echte Geräte, Firefox und Safari, ln-Achse, V1 bis V5 einzeln, Frage 2 mit Kurslink, Kontrastmodus |
 | G6 Gestaltung | `simulation/gutachten/G6_Gestaltung.md` | **unvollständig**, Zwischenbericht: 17 Befunde (0 blocker, 3 high, 4 medium, 10 low); Vergleich mit dem Lernzentrum nach „Berechnen“ nicht möglich (Pyodide offline blockiert); offene Prüfungen im Bericht |
 | G7 Tutorin | `simulation/gutachten/G7_Tutorin.md` | **vollständig**: 15 Befunde (1 blocker, 3 high, 8 medium, 3 low) |
 | G8 Technik | `simulation/gutachten/G8_Technik.md` | **unvollständig**, Zwischenbericht: 25 Angriffe und Prüfungen, 16 Befunde (0 blocker, 2 high, 5 medium, 9 low); ohne Befund: keine HTML-Einschleusung, keine fremden Anfragen, keine CSP-Verletzung, gesperrter Speicher, Dauerlauf 36 s, M-5 auch mit gedrosselter CPU |
@@ -45,15 +45,17 @@ Welche Zwischenberichte tatsächlich geschrieben wurden, zeigt Abschnitt 6 (wird
 | high | Zwei offene Tabs überschreiben sich den Speicher (Vorhersage zu Frage 2 und Kurswerte gehen verloren) | G7-02, G8-01 |
 | high | Beamer 1280 × 720 und 1366 × 768: Frage, Diagramm und Regler nie zugleich im Bild (M-6) | G7-03 |
 | high | Hinweis „Werte werden nicht gespeichert“ am Handy ausgeblendet | G7-04 |
-| blocker | Achsenbeschriftung rundet Teilstriche im Abstand 2,5 auf ganze Zahlen (2,5 wird „3“), Zeitachse in Frage 1 bei Zugabe um 11 bis 14 min und Wärmestrom-Ansicht | G2-01 |
+| blocker | Achsenbeschriftung rundet Teilstriche im Abstand 2,5 auf ganze Zahlen (2,5 wird „3“), Zeitachse in Frage 1 bei Zugabe um 11 bis 14 min und Wärmestrom-Ansicht | G2-01, G5-01 |
 | high | Englische CSV: Komma im Spaltenkopf „model cup 2, black until the milk“ zerbricht die Spalten | G2-02 |
 | high | Dezimalkomma im Englischen: getippte „2,5“ erscheint als „about 2,5 K“ (M-19) | G2-03 |
 | high (INFERRED) | nur drei Reiter, erster heißt „Versuche“ statt „Auflösungen“ (M-18, E6); nach Bauauftrag und Lernzentrum K5 so gebaut, Frage an die TL | G3-13 |
 | medium | Start-Auflösung „Tasse 2 war bis zur Zugabe heißer“ stimmt nur bis 55,7 min (Wortlaut aus Konzept 6.1, Lösung sagt „bis etwa 56 min“): Frage an die TL | G3-02 |
 | medium | „Becher beim Eingießen kalt“ ändert Kurven, Rechenwerte und Energie nicht, nur eine Zusatzzeile | G3-03 |
-| high | Angeheftetes Diagramm verdeckt am Handy den Tastaturfokus (WCAG 2.4.11, M-6), `scroll-padding-top` fehlt | G6-02 |
+| high | Angeheftetes Diagramm verdeckt am Handy den Tastaturfokus (WCAG 2.4.11, M-6), `scroll-padding-top` fehlt | G6-02, G5-02 |
+| high | Fokus am Sprachknopf im dunklen Kopf nicht sichtbar (Kontrast 1,25:1, WCAG 2.4.7) | G5-03 |
+| high | Vergleichslauf mit 1,5 bis 1,8:1 Kontrast und ohne Textfassung | G5-05 |
 | high | Beschriftungen im Diagramm überlappen in Einzelfällen (EN „intersection“ auf den Kurven, Zugabe 5 min unter dem Vorhersagekasten, Raumlinie bei 120 min) (M-11) | G6-03 |
-| high | `aria-valuetext` fehlt an allen 8 Reglern (M-12; deckt sich mit dem eigenen Befund) | G8-02 |
+| high | `aria-valuetext` fehlt an allen 8 Reglern (M-12; deckt sich mit dem eigenen Befund) | G8-02, G5-04 |
 | medium | Manipulierte Werte im Speicher legen die Seite ohne Ausweg lahm (7 von 24 Fällen); erster Klick nach Messblatt-Eingabe geht verloren; Messblatt nimmt Werte an, die die Übernahme mit falscher Begründung ablehnt; Link endet auf Komma | G8-03 bis G8-07 |
 | medium | „Kurven zeigen“ scrollt die Kurven nicht ins Bild; Laptop: Frage, Diagramm und Regler nie zugleich (deckt sich mit G7-03); Energiesäulen ab 768 px nur 8 bis 8,8 px Schrift; Aufklappbereichen fehlt das ▶ | G6-04 bis G6-07 |
 | medium (Auswahl) | Einheit im Zahlenfeld („3 K“) sperrt den Knopf mit falschem Hinweis (G1, G2); *kA* heißt im Englischen „heat loss“ statt „heat loss coefficient“; deutsche Indizes (ab, misch, mess) im Englischen nicht erklärt; Ausgangslage-Meldung bleibt nach DE → EN deutsch; Säulentitel „Energie bis zur Zugabe“ ohne „abgegeben“; Fehlvorstellung „Energie bleibt erhalten“ nur indirekt angegangen; „passt“ bewertet nur die Richtung; Eingaben wie „4 K“ sperren den Knopf mit irreführendem Hinweis; Prüfen in Frage 2 grau ohne Erklärung; Hinweise auf Frage 1 schon vor ihrer Vorhersage (Schnitt in Rechenwerten); Vorhersage-Marke zeigt immer die Startvorhersage; Ausgangslage V3 falsch benannt; Kurslink im offenen Tab ohne Wirkung; Schrift am Beamer zu klein; Messpunkte bei 60 min übereinander; Messblatt erst nach dem Aufdecken | G1, G4, G7 |
@@ -94,4 +96,6 @@ Hinweis: Die Prüfung „Übernahme ohne Wert bei 10 min“ in `browsertest_bau.
 
 ## 6 Zwischenberichte beim Pausieren
 
-(wird mit dem letzten Commit dieser Pause nachgetragen)
+Alle acht Gutachten liegen im Repository. Vollständig: G1, G4, G7. Als Zwischenstand (oben gekennzeichnet „Zwischenstand, nicht abgeschlossen“, mit Liste des noch nicht Geprüften): G2, G3, G5, G6, G8. Alle Rollen haben denselben Stand der Seite geprüft (SHA-256 `f519052c…6707`) und nur ihr Gutachten geändert; keine Rolle hat committet. Für Schritt 1 in Abschnitt 5 heißt das: G2, G3, G5, G6 und G8 vervollständigen (jeweils nur die offenen Punkte ihrer Liste), G1, G4, G7 nicht wiederholen.
+
+Summe Runde 1 (vorläufig, noch nicht zusammengeführt, Doppelungen nicht abgezogen): 146 Befunde (aus den Befundtabellen gezählt), davon 5 blocker (zwei Sachverhalte: Messpunkte vor der Vorhersage zu Frage 2; Achsenbeschriftung bei Schrittweite 2,5), 17 high, 60 medium, 64 low. Keine Rolle hat eine falsche Modellzahl gefunden (G3: 30 von 30 Zuständen gleich).
