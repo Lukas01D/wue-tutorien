@@ -1,0 +1,136 @@
+ok    MODELL-Block der Quellen bytegleich dem geprüften Werkzeug (SHA-256 b32e3f9…)
+ok    kaffee_modell.py bytegleich der Quelle (SHA-256 eb7efc1d…)
+ok    fest: Standard kA  Python 0.340248, JS 0.340248, Soll 0.3402
+ok    fest: Standard Mischtemperatur  Python 70.466209, JS 70.466209, Soll 70.47
+ok    fest: Standard theta1  Python 34.046483, JS 34.046483, Soll 34.05
+ok    fest: Standard theta2  Python 30.193282, JS 30.193282, Soll 30.19
+ok    fest: Standard Unterschied  Python 3.853201, JS 3.853201, Soll 3.85
+ok    fest: Standard Q1  Python 34.880847, JS 34.880847, Soll 34.88
+ok    fest: Standard Q2  Python 38.571235, JS 38.571235, Soll 38.57
+ok    fest: Standard Schnitt  Python 55.744669, JS 55.744669, Soll 55.7
+ok    fest: Standard schwarz nach 30 min  Python 48.839722, JS 48.839722, Soll 48.84
+ok    fest: Standard Zeitkonstante  Python 40.950551, JS 40.950551, Soll 41.0
+ok    fest: Standard Wärmestrom 0 Tasse 1  Python 17.171015, JS 17.171015, Soll 17.17
+ok    fest: Standard Wärmestrom 0 Tasse 2  Python 20.414866, JS 20.414866, Soll 20.41
+ok    fest: Standard Wärmestrom 60 Tasse 1  Python 4.779284, JS 4.779284, Soll 4.78
+ok    fest: Standard Wärmestrom 60 Tasse 2  Python 4.716569, JS 4.716569, Soll 4.72
+ok    fest: Teilfläche vor dem Schnitt, Zugabe 60  Python 3.698660, JS 3.698660, Soll 3.6987
+ok    fest: Teilfläche nach dem Schnitt, Zugabe 60  Python -0.008272, JS -0.008272, Soll -0.0083
+ok    fest: Teilfläche vor, Zugabe 120  Python 3.698660, JS 3.698660, Soll 3.6987
+ok    fest: Teilfläche nach, Zugabe 120  Python -0.805469, JS -0.805469, Soll -0.8055
+ok    fest: Becher (Teil g) kA  Python 0.444031, JS 0.444031, Soll 0.444
+ok    fest: Becher (Teil g) theta1  Python 34.043556, JS 34.043556, Soll 34.04
+ok    fest: Becher (Teil g) theta2  Python 30.964725, JS 30.964725, Soll 30.96
+ok    fest: Becher (Teil g) Q1  Python 46.602543, JS 46.602543, Soll 46.6
+ok    fest: Becher (Teil g) Q2  Python 50.336384, JS 50.336384, Soll 50.34
+ok    fest: Becher (Teil g) Q2-Q1 ungerundet  Python 3.733840, JS 3.733840, Soll 3.73
+ok    fest: Versuch 40 min, Becher theta1  Python 41.791682, JS 41.791682, Soll 41.79
+ok    fest: Versuch 40 min, Becher theta2  Python 38.817392, JS 38.817392, Soll 38.82
+ok    fest: Milch für Tasse 2 bei 20 °C: theta2  Python 32.100041, JS 32.100041, Soll 32.1
+ok    fest: Milch für Tasse 2 bei 20 °C: Unterschied  Python 1.946442, JS 1.946442, Soll 1.95
+ok    fest: Milch für Tasse 2 bei 20 °C: Milchbeitrag  Python -1.826190, JS -1.826190, Soll -1.83
+ok    fest: Milch 60 °C (Teil f) theta1  Python 35.992443, JS 35.992443, Soll 35.99
+ok    fest: Milch 60 °C (Teil f) theta2  Python 37.184729, JS 37.184729, Soll 37.18
+ok    fest: kA Tasse 1 relativ 1,05: theta1  Python 33.176375, JS 33.176375, Soll 33.18
+ok    fest: kA Tasse 1 relativ 1,05: Unterschied  Python 2.983092, JS 2.983092, Soll 2.98
+ok    fest: kA Tasse 1 relativ 1,10: Unterschied  Python 2.166883, JS 2.166883, Soll 2.17
+ok    fest: kA beider 0,9: Unterschied  Python 3.860247, JS 3.860247, Soll 3.86
+ok    fest: kA beider 1,1: Unterschied  Python 3.815997, JS 3.815997, Soll 3.816
+ok    fest: Keramik mit Deckel kA  Python 0.190539, JS 0.190539, Soll 0.1905
+ok    fest: Keramik mit Deckel theta1  Python 44.658017, JS 44.658017, Soll 44.66
+ok    fest: Keramik mit Deckel theta2  Python 41.148383, JS 41.148383, Soll 41.15
+ok    fest: Keramik mit Deckel Unterschied  Python 3.509635, JS 3.509635, Soll 3.51
+ok    fest: Keramik mit Deckel Q1  Python 24.717692, JS 24.717692, Soll 24.72
+ok    fest: Keramik mit Deckel Q2  Python 28.079031, JS 28.079031, Soll 28.08
+ok    fest: Keramik mit Deckel 30 min  Python 59.809026, JS 59.809026, Soll 59.81
+ok    fest: Keramik mit Deckel Zeitkonstante  Python 73.125983, JS 73.125983, Soll 73.1
+ok    fest: Edelstahl kA  Python 0.306223, JS 0.306223, Soll 0.3062
+ok    fest: Edelstahl 30 min  Python 51.031809, JS 51.031809, Soll 51.03
+ok    fest: Edelstahl Zeitkonstante  Python 45.500612, JS 45.500612, Soll 45.5
+ok    fest: Edelstahl Unterschied  Python 3.860247, JS 3.860247, Soll 3.86
+ok    fest: Thermobecher offen kA  Python 0.149709, JS 0.149709, Soll 0.1497
+ok    fest: Thermobecher offen 30 min  Python 63.467111, JS 63.467111, Soll 63.47
+ok    fest: Thermobecher offen Zeitkonstante  Python 93.069433, JS 93.069433, Soll 93.1
+ok    fest: Thermobecher offen Unterschied  Python 3.167994, JS 3.167994, Soll 3.17
+ok    fest: kA fest 0,3402 mit Becher theta1  Python 39.110587, JS 39.110587, Soll 39.11
+ok    fest: kA fest 0,3402 mit Becher theta2  Python 36.057759, JS 36.057759, Soll 36.06
+ok    fest: kA fest 0,3402 mit Becher Unterschied  Python 3.052828, JS 3.052828, Soll 3.05
+ok    fest: kA fest 0,3402 mit Becher Q1  Python 40.457522, JS 40.457522, Soll 40.46
+ok    fest: kA fest 0,3402 mit Becher Q2  Python 44.159827, JS 44.159827, Soll 44.16
+ok    fest: kA fest 0,3402 mit Becher 30 min  Python 54.225895, JS 54.225895, Soll 54.23
+ok    fest: Deckel und Becher, kA fest: theta1  Python 49.804196, JS 49.804196, Soll 49.8
+ok    fest: Deckel und Becher, kA fest: theta2  Python 47.278368, JS 47.278368, Soll 47.28
+ok    fest: Deckel und Becher, kA fest: Unterschied  Python 2.525828, JS 2.525828, Soll 2.53
+ok    fest: 8.5 300/50 ml, 90/10/25 °C, kA 0,25: theta1  Python 54.038030, JS 54.038030, Soll 54.04
+ok    fest: 8.5 300/50 ml, 90/10/25 °C, kA 0,25: theta2  Python 50.205916, JS 50.205916, Soll 50.21
+ok    fest: 8.5 300/50 ml, 90/10/25 °C, kA 0,25: Q1  Python 36.160554, JS 36.160554, Soll 36.16
+ok    fest: 8.5 300/50 ml, 90/10/25 °C, kA 0,25: Q2  Python 41.743599, JS 41.743599, Soll 41.74
+ok    fest: 8.5 kA 0,05: theta1  Python 61.819499, JS 61.819499, Soll 61.82
+ok    fest: 8.5 kA 0,05: theta2  Python 60.321075, JS 60.321075, Soll 60.32
+ok    fest: 8.5 kA 1,00: theta1  Python 21.176423, JS 21.176423, Soll 21.18
+ok    fest: 8.5 kA 1,00: theta2  Python 18.799461, JS 18.799461, Soll 18.8
+ok    fest: 8.5 fest, Kaffee 95 °C: theta1  Python 37.690783, JS 37.690783, Soll 37.69
+ok    fest: 8.5 fest, Kaffee 95 °C: theta2  Python 33.218293, JS 33.218293, Soll 33.22
+ok    fest: 8.5 Messung, Kaffee 95 °C: kA  Python 0.651161, JS 0.651161, Soll 0.6512
+ok    fest: 8.5 Messung, Kaffee 95 °C: theta1  Python 25.497947, JS 25.497947, Soll 25.5
+ok    fest: 8.5 Messung, Kaffee 95 °C: theta2  Python 22.058183, JS 22.058183, Soll 22.06
+ok    fest: 8.5 fest, Kaffee 100 ml: theta1  Python 24.453720, JS 24.453720, Soll 24.45
+ok    fest: 8.5 fest, Kaffee 100 ml: theta2  Python 19.096836, JS 19.096836, Soll 19.1
+ok    fest: 8.5 Messung, Kaffee 100 ml: kA  Python 0.170124, JS 0.170124, Soll 0.1701
+ok    fest: 8.5 Messung, Kaffee 100 ml: theta1  Python 33.852042, JS 33.852042, Soll 33.85
+ok    fest: 8.5 Messung, Kaffee 100 ml: theta2  Python 27.351963, JS 27.351963, Soll 27.35
+ok    fest: 8.5 fest, Kaffee 400 ml: theta1  Python 47.738447, JS 47.738447, Soll 47.74
+ok    fest: 8.5 fest, Kaffee 400 ml: theta2  Python 45.864211, JS 45.864211, Soll 45.86
+ok    fest: 8.5 Messung, Kaffee 400 ml: kA  Python 0.680496, JS 0.680496, Soll 0.6805
+ok    fest: 8.5 fest, Raum 30 °C: theta1  Python 41.263139, JS 41.263139, Soll 41.26
+ok    fest: 8.5 fest, Raum 30 °C: theta2  Python 36.905437, JS 36.905437, Soll 36.91
+ok    fest: 8.5 Messung, Raum 30 °C: kA  Python 0.419540, JS 0.419540, Soll 0.4195
+ok    fest: 8.5 fest, Raum 10 °C: theta1  Python 26.829827, JS 26.829827, Soll 26.83
+ok    fest: 8.5 fest, Raum 10 °C: theta2  Python 23.481128, JS 23.481128, Soll 23.48
+ok    fest: 8.5 Messung, Raum 10 °C: kA  Python 0.286252, JS 0.286252, Soll 0.2863
+ok    fest: 8.5 fest, Kaffee 60 °C: theta1  Python 29.187417, JS 29.187417, Soll 29.19
+ok    fest: 8.5 fest, Kaffee 60 °C: theta2  Python 26.159936, JS 26.159936, Soll 26.16
+ok    fest: 8.5 Milch 100 ml: theta1  Python 33.235388, JS 33.235388, Soll 33.24
+ok    fest: 8.5 Milch 100 ml: theta2  Python 24.430163, JS 24.430163, Soll 24.43
+ok    M4 Zugabe 60, Vergleich 90: 27,41 / 25,38 / 2,03
+ok    M4 Vergleich 120: 1,07 K
+ok    M4 kA Tasse 1 · 1,05, Vergleich 90: 1,35506 K (nicht 1,57380)  1.355055
+ok    M4 mit Becher (Teil g), Vergleich 90: 1,59 K
+ok    M9 Becher kalt: 59,85 / 65,98 / 30,67 / 28,05 / 2,62
+ok    M10 Trinkzeit Standard 10,90 / 16,60 min
+ok    M10 Trinkzeit Deckel 19,47 / 29,65 min
+ok    M10 Trinkzeit Becher (Teil g) 12,35 / 16,60 min
+ok    größter Unterschied ohne Becher 3,862 K bei 35,38 °C, 55,7 min
+ok    größter Unterschied mit Becher 3,090 K bei 35,78 °C, 54,7 min
+ok    M2 T09 exakte (ungerundete) Modellreihe 10 bis 60 min: alle 0,3402 W/K
+ok    M2 T10: Ursprung 0,3423, frei 0,3444, Abschnitt +0,007
+ok    M2 gekrümmte Reihe 10 bis 40 min: 0,3187 W/K
+ok    M2 JS gleich Python (drei Reihen)
+ok    KA_AUFGABE gleich Python
+ok    Voreinstellungen gleich Tabelle 8.2.1
+ok    Zufall: 10000 Sätze, JS gegen Python an 4 Zeitpunkten je Satz (0, zufällig, unmittelbar vor und bei der Zugabe) und 10 min danach  0 Abweichungen über der Toleranz
+ok    Energiebilanz mit Milchbeitrag: C_GB dT = Q2 - Q1 + C_M (thM1 - thM2), 2000 Sätze  größter Rest 2.04e-13 kJ
+ok    Mischtemperaturen folgen aus den Wärmekapazitäten (Tasse 1 bei 0, Tasse 2 bei der Zugabe)  1.4e-13 K
+ok    Zwischen den Mischereignissen nähert sich jede Temperatur monoton der Raumtemperatur (500 Sätze, Abstand über 1e-9 K)  0 Verstöße
+ok    größter Unterschied ohne Becher für kA 0,05 bis 1,00 W/K gleich 3,862 K
+ok    größter Unterschied mit Becher für kA 0,05 bis 1,00 W/K gleich 3,090 K
+ok    Zeitpunkt des größten Unterschieds mit kA · 0,56: 99,5 min  99.544 min
+ok    größter Unterschied analytisch gleich Raster (ohne Becher)  3.86184 K bei 55.74 min gegen 3.86184 K bei 55.74 min
+ok    größter Unterschied analytisch gleich Raster (mit Becher (Teil g))  3.08985 K bei 54.70 min gegen 3.08985 K bei 54.70 min
+ok    größter Unterschied analytisch gleich Raster (Deckel)  3.86184 K bei 99.54 min gegen 3.86184 K bei 99.55 min
+ok    Unterschied nach festen 60 min mit Deckel (3,51 K) ist eine andere Größe als der größte Unterschied (3,86 K)
+ok    kA festhalten: kA bleibt bei Kaffee 95 °C gleich (0,3402 W/K)
+ok    kA aus der Messung: kA wird bei Kaffee 95 °C neu bestimmt (0,6512 W/K)
+ok    kA festhalten mit Becher: kA bleibt 0,3402 W/K, Becher speichert zusätzlich
+ok    M8: Grundmodell rechnet aus dem gleichwertigen Messwert genau das festgehaltene kA  relativ 6.3e-14
+ok    ungültig: Anfang gleich Raum meldet anfang_ueber_raum (Python und JS)  Python anfang_ueber_raum, JS anfang_ueber_raum
+ok    ungültig: Anfang unter Raum meldet anfang_ueber_raum (Python und JS)  Python anfang_ueber_raum, JS anfang_ueber_raum
+ok    ungültig: Messung über Anfang meldet messung_zwischen (Python und JS)  Python messung_zwischen, JS messung_zwischen
+ok    ungültig: Messung gleich Raum meldet messung_zwischen (Python und JS)  Python messung_zwischen, JS messung_zwischen
+ok    ungültig: kA null meldet kA_positiv (Python und JS)  Python kA_positiv, JS kA_positiv
+ok    ungültig: kA negativ meldet kA_positiv (Python und JS)  Python kA_positiv, JS kA_positiv
+ok    ungültig: kA leer (keine Zahl; in JSON als null) meldet kA_positiv (Python und JS)  Python kA_positiv, JS kA_positiv
+ok    ungültig: Anfang leer (keine Zahl; in JSON als null) meldet anfang_ueber_raum (Python und JS)  Python anfang_ueber_raum, JS anfang_ueber_raum
+ok    extreme Ränder der Regler: alle Ergebnisse endlich, JS gleich Python
+
+Ergebnis: 134 von 134 Prüfungen bestanden.
