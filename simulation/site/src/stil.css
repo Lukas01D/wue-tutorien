@@ -95,6 +95,7 @@ button { font: inherit; cursor: pointer; }
 .diagramm { margin: 0; min-width: 0; }
 .diagramm-halter { position: relative; max-width: 780px; background: #fff; }
 #diagramm { display: block; width: 100%; height: auto; font-family: "Fira Sans", sans-serif; }
+.vorhersage-zeile { margin: 0.2rem 0 0; font-size: 0.85rem; color: #14603f; background: #e8f5ef; border: 1px solid var(--richtig); border-radius: var(--radius); padding: 0.1rem 0.4rem; display: inline-block; }
 .lesehinweis { font-size: 0.92rem; margin: 0.4rem 0 0; }
 .legende-mess, .flaechen { font-size: 0.88rem; color: var(--neben); margin: 0.2rem 0 0; }
 .kernzahlen { display: none; }
@@ -104,7 +105,7 @@ button { font: inherit; cursor: pointer; }
 .knopf-info { font-size: 0.85rem; color: var(--neben); margin: 0; min-height: 1.2em; }
 .energie, .bilanz { border: 1px solid var(--linie); border-radius: var(--radius); padding: 0.6rem 0.7rem; background: #fff; }
 .kasten-titel { font-size: 0.95rem; margin: 0 0 0.3rem; }
-.energie svg, .bilanz svg { display: block; width: 100%; max-width: 15rem; height: auto; margin: 0 auto; }
+.energie svg, .bilanz svg { display: block; width: 100%; max-width: 17rem; height: auto; margin: 0 auto; }
 .energie-satz { font-size: 0.88rem; margin: 0.3rem 0 0; }
 
 /* Regler */
@@ -198,7 +199,10 @@ button { font: inherit; cursor: pointer; }
   .kopf-titel { font-size: 1.05rem; }
   .seite { padding: 0.5rem 0.7rem 2rem; }
   .simulation { display: flex; flex-direction: column; }
-  html.anheften .diagramm-halter { position: sticky; top: 0; z-index: 5; border-bottom: 3px solid var(--hellblau); }
+  /* Anheften: Raster und Figur geben ihre Box ab, damit der Diagrammhalter innerhalb des ganzen Simulationsbereichs
+     (Regler, Vertiefung, Messblatt) oben bleibt; sonst endet „sticky“ am Ende der Figur. */
+  html.anheften .sim-raster, html.anheften #diagramm-figur { display: contents; }
+  html.anheften .diagramm-halter { position: sticky; top: 0; z-index: 5; background: #fff; border-bottom: 3px solid var(--hellblau); }
   html.anheften #diagramm { max-height: 36vh; }
   html.anheften .kernzahlen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; background: #fff; padding: 0.2rem 0.3rem; font-size: 0.8rem; }
   .kernzahlen b { display: block; font-size: 0.95rem; font-variant-numeric: tabular-nums; }

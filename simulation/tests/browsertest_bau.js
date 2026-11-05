@@ -282,6 +282,37 @@ async function domOhneSkript(p) {
     await ctx.close();
   }
 
+  // ---------------------------------------------------------------- Kann-Punkte (Konzept K-3, K-4, K-5; Werte aus M9, M10, M11)
+  {
+    const ctx = await kontext(browser, { acceptDownloads: true }); const fehler = [];
+    const p = await seite(ctx, DATEI_URL, fehler);
+    await startFesthalten(p);
+    await p.evaluate(() => { const v = document.getElementById("vertiefung"); v.open = true; v.dispatchEvent(new Event("toggle")); }); await warte(50);
+    await p.check("#s-trink"); await warte(50);
+    const tr = await text(p, "#zusatz-text");
+    const linie = await p.$$eval("#diagramm line[stroke='#227b48']", l => l.length);
+    pruefe("Kann K-3 Trinkzeit 60 °C: Tasse 1 nach 10,9 min, schwarzer Kaffee nach 16,6 min (M10: 10,90 und 16,60), Linie im Diagramm", tr.includes("10,9 min") && tr.includes("16,6 min") && linie === 1, tr.slice(0, 90));
+    pruefe("Kann K-4 Becher kalt: nur mit Becher und festgehaltenem kA wählbar", await p.isDisabled("#s-kalt"));
+    await p.check("#s-becher"); await warte(50);
+    await p.fill("#z-kA", "0,444"); await p.press("#z-kA", "Enter"); await warte(50);
+    await p.check("#s-kalt"); await warte(50);
+    const kt = await text(p, "#zusatz-text");
+    pruefe("Kann K-4 Becher kalt (kA 0,4440, C_B 255 J/K): 59,85 / 65,98 °C, nach 60 min 30,67 und 28,05 °C, 2,62 K (vorgewärmt 3,08 K) wie M9",
+      ["59,85", "65,98", "30,67", "28,05", "2,62", "3,08"].every(x => kt.includes(x)), kt.slice(-130));
+    await p.click("#knopf-standard"); await warte(50);
+    const csv = await p.evaluate(() => window.KAFFEE.csv());
+    const z = csv.replace(/^\ufeff/, "").split("\r\n");
+    const soll = { 1: "0;70,47;80,00", 2: "1;69,40;78,55", 3: "2;68,36;77,14", 11: "10;60,78;67,00" };
+    const csvOk = Object.entries(soll).every(([i, v]) => z[i].startsWith(v)) && /^t \[min\];Modell Tasse 1 \[°C\]/.test(z[0]) && csv.startsWith("\ufeff") && z.length === 64;
+    const [dl] = await Promise.all([p.waitForEvent("download"), p.click("#mess-csv")]);
+    const pfad = await dl.path(); const inhalt = fs.readFileSync(pfad, "utf8");
+    await p.click("#sprachknopf"); const csvEn = await p.evaluate(() => window.KAFFEE.csv()); await p.click("#sprachknopf");
+    pruefe("Kann K-5 CSV: Kopfzeile mit Einheiten, UTF-8 mit BOM, Werte wie M11 (0;70,47;80,00 · 1;69,40;78,55 · 2;68,36;77,14 · 10;60,78;67,00), Englisch mit Komma und Punkt, Download aus der Datei",
+      csvOk && inhalt === csv && dl.suggestedFilename() === "kaffee_simulation.csv" && csvEn.split("\r\n")[1] === "0,70.47,80.00,,", z.slice(1, 4).join(" | ") + " · " + dl.suggestedFilename());
+    pruefe("Kann-Punkte: keine Konsolenfehler", !fehler.length, fehler.join("; "));
+    await ctx.close();
+  }
+
   // ---------------------------------------------------------------- Kurslink
   {
     const ctx = await kontext(browser); const fehler = [];
@@ -409,6 +440,10 @@ async function domOhneSkript(p) {
     // Anheften
     const pos = async () => p.evaluate(() => getComputedStyle(document.getElementById("diagramm-halter")).position);
     const hoch = await pos();
+    await p.evaluate(() => { const v = document.getElementById("vertiefung"); v.open = true; v.dispatchEvent(new Event("toggle")); });
+    await p.evaluate(() => document.getElementById("z-thM").scrollIntoView({ block: "end" })); await warte(100);
+    const lage = await p.evaluate(() => { const d = document.getElementById("diagramm-halter").getBoundingClientRect(), r = document.getElementById("z-thM").getBoundingClientRect(); return [Math.round(d.top), Math.round(d.bottom), Math.round(r.top), Math.round(r.bottom), window.innerHeight]; });
+    pruefe("Anheften wirkt beim Bedienen: Diagramm oben sichtbar, Regler Milchtemperatur darunter frei (390×844)", lage[0] >= -1 && lage[0] <= 5 && lage[2] >= lage[1] && lage[3] <= lage[4], lage.join(", "));
     await p.setViewportSize({ width: 390, height: 420 }); await warte(200);
     const tastatur = await pos();
     await p.setViewportSize({ width: 844, height: 390 }); await warte(200);

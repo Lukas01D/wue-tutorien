@@ -498,6 +498,40 @@ value {nr} of mug {becher} is not a temperature between 0 and 100 °C
 mug 1 has no value in the row “60 after the milk”
 @link_grund_becher
 there are values for mug {becher}, which is not listed as measured
+@schalter_trinkzeit
+Show drinking time to 60 °C
+@dia_trinklinie
+drinking temperature 60 °C
+@trinkzeit_text
+Drinking temperature 60 °C: cup 1 {a}, black coffee {b}.
+@trink_nach
+after {t} min
+@trink_sofort
+already when poured
+@trink_nie
+never (room too warm)
+@schalter_kalt
+Mug cold when pouring (room temperature)
+@kalt_nur
+Only with the mug and $kA$ held fixed.
+@kalt_text
+Cold mug: start cup 1 {a} °C, black coffee {b} °C; after {t} min {c} and {d} °C, difference {dt} K (preheated {dtv} K).
+@csv_knopf
+Download as CSV
+@csv_datei
+coffee_simulation.csv
+@csv_fertig
+CSV created (model curves in 1 min steps and measurement sheet).
+@csv_t
+t [min]
+@csv_tasse1
+model cup 1 [°C]
+@csv_tasse2
+model cup 2, black until the milk [°C]
+@csv_becher
+measurement mug {n} [°C]
+@csv_nach_milch
+{t} after the milk
 @link_ok
 Class data from the link used.
 @link_abgelehnt

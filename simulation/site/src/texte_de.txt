@@ -509,6 +509,40 @@ Wert {nr} von Becher {becher} ist keine Temperatur zwischen 0 und 100 °C
 Becher 1 hat in der Zeile „60 nach der Milch“ keinen Wert
 @link_grund_becher
 es gibt Werte für Becher {becher}, der nicht als gemessen angegeben ist
+@schalter_trinkzeit
+Trinkzeit bis 60 °C zeigen
+@dia_trinklinie
+Trinktemperatur 60 °C
+@trinkzeit_text
+Trinktemperatur 60 °C: Tasse 1 {a}, schwarzer Kaffee {b}.
+@trink_nach
+nach {t} min
+@trink_sofort
+schon beim Eingießen
+@trink_nie
+nie (Raum zu warm)
+@schalter_kalt
+Becher beim Eingießen kalt (Raumtemperatur)
+@kalt_nur
+Nur mit Becher und festgehaltenem $kA$.
+@kalt_text
+Becher kalt: Start Tasse 1 {a} °C, schwarzer Kaffee {b} °C; nach {t} min {c} und {d} °C, Unterschied {dt} K (vorgewärmt {dtv} K).
+@csv_knopf
+Als CSV herunterladen
+@csv_datei
+kaffee_simulation.csv
+@csv_fertig
+CSV erstellt (Modellkurven in 1-min-Schritten und Messblatt).
+@csv_t
+t [min]
+@csv_tasse1
+Modell Tasse 1 [°C]
+@csv_tasse2
+Modell Tasse 2, schwarz bis zur Zugabe [°C]
+@csv_becher
+Messung Becher {n} [°C]
+@csv_nach_milch
+{t} nach der Milch
 @link_ok
 Kurswerte aus dem Link übernommen.
 @link_abgelehnt

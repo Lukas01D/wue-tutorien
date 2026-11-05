@@ -1,9 +1,9 @@
 Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-05
-Seite: simulation/site/index.html, SHA-256 247fc02b279cca9c25e492733e057b45840d322da1f16d58205bc4896f7583e3
+Seite: simulation/site/index.html, SHA-256 f519052cadf6745eeeb4eb97f5a0042c74688f3495cada09c059970b25016707
 
-ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  360549 Bytes
-ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  360549 Bytes
-ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-UN27EBJGTaXLgMnCeZDYp…
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  369081 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  369081 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-9GJMzXyKhMp95cc0RVc4o…
 ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
 ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
 ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
@@ -15,7 +15,7 @@ ok    B11 Sperre P0 (de): keine Konsolenfehler
 ok    B12 Sperre P0 (en): keine Ergebniszahl im DOM (ohne Skriptquelle), in Reitern, Tabellen, Ansagen; keine Kurven  Treffer [], Kurven 0
 ok    B13 Sperre P0 (en): keine Konsolenfehler
 ok    B14 P2 Freigabe: Rechenwerte gleich der Python-Referenz (ϑ1, ϑ2, Unterschied, Q1, Q2, kA, Mischtemperatur, Schnitt)  34,05 / 30,19 / 3,85
-ok    B15 P2: Energiesäulen mit Q1, Q2 und Satz Q2 − Q1 (3,69 kJ) und Unterschied  34,88 kJ38,57 kJTasse 1Tasse 2Q2−Q1 = 3,69 kJ entspricht 3,85 K Unterschied.
+ok    B15 P2: Energiesäulen mit Q1, Q2 und Satz Q2 − Q1 (3,69 kJ) und Unterschied  +3,69 kJ34,88 kJ38,57 kJTasse 1Tasse 2Q2−Q1 = 3,69 kJ entspricht 3,85 K Unterschied.
 ok    B16 P2: Frageleiste bei Frage 1 mit Rückblick (Vorhersage, Auftrag Q1 und Q2, Auflösung zum Start)
 ok    B17 P2: Vorhersage als beschrifteter Kasten im Diagramm
 ok    B18 P2: Auflösung zum Start nennt Unterschied, Temperaturen und C
@@ -43,32 +43,38 @@ ok    B39 Pflichtweg und Vertiefung: keine Konsolenfehler
 ok    B40 Vertiefung vor Frage 1: Hinweis „für danach gedacht“, nicht gesperrt
 ok    B41 Vertiefung V1 bis V5: Prüfen erst nach Eingabe, Ausgangslage wie ZUSTAENDE.md 2, Auflösung danach
 ok    B42 Voreinstellung Keramik mit Deckel: kA = 0,1905 W/K (0,56 · kA der Aufgabe), Anzeige 30 min gleich der Referenz, Herkunft genannt  0,1905, 59,81 °C nach 30 min
-ok    B43 Milch für Tasse 2 bei Raumtemperatur: Unterschied gleich der Referenz (Pflichttest M3) und Milchbeitrag im Satz  1,95 K: 34,88 kJ38,57 kJTasse 1Tasse 2Q2−Q1 = 3,69 kJ, dazu Milchbeitrag −1,83 kJ, zusammen 1,86 kJ: entspricht 1,95 K Unterschi
+ok    B43 Milch für Tasse 2 bei Raumtemperatur: Unterschied gleich der Referenz (Pflichttest M3) und Milchbeitrag im Satz  1,95 K: +3,69 kJ34,88 kJ38,57 kJTasse 1Tasse 2Q2−Q1 = 3,69 kJ, dazu Milchbeitrag −1,83 kJ, zusammen 1,86 kJ: entspricht 1,95 K U
 ok    B44 Ungültige Einstellung (Messung über dem Anfang): Meldung, Ergebnisse verdeckt, keine Kurven  Der Messwert nach 10 min muss zwischen Raumtemperatur und Kaffeetemperatur am Anfang liege
 ok    B45 Unsinnige Zahl im Feld: Meldung, aria-invalid, Wert bleibt  Bitte eine Zahl eingeben, zum Beispiel 200.
 ok    B46 Tausendertrennung im Feld wird abgelehnt
 ok    B47 Feldeingaben mit Komma oder Punkt übernommen
 ok    B48 Für die nächste Gruppe zurücksetzen: Startkarte (P0), Standardwerte, Kurswerte bleiben
 ok    B49 Vertiefung und Fehlerfälle: keine Konsolenfehler
-ok    B50 Kurslink: Hin und zurück gleich (mit Becher 3), Rückfrage vor dem Ersetzen, # danach aus der Adresse  199 Zeichen
-ok    B51 Kurslink „Nicht übernehmen“: Kurswerte unverändert
-ok    B52 Kurslink beschädigt oder fremd (9 Fälle): Grund in Worten, nichts geändert, # entfernt
-ok    B53 Kurslink: keine Konsolenfehler
-ok    B54 Messblatt: Komma, Punkt, Leerzeichen gelesen; Unsinn, Tausender, außerhalb 0 bis 100 °C abgelehnt mit Meldung; leer = kein Wert  80.4, 67.8, 57, , , ,  | Bitte eine Temperatur zwischen 0 und 100 °C als Zahl eingebe
-ok    B55 Messblatt: Becher 1 hat keine Zeile „60 nach der Milch“
-ok    B56 Übernahme mit unvollständigen Werten: Meldung, Einstellungen unverändert (D116: ganz oder gar nicht)  Übernommen (Mittel der Becher vor der Milch, ungerundet): Start 80,40 °C, nach 10 min 67,8
-ok    B57 Kurswerte löschen (mit Rückfrage): Werte weg, Antworten bleiben
-ok    B58 Messblatt: keine Konsolenfehler
-ok    B59 Speicher gesperrt: Hinweis „nicht gespeichert“, Seite bleibt bedienbar  Werte werden nicht gespeichert (Speicher im Browser gesperrt)
-ok    B60 Umbruch: kein waagrechtes Scrollen bei 320 bis 1920 px, beide Sprachen, P0, P2, Vertiefung, Reiter (320 px = 400 % Zoom bei 1280 px)
-ok    B61 200 % Text bei 1366 px: kein waagrechtes Scrollen  1366 / 1366
-ok    B62 Zielgrößen bei 390 px: Knöpfe, Felder, Regler mindestens 44 px; Textverweise und Auswahl-Labels mindestens 24 px
-ok    B63 Diagramm angeheftet nur im Hochformat mit genug Höhe (390×844 sticky; 390×420 wie mit Tastatur und 844×390 nicht)  sticky, relative, relative
-ok    B64 Reiter mit Tastatur (Pfeile, Pos1, Ende), Auswahl und Fokus folgen, ein Panel sichtbar  tab-modell/tab-modell/panel-modell | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche | tab-code/tab-code/panel-code | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche
-ok    B65 Tastatur: erster Tab „Zum Inhalt springen“, Fokus sichtbar  sprung, solid
-ok    B66 axe-core 4.14.0 (wcag2a, 2aa, 21a, 21aa, 22aa): keine Verstöße in P0, P2, Vertiefung, DE und EN, 1366 und 390 px
-ok    B67 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  140 ms (gemessen im Cloud-Container)
-ok    B68 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.8 ms, 95 % 5.9 ms, Max 6.7 ms (Cloud)
-ok    B69 Leistung L4: Bedienfolge 30 s (1155 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 0.00 MB (Cloud)
+ok    B50 Kann K-3 Trinkzeit 60 °C: Tasse 1 nach 10,9 min, schwarzer Kaffee nach 16,6 min (M10: 10,90 und 16,60), Linie im Diagramm  Trinktemperatur 60 °C: Tasse 1 nach 10,9 min, schwarzer Kaffee nach 16,6 min.
+ok    B51 Kann K-4 Becher kalt: nur mit Becher und festgehaltenem kA wählbar
+ok    B52 Kann K-4 Becher kalt (kA 0,4440, C_B 255 J/K): 59,85 / 65,98 °C, nach 60 min 30,67 und 28,05 °C, 2,62 K (vorgewärmt 3,08 K) wie M9  r kalt: Start Tasse 1 59,85 °C, schwarzer Kaffee 65,98 °C; nach 60 min 30,67 und 28,05 °C, Unterschied 2,62 K (vorgewärmt 3,08 K).
+ok    B53 Kann K-5 CSV: Kopfzeile mit Einheiten, UTF-8 mit BOM, Werte wie M11 (0;70,47;80,00 · 1;69,40;78,55 · 2;68,36;77,14 · 10;60,78;67,00), Englisch mit Komma und Punkt, Download aus der Datei  0;70,47;80,00;; | 1;69,40;78,55;; | 2;68,36;77,14;; · kaffee_simulation.csv
+ok    B54 Kann-Punkte: keine Konsolenfehler
+ok    B55 Kurslink: Hin und zurück gleich (mit Becher 3), Rückfrage vor dem Ersetzen, # danach aus der Adresse  199 Zeichen
+ok    B56 Kurslink „Nicht übernehmen“: Kurswerte unverändert
+ok    B57 Kurslink beschädigt oder fremd (9 Fälle): Grund in Worten, nichts geändert, # entfernt
+ok    B58 Kurslink: keine Konsolenfehler
+ok    B59 Messblatt: Komma, Punkt, Leerzeichen gelesen; Unsinn, Tausender, außerhalb 0 bis 100 °C abgelehnt mit Meldung; leer = kein Wert  80.4, 67.8, 57, , , ,  | Bitte eine Temperatur zwischen 0 und 100 °C als Zahl eingebe
+ok    B60 Messblatt: Becher 1 hat keine Zeile „60 nach der Milch“
+ok    B61 Übernahme mit unvollständigen Werten: Meldung, Einstellungen unverändert (D116: ganz oder gar nicht)  Übernommen (Mittel der Becher vor der Milch, ungerundet): Start 80,40 °C, nach 10 min 67,8
+ok    B62 Kurswerte löschen (mit Rückfrage): Werte weg, Antworten bleiben
+ok    B63 Messblatt: keine Konsolenfehler
+ok    B64 Speicher gesperrt: Hinweis „nicht gespeichert“, Seite bleibt bedienbar  Werte werden nicht gespeichert (Speicher im Browser gesperrt)
+ok    B65 Umbruch: kein waagrechtes Scrollen bei 320 bis 1920 px, beide Sprachen, P0, P2, Vertiefung, Reiter (320 px = 400 % Zoom bei 1280 px)
+ok    B66 200 % Text bei 1366 px: kein waagrechtes Scrollen  1366 / 1366
+ok    B67 Zielgrößen bei 390 px: Knöpfe, Felder, Regler mindestens 44 px; Textverweise und Auswahl-Labels mindestens 24 px
+ok    B68 Anheften wirkt beim Bedienen: Diagramm oben sichtbar, Regler Milchtemperatur darunter frei (390×844)  0, 340, 800, 844, 844
+ok    B69 Diagramm angeheftet nur im Hochformat mit genug Höhe (390×844 sticky; 390×420 wie mit Tastatur und 844×390 nicht)  sticky, relative, relative
+ok    B70 Reiter mit Tastatur (Pfeile, Pos1, Ende), Auswahl und Fokus folgen, ein Panel sichtbar  tab-modell/tab-modell/panel-modell | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche | tab-code/tab-code/panel-code | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche
+ok    B71 Tastatur: erster Tab „Zum Inhalt springen“, Fokus sichtbar  sprung, solid
+ok    B72 axe-core 4.14.0 (wcag2a, 2aa, 21a, 21aa, 22aa): keine Verstöße in P0, P2, Vertiefung, DE und EN, 1366 und 390 px
+ok    B73 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  187 ms (gemessen im Cloud-Container)
+ok    B74 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 4.0 ms, 95 % 5.7 ms, Max 6.6 ms (Cloud)
+ok    B75 Leistung L4: Bedienfolge 30 s (1190 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.11 MB (Cloud)
 
-Ergebnis: 69 von 69 Prüfungen bestanden.
+Ergebnis: 75 von 75 Prüfungen bestanden.

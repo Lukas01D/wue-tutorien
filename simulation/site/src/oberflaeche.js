@@ -266,7 +266,7 @@
     s.push('<text x="14" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#142337" transform="rotate(-90 14 ' + ((O + H - U) / 2) + ')">' + svgText(yLabel) + "</text>");
     const belegt = [];   // Rechtecke für die Kollisionsprüfung der Beschriftungen
     const pfad = (f, a, b, n) => { const p = []; for (let i = 0; i <= n; i++) { const x = a + (b - a) * i / n; p.push(X(x).toFixed(1) + "," + Y(f(x)).toFixed(1)); } return p.join(" "); };
-    let kurvenPx = [], raumY = null;
+    let kurvenPx = [], raumY = null, vorhersageUnten = "";
     // Direkte Beschriftung mit Kollisionsprüfung (E6/F19: nie auf einer Linie)
     const etikett = (text, farbe, kurve, oben, bevorzugt) => {
       const breite = text.length * fs * 0.56 + 6, hoehe = fs + 6;
@@ -315,8 +315,7 @@
         if (isFinite(R.tSchnitt) && R.tSchnitt < tz) {
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt));
           s.push('<circle cx="' + sx.toFixed(1) + '" cy="' + sy.toFixed(1) + '" r="5.5" fill="#fff" stroke="#222" stroke-width="1.8"/>');
-          s.push('<text x="' + sx.toFixed(1) + '" y="' + (sy - 10).toFixed(1) + '" text-anchor="middle" font-size="' + fs + '" fill="#142337">' + esc(t("dia_schnitt")) + "</text>");
-          belegt.push([sx - 30, sy - 24, 60, 30]);
+          belegt.push([sx - 7, sy - 7, 14, 14]);
         }
         // Messpunkte
         for (const p of punkte) {
@@ -325,6 +324,27 @@
           else if (p.b === 2) s.push('<rect x="' + (px - 4.5).toFixed(1) + '" y="' + (py - 4.5).toFixed(1) + '" width="9" height="9" fill="' + c + '" stroke="#fff" stroke-width="1"/>');
           else s.push('<path d="M ' + px.toFixed(1) + " " + (py - 6).toFixed(1) + ' l 5.5 9.5 l -11 0 z" fill="' + c + '" stroke="#fff" stroke-width="1"/>');
           belegt.push([px - 6, py - 6, 12, 12]);
+        }
+        if (isFinite(R.tSchnitt) && R.tSchnitt < tz) {     // Beschriftung „Schnitt“ nach den Messpunkten, frei von Punkten
+          const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt)), txt = t("dia_schnitt"), bw = txt.length * fs * 0.56 + 4;
+          const kand = [[sx - bw / 2, sy - 10], [sx - bw / 2, sy + fs + 10], [sx - bw - 10, sy - 8], [sx - bw - 10, sy + fs + 6], [sx - bw / 2, sy - 24]];
+          let wahl = kand[0];
+          for (const [x0, yb] of kand) {
+            if (x0 < L + 2 || x0 + bw > W - Rr + 6 || yb - fs < O || yb > H - U - 2) continue;
+            if (!belegt.some(b => x0 < b[0] + b[2] && x0 + bw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { wahl = [x0, yb]; break; }
+          }
+          s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>");
+          belegt.push([wahl[0], wahl[1] - fs, bw, fs + 4]);
+        }
+        if (S.ansicht.trinkzeit && S.ansicht.vertiefung) {      // K-3 Trinkzeit: Linie bei 60 °C, Marken an den Kurven
+          const yT = Y(TRINK);
+          if (yT > O && yT < H - U) {
+            s.push('<line x1="' + L + '" x2="' + (W - Rr) + '" y1="' + yT.toFixed(1) + '" y2="' + yT.toFixed(1) + '" stroke="#227b48" stroke-width="1.4" stroke-dasharray="6 3"/>');
+            s.push('<text x="' + (L + 6) + '" y="' + (yT - 5).toFixed(1) + '" font-size="' + fs + '" fill="#14603f">' + esc(nurText(t("dia_trinklinie"))) + "</text>");
+            const tr = ERW.trinkzeit(S.e, TRINK);
+            for (const [tt, k] of [[tr.tasse1, R.kurve1], [tr.schwarz, R.kurve2]]) if (tt > 0 && tt < tz) s.push('<line x1="' + X(tt).toFixed(1) + '" x2="' + X(tt).toFixed(1) + '" y1="' + (yT - 6).toFixed(1) + '" y2="' + (yT + 6).toFixed(1) + '" stroke="#14603f" stroke-width="2"/>');
+            belegt.push([L + 4, yT - 5 - fs, 110, fs + 4]);
+          }
         }
         const e2 = etikett(t("dia_tasse2", { t: z(tz, 0) }), "#222", R.kurve2, true, [0.12, 0.2, 0.06, 0.3, 0.4]);
         const e1 = etikett(t("dia_tasse1"), "#7a4e24", R.kurve1, false, [0.22, 0.3, 0.14, 0.4, 0.5, 0.06]);
@@ -348,6 +368,7 @@
           let frei = true;
           for (let i = 0; i <= 20; i++) { const xp = bx + bw * i / 20, tt = (xp - L) / (W - L - Rr) * xMax; if (tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk < by + 26 && yk > by - 4) frei = false; } }
           if (frei) s.push('<rect x="' + bx.toFixed(1) + '" y="' + by + '" width="' + bw.toFixed(1) + '" height="22" rx="3" fill="#e8f5ef" stroke="#227b48"/><text x="' + (bx + 7).toFixed(1) + '" y="' + (by + 15) + '" font-size="11" fill="#14603f">' + esc(txt) + "</text>");
+          else vorhersageUnten = txt;     // kein Platz im Diagramm: als Zeile direkt unter dem Diagramm
         }
       }
     } else if (ansicht === "waermestrom" && R) {
@@ -372,6 +393,8 @@
       } else s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#5a6b7f">' + esc(nurText(t("ln_kein"))) + "</text>");
     }
     svg.innerHTML = s.join("");
+    $("vorhersage-zeile").hidden = !vorhersageUnten; $("vorhersage-zeile").textContent = vorhersageUnten;
+    zusatzZeichnen();
     document.querySelector(".lesehinweis").innerHTML = t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht);
     // Beschreibung für Bildschirmleser
     $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) :
@@ -418,6 +441,39 @@
     f.von = Math.min(...lp.map(p => p.t)); f.bis = Math.max(...lp.map(p => p.t));
     return f;
   }
+  // ------------------------------------------------------------------ Kann-Punkte: Trinkzeit (M10), Becher kalt (M9), CSV (M11)
+  const TRINK = 60;
+  function zusatzZeichnen() {
+    const el = $("zusatz-text"), teile = [];
+    if (freigabe() && R && S.ansicht.vertiefung && S.ansicht.trinkzeit) {
+      const tr = ERW.trinkzeit(S.e, TRINK), f = x => x === 0 ? nurText(t("trink_sofort")) : (isFinite(x) ? t("trink_nach", { t: z(x, 1) }) : nurText(t("trink_nie")));
+      teile.push(t("trinkzeit_text", { a: f(tr.tasse1), b: f(tr.schwarz) }));
+    }
+    if (freigabe() && R && S.ansicht.vertiefung && S.ansicht.kalt && S.e.becher && S.e.kAQuelle === "fest") {
+      const k = ERW.becherKalt(S.e);
+      teile.push(t("kalt_text", { a: z(k.th1_0, 2), b: z(k.thK_0, 2), t: z(S.e.tEnd_min, 0), c: z(k.th1, 2), d: z(k.th2, 2), dt: z(k.dT, 2), dtv: z(R.dT, 2) }));
+    }
+    el.hidden = !teile.length; el.innerHTML = teile.map(x => "<span>" + x + "</span>").join("<br>");
+  }
+  function csvBauen() {
+    const de = S.sprache === "de", tr = de ? ";" : ",", zz = (x, n) => (x === null || x === undefined || !isFinite(x)) ? "" : HILFEN.zahlText(x, n, S.sprache).replace("\u2212", "-");
+    const becher = [1, 2].concat(S.kurs.b3 ? [3] : []);
+    const kopf = [nurText(t("csv_t")), nurText(t("csv_tasse1")), nurText(t("csv_tasse2"))].concat(becher.map(b => nurText(t("csv_becher", { n: b }))));
+    const zeilen = ["\ufeff" + kopf.join(tr)];
+    const tz = S.e.tEnd_min, mess = (b, tt, nach) => { const i = nach ? 7 : (tt % 10 === 0 && tt <= 60 ? tt / 10 : -1); return i >= 0 ? S.kurs.werte["b" + b][i] : null; };
+    for (let tt = 0; tt <= Math.max(tz, 60); tt++) {
+      const m1 = R && tt <= tz ? R.kurve1(tt) : null, m2 = R && tt <= tz ? R.kurve2(tt) : null;
+      zeilen.push([String(tt), zz(m1, 2), zz(m2, 2)].concat(becher.map(b => zz(mess(b, tt, false), 2))).join(tr));
+    }
+    zeilen.push([nurText(t("csv_nach_milch", { t: HILFEN.zahlText(tz, 0, S.sprache) })), zz(R ? R.th1 : null, 2), zz(R ? R.th2 : null, 2)].concat(becher.map(b => zz(S.kurs.werte["b" + b][7], 2))).join(tr));
+    return zeilen.join("\r\n") + "\r\n";
+  }
+  function csvLaden() {
+    const blob = new Blob([csvBauen()], { type: "text/csv;charset=utf-8" }), url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = nurText(t("csv_datei")); document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    $("mess-info").innerHTML = t("csv_fertig");
+  }
   function wertetabelle() {
     const el = $("wertetabelle-inhalt");
     if (!freigabe() || !R) { el.innerHTML = '<p class="klein">' + t("ergebnis_verdeckt") + "</p>"; return; }
@@ -433,14 +489,18 @@
   function energieZeichnen() {
     const el = $("energie-inhalt");
     if (!freigabe() || !R) { el.innerHTML = '<p class="klein">' + t(freigabe() ? "dia_ungueltig" : "ergebnis_verdeckt") + "</p>"; $("energie").removeAttribute("aria-label"); return; }
-    const q1 = R.Q1, q2 = R.Q2, m = Math.max(q1, q2, 1), W = 200, H = 150, B = 118, hoch = 92;
-    const Yb = q => B - hoch * q / m;
+    // Gewählt nach Prototypvergleich (simulation/PROTOTYPEN.md): Säulen auf gemeinsamer Nulllinie, Bezugslinie auf Höhe Q1, Klammer Q2 − Q1
+    const q1 = R.Q1, q2 = R.Q2, m = Math.max(q1, q2, 1), W = 240, H = 150, B = 118, hoch = 92;
+    const Yb = q => B - hoch * q / m, dq0 = q2 - q1;
     let s = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + esc(nurText(t("energie_aria", { q1: z(q1, 2), q2: z(q2, 2) }))) + '"><defs><pattern id="muster-q2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#222" stroke-width="2"/></pattern></defs>';
-    s += '<line x1="20" x2="' + (W - 10) + '" y1="' + B + '" y2="' + B + '" stroke="#5a6b7f"/>';
+    s += '<line x1="20" x2="200" y1="' + B + '" y2="' + B + '" stroke="#5a6b7f"/>';
     s += '<rect x="40" y="' + Yb(q1).toFixed(1) + '" width="46" height="' + (B - Yb(q1)).toFixed(1) + '" fill="#8b5a2b"/>';
     s += '<rect x="118" y="' + Yb(q2).toFixed(1) + '" width="46" height="' + (B - Yb(q2)).toFixed(1) + '" fill="url(#muster-q2)" stroke="#222" stroke-width="1.5"/>';
+    s += '<line x1="40" x2="172" y1="' + Yb(q1).toFixed(1) + '" y2="' + Yb(q1).toFixed(1) + '" stroke="#173d5e" stroke-dasharray="4 3"/>';
+    s += '<path d="M 170 ' + Yb(q2).toFixed(1) + " h 6 V " + Yb(q1).toFixed(1) + ' h -6" fill="none" stroke="#173d5e" stroke-width="1.6"/>';
+    s += '<text x="180" y="' + ((Yb(q1) + Yb(q2)) / 2 + 4).toFixed(1) + '" font-size="11" font-weight="600" fill="#173d5e">' + (dq0 >= 0 ? "+" : "") + z(dq0, 2) + " kJ</text>";
     s += '<text x="63" y="' + (Yb(q1) - 6).toFixed(1) + '" text-anchor="middle" font-size="12">' + z(q1, 2) + " kJ</text>";
-    s += '<text x="141" y="' + (Yb(q2) - 6).toFixed(1) + '" text-anchor="middle" font-size="12">' + z(q2, 2) + " kJ</text>";
+    s += '<text x="141" y="' + (Math.min(Yb(q2), Yb(q1)) - 6).toFixed(1) + '" text-anchor="middle" font-size="12">' + z(q2, 2) + " kJ</text>";
     s += '<text x="63" y="' + (B + 16) + '" text-anchor="middle" font-size="12">' + esc(nurText(t("tasse_n", { n: 1 }))) + "</text>";
     s += '<text x="141" y="' + (B + 16) + '" text-anchor="middle" font-size="12">' + esc(nurText(t("tasse_n", { n: 2 }))) + "</text></svg>";
     const dq = q2 - q1;
@@ -555,13 +615,19 @@
     h += '<label class="schalter"><input type="checkbox" id="s-becher"' + (S.e.becher ? " checked" : "") + "> " + t("schalter_becher") + "</label>";
     if (S.e.becher) h += reglerHtml(REG.mB);
     h += "</div>";
-    h += '<div class="gruppe"><h3 class="gruppe-titel">' + t("gruppe_weitere") + "</h3>" + reglerHtml(REG.kA1) + "</div>";
+    const kaltMoeglich = S.e.becher && S.e.kAQuelle === "fest";
+    h += '<div class="gruppe"><h3 class="gruppe-titel">' + t("gruppe_weitere") + "</h3>" + reglerHtml(REG.kA1) +
+      '<label class="schalter"><input type="checkbox" id="s-trink"' + (S.ansicht.trinkzeit ? " checked" : "") + "> " + t("schalter_trinkzeit") + "</label>" +
+      '<label class="schalter"><input type="checkbox" id="s-kalt"' + (S.ansicht.kalt && kaltMoeglich ? " checked" : "") + (kaltMoeglich ? "" : " disabled") + ' aria-describedby="kalt-hinweis"> ' + t("schalter_kalt") + "</label>" +
+      '<p class="klein" id="kalt-hinweis">' + t("kalt_nur") + "</p></div>";
     h += '<div class="gruppe"><h3 class="gruppe-titel">' + t("gruppe_fortgeschritten") + '</h3><div class="knopfzeile"><button type="button" class="knopf-schlicht" id="knopf-vergleich">' + t(S.vergleich ? "knopf_vergleich_weg" : "knopf_vergleich") + "</button></div>" + (S.vergleich ? '<p class="klein">' + t("dia_vergleich") + "</p>" : "") + "</div>";
     h += "</div>";
     const vi = $("vertiefung-inhalt");
     vi.innerHTML = h;
     reglerEreignisse(vi);
     $("s-milch2Raum").addEventListener("change", ev => { S.e.milch2Raum = ev.target.checked; rechnen(); sichern(); teilZeichnen("s-milch2Raum"); ansagen(); });
+    $("s-trink").addEventListener("change", ev => { S.ansicht.trinkzeit = ev.target.checked; sichern(); teilZeichnen("s-trink"); });
+    $("s-kalt").addEventListener("change", ev => { S.ansicht.kalt = ev.target.checked; sichern(); teilZeichnen("s-kalt"); });
     $("s-becher").addEventListener("change", ev => { S.e.becher = ev.target.checked; rechnen(); sichern(); alles(); fokus("s-becher"); ansagen(); });
     for (const r of vi.querySelectorAll('input[name="kaq"]')) r.addEventListener("change", () => {
       if (r.value === "fest" && R) { S.e.kA = R.kA; S.e.kAHerkunft = "eigen"; }
@@ -632,7 +698,7 @@
     h += '<label class="schalter"><input type="checkbox" id="mess-d"' + (S.kurs.d ? " checked" : "") + "> " + t("mess_deckel") + "</label>";
     h += '<label class="schalter"><input type="checkbox" id="mess-b3"' + (S.kurs.b3 ? " checked" : "") + "> " + t("mess_becher3") + "</label></div>";
     if (S.kurs.d) h += '<p class="hinweis">' + t("mess_deckel_hinweis") + "</p>";
-    h += '<div class="knopfzeile"><button type="button" class="knopf-zweit" id="mess-ueber">' + t("mess_uebernehmen") + '</button><button type="button" class="knopf-schlicht" id="mess-link">' + t("mess_teilen") + '</button><button type="button" class="knopf-schlicht" id="mess-weg">' + t("mess_loeschen") + "</button></div>";
+    h += '<div class="knopfzeile"><button type="button" class="knopf-zweit" id="mess-ueber">' + t("mess_uebernehmen") + '</button><button type="button" class="knopf-schlicht" id="mess-link">' + t("mess_teilen") + '</button><button type="button" class="knopf-schlicht" id="mess-weg">' + t("mess_loeschen") + '</button><button type="button" class="knopf-schlicht" id="mess-csv">' + t("csv_knopf") + "</button></div>";
     h += '<p class="hinweis" id="mess-info" role="status"></p><div id="link-ausgabe"></div>';
     el.innerHTML = h;
     for (const inp of el.querySelectorAll(".zelle input")) inp.addEventListener("change", () => {
@@ -651,6 +717,7 @@
     });
     feldZahl("mess-u", "u", 5, 40); feldZahl("mess-m", "m", 0, 70);
     $("mess-d").addEventListener("change", ev => { S.kurs.d = ev.target.checked; sichern(); alles(); fokus("mess-d"); });
+    $("mess-csv").addEventListener("click", csvLaden);
     $("mess-b3").addEventListener("change", ev => { S.kurs.b3 = ev.target.checked; sichern(); alles(); fokus("mess-b3"); });
     $("mess-ueber").addEventListener("click", () => { const r = uebernehmen(false); alles(); $("mess-info").innerHTML = r.text; fokus("mess-ueber"); });
     $("mess-link").addEventListener("click", linkTeilen);
@@ -822,5 +889,5 @@
   document.addEventListener("focusin", anheftenPruefen); document.addEventListener("focusout", () => setTimeout(anheftenPruefen, 50));
   alles();
   kurslinkPruefen();
-  window.KAFFEE = { zustand: () => JSON.parse(JSON.stringify({ e: S.e, antworten: S.antworten, aktuell: S.aktuell, kurs: S.kurs, ansicht: S.ansicht, sprache: S.sprache })), ergebnis: () => R, speicherOk: () => speicherOk };
+  window.KAFFEE = { zustand: () => JSON.parse(JSON.stringify({ e: S.e, antworten: S.antworten, aktuell: S.aktuell, kurs: S.kurs, ansicht: S.ansicht, sprache: S.sprache })), ergebnis: () => R, speicherOk: () => speicherOk, csv: () => csvBauen() };
 })();
