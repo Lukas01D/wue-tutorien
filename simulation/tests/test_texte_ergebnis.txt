@@ -1,0 +1,16 @@
+ok    T1 gleiche Schlüssel in DE und EN (278)
+ok    T2/T3 Platzhalter bekannt, Formeln umsetzbar, kein $ übrig
+ok    T2 nach dem Bau kein Platzhalter übrig
+ok    T4 jede literale Zahl hat eine Herkunft
+ok    T5 keine Gedankenstriche in den Quellen
+ok    T6 Rundung und Dezimalzeichen der Modellzahlen (30)
+ok    T6 Dezimalzeichen im fertigen Text je Sprache
+ok    T7 Kernzahlen gleich den Konzeptwerten (12)
+ok    T7 jede Vergleichszahl steht im Konzept
+ok    T8 Abtastpunkte im Text = Code  241
+ok    T8 Zufallssätze im Text = Test  10000
+ok    T9 Schlüsselfamilien vollständig (Regler, Hilfen, Voreinstellungen 6, Fehlercodes)
+ok    T9 jeder fest angesprochene Schlüssel existiert
+ok    T9 keine Schlüssel ohne Verwendung
+
+Ergebnis: 14 von 14 Prüfungen bestanden.

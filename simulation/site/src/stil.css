@@ -14,7 +14,8 @@ body { margin: 0; background: var(--seite); color: var(--text); font: 16px/1.58 
 math { font-family: "Fira Math", "Fira Sans", math; font-size: 1.02em; }
 html[data-formeln-fett="1"] math { font-weight: 700; }                 /* K1: zentraler Schalter, vorläufig fett */
 math:not([display="block"]) mfrac { font-size: 0.72em; }               /* K3: Bruch im Satz klein, Zeile bleibt */
-math[display="block"] { margin: 0.6em 0; overflow-x: auto; max-width: 100%; }
+.formel { display: block; overflow-x: auto; max-width: 100%; margin: 0.6em 0; }
+math[display="block"] { margin: 0; }
 .punkt { font-weight: 700; }
 .sym { width: 0.78em; height: 0.78em; vertical-align: -0.06em; }
 .sym-flaeche { width: 1em; height: 1em; vertical-align: -0.15em; }
@@ -111,7 +112,7 @@ button { font: inherit; cursor: pointer; }
 .regler-bereich { min-width: 0; }
 .rueckblick { border: 1px solid var(--linie); border-left: 3px solid var(--kopfblau); background: #fff; padding: 0.5rem 0.8rem; margin: 0 0 0.8rem; border-radius: var(--radius); }
 .regler-pflicht .regler-gitter { grid-template-columns: minmax(0, 34rem) !important; }
-.regler-gitter { display: grid; gap: 0.9rem 1.2rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+.regler-gitter { display: grid; gap: 0.9rem 1.4rem; grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr)); }
 .regler { min-width: 0; }
 .regler-kopf { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.4rem; }
 .regler-name { font-size: 0.78rem; font-weight: 700; line-height: 1.35; padding-top: 0.2rem; }
@@ -189,7 +190,6 @@ button { font: inherit; cursor: pointer; }
   .seite { padding: 1rem 1.5rem 2rem; }
   .sim-raster { grid-template-columns: minmax(0, 780px) 200px; }
   .regler-raster { grid-template-columns: minmax(0, 1fr) 320px; }
-  .regler-gitter { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 /* bis 767 px: eine Spalte, Bild oben angeheftet (höchstens 45 % der sichtbaren Höhe) */
 @media (max-width: 767px) {

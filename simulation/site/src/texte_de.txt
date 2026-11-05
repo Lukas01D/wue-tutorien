@@ -13,7 +13,7 @@ Kaffee mit Milch: Simulation
 @sprache_knopf
 DE ↔ EN
 @sprache_knopf_aria
-Sprache wechseln, jetzt Deutsch
+DE ↔ EN: Sprache wechseln, jetzt Deutsch
 @speicher_ok
 Werte bleiben nur in diesem Browser
 @speicher_aus
@@ -211,6 +211,12 @@ etwa
 Tasse {n}
 @bis
 bis
+@lesehinweis_waermestrom
+$\dot{Q}_\mathrm{ab}$ beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: vor dem Schnitt gibt Tasse 2 mehr ab, danach weniger; beide Teilflächen sind verschieden schraffiert, ihre Summe ist $Q_2 - Q_1$.
+@lesehinweis_ln
+Bei konstantem $kA$ liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung $-kA/(m\,c_p)$ (durchgezogen; gestrichelt: mit freiem Achsenabschnitt).
+@becher_und
+{a} und {b}
 @dia_becher_n
 Becher {n}
 @dia_legende_mess
@@ -483,12 +489,32 @@ Nicht übernehmen
 Dieser Link enthält keine Kurswerte dieser Seite. Nichts wurde verändert.
 @link_defekt
 Der Link ist beschädigt ({grund}). Nichts wurde verändert.
+@link_grund_zu_lang
+der Link ist länger als 400 Zeichen
+@link_grund_aufbau
+der Aufbau stimmt nicht
+@link_grund_u
+die Raumtemperatur ist keine Zahl zwischen 5 und 40 °C
+@link_grund_m
+die Milchtemperatur ist keine Zahl zwischen 0 und 70 °C
+@link_grund_d
+die Angabe „mit Deckel“ ist nicht 0 oder 1
+@link_grund_b
+die Liste der Becher ist ungültig (Becher 2 muss dabei sein)
+@link_grund_anzahl
+Becher {becher} hat nicht genau acht Werte
+@link_grund_wert
+Wert {nr} von Becher {becher} ist keine Temperatur zwischen 0 und 100 °C
+@link_grund_b1_8
+Becher 1 hat in der Zeile „60 nach der Milch“ keinen Wert
+@link_grund_becher
+es gibt Werte für Becher {becher}, der nicht als gemessen angegeben ist
 @link_ok
 Kurswerte aus dem Link übernommen.
 @link_abgelehnt
 Kurswerte aus dem Link nicht übernommen.
 @ausgleich_text
-$kA$ aus allen Punkten von Becher 2 vor der Milch: {ka} $\frac{\mathrm{W}}{\mathrm{K}}$ (Gerade durch den Ursprung, {n} Punkte, {von} bis {bis} min); mit freiem Achsenabschnitt {kaf} $\frac{\mathrm{W}}{\mathrm{K}}$.
+$kA$ aus allen Punkten vor der Milch ({becher}): {ka} $\frac{\mathrm{W}}{\mathrm{K}}$ (Gerade durch den Ursprung, {n} Punkte, {von} bis {bis} min); mit freiem Achsenabschnitt {kaf} $\frac{\mathrm{W}}{\mathrm{K}}$.
 @ausgleich_nehmen
 $kA$ aus der Ausgleichsgeraden festhalten
 @ausgleich_genommen
@@ -616,7 +642,7 @@ $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
 $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), \qquad \tau = \frac{C}{kA}.$$
 <p><strong>kA aus der Messung.</strong> $kA = -\frac{C}{t_\mathrm{mess}} \ln\frac{T_\mathrm{mess} - T_\mathrm{u}}{T_0 - T_\mathrm{u}}$ (Teil c).</p>
 <p><strong>Mischen.</strong> $\vartheta_\mathrm{misch} = \frac{m_\mathrm{K} c_{p,\mathrm{K}}\,\vartheta_\mathrm{K} + m_\mathrm{M} c_{p,\mathrm{M}}\,\vartheta_\mathrm{M}}{m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}}$ (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).</p>
-<p><strong>Abgegebene Wärme.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe $C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$; bei gleicher Milch fällt der letzte Teil weg.</p>
+<p><strong>Abgegebene Wärme.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$; bei gleicher Milch fällt der letzte Teil weg.</p>
 <p><strong>Zeitpunkt der Zugabe.</strong> Verschiebt man die Zugabe, ändert sich der Unterschied mit $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$: Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.</p>
 <p><strong>kA aus allen Messpunkten</strong> (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung $b = \sum t_i y_i / \sum t_i^2$ mit $y_i = \ln\frac{\vartheta_i - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$, dann $kA = -C\,b$. Die Streuung der Geraden ist keine Messunsicherheit von $kA$, weil alle Punkte denselben Startwert enthalten.</p>
 <p><strong>kA festhalten</strong> (Vertiefung): Das Werkzeug gibt dem Modell den Messwert nach 10 min, der zu diesem $kA$ gehört, und rechnet sonst unverändert.</p>

@@ -1,0 +1,74 @@
+Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-05
+Seite: simulation/site/index.html, SHA-256 247fc02b279cca9c25e492733e057b45840d322da1f16d58205bc4896f7583e3
+
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  360549 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  360549 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-UN27EBJGTaXLgMnCeZDYp…
+ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
+ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
+ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
+ok    B07 Artefakt lokaler Server: frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
+ok    B08 Sperre P0 (de): keine Ergebniszahl im DOM (ohne Skriptquelle), in Reitern, Tabellen, Ansagen; keine Kurven  Treffer [], Kurven 0
+ok    B09 P1: „Vorhersage festhalten“ erst nach einer Auswahl aktiv; Regler „Zugabe nach“ gesperrt
+ok    B10 P1: nach Auswahl aktiv, weiterhin kein Ergebnis
+ok    B11 Sperre P0 (de): keine Konsolenfehler
+ok    B12 Sperre P0 (en): keine Ergebniszahl im DOM (ohne Skriptquelle), in Reitern, Tabellen, Ansagen; keine Kurven  Treffer [], Kurven 0
+ok    B13 Sperre P0 (en): keine Konsolenfehler
+ok    B14 P2 Freigabe: Rechenwerte gleich der Python-Referenz (ϑ1, ϑ2, Unterschied, Q1, Q2, kA, Mischtemperatur, Schnitt)  34,05 / 30,19 / 3,85
+ok    B15 P2: Energiesäulen mit Q1, Q2 und Satz Q2 − Q1 (3,69 kJ) und Unterschied  34,88 kJ38,57 kJTasse 1Tasse 2Q2−Q1 = 3,69 kJ entspricht 3,85 K Unterschied.
+ok    B16 P2: Frageleiste bei Frage 1 mit Rückblick (Vorhersage, Auftrag Q1 und Q2, Auflösung zum Start)
+ok    B17 P2: Vorhersage als beschrifteter Kasten im Diagramm
+ok    B18 P2: Auflösung zum Start nennt Unterschied, Temperaturen und C
+ok    B19 P3: Regler „Zugabe nach“ gesperrt bis zur Vorhersage zu Frage 1
+ok    B20 P4: Regler frei nach der Vorhersage
+ok    B21 P4: Zugabe 56 min, Rechenwerte gleich der Referenz und Statusansage aktuell  35,30 / 31,43 / 3,86; Ansage: Tasse 1 35,30 °C, Tasse 2 31,43 °C, Unterschied 3,86 K.
+ok    B22 P4: Pfeiltaste am Schieberegler ändert die Zugabe (57 min)
+ok    B23 P4: Minus-Knopf ändert die Zugabe (56 min)
+ok    B24 P5: Frage 2 ohne Kurswerte: Prüfen gesperrt, Überspringen angeboten
+ok    B25 P5: mit Kurswerten und Auswahl ist Prüfen aktiv
+ok    B26 P6: Übernahme beim Prüfen (Mittel Becher 2 bei 0 und 10 min, kA aus der Messung, Becher an, 60 min, Raum 21,5, Milch 6)  {"kAQuelle":"messung","kA":0.340247764980112,"kAHerkunft":"messung","milch2Raum":false,"becher":true,"tEnd_min":60,"VK_ml":200,"thK0":80,"VM_ml":30,"t
+ok    B27 P6: Rechenwerte nach Übernahme gleich der Referenz  0,4332 / 3,07
+ok    B28 P6: 15 Messpunkte im Diagramm (7 Becher 1, 8 Becher 2), Legende nennt nur gemessene Becher  15 Punkte
+ok    B29 P7: Pflichtweg fertig, Knopf „Vertiefung öffnen“
+ok    B30 Neuladen: Antworten, Einstellungen, Kurswerte und Ansicht bleiben
+ok    B31 Sprachwechsel: Zustand bleibt (außer Sprache), Zahlen mit Punkt, Fokus auf dem Umschalter, lang=en  35.62 / 0.4332
+ok    B32 Sprachwahl bleibt beim Neuladen
+ok    B33 Vertiefung öffnen: Frageleiste bei V1, Vertiefung offen, Ansichten sichtbar
+ok    B34 Ansicht ln: kA der Ursprungsgeraden aus Becher 2 gleich der unabhängigen Rechnung (6 Punkte)  kA aus allen Punkten vor der Milch (Becher 2): 0,3701 WK (Gerade durch den Ursprung, 6 Punkte, 10 bis 60 min);
+ok    B35 Ansicht ln mit Becher 3: Becher 2 und 3, 12 Punkte, gleich der Referenz  kA aus allen Punkten vor der Milch (Becher 2 und Becher 3): 0,3707 WK (Gerade durch den Ursprung, 12 Punkte, 1
+ok    B36 Übernahme mit Becher 3: Mittel aus Becher 2 und 3; Rechenwerte inkl. Becher 3 gleich der Referenz  33,99
+ok    B37 Ansicht Wärmestrom (Standardwerte): Teilflächen mit Vorzeichen gleich der Referenz (3,70 und −0,01 kJ), Summe Q2 − Q1  vor dem Schnitt: Tasse 2 gibt mehr ab: 3,70 kJ · nach dem Schnitt: Tasse 2 gibt weniger ab: −0,01 kJ · Q2−Q1 = 3,69 kJ (Summe beider Teilflä
+ok    B38 Ansicht Wärmestrom: zwei verschieden schraffierte Teilflächen
+ok    B39 Pflichtweg und Vertiefung: keine Konsolenfehler
+ok    B40 Vertiefung vor Frage 1: Hinweis „für danach gedacht“, nicht gesperrt
+ok    B41 Vertiefung V1 bis V5: Prüfen erst nach Eingabe, Ausgangslage wie ZUSTAENDE.md 2, Auflösung danach
+ok    B42 Voreinstellung Keramik mit Deckel: kA = 0,1905 W/K (0,56 · kA der Aufgabe), Anzeige 30 min gleich der Referenz, Herkunft genannt  0,1905, 59,81 °C nach 30 min
+ok    B43 Milch für Tasse 2 bei Raumtemperatur: Unterschied gleich der Referenz (Pflichttest M3) und Milchbeitrag im Satz  1,95 K: 34,88 kJ38,57 kJTasse 1Tasse 2Q2−Q1 = 3,69 kJ, dazu Milchbeitrag −1,83 kJ, zusammen 1,86 kJ: entspricht 1,95 K Unterschi
+ok    B44 Ungültige Einstellung (Messung über dem Anfang): Meldung, Ergebnisse verdeckt, keine Kurven  Der Messwert nach 10 min muss zwischen Raumtemperatur und Kaffeetemperatur am Anfang liege
+ok    B45 Unsinnige Zahl im Feld: Meldung, aria-invalid, Wert bleibt  Bitte eine Zahl eingeben, zum Beispiel 200.
+ok    B46 Tausendertrennung im Feld wird abgelehnt
+ok    B47 Feldeingaben mit Komma oder Punkt übernommen
+ok    B48 Für die nächste Gruppe zurücksetzen: Startkarte (P0), Standardwerte, Kurswerte bleiben
+ok    B49 Vertiefung und Fehlerfälle: keine Konsolenfehler
+ok    B50 Kurslink: Hin und zurück gleich (mit Becher 3), Rückfrage vor dem Ersetzen, # danach aus der Adresse  199 Zeichen
+ok    B51 Kurslink „Nicht übernehmen“: Kurswerte unverändert
+ok    B52 Kurslink beschädigt oder fremd (9 Fälle): Grund in Worten, nichts geändert, # entfernt
+ok    B53 Kurslink: keine Konsolenfehler
+ok    B54 Messblatt: Komma, Punkt, Leerzeichen gelesen; Unsinn, Tausender, außerhalb 0 bis 100 °C abgelehnt mit Meldung; leer = kein Wert  80.4, 67.8, 57, , , ,  | Bitte eine Temperatur zwischen 0 und 100 °C als Zahl eingebe
+ok    B55 Messblatt: Becher 1 hat keine Zeile „60 nach der Milch“
+ok    B56 Übernahme mit unvollständigen Werten: Meldung, Einstellungen unverändert (D116: ganz oder gar nicht)  Übernommen (Mittel der Becher vor der Milch, ungerundet): Start 80,40 °C, nach 10 min 67,8
+ok    B57 Kurswerte löschen (mit Rückfrage): Werte weg, Antworten bleiben
+ok    B58 Messblatt: keine Konsolenfehler
+ok    B59 Speicher gesperrt: Hinweis „nicht gespeichert“, Seite bleibt bedienbar  Werte werden nicht gespeichert (Speicher im Browser gesperrt)
+ok    B60 Umbruch: kein waagrechtes Scrollen bei 320 bis 1920 px, beide Sprachen, P0, P2, Vertiefung, Reiter (320 px = 400 % Zoom bei 1280 px)
+ok    B61 200 % Text bei 1366 px: kein waagrechtes Scrollen  1366 / 1366
+ok    B62 Zielgrößen bei 390 px: Knöpfe, Felder, Regler mindestens 44 px; Textverweise und Auswahl-Labels mindestens 24 px
+ok    B63 Diagramm angeheftet nur im Hochformat mit genug Höhe (390×844 sticky; 390×420 wie mit Tastatur und 844×390 nicht)  sticky, relative, relative
+ok    B64 Reiter mit Tastatur (Pfeile, Pos1, Ende), Auswahl und Fokus folgen, ein Panel sichtbar  tab-modell/tab-modell/panel-modell | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche | tab-code/tab-code/panel-code | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche
+ok    B65 Tastatur: erster Tab „Zum Inhalt springen“, Fokus sichtbar  sprung, solid
+ok    B66 axe-core 4.14.0 (wcag2a, 2aa, 21a, 21aa, 22aa): keine Verstöße in P0, P2, Vertiefung, DE und EN, 1366 und 390 px
+ok    B67 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  140 ms (gemessen im Cloud-Container)
+ok    B68 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.8 ms, 95 % 5.9 ms, Max 6.7 ms (Cloud)
+ok    B69 Leistung L4: Bedienfolge 30 s (1155 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 0.00 MB (Cloud)
+
+Ergebnis: 69 von 69 Prüfungen bestanden.

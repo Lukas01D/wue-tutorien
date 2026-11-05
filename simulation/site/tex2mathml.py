@@ -139,8 +139,9 @@ def tex_zu_mathml(tex, block=False):
     inhalt = l.folge()
     if not l.ende():
         raise Fehler("Rest nicht gelesen: " + "".join(l.t[l.i:]))
-    anz = ' display="block"' if block else ""
-    return '<math' + anz + '><mrow>' + inhalt + "</mrow></math>"
+    if block:      # Hülle als span (auch in <p> gültig), läuft bei schmalen Bildschirmen waagrecht über statt die Seite zu verbreitern
+        return '<span class="formel"><math display="block"><mrow>' + inhalt + "</mrow></math></span>"
+    return '<math><mrow>' + inhalt + "</mrow></math>"
 
 
 def ersetze_formeln(text):

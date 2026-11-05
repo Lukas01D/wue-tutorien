@@ -10,7 +10,7 @@ Coffee with milk: simulation
 @sprache_knopf
 EN ↔ DE
 @sprache_knopf_aria
-Switch language, now English
+EN ↔ DE: switch language, now English
 @speicher_ok
 Values stay only in this browser
 @speicher_aus
@@ -180,7 +180,7 @@ time *t* [min]
 @dia_achse_th_txt
 temperature *ϑ* [°C]
 @dia_achse_q_txt
-heat flow rate *Q̇*_out [W]
+heat flow rate *Q̇*_ab [W]
 @dia_achse_ln_txt
 ln((*ϑ* − *ϑ*_u)/(*ϑ*_0 − *ϑ*_u))
 @dia_tasse1
@@ -203,6 +203,12 @@ about
 Cup {n}
 @bis
 to
+@lesehinweis_waermestrom
+$\dot{Q}_\mathrm{ab}$ of both cups over time. The area between the curves is an energy: before the intersection cup 2 releases more, afterwards less; the two areas are hatched differently, and their sum is $Q_2 - Q_1$.
+@lesehinweis_ln
+With a constant $kA$, the points lie on a straight line through the origin with the slope $-kA/(m\,c_p)$ (solid line; dashed: with a free intercept).
+@becher_und
+{a} and {b}
 @dia_becher_n
 mug {n}
 @dia_legende_mess
@@ -472,12 +478,32 @@ Do not use
 This link does not contain class data for this page. Nothing was changed.
 @link_defekt
 The link is damaged ({grund}). Nothing was changed.
+@link_grund_zu_lang
+the link is longer than 400 characters
+@link_grund_aufbau
+the structure is wrong
+@link_grund_u
+the room temperature is not a number between 5 and 40 °C
+@link_grund_m
+the milk temperature is not a number between 0 and 70 °C
+@link_grund_d
+the “with lid” entry is not 0 or 1
+@link_grund_b
+the list of mugs is invalid (mug 2 must be included)
+@link_grund_anzahl
+mug {becher} does not have exactly eight values
+@link_grund_wert
+value {nr} of mug {becher} is not a temperature between 0 and 100 °C
+@link_grund_b1_8
+mug 1 has no value in the row “60 after the milk”
+@link_grund_becher
+there are values for mug {becher}, which is not listed as measured
 @link_ok
 Class data from the link used.
 @link_abgelehnt
 Class data from the link not used.
 @ausgleich_text
-$kA$ from all points of mug 2 before the milk: {ka} $\frac{\mathrm{W}}{\mathrm{K}}$ (line through the origin, {n} points, {von} to {bis} min); with a free intercept {kaf} $\frac{\mathrm{W}}{\mathrm{K}}$.
+$kA$ from all points before the milk ({becher}): {ka} $\frac{\mathrm{W}}{\mathrm{K}}$ (line through the origin, {n} points, {von} to {bis} min); with a free intercept {kaf} $\frac{\mathrm{W}}{\mathrm{K}}$.
 @ausgleich_nehmen
 Keep $kA$ from the fitted line
 @ausgleich_genommen
@@ -603,7 +629,7 @@ $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
 $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), \qquad \tau = \frac{C}{kA}.$$
 <p><strong>kA from the measurement.</strong> $kA = -\frac{C}{t_\mathrm{mess}} \ln\frac{T_\mathrm{mess} - T_\mathrm{u}}{T_0 - T_\mathrm{u}}$ (part c).</p>
 <p><strong>Mixing.</strong> $\vartheta_\mathrm{misch} = \frac{m_\mathrm{K} c_{p,\mathrm{K}}\,\vartheta_\mathrm{K} + m_\mathrm{M} c_{p,\mathrm{M}}\,\vartheta_\mathrm{M}}{m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}}$ (part a; with a mug, its heat capacity is added to the cup).</p>
-<p><strong>Heat released.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ for each control volume (part e); from this, directly after the milk is added, $C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$; with the same milk, the last term vanishes.</p>
+<p><strong>Heat released.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ for each control volume (part e); from this, directly after the milk is added, $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$; with the same milk, the last term vanishes.</p>
 <p><strong>Time of adding.</strong> If the milk is added later, the difference changes by $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$: it grows as long as cup 2 releases more heat, and decreases afterwards. What this means for the largest difference is in the explanations of question 1 and V2.</p>
 <p><strong>kA from all measured points</strong> (going further): line through the origin in the “ln” view, slope $b = \sum t_i y_i / \sum t_i^2$ with $y_i = \ln\frac{\vartheta_i - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$, then $kA = -C\,b$. The scatter about the line is not a measurement uncertainty of $kA$, because all points contain the same initial value.</p>
 <p><strong>Keeping kA fixed</strong> (going further): the tool gives the model the measured value after 10 min that belongs to this $kA$ and otherwise calculates unchanged.</p>
