@@ -1,0 +1,2 @@
+Messfehler_Sprache de PASS {'message': 'Raumtemperatur [°C]: Höchstens zwei Nachkommastellen (wie im Kurslink).', 'after_message': '', 'description': 'mess-fehler', 'before_input': '', 'after_input': '', 'stored': {'v': 1, 'u':
+Messfehler_Sprache en PASS {'message': 'Room temperature [°C]: At most two decimal places (as in the course link).', 'after_message': '', 'description': 'mess-fehler', 'before_input': '', 'after_input': '', 'stored': {'v': 1, '

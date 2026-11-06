@@ -1,0 +1,292 @@
+[
+  {
+    "name": "200prozent_zeitverlauf",
+    "lang": "de",
+    "status": "PASS",
+    "detail": [
+      {
+        "sticky": true,
+        "holder": 457.25,
+        "svg": 252.34375,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 0
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 120
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 250
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 500
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 1000
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 2000
+      }
+    ]
+  },
+  {
+    "name": "Kurslink_Fokus_Bestaetigung",
+    "lang": "de",
+    "status": "PASS",
+    "detail": {
+      "banner_after_16s": "Kurswerte aus dem Link übernommen. Hinweis schließen",
+      "button": "Hinweis schließen",
+      "focus": "frage-titel"
+    }
+  },
+  {
+    "name": "Anheften_Doppeltipp",
+    "lang": "de",
+    "status": "PASS",
+    "detail": {
+      "heights": [
+        379.75,
+        379.75,
+        379.75,
+        379.75,
+        379.75,
+        379.75,
+        379.75
+      ],
+      "button": {
+        "covered": false,
+        "top": 388.1875,
+        "bottom": 432.1875
+      },
+      "question": "v3"
+    }
+  },
+  {
+    "name": "200prozent_zeitverlauf",
+    "lang": "en",
+    "status": "PASS",
+    "detail": [
+      {
+        "sticky": true,
+        "holder": 457.25,
+        "svg": 252.34375,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 0
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 120
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 250
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 500
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 1000
+      },
+      {
+        "sticky": false,
+        "holder": 321.78125,
+        "svg": 269.15625,
+        "height": 844,
+        "width": 390,
+        "scroll": 390,
+        "elapsed_ms": 2000
+      }
+    ]
+  },
+  {
+    "name": "Kurslink_Fokus_Bestaetigung",
+    "lang": "en",
+    "status": "PASS",
+    "detail": {
+      "banner_after_16s": "Class data from the link used. Close notice",
+      "button": "Close notice",
+      "focus": "frage-titel"
+    }
+  },
+  {
+    "name": "Anheften_Doppeltipp",
+    "lang": "en",
+    "status": "PASS",
+    "detail": {
+      "heights": [
+        379.75,
+        379.75,
+        379.75,
+        379.75,
+        379.75,
+        379.75,
+        379.75
+      ],
+      "button": {
+        "covered": false,
+        "top": 388.453125,
+        "bottom": 432.453125
+      },
+      "question": "v3"
+    }
+  },
+  {
+    "name": "Messfehler_Sprache",
+    "lang": "de",
+    "status": "PASS",
+    "detail": {
+      "message": "Raumtemperatur [°C]: Höchstens zwei Nachkommastellen (wie im Kurslink).",
+      "after_message": "",
+      "description": "mess-fehler",
+      "before_input": "",
+      "after_input": "",
+      "stored": {
+        "v": 1,
+        "u": null,
+        "m": null,
+        "d": false,
+        "b3": false,
+        "werte": {
+          "b1": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "b2": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "b3": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "behavior": "Nicht angenommener Rohwert verworfen, letzter gültiger Wert wieder angezeigt; keine gespeicherten Daten geändert."
+    }
+  },
+  {
+    "name": "Messfehler_Sprache",
+    "lang": "en",
+    "status": "PASS",
+    "detail": {
+      "message": "Room temperature [°C]: At most two decimal places (as in the course link).",
+      "after_message": "",
+      "description": "mess-fehler",
+      "before_input": "",
+      "after_input": "",
+      "stored": {
+        "v": 1,
+        "u": null,
+        "m": null,
+        "d": false,
+        "b3": false,
+        "werte": {
+          "b1": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "b2": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "b3": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      },
+      "behavior": "Nicht angenommener Rohwert verworfen, letzter gültiger Wert wieder angezeigt; keine gespeicherten Daten geändert."
+    }
+  }
+]

@@ -1,0 +1,4 @@
+{
+  "ok": false,
+  "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/wue-tutorien/simulation/site/index.html\nCall log:\n  - navigating to \"file:///workspace/wue-tutorien/simulation/site/index.html\", waiting until \"load\"\n"
+}

@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-06",
+  "branch": "codex/x5-nachpruefung",
+  "reviewed_commit": "34bdfa6e996010ebfb9073b8062aa3eb72434cda",
+  "source_commit": "6077a925ae7b98437b9715338b31193ee51588c2",
+  "identity": {
+    "artifact": "e6f95ca27a5c508344e6802195e9ea62f07ad743694761198057da98e757cc1d",
+    "model": "b32e3f9db9f82b09bfc0e300388ffbef72f875cec65540da668d765389f97d24"
+  },
+  "script_sha256": {
+    "pruefung_a.py": "b84c432f4a77c795139bb5f71daa4b294f67c0e0af2b7f502c35d0755261ad57",
+    "pruefung_b.py": "1b6f6eacd228272cb42f38b232666e87d0f8b5e9957432636f5e186a29f8c499",
+    "pruefung_layout.py": "cbf7cd2faa41e0d40ecca9054f2e11b32ea7b359fe77f737df31238d99a7f045",
+    "pruefung_ergaenzung.py": "654236625058682b8d435dc8c82de2fcc59017ca22fd7916163db8319a073352"
+  },
+  "python": "3.12.14",
+  "node": "v24.19.0",
+  "playwright": "1.62.0",
+  "fontTools": "4.61.1",
+  "brotli": "1.2.1 (in /tmp/x5-python)",
+  "axe": "4.11.0",
+  "browser": "154.0.8037.57",
+  "a": {
+    "cases": 441,
+    "comparisons": 23814,
+    "max_abs_error": 1.1450538295321167e-09,
+    "errors": 0,
+    "textchecks": 76,
+    "text_failures": 0,
+    "metadata_note": "commit in ergebnis_a.json ist im unveränderten Alt-Skript fest auf da7deb1 gesetzt; geprüfter Stand siehe reviewed_commit und Identitätsprüfung."
+  },
+  "b": {
+    "counts": {
+      "PASS": 19,
+      "ERROR": 1
+    },
+    "exceptions": [
+      {
+        "name": "Quellenwechsel_haelt_Kurven_bei_kA1",
+        "status": "ERROR"
+      }
+    ]
+  },
+  "layout": {
+    "count": 108,
+    "overflow": 0,
+    "focus_covered": 0,
+    "small_targets": 0,
+    "unnamed_intersections": 0,
+    "transient_over_45_percent": [
+      {
+        "width": 390,
+        "height": 844,
+        "phase": "VT_200prozent_Text",
+        "lang": "en",
+        "ratio": 0.4949274289099526
+      }
+    ],
+    "minimum_font": 9.899816176470589
+  },
+  "graphics": {
+    "points": 3872,
+    "max_error_svg": 0.09120838861047531
+  },
+  "extra_focus_covered": 0,
+  "supplementary": {
+    "count": 19,
+    "counts": {
+      "PASS": 19
+    }
+  },
+  "interaction": {
+    "count": 8,
+    "counts": {
+      "PASS": 8
+    }
+  },
+  "file_probe": {
+    "ok": false,
+    "error": "Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at file:///workspace/wue-tutorien/simulation/site/index.html\nCall log:\n  - navigating to \"file:///workspace/wue-tutorien/simulation/site/index.html\", waiting until \"load\"\n"
+  }
+}
