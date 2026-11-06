@@ -1,6 +1,6 @@
 # Zusammenführung der Rollenprüfungen
 
-> Nach `simulation/BAU_AUFTRAG.md`, Teil 4.3. Getrennte Rollenprüfungen desselben Modells (G1 bis G8); die unabhängige Prüfung mit einem anderen Modell ist X5. Runde 1 prüfte den Stand `index.html` SHA-256 `f519052c…6707` (369 081 Bytes; G2, G3, G5, G6, G8 nach einer Pause am 06.11.2026 auf demselben Stand zu Ende geführt). Korrigierter Stand nach Runde 1: SHA-256 `ce36d06a…a5cd` (394 558 Bytes). Die Tabelle unten erzeugt `zusammenfuehrung_bauen.py` aus den Befundtabellen der Gutachten und den Entscheidungen im Skript; jede Zahl der Rollen wurde vor der Entscheidung nachgerechnet oder im Browser nachgestellt (Belege: Browsertests in `simulation/tests/browsertest_bau.js`, Kerntests `test_kern.py`).
+> Nach `simulation/BAU_AUFTRAG.md`, Teil 4.3. Getrennte Rollenprüfungen desselben Modells (G1 bis G8); die unabhängige Prüfung mit einem anderen Modell ist X5. Runde 1 prüfte den Stand `index.html` SHA-256 `f519052c…6707` (369 081 Bytes; G2, G3, G5, G6, G8 nach einer Pause am 06.11.2026 auf demselben Stand zu Ende geführt). Korrigierter Stand nach Runde 1 (geprüft in Runde 2): SHA-256 `ea6d3ad2…9c31` (394 754 Bytes). Die Tabelle unten erzeugt `zusammenfuehrung_bauen.py` aus den Befundtabellen der Gutachten und den Entscheidungen im Skript; jede Zahl der Rollen wurde vor der Entscheidung nachgerechnet oder im Browser nachgestellt (Belege: Browsertests in `simulation/tests/browsertest_bau.js`, Kerntests `test_kern.py`).
 
 ## Ergebnis Runde 1
 
