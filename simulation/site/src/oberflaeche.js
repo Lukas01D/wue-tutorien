@@ -816,7 +816,7 @@
       for (const b of becher) {
         const v = S.kurs.werte["b" + b][i], aus = b === 1 && i === 7;
         h += '<td class="zelle"><input type="text" inputmode="decimal" autocomplete="off" data-b="' + b + '" data-i="' + i + '" value="' + (v === null ? "" : z(v, Math.round(v * 100) % 10 === 0 ? (Math.round(v * 10) % 10 === 0 ? 1 : 1) : 2)) + '"' + (aus ? " disabled" : "") +
-          ' aria-label="' + esc(nurText(t("mess_feld_aria", { becher: nurText(t("mess_kopf_b" + b)).replace(/ \[.*\]$/, ""), zeile: name }))) + '"></td>';
+          ' aria-label="' + esc(nurText(t("mess_feld_aria", { becher: nurText(t("mess_kopf_b" + b)).replace(/ \[.*\]$/, ""), zeile: i < 6 ? name + " min" : name }))) + '"></td>';
       }
       h += "</tr>";
     });

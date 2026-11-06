@@ -132,6 +132,8 @@ def formatiere(wert, stellen, sprache):
     if isinstance(wert, float) and stellen == 0:
         wert = int(round(wert))
     s = ("%." + str(stellen) + "f") % wert if stellen > 0 else str(int(wert))
+    if stellen == 0 and abs(int(wert)) >= 10000:          # Tausender mit geschütztem Leerzeichen (Leitfaden 4)
+        s = "{:,}".format(int(wert)).replace(",", "\u00a0")
     if s.startswith("-"):
         s = "−" + s[1:]
     return s.replace(".", ",") if sprache == "de" else s

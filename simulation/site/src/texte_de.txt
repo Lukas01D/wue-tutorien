@@ -462,7 +462,7 @@ Kurswerte löschen
 @mess_loeschen_frage
 Alle Kurswerte löschen? Eure Antworten bleiben.
 @mess_feld_aria
-{becher}, {zeile} min
+{becher}, {zeile}
 @mess_ungueltig
 Bitte eine Temperatur zwischen 0 und 100 °C als Zahl eingeben, zum Beispiel 66,5.
 @mess_uebernommen
@@ -708,7 +708,7 @@ So liest du die Ergebnisse
 <p>Sie rechnet nicht: Verdunstung als eigenen Vorgang (das ist deine Hausaufgabe), Temperaturunterschiede in der Tasse, eine Wärmeabgabe, die stärker als linear wächst. Alle Zahlen entstehen in deinem Browser; die Seite sendet nichts.</p>
 
 @text_regler_einleitung
-<p>Standardwerte sind die Werte der Aufgabe. Fest sind die Stoffwerte: Kaffee {{e:rho_K}} $\frac{\mathrm{kg}}{\mathrm{m}^3}$ und {{e:cp_K}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (Stoffwerte von Wasser), Milch {{e:rho_M}} $\frac{\mathrm{kg}}{\mathrm{m}^3}$ und {{e:cp_M}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (aus der Lösung: Goff; Tutorium 8), Becher {{e:c_B}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (Teil g, Arbeitswert). Indizes: K Kaffee, M Milch, u Umgebung, G Gemisch, B Becher, Z Zugabe.</p>
+<p>Standardwerte sind die Werte der Aufgabe. Fest sind die Stoffwerte: Kaffee {{e:rho_K}} $\frac{\mathrm{kg}}{\mathrm{m}^3}$ und {{e:cp_K}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (Stoffwerte von Wasser), Milch {{e:rho_M}} $\frac{\mathrm{kg}}{\mathrm{m}^3}$ und {{e:cp_M}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (aus der Lösung: Goff; Tutorium 8), Becher {{e:c_B}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (Teil g, Arbeitswert). Indizes: K Kaffee, M Milch, u Umgebung, G Gemisch, B Becher, Z Zugabe, ab abgegeben, mess Messung, misch Mischung.</p>
 @regler_tabelle_kopf
 Größe|Zeichen|Standard|Bereich, Schritt|Grundlage
 @g_tEnd

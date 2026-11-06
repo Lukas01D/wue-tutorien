@@ -81,7 +81,7 @@ Cup 1 (milk right away)
 @start_opt_2
 Cup 2 (milk later)
 @start_opt_gleich
-both at the same temperature
+Both at the same temperature
 @start_k_label
 Approximate difference
 @start_ausgangslage
@@ -127,7 +127,7 @@ Describe where the points lie. Name one possible cause and one measurement you c
 This depends on your measurement. Often, with an open mug and $kA$ from the first 10 min, later points lie above the curves. Possible causes: the heat loss grows faster than linearly with $\vartheta - \vartheta_\mathrm{u}$ (evaporation, free convection), the room temperature is not right, a start-up effect when pouring (mug not fully preheated), the position of the thermometer, mugs that are not the same. Measurements to test this: a mug with a lid, the room temperature measured next to the mugs, the same surface under each mug, the measurement series in the “ln” view (going further). The difference between mug 1 and mug 2 often fits better than the individual values.
 
 @v_einleitung
-For those who are quick, for follow-up and for self-study. Each question again starts with a prediction; “check” sets up its starting situation.
+For pairs who finish early, for revision and for self-study. Each question again starts with a prediction; “check” sets up its starting situation.
 @v1_titel
 Milk temperature
 @v1_text
@@ -159,7 +159,7 @@ Smaller: {{z:v3_dT}} instead of {{z:dT}} K; the heat released increases ({{z:v3_
 @v4_titel
 Planning the experiment
 @v4_text
-Write down your own answer first, then agree as a pair: mug 1 has {{v:v4_ungleich}} % more $kA$ than mug 2 (a different surface underneath); or $kA$ of both mugs is determined {{v:v4_falsch}} % wrong. Which distorts the difference more?
+Write down your own answer first, then agree as a pair: mug 1 has {{v:v4_ungleich}} % more $kA$ than mug 2 (a different surface underneath); or $kA$ of both mugs is {{v:v4_falsch}} % off. Which distorts the difference more?
 @v4_opt_ungleich
 different $kA$ of the mugs
 @v4_opt_falsch
@@ -275,9 +275,9 @@ after {t} min
 @rw_schnitt_kein
 no intersection before adding the milk
 @rw_Q
-released $Q_1$ / $Q_2$
+Heat released $Q_1$ / $Q_2$
 @rw_kA
-heat loss coefficient $kA$
+Heat loss coefficient $kA$
 @rw_kA_herkunft_fest
 kept fixed
 @rw_kA_herkunft_messung
@@ -406,7 +406,7 @@ Vacuum mug, open
 @vor_text_keramik
 Mug from the problem: 200 ml cool from 80 to 67 °C in 10 min.
 @vor_text_keramik_deckel
-A lid reduces evaporation and air movement at the surface: $kA$ becomes 44 % smaller.
+A lid reduces evaporation and air movement at the surface: $kA$ is 44 % lower.
 @vor_text_glas
 Glass releases about as much heat as ceramic.
 @vor_text_pappe
@@ -451,11 +451,11 @@ Delete class data
 @mess_loeschen_frage
 Delete all class data? Your answers stay.
 @mess_feld_aria
-{becher}, {zeile} min
+{becher}, {zeile}
 @mess_ungueltig
 Please enter a temperature between 0 and 100 °C as a number, for example 66.5.
 @mess_uebernommen
-Used (mean of the mugs before the milk, unrounded): start {a} °C, after 10 min {b} °C, room {u} °C, milk {m} °C; milk added after 60 min, mug on, $kA$ from the measurement.
+Settings applied (mean of the mugs without milk, not rounded): start {a} °C, after 10 min {b} °C, room {u} °C, milk {m} °C; milk added after 60 min, mug on, $kA$ from the measurement.
 @mess_nicht_uebernommen
 Not used, nothing changed: {grund}
 @mess_grund_fehlt
@@ -497,7 +497,7 @@ mug 1 has no value in the row “60 after the milk”
 @link_grund_becher
 there are values for mug {becher}, which is not listed as measured
 @schalter_trinkzeit
-Show drinking time to 60 °C
+Show when each cup reaches 60 °C (drinking temperature)
 @dia_trinklinie
 drinking temperature 60 °C
 @trinkzeit_text
@@ -635,7 +635,7 @@ Reset for the next group
 @gruppe_zuruecksetzen_frage
 Reset everything for the next group? Predictions and settings will be deleted; the class data stays.
 @zurueckgesetzt
-Reset done.
+Reset complete.
 @abbrechen
 Cancel
 @ja
@@ -666,13 +666,13 @@ How to read the results
 @text_problem
 <p>Sunday morning in a shared kitchen: you have made filter coffee and filled two identical cups with {{e:VK_ml}} ml each. Then the phone rings, and the call will last an hour. Your flatmate pours his milk into the coffee straight away (cup 1). You put your cup next to it and want to add the milk only after the call (cup 2), so that the coffee “stays hot for longer”. In both cases the milk comes straight from the fridge.</p>
 <p>Your flatmate says: “It doesn’t matter whether you add the milk straight away or later. Energy is conserved, after all.” Which cup is warmer after an hour?</p>
-<p>Both cups release heat to the room through their surface, and the more so the warmer the contents are compared with the room. The simulation calculates the process with the transient lumped energy balance from tutorial 5; when going further, you can change amounts, temperatures, cup and mug.</p>
+<p>Both cups release heat to the room through their surface, and the warmer the contents are compared with the room, the more heat they release. The simulation calculates the process with the transient lumped energy balance from Tutorial 5; when going further, you can change amounts, temperatures, cup and mug.</p>
 
 @text_annahmen
 <p>As on the problem sheet:</p>
 <ul>
 <li>The contents of the cup are perfectly mixed; the milk mixes in immediately and without heat loss.</li>
-<li>The heat capacity of the cup is neglected, except when you switch the mug on (part g): then the mug is always at the temperature of its contents, also when the milk is poured in.</li>
+<li>The heat capacity of the cup is neglected, except when you switch the mug on (part g): then the mug is always at the temperature of its contents, even when the milk is poured in.</li>
 <li>The total heat loss (including radiation and evaporation) is $\dot{Q}_\mathrm{ab} = kA\,(\vartheta - \vartheta_\mathrm{u})$ with a constant $kA$; the evaporated mass is neglected.</li>
 <li>Coffee (properties of water) and milk are incompressible ($c_p = c_v$); the material properties are constant.</li>
 </ul>
@@ -680,7 +680,7 @@ How to read the results
 <ul>
 <li>$kA$ applies to both cups; “$kA$ of cup 1, relative” changes this for cup 1 only. When kept fixed, $kA$ stays the same when you change amounts or temperatures (here the filling level does not change $kA$); from the measurement, it is determined again every time.</li>
 <li>Presets marked with a star are estimates, not measured; measured are “Ceramic, open” (problem) and “Ceramic with lid” (one mug with a polystyrene lid, Ferreira 2025a).</li>
-<li>When the measured values are used, the mugs before the milk count as black coffee with the same initial value and the same $kA$ (mean of the measured values).</li>
+<li>When the measured values are used, the readings taken before the milk is added count as black coffee with the same initial value and the same $kA$ (mean of the measured values).</li>
 <li>Perfect mixing and “mug at the temperature of its contents” are deliberately simplifying assumptions; the small Biot number of the ceramic wall (about {{v:biot}}) supports them, but does not prove them on its own.</li>
 </ul>
 
@@ -695,7 +695,7 @@ How to read the results
 <p>It does not calculate: evaporation as a separate process (that is your homework), temperature differences within the cup, a heat loss that grows faster than linearly. All numbers are produced in your browser; the page sends nothing.</p>
 
 @text_regler_einleitung
-<p>The default values are those of the problem. The material properties are fixed: coffee {{e:rho_K}} $\frac{\mathrm{kg}}{\mathrm{m}^3}$ and {{e:cp_K}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (properties of water), milk {{e:rho_M}} $\frac{\mathrm{kg}}{\mathrm{m}^3}$ and {{e:cp_M}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (from the solution: Goff; tutorial 8), mug {{e:c_B}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (part g, working value). Subscripts as in the lecture: K coffee (Kaffee), M milk (Milch), u surroundings (Umgebung), G mixture (Gemisch), B mug (Becher), Z adding (Zugabe).</p>
+<p>The default values are those of the problem. The material properties are fixed: coffee {{e:rho_K}} $\frac{\mathrm{kg}}{\mathrm{m}^3}$ and {{e:cp_K}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (properties of water), milk {{e:rho_M}} $\frac{\mathrm{kg}}{\mathrm{m}^3}$ and {{e:cp_M}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (from the solution: Goff; Tutorial 8), mug {{e:c_B}} $\frac{\mathrm{kJ}}{\mathrm{kg}\cdot\mathrm{K}}$ (part g, working value). Subscripts as in the lecture: K coffee (Kaffee), M milk (Milch), u surroundings (Umgebung), G mixture (Gemisch), B mug (Becher), Z adding (Zugabe), ab released (abgegeben), mess measured (Messung), misch mixture (Mischung).</p>
 @regler_tabelle_kopf
 Quantity|Symbol|Default|Range, step|Basis
 @g_tEnd
@@ -731,7 +731,7 @@ experiment, mug 3
 </ul>
 
 @text_rechenweg
-<p><strong>Balance.</strong> The control volume is the contents of one cup (with a mug: contents and mug). From the general energy balance (lecture slides 05, slide 8), without mass flows and without work, only the change in internal energy and the heat flow rate to the surroundings remain:</p>
+<p><strong>Balance.</strong> The control volume is the contents of one cup (with a mug: contents and mug). From the general energy balance (Lecture 05, slide 8), without mass flows and without work, only the change in internal energy and the heat flow rate to the surroundings remain:</p>
 $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
 <p>with $C = m\,c_p$ of the contents (with a mug, plus $m_\mathrm{B} c_\mathrm{B}$). Separation of variables with $T(t = 0\,\mathrm{s}) = T_0$ gives</p>
 $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), \qquad \tau = \frac{C}{kA}.$$
@@ -743,10 +743,10 @@ $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), 
 <p><strong>Keeping kA fixed</strong> (going further): the tool gives the model the measured value after 10 min that belongs to this $kA$ and otherwise calculates unchanged.</p>
 
 @text_code
-<p>The page is a single file. The calculation is in two marked blocks: <code>MODELL</code> contains the same equations and default values as the calculation script <code>kaffee_modell.py</code> of the solution (functions <code>rechne</code> and <code>zwei_tassen</code>), <code>ERWEITERUNG</code> the extensions (fitted line, energy, keeping $kA$ fixed and the selected additions). For every setting the code calculates the curves in closed form; only the drawing samples them at {{v:abtastpunkte}} points. Automatic tests check it: {{v:testwerte}} random parameter sets against <code>kaffee_modell.py</code>, the extensions against an independent calculation, operation in the browser from 360 to 1920 px, both languages. Status {stand}, version {version}. You can read the code with “View page source” in your browser.</p>
+<p>The page is a single file. The calculation is in two marked blocks: <code>MODELL</code> contains the same equations and default values as the calculation script <code>kaffee_modell.py</code> of the solution (functions <code>rechne</code> and <code>zwei_tassen</code>), <code>ERWEITERUNG</code> the extensions (fitted line, energy, keeping $kA$ fixed and the selected additions). For every setting the code calculates the curves in closed form; only the drawing samples them at {{v:abtastpunkte}} points. Automatic tests check it: {{v:testwerte}} random parameter sets against <code>kaffee_modell.py</code>, the extensions against an independent calculation, operation in the browser from 360 to 1920 px, both languages. As of {stand}, version {version}. You can read the code with “View page source” in your browser.</p>
 
 @fuss_stand
-Status {stand} · version {version} · built according to KONZEPT.md version 2
+As of {stand} · version {version} · built according to KONZEPT.md version 2
 @fuss_quelle
 Belongs to: tutorial 5, “Coffee with milk” (problem sheet and solution of the tutorial).
 
