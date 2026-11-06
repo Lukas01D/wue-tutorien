@@ -1,7 +1,7 @@
 Baunachweis Gestaltungsentwurf „kaffeehaus“ der Kaffee-Simulation (geschrieben von bauen_entwurf.py)
 Stand: 2026-11-05
-Prüfsumme der Quellen (SHA-256): 984400bb6f2c96cde4bde0747365557597110102bff2ab903912dd17028e8ed0
-index.html und Kaffee_Simulation.html (bytegleich): 373223 Bytes, SHA-256 547df6871935ca1339bac9338365ddf37c949303a5f056cd58d425e7f18385c0
-Anteile: Skript 205160 Bytes, Stil mit Schriften 161484 Bytes, Texte 90173 Bytes
+Prüfsumme der Quellen (SHA-256): bad8a5feda42513e6b03da405b3a3cbe746c82250d9adb4dacf4cb4fcad6d6c9
+index.html und Kaffee_Simulation.html (bytegleich): 373303 Bytes, SHA-256 18ca8530ae889a9e46708022ab473ef6a1913b39dc8eb2ec16dad548df20dbfe
+Anteile: Skript 205160 Bytes, Stil mit Schriften 161564 Bytes, Texte 90173 Bytes
 Grenze: unter 450000 Bytes unkomprimiert
 Warnungen: keine

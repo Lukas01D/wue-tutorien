@@ -1,0 +1,11 @@
+ok    messprotokoll: Rechenkern (modell.js, erweiterung.js, hilfen.js) bytegleich (14431 Zeichen)
+ok    messprotokoll: Texte und Regeldaten (TEXTE, REGLER_DEF) bytegleich (92757 Zeichen)
+ok    messprotokoll: Oberfläche gleich dem Stand mit gestaltung_patch.py (96841 Zeichen)
+ok    kaffeehaus: Rechenkern (modell.js, erweiterung.js, hilfen.js) bytegleich (14431 Zeichen)
+ok    kaffeehaus: Texte und Regeldaten (TEXTE, REGLER_DEF) bytegleich (92757 Zeichen)
+ok    kaffeehaus: Oberfläche gleich dem Stand mit gestaltung_patch.py (96841 Zeichen)
+ok    hoersaal: Rechenkern (modell.js, erweiterung.js, hilfen.js) bytegleich (14431 Zeichen)
+ok    hoersaal: Texte und Regeldaten (TEXTE, REGLER_DEF) bytegleich (92757 Zeichen)
+ok    hoersaal: Oberfläche gleich dem Stand mit gestaltung_patch.py (96841 Zeichen)
+
+Ergebnis: alle gleich

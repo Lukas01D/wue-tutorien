@@ -1,6 +1,7 @@
 // Bildschirmfotos eines Entwurfs in den Zuständen aus DESIGN_AUFTRAG.md, Schritt 5 (Chromium, Playwright).
 // Aufruf: node simulation/design_entwuerfe/bilder_entwurf.js <ordner mit index.html> <zielordner> [gerätefaktor, Standard 2]
-// Bilder: Bildschirmausschnitt (nicht ganze Seite), PNG. Gleiche Bedienfolge für alle Fassungen (auch „Variante 0“).
+// Bilder: Bildschirmausschnitt (nicht ganze Seite), JPEG Qualität 85 wie simulation/tests/bilder_bau.js. Gleiche Bedienfolge für alle
+// Fassungen (auch „Variante 0“).
 "use strict";
 const { chromium } = require("playwright");
 const fs = require("fs"), path = require("path");
@@ -36,8 +37,8 @@ const ZUSTAENDE = [
     await p.evaluate(() => document.fonts.ready);
     await aktion(p);
     await p.waitForTimeout(250);
-    const datei = name + "_" + g + ".png";
-    await p.screenshot({ path: path.join(ziel, datei) });
+    const datei = name + "_" + g + ".jpg";
+    await p.screenshot({ path: path.join(ziel, datei), type: "jpeg", quality: 85 });
     const quer = await p.evaluate(() => document.documentElement.scrollWidth > innerWidth + 0.5);
     liste.push(datei + (quer ? "  QUERSCROLLEN" : "") + (fehler.length ? "  FEHLER " + fehler.join("; ") : ""));
     await ctx.close();

@@ -167,7 +167,8 @@ tbody th { text-align: left; font-weight: 400; color: var(--leise); }
 .kasten-titel { font-size: 1.1rem; }
 .energie svg, .bilanz svg { display: block; width: 100%; max-width: 340px; height: auto; }
 .energie-satz { margin: 10px 0 0; padding: 10px 14px; border-radius: 12px; background: var(--crema); font-weight: 600; }
-.rechenwerte dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+.rechenwerte dl { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; }
+.rechenwerte dt, .rechenwerte dd { overflow-wrap: anywhere; }
 .rechenwerte dl > div.breit { grid-column: 1 / -1; }
 .rechenwerte dt { font-size: .9rem; color: var(--leise); }
 .rechenwerte dd { margin: 0; font-weight: 600; font-size: 1.1rem; font-variant-numeric: tabular-nums; }

@@ -635,7 +635,7 @@ async function domOhneSkript(p) {
   await browser.close();
   const n = ERG.filter(e => e.ok).length;
   const kopf = "Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand " + new Date().toISOString().slice(0, 10) +
-    "\nSeite: simulation/site/index.html, SHA-256 " + crypto.createHash("sha256").update(a).digest("hex") + "\n\n";
+    "\nSeite: " + path.relative(path.resolve(SIM, ".."), SEITE) + " (A3), SHA-256 " + crypto.createHash("sha256").update(a).digest("hex") + "\n\n";
   fs.mkdirSync(path.join(ORDNER, "test_ergebnisse"), { recursive: true });
   fs.writeFileSync(path.join(ORDNER, "test_ergebnisse", "browsertest.txt"), /* A3 */ kopf + ERG.map(e => e.zeile).join("\n") + "\n\nErgebnis: " + n + " von " + ERG.length + " Prüfungen bestanden.\n");
   console.log("\nErgebnis: " + n + " von " + ERG.length + " Prüfungen bestanden.");

@@ -62,10 +62,10 @@ main:focus { outline: none; }
 /* Frageleiste: Protokollkopf mit Schritten */
 .frageleiste { background: var(--karte); border: 1.5px solid var(--tinte); padding: 16px; position: relative; }
 .schritte { list-style: none; margin: -16px -16px 14px; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1.5px solid var(--tinte); counter-reset: schritt; }
-.schritte li { counter-increment: schritt; padding: 6px 6px 7px; font-size: .78rem; line-height: 1.2; color: var(--leise); border-right: 1px solid var(--linie-fein); display: flex; gap: 6px; align-items: baseline; min-width: 0; }
+.schritte li { counter-increment: schritt; padding: 5px 6px 6px; font-size: .78rem; line-height: 1.2; color: var(--leise); border-right: 1px solid var(--linie-fein); display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 .schritte li:last-child { border-right: 0; }
 .schritte li::before { content: "0" counter(schritt); font-family: var(--schrift-zahl); font-weight: 600; }
-.schritte li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.schritte li span { overflow-wrap: anywhere; hyphens: auto; }
 .schritte .jetzt { background: var(--tinte); color: var(--karte); }
 .schritte .fertig::before { content: "✓ 0" counter(schritt); color: var(--gruen-t); }
 .frage-nr { margin: 0 0 2px; font-family: var(--schrift-zahl); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--blau); font-weight: 600; }
@@ -270,7 +270,7 @@ summary::-webkit-details-marker { display: none; }
 @media (max-width: 767px) {
   .frageleiste { padding: 14px 12px; }
   .schritte { margin: -14px -12px 12px; }
-  .schritte li { flex-direction: column; gap: 0; font-size: .72rem; }
+  .schritte li { font-size: .72rem; }
   #frage-titel { font-size: 1.2rem; }
   .regler-zeile { grid-template-columns: 44px minmax(0, 1fr) 44px 4.6em; gap: 6px; }
   .kernzahlen { grid-template-columns: repeat(3, minmax(0, 1fr)); }
