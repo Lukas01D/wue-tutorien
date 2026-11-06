@@ -59,6 +59,8 @@ choice does not match
 Starting point
 @ausgangslage_vorher
 Starting point before your prediction: default values (no mug, no lid). Predict first, then check.
+@ausgangslage_pruefen
+Starting point when checking
 @ausgangslage_gesetzt
 Starting point set: {was}.
 @auftrag_erklaeren
@@ -89,8 +91,10 @@ Approximate difference
 @start_ausgangslage
 default values
 @aufl_start
-Cup 1, {{z:dT}} K ({{z:th1}} versus {{z:th2}} °C). What is conserved is the energy of coffee, milk and room together; each cup releases heat to the room. Cup 2 was hotter than cup 1 almost until the milk was added (until about {{z:f1_tmax}} min) and therefore released more heat: $Q_2 - Q_1$ = {{z:dQ}} kJ; {{z:dQ}} kJ divided by {{z:CG}} $\frac{\mathrm{J}}{\mathrm{K}}$ (coffee and milk) gives {{z:dT}} K.
+Cup 1, {{z:dT}} K ({{z:th1}} versus {{z:th2}} °C). What is conserved is the energy of coffee, milk and room together; each cup releases heat to the room. Cup 2 was hotter than cup 1 almost until the milk was added{bis} and therefore released more heat: $Q_2 - Q_1$ = {{z:dQ}} kJ; {{z:dQ}} kJ divided by {{z:CG}} $\frac{\mathrm{J}}{\mathrm{K}}$ (coffee and milk) gives {{z:dT}} K.
 
+@aufl_start_bis
+ (until about {{z:f1_tmax}} min)
 @f1_titel
 When to add the milk
 @f1_text
@@ -212,7 +216,7 @@ to
 @lesehinweis_waermestrom
 $\dot{Q}_\mathrm{ab}$ of both cups over time. The area between the curves is an energy: {strom}
 @lesehinweis_ln
-With a constant $kA$, the points lie on a straight line through the origin with the slope $-kA/(m\,c_p)$ (solid line; dashed: with a free intercept).
+With a constant $kA$, the points lie on a straight line through the origin with the slope $-kA/(m\,c_p)$ of the black coffee (with the mug, plus $m_\mathrm{B} c_\mathrm{B}$) (solid line; dashed: with a free intercept).
 @becher_und
 {a} and {b}
 @dia_becher_n
@@ -241,10 +245,16 @@ Heat flow rate
 Measured values, linearised (ln)
 @ansicht_aria
 View of the diagram
-@flaeche_vor
-before the heat flow rates intersect: cup 2 releases more
-@flaeche_nach
-after the heat flow rates intersect: cup 2 releases less
+@flaeche_ort_vor
+before the heat flow rates intersect
+@flaeche_ort_nach
+after the heat flow rates intersect
+@flaeche_mehr
+cup 2 releases more
+@flaeche_weniger
+cup 2 releases less
+@flaeche_gesamt_weniger
+Up to adding the milk, cup 2 releases {wert} kJ less heat in total than cup 1.
 @flaeche_summe
 $Q_2 - Q_1$ = {wert} kJ (sum of both areas)
 @ln_kein
@@ -334,9 +344,9 @@ Equivalent value after 10 min, calculated from $kA$
 @thmess_ersatz
 This value is calculated from the previous $kA$; it is not a measurement. Enter your measured value to use it.
 @thmess_eigen
-Use your measurement {wert} °C again
+Use the measured value {wert} °C again
 @kA_quelle_nicht
-Not switched: with this $kA$, the value after 10 min would be {wert} °C, outside the measuring range {min} to {max} °C. $kA$ stays fixed.
+Not switched: with this $kA$, the value after 10 min would be {wert} °C, outside the range of the field ({min} to {max} °C). $kA$ stays fixed.
 @rw_kA_herkunft_ersatz
 from a calculated value after 10 min (not a measurement)
 @regler_mB
@@ -609,7 +619,7 @@ Heat flow rate of both cups
 @dia_titel_ln
 Measured values, linearised (ln), with fitted line
 @dia_beschreibung_waermestrom
-Up to the intersection, cup 2 releases more heat ({v} kJ), afterwards less ({n} kJ); together {d} kJ.
+Up to the intersection of the heat flow rates: {a} ({v} kJ); afterwards: {b} ({n} kJ); together {d} kJ.
 @dia_beschreibung_ln
 {n} measured points of the mugs without milk, with fitted line.
 @rw_unterschied_b3
@@ -764,9 +774,9 @@ experiment, mug 3
 <li><strong>Shapes:</strong> your measured values (circle mug 1, square mug 2, triangle mug 3).</li>
 <li><strong>Labelled box:</strong> your locked-in prediction. <strong>Faint curves:</strong> the stored comparison run.</li>
 <li><strong>Calculated values:</strong> temperatures directly after the milk is added to cup 2. The difference is $\vartheta_1 - \vartheta_2$; positive means that cup 1 is warmer. $kA$ is shown with its origin (from the measurement, kept fixed, preset, fitted line).</li>
-<li><strong>Energy up to adding the milk:</strong> heat that each cup has released up to adding the milk (part e). With the same milk, $Q_2 - Q_1$ divided by $m\,c_p$ of the mixture is exactly the difference; with milk at different temperatures, the milk contribution is added.</li>
+<li><strong>Energy up to adding the milk:</strong> heat that each cup has released up to adding the milk (part e). With the same milk, $Q_2 - Q_1$ divided by $m\,c_p$ of the mixture (with the mug, plus $m_\mathrm{B} c_\mathrm{B}$) is exactly the difference; with milk at different temperatures, the milk contribution is added.</li>
 <li><strong>“Heat flow rate” view (going further):</strong> $\dot{Q}_\mathrm{ab}$ of both cups over time. The area between the curves is an energy: {strom}</li>
-<li><strong>“Measured values, linearised (ln)” view (going further):</strong> $\ln\frac{\vartheta - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$ over $t$ for the mugs before the milk. With a constant $kA$, the points lie on a straight line through the origin with the slope $-kA/(m\,c_p)$. A pattern in the distances from the line shows that $kA$ or the measuring conditions were not constant; the line alone does not tell you which cause.</li>
+<li><strong>“Measured values, linearised (ln)” view (going further):</strong> $\ln\frac{\vartheta - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$ over $t$ for the mugs before the milk. With a constant $kA$, the points lie on a straight line through the origin with the slope $-kA/(m\,c_p)$ of the black coffee (with the mug, plus $m_\mathrm{B} c_\mathrm{B}$). A pattern in the distances from the line shows that $kA$ or the measuring conditions were not constant; the line alone does not tell you which cause.</li>
 <li><strong>Rounding:</strong> temperatures to 0.01 K, heat to 0.01 kJ.</li>
 </ul>
 
@@ -777,7 +787,9 @@ intersection of the two curves; it appears after your prediction for question 1.
 @lesen_strom_frei
 before the heat flow rates intersect, cup 2 releases more, afterwards less; the two areas are hatched differently, and their sum is $Q_2 - Q_1$.
 @lesen_strom_vor
-its sum is $Q_2 - Q_1$.
+counted with sign, it equals $Q_2 - Q_1$.
+@lesen_strom_frei_umgekehrt
+before the heat flow rates intersect, cup 2 releases less, afterwards more; the two areas are hatched differently, and their sum is $Q_2 - Q_1$.
 @text_rechenweg
 <p><strong>Balance.</strong> The control volume is the contents of one cup (with a mug: contents and mug). From the general energy balance (Lecture 05, slide 8), without mass flows and without work, only the change in internal energy and the heat flow rate to the surroundings remain:</p>
 $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$

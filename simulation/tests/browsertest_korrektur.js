@@ -169,10 +169,12 @@ async function test(id, name, fn, b) {
     return [/keine Kurswerte/.test(ban) && h === "" && !sicht && h2 === "#hauptinhalt", "Hinweis „" + ban.slice(0, 40) + "“, Adresse „" + h + "“; #hauptinhalt: Hinweis " + sicht];
   }, b);
 
-  await test("F3, F6", "Startkarte mit Mitbewohner; Auflösung zum Start mit Erhaltung und „bis etwa 56 min“", async b => {
+  await test("F3, F6, G1-R4-01", "Startkarte mit Mitbewohner; Auflösung zum Start mit Erhaltung; „bis etwa 56 min“ erst nach der Vorhersage zu Frage 1", async b => {
     const p = await neu(b); const karte = await txt(p, "#frageleiste"); await start(p);
     await p.click("#knopf-aufl-start"); await warte(60); const a = await txt(p, "#aufl-start");
-    return [/Mitbewohner/.test(karte) && /Erhalten bleibt die Energie von Kaffee, Milch und Raum/.test(a) && /bis etwa 56 min/.test(a), a.slice(0, 120)];
+    await f1(p); await p.click("#tab-versuche"); await p.evaluate(() => { const d = document.querySelector("[data-karte='start']"); d.open = true; }); await p.evaluate(() => document.querySelector("[data-aufl='start']") && !document.getElementById("aufl-karte-start") && document.querySelector("[data-aufl='start']").click()); await warte(60);
+    const nach = await txt(p, "#aufl-karte-start");
+    return [/Mitbewohner/.test(karte) && /Erhalten bleibt die Energie von Kaffee, Milch und Raum/.test(a) && /fast bis zur Zugabe heißer/.test(a) && !/56 min/.test(a) && /bis etwa 56 min/.test(nach), a.slice(60, 200)];
   }, b);
 
   await test("F4, G10-03", "Frage 1: Vorhersage offen gefragt, „wieder kleiner“ erst nach dem Festhalten sichtbar", async b => {
@@ -301,6 +303,59 @@ async function test(id, name, fn, b) {
     const p = await neu(b, 390, 844); await start(p); const a = await txt(p, "#knopf-anheften"); await p.click("#knopf-anheften"); await warte(60); const c = await txt(p, "#knopf-anheften");
     const pr = await p.evaluate(() => document.getElementById("knopf-anheften").hasAttribute("aria-pressed"));
     return [a !== c && !pr, "„" + a + "“ → „" + c + "“"];
+  }, b);
+
+
+  await test("G1-R4-02, G1-R4-06", "Bestätigung des Kurslinks bleibt stehen (16 s) und „Hinweis schließen“ führt zur Frage, nicht ins Messblatt", async b => {
+    const p = await neu(b, 390, 844); await start(p); await f1(p); await p.click("#knopf-weiter"); await warte(80);
+    await p.evaluate(() => { location.hash = "#kurs1=b1:70.9,,,,,,34.1,;b2:80.4,67.8,57,49.2,43.1,38.2,34.6,31.2;u:21.5;m:6;d:0;b:1.2"; }); await warte(150);
+    await p.click("#link-ja"); await warte(16200);
+    const steht = await p.evaluate(() => !document.getElementById("link-banner").hidden);
+    await p.click("#link-zu"); await warte(150);
+    const r = await p.evaluate(() => [document.activeElement.id, Math.round(document.getElementById("frageleiste").getBoundingClientRect().top)]);
+    return [steht && r[0] === "frage-titel" && r[1] > -100 && r[1] < 844, "Hinweis nach 16 s " + steht + ", Fokus " + r[0] + ", Frageleiste oben " + r[1]];
+  }, b);
+
+  await test("G1-R4-03", "V3 nach Frage 2: Hinweis zur Ausgangslage in der Frageleiste; vor dem Festhalten „Ausgangslage beim Prüfen“", async b => {
+    const p = await neu(b, 390, 844); await start(p); await f1(p); await messblatt(p, false); await f2(p);
+    await p.click("#tab-versuche"); await p.evaluate(() => document.querySelector("#panel-versuche [data-zur='v3']").click()); await warte(120);
+    const l = await txt(p, "#frageleiste");
+    return [/Ausgangslage vor deiner Vorhersage/.test(l) && /Ausgangslage beim Prüfen/.test(l), l.slice(0, 160)];
+  }, b);
+
+  await test("G1-R4-07", "„Schnitt“ steht nicht direkt an einem Endkreis (390 × 844, mit Messpunkten, Zugabe 60 min)", async b => {
+    const p = await neu(b, 390, 844); await start(p); await f1(p); await messblatt(p, false); await f2(p); await feld(p, "#z-tEnd", "60");
+    const d = await p.evaluate(() => { const s = document.getElementById("diagramm"); const t = [...s.querySelectorAll("text")].find(x => /^Schnitt$/.test(x.textContent)); if (!t) return -1; const r = t.getBBox(); let m = 99; for (const c of s.querySelectorAll("circle[r='4.5']")) { const cx = +c.getAttribute("cx"), cy = +c.getAttribute("cy"); const dx = Math.max(r.x - cx, 0, cx - r.x - r.width), dy = Math.max(r.y - cy, 0, cy - r.y - r.height); m = Math.min(m, Math.hypot(dx, dy)); } return m; });
+    return [d >= 8, "Abstand zum nächsten Endkreis " + (typeof d === "number" ? d.toFixed(1) : d) + " px"];
+  }, b);
+
+  await test("G1-R4-08", "Angeheftet bleibt die Höhe beim Schieben gleich (360 × 640, 5 bis 180 min)", async b => {
+    const p = await neu(b, 360, 640); await start(p); await f1(p);
+    const hs = new Set();
+    for (const tz of ["5", "8", "10", "20", "40", "56", "60", "90", "120", "180"]) { await feld(p, "#z-tEnd", tz); await warte(40); hs.add(await p.evaluate(() => document.documentElement.classList.contains("anheften") ? Math.round(document.getElementById("diagramm-halter").getBoundingClientRect().height) : -1)); }
+    return [hs.size === 1 && !hs.has(-1), [...hs].join(", ")];
+  }, b);
+
+  await test("G1-R4-09", "Zweiter Tipp an derselben Stelle 600 ms nach „Vorhersage festhalten“ löst „Zurück“ nicht aus", async b => {
+    const p = await neu(b, 390, 844); await start(p); await p.fill("#frage-zahl", "50");
+    await p.evaluate(() => new Promise(r => { const k = document.getElementById("knopf-fest").getBoundingClientRect(), x = k.x + k.width / 2, y = k.y + k.height / 2;
+      document.getElementById("knopf-fest").dispatchEvent(new MouseEvent("click", { bubbles: true, detail: 1, clientX: x, clientY: y }));
+      setTimeout(() => { const z = document.getElementById("knopf-zurueck"); if (z) z.dispatchEvent(new MouseEvent("click", { bubbles: true, detail: 1, clientX: x, clientY: y })); r(); }, 600); }));
+    await warte(100); const z = await zustand(p);
+    return [z.aktuell === "f1" && z.antworten.f1.fest, "aktuell " + z.aktuell];
+  }, b);
+
+  await test("G1-R4-10", "Nach „Diagramm oben anheften“ liegt der Knopf nicht unter dem Diagramm", async b => {
+    const p = await neu(b, 390, 844); await start(p); await f1(p);
+    await p.click("#knopf-anheften"); await warte(80); await p.evaluate(() => scrollBy(0, 300)); await warte(80);
+    await p.click("#knopf-anheften"); await warte(200);
+    const r = await p.evaluate(() => [document.getElementById("diagramm-halter").getBoundingClientRect().bottom, document.getElementById("knopf-anheften").getBoundingClientRect().top, document.documentElement.classList.contains("anheften")]);
+    return [r[2] && r[1] >= r[0] - 1, "Diagramm unten " + Math.round(r[0]) + ", Knopf oben " + Math.round(r[1])];
+  }, b);
+
+  await test("G1-R4-12", "„ohne Vorhersage aufdecken“ zeigt die Auflösung sofort", async b => {
+    const p = await neu(b); await start(p); await p.click("#knopf-ohne"); await warte(60); await p.click("#rueck-ja"); await warte(80);
+    return [await p.$("#aufl-leiste") !== null, "Auflösung offen " + (await p.$("#aufl-leiste") !== null)];
   }, b);
 
   await b.close();

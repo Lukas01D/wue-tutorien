@@ -157,6 +157,7 @@
 
   // ------------------------------------------------------------------ Frageleiste
   function frage(id) { return FRAGEN.find(f => f.id === id); }
+  const auflText = f => f.id === "start" ? t("aufl_start", { bis: schnittFrei() ? t("aufl_start_bis") : "" }) : t(f.aufl);   // G1-R4-01: „bis etwa 56 min“ erst nach Frage 1
   const frageText = f => t(f.id === "f2" && kursAnzahl() ? "f2_text_mit" : f.text);     // F5: Wortlaut Frage 2 je Zustand
   function aktuelleVorhersage() {
     const fq = frage(S.aktuell), aq = S.antworten[fq.id];
@@ -198,14 +199,15 @@
       h += '<div class="rueckblick"><p><strong>' + t("leiste_start") + ":</strong> " + t("eure_vorhersage") + ": " + esc(vorhersageText(frage("start"), st)) + "</p>" +
         '<p class="auftrag">' + t("auftrag_start") + (R ? ' <span class="klein">(' + t("rueckblick_energie", { q1: z(R.Q1, 2), q2: z(R.Q2, 2) }) + ")</span>" : "") + '</p><div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl-start" aria-expanded="' +
         (st.aufl ? "true" : "false") + '" aria-controls="aufl-start">' + t(st.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button></div>" +
-        (st.aufl ? '<div class="aufloesung" id="aufl-start">' + vergleichHtml(frage("start"), st) + "<p>" + t("aufl_start") + "</p></div>" : "") + "</div>";
+        (st.aufl ? '<div class="aufloesung" id="aufl-start">' + vergleichHtml(frage("start"), st) + "<p>" + auflText(frage("start")) + "</p></div>" : "") + "</div>";
     }
     h += '<p class="frage-nr">' + nr + '</p><h2 id="frage-titel">' + t(f.titel) + "</h2>";
     const f2weg = f.id === "f2" && S.f2Uebersprungen && !kursAnzahl();
     const zu = a.fest || f2weg;      // G4-R3-01: nach dem Überspringen wie nach dem Festhalten
     h += zu ? '<details class="frage-text-zu"><summary>' + t("frage_zeigen") + '</summary><p class="frage-text">' + frageText(f) + "</p></details>" : '<p class="frage-text">' + frageText(f) + "</p>";
     if (f.id === "f2" && !f2weg) h += '<p class="hinweis" id="f2-werte">' + (kursAnzahl() ? t("f2_werte_da", { n: kursAnzahl() }) : t("f2_keine_werte")) + "</p>";
-    if (!f2weg) h += '<p class="hinweis"><strong>' + t("ausgangslage") + ":</strong> " + t(f.id === "f2" && !a.fest ? "f2_ausgang_leer" : f.ausgang) + "</p>";
+    if (NEUTRAL === f.id && !a.fest) h += '<p class="hinweis" id="neutral-hinweis">' + t("ausgangslage_vorher") + "</p>";      // G1-R4-03
+    if (!f2weg) h += '<p class="hinweis"><strong>' + t(a.fest ? "ausgangslage" : "ausgangslage_pruefen") + ":</strong> " + t(f.id === "f2" && !a.fest ? "f2_ausgang_leer" : f.ausgang) + "</p>";
     if (!a.fest && !f2weg) {          // nach dem Festhalten keine gesperrten Felder mehr: die Leiste wird kurz (G7-03, G4-10)
       h += '<div class="frage-eingabe">';
       if (f.wahl) {
@@ -234,12 +236,13 @@
       h += '<p class="hinweis"><strong>' + t("eure_vorhersage") + ":</strong> " + esc(vorhersageText(f, a)) + (a.warum ? " (" + esc(a.warum) + ")" : "") + "</p>";
       h += '<p class="auftrag">' + (f.id === "start" ? t("auftrag_start") : (f.id === "f2" ? t("f2_auftrag") : (f.id === "f1" ? t("f1_auftrag") + " " : "") + t("auftrag_erklaeren"))) + "</p>";   // F4, G10-03
       h += '<div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl" aria-expanded="' + (a.aufl ? "true" : "false") + '" aria-controls="aufl-leiste">' + t(a.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button></div>";
-      if (a.aufl) h += '<div class="aufloesung" id="aufl-leiste">' + vergleichHtml(f, a) + "<p>" + t(f.aufl) + "</p></div>";
+      if (a.aufl) h += '<div class="aufloesung" id="aufl-leiste">' + vergleichHtml(f, a) + "<p>" + auflText(f) + "</p></div>";
     }
     if (f.id === "f2" && S.f2Uebersprungen && !a.fest) h += '<p class="hinweis">' + t("f2_uebersprungen") + "</p>";
     if (PFLICHT.indexOf(f.id) === 2 && ((a.fest && a.aufl) || S.f2Uebersprungen)) /* F8, G4-16: erst nach geöffneter Auflösung */ h += '<p class="auftrag">' + t("fertig_pflicht") + ' <button type="button" class="knopf-schlicht" id="knopf-vt-auf">' + t("knopf_vertiefung_oeffnen") + "</button></p>";
     el.innerHTML = h;
     const fz = el.querySelector(".frage-text-zu");
+    if (fz) fz.querySelector("summary").addEventListener("click", ev => { const tp = frageleisteZeichnen.tipp; if (tp && Date.now() - tp.t < 1000 && Math.hypot(ev.clientX - tp.x, ev.clientY - tp.y) < 40) ev.preventDefault(); });
     if (fz) fz.addEventListener("toggle", () => { fz.querySelector("summary").textContent = nurText(t(fz.open ? "frage_ausblenden" : "frage_zeigen")); });   // G2-R3-01
     // Ereignisse
     for (const r of el.querySelectorAll('input[type="radio"]')) r.addEventListener("change", () => { a.wahl = r.value; sichern(); frageKnopfAktualisieren(); });
@@ -249,8 +252,9 @@
     const ko = $("knopf-ohne"); if (ko) ko.addEventListener("click", ev => ev.detail < 2 && bestaetigen(t("ohne_frage"), () => festhalten(f, true), ko));
     const kas = $("knopf-aufl-start"); if (kas) kas.addEventListener("click", ev => { if (ev.detail > 1) return; /* G8-R2-06: zweiter Klick eines Doppelklicks */ st.aufl = !st.aufl; sichern(); alles(); fokus("knopf-aufl-start"); });
     const ka = $("knopf-aufl"); if (ka) ka.addEventListener("click", ev => { if (ev.detail > 1) return; a.aufl = !a.aufl; sichern(); alles(); fokus("knopf-aufl"); });
-    // G8-R3-02: zweiter Tipp an derselben Stelle wie „Vorhersage festhalten“ (innerhalb 400 ms) trifft nicht den neuen Knopf darunter
-    const ruhig = ev => { const tp = frageleisteZeichnen.tipp; if (tp && Date.now() - tp.t < 400 && Math.hypot(ev.clientX - tp.x, ev.clientY - tp.y) < 40) return false; return Date.now() - (frageleisteZeichnen.zuletzt || 0) > 400; };     // G8-19: zweiter Klick eines Doppelklicks trifft sonst den neuen Knopf
+    // G8-R3-02, G1-R4-09: zweiter Tipp an derselben Stelle wie „Vorhersage festhalten“ (innerhalb 1 s) trifft nicht den neuen Knopf darunter
+    const zweiterTipp = ev => { const tp = frageleisteZeichnen.tipp; return !!(tp && Date.now() - tp.t < 1000 && ev.clientX !== undefined && Math.hypot(ev.clientX - tp.x, ev.clientY - tp.y) < 40); };
+    const ruhig = ev => { if (zweiterTipp(ev)) return false; return Date.now() - (frageleisteZeichnen.zuletzt || 0) > 400; };     // G8-19: zweiter Klick eines Doppelklicks trifft sonst den neuen Knopf
     const kz = $("knopf-zurueck"); if (kz) kz.addEventListener("click", ev => { if (ev.detail < 2 && ruhig(ev)) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i - 1]); } });
     const kw = $("knopf-weiter"); if (kw) kw.addEventListener("click", ev => { if (ev.detail < 2 && ruhig(ev)) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i + 1]); } });
     const k2 = $("knopf-f2-weg"); if (k2) k2.addEventListener("click", () => { S.f2Uebersprungen = true; sichern(); alles(); fokus("knopf-weiter"); });
@@ -285,7 +289,7 @@
   }
   function festhalten(f, ohne) {
     const a = S.antworten[f.id];
-    if (ohne) { a.ohne = true; a.wahl = a.wahl || null; }
+    if (ohne) { a.ohne = true; a.wahl = a.wahl || null; a.aufl = true; }      // G1-R4-12
     a.fest = true;
     let meldung = "";
     if (f.id !== "start" || !freigabe()) {
@@ -294,6 +298,7 @@
       else meldung = t("ausgangslage_gesetzt", { was: nurText(t(f.ausgang)) });
     }
     if (a.fest && f.id === "start") S.aktuell = "f1";
+    if (a.fest) NEUTRAL = null;
     sichern(); alles();
     if (meldung) $("knopf-info").textContent = meldung;
     if (a.fest) { ansagen(ohne ? "ohne" : true); $("simulation").scrollIntoView({ block: "start" }); }
@@ -309,17 +314,18 @@
     if (id === "v5") return vor !== "" && vor !== "keramik";               // andere Becher
     return false;
   }
+  let NEUTRAL = null;      // Vertiefungsfrage, für die gerade neutral auf Standardwerte gestellt wurde (nur Anzeige)
   function geheZu(id) {
     S.aktuell = id;
-    let neutral = false;
+    let neutral = false; NEUTRAL = null;
     if (id[0] === "v") {
       S.ansicht.vertiefung = true;
       // X5-01, G10-01: Enthält die Einstellung schon die Bedingung der Frage (V3: Becher an), zeigt sie die Antwort vor der Vorhersage;
       // dann Standardwerte (deren Ergebnis kennt man aus dem Start). Sonst bleibt die Einstellung (z. B. Kurswerte für die Ansicht ln).
-      if (freigabe() && !S.antworten[id].fest && bedingungSchonDa(id)) { ausgangslage("standard"); neutral = true; }
+      if (freigabe() && !S.antworten[id].fest && bedingungSchonDa(id)) { ausgangslage("standard"); neutral = true; NEUTRAL = id; }
     }
     sichern(); alles(); fokus("frage-titel");
-    if (neutral) $("knopf-info").textContent = nurText(t("ausgangslage_vorher"));
+    if (neutral) ansagenText(nurText(t("ausgangslage_vorher")));
   }
   function fokus(id) { const el = $(id); if (el) { if (!el.hasAttribute("tabindex") && !/^(BUTTON|INPUT|A|SUMMARY)$/.test(el.tagName)) el.setAttribute("tabindex", "-1"); el.focus({ preventScroll: false }); } }
 
@@ -437,6 +443,11 @@
         s.push('<circle cx="' + X(tz).toFixed(1) + '" cy="' + Y(R.th1).toFixed(1) + '" r="4.5" fill="#fff" stroke="#8b5a2b" stroke-width="2.2"/><circle cx="' + X(tz).toFixed(1) + '" cy="' + Y(R.th2).toFixed(1) + '" r="4.5" fill="#fff" stroke="#222" stroke-width="2.2"/>');
         if (S.kurs.b3 && messFrei()) s.push('<line x1="' + (X(tz) + 5).toFixed(1) + '" x2="' + (X(tz) + 5).toFixed(1) + '" y1="' + Y(R.th2K).toFixed(1) + '" y2="' + Y(R.th2Raum).toFixed(1) + '" stroke="#3d70a3" stroke-width="2" stroke-dasharray="2 3"/>');
         if (S.kurs.b3 && messFrei()) s.push('<path d="M ' + X(tz).toFixed(1) + " " + (Y(R.th2Raum) - 6).toFixed(1) + " l 5.5 9.5 l -11 0 z\" fill=\"#fff\" stroke=\"#3d70a3\" stroke-width=\"2\"/>");
+        // G6-R3-06, G1-R4-07: Mischsprünge und Endkreise sind Hindernisse für alle Beschriftungen
+        const senk = (x, a, b) => belegt.push([x - 4, Math.min(Y(a), Y(b)) - 2, 8, Math.abs(Y(a) - Y(b)) + 4]);
+        senk(X(0), S.e.thK0, R.th10); senk(X(tz), R.th2K, R.th2);
+        if (S.kurs.b3 && messFrei()) senk(X(tz) + 5, R.th2K, R.th2Raum);
+        belegt.push([X(tz) - 9, Y(R.th1) - 9, 18, 18], [X(tz) - 9, Y(R.th2) - 9, 18, 18]);
         if (schnittFrei() && isFinite(R.tSchnitt) && R.tSchnitt < tz) {
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt));
           s.push('<circle cx="' + sx.toFixed(1) + '" cy="' + sy.toFixed(1) + '" r="5.5" fill="#fff" stroke="#222" stroke-width="1.8"/>');
@@ -470,8 +481,10 @@
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt)), txt = t("dia_schnitt"), bw = txt.length * fs * 0.56 + 4;
           const kand = [[sx - bw / 2, sy - 10], [sx - bw / 2, sy + fs + 10], [sx - bw - 10, sy - 8], [sx - bw - 10, sy + fs + 6], [sx - bw / 2, sy - 24], [sx + 10, sy - 8], [sx + 10, sy + fs + 6]];
           // X5-06, G6-R3-01: weiter weg mit Verbindungslinie zum Kreis, zuletzt am oberen und unteren Rand der Zeichenfläche
-          for (const d of [38, 54, 72, 92, 115]) for (const [ux, uy] of [[0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1], [-1, 0], [1, 0]]) kand.push([sx + ux * (d * 0.8) - (ux < 0 ? bw : (ux > 0 ? 0 : bw / 2)), sy + uy * d + (uy > 0 ? fs : 4), true]);
-          for (const dx of [0, -40, 40, -80, 80, -120, 120, -170, 170, -220, 220]) { kand.push([sx - bw / 2 + dx, O + fs + 2, true]); kand.push([sx - bw / 2 + dx, H - U - 6, true]); }
+          for (const d of [38, 54]) for (const [ux, uy] of [[0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1], [-1, 0], [1, 0]]) kand.push([sx + ux * (d * 0.8) - (ux < 0 ? bw : (ux > 0 ? 0 : bw / 2)), sy + uy * d + (uy > 0 ? fs : 4), true]);
+          const kandWeit = [];
+          for (const d of [72, 92, 115]) for (const [ux, uy] of [[0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1], [-1, 0], [1, 0]]) kandWeit.push([sx + ux * (d * 0.8) - (ux < 0 ? bw : (ux > 0 ? 0 : bw / 2)), sy + uy * d + (uy > 0 ? fs : 4), true]);
+          for (const dx of [0, -40, 40, -80, 80]) { kandWeit.push([sx - bw / 2 + dx, O + fs + 2, true]); kandWeit.push([sx - bw / 2 + dx, H - U - 6, true]); }
           let wahl = null;
           for (const [x0, yb, linie] of kand) {
             if (x0 < L + 2 || x0 + bw > W - Rr + 6 || yb - fs < O || yb > H - U - 2) continue;
@@ -480,17 +493,24 @@
             if (raumY !== null && raumY > yb - fs - 3 && raumY < yb + 4) aufKurve = true;
             if (!aufKurve && !belegt.some(b => x0 < b[0] + b[2] && x0 + bw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { wahl = [x0, yb, linie]; break; }
           }
+          const linieZum = w => {       // Verbindungslinie von der Beschriftung zum Kreis
+            const lx = Math.min(Math.max(sx, w[0]), w[0] + bw), ly = w[1] < sy ? w[1] + 3 : w[1] - fs - 1;
+            const dx = sx - lx, dy = sy - ly, dl = Math.hypot(dx, dy) || 1;
+            return dl < 8 ? "" : '<line x1="' + lx.toFixed(1) + '" y1="' + ly.toFixed(1) + '" x2="' + (sx - dx / dl * 6.5).toFixed(1) + '" y2="' + (sy - dy / dl * 6.5).toFixed(1) + '" stroke="#142337" stroke-width="1"/>';
+          };
           if (wahl) {
-            if (wahl[2]) {       // Verbindungslinie von der Beschriftung zum Kreis
-              const lx = Math.min(Math.max(sx, wahl[0]), wahl[0] + bw), ly = wahl[1] < sy ? wahl[1] + 3 : wahl[1] - fs - 1;
-              const dx = sx - lx, dy = sy - ly, dl = Math.hypot(dx, dy) || 1;
-              s.push('<line x1="' + lx.toFixed(1) + '" y1="' + ly.toFixed(1) + '" x2="' + (sx - dx / dl * 6.5).toFixed(1) + '" y2="' + (sy - dy / dl * 6.5).toFixed(1) + '" stroke="#142337" stroke-width="1"/>');
-            }
+            if (wahl[2]) s.push(linieZum(wahl));
             s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>"); belegt.push([wahl[0], wahl[1] - fs, bw, fs + 4]);
-          } else {      // letzter Ersatz: Beschriftung mit weißem Rand an der ersten Stelle im Feld, die keine andere Beschriftung trifft
+          }
+          let wahlWeit = null;
+          if (!wahl) {        // G1-R4-05: nah am Kreis mit weißem Rand vor „weit weg mit Linie“
             const ers = kand.find(([x0, yb]) => x0 >= L + 2 && x0 + bw <= W - Rr + 6 && yb - fs >= O && yb <= H - U - 2 && !belegt.some(q => x0 < q[0] + q[2] && x0 + bw > q[0] && yb - fs < q[1] + q[3] && yb + 2 > q[1]));
-            if (ers) { s.push('<text x="' + ers[0].toFixed(1) + '" y="' + ers[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337" stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">' + esc(txt) + "</text>"); belegt.push([ers[0], ers[1] - fs, bw, fs + 4]); }
-            else schnittInLegende = true;      // „Schnitt“ in der Legende unter dem Diagramm
+            if (ers) { s.push((ers[2] ? linieZum(ers) : "") + '<text x="' + ers[0].toFixed(1) + '" y="' + ers[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337" stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">' + esc(txt) + "</text>"); belegt.push([ers[0], ers[1] - fs, bw, fs + 4]); }
+            else {
+              wahlWeit = kandWeit.find(([x0, yb]) => x0 >= L + 2 && x0 + bw <= W - Rr + 6 && yb - fs >= O && yb <= H - U - 2 && !belegt.some(q => x0 < q[0] + q[2] && x0 + bw > q[0] && yb - fs < q[1] + q[3] && yb + 2 > q[1]));
+              if (wahlWeit) { s.push(linieZum(wahlWeit) + '<text x="' + wahlWeit[0].toFixed(1) + '" y="' + wahlWeit[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337" stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">' + esc(txt) + "</text>"); belegt.push([wahlWeit[0], wahlWeit[1] - fs, bw, fs + 4]); }
+              else schnittInLegende = true;      // „Schnitt“ in der Legende unter dem Diagramm
+            }
           }
         }
         if (S.ansicht.trinkzeit && S.ansicht.vertiefung) {      // K-3 Trinkzeit: Linie bei 60 °C, Marken an den Kurven
@@ -517,10 +537,6 @@
             belegt.push([tx, ty - fs, tw, fs + 4]);
           }
         }
-        const senk = (x, a, b) => belegt.push([x - 4, Math.min(Y(a), Y(b)) - 2, 8, Math.abs(Y(a) - Y(b)) + 4]);
-        senk(X(0), S.e.thK0, R.th10); senk(X(tz), R.th2K, R.th2);
-        if (S.kurs.b3 && messFrei()) senk(X(tz) + 5, R.th2K, R.th2Raum);
-        belegt.push([X(tz) - 7, Y(R.th1) - 7, 14, 14], [X(tz) - 7, Y(R.th2) - 7, 14, 14]);
         const e2 = etikett(t("dia_tasse2", { t: z(tz, 0) }), "#222", R.kurve2, true, [0.12, 0.2, 0.06, 0.3, 0.4]);
         const e1 = etikett(t("dia_tasse1"), "#7a4e24", R.kurve1, false, [0.22, 0.3, 0.14, 0.4, 0.5, 0.06]);
         const fehlend = [];
@@ -561,11 +577,11 @@
     if (document.documentElement.classList.contains("anheften") && !anheftenLaeuft && zusatzAlt !== $("kurven-legende").hidden + "|" + $("vorhersage-zeile").hidden) requestAnimationFrame(anheftenPruefen);
     zusatzZeichnen();
     document.querySelector(".lesehinweis").innerHTML = (freigabe() && !R) ? "" : t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht,
-      { strom: t(schnittFrei() && R && R.tWaermestrom < S.e.tEnd_min ? "lesen_strom_frei" : "lesen_strom_vor") });   // G6-21, G2-R3-02
+      { strom: t(schnittFrei() && R && R.tWaermestrom < S.e.tEnd_min ? (R.flaecheVor >= 0 ? "lesen_strom_frei" : "lesen_strom_frei_umgekehrt") : "lesen_strom_vor") });   // G6-21, G2-R3-02, G3-R4-02
     // Beschreibung für Bildschirmleser
     const b3text = (freigabe() && R && S.kurs.b3 && messFrei() && ansicht === "temperatur") ? " " + nurText(t("dia_beschreibung_b3", { c: z(R.th2Raum, 2) })) : "";
     $("diagramm-name").textContent = nurText(t(ansicht === "temperatur" ? "dia_titel" : "dia_titel_" + ansicht));
-    $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) : (R && ansicht === "waermestrom" && !(schnittFrei() && R.tWaermestrom < S.e.tEnd_min)) ? nurText(t("flaeche_gesamt", { wert: z(R.Q2 - R.Q1, 2) })) : (R && ansicht === "waermestrom") ? nurText(t("dia_beschreibung_waermestrom", { v: z(R.flaecheVor, 2), n: z(R.flaecheNach, 2), d: z(R.Q2 - R.Q1, 2) })) : (ansicht === "ln") ? nurText(t("dia_beschreibung_ln", { n: lnPunkte().length })) :
+    $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) : (R && ansicht === "waermestrom" && !(schnittFrei() && R.tWaermestrom < S.e.tEnd_min)) ? nurText(gesamtText()) : (R && ansicht === "waermestrom") ? nurText(t("dia_beschreibung_waermestrom", { a: nurText(t(R.flaecheVor >= 0 ? "flaeche_mehr" : "flaeche_weniger")), b: nurText(t(R.flaecheNach >= 0 ? "flaeche_mehr" : "flaeche_weniger")), v: z(R.flaecheVor, 2), n: z(R.flaecheNach, 2), d: z(R.Q2 - R.Q1, 2) })) : (ansicht === "ln") ? nurText(t("dia_beschreibung_ln", { n: lnPunkte().length })) :
       (R ? nurText(t("dia_beschreibung", { a: z(S.e.thK0, 1), m: z(R.th10, 2), b: z(R.th1, 2), t: z(tz, 0), k: z(R.th2K, 2), c: z(R.th2, 2), d: z(R.dT, 2) })) : nurText(t("dia_ungueltig")));
     const lnZeigen = ansicht === "ln" && lnPunkte().length;
     if (b3text) $("diagramm-beschreibung").textContent += b3text;
@@ -578,8 +594,9 @@
     if (freigabe() && R && ansicht === "waermestrom") {
       ft.hidden = false;
       const mitSchnitt = schnittFrei() && R.tWaermestrom < S.e.tEnd_min;
-      ft.innerHTML = mitSchnitt ? SYM.vor + " " + t("flaeche_vor") + ": " + z(R.flaecheVor, 2) + " kJ · " + SYM.nach + " " + t("flaeche_nach") + ": " + z(R.flaecheNach, 2) + " kJ · " + t("flaeche_summe", { wert: z(R.Q2 - R.Q1, 2) })
-        : t("flaeche_gesamt", { wert: z(R.Q2 - R.Q1, 2) });
+      const wirkung = q => t(q >= 0 ? "flaeche_mehr" : "flaeche_weniger");      // G3-R4-02: nach dem Vorzeichen der Teilfläche
+      ft.innerHTML = mitSchnitt ? SYM.vor + " " + t("flaeche_ort_vor") + ": " + wirkung(R.flaecheVor) + ": " + z(R.flaecheVor, 2) + " kJ · " + SYM.nach + " " + t("flaeche_ort_nach") + ": " + wirkung(R.flaecheNach) + ": " + z(R.flaecheNach, 2) + " kJ · " + t("flaeche_summe", { wert: z(R.Q2 - R.Q1, 2) })
+        : gesamtText();
     } else if (freigabe() && ansicht === "ln") {
       const fit = ausgleichRechnen(); ft.hidden = !fit;
       const bn = n => nurText(t("dia_becher_n", { n: n }));
@@ -590,6 +607,7 @@
     if ($("kern-leiste")) $("kern-leiste").innerHTML = (freigabe() && R) ? "<span>ϑ₁ <b>" + z(R.th1, 2) + " °C</b></span><span>ϑ₂ <b>" + z(R.th2, 2) + " °C</b></span><span>Δ <b>" + z(R.dT, 2) + " K</b></span>" : "";
     $("kernzahlen").innerHTML = (freigabe() && R) ? "<span>ϑ₁<b>" + z(R.th1, 2) + " °C</b></span><span>ϑ₂<b>" + z(R.th2, 2) + " °C</b></span><span>Δ<b>" + z(R.dT, 2) + " K</b></span>" : "";
   }
+  const gesamtText = () => R.Q2 - R.Q1 >= 0 ? t("flaeche_gesamt", { wert: z(R.Q2 - R.Q1, 2) }) : t("flaeche_gesamt_weniger", { wert: z(R.Q1 - R.Q2, 2) });   // G3-R4-07
   const ZEIT = [0, 10, 20, 30, 40, 50, 60, 60];
   const schnittFrei = () => S.antworten.f1.fest || FRAGEN.some(f => f.id[0] === "v" && S.antworten[f.id].fest);
   const messFrei = () => S.antworten.f2.fest;      // G1-01, G4-01, G7-01: Lage der Punkte erst nach der Vorhersage zu Frage 2
@@ -881,6 +899,7 @@
     dl.innerHTML = h;
   }
   let ansageZeit = null;
+  function ansagenText(x) { clearTimeout(ansageZeit); ansageZeit = setTimeout(() => { $("ansage").textContent = x; }, 250); }
   function ansagen(festgehalten) {
     clearTimeout(ansageZeit);
     ansageZeit = setTimeout(() => {
@@ -987,8 +1006,8 @@
     b.hidden = false;
     b.innerHTML = '<p id="link-frage">' + t(kursAnzahl() ? "link_frage" : "link_frage_leer") + '</p><div class="knopfzeile"><button type="button" class="knopf-zweit" id="link-ja">' + t("link_ja") + '</button><button type="button" class="knopf-schlicht" id="link-nein">' + t("link_nein") + "</button></div>";
     b.setAttribute("role", "region"); b.setAttribute("aria-labelledby", "link-frage");
-    const fertig = schluessel => { BANNER = () => '<p id="link-ende" tabindex="-1">' + t(schluessel) + ' <button type="button" class="knopf-schlicht" id="link-zu">' + t("hinweis_schliessen") + "</button></p>"; b.innerHTML = BANNER(); b.setAttribute("aria-labelledby", "link-ende"); $("link-ende").focus(); setTimeout(() => { if ($("link-ende")) b.hidden = true; }, 15000); };   // G5-24, G7-14
-    b.addEventListener("click", ev => { if (ev.target && ev.target.id === "link-zu") { b.hidden = true; BANNER = null; const z0 = $("messblatt"); if (z0) { z0.setAttribute("tabindex", "-1"); z0.focus(); } } });   // G10-07
+    const fertig = schluessel => { BANNER = () => '<p id="link-ende" tabindex="-1">' + t(schluessel) + ' <button type="button" class="knopf-schlicht" id="link-zu">' + t("hinweis_schliessen") + "</button></p>"; b.innerHTML = BANNER(); b.setAttribute("aria-labelledby", "link-ende"); $("link-ende").focus(); };   // G1-R4-06: bleibt bis „Hinweis schließen“ (kein Sprung beim Ausblenden)   // G5-24, G7-14
+    b.addEventListener("click", ev => { if (ev.target && ev.target.id === "link-zu") { b.hidden = true; BANNER = null; fokus("frage-titel"); } });   // G10-07, G1-R4-02
     $("link-ja").addEventListener("click", () => { S.kurs = l.kurs; sichern(); weg(); alles(); fertig("link_ok"); });
     $("link-nein").addEventListener("click", () => { weg(); fertig("link_abgelehnt"); });
     b.addEventListener("keydown", ev => { if (ev.key === "Escape" && $("link-nein")) $("link-nein").click(); });
@@ -1013,7 +1032,7 @@
         h += "<p>" + frageText(f) + '</p><p class="hinweis"><strong>' + t("ausgangslage") + ":</strong> " + t(f.ausgang) + "</p>";
         h += '<div class="knopfzeile"><button type="button" class="knopf-schlicht" data-zur="' + f.id + '">' + t("knopf_zur_karte") + "</button>" +
           (a.fest ? '<button type="button" class="knopf-zweit" data-aufl="' + f.id + '" aria-expanded="' + (a.aufl ? "true" : "false") + '" aria-controls="aufl-karte-' + f.id + '">' + t(a.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button>" : "") + "</div>";
-        if (a.fest && a.aufl) h += '<div class="aufloesung" id="aufl-karte-' + f.id + '">' + vergleichHtml(f, a) + "<p>" + t(f.aufl) + "</p></div>";
+        if (a.fest && a.aufl) h += '<div class="aufloesung" id="aufl-karte-' + f.id + '">' + vergleichHtml(f, a) + "<p>" + auflText(f) + "</p></div>";
       }
       h += "</details>";
     }
@@ -1127,6 +1146,7 @@
     let hmax = null, platz = true;
     if (window.innerWidth <= 767 && window.innerHeight > window.innerWidth && hoehe >= 500 && freigabe()) {
       const war = document.documentElement.classList.contains("anheften");
+      $("diagramm-halter").style.minHeight = "";
       document.documentElement.classList.add("anheften");
       const extra = $("diagramm-halter").getBoundingClientRect().height - $("diagramm").getBoundingClientRect().height + 1;
       document.documentElement.classList.toggle("anheften", war);
@@ -1141,6 +1161,7 @@
     document.documentElement.classList.toggle("anheften", !!an);
     if (!an) hmax = null;
     if (hmax !== DIA_HMAX && !(hmax && DIA_HMAX && Math.abs(hmax - DIA_HMAX) < 2)) { DIA_HMAX = hmax; diagrammZeichnen(); }
+    $("diagramm-halter").style.minHeight = an && DIA_HMAX ? (DIA_HMAX + ZUSATZ.v) + "px" : "";      // G1-R4-08: Höhe bleibt beim Schieben gleich
     const moeglich = freigabe() && window.innerWidth <= 767 && window.innerHeight > window.innerWidth && hoehe >= 500 && platz;
     const kn = $("knopf-anheften");
     if (kn) { kn.hidden = !moeglich; kn.textContent = nurText(t(S.ansicht.anheften ? "anheften_aus" : "anheften_an")); kn.removeAttribute("aria-pressed"); }   // G10-08
@@ -1166,7 +1187,7 @@
   reiterTasten();
   let groesse = null;
   document.addEventListener("toggle", scrollbereichePruefen, true);
-  $("knopf-anheften").addEventListener("click", () => { S.ansicht.anheften = !S.ansicht.anheften; sichern(); anheftenPruefen(); $("knopf-anheften").focus(); });
+  $("knopf-anheften").addEventListener("click", () => { S.ansicht.anheften = !S.ansicht.anheften; sichern(); anheftenPruefen(); $("knopf-anheften").focus(); requestAnimationFrame(() => $("knopf-anheften").scrollIntoView({ block: "nearest" })); });   // G1-R4-10
   window.addEventListener("resize", () => { clearTimeout(groesse); groesse = setTimeout(() => { diagrammZeichnen(); anheftenPruefen(); scrollbereichePruefen(); }, 80); });
   if (window.visualViewport) window.visualViewport.addEventListener("resize", anheftenPruefen);
   if (window.ResizeObserver) {      // X5-04, X5-10: auch wenn nur die Schrift wächst (kein resize des Fensters)

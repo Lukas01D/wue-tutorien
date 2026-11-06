@@ -63,6 +63,8 @@ Auswahl passt nicht
 Ausgangslage
 @ausgangslage_vorher
 Ausgangslage vor deiner Vorhersage: Standardwerte (ohne Becher, ohne Deckel). Erst vorhersagen, dann prüfen.
+@ausgangslage_pruefen
+Ausgangslage beim Prüfen
 @ausgangslage_gesetzt
 Ausgangslage eingestellt: {was}.
 @auftrag_erklaeren
@@ -94,7 +96,9 @@ Unterschied etwa
 @start_ausgangslage
 Standardwerte
 @aufl_start
-Tasse 1, {{z:dT}} K ({{z:th1}} gegen {{z:th2}} °C). Erhalten bleibt die Energie von Kaffee, Milch und Raum zusammen; jede Tasse gibt Wärme an den Raum ab. Tasse 2 war fast bis zur Zugabe (bis etwa {{z:f1_tmax}} min) heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: $Q_2 - Q_1$ = {{z:dQ}} kJ; {{z:dQ}} kJ geteilt durch {{z:CG}} $\frac{\mathrm{J}}{\mathrm{K}}$ (Kaffee und Milch) sind {{z:dT}} K.
+Tasse 1, {{z:dT}} K ({{z:th1}} gegen {{z:th2}} °C). Erhalten bleibt die Energie von Kaffee, Milch und Raum zusammen; jede Tasse gibt Wärme an den Raum ab. Tasse 2 war fast bis zur Zugabe{bis} heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: $Q_2 - Q_1$ = {{z:dQ}} kJ; {{z:dQ}} kJ geteilt durch {{z:CG}} $\frac{\mathrm{J}}{\mathrm{K}}$ (Kaffee und Milch) sind {{z:dT}} K.
+@aufl_start_bis
+ (bis etwa {{z:f1_tmax}} min)
 @f1_titel
 Zeitpunkt
 @f1_text
@@ -218,7 +222,7 @@ bis
 @lesehinweis_waermestrom
 $\dot{Q}_\mathrm{ab}$ beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: {strom}
 @lesehinweis_ln
-Bei konstantem $kA$ liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung $-kA/(m\,c_p)$ (durchgezogen; gestrichelt: mit freiem Achsenabschnitt).
+Bei konstantem $kA$ liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung $-kA/(m\,c_p)$ des schwarzen Kaffees (mit Becher zuzüglich $m_\mathrm{B} c_\mathrm{B}$) (durchgezogen; gestrichelt: mit freiem Achsenabschnitt).
 @becher_und
 {a} und {b}
 @dia_becher_n
@@ -247,10 +251,16 @@ Wärmestrom
 Messwerte linear (ln)
 @ansicht_aria
 Ansicht des Diagramms
-@flaeche_vor
-vor dem Schnitt der Wärmeströme: Tasse 2 gibt mehr ab
-@flaeche_nach
-nach dem Schnitt der Wärmeströme: Tasse 2 gibt weniger ab
+@flaeche_ort_vor
+vor dem Schnitt der Wärmeströme
+@flaeche_ort_nach
+nach dem Schnitt der Wärmeströme
+@flaeche_mehr
+Tasse 2 gibt mehr ab
+@flaeche_weniger
+Tasse 2 gibt weniger ab
+@flaeche_gesamt_weniger
+Tasse 2 gibt bis zur Zugabe insgesamt {wert} kJ weniger Wärme ab als Tasse 1.
 @flaeche_summe
 $Q_2 - Q_1$ = {wert} kJ (Summe beider Teilflächen)
 @ln_kein
@@ -342,9 +352,9 @@ Gleichwertiger Wert nach 10 min, aus $kA$ berechnet
 @thmess_ersatz
 Dieser Wert ist aus dem bisherigen $kA$ berechnet, er ist keine Messung. Trag deinen Messwert ein, dann gilt er.
 @thmess_eigen
-Deine Messung {wert} °C wieder verwenden
+Messwert {wert} °C wieder verwenden
 @kA_quelle_nicht
-Nicht umgestellt: Zu diesem $kA$ gehört nach 10 min ein Wert von {wert} °C, außerhalb des Messbereichs {min} bis {max} °C. $kA$ bleibt festgehalten.
+Nicht umgestellt: Zu diesem $kA$ gehört nach 10 min ein Wert von {wert} °C, außerhalb des Bereichs des Feldes ({min} bis {max} °C). $kA$ bleibt festgehalten.
 @rw_kA_herkunft_ersatz
 aus einem berechneten Wert nach 10 min (keine Messung)
 @regler_mB
@@ -618,7 +628,7 @@ Wärmestrom beider Tassen
 @dia_titel_ln
 Messwerte linear (ln) mit Ausgleichsgerade
 @dia_beschreibung_waermestrom
-Bis zum Schnitt gibt Tasse 2 mehr Wärme ab ({v} kJ), danach weniger ({n} kJ); zusammen {d} kJ.
+Bis zum Schnitt der Wärmeströme: {a} ({v} kJ); danach: {b} ({n} kJ); zusammen {d} kJ.
 @dia_beschreibung_ln
 {n} Messpunkte der Becher ohne Milch, mit Ausgleichsgerade.
 @rw_unterschied_b3
@@ -775,9 +785,9 @@ Versuch, Becher 3
 <li><strong>Formen:</strong> deine Messwerte (Kreis Becher 1, Quadrat Becher 2, Dreieck Becher 3).</li>
 <li><strong>Beschrifteter Kasten:</strong> eure festgehaltene Vorhersage. <strong>Blasse Kurven:</strong> der gemerkte Vergleichslauf.</li>
 <li><strong>Rechenwerte:</strong> Temperaturen direkt nach der Zugabe in Tasse 2. Der Unterschied ist $\vartheta_1 - \vartheta_2$; positiv heißt: Tasse 1 ist wärmer. $kA$ steht mit seiner Herkunft da (aus der Messung, festgehalten, Voreinstellung, Ausgleichsgerade).</li>
-<li><strong>Energie bis zur Zugabe:</strong> Wärme, die jede Tasse bis zur Zugabe abgegeben hat (Teil e). Bei gleicher Milch ist $Q_2 - Q_1$ geteilt durch $m\,c_p$ des Gemischs genau der Unterschied; bei verschieden warmer Milch kommt der Milchbeitrag dazu.</li>
+<li><strong>Energie bis zur Zugabe:</strong> Wärme, die jede Tasse bis zur Zugabe abgegeben hat (Teil e). Bei gleicher Milch ist $Q_2 - Q_1$ geteilt durch $m\,c_p$ des Gemischs (mit Becher zuzüglich $m_\mathrm{B} c_\mathrm{B}$) genau der Unterschied; bei verschieden warmer Milch kommt der Milchbeitrag dazu.</li>
 <li><strong>Ansicht „Wärmestrom“ (Vertiefung):</strong> $\dot{Q}_\mathrm{ab}$ beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: {strom}</li>
-<li><strong>Ansicht „Messwerte linear (ln)“ (Vertiefung):</strong> $\ln\frac{\vartheta - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$ über $t$ für die Becher vor der Milch. Bei konstantem $kA$ liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung $-kA/(m\,c_p)$. Ein Muster in den Abständen zur Geraden zeigt, dass $kA$ oder die Messbedingungen nicht konstant waren; welche Ursache, sagt die Gerade allein nicht.</li>
+<li><strong>Ansicht „Messwerte linear (ln)“ (Vertiefung):</strong> $\ln\frac{\vartheta - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$ über $t$ für die Becher vor der Milch. Bei konstantem $kA$ liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung $-kA/(m\,c_p)$ des schwarzen Kaffees (mit Becher zuzüglich $m_\mathrm{B} c_\mathrm{B}$). Ein Muster in den Abständen zur Geraden zeigt, dass $kA$ oder die Messbedingungen nicht konstant waren; welche Ursache, sagt die Gerade allein nicht.</li>
 <li><strong>Rundung:</strong> Temperaturen auf 0,01 K, Wärmen auf 0,01 kJ.</li>
 </ul>
 
@@ -788,7 +798,9 @@ Schnittpunkt der beiden Kurven; er erscheint nach eurer Vorhersage zu Frage 1.
 @lesen_strom_frei
 vor dem Schnitt der Wärmeströme gibt Tasse 2 mehr ab, danach weniger; beide Teilflächen sind verschieden schraffiert, ihre Summe ist $Q_2 - Q_1$.
 @lesen_strom_vor
-ihre Summe ist $Q_2 - Q_1$.
+mit Vorzeichen gerechnet ist sie $Q_2 - Q_1$.
+@lesen_strom_frei_umgekehrt
+vor dem Schnitt der Wärmeströme gibt Tasse 2 weniger ab, danach mehr; beide Teilflächen sind verschieden schraffiert, ihre Summe ist $Q_2 - Q_1$.
 @text_rechenweg
 <p><strong>Bilanz.</strong> Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:</p>
 $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
@@ -799,7 +811,7 @@ $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), 
 <p><strong>Abgegebene Wärme.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$ mit $C_\mathrm{G} = m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}$ (Kaffee und Milch); mit Becher steht $C_\mathrm{GB} = C_\mathrm{G} + m_\mathrm{B} c_\mathrm{B}$ an Stelle von $C_\mathrm{G}$. Bei gleicher Milch fällt der letzte Teil weg.</p>
 {zugabe}
 <p><strong>kA aus allen Messpunkten</strong> (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung $b = \sum t_i y_i / \sum t_i^2$ mit $y_i = \ln\frac{\vartheta_i - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$, dann $kA = -C\,b$. Die Streuung der Geraden ist keine Messunsicherheit von $kA$, weil alle Punkte denselben Startwert enthalten.</p>
-<p><strong>kA festhalten</strong> (Vertiefung): Das Werkzeug gibt dem Modell den Messwert nach 10 min, der zu diesem $kA$ gehört, und rechnet sonst unverändert.</p>
+<p><strong>kA festhalten</strong> (Vertiefung): Das Werkzeug gibt dem Modell den gleichwertigen Wert nach 10 min (keine Messung), der zu diesem $kA$ gehört, und rechnet sonst unverändert.</p>
 
 @rechenweg_zugabe
 <p><strong>Zeitpunkt der Zugabe.</strong> Verschiebt man die Zugabe, ändert sich der Unterschied mit $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (mit Becher $C_\mathrm{GB}$): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.</p>
