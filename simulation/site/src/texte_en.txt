@@ -42,7 +42,7 @@ Work on this question
 @knopf_vertiefung_oeffnen
 Open going further
 @fertig_pflicht
-Done. Continue with going further.
+Done. Key point: whatever is hotter releases more heat; so add the milk straight away. What is conserved is the energy of the cups and the room together. Continue with going further.
 @vertiefung_frueh
 Going further is meant for afterwards. Do questions 1 and 2 first.
 @begruendung_label
@@ -77,7 +77,7 @@ This part appears once you have locked in your prediction on the start card.
 @start_titel
 Predict first
 @start_text
-Both cups stand for 60 min; the milk comes straight from the fridge. Which cup is warmer after 60 min, and by roughly how much? Write down your own answer first, then agree as a pair.
+Both cups stand for 60 min; the milk comes straight from the fridge. Your flatmate says: “It doesn’t matter whether you add the milk straight away or later. Energy is conserved, after all.” Which cup is warmer after 60 min, and by roughly how much? Write down your own answer first, then agree as a pair.
 @start_opt_1
 Cup 1 (milk right away)
 @start_opt_2
@@ -89,22 +89,26 @@ Approximate difference
 @start_ausgangslage
 default values
 @aufl_start
-Cup 1, {{z:dT}} K ({{z:th1}} versus {{z:th2}} °C). Up to the moment the milk is added, cup 2 was hotter and therefore released more heat: $Q_2 - Q_1$ = {{z:dQ}} kJ; {{z:dQ}} kJ divided by {{z:CG}} $\frac{\mathrm{J}}{\mathrm{K}}$ (coffee and milk) gives {{z:dT}} K.
+Cup 1, {{z:dT}} K ({{z:th1}} versus {{z:th2}} °C). What is conserved is the energy of coffee, milk and room together; each cup releases heat to the room. Cup 2 was hotter than cup 1 almost until the milk was added (until about {{z:f1_tmax}} min) and therefore released more heat: $Q_2 - Q_1$ = {{z:dQ}} kJ; {{z:dQ}} kJ divided by {{z:CG}} $\frac{\mathrm{J}}{\mathrm{K}}$ (coffee and milk) gives {{z:dT}} K.
 
 @f1_titel
 When to add the milk
 @f1_text
-Write down your own answer first, then agree as a pair: roughly when should the milk be added to cup 2 so that the difference between the cups is largest? Then check: move the time at which the milk is added to cup 2. Why does the difference become smaller again when the milk is added later?
+Write down your own answer first, then agree as a pair: how does the difference between the cups change when the milk is added to cup 2 later? Roughly when should the milk be added for the difference to be largest?
 @f1_eingabe
 Approximate time
+@f1_auftrag
+Then check: move the time at which the milk is added to cup 2. Why does the difference become smaller again when the milk is added later?
 @f1_ausgangslage
 default values
 @aufl_f1
-At about {{z:f1_tmax}} min ({{z:dTmax}} K; the display shows {{z:dTmax}} K from {{z:f1_von}} to {{z:f1_bis}} min), exactly at the intersection of the curves. As long as the black coffee is warmer than cup 1, it releases more heat and the difference grows; afterwards it releases less. The difference does not go to zero: the limit is {{z:grenz}} K ({{e:thU}} °C versus {{z:grenz_th2}} °C), because the cold milk cools cup 2 again when it is mixed in.
+At about {{z:f1_tmax}} min ({{z:dTmax}} K; the display shows {{z:dTmax}} K from {{z:f1_von}} to {{z:f1_bis}} min), exactly at the intersection of the curves. As long as the black coffee is warmer than cup 1, it releases more heat and the difference grows; afterwards it releases less. The difference does not go to zero: the limit is {{z:grenz}} K ({{e:thU}} °C versus {{z:grenz_th2}} °C), because the cold milk cools cup 2 again when it is mixed in. In going further, look at the area between the curves in the “Heat flow rate” view.
 @f2_titel
 Experiment
 @f2_text
-Write down your own answer first, then agree as a pair: do your measured points lie above, below or on the model curves, or sometimes above and sometimes below? Then check: load your class's measured values (link from your tutor) and use the settings from the measurements. Describe where the points lie. Name one possible cause and one measurement you could use to test it.
+Write down your own answer first, then agree as a pair: do your measured points lie above, below or on the model curves, or sometimes above and sometimes below? Then check: load your class’s measured values (link from your tutor). The settings are taken from the measurements when you check. Describe where the points lie. Name one possible cause and one measurement you could use to test it.
+@f2_text_mit
+Write down your own answer first, then agree as a pair: do your measured points lie above, below or on the model curves, or sometimes above and sometimes below? Then check: describe where the points lie. Name one possible cause and one measurement you could use to test it. The settings are taken from the measurements when you check.
 @f2_opt_ueber
 above the curves
 @f2_opt_unter
@@ -133,11 +137,11 @@ For pairs who finish early, for revision and for self-study. Each question again
 @v1_titel
 Milk temperature
 @v1_text
-Write down your own answer first, then agree as a pair: how warm would the milk have to be for both cups to be at roughly the same temperature after 60 min? Does this temperature depend on the time of adding the milk?
+Write down your own answer first, then agree as a pair: how warm would the milk have to be for both cups to be at roughly the same temperature after 60 min? Note down for yourselves: does this temperature depend on the time of adding the milk?
 @v1_eingabe
 Approximate milk temperature
 @aufl_v1
-{{z:v1_60}} °C; {{z:v1_30}} °C when the milk is added after 30 min, {{z:v1_90}} °C after 90 min.
+{{z:v1_60}} °C; {{z:v1_30}} °C when the milk is added after 30 min, {{z:v1_90}} °C after 90 min. Yes, the temperature depends on the time: at {{z:v1_60}} °C, the warmer milk just makes up for the extra heat loss of cup 2. The later the milk is added, the colder cup 2 is beforehand and the less warm the milk has to be.
 @v2_titel
 Lid
 @v2_text
@@ -155,13 +159,13 @@ The same ({{z:dTmax}} K), but later: when the milk is added after about {{z:v2_t
 @v3_titel
 Mug
 @v3_text
-Write down your own answer first, then agree as a pair: the cups are preheated ceramic mugs as in part g. Does the difference become larger or smaller, and is cup 1 still warmer?
+Write down your own answer first, then agree as a pair: the cups are preheated ceramic mugs as in part g. Does the difference become larger or smaller? Note down for yourselves: is cup 1 still warmer?
 @aufl_v3
 Smaller: {{z:v3_dT}} instead of {{z:dT}} K; the heat released increases ({{z:v3_Q1}} and {{z:v3_Q2}} kJ instead of {{z:Q1}} and {{z:Q2}} kJ) because the mug cools down too; cup 1 stays warmer.
 @v4_titel
 Planning the experiment
 @v4_text
-Write down your own answer first, then agree as a pair: mug 1 has {{v:v4_ungleich}} % more $kA$ than mug 2 (a different surface underneath); or $kA$ of both mugs is {{v:v4_falsch}} % off. Which distorts the difference more?
+Write down your own answer first, then agree as a pair: mug 1 has {{v:v4_ungleich}} % more $kA$ than mug 2 (a different surface underneath); or $kA$ of both mugs is {{v:v4_falsch}} % off. Which distorts the difference more? Check with “$kA$ of cup 1, relative” ({{v:v4_rel}} %) and with the $kA$ slider (±{{v:v4_falsch}} %).
 @v4_opt_ungleich
 different $kA$ of the mugs
 @v4_opt_falsch
@@ -171,9 +175,9 @@ Different $kA$: the difference drops from {{z:dT}} to {{z:v4_d105}} K. A wrong $
 @v5_titel
 Which mug?
 @v5_text
-Write down your own answer first, then agree as a pair: which mug keeps the coffee warm the longest? Does this change the largest possible difference between the cups? Try out the presets for $kA$.
+Write down your own answer first, then agree as a pair: which mug keeps the coffee warm the longest? Note down for yourselves: does this change the largest possible difference between the cups? Try out the presets for $kA$.
 @aufl_v5
-The open vacuum mug keeps it warm the longest (estimate: from {{e:thK0}} to {{z:v5_thermo30}} °C in 30 min, compared with {{z:v5_keramik30}} °C for the open ceramic mug), followed by ceramic with a lid. The largest difference stays {{z:dTmax}} K; it only comes later (open vacuum mug after about {{z:v5_thermo_t}} min). Glass and paper are roughly like ceramic: the wall is not the main resistance; what matters is the open surface and the radiation.
+The open vacuum mug keeps it warm the longest (estimate: from {{e:thK0}} to {{z:v5_thermo30}} °C in 30 min, compared with {{z:v5_keramik30}} °C for the open ceramic mug), followed by ceramic with a lid. The largest difference stays {{z:dTmax}} K; it only comes later (open vacuum mug after about {{z:v5_thermo_t}} min). According to the estimates (*), glass and paper are roughly like ceramic: the wall is not the main resistance; what matters is the open surface and the radiation.
 
 @dia_titel
 Temperature of both cups over time
@@ -206,7 +210,7 @@ Cup {n}
 @bis
 to
 @lesehinweis_waermestrom
-$\dot{Q}_\mathrm{ab}$ of both cups over time. The area between the curves is an energy: before the intersection cup 2 releases more, afterwards less; the two areas are hatched differently, and their sum is $Q_2 - Q_1$.
+$\dot{Q}_\mathrm{ab}$ of both cups over time. The area between the curves is an energy: {strom}
 @lesehinweis_ln
 With a constant $kA$, the points lie on a straight line through the origin with the slope $-kA/(m\,c_p)$ (solid line; dashed: with a free intercept).
 @becher_und
@@ -238,9 +242,9 @@ Measured values, linearised (ln)
 @ansicht_aria
 View of the diagram
 @flaeche_vor
-before the intersection: cup 2 releases more
+before the heat flow rates intersect: cup 2 releases more
 @flaeche_nach
-after the intersection: cup 2 releases less
+after the heat flow rates intersect: cup 2 releases less
 @flaeche_summe
 $Q_2 - Q_1$ = {wert} kJ (sum of both areas)
 @ln_kein
@@ -271,7 +275,7 @@ cup 2 warmer
 @rw_satz_gleich
 same temperature
 @rw_schnitt
-Intersection of the curves
+Intersection of the temperature curves
 @rw_schnitt_wert
 after {t} min
 @rw_schnitt_kein
@@ -618,6 +622,14 @@ class values, applied when you check
 Enter a number first.
 @hinweis_zahl_bereich
 This number is outside the sensible range.
+@frage_ausblenden
+Hide question
+@csv_fertig_vor
+CSV created (measurement sheet only; the model curves are added after your prediction).
+@hinweis_schliessen
+Close notice
+@anheften_aus
+Unpin diagram
 @frage_zeigen
 Show question
 @rueckblick_energie
@@ -707,7 +719,7 @@ How to read the results
 <p>In addition, in the simulation:</p>
 <ul>
 <li>$kA$ applies to both cups; “$kA$ of cup 1, relative” changes this for cup 1 only. When kept fixed, $kA$ stays the same when you change amounts or temperatures (here the filling level does not change $kA$); from the measurement, it is determined again every time.</li>
-<li>Presets marked with a star are estimates, not measured; measured are “Ceramic, open” (problem) and “Ceramic with lid” (one mug with a polystyrene lid, Ferreira 2025a).</li>
+<li>Presets marked with a star are estimates, not measured; supported are “Ceramic, open” (working value of the problem, consistent with $\tau$ ≈ {{v:tau_ferreira}} min in Ferreira 2025a) and “Ceramic with lid” (factor {{v:faktor_deckel}} from one mug with a polystyrene lid, Ferreira 2025a).</li>
 <li>When the measured values are used, the readings taken before the milk is added count as black coffee with the same initial value and the same $kA$ (mean of the measured values).</li>
 <li>Perfect mixing and “mug at the temperature of its contents” are deliberately simplifying assumptions; the small Biot number of the ceramic wall (about {{v:biot}}) supports them, but does not prove them on its own.</li>
 </ul>
@@ -745,19 +757,27 @@ experiment, mug 3
 
 @text_lesen
 <ul>
-<li><strong>Brown solid line:</strong> cup 1. The milk goes in at $t$ = 0; the short dotted line at $t$ = 0 is the mixing jump from {{e:thK0}} to {{z:th10}} °C.</li>
+<li><strong>Brown solid line:</strong> cup 1. The milk goes in at $t$ = 0; the short dotted line at $t$ = 0 is the mixing jump from {{e:thK0}} to {{z:th10}} °C (default values).</li>
 <li><strong>Black dashed line:</strong> cup 2, black coffee until the milk is added; the dotted line at the end is the mixing jump when the milk is poured in.</li>
-<li><strong>Circle:</strong> intersection of the two curves. To the left of it, the black coffee is warmer than cup 1 and releases more heat; to the right, less (with the same $kA$ for both cups).</li>
+<li><strong>Circle:</strong> {kreis}</li>
 <li><strong>Grey dotted line:</strong> room temperature. Both curves approach it.</li>
 <li><strong>Shapes:</strong> your measured values (circle mug 1, square mug 2, triangle mug 3).</li>
 <li><strong>Labelled box:</strong> your locked-in prediction. <strong>Faint curves:</strong> the stored comparison run.</li>
 <li><strong>Calculated values:</strong> temperatures directly after the milk is added to cup 2. The difference is $\vartheta_1 - \vartheta_2$; positive means that cup 1 is warmer. $kA$ is shown with its origin (from the measurement, kept fixed, preset, fitted line).</li>
 <li><strong>Energy up to adding the milk:</strong> heat that each cup has released up to adding the milk (part e). With the same milk, $Q_2 - Q_1$ divided by $m\,c_p$ of the mixture is exactly the difference; with milk at different temperatures, the milk contribution is added.</li>
-<li><strong>“Heat flow rate” view (going further):</strong> $\dot{Q}_\mathrm{ab}$ of both cups over time. The area between the curves is an energy: before the intersection cup 2 releases more, afterwards less; the two areas are hatched differently, and their sum is $Q_2 - Q_1$.</li>
+<li><strong>“Heat flow rate” view (going further):</strong> $\dot{Q}_\mathrm{ab}$ of both cups over time. The area between the curves is an energy: {strom}</li>
 <li><strong>“Measured values, linearised (ln)” view (going further):</strong> $\ln\frac{\vartheta - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$ over $t$ for the mugs before the milk. With a constant $kA$, the points lie on a straight line through the origin with the slope $-kA/(m\,c_p)$. A pattern in the distances from the line shows that $kA$ or the measuring conditions were not constant; the line alone does not tell you which cause.</li>
 <li><strong>Rounding:</strong> temperatures to 0.01 K, heat to 0.01 kJ.</li>
 </ul>
 
+@lesen_kreis_frei
+intersection of the two curves. To the left of it, the black coffee is warmer than cup 1 and releases more heat; to the right, less (with the same $kA$ for both cups).
+@lesen_kreis_vor
+intersection of the two curves; it appears after your prediction for question 1.
+@lesen_strom_frei
+before the heat flow rates intersect, cup 2 releases more, afterwards less; the two areas are hatched differently, and their sum is $Q_2 - Q_1$.
+@lesen_strom_vor
+its sum is $Q_2 - Q_1$.
 @text_rechenweg
 <p><strong>Balance.</strong> The control volume is the contents of one cup (with a mug: contents and mug). From the general energy balance (Lecture 05, slide 8), without mass flows and without work, only the change in internal energy and the heat flow rate to the surroundings remain:</p>
 $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
@@ -766,10 +786,14 @@ $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), 
 <p><strong>kA from the measurement.</strong> $kA = -\frac{C}{t_\mathrm{mess}} \ln\frac{T_\mathrm{mess} - T_\mathrm{u}}{T_0 - T_\mathrm{u}}$ (part c).</p>
 <p><strong>Mixing.</strong> $\vartheta_\mathrm{misch} = \frac{m_\mathrm{K} c_{p,\mathrm{K}}\,\vartheta_\mathrm{K} + m_\mathrm{M} c_{p,\mathrm{M}}\,\vartheta_\mathrm{M}}{m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}}$ (part a; with a mug, its heat capacity is added to the cup).</p>
 <p><strong>Heat released.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ (Anfang start, Ende end) for each control volume (part e); from this, directly after the milk is added, $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$ with $C_\mathrm{G} = m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}$ (coffee and milk); with the mug, $C_\mathrm{GB} = C_\mathrm{G} + m_\mathrm{B} c_\mathrm{B}$ takes the place of $C_\mathrm{G}$. With the same milk, the last term vanishes.</p>
-<p><strong>When the milk is added.</strong> If the milk is added later, the difference changes by $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (with the mug, $C_\mathrm{GB}$): it grows as long as cup 2 releases more heat, and decreases afterwards. What this means for the largest difference is in the explanations of question 1 and V2.</p>
+{zugabe}
 <p><strong>kA from all measured points</strong> (going further): line through the origin in the “ln” view, slope $b = \sum t_i y_i / \sum t_i^2$ with $y_i = \ln\frac{\vartheta_i - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$, then $kA = -C\,b$. The scatter about the line is not a measurement uncertainty of $kA$, because all points contain the same initial value.</p>
 <p><strong>Keeping kA fixed</strong> (going further): the tool works out the value after 10 min that belongs to this $kA$ and passes it to the unchanged model.</p>
 
+@rechenweg_zugabe
+<p><strong>When the milk is added.</strong> If the milk is added later, the difference changes by $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (with the mug, $C_\mathrm{GB}$): it grows as long as cup 2 releases more heat, and decreases afterwards. What this means for the largest difference is in the explanations of question 1 and V2.</p>
+@rechenweg_zugabe_vor
+<p><strong>When the milk is added.</strong> This paragraph appears after your prediction for question 1.</p>
 @text_code
 <p>The page is a single file. The calculation is in two marked blocks: <code>MODELL</code> contains the same equations and default values as the calculation script <code>kaffee_modell.py</code> of the solution (functions <code>rechne</code> and <code>zwei_tassen</code>), <code>ERWEITERUNG</code> the extensions (fitted line, energy, keeping $kA$ fixed and the selected additions). For every setting the code calculates the curves in closed form; only the drawing samples them at {{v:abtastpunkte}} points. Automatic tests check it: {{v:testwerte}} random parameter sets against <code>kaffee_modell.py</code>, the extensions against an independent calculation, operation in the browser from 360 to 1920 px, both languages. As of {stand}, version {version}. You can read the code with “View page source” in your browser.</p>
 

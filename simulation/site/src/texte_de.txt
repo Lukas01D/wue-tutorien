@@ -46,7 +46,7 @@ Diese Frage bearbeiten
 @knopf_vertiefung_oeffnen
 Vertiefung öffnen
 @fertig_pflicht
-Geschafft. Weiter geht es in der Vertiefung.
+Geschafft. Kernsatz: Wer heißer ist, gibt mehr Wärme ab; deshalb Milch sofort. Erhalten bleibt die Energie von Tassen und Raum zusammen. Weiter geht es in der Vertiefung.
 @vertiefung_frueh
 Die Vertiefung ist für danach gedacht. Erst Frage 1 und 2.
 @begruendung_label
@@ -82,7 +82,7 @@ Dieser Teil erscheint, sobald ihr eure Vorhersage auf der Startkarte festgehalte
 @start_titel
 Erst vorhersagen
 @start_text
-Beide Tassen stehen 60 min, die Milch kommt aus dem Kühlschrank. Welche Tasse ist nach 60 min wärmer, und um etwa wie viel? Notiere zuerst für dich, dann einigt euch.
+Beide Tassen stehen 60 min, die Milch kommt aus dem Kühlschrank. Dein Mitbewohner meint: „Ob man die Milch sofort oder später hineingießt, ist egal. Die Energie bleibt ja erhalten.“ Welche Tasse ist nach 60 min wärmer, und um etwa wie viel? Notiere zuerst für dich, dann einigt euch.
 @start_opt_1
 Tasse 1 (Milch sofort)
 @start_opt_2
@@ -94,23 +94,25 @@ Unterschied etwa
 @start_ausgangslage
 Standardwerte
 @aufl_start
-Tasse 1, {{z:dT}} K ({{z:th1}} gegen {{z:th2}} °C). Tasse 2 war bis zur Zugabe heißer und hat deshalb mehr Wärme abgegeben: $Q_2 - Q_1$ = {{z:dQ}} kJ; {{z:dQ}} kJ geteilt durch {{z:CG}} $\frac{\mathrm{J}}{\mathrm{K}}$ (Kaffee und Milch) sind {{z:dT}} K.
-
-# ---------------------------------------------------------------- Pflichtweg
+Tasse 1, {{z:dT}} K ({{z:th1}} gegen {{z:th2}} °C). Erhalten bleibt die Energie von Kaffee, Milch und Raum zusammen; jede Tasse gibt Wärme an den Raum ab. Tasse 2 war fast bis zur Zugabe (bis etwa {{z:f1_tmax}} min) heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: $Q_2 - Q_1$ = {{z:dQ}} kJ; {{z:dQ}} kJ geteilt durch {{z:CG}} $\frac{\mathrm{J}}{\mathrm{K}}$ (Kaffee und Milch) sind {{z:dT}} K.
 @f1_titel
 Zeitpunkt
 @f1_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Bei welchem Zeitpunkt der Milchzugabe in Tasse 2 ist der Unterschied zwischen den Tassen ungefähr am größten? Prüft dann: Verschiebt die Zugabe der Milch in Tasse 2. Warum wird der Unterschied bei späterer Zugabe wieder kleiner?
+Notiere zuerst für dich, dann einigt euch zu zweit: Wie ändert sich der Unterschied zwischen den Tassen, wenn die Milch später in Tasse 2 kommt? Bei welchem Zeitpunkt der Zugabe ist er ungefähr am größten?
 @f1_eingabe
 Zeitpunkt etwa
+@f1_auftrag
+Prüft dann: Verschiebt die Zugabe der Milch in Tasse 2. Warum wird der Unterschied bei späterer Zugabe wieder kleiner?
 @f1_ausgangslage
 Standardwerte
 @aufl_f1
-Etwa nach {{z:f1_tmax}} min ({{z:dTmax}} K; die Anzeige zeigt {{z:dTmax}} K von {{z:f1_von}} bis {{z:f1_bis}} min), genau am Schnittpunkt der Kurven. Solange der schwarze Kaffee wärmer ist als Tasse 1, gibt er mehr Wärme ab, und der Unterschied wächst; danach gibt er weniger ab. Der Unterschied geht nicht gegen null: Grenzwert {{z:grenz}} K ({{e:thU}} °C gegen {{z:grenz_th2}} °C), weil die kalte Milch Tasse 2 beim Mischen erneut abkühlt.
+Etwa nach {{z:f1_tmax}} min ({{z:dTmax}} K; die Anzeige zeigt {{z:dTmax}} K von {{z:f1_von}} bis {{z:f1_bis}} min), genau am Schnittpunkt der Kurven. Solange der schwarze Kaffee wärmer ist als Tasse 1, gibt er mehr Wärme ab, und der Unterschied wächst; danach gibt er weniger ab. Der Unterschied geht nicht gegen null: Grenzwert {{z:grenz}} K ({{e:thU}} °C gegen {{z:grenz_th2}} °C), weil die kalte Milch Tasse 2 beim Mischen erneut abkühlt. Seht euch in der Vertiefung in der Ansicht „Wärmestrom“ die Fläche zwischen den Kurven an.
 @f2_titel
 Versuch
 @f2_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Liegen eure Messpunkte über, unter oder auf den Kurven des Modells, oder mal so, mal so? Prüft dann: Ladet die Messwerte eures Kurses (Link der Tutoriumsleitung) und übernehmt die Einstellungen aus den Messwerten. Beschreibt, wo die Punkte liegen. Nennt eine mögliche Ursache und eine Messung, mit der ihr sie prüfen könntet.
+Notiere zuerst für dich, dann einigt euch zu zweit: Liegen eure Messpunkte über, unter oder auf den Kurven des Modells, oder mal so, mal so? Prüft dann: Ladet die Messwerte eures Kurses (Link der Tutoriumsleitung). Die Einstellungen werden beim Prüfen aus den Messwerten übernommen. Beschreibt, wo die Punkte liegen. Nennt eine mögliche Ursache und eine Messung, mit der ihr sie prüfen könntet.
+@f2_text_mit
+Notiere zuerst für dich, dann einigt euch zu zweit: Liegen eure Messpunkte über, unter oder auf den Kurven des Modells, oder mal so, mal so? Prüft dann: Beschreibt, wo die Punkte liegen. Nennt eine mögliche Ursache und eine Messung, mit der ihr sie prüfen könntet. Die Einstellungen werden beim Prüfen aus den Messwerten übernommen.
 @f2_opt_ueber
 über den Kurven
 @f2_opt_unter
@@ -140,11 +142,11 @@ Für Schnelle, zum Nachbereiten und zum Selbstlernen. Jede Frage wieder mit Vorh
 @v1_titel
 Milchtemperatur
 @v1_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Wie warm müsste die Milch sein, damit beide Tassen nach 60 min ungefähr gleich warm sind? Hängt diese Temperatur vom Zeitpunkt der Zugabe ab?
+Notiere zuerst für dich, dann einigt euch zu zweit: Wie warm müsste die Milch sein, damit beide Tassen nach 60 min ungefähr gleich warm sind? Notiert für euch: Hängt diese Temperatur vom Zeitpunkt der Zugabe ab?
 @v1_eingabe
 Milchtemperatur etwa
 @aufl_v1
-{{z:v1_60}} °C; {{z:v1_30}} °C bei Zugabe nach 30 min, {{z:v1_90}} °C nach 90 min.
+{{z:v1_60}} °C; {{z:v1_30}} °C bei Zugabe nach 30 min, {{z:v1_90}} °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei {{z:v1_60}} °C gleicht die wärmere Milch den Mehrverlust von Tasse 2 gerade aus. Je später die Zugabe, desto kälter ist Tasse 2 vorher und desto weniger warm muss die Milch sein.
 @v2_titel
 Deckel
 @v2_text
@@ -162,13 +164,13 @@ Gleich groß ({{z:dTmax}} K), aber später: bei Zugabe nach etwa {{z:v2_tmax}} m
 @v3_titel
 Becher
 @v3_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Die Tassen sind vorgewärmte Keramikbecher wie in Teil g. Wird der Unterschied größer oder kleiner, und bleibt Tasse 1 wärmer?
+Notiere zuerst für dich, dann einigt euch zu zweit: Die Tassen sind vorgewärmte Keramikbecher wie in Teil g. Wird der Unterschied größer oder kleiner? Notiert für euch: Bleibt Tasse 1 wärmer?
 @aufl_v3
 Kleiner: {{z:v3_dT}} statt {{z:dT}} K; die abgegebene Wärme steigt ({{z:v3_Q1}} und {{z:v3_Q2}} kJ statt {{z:Q1}} und {{z:Q2}} kJ), weil der Becher mit abkühlt; Tasse 1 bleibt wärmer.
 @v4_titel
 Versuchsplan
 @v4_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Becher 1 hat {{v:v4_ungleich}} % mehr $kA$ als Becher 2 (andere Unterlage); oder $kA$ beider Becher ist um {{v:v4_falsch}} % falsch bestimmt. Was verfälscht den Unterschied mehr?
+Notiere zuerst für dich, dann einigt euch zu zweit: Becher 1 hat {{v:v4_ungleich}} % mehr $kA$ als Becher 2 (andere Unterlage); oder $kA$ beider Becher ist um {{v:v4_falsch}} % falsch bestimmt. Was verfälscht den Unterschied mehr? Prüft mit „$kA$ von Tasse 1 relativ“ ({{v:v4_rel}} %) und mit dem Regler $kA$ (±{{v:v4_falsch}} %).
 @v4_opt_ungleich
 ungleiches $kA$ der Becher
 @v4_opt_falsch
@@ -178,9 +180,9 @@ Ungleiches $kA$: Der Unterschied sinkt von {{z:dT}} auf {{z:v4_d105}} K. Falsche
 @v5_titel
 Welcher Becher?
 @v5_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Welcher Becher hält den Kaffee am längsten warm? Ändert sich damit der größte mögliche Unterschied zwischen den Tassen? Probiere die Voreinstellungen bei $kA$ aus.
+Notiere zuerst für dich, dann einigt euch zu zweit: Welcher Becher hält den Kaffee am längsten warm? Notiert für euch: Ändert sich damit der größte mögliche Unterschied zwischen den Tassen? Probiere die Voreinstellungen bei $kA$ aus.
 @aufl_v5
-Am längsten der Thermobecher offen (Richtwert: von {{e:thK0}} auf {{z:v5_thermo30}} °C in 30 min statt auf {{z:v5_keramik30}} °C), dann Keramik mit Deckel. Der größte Unterschied bleibt {{z:dTmax}} K, er kommt nur später (Thermobecher offen nach etwa {{z:v5_thermo_t}} min). Glas und Pappe sind etwa wie Keramik: Die Wand ist nicht der große Widerstand, entscheidend sind offene Oberfläche und Abstrahlung.
+Am längsten der Thermobecher offen (Richtwert: von {{e:thK0}} auf {{z:v5_thermo30}} °C in 30 min statt auf {{z:v5_keramik30}} °C), dann Keramik mit Deckel. Der größte Unterschied bleibt {{z:dTmax}} K, er kommt nur später (Thermobecher offen nach etwa {{z:v5_thermo_t}} min). Nach den Richtwerten (*) sind Glas und Pappe etwa wie Keramik: Die Wand ist nicht der große Widerstand, entscheidend sind offene Oberfläche und Abstrahlung.
 
 # ---------------------------------------------------------------- Diagramm
 @dia_titel
@@ -214,7 +216,7 @@ Tasse {n}
 @bis
 bis
 @lesehinweis_waermestrom
-$\dot{Q}_\mathrm{ab}$ beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: vor dem Schnitt gibt Tasse 2 mehr ab, danach weniger; beide Teilflächen sind verschieden schraffiert, ihre Summe ist $Q_2 - Q_1$.
+$\dot{Q}_\mathrm{ab}$ beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: {strom}
 @lesehinweis_ln
 Bei konstantem $kA$ liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung $-kA/(m\,c_p)$ (durchgezogen; gestrichelt: mit freiem Achsenabschnitt).
 @becher_und
@@ -246,9 +248,9 @@ Messwerte linear (ln)
 @ansicht_aria
 Ansicht des Diagramms
 @flaeche_vor
-vor dem Schnitt: Tasse 2 gibt mehr ab
+vor dem Schnitt der Wärmeströme: Tasse 2 gibt mehr ab
 @flaeche_nach
-nach dem Schnitt: Tasse 2 gibt weniger ab
+nach dem Schnitt der Wärmeströme: Tasse 2 gibt weniger ab
 @flaeche_summe
 $Q_2 - Q_1$ = {wert} kJ (Summe beider Teilflächen)
 @ln_kein
@@ -280,7 +282,7 @@ Tasse 2 wärmer
 @rw_satz_gleich
 gleich warm
 @rw_schnitt
-Schnitt der Kurven
+Schnitt der Temperaturkurven
 @rw_schnitt_wert
 nach {t} min
 @rw_schnitt_kein
@@ -629,6 +631,14 @@ Kurswerte, übernommen beim Prüfen
 Trage zuerst eine Zahl ein.
 @hinweis_zahl_bereich
 Diese Zahl liegt außerhalb des sinnvollen Bereichs.
+@frage_ausblenden
+Frage ausblenden
+@csv_fertig_vor
+CSV erstellt (nur das Messblatt; die Modellkurven kommen nach eurer Vorhersage dazu).
+@hinweis_schliessen
+Hinweis schließen
+@anheften_aus
+Diagramm lösen
 @frage_zeigen
 Frage zeigen
 @rueckblick_energie
@@ -720,7 +730,7 @@ So liest du die Ergebnisse
 <p>Zusätzlich in der Simulation:</p>
 <ul>
 <li>$kA$ gilt für beide Tassen; „$kA$ von Tasse 1 relativ“ ändert das nur für Tasse 1. Festgehalten bleibt $kA$ gleich, wenn du Mengen oder Temperaturen änderst (die Füllhöhe ändert $kA$ hier nicht); aus der Messung wird es jedes Mal neu bestimmt.</li>
-<li>Voreinstellungen mit Stern sind Richtwerte, geschätzt, nicht gemessen; gemessen sind „Keramik offen“ (Aufgabe) und „Keramik mit Deckel“ (ein Becher mit Styropordeckel, Ferreira 2025a).</li>
+<li>Voreinstellungen mit Stern sind Richtwerte, geschätzt, nicht gemessen; belegt sind „Keramik offen“ (Arbeitswert der Aufgabe, passt zu $\tau$ ≈ {{v:tau_ferreira}} min bei Ferreira 2025a) und „Keramik mit Deckel“ (Faktor {{v:faktor_deckel}} aus einem Becher mit Styropordeckel, Ferreira 2025a).</li>
 <li>Für die Übernahme gelten die Becher vor der Milch als schwarzer Kaffee mit gleichem Startwert und gleichem $kA$ (Mittel der Messwerte).</li>
 <li>Ideale Durchmischung und „Becher so warm wie der Inhalt“ sind bewusst vereinfachende Annahmen; die kleine Biot-Zahl der Keramikwand (etwa {{v:biot}}) spricht dafür, beweist sie aber nicht allein.</li>
 </ul>
@@ -758,19 +768,27 @@ Versuch, Becher 3
 
 @text_lesen
 <ul>
-<li><strong>Braune durchgezogene Linie:</strong> Tasse 1. Die Milch kommt bei $t$ = 0 hinein; der kurze gepunktete Strich bei $t$ = 0 ist der Mischsprung von {{e:thK0}} auf {{z:th10}} °C.</li>
+<li><strong>Braune durchgezogene Linie:</strong> Tasse 1. Die Milch kommt bei $t$ = 0 hinein; der kurze gepunktete Strich bei $t$ = 0 ist der Mischsprung von {{e:thK0}} auf {{z:th10}} °C (bei Standardwerten).</li>
 <li><strong>Schwarze gestrichelte Linie:</strong> Tasse 2, schwarzer Kaffee bis zur Zugabe der Milch; der gepunktete Strich am Ende ist der Mischsprung beim Zugießen.</li>
-<li><strong>Kreis:</strong> Schnittpunkt der beiden Kurven. Links davon ist der schwarze Kaffee wärmer als Tasse 1 und gibt mehr Wärme ab, rechts davon weniger (bei gleichem $kA$ beider Tassen).</li>
+<li><strong>Kreis:</strong> {kreis}</li>
 <li><strong>Graue gepunktete Linie:</strong> Raumtemperatur. Beide Kurven nähern sich ihr.</li>
 <li><strong>Formen:</strong> deine Messwerte (Kreis Becher 1, Quadrat Becher 2, Dreieck Becher 3).</li>
 <li><strong>Beschrifteter Kasten:</strong> eure festgehaltene Vorhersage. <strong>Blasse Kurven:</strong> der gemerkte Vergleichslauf.</li>
 <li><strong>Rechenwerte:</strong> Temperaturen direkt nach der Zugabe in Tasse 2. Der Unterschied ist $\vartheta_1 - \vartheta_2$; positiv heißt: Tasse 1 ist wärmer. $kA$ steht mit seiner Herkunft da (aus der Messung, festgehalten, Voreinstellung, Ausgleichsgerade).</li>
 <li><strong>Energie bis zur Zugabe:</strong> Wärme, die jede Tasse bis zur Zugabe abgegeben hat (Teil e). Bei gleicher Milch ist $Q_2 - Q_1$ geteilt durch $m\,c_p$ des Gemischs genau der Unterschied; bei verschieden warmer Milch kommt der Milchbeitrag dazu.</li>
-<li><strong>Ansicht „Wärmestrom“ (Vertiefung):</strong> $\dot{Q}_\mathrm{ab}$ beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: vor dem Schnitt gibt Tasse 2 mehr ab, danach weniger; beide Teilflächen sind verschieden schraffiert, ihre Summe ist $Q_2 - Q_1$.</li>
+<li><strong>Ansicht „Wärmestrom“ (Vertiefung):</strong> $\dot{Q}_\mathrm{ab}$ beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: {strom}</li>
 <li><strong>Ansicht „Messwerte linear (ln)“ (Vertiefung):</strong> $\ln\frac{\vartheta - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$ über $t$ für die Becher vor der Milch. Bei konstantem $kA$ liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung $-kA/(m\,c_p)$. Ein Muster in den Abständen zur Geraden zeigt, dass $kA$ oder die Messbedingungen nicht konstant waren; welche Ursache, sagt die Gerade allein nicht.</li>
 <li><strong>Rundung:</strong> Temperaturen auf 0,01 K, Wärmen auf 0,01 kJ.</li>
 </ul>
 
+@lesen_kreis_frei
+Schnittpunkt der beiden Kurven. Links davon ist der schwarze Kaffee wärmer als Tasse 1 und gibt mehr Wärme ab, rechts davon weniger (bei gleichem $kA$ beider Tassen).
+@lesen_kreis_vor
+Schnittpunkt der beiden Kurven; er erscheint nach eurer Vorhersage zu Frage 1.
+@lesen_strom_frei
+vor dem Schnitt der Wärmeströme gibt Tasse 2 mehr ab, danach weniger; beide Teilflächen sind verschieden schraffiert, ihre Summe ist $Q_2 - Q_1$.
+@lesen_strom_vor
+ihre Summe ist $Q_2 - Q_1$.
 @text_rechenweg
 <p><strong>Bilanz.</strong> Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:</p>
 $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
@@ -779,10 +797,14 @@ $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), 
 <p><strong>kA aus der Messung.</strong> $kA = -\frac{C}{t_\mathrm{mess}} \ln\frac{T_\mathrm{mess} - T_\mathrm{u}}{T_0 - T_\mathrm{u}}$ (Teil c).</p>
 <p><strong>Mischen.</strong> $\vartheta_\mathrm{misch} = \frac{m_\mathrm{K} c_{p,\mathrm{K}}\,\vartheta_\mathrm{K} + m_\mathrm{M} c_{p,\mathrm{M}}\,\vartheta_\mathrm{M}}{m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}}$ (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).</p>
 <p><strong>Abgegebene Wärme.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$ mit $C_\mathrm{G} = m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}$ (Kaffee und Milch); mit Becher steht $C_\mathrm{GB} = C_\mathrm{G} + m_\mathrm{B} c_\mathrm{B}$ an Stelle von $C_\mathrm{G}$. Bei gleicher Milch fällt der letzte Teil weg.</p>
-<p><strong>Zeitpunkt der Zugabe.</strong> Verschiebt man die Zugabe, ändert sich der Unterschied mit $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (mit Becher $C_\mathrm{GB}$): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.</p>
+{zugabe}
 <p><strong>kA aus allen Messpunkten</strong> (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung $b = \sum t_i y_i / \sum t_i^2$ mit $y_i = \ln\frac{\vartheta_i - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$, dann $kA = -C\,b$. Die Streuung der Geraden ist keine Messunsicherheit von $kA$, weil alle Punkte denselben Startwert enthalten.</p>
 <p><strong>kA festhalten</strong> (Vertiefung): Das Werkzeug gibt dem Modell den Messwert nach 10 min, der zu diesem $kA$ gehört, und rechnet sonst unverändert.</p>
 
+@rechenweg_zugabe
+<p><strong>Zeitpunkt der Zugabe.</strong> Verschiebt man die Zugabe, ändert sich der Unterschied mit $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (mit Becher $C_\mathrm{GB}$): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.</p>
+@rechenweg_zugabe_vor
+<p><strong>Zeitpunkt der Zugabe.</strong> Dieser Absatz erscheint nach eurer Vorhersage zu Frage 1.</p>
 @text_code
 <p>Die Seite ist eine einzige Datei. Die Rechnung steht in zwei gekennzeichneten Blöcken: <code>MODELL</code> enthält dieselben Gleichungen und Standardwerte wie das Rechenskript <code>kaffee_modell.py</code> der Lösung (Funktionen <code>rechne</code> und <code>zwei_tassen</code>), <code>ERWEITERUNG</code> die Erweiterungen (Ausgleichsgerade, Energie, $kA$ festhalten und die gewählten Zusätze). Für jede Einstellung rechnet der Code die Kurven geschlossen aus; nur die Zeichnung tastet sie in {{v:abtastpunkte}} Punkten ab. Geprüft wird mit automatischen Tests: {{v:testwerte}} Zufallssätze gegen <code>kaffee_modell.py</code>, die Erweiterungen gegen eine eigene Rechnung, Bedienung im Browser bei 360 bis 1920 px, beide Sprachen. Stand {stand}, Version {version}. Du kannst den Code mit „Quelltext anzeigen“ im Browser lesen.</p>
 

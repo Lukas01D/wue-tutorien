@@ -184,7 +184,9 @@ async function domOhneSkript(p) {
     pruefe("P6: Rechenwerte nach Übernahme gleich der Referenz", ["th1", "th2", "dT", "kA", "Q1", "Q2"].every(k => rw2.includes(s2[k])), s2.kA + " / " + s2.dT);
     const punkte = await p.$$eval("#diagramm rect[width='9'], #diagramm circle[r='4.8']", l => l.length);
     pruefe("P6: 15 Messpunkte im Diagramm (7 Becher 1, 8 Becher 2), Legende nennt nur gemessene Becher", punkte === 15 && !(await text(p, "#legende-mess")).includes("3"), punkte + " Punkte");
-    pruefe("P7: Pflichtweg fertig, Knopf „Vertiefung öffnen“", await p.$("#knopf-vt-auf") !== null);
+    const vorAufl = await p.$("#knopf-vt-auf") === null;      // F8, G4-16: Abschluss erst nach geöffneter Auflösung von Frage 2
+    await p.click("#knopf-aufl"); await warte(80);
+    pruefe("P7: Pflichtweg fertig erst nach geöffneter Auflösung, mit Kernsatz und Knopf „Vertiefung öffnen“", vorAufl && await p.$("#knopf-vt-auf") !== null && (await text(p, "#frageleiste")).includes("Wer heißer ist, gibt mehr Wärme ab"));
     // Neuladen behält alles
     const vor = await p.evaluate(() => JSON.stringify(window.KAFFEE.zustand()));
     await p.reload(); await warte(200);
@@ -550,8 +552,9 @@ async function domOhneSkript(p) {
     const lage = await ph.evaluate(() => { const d = document.getElementById("diagramm-halter").getBoundingClientRect(), f = document.getElementById("frageleiste").getBoundingClientRect(); return [Math.round(d.top), Math.round(d.bottom), Math.round(f.top)]; });
     pruefe("M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild", lage[0] >= -1 && lage[1] <= 844 && lage[2] >= lage[1] - 1 && lage[2] < lage[1] + 40, lage.join(", "));
     const anteil = [];
-    for (const [w, hh] of [[320, 568], [360, 640], [390, 844]]) { await ph.setViewportSize({ width: w, height: hh }); await warte(200); anteil.push(await ph.evaluate(() => 100 * document.getElementById("diagramm-halter").getBoundingClientRect().height / innerHeight)); }
-    pruefe("M-6: angehefteter Bereich höchstens 45 % der Höhe (320 × 568, 360 × 640, 390 × 844)", anteil.every(x => x <= 45), anteil.map(x => x.toFixed(1) + " %").join(", "));
+    for (const [w, hh] of [[320, 568], [360, 640], [390, 844]]) { await ph.setViewportSize({ width: w, height: hh }); await warte(200); anteil.push(await ph.evaluate(() => [100 * document.getElementById("diagramm-halter").getBoundingClientRect().height / innerHeight, document.documentElement.classList.contains("anheften")])); }
+    // X5-10: angeheftet höchstens 45 %; reicht der Platz nicht für ein lesbares Diagramm, wird nicht angeheftet (M-6: „aus, sobald die sichtbare Höhe zu klein wird“), nur bei 568 px Höhe erlaubt
+    pruefe("M-6: angehefteter Bereich höchstens 45 % der Höhe (320 × 568, 360 × 640, 390 × 844); bei 640 und 844 px angeheftet", anteil.every(([x, an]) => !an || x <= 45) && anteil[1][1] && anteil[2][1], anteil.map(([x, an]) => x.toFixed(1) + " %" + (an ? "" : " (nicht angeheftet)")).join(", "));
     await ph.setViewportSize({ width: 390, height: 844 }); await warte(200);
     await ph.click("#knopf-anheften"); await warte(80);
     pruefe("M-6: Anheften abschaltbar", (await ph.evaluate(() => getComputedStyle(document.getElementById("diagramm-halter")).position)) !== "sticky");

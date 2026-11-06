@@ -82,6 +82,9 @@ VORGABEN = {
     "v4_ungleich": (5, 0, "Konzept 6.2 V4 (Fragestellung)"),
     "v4_falsch": (10, 0, "Konzept 6.2 V4 (Fragestellung)"),
     "biot": (0.035, 3, "R3 Abschnitt 9b, aus Ferreira 2025b (Konzept A.6)"),
+    "v4_rel": (105, 0, "Konzept 6.2 V4: kA von Tasse 1 relativ, 100 % + 5 % (G4-24, Entscheidung F9)"),
+    "tau_ferreira": (41, 0, "Lösung Teil c: Keramikbecher τ ≈ 41 min aus Abb. 6 bei Ferreira 2025 (G3-10, Entscheidung F12)"),
+    "faktor_deckel": (0.56, 2, "Konzept Tabelle 8.2.1, Voreinstellung Keramik mit Deckel (G3-10, Entscheidung F12)"),
     "abtastpunkte": (241, 0, "Bau: Zahl der Abtastpunkte je Kurve in oberflaeche.js"),
     "testwerte": (10000, 0, "Bau: Zahl der Zufallssätze in simulation/tests/test_kern.py"),
 }
