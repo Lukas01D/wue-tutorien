@@ -93,8 +93,8 @@ ok    B89 Korrekturen Runde 1: keine Konsolenfehler
 ok    B90 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 410, 419
 ok    B91 M-6: angehefteter Bereich höchstens 45 % der Höhe (320 × 568, 360 × 640, 390 × 844)  41.5 %, 38.5 %, 38.9 %
 ok    B92 M-6: Anheften abschaltbar
-ok    B93 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  108 ms (gemessen im Cloud-Container)
-ok    B94 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.2 ms, 95 % 3.7 ms, Max 4.5 ms (Cloud)
-ok    B95 Leistung L4: Bedienfolge 30 s (1351 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.30 MB (Cloud)
+ok    B93 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  92 ms (gemessen im Cloud-Container)
+ok    B94 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.0 ms, 95 % 3.4 ms, Max 3.8 ms (Cloud)
+ok    B95 Leistung L4: Bedienfolge 30 s (1411 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.33 MB (Cloud)
 
 Ergebnis: 95 von 95 Prüfungen bestanden.

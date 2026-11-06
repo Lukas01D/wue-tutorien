@@ -5,8 +5,8 @@
 ## 1 Was geprüft wird
 
 - **Zweig:** `claude/simulation-tool-kaffee-4kcacl`. Vorher `git fetch origin claude/simulation-tool-kaffee-4kcacl` und `git checkout claude/simulation-tool-kaffee-4kcacl`.
-- **Stand:** genau der Commit, auf den der Zweig beim Start zeigt. Notiere `git rev-parse HEAD` im Bericht. Letzter Commit, der die Seite selbst ändert: `{{BAUCOMMIT}}`.
-- **Artefakt:** `simulation/site/index.html` und die bytegleiche Kopie `simulation/site/Kaffee_Simulation.html`, SHA-256 `{{SHA}}`, {{BYTES}} Bytes. Stimmt die Prüfsumme nicht (`sha256sum simulation/site/index.html`), brich ab und melde das.
+- **Stand:** genau der Commit, auf den der Zweig beim Start zeigt. Notiere `git rev-parse HEAD` im Bericht. Letzter Commit, der die Seite selbst ändert: `cdab2c3`.
+- **Artefakt:** `simulation/site/index.html` und die bytegleiche Kopie `simulation/site/Kaffee_Simulation.html`, SHA-256 `1d90ce2f84349754592a5dd572a760a5d212cd3383bcafbeb1cceaf06e07292b`, 399 063 Bytes. Stimmt die Prüfsumme nicht (`sha256sum simulation/site/index.html`), brich ab und melde das.
 - **Neu bauen** (Gegenprobe der Reproduzierbarkeit): `python3 simulation/site/bauen.py --pruefen` muss „gleich“ ausgeben (Python 3 mit fontTools).
 - Ändert sich nach dem geprüften Stand etwas an der Seite, müssen die betroffenen Punkte erneut geprüft werden.
 
@@ -46,6 +46,8 @@ Für die ergänzenden Belege von Claude reichen Stichproben: Tests in `simulatio
 - Texte in beiden Sprachen: Wortlaut der Fragen und Auflösungen wie Konzept 6 (in du-Form), Englisch nach Glossar Anhang C, keine Gedankenstriche, Dezimalkomma und Dezimalpunkt.
 - Nähe zum Aussehen des Lernzentrums v8 (Farben, Schrift, Knopfhierarchie, Regler, Rechenwerte, Reiter); begründete Abweichungen stehen im Baubericht.
 - Offline: Datei ohne Netz, CSP wirksam, keine Anfragen nach außen.
+
+- **Bekannte offene Befunde:** Der Bau ist als „unvollständige Übergabe“ abgegeben (`simulation/BAU_BERICHT.md`, Abschnitt Status: unter anderem V3 vor der Vorhersage, G10-01; Schnitt ohne Beschriftung, G6-R3-01; große Grundschrift; Diagrammschrift am kleinen Handy). Bestätige oder widerlege sie mit eigenem Beleg und gib ihnen deine eigene Schwere; was du zusätzlich findest, ist besonders wichtig.
 
 ## 6 Zwei Läufe
 

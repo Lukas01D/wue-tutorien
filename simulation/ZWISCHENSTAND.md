@@ -1,5 +1,7 @@
 # Zwischenstand des Baus (Pause auf Wunsch der TL, 05.11.2026)
 
+> **Überholt am 06.11.2026.** Der Bau ist bis Teil 7 abgeschlossen; maßgeblich ist `simulation/BAU_BERICHT.md` (Status, offene Befunde, Fragen an die TL). Diese Datei bleibt als Beleg der Pause.
+
 > Die TL hat wegen ihres Nutzungslimits um eine geordnete Pause gebeten. Gearbeitet wurde nach `simulation/BAU_AUFTRAG.md` (Stand 6526feb). Diese Datei sagt, was fertig ist, was offen ist und wie es nach Teil 4 weitergeht. Zweig: `claude/simulation-tool-kaffee-4kcacl`.
 
 ## 1 Geprüfter Stand der Seite
