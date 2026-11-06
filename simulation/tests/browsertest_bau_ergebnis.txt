@@ -1,9 +1,9 @@
 Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-06
-Seite: simulation/site/index.html, SHA-256 fc6a3e1de67bebd05330c97d86adcb98c7f920ed7efb5be5ad844079949704dd
+Seite: simulation/site/index.html, SHA-256 b0984b39895dfd4962632ed21889d2ac7c56de0151e039f8d424c1bb16e996f0
 
-ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  384905 Bytes
-ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  384905 Bytes
-ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-BPKuCu4Bjp1r8DrNCZzB/…
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  390993 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  390993 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-5ssx43EV1q/0hY2PIp+xX…
 ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
 ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
 ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
@@ -63,7 +63,7 @@ ok    B59 Kurslink: Hin und zurück gleich (mit Becher 3), Rückfrage vor dem Er
 ok    B60 Kurslink „Nicht übernehmen“: Kurswerte unverändert
 ok    B61 Kurslink beschädigt oder fremd (9 Fälle): Grund in Worten, nichts geändert, # entfernt
 ok    B62 Kurslink: keine Konsolenfehler
-ok    B63 Messblatt: Komma, Punkt, Leerzeichen gelesen; Unsinn, Tausender, außerhalb 0 bis 100 °C abgelehnt mit Meldung; leer = kein Wert  80.4, 67.8, 57, , , ,  | Bitte eine Temperatur zwischen 0 und 100 °C als Zahl eingebe
+ok    B63 Messblatt: Komma, Punkt, Leerzeichen gelesen; Unsinn, Tausender, außerhalb 0 bis 100 °C abgelehnt mit Meldung; leer = kein Wert  80.4, 67.8, 57, , , ,  | Becher 2 (Milch nach 60 min), 30 min: Bitte eine Temperatur 
 ok    B64 Messblatt: Becher 1 hat keine Zeile „60 nach der Milch“
 ok    B65 Übernahme ohne Wert bei 10 min: Meldung „nicht übernommen“, Einstellungen unverändert (D116: ganz oder gar nicht)  Nicht übernommen, nichts verändert: Es fehlen Messwerte von Becher 2 bei 0 und 10 min.
 ok    B66 Übernahme mit Werten bei 0 und 10 min: übernommen (80,4 und 67,8 °C, kA aus der Messung, Becher an)  Übernommen (Mittel der Becher vor der Milch, ungerundet): Start 80,40 °C, nach 10 min 67,8
@@ -82,7 +82,7 @@ ok    B78 G7-08: Messblatt vor der Freigabe eingebbar, ohne „Übernehmen“
 ok    B79 G1-05: „4 K“ als Zahl angenommen
 ok    B80 G1-05: Unsinn sperrt den Knopf mit passendem Hinweis
 ok    B81 G1-04, G4-07: Rückmeldung vergleicht die Zahl mit dem Modell  Eure Vorhersage: Tasse 1 (Milch sofort), etwa 10 K · Auswahl passtEure Zahl: 10 K · Modell: 3,85 K (Standardwerte)Tasse 
-ok    B82 G2-01, G5-01: Achsenbeschriftung bei Schrittweite 2,5 mit Nachkommastelle  0 20 40 60 80 100 0,0 2,5 5,0 7,5 10,0 12,5
+ok    B82 G2-01, G5-01: Achsenbeschriftung bei Schrittweite 2,5 mit Nachkommastelle  10 30 50 70 90 0,0 2,5 5,0 7,5 10,0 12,5
 ok    B83 G2-03: getippte „2,5“ erscheint im Englischen als „2.5“
 ok    B84 G2-02: englische CSV mit Komma im Spaltenkopf in Anführungszeichen
 ok    B85 G1-10, G7-10, G8-04: Kurslink im schon offenen Tab löst die Rückfrage aus
@@ -91,8 +91,8 @@ ok    B87 G8-07: Kurslink endet nicht auf Komma (Kopfwerte am Ende) und wird wie
 ok    B88 Korrekturen Runde 1: keine Konsolenfehler
 ok    B89 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 466, 475
 ok    B90 M-6: Anheften abschaltbar
-ok    B91 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  105 ms (gemessen im Cloud-Container)
-ok    B92 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 2.8 ms, 95 % 4.0 ms, Max 5.2 ms (Cloud)
-ok    B93 Leistung L4: Bedienfolge 30 s (1351 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.27 MB (Cloud)
+ok    B91 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  109 ms (gemessen im Cloud-Container)
+ok    B92 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.2 ms, 95 % 4.6 ms, Max 8.3 ms (Cloud)
+ok    B93 Leistung L4: Bedienfolge 30 s (1347 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.28 MB (Cloud)
 
 Ergebnis: 93 von 93 Prüfungen bestanden.

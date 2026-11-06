@@ -34,7 +34,7 @@
   function leererKurs() { return { v: 1, u: null, m: null, d: false, b3: false, werte: { b1: Array(8).fill(null), b2: Array(8).fill(null), b3: Array(8).fill(null) } }; }
   let speicherOk = true;
   function lies(k) { try { return JSON.parse(localStorage.getItem(SPEICHER + k)); } catch (e) { speicherOk = false; return null; } }
-  function schreib(k, v) { try { localStorage.setItem(SPEICHER + k, JSON.stringify(v)); } catch (e) { speicherOk = false; } }
+  function schreib(k, v) { try { localStorage.setItem(SPEICHER + k, JSON.stringify(v)); } catch (e) { if (speicherOk) { speicherOk = false; const h = document.getElementById("speicher-hinweis"); if (h) { h.innerHTML = t("speicher_aus"); h.classList.add("aus"); } } } }
   try { localStorage.setItem(SPEICHER + "probe", "1"); localStorage.removeItem(SPEICHER + "probe"); } catch (e) { speicherOk = false; }
   const S = {
     sprache: "de", e: standardE(), antworten: leereAntworten(), aktuell: "start", kurs: leererKurs(),
@@ -202,8 +202,8 @@
         for (const w of f.wahl) h += '<label><input type="radio" name="wahl-' + f.id + '" value="' + w + '"' + (a.wahl === w ? " checked" : "") + "> <span>" + t(f.wahlText[w]) + "</span></label>";
         h += "</div></fieldset>";
       }
-      if (f.zahl) h += '<label class="feld">' + t(f.zahl.label) + ' <span class="feld-einheit"><input type="text" inputmode="decimal" autocomplete="off" id="frage-zahl" value="' + esc(a.zahl) + '"> ' + esc(f.zahl.einheit) + "</span></label>";
-      h += '<label class="feld feld-breit">' + t("begruendung_label") + ' <input type="text" id="frage-warum" autocomplete="off" value="' + esc(a.warum) + '"></label>';
+      if (f.zahl) h += '<label class="feld">' + t(f.zahl.label) + ' <span class="feld-einheit"><input type="text" inputmode="decimal" autocomplete="off" id="frage-zahl" maxlength="16" value="' + esc(a.zahl) + '"> ' + esc(f.zahl.einheit) + "</span></label>";
+      h += '<label class="feld feld-breit">' + t("begruendung_label") + ' <input type="text" id="frage-warum" autocomplete="off" maxlength="300" value="' + esc(a.warum) + '"></label>';
       h += "</div>";
     }
     h += '<div class="frage-knoepfe">';
@@ -256,6 +256,8 @@
     const ok = vorhersageGueltig(f, a) && !(f.id === "f2" && !kursAnzahl());
     k.disabled = !ok;
     const h = $("hinweis-waehlen"); if (h) { h.hidden = ok; h.innerHTML = t(hinweisSchluessel(f, a)); }
+    const zf = $("frage-zahl");
+    if (zf) { const falsch = a.zahl.trim() !== "" && !isFinite(vorhersageZahl(f, a.zahl).wert); if (falsch) { zf.setAttribute("aria-invalid", "true"); zf.setAttribute("aria-describedby", "hinweis-waehlen"); } else { zf.removeAttribute("aria-invalid"); zf.removeAttribute("aria-describedby"); } }
   }
   const SOLL = { start: "soll_start", f1: "soll_f1", v1: "soll_v1", v2: "soll_v2" };   // Modellwerte der Standardlage (Konzept 6)
   function vergleichHtml(f, a) {
@@ -323,10 +325,11 @@
       if (!(yMin < -0.05)) yMin = -1.5;
     }
     const st = schritt(yMax - yMin);
-    yMin = Math.floor(yMin / st) * st; yMax = Math.ceil(yMax / st) * st;
+    const raster = ansicht === "temperatur" && st >= 10 ? 10 : st;
+    yMin = Math.floor(yMin / raster) * raster; yMax = Math.ceil(yMax / raster) * raster;
     const X = x => L + (W - L - Rr) * x / xMax, Y = y => O + (H - O - U) * (yMax - y) / (yMax - yMin);
     const xs = schritt(xMax);
-    for (let y = yMin; y <= yMax + 1e-9; y += st) {
+    for (let y = yMin; y <= yMax + 1e-9; y += (raster < st ? st : st)) {
       s.push('<line x1="' + L + '" x2="' + (W - Rr) + '" y1="' + Y(y).toFixed(1) + '" y2="' + Y(y).toFixed(1) + '" stroke="#e6ebf0"/>');
       s.push('<text x="' + (L - 6) + '" y="' + (Y(y) + 4).toFixed(1) + '" text-anchor="end" font-size="' + fs + '" fill="#5a6b7f">' + z(y, stellenVon(st)) + "</text>");
     }
@@ -401,7 +404,7 @@
           const bw = txt.length * 11 * 0.56 + 14, bx = W - Rr - bw - 4, by = O + 4;
           let frei = bx > L + 4;
           for (let i = 0; i <= 20; i++) { const xp = bx + bw * i / 20, tt = (xp - L) / (W - L - Rr) * xMax; if (tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk < by + 26 && yk > by - 4) frei = false; } }
-          if (frei) { s.push('<rect x="' + bx.toFixed(1) + '" y="' + by + '" width="' + bw.toFixed(1) + '" height="22" rx="3" fill="#e8f5ef" stroke="#227b48"/><text x="' + (bx + 7).toFixed(1) + '" y="' + (by + 15) + '" font-size="11" fill="#14603f">' + esc(txt) + "</text>"); belegt.push([bx, by, bw, 22]); }
+          if (frei) { s.push('<rect id="vh-kasten" x="' + bx.toFixed(1) + '" y="' + by + '" width="' + bw.toFixed(1) + '" height="22" rx="3" fill="#e8f5ef" stroke="#227b48"/><text id="vh-text" x="' + (bx + 7).toFixed(1) + '" y="' + (by + 15) + '" font-size="11" fill="#14603f">' + esc(txt) + "</text>"); belegt.push([bx, by, bw, 22]); }
           else vorhersageUnten = txt;
           if ((fv.id === "f1" || fv.id === "v2") && isFinite(vorhersageZahl(fv, av.zahl).wert)) {
             const tv = vorhersageZahl(fv, av.zahl).wert;
@@ -477,11 +480,14 @@
       } else s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#5a6b7f">' + esc(nurText(t(messFrei() ? "ln_kein" : "ln_erst_f2"))) + "</text>");
     }
     svg.innerHTML = s.join("");
+    const vk = $("vh-kasten"), vt = $("vh-text");
+    if (vk && vt && vt.getBBox) { try { const bb = vt.getBBox(); if (bb.width > 0) { const bw2 = bb.width + 14, bx2 = W - Rr - bw2 - 4; vk.setAttribute("width", bw2.toFixed(1)); vk.setAttribute("x", bx2.toFixed(1)); vt.setAttribute("x", (bx2 + 7).toFixed(1)); } } catch (x) { } }
     $("vorhersage-zeile").hidden = !vorhersageUnten; $("vorhersage-zeile").textContent = vorhersageUnten;
     zusatzZeichnen();
     document.querySelector(".lesehinweis").innerHTML = t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht);
     // Beschreibung für Bildschirmleser
-    $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) :
+    $("diagramm-name").textContent = nurText(t(ansicht === "temperatur" ? "dia_titel" : "dia_titel_" + ansicht));
+    $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) : (R && ansicht === "waermestrom") ? nurText(t("dia_beschreibung_waermestrom", { v: z(R.flaecheVor, 2), n: z(R.flaecheNach, 2), d: z(R.Q2 - R.Q1, 2) })) : (ansicht === "ln") ? nurText(t("dia_beschreibung_ln", { n: lnPunkte().length })) :
       (R ? nurText(t("dia_beschreibung", { a: z(S.e.thK0, 1), m: z(R.th10, 2), b: z(R.th1, 2), t: z(tz, 0), k: z(R.th2K, 2), c: z(R.th2, 2), d: z(R.dT, 2) })) : nurText(t("dia_ungueltig")));
     const lnZeigen = ansicht === "ln" && lnPunkte().length;
     $("legende-mess").hidden = !(freigabe() && ((punkte.length && ansicht === "temperatur") || lnZeigen));
@@ -570,12 +576,14 @@
   }
   function wertetabelle() {
     const el = $("wertetabelle-inhalt");
-    if (!freigabe() || !R) { el.innerHTML = '<p class="klein">' + t("ergebnis_verdeckt") + "</p>"; return; }
-    let h = '<div class="tabelle-wrap"><table class="messtabelle"><thead><tr><th>' + t("werte_tabelle_kopf_t") + "</th><th>" + t("werte_tabelle_kopf_1") + "</th><th>" + t("werte_tabelle_kopf_2") + "</th></tr></thead><tbody>";
+    if (!freigabe() || !R) { el.innerHTML = '<p class="klein">' + t(freigabe() ? "dia_ungueltig" : "ergebnis_verdeckt") + "</p>"; return; }
+    const mb = messFrei() ? [1, 2].concat(S.kurs.b3 ? [3] : []).filter(b => S.kurs.werte["b" + b].some(v => v !== null)) : [];
+    let h = '<div class="tabelle-wrap"><table class="messtabelle"><thead><tr><th>' + t("werte_tabelle_kopf_t") + "</th><th>" + t("werte_tabelle_kopf_1") + "</th><th>" + t("werte_tabelle_kopf_2") + "</th>" + mb.map(b => "<th>" + t("mess_kopf_b" + b) + "</th>").join("") + "</tr></thead><tbody>";
     const tz = S.e.tEnd_min, schritte = [];
     for (let x = 0; x < tz; x += 5) schritte.push(x);
     schritte.push(tz);
-    for (const x of schritte) h += "<tr><td>" + z(x, 0) + "</td><td>" + z(R.kurve1(x), 2) + "</td><td>" + z(x === tz ? R.th2 : R.kurve2(x), 2) + "</td></tr>";
+    const mw = (b, x) => { const i = x % 10 === 0 && x <= 60 ? x / 10 : -1; const v = i >= 0 ? S.kurs.werte["b" + b][i] : null; return v === null ? "" : z(v, 1); };
+    for (const x of schritte) h += "<tr><td>" + z(x, 0) + "</td><td>" + z(R.kurve1(x), 2) + "</td><td>" + z(x === tz ? R.th2 : R.kurve2(x), 2) + "</td>" + mb.map(b => "<td>" + mw(b, x) + "</td>").join("") + "</tr>";
     el.innerHTML = h + "</tbody></table></div>";
   }
 
@@ -630,10 +638,10 @@
     h += '<button type="button" class="hilfe-knopf" aria-expanded="false" aria-controls="h-' + r.id + '" data-hilfe="' + r.id + '"><span aria-hidden="true">?</span><span class="nur-leser">' + nurText(t("hilfe_zu", { name: t("regler_" + r.id) })) + "</span></button></div>";
     h += '<p class="hilfe-text" id="h-' + r.id + '" hidden>' + t("hilfe_" + r.id) + "</p>";
     h += '<div class="regler-zeile"><button type="button" class="pm" data-pm="-1" data-r="' + r.id + '" aria-label="' + esc(nurText(t("knopf_minus")) + ": " + nurText(t("regler_" + r.id))) + '"' + (gesperrt ? " disabled" : "") + ">−</button>";
-    h += '<input type="range" id="r-' + r.id + '" min="' + r.min + '" max="' + r.max + '" step="' + r.schritt + '" value="' + wert + '" aria-valuetext="' + esc(wertText(r, wert)) + '"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '">';
+    h += '<input type="range" id="r-' + r.id + '" min="' + r.min + '" max="' + r.max + '" step="' + r.schritt + '" value="' + wert + '" aria-valuetext="' + esc(wertText(r, wert)) + '" aria-label="' + esc(nurText(t("regler_" + r.id)) + " (" + (r.einheit === "W/K" ? nurText(t("einheit_wk")) : r.einheit) + ")") + '"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '">';
     h += '<button type="button" class="pm" data-pm="1" data-r="' + r.id + '" aria-label="' + esc(nurText(t("knopf_plus")) + ": " + nurText(t("regler_" + r.id))) + '"' + (gesperrt ? " disabled" : "") + ">+</button>";
     h += '<input type="text" class="zahlfeld" inputmode="decimal" autocomplete="off" id="z-' + r.id + '" value="' + z(wert, r.stellen) + '" aria-label="' + esc(nurText(t("feld_aria", { name: t("regler_" + r.id) }))) + " [" + esc(r.einheit) + ']"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '"></div>';
-    h += '<p class="feld-fehler' + (gesperrt && !freigabe() ? " neutral" : "") + '" id="rf-' + r.id + '" aria-live="polite">' + (gesperrt ? t(freigabe() ? "regler_gesperrt" : "regler_gesperrt_start") : "") + "</p></div>";
+    h += '<p class="feld-fehler' + (gesperrt ? " neutral" : "") + '" id="rf-' + r.id + '" aria-live="polite">' + (gesperrt ? t(freigabe() ? "regler_gesperrt" : "regler_gesperrt_start") : "") + "</p></div>";
     return h;
   }
   function reglerSetzen(r, wertAnzeige, quelle) {
@@ -670,7 +678,7 @@
     else if (l.wert < r.min || l.wert > r.max) text = t("feld_bereich", { min: z(r.min, r.stellen > 2 ? 2 : r.stellen), max: z(r.max, r.stellen > 2 ? 2 : r.stellen), einheit: r.einheit });
     if (text) { feld.setAttribute("aria-invalid", "true"); f.innerHTML = text; return; }
     feld.removeAttribute("aria-invalid"); f.innerHTML = "";
-    reglerSetzen(r, l.wert, "zahl"); ansagen();
+    reglerSetzen(r, Number(l.wert.toFixed(r.stellen)), "zahl"); ansagen();
   }
   function infoKastenInhalt() {
     const a30 = R ? t("kA_anzeige_30", { a: z(S.e.thK0, 1), b: z(R.schwarz30, 2), tau: z(R.tauMin, 1) }) : "";
@@ -746,6 +754,7 @@
     if (!FEHLER) fehler.removeAttribute("data-code");
     const dl = $("rechenwerte-liste");
     $("rechenwerte-bezug").textContent = (freigabe() && R) ? nurText(t("rw_bezug", { t: z(S.e.tEnd_min, 0) })) : "";
+    if (freigabe() && !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_noch_nicht") + "</dt><dd>" + t("dia_ungueltig") + "</dd></div>"; return; }
     if (!freigabe() || !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_noch_nicht") + "</dt><dd>" + t("ergebnis_verdeckt") + "</dd></div>"; return; }
     const satz = R.dT > 0.005 ? t("rw_satz_1") : (R.dT < -0.005 ? t("rw_satz_2") : t("rw_satz_gleich"));
     const herkunft = S.e.kAQuelle === "messung" ? t("rw_kA_herkunft_messung") : (S.e.kAHerkunft === "ausgleich" ? t("rw_kA_herkunft_ausgleich") :
@@ -799,9 +808,9 @@
     el.innerHTML = h;
     for (const inp of el.querySelectorAll(".zelle input")) inp.addEventListener("change", () => {
       const b = inp.getAttribute("data-b"), i = Number(inp.getAttribute("data-i")), l = HILFEN.zahlLesen(inp.value);
-      if (inp.value.trim() === "") { S.kurs.werte["b" + b][i] = null; inp.removeAttribute("aria-invalid"); $("mess-fehler").textContent = ""; }
-      else if (!isFinite(l.wert) || l.wert < 0 || l.wert > 100) { inp.setAttribute("aria-invalid", "true"); $("mess-fehler").innerHTML = t(l.grund === "tausender" ? "feld_tausender" : "mess_ungueltig"); return; }
-      else { S.kurs.werte["b" + b][i] = Math.round(l.wert * 100) / 100; inp.removeAttribute("aria-invalid"); $("mess-fehler").textContent = ""; }
+      if (inp.value.trim() === "") { S.kurs.werte["b" + b][i] = null; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); $("mess-fehler").textContent = ""; }
+      else if (!isFinite(l.wert) || l.wert < 0 || l.wert > 100) { inp.setAttribute("aria-invalid", "true"); inp.setAttribute("aria-describedby", "mess-fehler"); $("mess-fehler").innerHTML = esc(inp.getAttribute("aria-label")) + ": " + t(l.grund === "tausender" ? "feld_tausender" : "mess_ungueltig"); return; }
+      else { S.kurs.werte["b" + b][i] = Math.round(l.wert * 100) / 100; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); $("mess-fehler").textContent = ""; }
       sichern(); teilZeichnen("messblatt"); frageleisteStill();
     });
     const feldZahl = (id, key, lo, hi) => $(id).addEventListener("change", () => {
@@ -828,7 +837,11 @@
     if (start === null || zehn === null) return { ok: false, text: t("mess_nicht_uebernommen", { grund: t("mess_grund_fehlt") }) };
     const neu = Object.assign({}, S.e, { thK0: start, thMess: zehn, thU: u, thM: m, kAQuelle: "messung", kAHerkunft: "messung", becher: true, tEnd_min: 60, milch2Raum: false });
     const fehlerBereich = start < REG.thK0.min || start > REG.thK0.max || zehn < REG.thMess.min || zehn > REG.thMess.max || u < REG.thU.min || u > REG.thU.max || m < REG.thM.min || m > REG.thM.max;
-    if (ERW.fehler(neu) || fehlerBereich) return { ok: false, text: t("mess_nicht_uebernommen", { grund: t("mess_grund_bereich") }) };
+    if (fehlerBereich) {
+      const pruef = [["mess_was_start", start, REG.thK0], ["mess_was_zehn", zehn, REG.thMess], ["mess_was_raum", u, REG.thU], ["mess_was_milch", m, REG.thM]].find(([, w, r]) => w < r.min || w > r.max);
+      return { ok: false, text: t("mess_nicht_uebernommen", { grund: t("mess_grund_wert", { was: t(pruef[0]), wert: z(pruef[1], 1), min: z(pruef[2].min, 0), max: z(pruef[2].max, 0) }) }) };
+    }
+    if (ERW.fehler(neu)) return { ok: false, text: t("mess_nicht_uebernommen", { grund: t("fehler_" + ERW.fehler(neu)) }) };
     S.e = neu; rechnen(); sichern();
     return { ok: true, text: t("mess_uebernommen", { a: z(start, 2), b: z(zehn, 2), u: z(u, 1), m: z(m, 1) }) };
   }
@@ -849,14 +862,16 @@
   }
   function kurslinkPruefen() {
     const l = HILFEN.kurslinkLesen(location.hash), b = $("link-banner");
-    if (l.art === "leer") return;
+    if (l.art === "leer" || (l.art === "fremd" && !/^#kurs/i.test(location.hash))) return;
     const weg = () => { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { } };
     if (l.art !== "ok") { b.hidden = false; b.setAttribute("role", "alert"); b.innerHTML = "<p>" + (l.art === "fremd" ? t("link_fremd") : t("link_defekt", { grund: linkGrund(l.grund) })) + "</p>"; weg(); return; }
     b.hidden = false;
     b.innerHTML = '<p id="link-frage">' + t("link_frage") + '</p><div class="knopfzeile"><button type="button" class="knopf-zweit" id="link-ja">' + t("link_ja") + '</button><button type="button" class="knopf-schlicht" id="link-nein">' + t("link_nein") + "</button></div>";
     b.setAttribute("role", "region"); b.setAttribute("aria-labelledby", "link-frage");
-    $("link-ja").addEventListener("click", () => { S.kurs = l.kurs; sichern(); weg(); b.innerHTML = '<p role="status">' + t("link_ok") + "</p>"; alles(); });
-    $("link-nein").addEventListener("click", () => { weg(); b.innerHTML = '<p role="status">' + t("link_abgelehnt") + "</p>"; });
+    const fertig = schluessel => { b.innerHTML = '<p id="link-ende" tabindex="-1">' + t(schluessel) + "</p>"; b.setAttribute("aria-labelledby", "link-ende"); $("ansage").textContent = nurText(t(schluessel)); $("link-ende").focus(); };   // G5-24
+    $("link-ja").addEventListener("click", () => { S.kurs = l.kurs; sichern(); weg(); alles(); fertig("link_ok"); });
+    $("link-nein").addEventListener("click", () => { weg(); fertig("link_abgelehnt"); });
+    b.addEventListener("keydown", ev => { if (ev.key === "Escape" && $("link-nein")) $("link-nein").click(); });
   }
 
   // ------------------------------------------------------------------ Reiter
@@ -983,7 +998,10 @@
     if (kn) { kn.hidden = !moeglich; kn.textContent = nurText(t(S.ansicht.anheften ? "anheften_aus" : "anheften_an")); kn.setAttribute("aria-pressed", S.ansicht.anheften ? "true" : "false"); }
     document.documentElement.style.setProperty("--anheft", an ? Math.ceil($("diagramm-halter").getBoundingClientRect().height) + "px" : "0px");
   }
-  $("sprachknopf").addEventListener("click", () => { S.sprache = S.sprache === "de" ? "en" : "de"; $("knopf-info").textContent = ""; sichern(); alles(); $("sprachknopf").focus(); });
+  $("sprachknopf").addEventListener("click", () => { S.sprache = S.sprache === "de" ? "en" : "de"; $("knopf-info").textContent = ""; sichern(); alles();
+    try { if (/[?&]lang=/.test(location.search)) history.replaceState(null, "", location.pathname + location.search.replace(/([?&])lang=(de|en)(&|$)/, (m, a, b, c) => (c ? a : "")).replace(/\?$/, "") + location.hash); } catch (x) { }
+    if ($("link-ja")) kurslinkPruefen();
+    $("sprachknopf").focus(); });
   $("knopf-standard").addEventListener("click", () => { ausgangslage("standard"); rechnen(); sichern(); alles(); $("knopf-info").innerHTML = t("knopf_standard_info"); ansagen(); });
   $("knopf-versuch").addEventListener("click", () => { Object.assign(S.e, { tEnd_min: 60, becher: true, kAQuelle: "messung", kAHerkunft: "messung" }); if (!(S.e.thMess > S.e.thU && S.e.thMess < S.e.thK0)) S.e.thMess = 67; rechnen(); sichern(); alles(); $("knopf-info").innerHTML = t("knopf_versuch_info"); ansagen(); });
   for (const b of document.querySelectorAll("[data-ansicht]")) b.addEventListener("click", () => { S.ansicht.diagramm = b.getAttribute("data-ansicht"); sichern(); alles(); b.focus(); });
@@ -999,5 +1017,5 @@
   kurslinkPruefen();
   window.addEventListener("storage", ev => { if (ev.key && ev.key.indexOf(SPEICHER) === 0 && ev.key !== SPEICHER + "probe") { laden(); alles(); } });
   window.addEventListener("hashchange", kurslinkPruefen);
-  window.KAFFEE = { zustand: () => JSON.parse(JSON.stringify({ e: S.e, antworten: S.antworten, aktuell: S.aktuell, kurs: S.kurs, ansicht: S.ansicht, sprache: S.sprache })), ergebnis: () => R, speicherOk: () => speicherOk, csv: () => csvBauen() };
+  window.KAFFEE = { zustand: () => JSON.parse(JSON.stringify({ e: S.e, antworten: S.antworten, aktuell: S.aktuell, kurs: S.kurs, ansicht: S.ansicht, sprache: S.sprache })), ergebnis: () => (freigabe() ? R : null), speicherOk: () => speicherOk, csv: () => csvBauen() };
 })();

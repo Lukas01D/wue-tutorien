@@ -85,6 +85,7 @@ def texte_bauen():
                 raise BauFehler("%s/%s: Formel: %s" % (s, k, e))
             if "{{" in t or "}}" in t:
                 raise BauFehler("%s/%s: Platzhalter nicht aufgelöst" % (s, k))
+            t = re.sub(r"(<math>(?:(?!</math>).)*</math>)([.,;:)])", r'<span class="nb">\1\2</span>', t, flags=re.S)   # Satzzeichen bleiben an der Formel
             if "$" in t:
                 raise BauFehler("%s/%s: einzelnes $ übrig" % (s, k))
             for zeichen in ("–", "—"):

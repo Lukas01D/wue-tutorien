@@ -41,7 +41,7 @@ code { font-size: 0.92em; background: var(--flaeche); padding: 0 0.2em; border-r
 .kopf-titel { margin: 0; font-size: 1.2rem; color: #fff; }
 .kopf-rechts { margin-left: auto; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; justify-content: flex-end; }
 .kopf-speicher { margin: 0; font-size: 0.78rem; opacity: 0.9; max-width: 16rem; text-align: right; }
-.sprachknopf { min-height: 44px; min-width: 44px; padding: 0.3rem 0.7rem; border: 1px solid var(--zweit-rand); border-radius: var(--radius); background: #fff; color: var(--navy); font: 600 0.85rem "Fira Sans", sans-serif; cursor: pointer; }
+.sprachknopf { white-space: nowrap;  min-height: 44px; min-width: 44px; padding: 0.3rem 0.7rem; border: 1px solid var(--zweit-rand); border-radius: var(--radius); background: #fff; color: var(--navy); font: 600 0.85rem "Fira Sans", sans-serif; cursor: pointer; }
 
 /* Rahmen */
 main:focus { outline: none; }
@@ -235,3 +235,10 @@ html { scroll-padding-top: calc(var(--anheft, 0px) + 8px); }   /* G5-02, G6-02: 
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 @media print { .kopf, .knoepfe, .regler-raster, .messblatt, .fuss-reset, .sprachknopf { display: none !important; } }
+
+/* Korrekturen Runde 1 */
+input[type="text"] { border-color: #7d8fa1 !important; }                          /* G5-09: Rand mindestens 3:1 */
+.hinweis, .karte-status, .aufloesung, .rueckblick, .link-ausgabe { overflow-wrap: anywhere; }   /* G8-14 */
+.nb { white-space: nowrap; }                                                      /* G1-14, G6-17: Satzzeichen nicht allein */
+@media (forced-colors: active) { #diagramm, .energie svg, .bilanz svg, .sym { forced-color-adjust: none; background: #fff; } }   /* G5-23 */
+@media (min-width: 1200px) { .sim-raster { grid-template-columns: minmax(0, 780px) minmax(0, 300px); } }   /* G6-06, G6-12 */

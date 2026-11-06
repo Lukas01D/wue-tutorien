@@ -11,7 +11,7 @@ Tutorium 5 · Wärmebilanzen, instationär global
 @kopf_titel
 Kaffee mit Milch: Simulation
 @sprache_knopf
-DE ↔ EN
+<b>DE</b> ↔ EN
 @sprache_knopf_aria
 DE ↔ EN: Sprache wechseln, jetzt Deutsch
 @speicher_ok
@@ -471,8 +471,6 @@ Bitte eine Temperatur zwischen 0 und 100 °C als Zahl eingeben, zum Beispiel 66,
 Nicht übernommen, nichts verändert: {grund}
 @mess_grund_fehlt
 Es fehlen Messwerte von Becher 2 bei 0 und 10 min.
-@mess_grund_bereich
-Die Messwerte passen nicht zum Modell (Raum unter dem Wert nach 10 min, der unter dem Start liegen muss).
 @mess_deckel_hinweis
 Mit Deckel gemessen: Der Deckel steckt schon im gemessenen $kA$.
 @link_kopiert
@@ -591,6 +589,24 @@ Formel, waagrecht scrollbar
 Tabelle, waagrecht scrollbar
 @knopf_aufloesung_zu
 Auflösung ausblenden
+@mess_grund_wert
+{was} {wert} °C liegt außerhalb {min} bis {max} °C
+@mess_was_start
+Anfangstemperatur (Mittel bei 0 min)
+@mess_was_zehn
+Messwert nach 10 min (Mittel)
+@mess_was_raum
+Raumtemperatur
+@mess_was_milch
+Milchtemperatur
+@dia_titel_waermestrom
+Wärmestrom beider Tassen
+@dia_titel_ln
+Messwerte linear (ln) mit Ausgleichsgerade
+@dia_beschreibung_waermestrom
+Bis zum Schnitt gibt Tasse 2 mehr Wärme ab ({v} kJ), danach weniger ({n} kJ); zusammen {d} kJ.
+@dia_beschreibung_ln
+{n} Messpunkte der Becher ohne Milch, mit Ausgleichsgerade.
 @link_ok
 Kurswerte aus dem Link übernommen.
 @link_abgelehnt

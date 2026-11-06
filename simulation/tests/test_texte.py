@@ -118,6 +118,7 @@ def main():
     dyn += ["vor_" + v for v in vor] + ["vor_text_" + v for v in vor]
     dyn += ["fehler_" + c for c in re.findall(r'"(anfang_ueber_raum|kA_positiv|messung_zwischen|\w+_\w+)"', bauen.lies("erweiterung.js").split("function fehler")[1].split("}")[0])]
     dyn += ["link_grund_" + g for g in ("zu_lang", "u", "m", "d", "b")]
+    dyn += ["dia_titel_" + a for a in ("waermestrom", "ln")]
     dyn += ["lesehinweis_" + a for a in re.findall(r'data-ansicht="(\w+)"', bauen.lies("vorlage.html")) if a != "temperatur"]
     pruefe("T9 Schlüsselfamilien vollständig (Regler, Hilfen, Voreinstellungen %d, Fehlercodes)" % len(vor),
            len(vor) == 6 and all(k in roh["de"] for k in dyn), ", ".join(k for k in dyn if k not in roh["de"]))

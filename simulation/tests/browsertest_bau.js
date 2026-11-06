@@ -353,7 +353,7 @@ async function domOhneSkript(p) {
       ["#" + basis.replace(",31.2", ""), /acht Werte/],
       ["#" + basis + ";b3:1,2,3,4,5,6,7,8", /nicht als gemessen/],
       ["#kurs1=" + "x".repeat(420), /400 Zeichen/],
-      ["#etwas-anderes", /keine Kurswerte dieser Seite/]
+      ["#kurs2=u:21.5", /keine Kurswerte dieser Seite/]
     ];
     const falsch = [];
     for (const [hash, muster] of faelle) {

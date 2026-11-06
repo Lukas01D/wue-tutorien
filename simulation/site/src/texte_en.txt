@@ -8,7 +8,7 @@ Tutorial 5 · Heat balances, transient lumped
 @kopf_titel
 Coffee with milk: simulation
 @sprache_knopf
-EN ↔ DE
+<b>EN</b> ↔ DE
 @sprache_knopf_aria
 EN ↔ DE: switch language, now English
 @speicher_ok
@@ -176,11 +176,11 @@ The open vacuum mug keeps it warm the longest (estimate: from {{e:thK0}} to {{z:
 @dia_titel
 Temperature of both cups over time
 @dia_achse_t_txt
-time *t* [min]
+Time *t* [min]
 @dia_achse_th_txt
-temperature *ϑ* [°C]
+Temperature *ϑ* [°C]
 @dia_achse_q_txt
-heat flow rate *Q̇*_ab [W]
+Heat flow rate *Q̇*_ab [W]
 @dia_achse_ln_txt
 ln((*ϑ* − *ϑ*_u)/(*ϑ*_0 − *ϑ*_u))
 @dia_tasse1
@@ -188,7 +188,7 @@ Cup 1: milk right away
 @dia_tasse2
 Cup 2: milk after {t} min
 @dia_raum
-room {th} °C
+Room {th} °C
 @dia_schnitt
 intersection
 @dia_vorhersage
@@ -460,8 +460,6 @@ Used (mean of the mugs before the milk, unrounded): start {a} °C, after 10 min 
 Not used, nothing changed: {grund}
 @mess_grund_fehlt
 Measured values of mug 2 at 0 and 10 min are missing.
-@mess_grund_bereich
-The measured values do not fit the model (the room must be below the value after 10 min, which must be below the start).
 @mess_deckel_hinweis
 Measured with a lid: the lid is already included in the measured $kA$.
 @link_kopiert
@@ -580,6 +578,24 @@ formula, scrolls horizontally
 table, scrolls horizontally
 @knopf_aufloesung_zu
 Hide explanation
+@mess_grund_wert
+{was} {wert} °C is outside {min} to {max} °C
+@mess_was_start
+starting temperature (mean at 0 min)
+@mess_was_zehn
+value after 10 min (mean)
+@mess_was_raum
+room temperature
+@mess_was_milch
+milk temperature
+@dia_titel_waermestrom
+Heat flow rate of both cups
+@dia_titel_ln
+Measured values, linearised (ln), with fitted line
+@dia_beschreibung_waermestrom
+Up to the intersection, cup 2 releases more heat ({v} kJ), afterwards less ({n} kJ); together {d} kJ.
+@dia_beschreibung_ln
+{n} measured points of the mugs without milk, with fitted line.
 @link_ok
 Class data from the link used.
 @link_abgelehnt
