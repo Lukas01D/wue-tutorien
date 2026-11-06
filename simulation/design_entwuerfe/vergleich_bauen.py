@@ -105,15 +105,15 @@ a:focus-visible { outline: 3px solid var(--akzent); outline-offset: 2px; }
 <h1>Gestaltungsvergleich: Kaffee mit Milch</h1>
 <p>Vier Fassungen derselben Seite in denselben Zuständen, aufgenommen mit Chromium (Playwright) bei Gerätefaktor 2, Bildschirmausschnitt.
 Bedienfolge: Vorhersage „Tasse 1, etwa 4 K“; für Frage 1 „50 min“, dann Zugabe 56 min. Bericht: <code>simulation/DESIGN_ENTWUERFE.md</code>.</p>
-<ul class="legende">%s</ul>
-<nav aria-label="Zustände"><ol>%s</ol></nav>
+<ul class="legende">@@LEGENDE@@</ul>
+<nav aria-label="Zustände"><ol>@@NAV@@</ol></nav>
 </header>
 <main>
-%s
+@@TEILE@@
 </main>
 </body>
 </html>
-""" % (legende, "".join(nav), "\n".join(teile))
+""".replace("@@LEGENDE@@", legende).replace("@@NAV@@", "".join(nav)).replace("@@TEILE@@", "\n".join(teile))
     ziel = os.path.join(HIER, "VERGLEICH.html")
     with open(ziel, "w", encoding="utf-8") as f:
         f.write(seite)

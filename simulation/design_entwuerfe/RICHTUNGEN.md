@@ -1,6 +1,6 @@
 # Gestaltungsentwürfe Kaffee-Simulation: Analyse und drei Richtungen
 
-> Schritt 1 und 2 nach `simulation/DESIGN_AUFTRAG.md`, Stand 06.11.2026. Grundlage: Stand `da7deb1` (Markup, Texte, Diagrammcode, `ZUSTAENDE.md`, `KONZEPT.md` Abschnitte 2, 3, 6). Nicht geöffnet: die im Auftrag ausgeschlossenen Dateien und Ordner, die heutige `stil.css` und die heutige Seite im Browser (die kommt erst in Schritt 6).
+> Schritt 1 und 2 nach `simulation/DESIGN_AUFTRAG.md`, Stand 06.11.2026. Von der TL am 06.11.2026 freigegeben mit drei Anpassungen (B: rechteckige, möglichst große Diagrammfläche statt runder Form; Schriften nur mit den gebrauchten Zeichen, Größe früh prüfen; Ersatzschriften nennen). Umsetzung und Abweichungen: `simulation/DESIGN_ENTWUERFE.md`. Grundlage: Stand `da7deb1` (Markup, Texte, Diagrammcode, `ZUSTAENDE.md`, `KONZEPT.md` Abschnitte 2, 3, 6). Nicht geöffnet: die im Auftrag ausgeschlossenen Dateien und Ordner, die heutige `stil.css` und die heutige Seite im Browser (die kommt erst in Schritt 6).
 
 ## 1 Gestaltungsanalyse
 
