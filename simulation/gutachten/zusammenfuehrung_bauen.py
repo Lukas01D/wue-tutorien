@@ -205,10 +205,43 @@ R2 = {
  "G9-13": (U, "siehe G6-R2-02", "behoben"),
 }
 
+
+# Runde 3: Bearbeitung endet nach dieser Runde (BAU_AUFTRAG 4.3); offene Punkte mit Empfehlung für den nächsten Schritt
+NR3 = "nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3)"
+R3 = {
+ "G2-R3-01": (O, "Empfehlung: Beschriftung „Frage ausblenden“ bei offenem Aufklapper", NR3),
+ "G2-R3-02": (O, "Empfehlung: Lesehinweis Wärmestrom ohne Schnitt-Satz, wenn kein Schnitt vor der Zugabe liegt", NR3),
+ "G4-R3-01": (O, "Empfehlung: nach dem Überspringen nur den Satz „Frage 2 übersprungen“ zeigen", NR3),
+ "G5-R3-01": (O, "Empfehlung: `scroll-padding-top` aus der gemessenen Höhe der Kernleiste setzen; tritt nur bei vergrößerter Grundschrift auf", NR3),
+ "G5-R3-02": (O, "Empfehlung: bei großer Grundschrift nicht anheften (Höhe des Bereichs vor dem Anheften prüfen); Umweg „Diagramm lösen“ vorhanden", NR3),
+ "G5-R3-03": (O, "Empfehlung: Mindestschrift im SVG bei kleiner Darstellung (Schrift nach dem Maßstab skalieren)", NR3),
+ "G6-R3-01": (O, "Empfehlung: Schnittbeschriftung zusätzlich rechts vom Kreis suchen; der Kreis selbst ist da, der Lesehinweis erklärt ihn", NR3),
+ "G6-R3-02": (O, "Empfehlung: mehr Kandidaten für die Beschriftung am Kurvenzug, Ersatzlegende erst danach", NR3),
+ "G6-R3-03": (O, "siehe G5-R3-03", NR3),
+ "G6-R3-04": (O, "Empfehlung: Platz der Ersatzlegende immer freihalten", NR3),
+ "G6-R3-05": (O, "Empfehlung: Beschriftung der Trinklinie mit Kollisionsprüfung gegen Punkte und Marken", NR3),
+ "G6-R3-06": (O, "Kleinere Restkollisionen mit Kurswerten", NR3),
+ "G7-R3-01": (O, "Empfehlung: Dreieck für Becher 3 erst nach der Vorhersage zu Frage 2 zeigen", NR3),
+ "G7-R3-02": (U, "Einsatzblatt nennt jetzt den Pfad `simulation/site/Kaffee_Simulation.html` und warnt vor der älteren Datei", "behoben (Begleitmaterial)"),
+ "G8-R3-01": (O, "Empfehlung: Bestätigung „Ja“ in den ersten 400 ms übergehen, Tastenwiederholung (`ev.repeat`) übergehen", NR3),
+ "G8-R3-02": (O, "Empfehlung: Schutz `detail > 1` auch für „Zurück“ und „Weiter“", NR3),
+ "G8-R3-03": (O, "Empfehlung: Messwert „60 nach der Milch“ immer in eigener Zeile; Meldung vor der Freigabe ohne „Modellkurven“", NR3),
+ "G10-01": (O, "Empfehlung: Beim Öffnen einer Vertiefungsfrage ohne Vorhersage Kernzahlen und Rechenwerte bis zur Vorhersage verdecken oder Standardwerte einstellen. Betrifft nur die Vertiefung V3; die Richtung (kleiner) ist ablesbar, die Zahlen der Auflösung nicht", NR3),
+ "G10-02": (O, "Zeitbedarf: Messung mit Studierenden nötig (offener Nachweis)", "Probelauf der TL"),
+ "G10-03": (O, "Empfehlung: Fragetext erst nach geöffneter Auflösung einklappen", NR3),
+ "G10-04": (O, "siehe G5-R3-03, G6-19", NR3),
+ "G10-05": (O, "siehe G7-R2-08 (Wortlaut Frage 2)", "Frage an die TL"),
+ "G10-06": (O, "Empfehlung: Vorhersagezeile ohne Startvorhersage, solange die aktuelle Frage offen ist", NR3),
+ "G10-07": (O, "Bestätigung verschwindet nach 15 s; Empfehlung: Schließen-Knopf", NR3),
+ "G10-08": (O, "Empfehlung: Text je Zustand mit gleichbleibendem Namen für Bildschirmleser", NR3),
+ "G10-09": (O, "Fragenzuschnitt V3 (Konzept 6.2)", "Frage an die TL"),
+ "G10-10": (O, "Auflösung Frage 2 (Konzept 6.1, offen formuliert nach K6)", "Frage an die TL"),
+}
+
 def befunde():
     out = []
     for f in sorted(glob.glob(os.path.join(HIER, "G*_*.md"))):
-        if f.endswith("_R2.md") or "G9_" in f or "_R3" in f: continue
+        if f.endswith("_R2.md") or "G9_" in f or "G10_" in f or "_R3" in f: continue
         for z in open(f, encoding="utf-8"):
             m = re.match(r"^\|\s*(G\d-\d+)\s*\|\s*(blocker|high|medium|low)\s*\|\s*(.*?)\s*\|", z)
             if m:
@@ -247,5 +280,16 @@ def main():
     bil2 = "\n| Schwere | übernehmen | ablehnen | offen |\n|:--|--:|--:|--:|\n" + "\n".join("| %s | %d | %d | %d |" % (sv, z2.get((sv, U), 0), z2.get((sv, A), 0), z2.get((sv, O), 0)) for sv in ("blocker", "high", "medium", "low")) + "\n"
     with open(os.path.join(HIER, "ZUSAMMENFUEHRUNG.md"), "a", encoding="utf-8") as f:
         f.write("\n## Runde 2\n\nGeprüfter Stand SHA-256 `ea6d3ad2…9c31` (394 754 Bytes): alle acht Rollen prüften ihre übernommenen Befunde nach (Ergebnisse in den Tabellen „Nachprüfung“ der Dateien `*_R2.md`), dazu die neue Studentin G9. Kein Befund der Runde 1 blieb ganz unbehoben außer G5-21 (nachgeholt) und G6-19 (nachgebessert). Korrigierter Stand für Runde 3: SHA-256 `1d90ce2f…292b` (399 063 Bytes).\n\n### Bilanz Runde 2\n" + bil2 + "\n### Neue Befunde der Runde 2\n\n| ID | Schwere | Entscheidung | Befund (gekürzt): Begründung mit Beleg | Folge |\n|:--|:--|:--|:--|:--|\n" + "\n".join(r2) + "\n")
-    print(len(zeilen), "Befunde", zaehl, "Runde 2:", len(r2), z2)
+    r3, z3 = [], {}
+    for f in sorted(glob.glob(os.path.join(HIER, "*_R3.md")) + glob.glob(os.path.join(HIER, "G10_*.md"))):
+        for zl in open(f, encoding="utf-8"):
+            m = re.match(r"^\|\s*(G\d+-R3-\d+|G10-\d+)\s*\|\s*(blocker|high|medium|low)\s*\|\s*(.*?)\s*\|", zl)
+            if m:
+                i = m.group(1); e, b, fo = R3[i]; txt = re.sub(r"\*\*|`", "", m.group(3))[:110]
+                z3[(m.group(2), e)] = z3.get((m.group(2), e), 0) + 1
+                r3.append("| %s | %s | %s | %s: %s | %s |" % (i, m.group(2), e, txt.replace("|", "/"), b.replace("|", "/"), fo))
+    bil3 = "\n| Schwere | übernehmen | ablehnen | offen |\n|:--|--:|--:|--:|\n" + "\n".join("| %s | %d | %d | %d |" % (sv, z3.get((sv, U), 0), z3.get((sv, A), 0), z3.get((sv, O), 0)) for sv in ("blocker", "high", "medium", "low")) + "\n"
+    with open(os.path.join(HIER, "ZUSAMMENFUEHRUNG.md"), "a", encoding="utf-8") as f:
+        f.write("\n## Runde 3 (letzte Runde)\n\nGeprüfter Stand SHA-256 `1d90ce2f…292b` (399 063 Bytes): G2, G4, G5, G6, G7, G8 prüften ihre Reste aus Runde 2 nach (Dateien `*_R3.md`), dazu die neue Studentin G10. Keine Rolle fand einen blocker oder eine falsche Zahl; alle Sperren vor den Vorhersagen hielten (G8 suchte in DOM, Titel, Ansagen, CSV, Prüfhaken und Barrierebaum). Nach Bauauftrag 4.3 endet die Bearbeitung nach dieser Runde; die neuen Befunde bleiben offen, mit Empfehlung. Ausnahme: das Einsatzblatt (Begleitmaterial, Teil 5) wurde nachgezogen.\n\n### Bilanz Runde 3\n" + bil3 + "\n### Neue Befunde der Runde 3\n\n| ID | Schwere | Entscheidung | Befund (gekürzt): Begründung mit Beleg | Folge |\n|:--|:--|:--|:--|:--|\n" + "\n".join(r3) + "\n")
+    print(len(zeilen), "Befunde", zaehl, "Runde 2:", len(r2), z2, "Runde 3:", len(r3), z3)
 main()

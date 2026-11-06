@@ -1,6 +1,6 @@
 # Zusammenführung der Rollenprüfungen
 
-> Nach `simulation/BAU_AUFTRAG.md`, Teil 4.3. Getrennte Rollenprüfungen desselben Modells (G1 bis G8); die unabhängige Prüfung mit einem anderen Modell ist X5. Runde 1 prüfte den Stand `index.html` SHA-256 `f519052c…6707` (369 081 Bytes; G2, G3, G5, G6, G8 nach einer Pause am 06.11.2026 auf demselben Stand zu Ende geführt). Korrigierter Stand nach Runde 1 (geprüft in Runde 2): SHA-256 `ea6d3ad2…9c31` (394 754 Bytes). Die Tabelle unten erzeugt `zusammenfuehrung_bauen.py` aus den Befundtabellen der Gutachten und den Entscheidungen im Skript; jede Zahl der Rollen wurde vor der Entscheidung nachgerechnet oder im Browser nachgestellt (Belege: Browsertests in `simulation/tests/browsertest_bau.js`, Kerntests `test_kern.py`).
+> Nach `simulation/BAU_AUFTRAG.md`, Teil 4.3. Getrennte Rollenprüfungen desselben Modells (G1 bis G8); die unabhängige Prüfung mit einem anderen Modell ist X5. Runde 1 prüfte den Stand `index.html` SHA-256 `f519052c…6707` (369 081 Bytes; G2, G3, G5, G6, G8 nach einer Pause am 06.11.2026 auf demselben Stand zu Ende geführt). Korrigierter Stand nach Runde 1 (geprüft in Runde 2): SHA-256 `ea6d3ad2…9c31` (394 754 Bytes); nach Runde 2 (geprüft in Runde 3, übergebener Stand): SHA-256 `1d90ce2f…292b` (399 063 Bytes). Die Tabelle unten erzeugt `zusammenfuehrung_bauen.py` aus den Befundtabellen der Gutachten und den Entscheidungen im Skript; jede Zahl der Rollen wurde vor der Entscheidung nachgerechnet oder im Browser nachgestellt (Belege: Browsertests in `simulation/tests/browsertest_bau.js`, Kerntests `test_kern.py`).
 
 ## Ergebnis Runde 1
 
@@ -290,3 +290,48 @@ Geprüfter Stand SHA-256 `ea6d3ad2…9c31` (394 754 Bytes): alle acht Rollen pr�
 | G9-11 | low | ablehnen | Die Ansage (aria-live) nach dem Festhalten ist bei allen Fragen derselbe Satz „Vorhersage festgehalten, Kurven: Die Ansage nennt die Zahlen der aktuellen Lage; ein gleicher Einleitungssatz ist gewollt | keine |
 | G9-12 | low | übernehmen | Hinweis bei Frage 1 (Minuten) lautet „Bitte nur eine Zahl, zum Beispiel 4 oder 3,5.“; „-4“ beim Start wird ohn: siehe G2-R2-03, G5-R2-07 | behoben |
 | G9-13 | low | übernehmen | Die grüne senkrechte Vorhersagelinie von Frage 1 läuft durch die Kurvenbeschriftungen „Tasse 2: Milch nach 56 : siehe G6-R2-02 | behoben |
+
+## Runde 3 (letzte Runde)
+
+Geprüfter Stand SHA-256 `1d90ce2f…292b` (399 063 Bytes): G2, G4, G5, G6, G7, G8 prüften ihre Reste aus Runde 2 nach (Dateien `*_R3.md`), dazu die neue Studentin G10. Keine Rolle fand einen blocker oder eine falsche Zahl; alle Sperren vor den Vorhersagen hielten (G8 suchte in DOM, Titel, Ansagen, CSV, Prüfhaken und Barrierebaum). Nach Bauauftrag 4.3 endet die Bearbeitung nach dieser Runde; die neuen Befunde bleiben offen, mit Empfehlung. Ausnahme: das Einsatzblatt (Begleitmaterial, Teil 5) wurde nachgezogen.
+
+### Bilanz Runde 3
+
+| Schwere | übernehmen | ablehnen | offen |
+|:--|--:|--:|--:|
+| blocker | 0 | 0 | 0 |
+| high | 0 | 0 | 2 |
+| medium | 0 | 0 | 9 |
+| low | 1 | 0 | 15 |
+
+### Neue Befunde der Runde 3
+
+| ID | Schwere | Entscheidung | Befund (gekürzt): Begründung mit Beleg | Folge |
+|:--|:--|:--|:--|:--|
+| G10-01 | high | offen | Vor der eigenen Vorhersage zu V3 „Becher“ zeigt die Seite den Zustand aus Frage 2 mit Becher an: Δ 3,07 K und : Empfehlung: Beim Öffnen einer Vertiefungsfrage ohne Vorhersage Kernzahlen und Rechenwerte bis zur Vorhersage verdecken oder Standardwerte einstellen. Betrifft nur die Vertiefung V3; die Richtung (kleiner) ist ablesbar, die Zahlen der Auflösung nicht | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G10-02 | medium | offen | Pflichtweg am kleinen Handy deutlich über 10 min. Größte Posten: Frage 2 (Link holen, Punkte im kleinen Diagra: Zeitbedarf: Messung mit Studierenden nötig (offener Nachweis) | Probelauf der TL |
+| G10-03 | medium | offen | Nach „Vorhersage festhalten“ in Frage 1 klappt der Fragetext zu; der Auftrag „Verschiebt die Zugabe …“ und die: Empfehlung: Fragetext erst nach geöffneter Auflösung einklappen | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G10-04 | medium | offen | Messpunkte bei 360 px schwer zu lesen: Diagramm 338 × 163 px, Becher 1 (brauner Kreis) und Becher 2 (schwarzes: siehe G5-R3-03, G6-19 | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G10-05 | low | offen | Frage 2: Die Vorhersage lässt sich erst nach dem Laden der Kurswerte festhalten, der Kartentext nennt die umge: siehe G7-R2-08 (Wortlaut Frage 2) | Frage an die TL |
+| G10-06 | low | offen | Das angeheftete Feld „Eure Vorhersage: Tasse 1 (Milch sofort), etwa 5 K“ bleibt während Frage 2 und V3 stehen,: Empfehlung: Vorhersagezeile ohne Startvorhersage, solange die aktuelle Frage offen ist | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G10-07 | low | offen | Nach „Übernehmen“ bleibt oben dauerhaft „Kurswerte aus dem Link übernommen.“ (etwa 55 px), ohne Schließen; am : Bestätigung verschwindet nach 15 s; Empfehlung: Schließen-Knopf | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G10-08 | low | offen | Der Knopf heißt „Diagramm oben anheften“, obwohl das Diagramm schon angeheftet ist (aria-pressed="true"); opti: Empfehlung: Text je Zustand mit gleichbleibendem Namen für Bildschirmleser | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G10-09 | low | offen | V3 fragt zwei Dinge („größer oder kleiner, und bleibt Tasse 1 wärmer?“), die Eingabe bietet nur „größer“ / „kl: Fragenzuschnitt V3 (Konzept 6.2) | Frage an die TL |
+| G10-10 | low | offen | Die Auflösung zu Frage 2 bleibt allgemein, obwohl die Daten eindeutig sind (alle Punkte über den Kurven). Bech: Auflösung Frage 2 (Konzept 6.1, offen formuliert nach K6) | Frage an die TL |
+| G2-R3-01 | low | offen | „Show question“ heißt auch bei offener Frage so. Der neue Aufklapper nach dem Festhalten (details/summary) beh: Empfehlung: Beschriftung „Frage ausblenden“ bei offenem Aufklapper | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G2-R3-02 | low | offen | Lesehinweis zum Wärmestrom spricht immer vom Schnitt. Unter dem Diagramm „Heat flow rate“ steht fest „before t: Empfehlung: Lesehinweis Wärmestrom ohne Schnitt-Satz, wenn kein Schnitt vor der Zugabe liegt | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G4-R3-01 | low | offen | Übersprungene Frage 2 widerspricht sich noch in Texten. Nach „Frage 2 überspringen“ stehen über „Frage 2 übers: Empfehlung: nach dem Überspringen nur den Satz „Frage 2 übersprungen“ zeigen | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G5-R3-01 | medium | offen | Ab 768 px Breite verdeckt die Kernleiste der Vertiefung den Fokus wieder, sobald die Grundschrift des Browsers: Empfehlung: `scroll-padding-top` aus der gemessenen Höhe der Kernleiste setzen; tritt nur bei vergrößerter Grundschrift auf | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G5-R3-02 | medium | offen | Am Handy überschreitet der angeheftete Bereich die 45-%-Grenze aus M-6, sobald die Grundschrift größer als 16 : Empfehlung: bei großer Grundschrift nicht anheften (Höhe des Bereichs vor dem Anheften prüfen); Umweg „Diagramm lösen“ vorhanden | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G5-R3-03 | medium | offen | Nebenwirkung der Korrektur zu G5-R2-02: Angeheftet wird das Diagramm auf kleinen Handys auf etwa 56 bis 64 % v: Empfehlung: Mindestschrift im SVG bei kleiner Darstellung (Schrift nach dem Maßstab skalieren) | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G6-R3-01 | high | offen | „Schnitt“ fehlt, gerade bei guter Vorhersage. Findet die Platzierung keinen Platz, bleibt der Kreis ohne Besch: Empfehlung: Schnittbeschriftung zusätzlich rechts vom Kreis suchen; der Kreis selbst ist da, der Lesehinweis erklärt ihn | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G6-R3-02 | medium | offen | Ersatzlegende statt direkter Beschriftung am Handy fast die Regel. Fehlt Platz, steht der Kurvenname nicht am : Empfehlung: mehr Kandidaten für die Beschriftung am Kurvenzug, Ersatzlegende erst danach | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G6-R3-03 | medium | offen | Diagrammschrift am kleinen Handy 7,4 px. Bei 360 × 640 ist das SVG 338 × 163 px groß, die Zeichnung aber für 3: siehe G5-R3-03 | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G6-R3-04 | low | offen | Pflichtregler springt beim Schieben. Die Ersatzlegende erscheint und verschwindet je nach Zugabezeit; der Regl: Empfehlung: Platz der Ersatzlegende immer freihalten | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G6-R3-05 | medium | offen | Rückfall: Text „Trinktemperatur 60 °C“ liegt wieder auf Kurven und Marken (Runde 2: frei). 390 px DE bei Zugab: Empfehlung: Beschriftung der Trinklinie mit Kollisionsprüfung gegen Punkte und Marken | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G6-R3-06 | low | offen | Restkollisionen mit Kurswerten: bei 1920 px und Zugabe nach 1 min läuft „Tasse 1: Milch sofort“ über die gestr: Kleinere Restkollisionen mit Kurswerten | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G7-R3-01 | low | offen | Unerklärtes Dreieck ab dem Start, wenn der Kurslink Becher 3 enthält. Im Sitzungsablauf öffnen alle Paare in M: Empfehlung: Dreieck für Becher 3 erst nach der Vorhersage zu Frage 2 zeigen | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G7-R3-02 | low | übernehmen | Gleichnamige alte Datei im Übergabeordner. Das Einsatzblatt nennt für den Beamer-Laptop und den USB-Stick nur : Einsatzblatt nennt jetzt den Pfad `simulation/site/Kaffee_Simulation.html` und warnt vor der älteren Datei | behoben (Begleitmaterial) |
+| G8-R3-01 | low | offen | Doppelklick-Schutz wirkt nicht bei der Tastatur: zweimal Enter überspringt die Rückfrage. Der Schutz prüft ev.: Empfehlung: Bestätigung „Ja“ in den ersten 400 ms übergehen, Tastenwiederholung (`ev.repeat`) übergehen | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G8-R3-02 | low | offen | Doppeltipp auf „Vorhersage festhalten“ kann „Zurück“ auslösen. „Zurück“ und „Weiter“ sind nur durch die 400-ms: Empfehlung: Schutz `detail > 1` auch für „Zurück“ und „Weiter“ | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
+| G8-R3-03 | low | offen | CSV ohne Messwert „60 nach der Milch“, wenn die Zugabe nicht 60 min ist; Meldung nennt vor der Vorhersage Mode: Empfehlung: Messwert „60 nach der Milch“ immer in eigener Zeile; Meldung vor der Freigabe ohne „Modellkurven“ | nach Runde 3 nicht mehr bearbeitet (Bauauftrag 4.3) |
