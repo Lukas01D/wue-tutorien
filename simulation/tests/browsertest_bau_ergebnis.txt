@@ -1,9 +1,9 @@
 Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-06
-Seite: simulation/site/index.html, SHA-256 10b428ef1803ff15aa0b8ab3e66683b7ccfeea90339cf9ff1304fbb22ac5e878
+Seite: simulation/site/index.html, SHA-256 6c3597aca4b8fcf0742ff67eb04027ee5bd1f9453abaeea6ddebb6fdd484516c
 
-ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  421795 Bytes
-ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  421795 Bytes
-ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-RgShxLg6lng8TnRAMcISY…
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  422033 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  422033 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-IFbhTbZYWSPUEaJ9eBS7a…
 ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
 ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
 ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
@@ -93,8 +93,8 @@ ok    B89 Korrekturen Runde 1: keine Konsolenfehler
 ok    B90 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 460, 469
 ok    B91 M-6: angehefteter Bereich höchstens 45 % der Höhe (320 × 568, 360 × 640, 390 × 844); bei 640 und 844 px angeheftet  54.5 % (nicht angeheftet), 44.8 %, 44.8 %
 ok    B92 M-6: Anheften abschaltbar
-ok    B93 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  142 ms (gemessen im Cloud-Container)
-ok    B94 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.8 ms, 95 % 4.5 ms, Max 6.5 ms (Cloud)
-ok    B95 Leistung L4: Bedienfolge 30 s (1236 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.21 MB (Cloud)
+ok    B93 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  141 ms (gemessen im Cloud-Container)
+ok    B94 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.8 ms, 95 % 4.5 ms, Max 7.4 ms (Cloud)
+ok    B95 Leistung L4: Bedienfolge 30 s (1263 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.28 MB (Cloud)
 
 Ergebnis: 95 von 95 Prüfungen bestanden.

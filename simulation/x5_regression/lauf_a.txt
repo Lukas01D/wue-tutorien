@@ -1,0 +1,8 @@
+{
+  "browser": "153.0.8010.12",
+  "cases": 441,
+  "comparisons": 23814,
+  "max_abs_error": 1.1450538295321167e-09,
+  "errors": []
+}
+Zahlentokens der Auflösungen: 78

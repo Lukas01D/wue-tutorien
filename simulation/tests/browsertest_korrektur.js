@@ -25,7 +25,7 @@ async function neu(b, w = 1366, h = 768, extra = "") {
 const zustand = p => p.evaluate(() => window.KAFFEE.zustand());
 const txt = async (p, sel) => (await p.evaluate(s => { const e = document.querySelector(s); return e ? e.textContent : ""; }, sel)).replace(/\s+/g, " ");
 async function start(p) { await p.check('input[name="wahl-start"][value="1"]'); await p.fill("#frage-zahl", "4"); await p.click("#knopf-fest"); await warte(60); }
-async function f1(p) { await p.fill("#frage-zahl", "50"); await p.click("#knopf-fest"); await warte(450); }   // 400 ms Schutz gegen Doppeltipp (G8-R3-02)
+async function f1(p) { await p.fill("#frage-zahl", "50"); await p.click("#knopf-fest"); await warte(60); }
 async function vt(p) { await p.evaluate(() => { const v = document.getElementById("vertiefung"); v.open = true; v.dispatchEvent(new Event("toggle")); }); await warte(60); }
 async function feld(p, sel, v) { await p.fill(sel, v); await p.press(sel, "Enter"); await warte(40); }
 const KURS = { b1: ["80,2", "68,1", "59", "52,3", "47,1", "43", "39,8"], b2: ["80", "67,6", "58,8", "52", "46,9", "42,8", "39,6", "35,2"], b3: ["79,6", "67,2", "58,5", "51,8", "46,6", "42,6", "39,4", "37,9"] };
@@ -269,7 +269,10 @@ async function test(id, name, fn, b) {
     const ctx = await b.newContext({ viewport: { width: 360, height: 640 }, hasTouch: true, isMobile: true }); const p = await ctx.newPage(); await p.goto(URL);
     await start(p); await f1(p); await p.click("#tab-versuche"); await p.evaluate(() => document.querySelector("#panel-versuche [data-zur='v3']").click()); await warte(500);
     await p.check('input[name="wahl-v3"][value="kleiner"]'); await warte(40);
-    await p.evaluate(() => new Promise(r => { document.getElementById("knopf-fest").click(); setTimeout(() => { const z = document.getElementById("knopf-zurueck"); if (z) z.dispatchEvent(new MouseEvent("click", { bubbles: true, detail: 1 })); r(); }, 120); }));
+    // zweiter Tipp an derselben Stelle (Koordinaten des ersten Tipps), dort liegt nach dem Neuaufbau „Zurück“
+    await p.evaluate(() => new Promise(r => { const k = document.getElementById("knopf-fest").getBoundingClientRect(), x = k.x + k.width / 2, y = k.y + k.height / 2;
+      document.getElementById("knopf-fest").dispatchEvent(new MouseEvent("click", { bubbles: true, detail: 1, clientX: x, clientY: y }));
+      setTimeout(() => { const z = document.getElementById("knopf-zurueck"); if (z) z.dispatchEvent(new MouseEvent("click", { bubbles: true, detail: 1, clientX: x, clientY: y })); r(); }, 120); }));
     await warte(150);
     const z = await zustand(p);
     return [z.aktuell === "v3" && z.antworten.v3.fest, "aktuell " + z.aktuell + ", v3 fest " + z.antworten.v3.fest];

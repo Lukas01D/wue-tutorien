@@ -23,7 +23,7 @@ ok    K21 G6-R3-04 Regler „Zugabe nach“ springt beim Schieben nicht (390 × 
 ok    K22 G6-R3-05 Beschriftung der Trinklinie 60 °C liegt nicht auf Kurven, Messpunkten oder Marken (390 px, mehrere Zugaben)  0 von 6 Lagen auf einer Kurve
 ok    K23 G7-R3-01 Becher 3 (Dreieck, Rechenwerte) erst nach der Vorhersage zu Frage 2  vor 0/false, nach 9/true
 ok    K24 G8-R3-01 Zweimal Enter auf „ohne Vorhersage aufdecken“ überspringt die Rückfrage nicht  f1 fest false, Rückfrage offen true
-ok    K25 G8-R3-02 Doppeltipp auf „Vorhersage festhalten“ (V3, 360 × 640) löst nicht „Zurück“ aus  aktuell v3, v3 fest true
+ok    K25 G8-R3-02 Zweiter Tipp 120 ms nach „Vorhersage festhalten“ (V3, 360 × 640) löst „Zurück“ nicht aus  aktuell v3, v3 fest true
 ok    K26 G8-R3-03 CSV: Messwert „60 nach der Milch“ auch bei anderer Zugabe; Meldung vor der Vorhersage ohne Modellkurven  CSV erstellt (nur das Messblatt; die Modellkurven kommen nac
 ok    K27 G10-06 Frage 2 vor ihrer Vorhersage zeigt nicht die Startvorhersage im Diagramm  „“
 ok    K28 G10-07 Bestätigung des Kurslinks lässt sich schließen  Knopf true

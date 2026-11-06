@@ -7,15 +7,15 @@
       "detail": {
         "versuche": {
           "dom_result_hits": [],
-          "ax_nodes": 539
+          "ax_nodes": 543
         },
         "modell": {
           "dom_result_hits": [],
-          "ax_nodes": 502
+          "ax_nodes": 481
         },
         "code": {
           "dom_result_hits": [],
-          "ax_nodes": 454
+          "ax_nodes": 455
         }
       },
       "pageerrors": [],
@@ -27,15 +27,15 @@
       "detail": {
         "versuche": {
           "dom_result_hits": [],
-          "ax_nodes": 504
+          "ax_nodes": 502
         },
         "modell": {
           "dom_result_hits": [],
-          "ax_nodes": 469
+          "ax_nodes": 459
         },
         "code": {
           "dom_result_hits": [],
-          "ax_nodes": 439
+          "ax_nodes": 437
         }
       },
       "pageerrors": [],
@@ -51,6 +51,8 @@
           "kAHerkunft": "messung",
           "milch2Raum": false,
           "becher": true,
+          "thMessErsatz": false,
+          "thMessEigen": null,
           "tEnd_min": 60,
           "VK_ml": 200,
           "thK0": 80.1,
@@ -62,7 +64,7 @@
           "kA1Faktor": 1
         },
         "own": 3.0684891934836998,
-        "display": "Rechenwerte\n\ndirekt nach der Zugabe nach 60 min\n\nTasse 1 \n𝜗\n1\n35,11 °C\nTasse 2 \n𝜗\n2\n32,04 °C\nBecher 3 (Milch mit Raumtemperatur)\n33,59 °C\nUnterschied \n𝜗\n1\n−\n𝜗\n2\n3,07 K · Tasse 1 wärmer\nUnterschied Tasse 1 und Becher 3\n1,51 K\nSchnitt der Kurven\nnach 55,1 min\nabgegeben \n𝑄\n1\n / \n𝑄\n2\n45,54 / 49,26 kJ\nWärmeabgabe \n𝑘\n𝐴\n0,4461 \nW\nK\n\naus der Messung nach 10 min\nMischtemperatur \n𝜗\n1,0\n72,66 °C\nEure Vorhersage (Versuch)\nmal so, mal so"
+        "display": "Rechenwerte\n\ndirekt nach der Zugabe nach 60 min\n\nTasse 1 \n𝜗\n1\n35,11 °C\nTasse 2 \n𝜗\n2\n32,04 °C\nBecher 3 (Milch mit Raumtemperatur)\n33,59 °C\nUnterschied \n𝜗\n1\n−\n𝜗\n2\n3,07 K · Tasse 1 wärmer\nUnterschied Tasse 1 und Becher 3\n1,51 K\nSchnitt der Temperaturkurven\nnach 55,1 min\nabgegeben \n𝑄\n1\n / \n𝑄\n2\n45,54 / 49,26 kJ\nWärmeabgabe \n𝑘\n𝐴\n0,4461 \nW\nK\n\naus der Messung nach 10 min\nMischtemperatur \n𝜗\n1,0\n72,66 °C\nEure Vorhersage (Versuch)\nmal so, mal so"
       },
       "pageerrors": [],
       "external": []
@@ -86,6 +88,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 200,
             "thK0": 80,
@@ -96,7 +100,7 @@
             "mB_g": 300,
             "kA1Faktor": 1
           },
-          "text": "Eure Vorhersage: 47 °C\nEure Zahl: 47 °C · Modell: 47,0 °C\nEure Begründung: Vorhersage aus der Wärmebilanz.\n\n47,0 °C; 60,9 °C bei Zugabe nach 30 min, 37,3 °C nach 90 min."
+          "text": "Eure Vorhersage: 47 °C\nEure Zahl: 47 °C · Modell: 47,0 °C\nEure Begründung: Vorhersage aus der Wärmebilanz.\n\n47,0 °C; 60,9 °C bei Zugabe nach 30 min, 37,3 °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei 47,0 °C gleicht die wärmere Milch den Mehrverlust von Tasse 2 gerade aus. Je später die Zugabe, desto kälter ist Tasse 2 vorher und desto weniger warm muss die Milch sein."
         },
         {
           "q": "v2",
@@ -106,6 +110,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 200,
             "thK0": 80,
@@ -126,6 +132,8 @@
             "kAHerkunft": "messung",
             "milch2Raum": false,
             "becher": true,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 200,
             "thK0": 80,
@@ -146,6 +154,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 200,
             "thK0": 80,
@@ -166,6 +176,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 200,
             "thK0": 80,
@@ -176,7 +188,7 @@
             "mB_g": 300,
             "kA1Faktor": 1
           },
-          "text": "Eure Vorhersage: Thermobecher offen ·  Auswahl passt\nEure Begründung: Vorhersage aus der Wärmebilanz.\n\nAm längsten der Thermobecher offen (Richtwert: von 80 auf 63,5 °C in 30 min statt auf 48,8 °C), dann Keramik mit Deckel. Der größte Unterschied bleibt 3,86 K, er kommt nur später (Thermobecher offen nach etwa 127 min). Glas und Pappe sind etwa wie Keramik: Die Wand ist nicht der große Widerstand, entscheidend sind offene Oberfläche und Abstrahlung."
+          "text": "Eure Vorhersage: Thermobecher offen ·  Auswahl passt\nEure Begründung: Vorhersage aus der Wärmebilanz.\n\nAm längsten der Thermobecher offen (Richtwert: von 80 auf 63,5 °C in 30 min statt auf 48,8 °C), dann Keramik mit Deckel. Der größte Unterschied bleibt 3,86 K, er kommt nur später (Thermobecher offen nach etwa 127 min). Nach den Richtwerten (*) sind Glas und Pappe etwa wie Keramik: Die Wand ist nicht der große Widerstand, entscheidend sind offene Oberfläche und Abstrahlung."
         }
       ],
       "pageerrors": [],
@@ -184,8 +196,8 @@
     },
     {
       "name": "V3_Antwort_vor_Vorhersage",
-      "status": "FAIL",
-      "detail": "{'fest': False, 'values': 'Rechenwerte\\n\\ndirekt nach der Zugabe nach 60 min\\n\\nTasse 1 \\n𝜗\\n1\\n34,04 °C\\nTasse 2 \\n𝜗\\n2\\n30,96 °C\\nUnterschied \\n𝜗\\n1\\n−\\n𝜗\\n2\\n3,08 K · Tasse 1 wärmer\\nSchnitt der Kurven\\nnach 54,7 min\\nabgegeben \\n𝑄\\n1\\n / \\n𝑄\\n2\\n46,60 / 50,34 kJ\\nWärmeabgabe \\n𝑘\\n𝐴\\n0,4440 \\nW\\nK\\n\\naus der Messung nach 10 min\\nMischtemperatur \\n𝜗\\n1,0\\n72,47 °C\\nEure Vorhersage\\nTasse 1 (Milch sofort), etwa 4 K', 'question': 'Vertiefung V3\\n\\nBecher\\n\\nNotiere zuerst für dich, dann einigt euch zu zweit: Die Tassen sind vorgewärmte Keramikbecher wie in Teil g. Wird der Unterschied größer oder kleiner, und bleibt Tasse 1 wärmer?\\n\\nAusgangslage: Standardwerte, Becher an, \\n𝑘\\n𝐴\\n aus der Messung nach 10 min (wie Teil g)\\n\\nEure Vorhersage\\ngrößer\\nkleiner\\nWarum? (ein Satz, freiwillig)\\nVorhersage festhalten, dann prüfen\\nWähle zuerst eine Vorhersage.\\nohne Vorhersage aufdecken\\nZurück'}",
+      "status": "PASS",
+      "detail": null,
       "pageerrors": [],
       "external": []
     },
@@ -201,6 +213,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 300,
             "thK0": 80,
@@ -221,6 +235,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 300,
             "thK0": 80,
@@ -241,6 +257,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 300,
             "thK0": 90,
@@ -261,6 +279,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 300,
             "thK0": 90,
@@ -281,6 +301,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 300,
             "thK0": 90,
@@ -301,6 +323,8 @@
             "kAHerkunft": "eigen",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 300,
             "thK0": 90,
@@ -321,6 +345,8 @@
             "kAHerkunft": "eigen",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 300,
             "thK0": 90,
@@ -339,15 +365,15 @@
     },
     {
       "name": "Quellenwechsel_haelt_Kurven_bei_kA1",
-      "status": "FAIL",
-      "detail": "{'before': 1.168461142616934, 'after': 1.5013602956223053, 'kAbefore': 1.0000000000000002, 'kAafter': 0.6383492098723279, 'thMess': 30}",
+      "status": "ERROR",
+      "detail": "Locator.check: Timeout 8000ms exceeded.\nCall log:\n  - waiting for locator(\"[name=\\\"kaq\\\"][value=\\\"messung\\\"]\")\n    18 × locator resolved to <input name=\"kaq\" type=\"radio\" value=\"messung\"/>\n     - attempting click action\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - performing click action\n       - click action done\n       - waiting for scheduled navigations to finish\n       - navigations have finished\n",
       "pageerrors": [],
       "external": []
     },
     {
       "name": "Ungueltige_Einstellung_und_Sprachwechsel",
-      "status": "FAIL",
-      "detail": "{'de': 'Der Messwert nach 10 min muss zwischen Raumtemperatur und Kaffeetemperatur am Anfang liegen.', 'en': 'Der Messwert nach 10 min muss zwischen Raumtemperatur und Kaffeetemperatur am Anfang liegen.', 'lang': 'en'}",
+      "status": "PASS",
+      "detail": null,
       "pageerrors": [],
       "external": []
     },
@@ -361,6 +387,8 @@
           "kAHerkunft": "messung",
           "milch2Raum": false,
           "becher": true,
+          "thMessErsatz": false,
+          "thMessEigen": null,
           "tEnd_min": 60,
           "VK_ml": 200,
           "thK0": 80.015,
@@ -393,15 +421,15 @@
     },
     {
       "name": "Kurslink_fremdes_Format",
-      "status": "FAIL",
-      "detail": "{'url': 'http://127.0.0.1:8765/simulation/site/index.html#foreign-data=123', 'banner': ''}",
+      "status": "PASS",
+      "detail": null,
       "pageerrors": [],
       "external": []
     },
     {
       "name": "Kurslink_alle_akzeptierten_Nachkommastellen",
-      "status": "FAIL",
-      "detail": "{'before': {'v': 1, 'u': 21.555, 'm': 6.123, 'd': False, 'b3': False, 'werte': {'b1': [None, None, None, None, None, None, None, None], 'b2': [80, None, None, None, None, None, None, None], 'b3': [None, None, None, None, None, None, None, None]}}, 'after': {'v': 1, 'u': 21.56, 'm': 6.12, 'd': False, 'b3': False, 'werte': {'b1': [None, None, None, None, None, None, None, None], 'b2': [80, None, None, None, None, None, None, None], 'b3': [None, None, None, None, None, None, None, None]}}, 'link': 'http://127.0.0.1:8765/simulation/site/index.html#kurs1=b1:,,,,,,,;b2:80,,,,,,,;u:21.56;m:6.12;d:0;b:1.2'}",
+      "status": "PASS",
+      "detail": null,
       "pageerrors": [],
       "external": []
     },
@@ -416,6 +444,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 200,
             "thK0": 80,
@@ -547,6 +577,8 @@
             "kAHerkunft": "aufgabe",
             "milch2Raum": false,
             "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
             "tEnd_min": 60,
             "VK_ml": 200,
             "thK0": 80,
@@ -783,7 +815,7 @@
       "name": "Textschluessel_Gedankenstriche_Platzhalter",
       "status": "PASS",
       "detail": {
-        "keys": 352,
+        "keys": 371,
         "dashes": {
           "de": [],
           "en": []
@@ -796,10 +828,10 @@
       "name": "Reglerfolge_30s_100ms",
       "status": "PASS",
       "detail": {
-        "duration": 30.106157747999987,
-        "events": 266,
-        "max_ms": 10.200000000011642,
-        "median_ms": 2.8999999999650754
+        "duration": 30.100336680000055,
+        "events": 261,
+        "max_ms": 11.899999999906868,
+        "median_ms": 3.1000000000931323
       },
       "pageerrors": [],
       "external": []

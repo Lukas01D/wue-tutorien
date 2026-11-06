@@ -23,6 +23,7 @@
 | B1 | Tasse 1 wählen, bei „Unterschied etwa“ 4 eintippen, „Vorhersage festhalten und Kurven zeigen“ | Kurven erscheinen, darunter ϑ₁ 34,05 °C, ϑ₂ 30,19 °C, Δ 3,85 K. Frageleiste springt zu Frage 1, oben der Rückblick „Start: …“. | |
 | B2 | Nach unten scrollen bis zum Regler „Zugabe in Tasse 2 nach“ | Das Diagramm bleibt oben angeheftet (mit den drei Kernzahlen), Regler darunter sichtbar. | |
 | B3 | Bei Frage 1 „50“ eintippen, festhalten. Den Regler „Zugabe nach“ mit dem Finger ziehen. | Regler folgt dem Finger flüssig, Kurven und Kernzahlen ändern sich sofort, die Seite scrollt dabei nicht mit. | |
+| B2a | Angeheftetes Diagramm ansehen *(neu nach X5-09, X5-10)* | Achsenzahlen und Beschriftungen so gut lesbar wie im Querformat (nicht verkleinert); das angeheftete Feld nimmt höchstens knapp die Hälfte der Höhe ein; der Knopf darunter heißt „Diagramm lösen“ und nach dem Antippen „Diagramm oben anheften“. Mit größerer Systemschrift (Einstellungen, Anzeige, Textgröße) darf das Diagramm auch nicht angeheftet sein. | |
 | B4 | Plus- und Minusknopf neben dem Regler je dreimal antippen | Wert ändert sich in Schritten von 1 min; Knöpfe gut treffbar (mindestens Fingerkuppe). | |
 
 ## C Dezimaleingabe und Bildschirmtastatur

@@ -245,13 +245,14 @@
     for (const r of el.querySelectorAll('input[type="radio"]')) r.addEventListener("change", () => { a.wahl = r.value; sichern(); frageKnopfAktualisieren(); });
     const zf = $("frage-zahl"); if (zf) zf.addEventListener("input", () => { a.zahl = zf.value; sichern(); frageKnopfAktualisieren(); });
     const wf = $("frage-warum"); if (wf) wf.addEventListener("input", () => { a.warum = wf.value; sichern(); });
-    const kf = $("knopf-fest"); if (kf) kf.addEventListener("click", () => festhalten(f, false));
+    const kf = $("knopf-fest"); if (kf) kf.addEventListener("click", ev => { frageleisteZeichnen.tipp = { t: Date.now(), x: ev.clientX, y: ev.clientY }; festhalten(f, false); });
     const ko = $("knopf-ohne"); if (ko) ko.addEventListener("click", ev => ev.detail < 2 && bestaetigen(t("ohne_frage"), () => festhalten(f, true), ko));
     const kas = $("knopf-aufl-start"); if (kas) kas.addEventListener("click", ev => { if (ev.detail > 1) return; /* G8-R2-06: zweiter Klick eines Doppelklicks */ st.aufl = !st.aufl; sichern(); alles(); fokus("knopf-aufl-start"); });
     const ka = $("knopf-aufl"); if (ka) ka.addEventListener("click", ev => { if (ev.detail > 1) return; a.aufl = !a.aufl; sichern(); alles(); fokus("knopf-aufl"); });
-    const ruhig = () => Date.now() - (frageleisteZeichnen.zuletzt || 0) > 400;     // G8-19: zweiter Klick eines Doppelklicks trifft sonst den neuen Knopf
-    const kz = $("knopf-zurueck"); if (kz) kz.addEventListener("click", ev => { if (ev.detail < 2 && ruhig()) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i - 1]); } });
-    const kw = $("knopf-weiter"); if (kw) kw.addEventListener("click", ev => { if (ev.detail < 2 && ruhig()) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i + 1]); } });
+    // G8-R3-02: zweiter Tipp an derselben Stelle wie „Vorhersage festhalten“ (innerhalb 400 ms) trifft nicht den neuen Knopf darunter
+    const ruhig = ev => { const tp = frageleisteZeichnen.tipp; if (tp && Date.now() - tp.t < 400 && Math.hypot(ev.clientX - tp.x, ev.clientY - tp.y) < 40) return false; return Date.now() - (frageleisteZeichnen.zuletzt || 0) > 400; };     // G8-19: zweiter Klick eines Doppelklicks trifft sonst den neuen Knopf
+    const kz = $("knopf-zurueck"); if (kz) kz.addEventListener("click", ev => { if (ev.detail < 2 && ruhig(ev)) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i - 1]); } });
+    const kw = $("knopf-weiter"); if (kw) kw.addEventListener("click", ev => { if (ev.detail < 2 && ruhig(ev)) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i + 1]); } });
     const k2 = $("knopf-f2-weg"); if (k2) k2.addEventListener("click", () => { S.f2Uebersprungen = true; sichern(); alles(); fokus("knopf-weiter"); });
     const kv = $("knopf-vt-auf"); if (kv) kv.addEventListener("click", () => { S.ansicht.vertiefung = true; geheZu("v1"); $("frageleiste").scrollIntoView({ block: "start" }); });
   }
@@ -293,7 +294,6 @@
       else meldung = t("ausgangslage_gesetzt", { was: nurText(t(f.ausgang)) });
     }
     if (a.fest && f.id === "start") S.aktuell = "f1";
-    frageleisteZeichnen.zuletzt = Date.now();      // G8-R3-02: zweiter Tipp trifft nach dem Neuaufbau nicht „Zurück“ oder „Weiter“
     sichern(); alles();
     if (meldung) $("knopf-info").textContent = meldung;
     if (a.fest) { ansagen(ohne ? "ohne" : true); $("simulation").scrollIntoView({ block: "start" }); }
