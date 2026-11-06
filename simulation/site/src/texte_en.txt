@@ -603,9 +603,25 @@ The measurement sheet is empty; enter values first.
 @fehler_am_feld
 Settings not valid, see the note above the controls.
 @f2_ausgang_leer
-use the class values once they are loaded
+class values, applied when you check
 @hinweis_zahl_fehlt
 Enter a number first.
+@hinweis_zahl_bereich
+This number is outside the sensible range.
+@frage_zeigen
+Show question
+@rueckblick_energie
+released up to adding the milk: cup 1 {q1} kJ, cup 2 {q2} kJ
+@flaeche_gesamt
+Up to adding the milk, cup 2 releases {wert} kJ more heat in total than cup 1.
+@dia_beschreibung_b3
+Mug 3 after the milk {c} °C.
+@rw_vorgewaermt
+(mug preheated)
+@status_aufgedeckt
+Revealed without a prediction.
+@link_frage_leer
+Use the class values from the link?
 @link_ok
 Class data from the link used.
 @link_abgelehnt

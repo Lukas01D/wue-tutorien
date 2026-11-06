@@ -614,9 +614,25 @@ Das Messblatt ist leer; erst Werte eintragen.
 @fehler_am_feld
 Einstellung ungültig, siehe Hinweis über den Reglern.
 @f2_ausgang_leer
-Kurswerte übernehmen, sobald sie geladen sind
+Kurswerte, übernommen beim Prüfen
 @hinweis_zahl_fehlt
 Trage zuerst eine Zahl ein.
+@hinweis_zahl_bereich
+Diese Zahl liegt außerhalb des sinnvollen Bereichs.
+@frage_zeigen
+Frage zeigen
+@rueckblick_energie
+abgegeben bis zur Zugabe: Tasse 1 {q1} kJ, Tasse 2 {q2} kJ
+@flaeche_gesamt
+Tasse 2 gibt bis zur Zugabe insgesamt {wert} kJ mehr Wärme ab als Tasse 1.
+@dia_beschreibung_b3
+Becher 3 nach der Milch {c} °C.
+@rw_vorgewaermt
+(Becher vorgewärmt)
+@status_aufgedeckt
+Ohne Vorhersage aufgedeckt.
+@link_frage_leer
+Kurswerte aus dem Link übernehmen?
 @link_ok
 Kurswerte aus dem Link übernommen.
 @link_abgelehnt

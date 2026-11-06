@@ -153,10 +153,15 @@
 
   // ------------------------------------------------------------------ Frageleiste
   function frage(id) { return FRAGEN.find(f => f.id === id); }
+  function aktuelleVorhersage() {
+    const fq = frage(S.aktuell), aq = S.antworten[fq.id];
+    return (aq.fest && !aq.ohne) ? [fq, aq] : [frage("start"), S.antworten.start];
+  }
   function vorhersageZahl(f, roh) {        // „4 K“, „ca. 4“, „~4“, „40 min“ gelten als Zahl (G1-05, G2)
     const t0 = String(roh || "").trim().replace(/^(ca\.?|etwa|about|approx\.?|~|≈)\s*/i, "").replace(/\s*(K|min|°\s*C|°)$/i, "").trim();
     const l = HILFEN.zahlLesen(t0);
-    if (isFinite(l.wert) && f.id === "start" && l.wert < 0) return { wert: NaN, grund: "negativ" };
+    const bereich = { start: [0, 60], f1: [0, 600], v1: [0, 100], v2: [0, 600] }[f.id];
+    if (isFinite(l.wert) && bereich && (l.wert < bereich[0] || l.wert > bereich[1] || (f.zahl.einheit === "min" && l.wert === 0))) return { wert: NaN, grund: "bereich" };
     return l;
   }
   function zahlAnzeige(f, roh) {
@@ -186,16 +191,17 @@
     const st = S.antworten.start;
     if (f.id === "f1" && st.fest && !a.fest) {
       h += '<div class="rueckblick"><p><strong>' + t("leiste_start") + ":</strong> " + t("eure_vorhersage") + ": " + esc(vorhersageText(frage("start"), st)) + "</p>" +
-        '<p class="auftrag">' + t("auftrag_start") + '</p><div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl-start" aria-expanded="' +
+        '<p class="auftrag">' + t("auftrag_start") + (R ? ' <span class="klein">(' + t("rueckblick_energie", { q1: z(R.Q1, 2), q2: z(R.Q2, 2) }) + ")</span>" : "") + '</p><div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl-start" aria-expanded="' +
         (st.aufl ? "true" : "false") + '" aria-controls="aufl-start">' + t(st.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button></div>" +
         (st.aufl ? '<div class="aufloesung" id="aufl-start">' + vergleichHtml(frage("start"), st) + "<p>" + t("aufl_start") + "</p></div>" : "") + "</div>";
     }
     h += '<p class="frage-nr">' + nr + '</p><h2 id="frage-titel">' + t(f.titel) + "</h2>";
-    h += '<p class="frage-text">' + t(f.text) + "</p>";
+    h += a.fest ? '<details class="frage-text-zu"><summary>' + t("frage_zeigen") + '</summary><p class="frage-text">' + t(f.text) + "</p></details>" : '<p class="frage-text">' + t(f.text) + "</p>";
     if (f.id === "f2") h += '<p class="hinweis" id="f2-werte">' + (kursAnzahl() ? t("f2_werte_da", { n: kursAnzahl() }) : t("f2_keine_werte")) + "</p>";
-    h += '<p class="hinweis"><strong>' + t("ausgangslage") + ":</strong> " + t(f.id === "f2" && !kursAnzahl() && !a.fest ? "f2_ausgang_leer" : f.ausgang) + "</p>";
+    h += '<p class="hinweis"><strong>' + t("ausgangslage") + ":</strong> " + t(f.id === "f2" && !a.fest ? "f2_ausgang_leer" : f.ausgang) + "</p>";
     const gesperrt = a.fest;
-    if (!a.fest) {          // nach dem Festhalten keine gesperrten Felder mehr: die Leiste wird kurz (G7-03, G4-10)
+    const f2weg = f.id === "f2" && S.f2Uebersprungen && !kursAnzahl();
+    if (!a.fest && !f2weg) {          // nach dem Festhalten keine gesperrten Felder mehr: die Leiste wird kurz (G7-03, G4-10)
       h += '<div class="frage-eingabe">';
       if (f.wahl) {
         h += '<fieldset><legend>' + t("eure_vorhersage") + '</legend><div class="wahl">';
@@ -207,11 +213,11 @@
       h += "</div>";
     }
     h += '<div class="frage-knoepfe">';
-    if (!a.fest) {
+    if (!a.fest && !f2weg) {
       const ok = vorhersageGueltig(f, a) && !(f.id === "f2" && !kursAnzahl());
       h += '<button type="button" class="knopf-haupt" id="knopf-fest"' + (ok ? "" : " disabled") + ">" + t(f.id === "start" ? "knopf_vorhersage_start" : "knopf_vorhersage") + "</button>";
       h += '<span class="hinweis" id="hinweis-waehlen"' + (ok ? " hidden" : "") + ">" + t(hinweisSchluessel(f, a)) + "</span>";
-      h += '<button type="button" class="knopf-text" id="knopf-ohne">' + t("knopf_ohne") + "</button>";
+      if (!(f.id === "f2" && !kursAnzahl())) h += '<button type="button" class="knopf-text" id="knopf-ohne">' + t("knopf_ohne") + "</button>";
       if (f.id === "f2" && !kursAnzahl()) h += '<button type="button" class="knopf-schlicht" id="knopf-f2-weg">' + t("f2_ueberspringen") + "</button>";
     }
     h += '<div class="frage-nav">';
@@ -246,7 +252,7 @@
     if (f.id === "f2" && !kursAnzahl()) return "f2_erst_laden";
     if (f.wahl && !a.wahl) return "hinweis_erst_waehlen";
     if (f.zahl && a.zahl.trim() === "") return "hinweis_zahl_fehlt";
-    return "hinweis_zahl";
+    return vorhersageZahl(f, a.zahl).grund === "bereich" ? "hinweis_zahl_bereich" : "hinweis_zahl";
   }
   function frageleisteStill() {      // nur Hinweis und Knopf der Frage 2 nachziehen, ohne die Leiste neu aufzubauen
     const h2 = $("f2-werte"); if (h2) h2.innerHTML = kursAnzahl() ? t("f2_werte_da", { n: kursAnzahl() }) : t("f2_keine_werte");
@@ -281,7 +287,7 @@
     if (a.fest && f.id === "start") S.aktuell = "f1";
     sichern(); alles();
     if (meldung) $("knopf-info").textContent = meldung;
-    if (a.fest) { ansagen(true); $("simulation").scrollIntoView({ block: "start" }); }
+    if (a.fest) { ansagen(ohne ? "ohne" : true); $("simulation").scrollIntoView({ block: "start" }); }
     const ziel = $(f.id === "start" ? "frage-titel" : "knopf-aufl");
     if (ziel) { if (!ziel.hasAttribute("tabindex") && ziel.tagName !== "BUTTON") ziel.setAttribute("tabindex", "-1"); ziel.focus({ preventScroll: true }); }
   }
@@ -407,14 +413,13 @@
           belegt.push([sx - 7, sy - 7, 14, 14]);
         }
         // Vorhersage der aktuellen Frage als beschrifteter Kasten oben rechts (frei von Kurven), sonst als Zeile unter dem Diagramm (G1-11, G4-08)
-        const fq = frage(S.aktuell), aq = S.antworten[fq.id];
-        const [fv, av] = (aq.fest && !aq.ohne) ? [fq, aq] : [frage("start"), S.antworten.start];
+        const [fv, av] = aktuelleVorhersage();
         if (av.fest && !av.ohne) {
           const txt = t("dia_vorhersage", { text: vorhersageText(fv, av) });
           const bw = txt.length * 11 * 0.56 + 14, bx = W - Rr - bw - 4, by = O + 4;
           let frei = bx > L + 4;
           for (let i = 0; i <= 20; i++) { const xp = bx + bw * i / 20, tt = (xp - L) / (W - L - Rr) * xMax; if (tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk < by + 26 && yk > by - 4) frei = false; } }
-          if (frei) { s.push('<rect id="vh-kasten" x="' + bx.toFixed(1) + '" y="' + by + '" width="' + bw.toFixed(1) + '" height="22" rx="3" fill="#e8f5ef" stroke="#227b48"/><text id="vh-text" x="' + (bx + 7).toFixed(1) + '" y="' + (by + 15) + '" font-size="11" fill="#14603f">' + esc(txt) + "</text>"); belegt.push([bx, by, bw, 22]); }
+          if (frei) { s.push('<rect id="vh-kasten" x="' + bx.toFixed(1) + '" y="' + by + '" width="' + bw.toFixed(1) + '" height="22" rx="3" fill="#eef5fb" stroke="#173d5e"/><text id="vh-text" x="' + (bx + 7).toFixed(1) + '" y="' + (by + 15) + '" font-size="11" fill="#102d49">' + esc(txt) + "</text>"); belegt.push([bx, by, bw, 22]); }
           else vorhersageUnten = txt;
           if ((fv.id === "f1" || fv.id === "v2") && isFinite(vorhersageZahl(fv, av.zahl).wert)) {
             const tv = vorhersageZahl(fv, av.zahl).wert;
@@ -505,10 +510,12 @@
     zusatzZeichnen();
     document.querySelector(".lesehinweis").innerHTML = (freigabe() && !R) ? "" : t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht);   // G6-21
     // Beschreibung für Bildschirmleser
+    const b3text = (freigabe() && R && S.kurs.b3 && ansicht === "temperatur") ? " " + nurText(t("dia_beschreibung_b3", { c: z(R.th2Raum, 2) })) : "";
     $("diagramm-name").textContent = nurText(t(ansicht === "temperatur" ? "dia_titel" : "dia_titel_" + ansicht));
-    $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) : (R && ansicht === "waermestrom") ? nurText(t("dia_beschreibung_waermestrom", { v: z(R.flaecheVor, 2), n: z(R.flaecheNach, 2), d: z(R.Q2 - R.Q1, 2) })) : (ansicht === "ln") ? nurText(t("dia_beschreibung_ln", { n: lnPunkte().length })) :
+    $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) : (R && ansicht === "waermestrom" && !(schnittFrei() && R.tWaermestrom < S.e.tEnd_min)) ? nurText(t("flaeche_gesamt", { wert: z(R.Q2 - R.Q1, 2) })) : (R && ansicht === "waermestrom") ? nurText(t("dia_beschreibung_waermestrom", { v: z(R.flaecheVor, 2), n: z(R.flaecheNach, 2), d: z(R.Q2 - R.Q1, 2) })) : (ansicht === "ln") ? nurText(t("dia_beschreibung_ln", { n: lnPunkte().length })) :
       (R ? nurText(t("dia_beschreibung", { a: z(S.e.thK0, 1), m: z(R.th10, 2), b: z(R.th1, 2), t: z(tz, 0), k: z(R.th2K, 2), c: z(R.th2, 2), d: z(R.dT, 2) })) : nurText(t("dia_ungueltig")));
     const lnZeigen = ansicht === "ln" && lnPunkte().length;
+    if (b3text) $("diagramm-beschreibung").textContent += b3text;
     $("legende-mess").hidden = !(freigabe() && ((punkte.length && ansicht === "temperatur") || lnZeigen));
     if (!$("legende-mess").hidden) {
       const da = lnZeigen ? [2, 3].filter(n => lnPunkte().some(p => p.b === n)) : [1, 2, 3].filter(n => punkte.some(p => p.b === n));
@@ -517,7 +524,9 @@
     const ft = $("flaechen-text");
     if (freigabe() && R && ansicht === "waermestrom") {
       ft.hidden = false;
-      ft.innerHTML = SYM.vor + " " + t("flaeche_vor") + ": " + z(R.flaecheVor, 2) + " kJ · " + SYM.nach + " " + t("flaeche_nach") + ": " + z(R.flaecheNach, 2) + " kJ · " + t("flaeche_summe", { wert: z(R.Q2 - R.Q1, 2) });
+      const mitSchnitt = schnittFrei() && R.tWaermestrom < S.e.tEnd_min;
+      ft.innerHTML = mitSchnitt ? SYM.vor + " " + t("flaeche_vor") + ": " + z(R.flaecheVor, 2) + " kJ · " + SYM.nach + " " + t("flaeche_nach") + ": " + z(R.flaecheNach, 2) + " kJ · " + t("flaeche_summe", { wert: z(R.Q2 - R.Q1, 2) })
+        : t("flaeche_gesamt", { wert: z(R.Q2 - R.Q1, 2) });
     } else if (freigabe() && ansicht === "ln") {
       const fit = ausgleichRechnen(); ft.hidden = !fit;
       const bn = n => nurText(t("dia_becher_n", { n: n }));
@@ -700,7 +709,7 @@
     else if (!isFinite(l.wert)) text = t("feld_keine_zahl", { beispiel: z(r.standard !== null ? r.standard : ERW.KA_AUFGABE, r.stellen > 2 ? 2 : r.stellen) });
     else if (l.wert < r.min || l.wert > r.max) text = t("feld_bereich", { min: z(r.min, r.stellen > 2 ? 2 : r.stellen), max: z(r.max, r.stellen > 2 ? 2 : r.stellen), einheit: r.einheit });
     if (text) { feld.setAttribute("aria-invalid", "true"); f.innerHTML = text; return; }
-    feld.removeAttribute("aria-invalid"); f.innerHTML = "";
+    feld.removeAttribute("aria-invalid"); f.innerHTML = ""; feld.value = z(Number(l.wert.toFixed(r.stellen)), r.stellen);
     reglerSetzen(r, Number(l.wert.toFixed(r.stellen)), "zahl"); ansagen();
   }
   function infoKastenInhalt() {
@@ -776,7 +785,7 @@
     if (freigabe() && FEHLER && fehler.getAttribute("data-code") !== FEHLER) { fehler.innerHTML = t("fehler_" + FEHLER); fehler.setAttribute("data-code", FEHLER); }
     if (!FEHLER) fehler.removeAttribute("data-code");
     const dl = $("rechenwerte-liste");
-    $("rechenwerte-bezug").textContent = (freigabe() && R) ? nurText(t("rw_bezug", { t: z(S.e.tEnd_min, 0) })) : "";
+    $("rechenwerte-bezug").textContent = (freigabe() && R) ? nurText(t("rw_bezug", { t: z(S.e.tEnd_min, 0) })) + (S.e.becher && S.ansicht.kalt && S.ansicht.vertiefung ? " " + nurText(t("rw_vorgewaermt")) : "") : "";
     if (freigabe() && !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_noch_nicht") + "</dt><dd>" + t("dia_ungueltig") + "</dd></div>"; return; }
     if (!freigabe() || !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_noch_nicht") + "</dt><dd>" + t("ergebnis_verdeckt") + "</dd></div>"; return; }
     const satz = R.dT > 0.005 ? t("rw_satz_1") : (R.dT < -0.005 ? t("rw_satz_2") : t("rw_satz_gleich"));
@@ -791,15 +800,15 @@
     h += "<div><dt>" + t("rw_Q") + "</dt><dd>" + z(R.Q1, 2) + " / " + z(R.Q2, 2) + " kJ</dd></div>";
     h += "<div><dt>" + t("rw_kA") + "</dt><dd>" + z(R.kA, 4) + " " + einheit("W/K") + '<br><span class="klein">' + herkunft + "</span></dd></div>";
     h += "<div><dt>" + t("rw_misch") + "</dt><dd>" + z(R.th10, 2) + " °C</dd></div>";
-    const a = S.antworten.start;
-    h += '<div class="breit"><dt>' + t("rw_vorhersage") + "</dt><dd>" + esc(vorhersageText(frage("start"), a)) + "</dd></div>";
+    const [fv, av] = aktuelleVorhersage();
+    if (av.fest) h += '<div class="breit"><dt>' + t("rw_vorhersage") + (fv.id !== "start" ? " (" + nurText(t(fv.titel)) + ")" : "") + "</dt><dd>" + esc(vorhersageText(fv, av)) + "</dd></div>";
     dl.innerHTML = h;
   }
   let ansageZeit = null;
   function ansagen(festgehalten) {
     clearTimeout(ansageZeit);
     ansageZeit = setTimeout(() => {
-      $("ansage").textContent = (freigabe() && R) ? (festgehalten === true ? nurText(t("status_festgehalten")) + " " : "") + nurText(t("status_ansage", { a: z(R.th1, 2), b: z(R.th2, 2), d: z(R.dT, 2) })) : "";
+      $("ansage").textContent = (freigabe() && R) ? (festgehalten === true ? nurText(t("status_festgehalten")) + " " : (festgehalten === "ohne" ? nurText(t("status_aufgedeckt")) + " " : "")) + nurText(t("status_ansage", { a: z(R.th1, 2), b: z(R.th2, 2), d: z(R.dT, 2) })) : "";
     }, 250);
   }
 
@@ -891,9 +900,9 @@
     const weg = () => { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { } };
     if (l.art !== "ok") { b.hidden = false; b.setAttribute("role", "alert"); b.innerHTML = "<p>" + (l.art === "fremd" ? t("link_fremd") : t("link_defekt", { grund: linkGrund(l.grund) })) + "</p>"; weg(); return; }
     b.hidden = false;
-    b.innerHTML = '<p id="link-frage">' + t("link_frage") + '</p><div class="knopfzeile"><button type="button" class="knopf-zweit" id="link-ja">' + t("link_ja") + '</button><button type="button" class="knopf-schlicht" id="link-nein">' + t("link_nein") + "</button></div>";
+    b.innerHTML = '<p id="link-frage">' + t(kursAnzahl() ? "link_frage" : "link_frage_leer") + '</p><div class="knopfzeile"><button type="button" class="knopf-zweit" id="link-ja">' + t("link_ja") + '</button><button type="button" class="knopf-schlicht" id="link-nein">' + t("link_nein") + "</button></div>";
     b.setAttribute("role", "region"); b.setAttribute("aria-labelledby", "link-frage");
-    const fertig = schluessel => { b.innerHTML = '<p id="link-ende" tabindex="-1">' + t(schluessel) + "</p>"; b.setAttribute("aria-labelledby", "link-ende"); $("ansage").textContent = nurText(t(schluessel)); $("link-ende").focus(); };   // G5-24
+    const fertig = schluessel => { b.innerHTML = '<p id="link-ende" tabindex="-1">' + t(schluessel) + "</p>"; b.setAttribute("aria-labelledby", "link-ende"); $("ansage").textContent = nurText(t(schluessel)); $("link-ende").focus(); setTimeout(() => { if ($("link-ende")) b.hidden = true; }, 15000); };   // G5-24, G7-14
     $("link-ja").addEventListener("click", () => { S.kurs = l.kurs; sichern(); weg(); alles(); fertig("link_ok"); });
     $("link-nein").addEventListener("click", () => { weg(); fertig("link_abgelehnt"); });
     b.addEventListener("keydown", ev => { if (ev.key === "Escape" && $("link-nein")) $("link-nein").click(); });
@@ -975,6 +984,7 @@
     if (ort && ort.parentNode && ort !== document.body) ort.parentNode.insertBefore(b, ort.nextSibling); else $("link-banner").after(b);
     $("rueck-ja").addEventListener("click", () => { b.remove(); wennJa(); if (frageText !== t("ohne_frage")) $("knopf-info").textContent = nurText(t("zurueckgesetzt")); });
     $("rueck-nein").addEventListener("click", () => { b.remove(); if (ort && ort.focus) ort.focus(); });
+    b.addEventListener("keydown", ev => { if (ev.key === "Escape") $("rueck-nein").click(); });
     $("rueck-ja").focus();
   }
   function fussZeichnen() {
@@ -1013,7 +1023,7 @@
   }
   function anheftenPruefen() {
     const vv = window.visualViewport, hoehe = vv ? vv.height : window.innerHeight;
-    const feldFokus = document.activeElement && document.activeElement.type === "text" && !!document.activeElement.closest("#messblatt, #frageleiste");
+    const feldFokus = document.activeElement && document.activeElement.type === "text" && !!document.activeElement.closest("#messblatt");   // Frageleiste nicht: sonst springt der Knopf beim Verlassen des Feldes (G9-01)
     const tastatur = feldFokus || vv && document.activeElement && /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName) && document.activeElement.type !== "range" && hoehe < window.innerHeight * 0.8;
     const an = S.ansicht.anheften && freigabe() && hoehe >= 500 && !tastatur && window.innerWidth <= 767 && window.innerHeight > window.innerWidth;
     document.documentElement.classList.toggle("anheften", !!an);

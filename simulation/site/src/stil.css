@@ -108,7 +108,7 @@ html { scroll-padding-top: calc(var(--anheft, 0px) + 8px); }   /* G5-02, G6-02: 
 .diagramm { margin: 0; min-width: 0; }
 .diagramm-halter { position: relative; max-width: 780px; background: #fff; }
 #diagramm { display: block; width: 100%; height: auto; font-family: "Fira Sans", sans-serif; }
-.vorhersage-zeile { margin: 0.2rem 0 0; font-size: 0.85rem; color: #14603f; background: #e8f5ef; border: 1px solid var(--richtig); border-radius: var(--radius); padding: 0.1rem 0.4rem; display: inline-block; }
+.vorhersage-zeile { margin: 0.2rem 0 0; font-size: 0.85rem; color: var(--navy); background: var(--flaeche); border: 1px solid var(--navy-2); border-radius: var(--radius); padding: 0.1rem 0.4rem; display: inline-block; }
 .lesehinweis { font-size: 0.92rem; margin: 0.4rem 0 0; }
 .legende-mess, .flaechen { font-size: 0.88rem; color: var(--neben); margin: 0.2rem 0 0; }
 .kernzahlen { display: none; }
@@ -196,7 +196,7 @@ html { scroll-padding-top: calc(var(--anheft, 0px) + 8px); }   /* G5-02, G6-02: 
 
 /* ab 768 px: Bild links, Knöpfe 180 px rechts */
 @media (min-width: 768px) {
-  .sim-raster { grid-template-columns: minmax(0, 780px) 180px; justify-content: start; }
+  .sim-raster { grid-template-columns: minmax(0, 780px) 240px; justify-content: start; }
   .regler-raster { grid-template-columns: minmax(0, 1fr) 300px; }
 }
 /* ab 1200 px: Regler in drei Spalten, Rechenwerte rechts (v8) */
@@ -243,3 +243,4 @@ input[type="text"] { border-color: #7d8fa1 !important; }                        
 @media (forced-colors: active) { #diagramm, .energie svg, .bilanz svg, .sym { forced-color-adjust: none; background: #fff; } }   /* G5-23 */
 @media (min-width: 1200px) { .sim-raster { grid-template-columns: minmax(0, 780px) minmax(0, 300px); } }   /* G6-06, G6-12 */
 .wertetabelle td { text-align: right; font-variant-numeric: tabular-nums; }   /* G6-31 */
+.frage-text-zu > summary { font-weight: 600; min-height: 44px; }   /* G7-03 */
