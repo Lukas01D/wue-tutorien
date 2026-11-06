@@ -264,5 +264,5 @@ input[type="text"] { border-color: #7d8fa1 !important; }                        
 .schalter, .karte > summary, .reiter-panel { overflow-wrap: anywhere; min-width: 0; }
 .schalter > span, .schalter { flex-wrap: wrap; }
 /* G6-R3-04: Zeile der Ersatzlegende bleibt frei, damit der Regler darunter beim Schieben nicht springt */
-.kurven-legende { min-height: 1.4em; }
-.kurven-legende[hidden] { display: block; visibility: hidden; }
+.kurven-legende { min-height: 1.7em; }
+.kurven-legende[hidden] { display: block !important; visibility: hidden; }

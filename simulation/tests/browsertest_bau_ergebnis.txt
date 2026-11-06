@@ -1,9 +1,9 @@
 Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-06
-Seite: simulation/site/index.html, SHA-256 1d90ce2f84349754592a5dd572a760a5d212cd3383bcafbeb1cceaf06e07292b
+Seite: simulation/site/index.html, SHA-256 10b428ef1803ff15aa0b8ab3e66683b7ccfeea90339cf9ff1304fbb22ac5e878
 
-ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  399063 Bytes
-ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  399063 Bytes
-ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-TLF1Nl8/1+E0b1oh7w2+3…
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  421795 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  421795 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-RgShxLg6lng8TnRAMcISY…
 ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
 ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
 ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
@@ -30,10 +30,10 @@ ok    B26 P4: Minus-Knopf ändert die Zugabe (56 min)
 ok    B27 P5: Frage 2 ohne Kurswerte: Prüfen gesperrt, Überspringen angeboten
 ok    B28 Sperre Frage 2 (G1-01, G4-01, G7-01): mit geladenen Kurswerten keine Messpunkte vor der Vorhersage zu Frage 2  0 Punkte
 ok    B29 P5: mit Kurswerten und Auswahl ist Prüfen aktiv
-ok    B30 P6: Übernahme beim Prüfen (Mittel Becher 2 bei 0 und 10 min, kA aus der Messung, Becher an, 60 min, Raum 21,5, Milch 6)  {"kAQuelle":"messung","kA":0.340247764980112,"kAHerkunft":"messung","milch2Raum":false,"becher":true,"tEnd_min":60,"VK_ml":200,"thK0":80,"VM_ml":30,"t
+ok    B30 P6: Übernahme beim Prüfen (Mittel Becher 2 bei 0 und 10 min, kA aus der Messung, Becher an, 60 min, Raum 21,5, Milch 6)  {"kAQuelle":"messung","kA":0.340247764980112,"kAHerkunft":"messung","milch2Raum":false,"becher":true,"thMessErsatz":false,"thMessEigen":null,"tEnd_min
 ok    B31 P6: Rechenwerte nach Übernahme gleich der Referenz  0,4332 / 3,07
 ok    B32 P6: 15 Messpunkte im Diagramm (7 Becher 1, 8 Becher 2), Legende nennt nur gemessene Becher  15 Punkte
-ok    B33 P7: Pflichtweg fertig, Knopf „Vertiefung öffnen“
+ok    B33 P7: Pflichtweg fertig erst nach geöffneter Auflösung, mit Kernsatz und Knopf „Vertiefung öffnen“
 ok    B34 Neuladen: Antworten, Einstellungen, Kurswerte und Ansicht bleiben
 ok    B35 Sprachwechsel: Zustand bleibt (außer Sprache), Zahlen mit Punkt, Fokus auf dem Umschalter, lang=en  35.62 / 0.4332
 ok    B36 Sprachwahl bleibt beim Neuladen
@@ -41,7 +41,7 @@ ok    B37 Vertiefung öffnen: Frageleiste bei V1, Vertiefung offen, Ansichten si
 ok    B38 Ansicht ln: kA der Ursprungsgeraden aus Becher 2 gleich der unabhängigen Rechnung (6 Punkte)  kA aus allen Punkten vor der Milch (Becher 2): 0,3701 WK (Gerade durch den Ursprung, 6 Punkte, 10 bis 60 min);
 ok    B39 Ansicht ln mit Becher 3: Becher 2 und 3, 12 Punkte, gleich der Referenz  kA aus allen Punkten vor der Milch (Becher 2 und Becher 3): 0,3707 WK (Gerade durch den Ursprung, 12 Punkte, 1
 ok    B40 Übernahme mit Becher 3: Mittel aus Becher 2 und 3; Rechenwerte inkl. Becher 3 gleich der Referenz  33,99
-ok    B41 Ansicht Wärmestrom (Standardwerte): Teilflächen mit Vorzeichen gleich der Referenz (3,70 und −0,01 kJ), Summe Q2 − Q1  vor dem Schnitt: Tasse 2 gibt mehr ab: 3,70 kJ · nach dem Schnitt: Tasse 2 gibt weniger ab: −0,01 kJ · Q2−Q1 = 3,69 kJ (Summe beider Teilflä
+ok    B41 Ansicht Wärmestrom (Standardwerte): Teilflächen mit Vorzeichen gleich der Referenz (3,70 und −0,01 kJ), Summe Q2 − Q1  vor dem Schnitt der Wärmeströme: Tasse 2 gibt mehr ab: 3,70 kJ · nach dem Schnitt der Wärmeströme: Tasse 2 gibt weniger ab: −0,01 kJ · Q2−Q1
 ok    B42 Ansicht Wärmestrom: zwei verschieden schraffierte Teilflächen
 ok    B43 Pflichtweg und Vertiefung: keine Konsolenfehler
 ok    B44 Vertiefung vor Frage 1: Hinweis „für danach gedacht“, nicht gesperrt
@@ -73,7 +73,7 @@ ok    B69 Speicher gesperrt: Hinweis „nicht gespeichert“, Seite bleibt bedie
 ok    B70 Umbruch: kein waagrechtes Scrollen bei 320 bis 1920 px, beide Sprachen, P0, P2, Vertiefung, Reiter (320 px = 400 % Zoom bei 1280 px)
 ok    B71 200 % Text bei 1366 px: kein waagrechtes Scrollen  1366 / 1366
 ok    B72 Zielgrößen bei 390 px: Knöpfe, Felder, Regler mindestens 44 px; Textverweise und Auswahl-Labels mindestens 24 px
-ok    B73 Anheften wirkt beim Bedienen: Diagramm oben sichtbar, Regler Milchtemperatur darunter frei (390×844)  0, 328, 800, 844, 844
+ok    B73 Anheften wirkt beim Bedienen: Diagramm oben sichtbar, Regler Milchtemperatur darunter frei (390×844)  0, 378, 800, 844, 844
 ok    B74 Diagramm angeheftet nur im Hochformat mit genug Höhe (390×844 sticky; 390×420 wie mit Tastatur und 844×390 nicht)  sticky, relative, relative
 ok    B75 Reiter mit Tastatur (Pfeile, Pos1, Ende), Auswahl und Fokus folgen, ein Panel sichtbar  tab-modell/tab-modell/panel-modell | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche | tab-code/tab-code/panel-code | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche
 ok    B76 Tastatur: erster Tab „Zum Inhalt springen“, Fokus sichtbar  sprung, solid
@@ -90,11 +90,11 @@ ok    B86 G1-10, G7-10, G8-04: Kurslink im schon offenen Tab löst die Rückfrag
 ok    B87 G7-02, G8-01: zweiter Tab überschreibt nichts; der erste Tab übernimmt den Speicherstand  de/de
 ok    B88 G8-07: Kurslink endet nicht auf Komma (Kopfwerte am Ende) und wird wieder gelesen  39.6,35.2;u:21.5;m:6;d:0;b:1.2
 ok    B89 Korrekturen Runde 1: keine Konsolenfehler
-ok    B90 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 410, 419
-ok    B91 M-6: angehefteter Bereich höchstens 45 % der Höhe (320 × 568, 360 × 640, 390 × 844)  41.5 %, 38.5 %, 38.9 %
+ok    B90 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 460, 469
+ok    B91 M-6: angehefteter Bereich höchstens 45 % der Höhe (320 × 568, 360 × 640, 390 × 844); bei 640 und 844 px angeheftet  54.5 % (nicht angeheftet), 44.8 %, 44.8 %
 ok    B92 M-6: Anheften abschaltbar
-ok    B93 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  92 ms (gemessen im Cloud-Container)
-ok    B94 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.0 ms, 95 % 3.4 ms, Max 3.8 ms (Cloud)
-ok    B95 Leistung L4: Bedienfolge 30 s (1411 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.33 MB (Cloud)
+ok    B93 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  142 ms (gemessen im Cloud-Container)
+ok    B94 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.8 ms, 95 % 4.5 ms, Max 6.5 ms (Cloud)
+ok    B95 Leistung L4: Bedienfolge 30 s (1236 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.21 MB (Cloud)
 
 Ergebnis: 95 von 95 Prüfungen bestanden.

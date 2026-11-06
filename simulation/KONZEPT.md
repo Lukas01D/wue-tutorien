@@ -379,6 +379,26 @@ Größte Posten: Barrierefreiheit mit Tests und die zweite Sprache. Was nur „k
 
 **Offene Punkte nach dieser Fassung:** (1) Vorabmessung der TL als Tabelle (für S-9 und, falls gewünscht, für eine Voreinstellung „Thermobecher mit Deckel“). (2) Ob Becher 3 im neuen Versuch bleibt. (3) Die Hinweise der Lösung sagen noch „Datei vorab an die Studierenden verteilen“, und der Versuch auf dem Blatt endet bei 40 min; beides ändert ein eigener Auftrag (Blatt und Lösung sind hier nicht geändert). (4) Zeitmessung des Pflichtwegs mit zwei Studierenden.
 
+### 12.1 Entscheidungen der TL zum Bau (06.11.2026) *(nach dem Baubericht, Fragen F1 bis F14)*
+
+Die TL hat am 06.11.2026 entschieden: „F1 bis F12 wie von dir empfohlen. F13 folgt, sobald ich meine Vorabmessung habe. F14 ja.“ Damit gelten folgende Änderungen an den Texten aus Abschnitt 6 und Anhang A. Maßgeblich ist der Wortlaut in `simulation/site/src/texte_de.txt` und `texte_en.txt` (Schlüssel in Klammern); die Abschnitte 6 und A oben sind nicht nachgezogen.
+
+| Nr. | Änderung | Schlüssel |
+|:--|:--|:--|
+| F1 | drei Reiter, erster heißt „Versuche“ (E6 damit erledigt) | `reiter_versuche` |
+| F2 | Sitzung mit Versuch bis 60 min (E8); Blatt bei der nächsten Überarbeitung der Kaffee-Aufgabe angleichen | keine Änderung der Seite |
+| F3, F6 | Startkarte mit dem Satz des Mitbewohners (Wortlaut aus Anhang A.5); Auflösung zum Start: „Erhalten bleibt die Energie von Kaffee, Milch und Raum zusammen; jede Tasse gibt Wärme an den Raum ab. Tasse 2 war fast bis zur Zugabe (bis etwa 56 min) heißer …“ | `start_text`, `aufl_start` |
+| F4 | Frage 1 zuerst offen („Wie ändert sich der Unterschied …? Bei welchem Zeitpunkt der Zugabe ist er ungefähr am größten?“); „Prüft dann: … Warum wird der Unterschied bei späterer Zugabe wieder kleiner?“ erst nach dem Festhalten | `f1_text`, `f1_auftrag` |
+| F5 | Frage 2 je Zustand; „Die Einstellungen werden beim Prüfen aus den Messwerten übernommen.“ | `f2_text`, `f2_text_mit` |
+| F7 | Startfrage bleibt | |
+| F8 | Abschluss erst nach geöffneter Auflösung von Frage 2, mit Kernsatz (Abschnitt 3) und Erhaltungssatz; Auflösung V1 mit Begründung (Sätze aus G4-15) | `fertig_pflicht`, `aufl_v1` |
+| F9 | zweite Teilfragen von V1, V3, V5 als „Notiert für euch“; V4 nennt „*kA* von Tasse 1 relativ“ (105 %) und den Regler *kA* (±10 %); V5 „Nach den Richtwerten (*) …“ | `v1_text`, `v3_text`, `v5_text`, `v4_text`, `aufl_v5` |
+| F10 | Auflösung Frage 2 bleibt | |
+| F11 | Reiter „Modell“ vor der Startvorhersage ganz verdeckt (auch „Physikalisches Problem“); Sätze zum Schnitt in Lesehilfe (A.2) und Rechenweg (A.8) erst nach der Vorhersage zu Frage 1 | `lesen_kreis_*`, `lesen_strom_*`, `rechenweg_zugabe*` |
+| F12 | Rechenweg mit $C_\mathrm{GB}$ bei Becher (auch X5-02); Lesehilfe „(bei Standardwerten)“; „Schnitt der Temperaturkurven“ und „Schnitt der Wärmeströme“; Annahmentext „belegt sind …“ mit τ ≈ 41 min und Faktor 0,56; Satz zur Ansicht „Wärmestrom“ in der Auflösung zu Frage 1; „Wärmeabgabe *kA*“ und „Frage 1, Frage 2“ bleiben | `text_rechenweg`, `text_lesen`, `rw_schnitt`, `flaeche_*`, `text_annahmen`, `aufl_f1` |
+| F13 | Vorabmessung folgt | offen |
+| F14 | X5 auf dem übergebenen Stand, danach gemeinsame Korrekturrunde | `simulation/X5_ANTWORT.md` |
+
 ## Anhang A: Texte der Reiter (deutsch, du-Form)
 
 *(F2: E5: alle Texte von „Sie“ auf „du“ umgestellt; F2: K3, K10: Antworten aus A.2 und A.8 in die Auflösungen verschoben, Bedingungen ergänzt)* Formeln in MathML oder HTML (Formelzeichen kursiv, beschreibende Indizes aufrecht nach Ä24). Zahlen in eckigen Klammern setzt der Bau aus dem Modell ein. Englische Fassung nach Anhang C.

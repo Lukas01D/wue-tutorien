@@ -293,6 +293,7 @@
       else meldung = t("ausgangslage_gesetzt", { was: nurText(t(f.ausgang)) });
     }
     if (a.fest && f.id === "start") S.aktuell = "f1";
+    frageleisteZeichnen.zuletzt = Date.now();      // G8-R3-02: zweiter Tipp trifft nach dem Neuaufbau nicht „Zurück“ oder „Weiter“
     sichern(); alles();
     if (meldung) $("knopf-info").textContent = meldung;
     if (a.fest) { ansagen(ohne ? "ohne" : true); $("simulation").scrollIntoView({ block: "start" }); }
@@ -486,7 +487,11 @@
               s.push('<line x1="' + lx.toFixed(1) + '" y1="' + ly.toFixed(1) + '" x2="' + (sx - dx / dl * 6.5).toFixed(1) + '" y2="' + (sy - dy / dl * 6.5).toFixed(1) + '" stroke="#142337" stroke-width="1"/>');
             }
             s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>"); belegt.push([wahl[0], wahl[1] - fs, bw, fs + 4]);
-          } else schnittInLegende = true;      // letzter Ersatz: „Schnitt“ in der Legende unter dem Diagramm
+          } else {      // letzter Ersatz: Beschriftung mit weißem Rand an der ersten Stelle im Feld, die keine andere Beschriftung trifft
+            const ers = kand.find(([x0, yb]) => x0 >= L + 2 && x0 + bw <= W - Rr + 6 && yb - fs >= O && yb <= H - U - 2 && !belegt.some(q => x0 < q[0] + q[2] && x0 + bw > q[0] && yb - fs < q[1] + q[3] && yb + 2 > q[1]));
+            if (ers) { s.push('<text x="' + ers[0].toFixed(1) + '" y="' + ers[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337" stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">' + esc(txt) + "</text>"); belegt.push([ers[0], ers[1] - fs, bw, fs + 4]); }
+            else schnittInLegende = true;      // „Schnitt“ in der Legende unter dem Diagramm
+          }
         }
         if (S.ansicht.trinkzeit && S.ansicht.vertiefung) {      // K-3 Trinkzeit: Linie bei 60 °C, Marken an den Kurven
           const yT = Y(TRINK);
@@ -497,15 +502,17 @@
             for (const tt of [tr.tasse1, tr.schwarz]) if (tt > 0 && tt < tz) belegt.push([X(tt) - 3, yT - 7, 6, 14]);
             let tx = W - Rr - tw, ty = yT - 5;
             // G6-R3-05: Platz frei von Kurven, Raumlinie, Messpunkten und Marken; über oder unter der Linie
-            const xs0 = [W - Rr - tw, L + 6, (L + W - Rr - tw) / 2, L + (W - L - Rr - tw) * 0.25, L + (W - L - Rr - tw) * 0.75];
-            suche: for (const yb of [yT - 5, yT + fs + 4]) for (const x0 of xs0) {
+            const xs0 = [1, 0, 0.5, 0.25, 0.75, 0.125, 0.375, 0.625, 0.875].map(f => f === 0 ? L + 6 : L + 6 + (W - Rr - tw - L - 6) * f);
+            let gefunden = false;
+            suche: for (const yb of [yT - 5, yT + fs + 4, yT - fs - 9, yT + 2 * fs + 8]) for (const x0 of xs0) {
               let frei = yb - fs > O && yb < H - U - 2;
               for (let i = 0; i <= 12 && frei; i++) { const tt = (x0 + tw * i / 12 - L) / (W - L - Rr) * xMax; if (tt >= 0 && tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk > yb - fs - 3 && yk < yb + 4) frei = false; } }
               if (raumY !== null && raumY > yb - fs - 3 && raumY < yb + 4) frei = false;
               if (belegt.some(b => x0 < b[0] + b[2] && x0 + tw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) frei = false;
-              if (frei) { tx = x0; ty = yb; break suche; }
+              if (frei) { tx = x0; ty = yb; gefunden = true; break suche; }
             }
-            s.push('<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" font-size="' + fs + '" fill="#14603f">' + esc(tl) + "</text>");
+            // ohne freien Platz: weißer Rand um die Schrift, damit sie über einer Linie lesbar bleibt
+            s.push('<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" font-size="' + fs + '" fill="#14603f"' + (gefunden ? "" : ' stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"') + ">" + esc(tl) + "</text>");
             for (const [tt, k] of [[tr.tasse1, R.kurve1], [tr.schwarz, R.kurve2]]) if (tt > 0 && tt < tz) s.push('<line x1="' + X(tt).toFixed(1) + '" x2="' + X(tt).toFixed(1) + '" y1="' + (yT - 6).toFixed(1) + '" y2="' + (yT + 6).toFixed(1) + '" stroke="#14603f" stroke-width="2"/>');
             belegt.push([tx, ty - fs, tw, fs + 4]);
           }

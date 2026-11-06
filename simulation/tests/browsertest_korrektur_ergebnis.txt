@@ -1,0 +1,32 @@
+Korrekturrunde nach X5, 2026-11-06, Chromium im Cloud-Container
+ok    K01 X5-01 V3 nach Frage 2 mit Kurswerten: vor der Vorhersage keine Becher-Lage (Rechenwerte ohne 3,08 K), Standardwerte angesagt  becher=false · Rechenwerte direkt nach der Zugabe nach 60 min Tasse 1 ϑ134,05 °CTasse 2 ϑ230,1
+ok    K02 X5-02 So rechnet der Code: Energiedifferenz und Ableitung nennen C_GB mit Becher (DE und EN)  C_GB in DE 2, EN 2
+ok    K03 X5-03 Quellenwechsel: eigene Messung 66,5 °C wird nicht als Messung überschrieben; Ersatzwert gekennzeichnet; außerhalb des Bereichs abgelehnt  Eigen 66.5, Ersatz true, Name „Gleichwertiger Wert nach 10 mi“; außerhalb: Quelle fest, kA 1.0000000000000002 → 1.0000000000000002
+ok    K04 X5-04 Fokus nicht verdeckt bei 768 × 1024 und 32 px Grundschrift (Vertiefung, vorwärts und rückwärts)  0 von 93 Fokusstopps teilweise unter der Kernleiste
+ok    K05 X5-05 200 % Text: kein waagerechter Überlauf und keine Regler mit Breite 0 (320, 360, 390, 768, 1024 px)  320/320/0 360/360/0 390/390/0 768/768/0 1024/1024/0
+ok    K06 X5-06 Schnittkreis immer mit Beschriftung im Diagramm (6 Breiten, DE und EN, 19 Einstellungen)  0 von 168 ohne Beschriftung 
+ok    K07 X5-07 Messblatt nimmt höchstens zwei Nachkommastellen an (wie der Kurslink); Link hin und zurück ohne Verlust  u null, m 6.12, b2[0] null, Link ok
+ok    K08 X5-08 Sprachwechsel übersetzt die stehende Fehlermeldung und den Hinweis zu einem fremden Link  DE „Der Messwert nach 10 min muss zwischen R“ EN „The measured value after 10 min must lie“ Link „This link does not contain class data fo“
+ok    K09 X5-09 Angeheftetes Diagramm: kleinste Schrift mindestens 10 px (320 × 640 bis 412 × 915)  an 11, an 11, an 11, an 11, an 11
+ok    K10 X5-10 Angehefteter Bereich höchstens 45 % auch bei 125 bis 200 % Grundschrift  (aus)44.6 (aus)45.6 37.2 (aus)45.7 (aus)45.9 35.9 (aus)54.6 (aus)59.6 (aus)42.8
+ok    K11 X5-11 Fremdes Fragment: Hinweis und Entfernen aus der Adresse; eigener Sprunganker #hauptinhalt bleibt  Hinweis „Dieser Link enthält keine Kurswerte dies“, Adresse „“; #hauptinhalt: Hinweis false
+ok    K12 F3, F6 Startkarte mit Mitbewohner; Auflösung zum Start mit Erhaltung und „bis etwa 56 min“  Eure Vorhersage: Tasse 1 (Milch sofort), etwa 4 K · Auswahl passtEure Zahl: 4 K · Modell: 3,85 K (Standardwerte)Tasse 1,
+ok    K13 F4, G10-03 Frage 1: Vorhersage offen gefragt, „wieder kleiner“ erst nach dem Festhalten sichtbar  Prüft dann: Verschiebt die Zugabe der Milch in Tasse 2. Warum wird der Unterschied bei späterer Zuga
+ok    K14 F5 Frage 2: Wortlaut ohne und mit Kurswerten  hr sie prüfen könntet. Die Einstellungen werden beim Prüfen aus den Messwerten übernommen.
+ok    K15 F8, G4-16 Abschluss erst nach geöffneter Auflösung von Frage 2, mit Kernsatz; V1 beantwortet die Teilfrage  on Tasse 2 gerade aus. Je später die Zugabe, desto kälter ist Tasse 2 vorher und desto weniger warm muss die Milch sein.
+ok    K16 F9 V1, V3, V5 mit „Notiert für euch“; V4 nennt das Werkzeug (105 %); V5 nennt die Richtwerte  3× „Notiert für euch“
+ok    K17 F11, G1-16, G1-07 Modell vor dem Start ganz verdeckt; Sätze zum Schnitt in Modell und Code erst nach Frage 1  vor Start „Physikalisches ProblemDieser Teil erscheint, sobald ihr eure“
+ok    K18 F12 (G3-06, G3-07, G3-10) Lesehilfe „bei Standardwerten“, „Schnitt der Temperaturkurven“, Annahmentext mit τ ≈ 41 min und Faktor 0,56   Rechenwerte direkt nach der Zugabe nach 60 min Tasse 1 ϑ134
+ok    K19 G2-R3-01 Aufklapper der Frage heißt geöffnet „Frage ausblenden“  Frage ausblenden
+ok    K20 G4-R3-01 Übersprungene Frage 2: keine Aufforderung zum Laden und keine Ausgangslage mehr  Frage 2 von 2VersuchFrage zeigenNotiere zuerst für dich, dann einigt euch zu zweit: Liegen eure Messpunkte über, unter o
+ok    K21 G6-R3-04 Regler „Zugabe nach“ springt beim Schieben nicht (390 × 844, 1 bis 180 min)  896
+ok    K22 G6-R3-05 Beschriftung der Trinklinie 60 °C liegt nicht auf Kurven, Messpunkten oder Marken (390 px, mehrere Zugaben)  0 von 6 Lagen auf einer Kurve
+ok    K23 G7-R3-01 Becher 3 (Dreieck, Rechenwerte) erst nach der Vorhersage zu Frage 2  vor 0/false, nach 9/true
+ok    K24 G8-R3-01 Zweimal Enter auf „ohne Vorhersage aufdecken“ überspringt die Rückfrage nicht  f1 fest false, Rückfrage offen true
+ok    K25 G8-R3-02 Doppeltipp auf „Vorhersage festhalten“ (V3, 360 × 640) löst nicht „Zurück“ aus  aktuell v3, v3 fest true
+ok    K26 G8-R3-03 CSV: Messwert „60 nach der Milch“ auch bei anderer Zugabe; Meldung vor der Vorhersage ohne Modellkurven  CSV erstellt (nur das Messblatt; die Modellkurven kommen nac
+ok    K27 G10-06 Frage 2 vor ihrer Vorhersage zeigt nicht die Startvorhersage im Diagramm  „“
+ok    K28 G10-07 Bestätigung des Kurslinks lässt sich schließen  Knopf true
+ok    K29 G10-08 Knopf zum Anheften nennt die Aktion je Zustand (Name gleich sichtbarem Text, kein aria-pressed)  „Diagramm lösen“ → „Diagramm oben anheften“
+
+Ergebnis: 29 von 29 Prüfungen bestanden.

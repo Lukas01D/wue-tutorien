@@ -12,10 +12,10 @@ Die Seite hat einen Fortschritt je Gerät (im Browser gespeichert, Abschnitt 2).
 | P1 | **Vorhersage gewählt** | Auswahl einer Tasse | wie P0; Knopf „Vorhersage festhalten und Kurven zeigen“ wird aktiv. Das Feld „etwa … K“ und die Begründung sind freiwillig. | wie P0 |
 | P2 | **Freigabe** | Knopf in P1 | Kurven, Rechenwerte, Säulen „Energie bis zur Zugabe“, eigene Vorhersage als beschrifteter Kasten im Diagramm; Auftrag „Erklärt den Unterschied mit *Q*₁ und *Q*₂.“; in der Karte „Start“ der Knopf „Auflösung zeigen“; Frageleiste springt zu Frage 1 | Regler „Zugabe nach“ (gesperrt mit Hinweis „Erst eure Vorhersage zu Frage 1 festhalten“), Auflösung von Frage 1 und 2 |
 | P3 | **Frage 1 ungesehen** | nach P2 | Fragetext, Feld „… min“, Begründung, Knopf „Vorhersage festhalten, dann prüfen“ | Regler, Auflösung Frage 1 |
-| P4 | **Frage 1 geprüft** | Knopf in P3: hält die Vorhersage fest, stellt die Ausgangslage ein (Standardwerte) und sagt das an | Regler „Zugabe nach“ wirkt sofort; Auftrag „Stimmt eure Vorhersage? Erklärt zu zweit, warum.“; Knopf „Auflösung zeigen“; „Weiter zu Frage 2“ | Auflösung Frage 2 |
+| P4 | **Frage 1 geprüft** | Knopf in P3: hält die Vorhersage fest, stellt die Ausgangslage ein (Standardwerte) und sagt das an | Regler „Zugabe nach“ wirkt sofort; Auftrag „Prüft dann: Verschiebt die Zugabe … Warum wird der Unterschied bei späterer Zugabe wieder kleiner? Stimmt eure Vorhersage? Erklärt zu zweit, warum.“ *(geändert 06.11.2026, Entscheidung F4 der TL)*; Knopf „Auflösung zeigen“; „Weiter zu Frage 2“ | Auflösung Frage 2 |
 | P5 | **Frage 2 ungesehen** | „Weiter“ oder Frageleiste | Fragetext, Auswahl über, unter, auf den Kurven, mal so, mal so; Begründung; Hinweis auf die Kurswerte: geladen (Datum der Werte, Zahl der Messpunkte) oder „Noch keine Kurswerte“ mit „Messblatt öffnen“ und „Frage 2 überspringen (Versuch ausgefallen)“ | Auflösung Frage 2 |
 | P6 | **Frage 2 geprüft** | Knopf „Vorhersage festhalten, dann prüfen“; nur mit Kurswerten aktiv | Messpunkte im Diagramm, Einstellungen aus den Messwerten übernommen (Ausgangslage), Auftrag „Beschreibt, wo die Punkte liegen. Nennt eine mögliche Ursache und eine Messung, mit der ihr sie prüfen könntet.“; „Auflösung zeigen“ | nichts mehr gesperrt |
-| P7 | **Pflichtweg fertig** | nach P6 oder nach „überspringen“ | Hinweis „Geschafft. Weiter geht es in der Vertiefung.“ mit Knopf „Vertiefung öffnen“ | |
+| P7 | **Pflichtweg fertig** | nach P6, sobald die Auflösung von Frage 2 geöffnet ist, oder nach „überspringen“ *(F8)* | Hinweis „Geschafft. Kernsatz: Wer heißer ist, gibt mehr Wärme ab; deshalb Milch sofort. Erhalten bleibt die Energie von Tassen und Raum zusammen. Weiter geht es in der Vertiefung.“ *(F8)* mit Knopf „Vertiefung öffnen“ | |
 
 **Regeln:**
 
@@ -40,6 +40,12 @@ Jede Vertiefungsfrage V1 bis V6 hat die Zustände ungesehen, vorhergesagt und ge
 
 Die Regler der Vertiefung (Konzept S-2) sind nach P2 immer bedienbar, unabhängig vom Zustand der Vertiefungsfragen.
 
+*Ergänzt am 06.11.2026 (Korrekturrunde nach X5):*
+
+- **Öffnen einer Vertiefungsfrage ohne Vorhersage (X5-01):** Enthält die Einstellung schon die Bedingung der Frage (V1 Milch ab 30 °C, V2 Deckel, V3 Becher an, V4 *kA* von Tasse 1 ungleich 100 %, V5 andere Voreinstellung als Keramik), stellt die Seite die Standardwerte ein und sagt das an. Sonst bleibt die Einstellung.
+- **Sätze zum Schnitt (F11):** In „Modell“ (Lesehilfe: Kreis, Wärmestrom) und „So rechnet der Code“ (Absatz „Zeitpunkt der Zugabe“) erst nach der Vorhersage zu Frage 1.
+- **Quelle von *kA* (X5-03, Konzept 8.2 M8 und 8.5):** Der Wechsel auf „aus der Messung“ ändert die Kurven nicht. Passt die gespeicherte Messung nicht zum aktuellen *kA*, steht im Feld der gleichwertige Wert, beschriftet als „aus *kA* berechnet“, keine Messung; die eigene Messung bleibt gespeichert und lässt sich wieder verwenden. Liegt der gleichwertige Wert außerhalb von 30 bis 90 °C, bleibt die Quelle „festhalten“ mit Meldung.
+
 ## 3 Was die drei Reiter in jedem Zustand zeigen
 
 Zuordnung der Texte aus Konzept Anhang A siehe `VORBILD_LERNZENTRUM.md`, Abschnitt 7.
@@ -47,7 +53,7 @@ Zuordnung der Texte aus Konzept Anhang A siehe `VORBILD_LERNZENTRUM.md`, Abschni
 | Reiter | P0 und P1 | ab P2 |
 |:--|:--|:--|
 | **Versuche** (offen) | Satz „Erst vorhersagen, dann prüfen.“, Karte „Start“ aufgeklappt mit denselben Feldern wie die Startkarte; Karten Frage 1, Frage 2 und Vertiefung zugeklappt mit dem Hinweis „nach dem Start“; „Alle Fragen zurücksetzen“ | alle Karten; Auflösungen je Karte nach deren Vorhersage |
-| **Modell** (zu) | nur „Physikalisches Problem“ (ohne Ergebnis); die übrigen Abschnitte mit dem Hinweis „erscheint nach eurer Vorhersage auf der Startkarte“ | fünf zugeklappte Abschnitte: Physikalisches Problem, Annahmen, Was die Simulation macht, Regler und Einheiten, So liest du die Ergebnisse |
+| **Modell** (zu) | alle fünf Abschnitte nur mit dem Hinweis (F11: auch „Physikalisches Problem“ erst nach der Startvorhersage) „erscheint nach eurer Vorhersage auf der Startkarte“ | fünf zugeklappte Abschnitte: Physikalisches Problem, Annahmen, Was die Simulation macht, Regler und Einheiten, So liest du die Ergebnisse |
 | **So rechnet der Code** (zu) | Hinweis „erscheint nach eurer Vorhersage auf der Startkarte“ | Rechenweg (Bilanz, Lösung, *kA*, Mischen, Wärme, Zeitpunkt der Zugabe, *kA* festhalten, Ausgleichsgerade) und Beschreibung des Codes |
 
 Kein Text in „Modell“ oder „So rechnet der Code“ nennt eine Antwort auf Frage 1, Frage 2 oder eine Vertiefungsfrage (K10); diese stehen nur in den Auflösungen.
@@ -90,6 +96,7 @@ Speicher: `localStorage`, Schlüssel mit Vorsilbe `kaffee-sim-v2-` (Konzept 9.3)
 ## 6 Messblatt und Übernahme (M-7)
 
 - Zeilen fest: 0, 10, 20, 30, 40, 50, „60 vor der Milch“, „60 nach der Milch“ (min). Spalten: Becher 1 (Milch sofort), Becher 2 (Milch nach 60 min), Becher 3 (Milch bei Raumtemperatur, zuschaltbar).
+- Eingabe mit höchstens zwei Nachkommastellen wie im Kurslink; mehr gilt als ungültig mit Hinweis am Feld *(X5-07, 06.11.2026)*.
 - Becher 1 bekommt die Milch bei 0 min; seine Zeile „60 nach der Milch“ ist gesperrt.
 - **Übernahme** („Einstellungen aus den Messwerten übernehmen“, auch beim Prüfen von Frage 2): Anfangstemperatur = Mittel von Becher 2 (und 3, falls gezeigt) bei 0 min; Messung nach 10 min = Mittel bei 10 min; *kA*-Quelle „aus der Messung“; Becher an; Zugabe 60 min; Raum- und Milchtemperatur aus dem Messblatt. Wie D116: Mittelwerte ungerundet prüfen und unverändert übernehmen oder gar nicht, mit Meldung.
 - Fit (Vertiefung, M2): nur Zeilen 0 bis „60 vor der Milch“ von Becher 2 (und 3).
