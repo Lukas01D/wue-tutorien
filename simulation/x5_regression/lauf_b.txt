@@ -26,5 +26,5 @@ Speicher_gesperrt PASS Werte werden nicht gespeichert (Speicher im Browser gespe
 Offline_frisches_Profil_CSP PASS {'offline_requests': ['http://127.0.0.1:8765/simulation/site/index.html'], 'csp_inline_blocked': True, 'file': 'ERR_BLOCKED_BY_ADMINISTRATOR, separat beobachtet'}
 CSV_Download_DE_EN_Trinkzeit_Becherkalt PASS {'de': {'name': 'kaffee_simulation.csv', 'start': ['0', '70,47', '80,00', '', ''], 'ten': ['10', '60,78', '67,00', '', ''], 'end': ['60 nach der Milch', '34,05', '30,19', '', '']}, 'en': {'name': 'coffee_simulation.csv', 'start': ['0', '70.47', '80.00', '', ''], 'ten': ['10', '60.78', '67.00', '', ''], 'end': ['60 after the milk', '34.05', '30.19', '', '']}}
 WCAG_axe_4_11_0 PASS [{'state': 'P0', 'violations': [], 'incomplete_count': 1}, {'state': 'P4', 'violations': [], 'incomplete_count': 1}, {'state': 'Vertiefung', 'violations': [], 'incomplete_count': 1}, {'state': 'Code', 'violations': [], 'incomplete_count': 1}]
-Textschluessel_Gedankenstriche_Platzhalter PASS {'keys': 377, 'dashes': {'de': [], 'en': []}}
-Reglerfolge_30s_100ms PASS {'duration': 30.081728211000154, 'events': 262, 'max_ms': 14.5, 'median_ms': 3.099999999627471}
+Textschluessel_Gedankenstriche_Platzhalter PASS {'keys': 380, 'dashes': {'de': [], 'en': []}}
+Reglerfolge_30s_100ms PASS {'duration': 30.025295044000018, 'events': 261, 'max_ms': 10.800000000046566, 'median_ms': 3.099999999976717}

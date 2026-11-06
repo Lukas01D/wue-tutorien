@@ -13,13 +13,13 @@ ok    K11 X5-11 Fremdes Fragment: Hinweis und Entfernen aus der Adresse; eigener
 ok    K12 F3, F6, G1-R4-01 Startkarte mit Mitbewohner; Auflösung zum Start mit Erhaltung; „bis etwa 56 min“ erst nach der Vorhersage zu Frage 1  passtEure Zahl: 4 K · Modell: 3,85 K (Standardwerte)Tasse 1, 3,85 K (34,05 gegen 30,19 °C). Erhalten bleibt die Energie von Kaffee, Milch un
 ok    K13 F4, G10-03 Frage 1: Vorhersage offen gefragt, „wieder kleiner“ erst nach dem Festhalten sichtbar  Prüft dann: Verschiebt die Zugabe der Milch in Tasse 2. Warum wird der Unterschied bei späterer Zuga
 ok    K14 F5 Frage 2: Wortlaut ohne und mit Kurswerten  hr sie prüfen könntet. Die Einstellungen werden beim Prüfen aus den Messwerten übernommen.
-ok    K15 F8, G4-16 Abschluss erst nach geöffneter Auflösung von Frage 2, mit Kernsatz; V1 beantwortet die Teilfrage  on Tasse 2 gerade aus. Je später die Zugabe, desto kälter ist Tasse 2 vorher und desto weniger warm muss die Milch sein.
-ok    K16 F9 V1, V3, V5 mit „Notiert für euch“; V4 nennt das Werkzeug (105 %); V5 nennt die Richtwerte  3× „Notiert für euch“
+ok    K15 F8, G4-16 Abschluss erst nach geöffneter Auflösung von Frage 2, mit Kernsatz; V1 beantwortet die Teilfrage  e 1 bis dahin an den Raum abgegeben, während Tasse 2 sie erst bei der Zugabe bekommt; deshalb reicht dann kühlere Milch.
+ok    K16 F9, Q5 V1, V3, V5 mit „Notiert euch dazu“; V4 nennt das Werkzeug (105 %); V5 nennt die Richtwerte  3× „Notiert euch dazu“ (Wortlaut nach Q5)
 ok    K17 F11, G1-16, G1-07 Modell vor dem Start ganz verdeckt; Sätze zum Schnitt in Modell und Code erst nach Frage 1  vor Start „Physikalisches ProblemDieser Teil erscheint, sobald ihr eure“
 ok    K18 F12 (G3-06, G3-07, G3-10) Lesehilfe „bei Standardwerten“, „Schnitt der Temperaturkurven“, Annahmentext mit τ ≈ 41 min und Faktor 0,56   Rechenwerte direkt nach der Zugabe nach 60 min Tasse 1 ϑ134
 ok    K19 G2-R3-01 Aufklapper der Frage heißt geöffnet „Frage ausblenden“  Frage ausblenden
 ok    K20 G4-R3-01 Übersprungene Frage 2: keine Aufforderung zum Laden und keine Ausgangslage mehr  Frage 2 von 2VersuchFrage zeigenNotiere zuerst für dich, dann einigt euch zu zweit: Liegen eure Messpunkte über, unter o
-ok    K21 G6-R3-04 Regler „Zugabe nach“ springt beim Schieben nicht (390 × 844, 1 bis 180 min)  928
+ok    K21 G6-R3-04 Regler „Zugabe nach“ springt beim Schieben nicht (390 × 844, 1 bis 180 min)  876
 ok    K22 G6-R3-05 Beschriftung der Trinklinie 60 °C liegt nicht auf Kurven, Messpunkten oder Marken (390 px, mehrere Zugaben)  0 von 6 Lagen auf einer Kurve
 ok    K23 G7-R3-01 Becher 3 (Dreieck, Rechenwerte) erst nach der Vorhersage zu Frage 2  vor 0/false, nach 9/true
 ok    K24 G8-R3-01 Zweimal Enter auf „ohne Vorhersage aufdecken“ überspringt die Rückfrage nicht  f1 fest false, Rückfrage offen true
@@ -42,5 +42,7 @@ ok    K40 G5-R4-01, G5-R4-02 Keine zwei Beschriftungen im Diagramm überdecken s
 ok    K41 G5-R4-04 Abgelehnter Wechsel der kA-Quelle: Meldung in der bleibenden Ansage und am fieldset verknüpft  Nicht umgestellt: Zu diesem kA gehört nach 10 min ein Wert v
 ok    K42 G5-R4-05 Messblatt Raum- und Milchtemperatur: Fehler mit Feldname, aria-describedby und rotem Rand  mess-fehler | Raumtemperatur [°C]: Höchstens zwei Nachkommastellen (wie im Kurslink). | rgb(182, 52, 52)
 ok    K43 G5-R4-06 Schrift zur Laufzeit vergrößert: überlaufende Tabellen bekommen Tastaturzugang und Namen  true,true
+ok    K44 Beamer (Gestaltungsprüfung) 1280 × 720 und 1366 × 768: nach der Startvorhersage Frageleiste und ganzes Diagramm im Bild, nach Frage 1 zusätzlich der Regler „Zugabe nach“  1280de: P3 668, P4 586/685; 1280en: P3 668, P4 586/685; 1366de: P3 716, P4 634/733; 1366en: P3 716, P4 634/733
+ok    K45 Q2 bis Q7 Entscheidungen der TL: V1-Begründung (Q1 = Q2), allgemeine Sätze zum Wärmestrom, Kernsatz „kalte Milch“, „Notiert euch dazu“, Prüfhinweis V1 und Auftrag nach „ohne Vorhersage“, „Ferreira 2025“
 
-Ergebnis: 43 von 43 Prüfungen bestanden.
+Ergebnis: 45 von 45 Prüfungen bestanden.

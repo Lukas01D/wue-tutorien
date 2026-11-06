@@ -87,10 +87,10 @@ Hinweis: Ein Link, den alle öffnen können, braucht die veröffentlichte Adress
 
 ## 9 Auflösungen der Fragen
 
-Wortlaut wie auf der Seite (Konzept 6 mit den Entscheidungen F3 bis F12 der TL vom 06.11.2026, Konzept 12.1), Zahlen aus dem Modell; erzeugt aus `simulation/site/src/texte_de.txt`.
+Wortlaut wie auf der Seite (Konzept 6 mit den Entscheidungen F3 bis F12 und Q1 bis Q7 der TL vom 06.11.2026, Konzept 12.1), Zahlen aus dem Modell; erzeugt aus `simulation/site/src/texte_de.txt`.
 
 **Start.** *Beide Tassen stehen 60 min, die Milch kommt aus dem Kühlschrank. Dein Mitbewohner meint: „Ob man die Milch sofort oder später hineingießt, ist egal. Die Energie bleibt ja erhalten.“ Welche Tasse ist nach 60 min wärmer, und um etwa wie viel?*
-Tasse 1, 3,85 K (34,05 gegen 30,19 °C). Erhalten bleibt die Energie von Kaffee, Milch und Raum zusammen; jede Tasse gibt Wärme an den Raum ab. Tasse 2 war fast bis zur Zugabe (bis etwa 56 min) heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: $Q_2 - Q_1$ = 3,69 kJ; 3,69 kJ geteilt durch 957,7 J/K (Kaffee und Milch) sind 3,85 K.
+Tasse 1, 3,85 K (34,05 gegen 30,19 °C). Erhalten bleibt die Energie von Kaffee, Milch und Raum zusammen; jede Tasse gibt Wärme an den Raum ab. Tasse 2 war fast bis zur Zugabe heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: $Q_2 - Q_1$ = 3,69 kJ; 3,69 kJ geteilt durch 957,7 J/K (Kaffee und Milch) sind 3,85 K. Nach der Vorhersage zu Frage 1 steht zusätzlich „(bis etwa 56 min)“ hinter „fast bis zur Zugabe“ (Entscheidung Q1).
 
 **Frage 1 Zeitpunkt.** *Wie ändert sich der Unterschied zwischen den Tassen, wenn die Milch später in Tasse 2 kommt? Bei welchem Zeitpunkt der Zugabe ist er ungefähr am größten? Nach dem Festhalten: Prüft dann: Verschiebt die Zugabe der Milch in Tasse 2. Warum wird der Unterschied bei späterer Zugabe wieder kleiner?*
 Etwa nach 56 min (3,86 K; die Anzeige zeigt 3,86 K von 53 bis 59 min), genau am Schnittpunkt der Kurven. Solange der schwarze Kaffee wärmer ist als Tasse 1, gibt er mehr Wärme ab, und der Unterschied wächst; danach gibt er weniger ab. Der Unterschied geht nicht gegen null: Grenzwert 1,91 K (20 °C gegen 18,09 °C), weil die kalte Milch Tasse 2 beim Mischen erneut abkühlt. Seht euch in der Vertiefung in der Ansicht „Wärmestrom“ die Fläche zwischen den Kurven an.
@@ -98,21 +98,21 @@ Etwa nach 56 min (3,86 K; die Anzeige zeigt 3,86 K von 53 bis 59 min), genau am 
 **Frage 2 Versuch.** *Liegen eure Messpunkte über, unter oder auf den Kurven des Modells, oder mal so, mal so? Prüft dann: Beschreibt, wo die Punkte liegen. Nennt eine mögliche Ursache und eine Messung, mit der ihr sie prüfen könntet. Die Einstellungen werden beim Prüfen aus den Messwerten übernommen. (Ohne Kurswerte steht stattdessen: „Prüft dann: Ladet die Messwerte eures Kurses (Link der Tutoriumsleitung). Die Einstellungen werden beim Prüfen aus den Messwerten übernommen. …“)*
 Hängt von eurer Messung ab. Häufig beim offenen Becher und *kA* aus den ersten 10 min: Spätere Punkte liegen über den Kurven. Mögliche Ursachen: Die Wärmeabgabe wächst stärker als linear mit $\vartheta - \vartheta_\mathrm{u}$ (Verdunstung, freie Konvektion), die Raumtemperatur stimmt nicht, Anlauf beim Eingießen (Becher nicht ganz vorgewärmt), Lage des Thermometers, ungleiche Becher. Prüfende Messungen: Becher mit Deckel, Raumtemperatur neben den Bechern, gleiche Unterlage, Messreihe in der Ansicht „ln“ (Vertiefung). Der Unterschied zwischen Becher 1 und 2 passt oft besser als die Einzelwerte.
 
-**V1 Milchtemperatur.** *Wie warm müsste die Milch sein, damit beide Tassen nach 60 min ungefähr gleich warm sind? Notiert für euch: Hängt diese Temperatur vom Zeitpunkt der Zugabe ab?*
-47,0 °C; 60,9 °C bei Zugabe nach 30 min, 37,3 °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei 47,0 °C gleicht die wärmere Milch den Mehrverlust von Tasse 2 gerade aus. Je später die Zugabe, desto kälter ist Tasse 2 vorher und desto weniger warm muss die Milch sein.
+**V1 Milchtemperatur.** *Wie warm müsste die Milch sein, damit beide Tassen nach 60 min ungefähr gleich warm sind? Notiert euch dazu: Hängt diese Temperatur vom Zeitpunkt der Zugabe ab? Nach dem Festhalten: Prüft mit dem Regler Milchtemperatur (Abschnitt Milch).*
+47,0 °C; 60,9 °C bei Zugabe nach 30 min, 37,3 °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei 47,0 °C gibt Tasse 1, in der die warme Milch von Anfang an ist, bis zur Zugabe genauso viel Wärme ab wie der schwarze Kaffee in Tasse 2 ($Q_1 = Q_2$); die Milch selbst bringt in beide Tassen dieselbe Energie. Je später die Zugabe, desto mehr von der Wärme der warmen Milch hat Tasse 1 bis dahin an den Raum abgegeben, während Tasse 2 sie erst bei der Zugabe bekommt; deshalb reicht dann kühlere Milch.
 
 **V2 Deckel.** *Mit Deckel kühlen beide Tassen langsamer ab. Wird der größte mögliche Unterschied größer, kleiner oder bleibt er gleich? Wann tritt er ein? Wähle bei *kA* „Keramik mit Deckel“ und suche wie in Frage 1 den Zeitpunkt mit dem größten Unterschied.*
 Gleich groß (3,86 K), aber später: bei Zugabe nach etwa 100 min statt 56 min (Anzeige 3,86 K von 94 bis 106 min). Nach 60 min ist der Unterschied mit Deckel kleiner (3,51 K). Grund: *kA* steht nur im Produkt *kA t*; der Deckel streckt die Zeitachse. Gilt bei gleichem *kA* beider Tassen.
 
-**V3 Becher.** *Die Tassen sind vorgewärmte Keramikbecher wie in Teil g. Wird der Unterschied größer oder kleiner? Notiert für euch: Bleibt Tasse 1 wärmer?*
+**V3 Becher.** *Die Tassen sind vorgewärmte Keramikbecher wie in Teil g. Wird der Unterschied größer oder kleiner? Notiert euch dazu: Bleibt Tasse 1 wärmer?*
 Kleiner: 3,08 statt 3,85 K; die abgegebene Wärme steigt (46,60 und 50,34 kJ statt 34,88 und 38,57 kJ), weil der Becher mit abkühlt; Tasse 1 bleibt wärmer.
 
 **V4 Versuchsplan.** *Becher 1 hat 5 % mehr *kA* als Becher 2 (andere Unterlage); oder *kA* beider Becher ist um 10 % falsch bestimmt. Was verfälscht den Unterschied mehr? Prüft mit „*kA* von Tasse 1 relativ“ (105 %) und mit dem Regler *kA* (±10 %).*
 Ungleiches *kA*: Der Unterschied sinkt von 3,85 auf 2,98 K. Falsches *kA* beider Becher ändert ihn um höchstens 0,04 K. Gleiche Becher und Bedingungen zählen mehr als ein genaues *kA*.
 
-**V5 Welcher Becher?.** *Welcher Becher hält den Kaffee am längsten warm? Notiert für euch: Ändert sich damit der größte mögliche Unterschied zwischen den Tassen? Probiere die Voreinstellungen bei *kA* aus.*
+**V5 Welcher Becher?.** *Welcher Becher hält den Kaffee am längsten warm? Notiert euch dazu: Ändert sich damit der größte mögliche Unterschied zwischen den Tassen? Probiere die Voreinstellungen bei *kA* aus.*
 Am längsten der Thermobecher offen (Richtwert: von 80 auf 63,5 °C in 30 min statt auf 48,8 °C), dann Keramik mit Deckel. Der größte Unterschied bleibt 3,86 K, er kommt nur später (Thermobecher offen nach etwa 127 min). Nach den Richtwerten (*) sind Glas und Pappe etwa wie Keramik: Die Wand ist nicht der große Widerstand, entscheidend sind offene Oberfläche und Abstrahlung.
 
-Nach geöffneter Auflösung von Frage 2: „Geschafft. Kernsatz: Wer heißer ist, gibt mehr Wärme ab; deshalb Milch sofort. Erhalten bleibt die Energie von Tassen und Raum zusammen. Weiter geht es in der Vertiefung.“
+Nach geöffneter Auflösung von Frage 2: „Geschafft. Kernsatz: Wer heißer ist, gibt mehr Wärme ab; deshalb kalte Milch sofort. Erhalten bleibt die Energie von Tassen und Raum zusammen. Weiter geht es in der Vertiefung.“
 
 (V6 „Trinken“ gehört zum Kann-Punkt K-6 und ist nicht gebaut.)

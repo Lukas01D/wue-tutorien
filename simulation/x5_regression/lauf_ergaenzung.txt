@@ -3,42 +3,42 @@
     {
       "case": "standard",
       "points": 484,
-      "max_error_svg": 0.06411042926183086
+      "max_error_svg": 0.0589186287592014
     },
     {
       "case": "100ml",
       "points": 484,
-      "max_error_svg": 0.0867742901531443
+      "max_error_svg": 0.0665490479820221
     },
     {
       "case": "400ml",
       "points": 484,
-      "max_error_svg": 0.05855176522820216
+      "max_error_svg": 0.05670421724038022
     },
     {
       "case": "milch65",
       "points": 484,
-      "max_error_svg": 0.06411042926183086
+      "max_error_svg": 0.0589186287592014
     },
     {
       "case": "raum10",
       "points": 484,
-      "max_error_svg": 0.0711152715030039
+      "max_error_svg": 0.09120838861047531
     },
     {
       "case": "105prozent",
       "points": 484,
-      "max_error_svg": 0.06411042926183086
+      "max_error_svg": 0.0589186287592014
     },
     {
       "case": "kA05",
       "points": 484,
-      "max_error_svg": 0.05177031128152976
+      "max_error_svg": 0.052264766006793195
     },
     {
       "case": "kA1",
       "points": 484,
-      "max_error_svg": 0.1013066232542883
+      "max_error_svg": 0.07527536755088704
     }
   ],
   "measured_replaced": {

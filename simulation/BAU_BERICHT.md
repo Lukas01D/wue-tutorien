@@ -1,6 +1,6 @@
 # Baubericht: Simulation „Kaffee mit Milch“
 
-> Bau durch Claude nach `simulation/BAU_AUFTRAG.md` (Stand 6526feb, Rollentausch, Entscheidung der TL vom 05.11.2026). Grundlage: `simulation/KONZEPT.md` Fassung 2 (93cb32e). Teile 0 bis 7 abgeschlossen am 06.11.2026, danach Korrekturrunde nach der Abnahme X5 (06.11.2026). **Status: abnahmebereit bis auf die Fragen Q1 bis Q7 an die TL und die Nachweise in der echten Welt; streng nach Bauauftrag 6 noch unvollständige Übergabe** (ein medium-Wortlaut wartet auf Q2). Einzelheiten am Ende.
+> Bau durch Claude nach `simulation/BAU_AUFTRAG.md` (Stand 6526feb, Rollentausch, Entscheidung der TL vom 05.11.2026). Grundlage: `simulation/KONZEPT.md` Fassung 2 (93cb32e). Teile 0 bis 7 abgeschlossen am 06.11.2026, danach Korrekturrunde nach der Abnahme X5 (06.11.2026). **Status: abnahmebereit** für alle in dieser Umgebung möglichen Nachweise (Chromium), vorbehaltlich der Nachprüfung durch Codex und der Nachweise in der echten Welt. Einzelheiten am Ende.
 
 ## Umgebung (Teil 0)
 
@@ -58,10 +58,10 @@ Status nur „bestanden“, „fehlgeschlagen“, „nicht geprüft“, „nicht
 |:--|:--|:--|:--|
 | M-1 Modelltreue | Block MODELL wörtlich aus `kaffee_modell.py` in `modell.js`; Erweiterungen in `erweiterung.js` | TK 134 und 135 von 135; G3 30 von 30 Zuständen (Runde 1 und 2), 42 Zahlenzeilen (Runde 4); X5: 441 Sätze, 23 814 Vergleiche ohne Abweichung; Rechenweg mit $C_\mathrm{GB}$ (X5-02), Ersatzwert keine Messung (X5-03), KT | bestanden |
 | M-2 Startzustand ohne Ergebnis | Sperre aller Ausgaben bis zur Startvorhersage | BT „Sperre P0 (de/en)“, G1, G9; Bild `P0_start_*` | bestanden (Auflösungstexte stehen im Skript-Quelltext, siehe Abweichungen) |
-| M-3 Vorhersage vor jedem Prüfen | Zustände je Frage, Knopf erst nach Eingabe, Ausgangslage beim Prüfen; Sperre für Frage 1 (Schnitt) und Frage 2 (Messpunkte) | BT „P1“, „P3“, „P5“, „Sperre Frage 1“, „Sperre Frage 2“, „Vertiefung V1 bis V5“; KT X5-01, F3/G1-R4-01; Codex `V3_Antwort_vor_Vorhersage` PASS | bestanden (Korrekturrunde: V3 ohne Vorgriff, X5-01; Zeitangabe der Startauflösung erst nach Frage 1, G1-R4-01 mit Frage Q1 an die TL) |
+| M-3 Vorhersage vor jedem Prüfen | Zustände je Frage, Knopf erst nach Eingabe, Ausgangslage beim Prüfen; Sperre für Frage 1 (Schnitt) und Frage 2 (Messpunkte) | BT „P1“, „P3“, „P5“, „Sperre Frage 1“, „Sperre Frage 2“, „Vertiefung V1 bis V5“; KT X5-01, F3/G1-R4-01; Codex `V3_Antwort_vor_Vorhersage` PASS | bestanden (Korrekturrunde: V3 ohne Vorgriff, X5-01; Zeitangabe der Startauflösung erst nach Frage 1, G1-R4-01, Entscheidung Q1) |
 | M-4 Fachliche Fragen, sinnvolle Bereiche | Fragen Konzept 6; Bereiche `regler.json` | TT, Durchsicht G3 | bestanden |
 | M-5 Sofortige Rückmeldung | kein Knopf „Berechnen“, Zeichnen bei jeder Eingabe | BT „Leistung L3“ (Median 3,0 ms), G8 mit Event Timing (höchstens 80 ms bei CPU · 6) | bestanden |
-| M-6 Frage, Vorhersage, Diagramm zugleich | Laptop: Frageleiste über dem Diagramm, nach dem Festhalten kurz, Regler direkt darunter; Handy: Diagramm angeheftet, in seiner echten Größe gezeichnet (Schrift 11 bis 12 px), höchstens 45 % der Höhe gemessen mit Kernzahlen und Legende, konstante Höhe; zu wenig Platz (kleine Höhe, große Schrift): nicht angeheftet; Kernleiste der Vertiefung mit gemessenem Fokusabstand | BT „M-6 am Handy“, „Anheften abschaltbar“; KT X5-04, X5-09, X5-10, G1-R4-08, G1-R4-10; Codex-Layout 108 Zustände: 0 verdeckte Fokusmitten, 0 über 45 %; G5 Runde 4 | bestanden in Chromium; echtes Gerät offen |
+| M-6 Frage, Vorhersage, Diagramm zugleich | Laptop: Frageleiste über dem Diagramm, Rückblick in einer Zeile, nach dem Festhalten kurz; Diagrammhöhe nach dem Platz unter der Frageleiste (beim Prüfen mit dem Regler „Zugabe nach“); Handy: Diagramm angeheftet, in seiner echten Größe gezeichnet (Schrift 11 bis 12 px), höchstens 45 % der Höhe gemessen mit Kernzahlen und Legende, konstante Höhe; zu wenig Platz (kleine Höhe, große Schrift): nicht angeheftet; Kernleiste der Vertiefung mit gemessenem Fokusabstand | BT „M-6 am Handy“, „Anheften abschaltbar“; KT X5-04, X5-09, X5-10, G1-R4-08, G1-R4-10, „Beamer“ (1280 × 720 und 1366 × 768); Codex-Layout 108 Zustände: 0 verdeckte Fokusmitten, 0 über 45 %; G5 Runde 4 | bestanden in Chromium; echtes Gerät offen |
 | M-7 Messblatt nach Versuchsprotokoll | feste Zeilen, Becher 3 zuschaltbar, Deckel, Übernahme ganz oder gar nicht | BT „Messblatt …“, „Übernahme …“, „P6“; Bilder `M_messblatt_*` | bestanden |
 | M-8 Pflichtweg mit einem Regler | nur „Zugabe nach“ sichtbar, Rest in der Vertiefung | Bild `P2_*` | bestanden |
 | M-9 Kurze Beschriftungen | Regler mit Name, Formelzeichen, Einheit; Hilfe „?“ | Durchsicht, G2, G6 | bestanden |
@@ -77,13 +77,13 @@ Status nur „bestanden“, „fehlgeschlagen“, „nicht geprüft“, „nicht
 | M-19 Sprachen | DE und EN vollständig, „du“ und „you“, keine Gedankenstriche, Dezimalkomma und Dezimalpunkt, Sprache bleibt, `?lang=` | TT 14 von 14, BT „Sprachwechsel …“, KT X5-08 (stehende Meldungen übersetzt), G2 | bestanden |
 | M-20 Energie als Säulen | Säulen auf gemeinsamer Nulllinie mit Bezugslinie und Klammer (Prototyp B), Satz mit Milchbeitrag | BT „P2: Energiesäulen“, „Milch für Tasse 2 bei Raumtemperatur“; PROTOTYPEN.md | bestanden |
 | M-21 Kurswerte als Link | Format `kurs1` (ZUSTAENDE.md 5), Rückfrage, Prüfung, auch im offenen Tab | BT „Kurslink …“; KT X5-07 (zwei Nachkommastellen wie im Link), X5-11 (fremdes Fragment gemeldet und entfernt), G1-R4-02 und -06 | bestanden |
-| M-22 Erklärtexte an Bedingungen | Texte aus Konzept 6 mit Bedingung „gleiches *kA*“; Becher 3 mit eigenem Unterschied | G3 (Runde 1 bis 4); KT G3-R4-02 (Teilflächen nach dem Vorzeichen), G3-R4-03 | bestanden; allgemeine Sätze zum Wärmestrom im Randbereich: Frage Q3 an die TL |
+| M-22 Erklärtexte an Bedingungen | Texte aus Konzept 6 mit Bedingung „gleiches *kA*“; Becher 3 mit eigenem Unterschied | G3 (Runde 1 bis 4); KT G3-R4-02 (Teilflächen nach dem Vorzeichen), G3-R4-03 | bestanden (allgemeine Sätze zum Wärmestrom nach Entscheidung Q3) |
 
 ### Sollte (Konzept 4.2)
 
 | ID | Umsetzung | Nachweis | Status |
 |:--|:--|:--|:--|
-| S-1 Vertiefung V1 bis V5 | Fragen mit Vorhersage, Ausgangslage, Auflösung | BT „Vertiefung V1 bis V5“, KT X5-01, G3, G10; Codex `V1_bis_V5_Ausgangslage_und_Aufloesung_DE` PASS | bestanden (Begründung V1: Frage Q2 an die TL) |
+| S-1 Vertiefung V1 bis V5 | Fragen mit Vorhersage, Ausgangslage, Auflösung | BT „Vertiefung V1 bis V5“, KT X5-01, G3, G10; Codex `V1_bis_V5_Ausgangslage_und_Aufloesung_DE` PASS | bestanden (Begründung V1 nach Entscheidung Q2) |
 | S-2 Alle Regler, *kA*-Voreinstellungen | Regler, sechs Voreinstellungen nach Tabelle 8.2.1, Anzeige 30 min, *kA*-Quelle | BT „Voreinstellung Keramik mit Deckel“, TK | bestanden |
 | S-3 Ausgleichsgerade, Ansicht ln | Ursprungsgerade und freie Gerade, Becher 2 und 3 | BT „Ansicht ln …“ | bestanden |
 | S-4 Ansicht Wärmestrom | zwei Teilflächen verschieden schraffiert | BT „Ansicht Wärmestrom …“ | bestanden |
@@ -211,7 +211,7 @@ Ergebnisse auf dem übergebenen Stand (06.11.2026, Cloud-Container, Chromium 153
 | `test_texte.py` | 14 von 14 bestanden (Schlüssel DE und EN gleich, keine Gedankenstriche, Dezimalzeichen, Zahlen aus `zahlen.py`, „du“) | `test_texte_ergebnis.txt` |
 | `browsertest_bau.js` | 95 von 95 bestanden (Artefakt, Sperren, Pflichtweg, Vertiefung, Messblatt, Kurslink, Sprache, Speicher, Umbruch 320 bis 1920 px, 200 % Text, axe-core, Kann-Punkte) | `browsertest_bau_ergebnis.txt` |
 | Leistung (im Browsertest) | L2 bedienbar nach 92 ms; L3 je Reglerschritt Median 3,0 ms, 95 % 3,4 ms, höchstens 3,8 ms; L4 Bedienfolge 30 s mit 1411 Schritten ohne Fehler, Speicherzuwachs 1,33 MB | dieselbe |
-| `browsertest_korrektur.js` | 43 von 43 (je behobenem Befund aus X5, Runde 3 und Runde 4 ein Test); auf dem Stand vor der Korrektur 0 von 29 (die 29 Tests zu X5 und Runde 3) | `browsertest_korrektur_ergebnis.txt`, `browsertest_korrektur_alt_ergebnis.txt` |
+| `browsertest_korrektur.js` | 45 von 45 (je behobenem Befund aus X5, Runde 3, Runde 4, dazu Beamer und Q2 bis Q7 ein Test); auf dem Stand vor der Korrektur 0 von 29 (die 29 Tests zu X5 und Runde 3) | `browsertest_korrektur_ergebnis.txt`, `browsertest_korrektur_alt_ergebnis.txt` |
 | Skripte von Codex (Kopie) | Zahlen: 441 Sätze, 23 814 Vergleiche, ohne Abweichung; Layout 108 Zustände ohne Überlauf, ohne verdeckten Fokus, Schnitt ohne Text 0; Bedienlauf 19 von 20 Prüfschritten bestanden, 1 Abbruch | `simulation/x5_regression/` |
 | `bilder_bau.js` | 54 Bilder der Abdeckungsmatrix (ZUSTAENDE.md 7) | `simulation/bildschirmfotos/bau/LISTE.txt` |
 
@@ -227,12 +227,12 @@ Drei Runden nach Bauauftrag 4.3; getrennte Rollenprüfungen desselben Modells. G
 | 2 | `ea6d3ad2…9c31` | 60 | 1 | 9 | 13 | 37 | 52 | 3 | 5 |
 | 3 | `1d90ce2f…292b` (an X5 übergeben) | 27 | 0 | 2 | 9 | 16 | 1 (in der Korrekturrunde: 24 behoben) | 0 | 26 (danach 3: G10-02 Zeit, zwei durch F entschieden) |
 | X5 (Codex) | `1d90ce2f…292b` | 11 | 2 | 6 | 3 | 0 | 11 | 0 | 0 |
-| 4 (nach der Korrekturrunde) | `10b428ef…e878` | 31 | 4 | 1 | 10 | 16 | 25 | 0 | 6 (Q1 bis Q7, eine Bedienfunktion) |
+| 4 (nach der Korrekturrunde) | `10b428ef…e878` | 31 | 4 | 1 | 10 | 16 | 30 (davon 6 nach den Entscheidungen Q1 bis Q7) | 0 | 1 (G1-R4-13, Empfehlung) |
 
 - **Zahlen:** Keine Rolle fand in drei Runden eine falsche Modellzahl. G3 rechnete in Runde 1 und 2 je 30 Zustände und alle Auflösungen unabhängig nach; G9 und G10 rechneten Standardwerte, Frage 1 und Frage 2 mit eigenen Formeln nach.
 - **blocker** (alle behoben und in der Folgerunde bestätigt): Messpunkte vor der Vorhersage zu Frage 2; Achsenbeschriftung bei Schrittweite 2,5; CSV mit Modellwerten vor der Freigabe (Runde 2).
 - **Sperren:** In Runde 3 hielten alle Sperren im Pflichtweg (G8 suchte in DOM, Titel, Ansagen, CSV, Prüfschnittstelle und Barrierebaum); offen ist die Ausgangslage von V3 (G10-01).
-- **Offen** sind nach der Korrekturrunde nur Wortlaute für die TL (Q1 bis Q7) und eine neue Bedienfunktion (G1-R4-13); siehe Status.
+- **Offen** ist nach der Korrekturrunde nur die Empfehlung G1-R4-13 (neue Bedienfunktion); siehe Status.
 
 ## Offene Nachweise in der echten Welt
 
@@ -252,25 +252,25 @@ Auftrag der TL vom 06.11.2026 nach der Abnahme X5 (Codex: „nicht abnahmefähig
 1. **Entscheidungen F1 bis F14** im Abschnitt „Fragen an die TL“ eingetragen; Wortlaute in `simulation/KONZEPT.md` 12.1, Ablauf in `simulation/ZUSTAENDE.md`.
 2. **X5 nachgeprüft:** alle elf Befunde mit den Skripten von Codex und eigenen Messungen bestätigt; Antwort und Nachweis je Befund in `simulation/X5_ANTWORT.md`.
 3. **Umgesetzt** in der Reihenfolge der TL: X5-01 und X5-02, X5-03 bis X5-08, F1 bis F12, die offenen Befunde der Runde 3, X5-09 bis X5-11.
-4. **Regression:** Jeder behobene Befund hat einen Test in `simulation/tests/browsertest_korrektur.js`. Ergebnisse: auf dem Stand vor der Korrektur (`1d90ce2f…292b`) 0 von 29 (die 29 Tests zu X5 und Runde 3), auf dem von Runde 4 geprüften Stand (`10b428ef…e878`) die 14 Tests zu Befunden der Runde 4 alle rot, auf dem neuen Stand 43 von 43. Die Skripte von Codex laufen als Kopie in `simulation/x5_regression/` (Ergebnisse dort): Zahlenprüfung ohne Abweichung, Layout und Ergänzung ohne Befund, Bedienlauf 19 von 20 Prüfschritten bestanden, 1 Abbruch (der eine Abbruch ist der jetzt abgelehnte Wechsel der *kA*-Quelle bei *kA* = 1 W/K, gewollt nach X5-03).
+4. **Regression:** Jeder behobene Befund hat einen Test in `simulation/tests/browsertest_korrektur.js`. Ergebnisse: auf dem Stand vor der Korrektur (`1d90ce2f…292b`) 0 von 29 (die 29 Tests zu X5 und Runde 3), auf dem von Runde 4 geprüften Stand (`10b428ef…e878`) die 14 Tests zu Befunden der Runde 4 alle rot, auf dem neuen Stand 45 von 45. Die Skripte von Codex laufen als Kopie in `simulation/x5_regression/` (Ergebnisse dort): Zahlenprüfung ohne Abweichung, Layout und Ergänzung ohne Befund, Bedienlauf 19 von 20 Prüfschritten bestanden, 1 Abbruch (der eine Abbruch ist der jetzt abgelehnte Wechsel der *kA*-Quelle bei *kA* = 1 W/K, gewollt nach X5-03).
 5. **Runde 4** mit frischen Rollen nur für die geänderten Stellen: G1 Studentin am Handy (14 Befunde: 1 blocker, 5 medium, 8 low), G3 Fach (11: 3 blocker, 1 medium, 7 low), G5 Barrierefreiheit (6: 1 high, 4 medium, 1 low). Übernommen und behoben 25, davon alle 4 blocker und der high; offen 6 (Wortlaute für die TL Q1 bis Q7, eine neue Bedienfunktion). Bestätigt behoben: X5-02 bis X5-05, X5-08 bis X5-11, G5-R3-01 bis -03 (G3, G5). Keine falsche Zahl (G3: 42 Zahlenzeilen DE und EN). Einzelheiten: `simulation/gutachten/ZUSAMMENFUEHRUNG.md`, Abschnitt „Korrekturrunde nach X5 und Runde 4“.
 6. **Begleitmaterial** nachgezogen: Einsatzblatt Abschnitt 9 aus den Quelltexten neu erzeugt, iPhone-Liste um B2a ergänzt; 54 Abdeckungsbilder neu.
+7. **Entscheidungen Q1 bis Q7** der TL („Q1 A, Q2 bis Q7 ja“, Gestaltung bleibt) umgesetzt (Konzept 12.1) und **Befund der Gestaltungsprüfung** behoben: Am Beamer (1280 × 720) war das Diagramm nach der Startvorhersage nur zu 62 % im Bild (nach Frage 1 zu 90 %, bei 1366 × 768 71 und 97 %). Jetzt richtet sich die Diagrammhöhe am Laptop nach dem Platz unter der Frageleiste (beim Prüfen einschließlich des Reglers „Zugabe nach“), der Rückblick auf den Start steht in einer Zeile, „Zurück“ und „Weiter“ stehen nach dem Festhalten neben „Auflösung zeigen“, und nach dem Festhalten wird zur Frageleiste gescrollt. Ergebnis bei 1280 × 720 und 1366 × 768: nach der Startvorhersage Frageleiste und ganzes Diagramm im Bild, nach Frage 1 zusätzlich der Regler (Test „Beamer“ in `browsertest_korrektur.js`, auf dem Stand davor rot). Die Gestaltung selbst ist unverändert.
 
 ## Status
 
-**Stand nach der Korrekturrunde: abnahmebereit bis auf die Fragen an die TL und die Nachweise in der echten Welt.** Streng nach Bauauftrag 6 bleibt es eine **unvollständige Übergabe**, solange ein medium offen ist: Die Begründung in der Auflösung V1 ist nach G1 und G3 irreführend; sie ist Wortlaut der Entscheidung F8 und wartet auf Q2. Alle technischen blocker, high und medium aus X5, Runde 3 und Runde 4 sind behoben und mit Tests belegt. Nicht erbracht sind weiterhin die Nachweise am echten Gerät (M-15 mit Bildschirmleser, iPhone und Safari, Hörsaal, Zeit mit Studierenden).
+**Abnahmebereit** für alle Nachweise, die in dieser Umgebung möglich sind: Kein blocker, high oder medium ist offen (X5, Runde 3, Runde 4, Gestaltungsprüfung); alle Muss-Anforderungen sind in Chromium belegt, die Entscheidungen F1 bis F14 und Q1 bis Q7 sind umgesetzt. Vorbehalte: die Nachprüfung durch Codex (X5_AUFTRAG.md, Abschnitt 9) und die Nachweise in der echten Welt (iPhone mit Safari, Bildschirmleser für M-15, Hörsaal, Zeit mit Studierenden; G1 schätzt etwa 14 min für ein Paar am Handy).
 
-Übergebener Stand: `simulation/site/index.html`, bytegleich `simulation/site/Kaffee_Simulation.html`, SHA-256 `e44b4961145f8e34db8b1f4e11973862e362797e61a89df899ab4f1959393ce3`, 429 897 Bytes, Commit 188ba12. `python3 simulation/site/bauen.py --pruefen` gibt „gleich“ aus. Tests: `test_kern.py` 134 von 134, `--html` 135 von 135, `test_texte.py` 14 von 14, `browsertest_bau.js` 95 von 95, `browsertest_korrektur.js` 43 von 43.
+Übergebener Stand: `simulation/site/index.html`, bytegleich `simulation/site/Kaffee_Simulation.html`, SHA-256 `e6f95ca27a5c508344e6802195e9ea62f07ad743694761198057da98e757cc1d`, 433 303 Bytes, Commit 6077a92. `python3 simulation/site/bauen.py --pruefen` gibt „gleich“ aus. Tests: `test_kern.py` 134 von 134, `--html` 135 von 135, `test_texte.py` 14 von 14, `browsertest_bau.js` 95 von 95, `browsertest_korrektur.js` 45 von 45.
 
 **Offen:**
 
 | Was | Art | Nächster Schritt |
 |:--|:--|:--|
-| Q1 bis Q7 (Wortlaute aus Runde 4) | Entscheidung der TL | unten; danach umsetzen und X5 nachprüfen lassen |
+| Nachprüfung durch Codex (nur betroffene Punkte) | unabhängige Prüfung | `simulation/X5_AUFTRAG.md`, Abschnitt 9 |
 | G1-R4-13: Wechsel zwischen V1 bis V5 umständlich (Auswahl V1 bis V5 in der Frageleiste fehlt) | low, neue Bedienfunktion | Empfehlung für eine spätere Runde |
 | F13 Vorabmessung der TL (Beispielmessung, S-9) | Daten fehlen | Messreihe der TL |
 | iPhone mit Safari, Android, Firefox, Bildschirmleser, Hörsaal, Zeit mit Studierenden | echte Welt | `simulation/ABNAHME_IPHONE.md`, Probelauf |
-| Nachprüfung durch Codex (nur betroffene Punkte) | unabhängige Prüfung | `simulation/X5_AUFTRAG.md`, Abschnitt 9 |
 
 ## Fragen an die TL (mit Empfehlung)
 
@@ -295,14 +295,14 @@ Die Belege stehen in `simulation/gutachten/ZUSAMMENFUEHRUNG.md` unter der jeweil
 
 ### Fragen aus Runde 4 (06.11.2026)
 
-Belege in `simulation/gutachten/G1_Studentin_R4.md`, `G3_Fachgutachter_R4.md`, `G5_Barrierefreiheit_R4.md`. Antwort zum Beispiel „Q1 A, Q2 ja, …“.
+Belege in `simulation/gutachten/G1_Studentin_R4.md`, `G3_Fachgutachter_R4.md`, `G5_Barrierefreiheit_R4.md`. Entschieden von der TL am 06.11.2026: „Q1 A, Q2 bis Q7 ja. Die Gestaltung bleibt vorerst, wie sie ist; es wird kein Entwurf übernommen.“
 
 | Nr. | Frage | Befunde | Empfehlung | Entscheidung der TL |
 |:--|:--|:--|:--|:--|
-| Q1 | Startauflösung „(bis etwa 56 min)“ verrät die Antwort auf Frage 1. Übergangsweise erscheint die Klammer erst nach der Vorhersage zu Frage 1 (A). Alternative B: Klammer ganz streichen. | G1-R4-01, G3-R4-01 (blocker) | **A** | offen |
-| Q2 | Begründung V1 ersetzen durch: „Bei 47,0 °C gibt Tasse 1, in der die warme Milch von Anfang an ist, bis zur Zugabe genauso viel Wärme ab wie der schwarze Kaffee in Tasse 2 (*Q*₁ = *Q*₂); die Milch selbst bringt in beide Tassen dieselbe Energie. Je später die Zugabe, desto mehr von der Wärme der warmen Milch hat Tasse 1 bis dahin an den Raum abgegeben, während Tasse 2 sie erst bei der Zugabe bekommt; deshalb reicht dann kühlere Milch.“ (EN von G3) | G1-R4-04, G3-R4-04 (medium) | **ja** | offen |
-| Q3 | Allgemeine Sätze zum Wärmestrom für den Randbereich mit umgekehrter Reihenfolge: Rechenweg „Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt, solange sie weniger abgibt.“; Lesehilfe „vor und nach dem Schnitt der Wärmeströme haben die Teilflächen verschiedene Vorzeichen: positiv, solange Tasse 2 mehr abgibt; …“ (Beschriftungen und Lesehinweis unter dem Diagramm richten sich schon nach dem Vorzeichen) | G3-R4-02 | **ja** | offen |
-| Q4 | Kernsatz „… deshalb kalte Milch sofort.“ (bei warmer Milch gilt das Gegenteil, Teil f) | G3-R4-05 | **ja** | offen |
-| Q5 | „Notiert für euch:“ ersetzen durch „Notiert euch dazu:“ | G1-R4-11 | **ja** | offen |
-| Q6 | Nach dem Festhalten von V1: „Prüft mit dem Regler Milchtemperatur (Abschnitt Milch).“; nach „ohne Vorhersage aufdecken“ statt „Stimmt eure Vorhersage?“: „Erklärt zu zweit, was ihr seht.“ | G1-R4-14, G1-R4-12 | **ja** | offen |
-| Q7 | „Ferreira 2025a“ ohne Literaturverzeichnis ersetzen durch „Ferreira 2025“ wie in der Lösung | G3-R4-11 | **ja** | offen |
+| Q1 | Startauflösung „(bis etwa 56 min)“ verrät die Antwort auf Frage 1. Übergangsweise erscheint die Klammer erst nach der Vorhersage zu Frage 1 (A). Alternative B: Klammer ganz streichen. | G1-R4-01, G3-R4-01 (blocker) | **A** | A (06.11.2026) |
+| Q2 | Begründung V1 ersetzen durch: „Bei 47,0 °C gibt Tasse 1, in der die warme Milch von Anfang an ist, bis zur Zugabe genauso viel Wärme ab wie der schwarze Kaffee in Tasse 2 (*Q*₁ = *Q*₂); die Milch selbst bringt in beide Tassen dieselbe Energie. Je später die Zugabe, desto mehr von der Wärme der warmen Milch hat Tasse 1 bis dahin an den Raum abgegeben, während Tasse 2 sie erst bei der Zugabe bekommt; deshalb reicht dann kühlere Milch.“ (EN von G3) | G1-R4-04, G3-R4-04 (medium) | **ja** | ja (06.11.2026) |
+| Q3 | Allgemeine Sätze zum Wärmestrom für den Randbereich mit umgekehrter Reihenfolge: Rechenweg „Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt, solange sie weniger abgibt.“; Lesehilfe „vor und nach dem Schnitt der Wärmeströme haben die Teilflächen verschiedene Vorzeichen: positiv, solange Tasse 2 mehr abgibt; …“ (Beschriftungen und Lesehinweis unter dem Diagramm richten sich schon nach dem Vorzeichen) | G3-R4-02 | **ja** | ja (06.11.2026) |
+| Q4 | Kernsatz „… deshalb kalte Milch sofort.“ (bei warmer Milch gilt das Gegenteil, Teil f) | G3-R4-05 | **ja** | ja (06.11.2026) |
+| Q5 | „Notiert für euch:“ ersetzen durch „Notiert euch dazu:“ | G1-R4-11 | **ja** | ja (06.11.2026) |
+| Q6 | Nach dem Festhalten von V1: „Prüft mit dem Regler Milchtemperatur (Abschnitt Milch).“; nach „ohne Vorhersage aufdecken“ statt „Stimmt eure Vorhersage?“: „Erklärt zu zweit, was ihr seht.“ | G1-R4-14, G1-R4-12 | **ja** | ja (06.11.2026) |
+| Q7 | „Ferreira 2025a“ ohne Literaturverzeichnis ersetzen durch „Ferreira 2025“ wie in der Lösung | G3-R4-11 | **ja** | ja (06.11.2026) |

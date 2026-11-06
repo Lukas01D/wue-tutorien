@@ -200,10 +200,10 @@ async function test(id, name, fn, b) {
     return [vor && /Wer heißer ist, gibt mehr Wärme ab/.test(ls) && /Ja, die Temperatur hängt vom Zeitpunkt ab/.test(v1), v1.slice(-120)];
   }, b);
 
-  await test("F9", "V1, V3, V5 mit „Notiert für euch“; V4 nennt das Werkzeug (105 %); V5 nennt die Richtwerte", async b => {
+  await test("F9, Q5", "V1, V3, V5 mit „Notiert euch dazu“; V4 nennt das Werkzeug (105 %); V5 nennt die Richtwerte", async b => {
     const p = await neu(b); await start(p); await p.click("#tab-versuche").catch(() => {});
     const k = await txt(p, "#panel-versuche");
-    return [(k.match(/Notiert für euch/g) || []).length >= 3 && /105 %/.test(k) && /relativ/.test(k), (k.match(/Notiert für euch/g) || []).length + "× „Notiert für euch“"];
+    return [(k.match(/Notiert euch dazu/g) || []).length >= 3 && /105 %/.test(k) && /relativ/.test(k), (k.match(/Notiert euch dazu/g) || []).length + "× „Notiert euch dazu“ (Wortlaut nach Q5)"];
   }, b);
 
   await test("F11, G1-16, G1-07", "Modell vor dem Start ganz verdeckt; Sätze zum Schnitt in Modell und Code erst nach Frage 1", async b => {

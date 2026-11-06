@@ -3,42 +3,42 @@
     {
       "case": "standard",
       "points": 484,
-      "max_error_svg": 0.06411042926183086
+      "max_error_svg": 0.0589186287592014
     },
     {
       "case": "100ml",
       "points": 484,
-      "max_error_svg": 0.0867742901531443
+      "max_error_svg": 0.0665490479820221
     },
     {
       "case": "400ml",
       "points": 484,
-      "max_error_svg": 0.05855176522820216
+      "max_error_svg": 0.05670421724038022
     },
     {
       "case": "milch65",
       "points": 484,
-      "max_error_svg": 0.06411042926183086
+      "max_error_svg": 0.0589186287592014
     },
     {
       "case": "raum10",
       "points": 484,
-      "max_error_svg": 0.0711152715030039
+      "max_error_svg": 0.09120838861047531
     },
     {
       "case": "105prozent",
       "points": 484,
-      "max_error_svg": 0.06411042926183086
+      "max_error_svg": 0.0589186287592014
     },
     {
       "case": "kA05",
       "points": 484,
-      "max_error_svg": 0.05177031128152976
+      "max_error_svg": 0.052264766006793195
     },
     {
       "case": "kA1",
       "points": 484,
-      "max_error_svg": 0.1013066232542883
+      "max_error_svg": 0.07527536755088704
     }
   ],
   "measured_replaced": {
@@ -54,7 +54,7 @@
     "heat_difference": 3.733840485494831,
     "wrong": 3.8985706914931844,
     "right": 3.0788314168794053,
-    "text": "Bilanz. Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nmit \n𝐶\n=\n𝑚\n𝑐\n𝑝\n des Inhalts (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Trennung der Variablen mit \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n ergibt\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA aus der Messung. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (Teil c).\n\nMischen. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).\n\nAbgegebene Wärme. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\nmit \n𝐶\nG\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Kaffee und Milch); mit Becher steht \n𝐶\nGB\n=\n𝐶\nG\n+\n𝑚\nB\n𝑐\nB\n an Stelle von \n𝐶\nG\n. Bei gleicher Milch fällt der letzte Teil weg.\n\nZeitpunkt der Zugabe. Verschiebt man die Zugabe, ändert sich der Unterschied mit \nd\n(\n𝜗\n1\n−\n𝜗\n2\n)\nd\n𝑡\nZ\n=\n𝑄\n˙\n2\n−\n𝑄\n˙\n1\n𝐶\nG\n (mit Becher \n𝐶\nGB\n): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.\n\nkA aus allen Messpunkten (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n mit \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, dann \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. Die Streuung der Geraden ist keine Messunsicherheit von \n𝑘\n𝐴\n, weil alle Punkte denselben Startwert enthalten.\n\nkA festhalten (Vertiefung): Das Werkzeug gibt dem Modell den gleichwertigen Wert nach 10 min (keine Messung), der zu diesem \n𝑘\n𝐴\n gehört, und rechnet sonst unverändert.\n\nDie Seite ist eine einzige Datei. Die Rechnung steht in zwei gekennzeichneten Blöcken: MODELL enthält dieselben Gleichungen und Standardwerte wie das Rechenskript kaffee_modell.py der Lösung (Funktionen rechne und zwei_tassen), ERWEITERUNG die Erweiterungen (Ausgleichsgerade, Energie, \n𝑘\n𝐴\n festhalten und die gewählten Zusätze). Für jede Einstellung rechnet der Code die Kurven geschlossen aus; nur die Zeichnung tastet sie in 241 Punkten ab. Geprüft wird mit automatischen Tests: 10 000 Zufallssätze gegen kaffee_modell.py, die Erweiterungen gegen eine eigene Rechnung, Bedienung im Browser bei 360 bis 1920 px, beide Sprachen. Stand 2026-11-05, Version 8c06d4c61d. Du kannst den Code mit „Quelltext anzeigen“ im Browser lesen."
+    "text": "Bilanz. Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nmit \n𝐶\n=\n𝑚\n𝑐\n𝑝\n des Inhalts (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Trennung der Variablen mit \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n ergibt\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA aus der Messung. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (Teil c).\n\nMischen. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).\n\nAbgegebene Wärme. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\nmit \n𝐶\nG\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Kaffee und Milch); mit Becher steht \n𝐶\nGB\n=\n𝐶\nG\n+\n𝑚\nB\n𝑐\nB\n an Stelle von \n𝐶\nG\n. Bei gleicher Milch fällt der letzte Teil weg.\n\nZeitpunkt der Zugabe. Verschiebt man die Zugabe, ändert sich der Unterschied mit \nd\n(\n𝜗\n1\n−\n𝜗\n2\n)\nd\n𝑡\nZ\n=\n𝑄\n˙\n2\n−\n𝑄\n˙\n1\n𝐶\nG\n (mit Becher \n𝐶\nGB\n): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt, solange sie weniger abgibt. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.\n\nkA aus allen Messpunkten (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n mit \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, dann \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. Die Streuung der Geraden ist keine Messunsicherheit von \n𝑘\n𝐴\n, weil alle Punkte denselben Startwert enthalten.\n\nkA festhalten (Vertiefung): Das Werkzeug gibt dem Modell den gleichwertigen Wert nach 10 min (keine Messung), der zu diesem \n𝑘\n𝐴\n gehört, und rechnet sonst unverändert.\n\nDie Seite ist eine einzige Datei. Die Rechnung steht in zwei gekennzeichneten Blöcken: MODELL enthält dieselben Gleichungen und Standardwerte wie das Rechenskript kaffee_modell.py der Lösung (Funktionen rechne und zwei_tassen), ERWEITERUNG die Erweiterungen (Ausgleichsgerade, Energie, \n𝑘\n𝐴\n festhalten und die gewählten Zusätze). Für jede Einstellung rechnet der Code die Kurven geschlossen aus; nur die Zeichnung tastet sie in 241 Punkten ab. Geprüft wird mit automatischen Tests: 10 000 Zufallssätze gegen kaffee_modell.py, die Erweiterungen gegen eine eigene Rechnung, Bedienung im Browser bei 360 bis 1920 px, beide Sprachen. Stand 2026-11-05, Version 9c3524e603. Du kannst den Code mit „Quelltext anzeigen“ im Browser lesen."
   },
   "fit_ui": {
     "text": "𝑘\n𝐴\n aus allen Punkten vor der Milch (Becher 2): 0,4467 \nW\nK\n (Gerade durch den Ursprung, 6 Punkte, 10 bis 60 min); mit freiem Achsenabschnitt 0,4495 \nW\nK\n. \n𝑘\n𝐴\n aus der Ausgleichsgeraden festhalten",
@@ -81,7 +81,7 @@
   "english_wrong": [
     {
       "q": "v1",
-      "explanation": "Your prediction: 5 °C\nYour number: 5 °C · model: 47.0 °C\n\n47.0 °C; 60.9 °C when the milk is added after 30 min, 37.3 °C after 90 min. Yes, the temperature depends on the time: at 47.0 °C, the warmer milk just makes up for the extra heat loss of cup 2. The later the milk is added, the colder cup 2 is beforehand and the less warm the milk has to be."
+      "explanation": "Your prediction: 5 °C\nYour number: 5 °C · model: 47.0 °C\n\n47.0 °C; 60.9 °C when the milk is added after 30 min, 37.3 °C after 90 min. Yes, the temperature depends on the time: at 47.0 °C, cup 1, which has the warm milk from the start, releases exactly as much heat up to adding the milk as the black coffee in cup 2 (\n𝑄\n1\n=\n𝑄\n2\n); the milk itself brings the same energy into both cups. The later the milk is added, the more of the warm milk’s heat cup 1 has already released to the room, while cup 2 only receives it when the milk is added; so cooler milk is enough."
     },
     {
       "q": "v2",

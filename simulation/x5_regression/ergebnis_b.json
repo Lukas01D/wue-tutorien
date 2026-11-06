@@ -100,7 +100,7 @@
             "mB_g": 300,
             "kA1Faktor": 1
           },
-          "text": "Eure Vorhersage: 47 °C\nEure Zahl: 47 °C · Modell: 47,0 °C\nEure Begründung: Vorhersage aus der Wärmebilanz.\n\n47,0 °C; 60,9 °C bei Zugabe nach 30 min, 37,3 °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei 47,0 °C gleicht die wärmere Milch den Mehrverlust von Tasse 2 gerade aus. Je später die Zugabe, desto kälter ist Tasse 2 vorher und desto weniger warm muss die Milch sein."
+          "text": "Eure Vorhersage: 47 °C\nEure Zahl: 47 °C · Modell: 47,0 °C\nEure Begründung: Vorhersage aus der Wärmebilanz.\n\n47,0 °C; 60,9 °C bei Zugabe nach 30 min, 37,3 °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei 47,0 °C gibt Tasse 1, in der die warme Milch von Anfang an ist, bis zur Zugabe genauso viel Wärme ab wie der schwarze Kaffee in Tasse 2 (\n𝑄\n1\n=\n𝑄\n2\n); die Milch selbst bringt in beide Tassen dieselbe Energie. Je später die Zugabe, desto mehr von der Wärme der warmen Milch hat Tasse 1 bis dahin an den Raum abgegeben, während Tasse 2 sie erst bei der Zugabe bekommt; deshalb reicht dann kühlere Milch."
         },
         {
           "q": "v2",
@@ -815,7 +815,7 @@
       "name": "Textschluessel_Gedankenstriche_Platzhalter",
       "status": "PASS",
       "detail": {
-        "keys": 377,
+        "keys": 380,
         "dashes": {
           "de": [],
           "en": []
@@ -828,10 +828,10 @@
       "name": "Reglerfolge_30s_100ms",
       "status": "PASS",
       "detail": {
-        "duration": 30.081728211000154,
-        "events": 262,
-        "max_ms": 14.5,
-        "median_ms": 3.099999999627471
+        "duration": 30.025295044000018,
+        "events": 261,
+        "max_ms": 10.800000000046566,
+        "median_ms": 3.099999999976717
       },
       "pageerrors": [],
       "external": []

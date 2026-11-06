@@ -4843,10 +4843,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 282,
+        "viewbox": "0 0 736 282",
+        "holderHeight": 308.296875,
+        "holderRatio": 0.40142822265625,
         "anheften": false,
         "texts": [
           {
@@ -4920,10 +4920,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 275,
+        "viewbox": "0 0 736 275",
+        "holderHeight": 301.296875,
+        "holderRatio": 0.3923136393229167,
         "anheften": false,
         "texts": [
           {
@@ -5001,10 +5001,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 736 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -5086,10 +5086,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 736 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -5171,10 +5171,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 736 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -5256,75 +5256,75 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 688,
-        "height": 358.953125,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 411.578125,
-        "holderRatio": 0.5359090169270834,
+        "height": 271.078125,
+        "viewbox": "0 0 736 290",
+        "holderHeight": 323.703125,
+        "holderRatio": 0.4214884440104167,
         "anheften": false,
         "texts": [
           {
             "text": "10",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "30",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "50",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "70",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "90",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "0",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "20",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "40",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "60",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "Zeit t [min]",
-            "size": 12.152058919270834
+            "size": 12.15177801724138
           },
           {
             "text": "Temperatur ϑ [°C]",
-            "size": 12.152058919270834
+            "size": 12.15177801724138
           },
           {
             "text": "Raum 20,0 °C",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "Eure Vorhersage: 56 min",
-            "size": 10.282511393229168
+            "size": 10.282273706896552
           },
           {
             "text": "Schnitt",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "Tasse 2: Milch nach 60 min",
-            "size": 12.152058919270834
+            "size": 12.15177801724138
           },
           {
             "text": "Tasse 1: Milch sofort",
-            "size": 12.152058919270834
+            "size": 12.15177801724138
           }
         ]
       },
@@ -5341,10 +5341,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 282,
+        "viewbox": "0 0 736 282",
+        "holderHeight": 308.296875,
+        "holderRatio": 0.40142822265625,
         "anheften": false,
         "texts": [
           {
@@ -5418,10 +5418,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 251,
+        "viewbox": "0 0 736 251",
+        "holderHeight": 277.296875,
+        "holderRatio": 0.3610636393229167,
         "anheften": false,
         "texts": [
           {
@@ -5499,10 +5499,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 736 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -5584,10 +5584,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 736 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -5669,10 +5669,10 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 736,
-        "height": 384,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 736 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -5754,75 +5754,75 @@
       "scrollWidth": 1024,
       "diagram": {
         "width": 688,
-        "height": 358.953125,
-        "viewbox": "0 0 736 384",
-        "holderHeight": 411.578125,
-        "holderRatio": 0.5359090169270834,
+        "height": 271.078125,
+        "viewbox": "0 0 736 290",
+        "holderHeight": 323.703125,
+        "holderRatio": 0.4214884440104167,
         "anheften": false,
         "texts": [
           {
             "text": "10",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "30",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "50",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "70",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "90",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "0",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "20",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "40",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "60",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "Time t [min]",
-            "size": 12.152058919270834
+            "size": 12.15177801724138
           },
           {
             "text": "Temperature ϑ [°C]",
-            "size": 12.152058919270834
+            "size": 12.15177801724138
           },
           {
             "text": "Room 20.0 °C",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "Your prediction: 56 min",
-            "size": 10.282511393229168
+            "size": 10.282273706896552
           },
           {
             "text": "intersection",
-            "size": 11.21728515625
+            "size": 11.217025862068965
           },
           {
             "text": "Cup 2: milk after 60 min",
-            "size": 12.152058919270834
+            "size": 12.15177801724138
           },
           {
             "text": "Cup 1: milk right away",
-            "size": 12.152058919270834
+            "size": 12.15177801724138
           }
         ]
       },
@@ -5916,10 +5916,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 300,
+        "viewbox": "0 0 780 300",
+        "holderHeight": 326.296875,
+        "holderRatio": 0.42486572265625,
         "anheften": false,
         "texts": [
           {
@@ -5997,10 +5997,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 780 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -6082,10 +6082,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 780 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -6167,10 +6167,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 780 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -6252,10 +6252,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 436.625,
-        "holderRatio": 0.5685221354166666,
+        "height": 290,
+        "viewbox": "0 0 780 290",
+        "holderHeight": 342.625,
+        "holderRatio": 0.4461263020833333,
         "anheften": false,
         "texts": [
           {
@@ -6337,10 +6337,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 282,
+        "viewbox": "0 0 780 282",
+        "holderHeight": 308.296875,
+        "holderRatio": 0.40142822265625,
         "anheften": false,
         "texts": [
           {
@@ -6414,10 +6414,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 300,
+        "viewbox": "0 0 780 300",
+        "holderHeight": 326.296875,
+        "holderRatio": 0.42486572265625,
         "anheften": false,
         "texts": [
           {
@@ -6495,10 +6495,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 780 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -6580,10 +6580,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 780 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -6665,10 +6665,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 410.296875,
-        "holderRatio": 0.53424072265625,
+        "height": 290,
+        "viewbox": "0 0 780 290",
+        "holderHeight": 316.296875,
+        "holderRatio": 0.4118448893229167,
         "anheften": false,
         "texts": [
           {
@@ -6750,10 +6750,10 @@
       "scrollWidth": 1366,
       "diagram": {
         "width": 780,
-        "height": 384,
-        "viewbox": "0 0 780 384",
-        "holderHeight": 436.625,
-        "holderRatio": 0.5685221354166666,
+        "height": 290,
+        "viewbox": "0 0 780 290",
+        "holderHeight": 342.625,
+        "holderRatio": 0.4461263020833333,
         "anheften": false,
         "texts": [
           {
@@ -6835,10 +6835,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 336,
+        "viewbox": "0 0 780 336",
+        "holderHeight": 362.296875,
+        "holderRatio": 0.5031901041666667,
         "anheften": false,
         "texts": [
           {
@@ -6912,10 +6912,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 252,
+        "viewbox": "0 0 780 252",
+        "holderHeight": 278.296875,
+        "holderRatio": 0.3865234375,
         "anheften": false,
         "texts": [
           {
@@ -6993,10 +6993,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 242,
+        "viewbox": "0 0 780 242",
+        "holderHeight": 268.296875,
+        "holderRatio": 0.3726345486111111,
         "anheften": false,
         "texts": [
           {
@@ -7078,10 +7078,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 242,
+        "viewbox": "0 0 780 242",
+        "holderHeight": 268.296875,
+        "holderRatio": 0.3726345486111111,
         "anheften": false,
         "texts": [
           {
@@ -7163,10 +7163,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 242,
+        "viewbox": "0 0 780 242",
+        "holderHeight": 268.296875,
+        "holderRatio": 0.3726345486111111,
         "anheften": false,
         "texts": [
           {
@@ -7248,10 +7248,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 412.625,
-        "holderRatio": 0.5730902777777778,
+        "height": 242,
+        "viewbox": "0 0 780 242",
+        "holderHeight": 294.625,
+        "holderRatio": 0.4092013888888889,
         "anheften": false,
         "texts": [
           {
@@ -7333,10 +7333,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 240,
+        "viewbox": "0 0 780 240",
+        "holderHeight": 266.296875,
+        "holderRatio": 0.36985677083333335,
         "anheften": false,
         "texts": [
           {
@@ -7410,10 +7410,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 252,
+        "viewbox": "0 0 780 252",
+        "holderHeight": 278.296875,
+        "holderRatio": 0.3865234375,
         "anheften": false,
         "texts": [
           {
@@ -7491,10 +7491,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 242,
+        "viewbox": "0 0 780 242",
+        "holderHeight": 268.296875,
+        "holderRatio": 0.3726345486111111,
         "anheften": false,
         "texts": [
           {
@@ -7576,10 +7576,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 242,
+        "viewbox": "0 0 780 242",
+        "holderHeight": 268.296875,
+        "holderRatio": 0.3726345486111111,
         "anheften": false,
         "texts": [
           {
@@ -7661,10 +7661,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 386.296875,
-        "holderRatio": 0.5365234375,
+        "height": 242,
+        "viewbox": "0 0 780 242",
+        "holderHeight": 268.296875,
+        "holderRatio": 0.3726345486111111,
         "anheften": false,
         "texts": [
           {
@@ -7746,10 +7746,10 @@
       "scrollWidth": 1280,
       "diagram": {
         "width": 780,
-        "height": 360,
-        "viewbox": "0 0 780 360",
-        "holderHeight": 412.625,
-        "holderRatio": 0.5730902777777778,
+        "height": 242,
+        "viewbox": "0 0 780 242",
+        "holderHeight": 294.625,
+        "holderRatio": 0.4092013888888889,
         "anheften": false,
         "texts": [
           {

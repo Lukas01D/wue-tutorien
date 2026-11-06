@@ -399,6 +399,18 @@ Die TL hat am 06.11.2026 entschieden: „F1 bis F12 wie von dir empfohlen. F13 f
 | F13 | Vorabmessung folgt | offen |
 | F14 | X5 auf dem übergebenen Stand, danach gemeinsame Korrekturrunde | `simulation/X5_ANTWORT.md` |
 
+Nach der Rollenprüfung Runde 4 hat die TL am 06.11.2026 außerdem entschieden: „Q1 A, Q2 bis Q7 ja. Die Gestaltung bleibt vorerst, wie sie ist; es wird kein Entwurf übernommen.“
+
+| Nr. | Änderung | Schlüssel |
+|:--|:--|:--|
+| Q1 | Startauflösung: „(bis etwa 56 min)“ erst nach der Vorhersage zu Frage 1 | `aufl_start`, `aufl_start_bis` |
+| Q2 | Begründung V1: „Bei 47,0 °C gibt Tasse 1, in der die warme Milch von Anfang an ist, bis zur Zugabe genauso viel Wärme ab wie der schwarze Kaffee in Tasse 2 ($Q_1 = Q_2$); die Milch selbst bringt in beide Tassen dieselbe Energie. Je später die Zugabe, desto mehr von der Wärme der warmen Milch hat Tasse 1 bis dahin an den Raum abgegeben, während Tasse 2 sie erst bei der Zugabe bekommt; deshalb reicht dann kühlere Milch.“ | `aufl_v1` |
+| Q3 | Rechenweg „… und sinkt, solange sie weniger abgibt.“; Lesehilfe „vor und nach dem Schnitt der Wärmeströme haben die Teilflächen verschiedene Vorzeichen: positiv, solange Tasse 2 mehr abgibt; …“ | `rechenweg_zugabe`, `lesen_strom_allgemein` |
+| Q4 | Kernsatz „Wer heißer ist, gibt mehr Wärme ab; deshalb kalte Milch sofort.“ (gilt auch für den Kernsatz in Abschnitt 3) | `fertig_pflicht` |
+| Q5 | „Notiert euch dazu:“ statt „Notiert für euch:“ (V1, V3, V5) | `v1_text`, `v3_text`, `v5_text` |
+| Q6 | nach V1: „Prüft mit dem Regler Milchtemperatur (Abschnitt Milch).“; nach „ohne Vorhersage aufdecken“: „Erklärt zu zweit, was ihr seht.“ | `v1_auftrag`, `auftrag_ohne` |
+| Q7 | „Ferreira 2025“ wie in der Lösung | `text_annahmen` |
+
 ## Anhang A: Texte der Reiter (deutsch, du-Form)
 
 *(F2: E5: alle Texte von „Sie“ auf „du“ umgestellt; F2: K3, K10: Antworten aus A.2 und A.8 in die Auflösungen verschoben, Bedingungen ergänzt)* Formeln in MathML oder HTML (Formelzeichen kursiv, beschreibende Indizes aufrecht nach Ä24). Zahlen in eckigen Klammern setzt der Bau aus dem Modell ein. Englische Fassung nach Anhang C.

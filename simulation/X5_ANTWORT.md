@@ -32,7 +32,7 @@ Zu den Muss-Bewertungen von X5: M-13 (Regler 0 px bei 320 px und 200 % Text) fä
 
 ## Umsetzung und Nachweis
 
-Umgesetzt in der Reihenfolge der TL (Commits 437295c bis 188ba12 auf `claude/simulation-tool-kaffee-4kcacl`; Endstand der Seite SHA-256 `e44b4961…3ce3`, 429 897 Bytes). Jeder Befund hat einen Test in `simulation/tests/browsertest_korrektur.js`: 29 Tests zu X5 und Runde 3 (auf dem Stand vor der Korrektur `1d90ce2f…292b` **0 von 29** bestanden, `browsertest_korrektur_alt_ergebnis.txt`), dazu 14 Tests zu den Befunden der Rollenprüfung Runde 4 (auf dem von Runde 4 geprüften Stand e2f9cd9 alle rot, `browsertest_korrektur_e2f9cd9_ergebnis.txt`). Neuer Stand: **43 von 43** (`browsertest_korrektur_ergebnis.txt`).
+Umgesetzt in der Reihenfolge der TL (Commits 437295c bis 188ba12 auf `claude/simulation-tool-kaffee-4kcacl`; Endstand der Seite SHA-256 `e44b4961…3ce3`, 429 897 Bytes). Jeder Befund hat einen Test in `simulation/tests/browsertest_korrektur.js`: 29 Tests zu X5 und Runde 3 (auf dem Stand vor der Korrektur `1d90ce2f…292b` **0 von 29** bestanden, `browsertest_korrektur_alt_ergebnis.txt`), dazu 14 Tests zu den Befunden der Rollenprüfung Runde 4 (auf dem von Runde 4 geprüften Stand e2f9cd9 alle rot, `browsertest_korrektur_e2f9cd9_ergebnis.txt`). Neuer Stand: **45 von 45** einschließlich der Tests zum Beamer-Befund und zu den Entscheidungen Q2 bis Q7 (`browsertest_korrektur_ergebnis.txt`). Endstand der Seite nach Q1 bis Q7 und Beamer-Befund: SHA-256 `e6f95ca2…cc1d`, 433 303 Bytes, Commit 6077a92.
 
 | ID | Test (Kurzname) | Messwert alt | Messwert neu (Endstand) |
 |:--|:--|:--|:--|
