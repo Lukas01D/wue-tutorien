@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de" data-schritte="1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="{{CSP}}">
+<meta name="theme-color" content="#1c1f24">
+<title>Kaffee mit Milch: Simulation</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231c1f24'/%3E%3Ctext x='4' y='22' font-size='15' fill='%23f6f3ea'%3EW%C3%9C%3C/text%3E%3C/svg%3E">
+<style>{{CSS}}</style>
+</head>
+<body>
+<noscript><p class="banner">Diese Seite braucht JavaScript. This page needs JavaScript.</p></noscript>
+<a class="sprung" href="#hauptinhalt" data-t="sprung_inhalt"></a>
+<header class="kopf">
+  <div class="kopf-marke" aria-hidden="true">WÜ</div>
+  <div class="kopf-texte">
+    <p class="kopf-zeile" data-t="kopf_zeile"></p>
+    <h1 class="kopf-titel" data-t="kopf_titel"></h1>
+  </div>
+  <div class="kopf-rechts">
+    <p class="kopf-speicher" id="speicher-hinweis" data-t="speicher_ok"></p>
+    <button type="button" class="sprachknopf" id="sprachknopf"><span data-t="sprache_knopf"></span></button>
+  </div>
+</header>
+<div class="banner" id="link-banner" hidden></div>
+<main id="hauptinhalt" tabindex="-1">
+  <div class="seite">
+    <section class="simulation" id="simulation" data-t-aria="bereich_simulation">
+      <section class="frageleiste" id="frageleiste" aria-labelledby="frage-titel"></section>
+      <div class="ansichten" id="ansichten" role="group" data-t-aria="ansicht_aria" hidden>
+        <button type="button" class="umschalter" data-ansicht="temperatur" data-t="ansicht_temperatur"></button>
+        <button type="button" class="umschalter" data-ansicht="waermestrom" data-t="ansicht_waermestrom"></button>
+        <button type="button" class="umschalter" data-ansicht="ln" data-t="ansicht_ln"></button>
+      </div>
+      <div class="sim-raster">
+        <figure class="diagramm" id="diagramm-figur">
+          <div class="diagramm-halter" id="diagramm-halter">
+            <svg id="diagramm" role="img" aria-labelledby="diagramm-name" aria-describedby="diagramm-beschreibung" focusable="false"></svg>
+            <span class="nur-leser" id="diagramm-name" data-t="dia_titel"></span>
+            <div class="kernzahlen" id="kernzahlen" aria-hidden="true"></div>
+            <p class="vorhersage-zeile" id="vorhersage-zeile" hidden></p>
+            <p class="kurven-legende" id="kurven-legende" hidden></p>
+          </div>
+          <button type="button" class="knopf-text knopf-anheften" id="knopf-anheften" hidden></button>
+          <div class="regler-pflicht" id="regler-pflicht"></div>
+          <figcaption>
+            <p class="lesehinweis"></p>
+            <p class="legende-mess" id="legende-mess" hidden></p>
+            <p class="flaechen" id="flaechen-text" hidden></p>
+            <p class="flaechen" id="zusatz-text" hidden></p>
+            <p class="nur-leser" id="diagramm-beschreibung" aria-hidden="true"></p>
+          </figcaption>
+          <details class="wertetabelle" id="wertetabelle">
+            <summary data-t="werte_tabelle"></summary>
+            <div id="wertetabelle-inhalt"></div>
+          </details>
+        </figure>
+        <div class="knoepfe" id="knoepfe">
+          <button type="button" class="knopf-zweit" id="knopf-standard" data-t="knopf_standard"></button>
+          <button type="button" class="knopf-zweit" id="knopf-versuch" data-t="knopf_versuch"></button>
+          <p class="knopf-info" id="knopf-info" role="status"></p>
+          <div class="energie" id="energie">
+            <h2 class="kasten-titel" data-t="energie_titel"></h2>
+            <div id="energie-inhalt"></div>
+          </div>
+          <div class="bilanz" id="bilanz" hidden>
+            <h2 class="kasten-titel" data-t="bilanz_titel"></h2>
+            <div id="bilanz-inhalt"></div>
+            <p class="klein" data-t="bilanz_text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="regler-raster">
+        <div class="regler-bereich">
+          <p class="fehler-meldung" id="einstellung-fehler" role="alert" hidden></p>
+          <details class="vertiefung" id="vertiefung">
+            <summary id="vertiefung-titel"><span data-t="leiste_vertiefung"></span></summary>
+            <p class="hinweis-frueh" id="vertiefung-frueh" hidden data-t="vertiefung_frueh"></p>
+            <div class="vertiefung-inhalt" id="vertiefung-inhalt"></div>
+          </details>
+        </div>
+        <aside class="rechenwerte" id="rechenwerte" aria-labelledby="rechenwerte-titel">
+          <h2 class="kasten-titel" id="rechenwerte-titel" data-t="rechenwerte"></h2>
+          <p class="klein" id="rechenwerte-bezug"></p>
+          <dl id="rechenwerte-liste"></dl>
+        </aside>
+      </div>
+      <p class="nur-leser" id="ansage" role="status" aria-live="polite"></p>
+      <section class="messblatt" id="messblatt" aria-labelledby="mess-titel">
+        <h2 id="mess-titel" data-t="mess_titel"></h2>
+        <p data-t="mess_einleitung"></p>
+        <div id="messblatt-inhalt"></div>
+      </section>
+    </section>
+    <section class="reiter-bereich" data-t-aria="reiter_aria" id="reiter-bereich">
+      <div class="reiter" role="tablist" id="reiter-leiste" data-t-aria="reiter_aria">
+        <button type="button" role="tab" id="tab-versuche" aria-controls="panel-versuche" data-tab="versuche"><span data-t="reiter_versuche"></span></button>
+        <button type="button" role="tab" id="tab-modell" aria-controls="panel-modell" data-tab="modell"><span data-t="reiter_modell"></span></button>
+        <button type="button" role="tab" id="tab-code" aria-controls="panel-code" data-tab="code"><span data-t="reiter_code"></span></button>
+      </div>
+      <div class="reiter-panel" role="tabpanel" id="panel-versuche" aria-labelledby="tab-versuche" tabindex="0"></div>
+      <div class="reiter-panel" role="tabpanel" id="panel-modell" aria-labelledby="tab-modell" tabindex="0" hidden></div>
+      <div class="reiter-panel" role="tabpanel" id="panel-code" aria-labelledby="tab-code" tabindex="0" hidden></div>
+    </section>
+  </div>
+</main>
+<footer class="fuss">
+  <p id="fuss-stand"></p>
+  <p data-t="fuss_quelle"></p>
+  <div class="fuss-reset" id="fuss-reset"></div>
+</footer>
+<script>{{JS}}</script>
+</body>
+</html>

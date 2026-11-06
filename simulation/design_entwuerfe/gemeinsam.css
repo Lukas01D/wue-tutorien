@@ -1,0 +1,88 @@
+/* ==== gemeinsam.css: Pflichtteile aller drei Entwürfe (vor der stil.css des Entwurfs eingebunden) ====
+   1 Grundregeln, 2 Bildschirmleser und Sprungverweis, 3 Diagrammfarben über Attributselektoren,
+   4 Handy nach der Freigabe: Diagramm, Frage, Regler (M-6) und Anheften, 5 reduzierte Bewegung, 6 erzwungene Farben.
+   Die Entwürfe setzen nur die Variablen und alles Aussehen; die Abläufe hier gelten für alle. */
+
+/* 1 Grundregeln */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; overflow-wrap: break-word; }
+img, svg { max-width: 100%; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button:disabled, input:disabled { cursor: not-allowed; }
+table { border-collapse: collapse; }
+.tabelle-wrap, .formel { max-width: 100%; overflow-x: auto; }
+.formel { display: block; margin: .5em 0; }
+math { font-family: var(--schrift-formel); }
+.nb { white-space: nowrap; }
+.knopf-text { min-height: 24px; }
+:focus-visible { outline: 3px solid var(--fokus, #000); outline-offset: 2px; }
+
+/* 2 Bildschirmleser und Sprungverweis */
+.nur-leser { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.sprung { position: absolute; left: 8px; top: -100px; z-index: 50; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; }
+.sprung:focus { top: 8px; }
+
+/* 3 Diagrammfarben: Das Skript schreibt feste Farbwerte als SVG-Attribute; CSS-Eigenschaften gehen Attributen vor.
+   So bleibt das Skript unverändert, und jeder Entwurf setzt nur die Variablen. Bedeutung der Werte (heutiger Code):
+   #8b5a2b Tasse 1 · #7a4e24 Beschriftung Tasse 1 · #222 Tasse 2 · #3d70a3 Becher 3 · #8a8984 Raum · #5a6b7f Achsen
+   #142337 Achsentitel · #e6ebf0 Raster · #fff Fläche (Marker) · #173d5e Hilfslinien · #eef5fb und #102d49 Vorhersagekasten
+   #227b48 und #14603f Vorhersagelinie, Trinklinie · #fbecec #b63434 #862828 ungültig · #f3e9df Tasseninhalt (Bilanzraum) */
+svg text { fill: var(--dia-text); font-family: var(--schrift-dia); }
+svg [stroke="#8b5a2b"] { stroke: var(--k1); }
+svg [fill="#8b5a2b"] { fill: var(--k1); }
+svg [fill="#7a4e24"] { fill: var(--k1-text); }
+svg [stroke="#222"] { stroke: var(--k2); }
+svg [fill="#222"] { fill: var(--k2); }
+svg [stroke="#3d70a3"] { stroke: var(--k3); }
+svg [fill="#3d70a3"] { fill: var(--k3); }
+svg [stroke="#8a8984"] { stroke: var(--raum); }
+svg [stroke="#5a6b7f"] { stroke: var(--achse); }
+svg [fill="#5a6b7f"] { fill: var(--achse-text); }
+svg [fill="#142337"] { fill: var(--dia-text); }
+svg [stroke="#e6ebf0"] { stroke: var(--gitter); }
+svg [fill="#fff"] { fill: var(--dia-grund); }
+svg [stroke="#fff"] { stroke: var(--dia-grund); }
+svg [stroke="#173d5e"] { stroke: var(--hilfslinie); }
+svg [fill="#173d5e"] { fill: var(--hilfslinie); }
+svg [fill="#eef5fb"] { fill: var(--vh-grund); }
+svg [fill="#102d49"] { fill: var(--vh-text); }
+svg [stroke="#227b48"], svg [stroke="#14603f"] { stroke: var(--gruen); }
+svg [fill="#14603f"] { fill: var(--gruen); }
+svg [fill="#fbecec"] { fill: var(--fehler-grund); }
+svg [stroke="#b63434"] { stroke: var(--fehler); }
+svg [fill="#862828"] { fill: var(--fehler); }
+svg [fill="#f3e9df"] { fill: var(--tasse-grund); }
+#diagramm { display: block; }
+
+/* 4 Handy nach der Freigabe (Klasse „handy“ setzt das Skript): Diagramm oben, darunter die Frage, dann der Regler (M-6).
+   Die Hüllen werden mit display: contents aufgelöst, damit die Reihenfolge im Flex-Fluss der Simulation gilt. */
+@media (max-width: 767px) {
+  html.handy .simulation { display: flex; flex-direction: column; }
+  html.handy .sim-raster, html.handy .diagramm { display: contents; }
+  html.handy .diagramm-halter { order: 1; }
+  html.handy .frageleiste { order: 2; }
+  html.handy .knopf-anheften { order: 3; }
+  html.handy .regler-pflicht { order: 4; }
+  html.handy .ansichten { order: 5; }
+  html.handy .diagramm figcaption { order: 6; }
+  html.handy .wertetabelle { order: 7; }
+  html.handy .knoepfe { order: 8; }
+  html.handy .regler-raster { order: 9; }
+  html.handy .messblatt { order: 10; }
+  html.anheften .diagramm-halter { position: sticky; top: 0; z-index: 6; }
+}
+
+/* 5 Reduzierte Bewegung */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* 6 Erzwungene Farben (Windows-Kontrastmodus): Linienart und Beschriftung tragen die Bedeutung weiter */
+@media (forced-colors: active) {
+  svg [stroke] { stroke: CanvasText; }
+  svg text { fill: CanvasText; }
+  :focus-visible { outline-color: Highlight; }
+}

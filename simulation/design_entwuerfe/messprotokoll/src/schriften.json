@@ -1,0 +1,14 @@
+{
+  "_hinweis": "Schriften des Entwurfs Messprotokoll (Teilmengen aus schriften_teilen.py). Felder: Familie, Gewicht, Stil, Datei in src/schriften/.",
+  "schriften": [
+    ["Plex Sans", 400, "normal", "PlexSans-400.woff2"],
+    ["Plex Sans", 600, "normal", "PlexSans-600.woff2"],
+    ["Plex Sans", 400, "italic", "PlexSans-400i.woff2"],
+    ["Plex Mono", 400, "normal", "PlexMono-400.woff2"],
+    ["Plex Mono", 600, "normal", "PlexMono-600.woff2"],
+    ["Plex Math", 400, "normal", "PlexMath.woff2"]
+  ],
+  "formel": "Plex Math",
+  "ersatz": {"Plex Sans": ["Plex Math"], "Plex Mono": ["Plex Sans", "Plex Math"]},
+  "lizenzen": [["IBM Plex Sans", "IBMPlexSans-OFL.txt"], ["IBM Plex Mono", "IBMPlexMono-OFL.txt"], ["IBM Plex Math", "IBMPlexMath-OFL.txt"]]
+}
