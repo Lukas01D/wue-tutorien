@@ -568,8 +568,6 @@ This page is open as a file: the link only works on this computer. For the class
 No calculated values yet
 @regler_gesperrt_start
 Answer the start question first.
-@anheften_aus
-Unpin diagram
 @anheften_an
 Pin diagram at the top
 @bereich_formel

@@ -579,8 +579,6 @@ Diese Seite ist als Datei geöffnet: Der Link gilt nur auf diesem Rechner. Für 
 Noch keine Rechenwerte
 @regler_gesperrt_start
 Erst die Startfrage beantworten.
-@anheften_aus
-Diagramm lösen
 @anheften_an
 Diagramm oben anheften
 @bereich_formel

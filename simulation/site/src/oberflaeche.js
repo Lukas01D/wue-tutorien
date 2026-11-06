@@ -113,6 +113,8 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   // Kleine Zeichen als SVG (die eingebettete Schrift hat keine Kästchen, Haken oder Schraffur), immer aria-hidden
   const SYM = {
+    linie1: '<svg class="sym sym-linie" viewBox="0 0 24 12" aria-hidden="true" focusable="false"><line x1="1" x2="23" y1="6" y2="6" stroke="#8b5a2b" stroke-width="2.6"/></svg>',
+    linie2: '<svg class="sym sym-linie" viewBox="0 0 24 12" aria-hidden="true" focusable="false"><line x1="1" x2="23" y1="6" y2="6" stroke="#222" stroke-width="2.6" stroke-dasharray="7 4"/></svg>',
     haken: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6.5 L5 9.5 L10.5 2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
     b1: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="4.8" fill="#8b5a2b"/></svg>',
     b2: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="9" height="9" fill="#222"/></svg>',
@@ -357,7 +359,7 @@
     s.push('<text x="14" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#142337" transform="rotate(-90 14 ' + ((O + H - U) / 2) + ')">' + svgText(yLabel) + "</text>");
     const belegt = [];   // Rechtecke für die Kollisionsprüfung der Beschriftungen
     const pfad = (f, a, b, n) => { const p = []; for (let i = 0; i <= n; i++) { const x = a + (b - a) * i / n; p.push(X(x).toFixed(1) + "," + Y(f(x)).toFixed(1)); } return p.join(" "); };
-    let kurvenPx = [], raumY = null, vorhersageUnten = "";
+    let kurvenPx = [], raumY = null, vorhersageUnten = "", legendeHtml = "";
     // Direkte Beschriftung mit Kollisionsprüfung (E6/F19: nie auf einer Linie)
     const etikett = (text, farbe, kurve, oben, bevorzugt) => {
       const breite = text.length * fs * 0.56 + 6, hoehe = fs + 6;
@@ -398,7 +400,7 @@
           if (rv) {
             s.push('<polyline points="' + pfad(rv.kurve2, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#222" stroke-width="2" stroke-dasharray="9 5" opacity="0.5"/>');
             s.push('<line x1="' + X(S.vergleich.tEnd_min).toFixed(1) + '" x2="' + X(S.vergleich.tEnd_min).toFixed(1) + '" y1="' + Y(rv.th2K).toFixed(1) + '" y2="' + Y(rv.th2).toFixed(1) + '" stroke="#222" stroke-width="1.6" stroke-dasharray="2 3" opacity="0.5"/>');
-            s.push('<polyline points="' + pfad(rv.kurve1, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="2 3" opacity="0.6"/>');
+            s.push('<polyline points="' + pfad(rv.kurve1, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="2 3" opacity="0.8"/>');
           }
         }
         s.push('<line x1="' + X(0) + '" x2="' + X(0) + '" y1="' + Y(S.e.thK0).toFixed(1) + '" y2="' + Y(R.th10).toFixed(1) + '" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="2 3"/>');
@@ -472,15 +474,7 @@
         const fehlend = [];
         if (e2) s.push(e2); else fehlend.push("2");
         if (e1) s.push(e1); else fehlend.push("1");
-        if (fehlend.length) {           // Ersatz: Legende unter der Zeichenfläche (außerhalb der Achsen)
-          let lx = L;
-          for (const n of fehlend.reverse()) {
-            const txt = n === "1" ? t("dia_tasse1") : t("dia_tasse2", { t: z(tz, 0) });
-            s.push('<line x1="' + lx + '" x2="' + (lx + 22) + '" y1="' + (H - 26) + '" y2="' + (H - 26) + '" stroke="' + (n === "1" ? "#8b5a2b" : "#222") + '" stroke-width="2.6"' + (n === "2" ? ' stroke-dasharray="7 4"' : "") + "/>");
-            s.push('<text x="' + (lx + 26) + '" y="' + (H - 22) + '" font-size="' + (fs - 1) + '" fill="#142337">' + esc(txt) + "</text>");
-            lx += 30 + txt.length * (fs - 1) * 0.55 + 14;
-          }
-        }
+        if (fehlend.length) legendeHtml = fehlend.reverse().map(n => (n === "1" ? SYM.linie1 : SYM.linie2) + " " + esc(n === "1" ? t("dia_tasse1") : t("dia_tasse2", { t: z(tz, 0) }))).join(" · ");   // Ersatz als Text unter dem Diagramm
       }
     } else if (ansicht === "waermestrom" && R) {
       const f1 = R.qdot1, f2 = R.qdot2, tq = Math.min(R.tWaermestrom, tz);
@@ -508,6 +502,7 @@
     const vk = $("vh-kasten"), vt = $("vh-text");
     if (vk && vt && vt.getBBox) { try { const bb = vt.getBBox(); if (bb.width > 0) { const bw2 = bb.width + 14, bx2 = W - Rr - bw2 - 4; vk.setAttribute("width", bw2.toFixed(1)); vk.setAttribute("x", bx2.toFixed(1)); vt.setAttribute("x", (bx2 + 7).toFixed(1)); } } catch (x) { } }
     $("vorhersage-zeile").hidden = !vorhersageUnten; $("vorhersage-zeile").textContent = vorhersageUnten;
+    $("kurven-legende").hidden = !legendeHtml; $("kurven-legende").innerHTML = legendeHtml;
     zusatzZeichnen();
     document.querySelector(".lesehinweis").innerHTML = (freigabe() && !R) ? "" : t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht);   // G6-21
     // Beschreibung für Bildschirmleser
@@ -818,7 +813,7 @@
   function messblattZeichnen() {
     const el = $("messblatt-inhalt");
     const becher = [1, 2].concat(S.kurs.b3 ? [3] : []);
-    let h = '<div class="tabelle-wrap" role="region" aria-labelledby="mess-titel"><table class="messtabelle"><thead><tr><th scope="col">' + t("mess_kopf_t") + "</th>";
+    let h = '<div class="tabelle-wrap"><table class="messtabelle"><thead><tr><th scope="col">' + t("mess_kopf_t") + "</th>";
     for (const b of becher) h += '<th scope="col">' + t("mess_kopf_b" + b) + "</th>";
     h += "</tr></thead><tbody>";
     ZEILEN_NAME().forEach((name, i) => {
@@ -842,9 +837,9 @@
     el.innerHTML = h;
     for (const inp of el.querySelectorAll(".zelle input")) inp.addEventListener("change", () => {
       const b = inp.getAttribute("data-b"), i = Number(inp.getAttribute("data-i")), l = HILFEN.zahlLesen(inp.value);
-      if (inp.value.trim() === "") { S.kurs.werte["b" + b][i] = null; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); $("mess-fehler").textContent = ""; }
+      if (inp.value.trim() === "") { S.kurs.werte["b" + b][i] = null; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); if (!document.querySelector("#messblatt-inhalt [aria-invalid]")) $("mess-fehler").textContent = ""; }
       else if (!isFinite(l.wert) || l.wert < 0 || l.wert > 100) { inp.setAttribute("aria-invalid", "true"); inp.setAttribute("aria-describedby", "mess-fehler"); $("mess-fehler").innerHTML = esc(inp.getAttribute("aria-label")) + ": " + t(l.grund === "tausender" ? "feld_tausender" : "mess_ungueltig"); return; }
-      else { S.kurs.werte["b" + b][i] = Math.round(l.wert * 100) / 100; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); $("mess-fehler").textContent = ""; }
+      else { S.kurs.werte["b" + b][i] = Math.round(l.wert * 100) / 100; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); if (!document.querySelector("#messblatt-inhalt [aria-invalid]")) $("mess-fehler").textContent = ""; }
       sichern(); teilZeichnen("messblatt"); frageleisteStill();
     });
     const feldZahl = (id, key, lo, hi) => $(id).addEventListener("change", () => {
@@ -903,7 +898,7 @@
     b.hidden = false;
     b.innerHTML = '<p id="link-frage">' + t(kursAnzahl() ? "link_frage" : "link_frage_leer") + '</p><div class="knopfzeile"><button type="button" class="knopf-zweit" id="link-ja">' + t("link_ja") + '</button><button type="button" class="knopf-schlicht" id="link-nein">' + t("link_nein") + "</button></div>";
     b.setAttribute("role", "region"); b.setAttribute("aria-labelledby", "link-frage");
-    const fertig = schluessel => { b.innerHTML = '<p id="link-ende" tabindex="-1">' + t(schluessel) + "</p>"; b.setAttribute("aria-labelledby", "link-ende"); $("ansage").textContent = nurText(t(schluessel)); $("link-ende").focus(); setTimeout(() => { if ($("link-ende")) b.hidden = true; }, 15000); };   // G5-24, G7-14
+    const fertig = schluessel => { b.innerHTML = '<p id="link-ende" tabindex="-1">' + t(schluessel) + "</p>"; b.setAttribute("aria-labelledby", "link-ende"); $("link-ende").focus(); setTimeout(() => { if ($("link-ende")) b.hidden = true; }, 15000); };   // G5-24, G7-14
     $("link-ja").addEventListener("click", () => { S.kurs = l.kurs; sichern(); weg(); alles(); fertig("link_ok"); });
     $("link-nein").addEventListener("click", () => { weg(); fertig("link_abgelehnt"); });
     b.addEventListener("keydown", ev => { if (ev.key === "Escape" && $("link-nein")) $("link-nein").click(); });
@@ -1031,7 +1026,7 @@
     document.documentElement.classList.toggle("handy", freigabe() && window.innerWidth <= 767);   // Reihenfolge Diagramm, Frage, Regler (M-6)
     const moeglich = freigabe() && window.innerWidth <= 767 && window.innerHeight > window.innerWidth && hoehe >= 500;
     const kn = $("knopf-anheften");
-    if (kn) { kn.hidden = !moeglich; kn.textContent = nurText(t(S.ansicht.anheften ? "anheften_aus" : "anheften_an")); kn.setAttribute("aria-pressed", S.ansicht.anheften ? "true" : "false"); }
+    if (kn) { kn.hidden = !moeglich; kn.textContent = nurText(t("anheften_an")); kn.setAttribute("aria-pressed", S.ansicht.anheften ? "true" : "false"); }
     document.documentElement.style.setProperty("--anheft", an ? Math.ceil($("diagramm-halter").getBoundingClientRect().height) + "px" : "0px");
   }
   $("sprachknopf").addEventListener("click", () => { S.sprache = S.sprache === "de" ? "en" : "de"; $("knopf-info").textContent = ""; $("ansage").textContent = ""; sichern(); alles();

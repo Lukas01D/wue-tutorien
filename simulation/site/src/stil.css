@@ -86,8 +86,8 @@ button { font: inherit; cursor: pointer; }
 /* G5-15, G6-07: Aufklappzeichen sichtbar, auch wenn summary flex ist */
 summary { list-style: none; }
 summary::-webkit-details-marker { display: none; }
-summary::before { content: "▸"; display: inline-block; width: 1.1em; flex: none; color: var(--navy-2); }
-details[open] > summary::before { content: "▾"; }
+summary::before { content: "▸" / ""; display: inline-block; width: 1.1em; flex: none; color: var(--navy-2); }
+details[open] > summary::before { content: "▾" / ""; }
 .rueck-box { border: 1px solid #e8d48f; border-radius: var(--radius); margin: 0.5rem 0; }
 .kern-leiste { display: none; }
 @media (min-width: 768px) { .kern-leiste { display: flex; gap: 1.2rem; position: sticky; top: 0; z-index: 4; background: #fff; border-bottom: 2px solid var(--hellblau); padding: 0.3rem 0.2rem; font-size: 0.9rem; } .kern-leiste b { font-variant-numeric: tabular-nums; } }
@@ -224,7 +224,7 @@ html { scroll-padding-top: calc(var(--anheft, 0px) + 8px); }   /* G5-02, G6-02: 
   .kopf-speicher.aus { display: block; max-width: none; text-align: left; }
 
   html.anheften .diagramm-halter { position: sticky; top: 0; z-index: 5; background: #fff; border-bottom: 3px solid var(--hellblau); }
-  html.anheften #diagramm { max-height: 33vh; }
+  html.anheften #diagramm { max-height: 29vh; }
   html.anheften .kernzahlen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; background: #fff; padding: 0.2rem 0.3rem; font-size: 0.8rem; }
   .kernzahlen b { display: block; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
   .reiter button { font-size: 13px; padding: 0.55rem 0.2rem; }
@@ -244,3 +244,6 @@ input[type="text"] { border-color: #7d8fa1 !important; }                        
 @media (min-width: 1200px) { .sim-raster { grid-template-columns: minmax(0, 780px) minmax(0, 300px); } }   /* G6-06, G6-12 */
 .wertetabelle td { text-align: right; font-variant-numeric: tabular-nums; }   /* G6-31 */
 .frage-text-zu > summary { font-weight: 600; min-height: 44px; }   /* G7-03 */
+@media (min-width: 768px) { html { scroll-padding-top: 56px; } }   /* G5-R2-01: Kernleiste der Vertiefung verdeckt den Fokus nicht */
+.kurven-legende { margin: 0.2rem 0 0; font-size: 0.85rem; }
+.sym-linie { width: 1.6em; }
