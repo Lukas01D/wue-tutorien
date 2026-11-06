@@ -26,8 +26,8 @@
 <div class="banner" id="link-banner" hidden></div>
 <main id="hauptinhalt" tabindex="-1">
   <div class="seite">
-    <section class="frageleiste" id="frageleiste" aria-labelledby="frage-titel"></section>
     <section class="simulation" id="simulation" data-t-aria="bereich_simulation">
+      <section class="frageleiste" id="frageleiste" aria-labelledby="frage-titel"></section>
       <div class="ansichten" id="ansichten" role="group" data-t-aria="ansicht_aria" hidden>
         <button type="button" class="umschalter" data-ansicht="temperatur" data-t="ansicht_temperatur"></button>
         <button type="button" class="umschalter" data-ansicht="waermestrom" data-t="ansicht_waermestrom"></button>
@@ -39,7 +39,9 @@
             <svg id="diagramm" role="img" aria-labelledby="diagramm-name diagramm-beschreibung" focusable="false"></svg>
             <span class="nur-leser" id="diagramm-name" data-t="dia_titel"></span>
             <div class="kernzahlen" id="kernzahlen" aria-hidden="true"></div>
+            <button type="button" class="knopf-text knopf-anheften" id="knopf-anheften" hidden></button>
           </div>
+          <div class="regler-pflicht" id="regler-pflicht"></div>
           <p class="vorhersage-zeile" id="vorhersage-zeile" hidden></p>
           <figcaption>
             <p class="lesehinweis"></p>
@@ -71,7 +73,6 @@
       <div class="regler-raster">
         <div class="regler-bereich">
           <p class="fehler-meldung" id="einstellung-fehler" role="alert" hidden></p>
-          <div class="regler-pflicht" id="regler-pflicht"></div>
           <details class="vertiefung" id="vertiefung">
             <summary id="vertiefung-titel"><span data-t="leiste_vertiefung"></span></summary>
             <p class="hinweis-frueh" id="vertiefung-frueh" hidden data-t="vertiefung_frueh"></p>

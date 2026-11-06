@@ -17,8 +17,9 @@ const fs = require("fs"), path = require("path"), os = require("os"), crypto = r
 const { execFileSync } = require("child_process");
 
 const SIM = path.resolve(__dirname, "..");
-const SEITE = path.join(SIM, "site", "index.html");
-const KOPIE = path.join(SIM, "site", "Kaffee_Simulation.html");
+const ORDNER = process.env.KAFFEE_ORDNER || path.join(SIM, "site");   // Probebau: KAFFEE_ORDNER=<ordner>
+const SEITE = path.join(ORDNER, "index.html");
+const KOPIE = path.join(ORDNER, "Kaffee_Simulation.html");
 const SOLL = JSON.parse(execFileSync("python3", [path.join(__dirname, "erwartung_browser.py")]).toString());
 const ERG = [];
 let nr = 0;
@@ -141,8 +142,10 @@ async function domOhneSkript(p) {
     const p = await seite(ctx, DATEI_URL, fehler);
     await startFesthalten(p, "1", "4");
     const rw = await text(p, "#rechenwerte-liste"), st = SOLL.standard.de;
-    const fehlt = ["th1", "th2", "dT", "Q1", "Q2", "kA", "th10", "tSchnitt"].filter(k => !rw.includes(st[k]));
-    pruefe("P2 Freigabe: Rechenwerte gleich der Python-Referenz (ϑ1, ϑ2, Unterschied, Q1, Q2, kA, Mischtemperatur, Schnitt)", !fehlt.length, fehlt.length ? "fehlt " + fehlt.join(", ") + " in: " + rw.slice(0, 160) : st.th1 + " / " + st.th2 + " / " + st.dT);
+    const fehlt = ["th1", "th2", "dT", "Q1", "Q2", "kA", "th10"].filter(k => !rw.includes(st[k]));
+    pruefe("P2 Freigabe: Rechenwerte gleich der Python-Referenz (ϑ1, ϑ2, Unterschied, Q1, Q2, kA, Mischtemperatur)", !fehlt.length, fehlt.length ? "fehlt " + fehlt.join(", ") + " in: " + rw.slice(0, 160) : st.th1 + " / " + st.th2 + " / " + st.dT);
+    const schnittVor = (await p.$$eval("#diagramm text", l => l.map(x => x.textContent).join("|"))).includes("Schnitt") || rw.includes(st.tSchnitt);
+    pruefe("Sperre Frage 1 (G1-07, G4-02): Schnitt und Schnittzeit erst nach der Vorhersage zu Frage 1", !schnittVor && rw.includes("nach eurer Vorhersage zu Frage 1"));
     const en = await text(p, "#energie-inhalt");
     pruefe("P2: Energiesäulen mit Q1, Q2 und Satz Q2 − Q1 (3,69 kJ) und Unterschied", en.includes(st.Q1) && en.includes(st.Q2) && en.includes("3,69") && en.includes(st.dT), en.slice(0, 120));
     const fl = await text(p, "#frageleiste");
@@ -152,8 +155,10 @@ async function domOhneSkript(p) {
     pruefe("P2: Auflösung zum Start nennt Unterschied, Temperaturen und C", (await text(p, "#aufl-start")).includes(st.dT) && (await text(p, "#aufl-start")).includes("957,7"));
     // Frage 1
     pruefe("P3: Regler „Zugabe nach“ gesperrt bis zur Vorhersage zu Frage 1", await p.isDisabled("#z-tEnd") && await p.isDisabled('.pm[data-r="tEnd"]'));
-    await f1Festhalten(p, "50");
-    pruefe("P4: Regler frei nach der Vorhersage", !(await p.isDisabled("#z-tEnd")) && !(await p.isDisabled("#r-tEnd")));
+    await f1Festhalten(p, "50 min");
+    pruefe("P4: Regler frei nach der Vorhersage (Eingabe „50 min“ gilt als Zahl, G1-05)", !(await p.isDisabled("#z-tEnd")) && !(await p.isDisabled("#r-tEnd")));
+    pruefe("P4: Schnittzeit nach der Vorhersage zu Frage 1 sichtbar", (await text(p, "#rechenwerte-liste")).includes(st.tSchnitt));
+    pruefe("M-12: aria-valuetext mit Einheit am Regler „Zugabe nach“", (await p.getAttribute("#r-tEnd", "aria-valuetext")) === "60 min", await p.getAttribute("#r-tEnd", "aria-valuetext"));
     await p.fill("#z-tEnd", "56"); await p.press("#z-tEnd", "Enter"); await warte(450);
     const rw56 = await text(p, "#rechenwerte-liste"), s56 = SOLL.t56.de;
     const ans = await text(p, "#ansage");
@@ -167,6 +172,8 @@ async function domOhneSkript(p) {
     await p.click("#knopf-weiter");
     pruefe("P5: Frage 2 ohne Kurswerte: Prüfen gesperrt, Überspringen angeboten", await p.isDisabled("#knopf-fest") && await p.$("#knopf-f2-weg") !== null);
     await messblattFuellen(p, false);
+    const vorF2 = await p.$$eval("#diagramm rect[width='9'], #diagramm circle[r='4.8']", l => l.length);
+    pruefe("Sperre Frage 2 (G1-01, G4-01, G7-01): mit geladenen Kurswerten keine Messpunkte vor der Vorhersage zu Frage 2", vorF2 === 0 && (await p.isHidden("#legende-mess")), vorF2 + " Punkte");
     await p.check('input[name="wahl-f2"][value="ueber"]');
     pruefe("P5: mit Kurswerten und Auswahl ist Prüfen aktiv", !(await p.isDisabled("#knopf-fest")));
     await p.click("#knopf-fest"); await warte(100);
@@ -494,6 +501,55 @@ async function domOhneSkript(p) {
       await ctx.close();
     }
     pruefe("axe-core 4.14.0 (wcag2a, 2aa, 21a, 21aa, 22aa): keine Verstöße in P0, P2, Vertiefung, DE und EN, 1366 und 390 px", !befunde.length, befunde.join("; "));
+  }
+
+  // ---------------------------------------------------------------- Korrekturen aus den Rollenprüfungen, Runde 1
+  {
+    const ctx = await kontext(browser); const fehler = [];
+    const p = await seite(ctx, DATEI_URL, fehler);
+    pruefe("G7-08: Messblatt vor der Freigabe eingebbar, ohne „Übernehmen“", await p.isVisible('input[data-b="2"][data-i="0"]') && (await p.$("#mess-ueber")) === null);
+    await p.check('input[name="wahl-start"][value="1"]'); await p.fill("#frage-zahl", "4 K");
+    pruefe("G1-05: „4 K“ als Zahl angenommen", !(await p.isDisabled("#knopf-fest")));
+    await p.fill("#frage-zahl", "vier");
+    pruefe("G1-05: Unsinn sperrt den Knopf mit passendem Hinweis", (await p.isDisabled("#knopf-fest")) && /nur eine Zahl/.test(await text(p, "#hinweis-waehlen")));
+    await p.fill("#frage-zahl", "10"); await p.click("#knopf-fest"); await warte(100);
+    await p.click("#knopf-aufl-start"); await warte(50);
+    const vg = await text(p, "#aufl-start");
+    pruefe("G1-04, G4-07: Rückmeldung vergleicht die Zahl mit dem Modell", /Eure Zahl: 10 K/.test(vg) && vg.includes("3,85 K"), vg.slice(0, 120));
+    await p.fill("#z-tEnd", "12").catch(() => {});
+    await p.fill("#frage-zahl", "30"); await p.click("#knopf-fest"); await p.fill("#z-tEnd", "12"); await p.press("#z-tEnd", "Enter"); await warte(80);
+    const achse = await p.$$eval("#diagramm text", l => l.map(x => x.textContent));
+    pruefe("G2-01, G5-01: Achsenbeschriftung bei Schrittweite 2,5 mit Nachkommastelle", achse.includes("2,5") && !achse.includes("3"), achse.filter(x => /^\d/.test(x)).slice(0, 14).join(" "));
+    // Sprache: getippte Dezimalzahl im Englischen mit Punkt
+    await p.click("#knopf-zurueck"); await p.click("#sprachknopf"); await warte(50);
+    const ctxE = await kontext(browser); const pe = await seite(ctxE, DATEI_URL + "?lang=en", []);
+    await pe.check('input[name="wahl-start"][value="1"]'); await pe.fill("#frage-zahl", "2,5"); await pe.click("#knopf-fest"); await warte(80);
+    pruefe("G2-03: getippte „2,5“ erscheint im Englischen als „2.5“", (await text(pe, "#rechenwerte-liste")).includes("about 2.5 K"));
+    const csvEn = await pe.evaluate(() => window.KAFFEE.csv());
+    pruefe("G2-02: englische CSV mit Komma im Spaltenkopf in Anführungszeichen", csvEn.split("\r\n")[0].includes('"model cup 2, black until the milk [°C]"'));
+    await ctxE.close();
+    // Kurslink im offenen Tab (hashchange) und Abgleich zwischen Tabs
+    await p.goto(DATEI_URL + "#kurs1=b1:80.2,68.1,59,52.3,47.1,43,39.8,;b2:80,67.6,58.8,52,46.9,42.8,39.6,35.2;u:21.5;m:6;d:0;b:1.2"); await warte(100);
+    pruefe("G1-10, G7-10, G8-04: Kurslink im schon offenen Tab löst die Rückfrage aus", await p.isVisible("#link-ja"));
+    await p.click("#link-ja"); await warte(50);
+    const p2 = await ctx.newPage(); await p2.goto(DATEI_URL); await warte(100);
+    await p2.click("#sprachknopf"); await warte(50);
+    await p.evaluate(() => 1); await warte(150);
+    const z1 = await p.evaluate(() => window.KAFFEE.zustand()), z2 = await p2.evaluate(() => window.KAFFEE.zustand());
+    pruefe("G7-02, G8-01: zweiter Tab überschreibt nichts; der erste Tab übernimmt den Speicherstand", JSON.stringify(z1) === JSON.stringify(z2) && z1.kurs.werte.b2[0] === 80, z1.sprache + "/" + z2.sprache);
+    await p2.close();
+    const linkNeu = await p.evaluate(() => HILFEN.kurslinkBauen(window.KAFFEE.zustand().kurs));
+    pruefe("G8-07: Kurslink endet nicht auf Komma (Kopfwerte am Ende) und wird wieder gelesen", /;b:1\.2$/.test(linkNeu) && (await p.evaluate(l => HILFEN.kurslinkLesen("#" + l).art, linkNeu)) === "ok", linkNeu.slice(-30));
+    pruefe("Korrekturen Runde 1: keine Konsolenfehler", !fehler.length, fehler.join("; "));
+    await ctx.close();
+    // Handy: Frage direkt unter dem angehefteten Diagramm, Anheften abschaltbar
+    const ch = await kontext(browser, { viewport: { width: 390, height: 844 } }); const ph = await seite(ch, DATEI_URL, []);
+    await startFesthalten(ph); await warte(150);
+    const lage = await ph.evaluate(() => { const d = document.getElementById("diagramm-halter").getBoundingClientRect(), f = document.getElementById("frageleiste").getBoundingClientRect(); return [Math.round(d.top), Math.round(d.bottom), Math.round(f.top)]; });
+    pruefe("M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild", lage[0] >= -1 && lage[1] <= 844 && lage[2] >= lage[1] - 1 && lage[2] < lage[1] + 40, lage.join(", "));
+    await ph.click("#knopf-anheften"); await warte(80);
+    pruefe("M-6: Anheften abschaltbar", (await ph.evaluate(() => getComputedStyle(document.getElementById("diagramm-halter")).position)) !== "sticky");
+    await ch.close();
   }
 
   // ---------------------------------------------------------------- Leistung (Cloud-Container, Chromium)

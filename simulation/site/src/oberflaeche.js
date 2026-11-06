@@ -15,7 +15,7 @@
     { id: "v2", titel: "v2_titel", text: "v2_text", wahl: ["groesser", "kleiner", "gleich"], wahlText: { groesser: "v_opt_groesser", kleiner: "v_opt_kleiner", gleich: "v_opt_gleich" }, richtig: "gleich",
       zahl: { label: "v2_eingabe", einheit: "min", stellen: 0 }, aufl: "aufl_v2", ausgang: "start_ausgangslage", setze: "standard" },
     { id: "v3", titel: "v3_titel", text: "v3_text", wahl: ["groesser", "kleiner"], wahlText: { groesser: "v_opt_groesser", kleiner: "v_opt_kleiner" }, richtig: "kleiner",
-      aufl: "aufl_v3", ausgang: "start_ausgangslage", setze: "becher" },
+      aufl: "aufl_v3", ausgang: "v3_ausgangslage", setze: "becher" },
     { id: "v4", titel: "v4_titel", text: "v4_text", wahl: ["ungleich", "falsch"], wahlText: { ungleich: "v4_opt_ungleich", falsch: "v4_opt_falsch" }, richtig: "ungleich",
       aufl: "aufl_v4", ausgang: "start_ausgangslage", setze: "standard" },
     { id: "v5", titel: "v5_titel", text: "v5_text", wahl: ERW.VOREINSTELLUNGEN.map(v => v.id), wahlText: Object.fromEntries(ERW.VOREINSTELLUNGEN.map(v => [v.id, "vor_" + v.id])), richtig: "thermo_offen",
@@ -40,15 +40,60 @@
     sprache: "de", e: standardE(), antworten: leereAntworten(), aktuell: "start", kurs: leererKurs(),
     ansicht: { reiter: "versuche", vertiefung: false, diagramm: "temperatur", anheften: true }, vergleich: null, f2Uebersprungen: false
   };
-  (function laden() {
+  const zahlOk = x => typeof x === "number" && isFinite(x);
+  function laden() {
     const a = lies("antworten"), e = lies("einstellungen"), k = lies("kurswerte"), v = lies("ansicht");
-    if (a && a.antworten) { for (const f of FRAGEN) if (a.antworten[f.id]) Object.assign(S.antworten[f.id], a.antworten[f.id]); S.aktuell = a.aktuell || "start"; S.f2Uebersprungen = !!a.f2Uebersprungen; }
-    if (e && typeof e === "object") Object.assign(S.e, e);
-    if (k && k.werte) S.kurs = Object.assign(leererKurs(), k);
-    if (v && typeof v === "object") { Object.assign(S.ansicht, v.ansicht || {}); if (v.sprache === "en" || v.sprache === "de") S.sprache = v.sprache; }
+    S.antworten = leereAntworten(); S.aktuell = "start"; S.f2Uebersprungen = false; S.e = standardE(); S.kurs = leererKurs();
+    try {
+      if (a && a.antworten && typeof a.antworten === "object") {
+        for (const f of FRAGEN) {
+          const q = a.antworten[f.id]; if (!q || typeof q !== "object") continue;
+          const z0 = S.antworten[f.id];
+          if (typeof q.wahl === "string" && f.wahl && f.wahl.indexOf(q.wahl) >= 0) z0.wahl = q.wahl;
+          if (typeof q.zahl === "string") z0.zahl = q.zahl.slice(0, 40);
+          if (typeof q.warum === "string") z0.warum = q.warum.slice(0, 400);
+          for (const b of ["fest", "ohne", "aufl"]) z0[b] = q[b] === true;
+        }
+        if (FRAGEN.some(f => f.id === a.aktuell)) S.aktuell = a.aktuell;
+        S.f2Uebersprungen = a.f2Uebersprungen === true;
+      }
+    } catch (x) { S.antworten = leereAntworten(); S.aktuell = "start"; }
+    try {
+      if (e && typeof e === "object") {
+        const neu = standardE();
+        for (const r of REGLER_DEF.regler) { const w = e[r.key]; if (zahlOk(w)) { const wa = r.faktor ? w * r.faktor : w; if (wa >= r.min && wa <= r.max) neu[r.key] = w; } }
+        if (zahlOk(e.kA) && e.kA > 0 && e.kA <= 5) neu.kA = e.kA;
+        if (e.kAQuelle === "fest" || e.kAQuelle === "messung") neu.kAQuelle = e.kAQuelle;
+        if (typeof e.kAHerkunft === "string") neu.kAHerkunft = e.kAHerkunft.slice(0, 40);
+        for (const b of ["milch2Raum", "becher"]) neu[b] = e[b] === true;
+        S.e = neu;
+      }
+    } catch (x) { S.e = standardE(); }
+    try {
+      if (k && k.werte) {
+        const neu = leererKurs();
+        for (const b of ["b1", "b2", "b3"]) if (Array.isArray(k.werte[b]) && k.werte[b].length === 8) neu.werte[b] = k.werte[b].map(x => zahlOk(x) && x >= 0 && x <= 100 ? x : null);
+        neu.werte.b1[7] = null;
+        if (zahlOk(k.u) && k.u >= 5 && k.u <= 40) neu.u = k.u;
+        if (zahlOk(k.m) && k.m >= 0 && k.m <= 70) neu.m = k.m;
+        neu.d = k.d === true; neu.b3 = k.b3 === true;
+        S.kurs = neu;
+      }
+    } catch (x) { S.kurs = leererKurs(); }
+    try {
+      if (v && typeof v === "object" && v.ansicht && typeof v.ansicht === "object") {
+        const w = v.ansicht;
+        if (["versuche", "modell", "code"].indexOf(w.reiter) >= 0) S.ansicht.reiter = w.reiter;
+        if (["temperatur", "waermestrom", "ln"].indexOf(w.diagramm) >= 0) S.ansicht.diagramm = w.diagramm;
+        for (const b of ["vertiefung", "anheften", "trinkzeit", "kalt"]) if (typeof w[b] === "boolean") S.ansicht[b] = w[b];
+      }
+      if (v && (v.sprache === "en" || v.sprache === "de")) S.sprache = v.sprache;
+    } catch (x) { }
     const q = new URLSearchParams(location.search).get("lang");
-    if (q === "en" || q === "de") S.sprache = q;
-  })();
+    if ((q === "en" || q === "de") && !laden.schonEinmal) S.sprache = q;
+    laden.schonEinmal = true;
+  }
+  laden();
   function sichern() {
     schreib("antworten", { antworten: S.antworten, aktuell: S.aktuell, f2Uebersprungen: S.f2Uebersprungen });
     schreib("einstellungen", S.e); schreib("kurswerte", S.kurs); schreib("ansicht", { ansicht: S.ansicht, sprache: S.sprache });
@@ -87,6 +132,7 @@
     for (const el of document.querySelectorAll("[data-t-aria]")) el.setAttribute("aria-label", nurText(t(el.getAttribute("data-t-aria"))));
     $("sprachknopf").setAttribute("aria-label", nurText(t("sprache_knopf_aria")));
     $("speicher-hinweis").innerHTML = t(speicherOk ? "speicher_ok" : "speicher_aus");
+    $("speicher-hinweis").classList.toggle("aus", !speicherOk);
     $("fuss-stand").textContent = nurText(t("fuss_stand", { stand: BAU.stand, version: BAU.version }));
   }
 
@@ -107,17 +153,28 @@
 
   // ------------------------------------------------------------------ Frageleiste
   function frage(id) { return FRAGEN.find(f => f.id === id); }
+  function vorhersageZahl(f, roh) {        // „4 K“, „ca. 4“, „~4“, „40 min“ gelten als Zahl (G1-05, G2)
+    const t0 = String(roh || "").trim().replace(/^(ca\.?|etwa|about|approx\.?|~|≈)\s*/i, "").replace(/\s*(K|min|°\s*C|°)$/i, "").trim();
+    const l = HILFEN.zahlLesen(t0);
+    if (isFinite(l.wert) && f.id === "start" && l.wert < 0) return { wert: NaN, grund: "negativ" };
+    return l;
+  }
+  function zahlAnzeige(f, roh) {
+    const l = vorhersageZahl(f, roh); if (!isFinite(l.wert)) return esc(roh);
+    const d = (String(roh).match(/[.,](\d+)/) || ["", ""])[1].length;
+    return z(l.wert, Math.min(2, d));
+  }
   function vorhersageText(f, a) {
     if (a.ohne) return t("ohne_vorhersage");
     const teile = [];
     if (f.wahl && a.wahl) teile.push(nurText(t(f.wahlText[a.wahl])));
-    if (f.zahl && a.zahl !== "") teile.push((f.id === "start" ? nurText(t("etwa")) + " " : "") + a.zahl + " " + f.zahl.einheit);
+    if (f.zahl && a.zahl !== "") teile.push((f.id === "start" ? nurText(t("etwa")) + " " : "") + zahlAnzeige(f, a.zahl) + " " + f.zahl.einheit);
     return teile.join(", ");
   }
   function vorhersageGueltig(f, a) {
     if (f.wahl && !a.wahl) return false;
-    if (f.zahl && f.zahl.pflicht && !isFinite(HILFEN.zahlLesen(a.zahl).wert)) return false;
-    if (f.zahl && a.zahl.trim() !== "" && !isFinite(HILFEN.zahlLesen(a.zahl).wert)) return false;
+    if (f.zahl && f.zahl.pflicht && !isFinite(vorhersageZahl(f, a.zahl).wert)) return false;
+    if (f.zahl && a.zahl.trim() !== "" && !isFinite(vorhersageZahl(f, a.zahl).wert)) return false;
     return true;
   }
   function kursAnzahl() { let n = 0; for (const k of ["b1", "b2"].concat(S.kurs.b3 ? ["b3"] : [])) n += S.kurs.werte[k].filter(v => v !== null).length; return n; }
@@ -130,28 +187,30 @@
     if (f.id === "f1" && st.fest && !a.fest) {
       h += '<div class="rueckblick"><p><strong>' + t("leiste_start") + ":</strong> " + t("eure_vorhersage") + ": " + esc(vorhersageText(frage("start"), st)) + "</p>" +
         '<p class="auftrag">' + t("auftrag_start") + '</p><div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl-start" aria-expanded="' +
-        (st.aufl ? "true" : "false") + '" aria-controls="aufl-start">' + t("knopf_aufloesung") + "</button></div>" +
+        (st.aufl ? "true" : "false") + '" aria-controls="aufl-start">' + t(st.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button></div>" +
         (st.aufl ? '<div class="aufloesung" id="aufl-start">' + vergleichHtml(frage("start"), st) + "<p>" + t("aufl_start") + "</p></div>" : "") + "</div>";
     }
     h += '<p class="frage-nr">' + nr + '</p><h2 id="frage-titel">' + t(f.titel) + "</h2>";
     h += '<p class="frage-text">' + t(f.text) + "</p>";
-    if (f.id === "f2") h += '<p class="hinweis">' + (kursAnzahl() ? t("f2_werte_da", { n: kursAnzahl() }) : t("f2_keine_werte")) + "</p>";
+    if (f.id === "f2") h += '<p class="hinweis" id="f2-werte">' + (kursAnzahl() ? t("f2_werte_da", { n: kursAnzahl() }) : t("f2_keine_werte")) + "</p>";
     h += '<p class="hinweis"><strong>' + t("ausgangslage") + ":</strong> " + t(f.ausgang) + "</p>";
     const gesperrt = a.fest;
-    h += '<div class="frage-eingabe">';
-    if (f.wahl) {
-      h += '<fieldset><legend>' + t("eure_vorhersage") + '</legend><div class="wahl">';
-      for (const w of f.wahl) h += '<label><input type="radio" name="wahl-' + f.id + '" value="' + w + '"' + (a.wahl === w ? " checked" : "") + (gesperrt ? " disabled" : "") + "> <span>" + t(f.wahlText[w]) + "</span></label>";
-      h += "</div></fieldset>";
+    if (!a.fest) {          // nach dem Festhalten keine gesperrten Felder mehr: die Leiste wird kurz (G7-03, G4-10)
+      h += '<div class="frage-eingabe">';
+      if (f.wahl) {
+        h += '<fieldset><legend>' + t("eure_vorhersage") + '</legend><div class="wahl">';
+        for (const w of f.wahl) h += '<label><input type="radio" name="wahl-' + f.id + '" value="' + w + '"' + (a.wahl === w ? " checked" : "") + "> <span>" + t(f.wahlText[w]) + "</span></label>";
+        h += "</div></fieldset>";
+      }
+      if (f.zahl) h += '<label class="feld">' + t(f.zahl.label) + ' <span class="feld-einheit"><input type="text" inputmode="decimal" autocomplete="off" id="frage-zahl" value="' + esc(a.zahl) + '"> ' + esc(f.zahl.einheit) + "</span></label>";
+      h += '<label class="feld feld-breit">' + t("begruendung_label") + ' <input type="text" id="frage-warum" autocomplete="off" value="' + esc(a.warum) + '"></label>';
+      h += "</div>";
     }
-    if (f.zahl) h += '<label class="feld">' + t(f.zahl.label) + ' <span class="feld-einheit"><input type="text" inputmode="decimal" autocomplete="off" id="frage-zahl" value="' + esc(a.zahl) + '"' + (gesperrt ? " disabled" : "") + "> " + esc(f.zahl.einheit) + "</span></label>";
-    h += '<label class="feld feld-breit">' + t("begruendung_label") + ' <input type="text" id="frage-warum" autocomplete="off" value="' + esc(a.warum) + '"' + (gesperrt ? " disabled" : "") + "></label>";
-    h += "</div>";
     h += '<div class="frage-knoepfe">';
     if (!a.fest) {
       const ok = vorhersageGueltig(f, a) && !(f.id === "f2" && !kursAnzahl());
       h += '<button type="button" class="knopf-haupt" id="knopf-fest"' + (ok ? "" : " disabled") + ">" + t(f.id === "start" ? "knopf_vorhersage_start" : "knopf_vorhersage") + "</button>";
-      if (!ok && f.id !== "f2") h += '<span class="hinweis" id="hinweis-waehlen">' + t("hinweis_erst_waehlen") + "</span>";
+      h += '<span class="hinweis" id="hinweis-waehlen"' + (ok ? " hidden" : "") + ">" + t(hinweisSchluessel(f, a)) + "</span>";
       h += '<button type="button" class="knopf-text" id="knopf-ohne">' + t("knopf_ohne") + "</button>";
       if (f.id === "f2" && !kursAnzahl()) h += '<button type="button" class="knopf-schlicht" id="knopf-f2-weg">' + t("f2_ueberspringen") + "</button>";
     }
@@ -163,7 +222,7 @@
     if (a.fest) {
       h += '<p class="hinweis"><strong>' + t("eure_vorhersage") + ":</strong> " + esc(vorhersageText(f, a)) + (a.warum ? " (" + esc(a.warum) + ")" : "") + "</p>";
       h += '<p class="auftrag">' + (f.id === "start" ? t("auftrag_start") : (f.id === "f2" ? t("f2_auftrag") : t("auftrag_erklaeren"))) + "</p>";
-      h += '<div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl" aria-expanded="' + (a.aufl ? "true" : "false") + '" aria-controls="aufl-leiste">' + t("knopf_aufloesung") + "</button></div>";
+      h += '<div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl" aria-expanded="' + (a.aufl ? "true" : "false") + '" aria-controls="aufl-leiste">' + t(a.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button></div>";
       if (a.aufl) h += '<div class="aufloesung" id="aufl-leiste">' + vergleichHtml(f, a) + "<p>" + t(f.aufl) + "</p></div>";
     }
     if (f.id === "f2" && S.f2Uebersprungen && !a.fest) h += '<p class="hinweis">' + t("f2_uebersprungen") + "</p>";
@@ -174,7 +233,7 @@
     const zf = $("frage-zahl"); if (zf) zf.addEventListener("input", () => { a.zahl = zf.value; sichern(); frageKnopfAktualisieren(); });
     const wf = $("frage-warum"); if (wf) wf.addEventListener("input", () => { a.warum = wf.value; sichern(); });
     const kf = $("knopf-fest"); if (kf) kf.addEventListener("click", () => festhalten(f, false));
-    const ko = $("knopf-ohne"); if (ko) ko.addEventListener("click", () => festhalten(f, true));
+    const ko = $("knopf-ohne"); if (ko) ko.addEventListener("click", () => bestaetigen(t("ohne_frage"), () => festhalten(f, true), ko));
     const kas = $("knopf-aufl-start"); if (kas) kas.addEventListener("click", () => { st.aufl = !st.aufl; sichern(); alles(); fokus("knopf-aufl-start"); });
     const ka = $("knopf-aufl"); if (ka) ka.addEventListener("click", () => { a.aufl = !a.aufl; sichern(); alles(); fokus("knopf-aufl"); });
     const kz = $("knopf-zurueck"); if (kz) kz.addEventListener("click", () => geheZu(reihe[i - 1]));
@@ -182,17 +241,28 @@
     const k2 = $("knopf-f2-weg"); if (k2) k2.addEventListener("click", () => { S.f2Uebersprungen = true; sichern(); alles(); fokus("knopf-weiter"); });
     const kv = $("knopf-vt-auf"); if (kv) kv.addEventListener("click", () => { S.ansicht.vertiefung = true; geheZu("v1"); $("frageleiste").scrollIntoView({ block: "start" }); });
   }
+  function hinweisSchluessel(f, a) {
+    if (f.id === "f2" && !kursAnzahl()) return "f2_erst_laden";
+    if (f.wahl && !a.wahl) return "hinweis_erst_waehlen";
+    return "hinweis_zahl";
+  }
+  function frageleisteStill() {      // nur Hinweis und Knopf der Frage 2 nachziehen, ohne die Leiste neu aufzubauen
+    const h2 = $("f2-werte"); if (h2) h2.innerHTML = kursAnzahl() ? t("f2_werte_da", { n: kursAnzahl() }) : t("f2_keine_werte");
+    frageKnopfAktualisieren();
+  }
   function frageKnopfAktualisieren() {
     const f = frage(S.aktuell), a = S.antworten[f.id], k = $("knopf-fest");
     if (!k) return;
     const ok = vorhersageGueltig(f, a) && !(f.id === "f2" && !kursAnzahl());
     k.disabled = !ok;
-    const h = $("hinweis-waehlen"); if (h) h.hidden = ok;
+    const h = $("hinweis-waehlen"); if (h) { h.hidden = ok; h.innerHTML = t(hinweisSchluessel(f, a)); }
   }
+  const SOLL = { start: "soll_start", f1: "soll_f1", v1: "soll_v1", v2: "soll_v2" };   // Modellwerte der Standardlage (Konzept 6)
   function vergleichHtml(f, a) {
     let h = "<p><strong>" + t("eure_vorhersage") + ":</strong> " + esc(vorhersageText(f, a));
     if (f.richtig && a.wahl && !a.ohne) h += " · " + (a.wahl === f.richtig ? '<span class="vergleich-ok">' + SYM.haken + " " + t("passt") + "</span>" : '<span class="vergleich-nein">× ' + t("passt_nicht") + "</span>");
-    return h + "</p>";
+    if (SOLL[f.id] && f.zahl && a.zahl !== "" && !a.ohne) h += "<br>" + t("vergleich_zahl", { ist: zahlAnzeige(f, a.zahl) + " " + esc(f.zahl.einheit), soll: t(SOLL[f.id]) });
+    return h + (a.warum && !a.ohne ? '<br><span class="klein">' + t("eure_begruendung") + ": " + esc(a.warum) + "</span>" : "") + "</p>";
   }
   function festhalten(f, ohne) {
     const a = S.antworten[f.id];
@@ -207,7 +277,9 @@
     if (a.fest && f.id === "start") S.aktuell = "f1";
     sichern(); alles();
     if (meldung) $("knopf-info").textContent = meldung;
-    fokus(f.id === "start" ? "frage-titel" : "knopf-aufl");
+    if (a.fest) { ansagen(true); $("simulation").scrollIntoView({ block: "start" }); }
+    const ziel = $(f.id === "start" ? "frage-titel" : "knopf-aufl");
+    if (ziel) { if (!ziel.hasAttribute("tabindex") && ziel.tagName !== "BUTTON") ziel.setAttribute("tabindex", "-1"); ziel.focus({ preventScroll: true }); }
   }
   function geheZu(id) {
     S.aktuell = id;
@@ -218,11 +290,12 @@
 
   // ------------------------------------------------------------------ Diagramm
   const NS = "http://www.w3.org/2000/svg";
+  const stellenVon = st => { let d = 0; while (d < 3 && Math.abs(st * Math.pow(10, d) - Math.round(st * Math.pow(10, d))) > 1e-9) d++; return d; };
   function schritt(spanne) { const roh = spanne / 6; const p = Math.pow(10, Math.floor(Math.log10(roh))); for (const m of [1, 2, 2.5, 5, 10]) if (m * p >= roh) return m * p; return 10 * p; }
   function diagrammZeichnen() {
     const svg = $("diagramm"), halter = $("diagramm-halter");
     const W = Math.round(Math.min(780, Math.max(280, halter.getBoundingClientRect().width || 640)));
-    const H = Math.round(W < 520 ? W * 0.78 : W * 0.56);
+    const H = Math.round(W < 520 ? W * 0.78 : Math.min(W * 0.56, Math.max(280, window.innerHeight * 0.5)));
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W); svg.setAttribute("height", H);
     const fs = 12, L = 52, Rr = 14, O = 16, U = 44;
@@ -231,7 +304,7 @@
       '<pattern id="muster-nach" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#8b5a2b"/></pattern></defs>');
     const ansicht = freigabe() ? S.ansicht.diagramm : "temperatur";
     const tz = S.e.tEnd_min;
-    const punkte = freigabe() ? messPunkte() : [];
+    const punkte = freigabe() && messFrei() ? messPunkte() : [];
     const xMaxDaten = Math.max(tz, punkte.length ? Math.max(...punkte.map(p => p.t)) : 0);
     const xMax = Math.max(10, xMaxDaten * 1.04 + 0.5);
     let yMin, yMax, yLabel;
@@ -255,11 +328,11 @@
     const xs = schritt(xMax);
     for (let y = yMin; y <= yMax + 1e-9; y += st) {
       s.push('<line x1="' + L + '" x2="' + (W - Rr) + '" y1="' + Y(y).toFixed(1) + '" y2="' + Y(y).toFixed(1) + '" stroke="#e6ebf0"/>');
-      s.push('<text x="' + (L - 6) + '" y="' + (Y(y) + 4).toFixed(1) + '" text-anchor="end" font-size="' + fs + '" fill="#5a6b7f">' + z(y, st < 1 ? (st < 0.1 ? 2 : 1) : 0) + "</text>");
+      s.push('<text x="' + (L - 6) + '" y="' + (Y(y) + 4).toFixed(1) + '" text-anchor="end" font-size="' + fs + '" fill="#5a6b7f">' + z(y, stellenVon(st)) + "</text>");
     }
     for (let x = 0; x <= xMax + 1e-9; x += xs) {
       s.push('<line x1="' + X(x).toFixed(1) + '" x2="' + X(x).toFixed(1) + '" y1="' + (H - U) + '" y2="' + (H - U + 5) + '" stroke="#5a6b7f"/>');
-      s.push('<text x="' + X(x).toFixed(1) + '" y="' + (H - U + 18) + '" text-anchor="middle" font-size="' + fs + '" fill="#5a6b7f">' + z(x, 0) + "</text>");
+      s.push('<text x="' + X(x).toFixed(1) + '" y="' + (H - U + 18) + '" text-anchor="middle" font-size="' + fs + '" fill="#5a6b7f">' + z(x, stellenVon(xs)) + "</text>");
     }
     s.push('<line x1="' + L + '" x2="' + (W - Rr) + '" y1="' + (H - U) + '" y2="' + (H - U) + '" stroke="#5a6b7f"/><line x1="' + L + '" x2="' + L + '" y1="' + O + '" y2="' + (H - U) + '" stroke="#5a6b7f"/>');
     s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="13" fill="#142337">' + svgText(t("dia_achse_t_txt")) + "</text>");
@@ -291,10 +364,13 @@
     if (ansicht === "temperatur") {
       raumY = Y(S.e.thU); if (R) kurvenPx = [t2 => Y(R.kurve1(t2)), t2 => Y(R.kurve2(t2))];
       s.push('<line x1="' + L + '" x2="' + (W - Rr) + '" y1="' + Y(S.e.thU).toFixed(1) + '" y2="' + Y(S.e.thU).toFixed(1) + '" stroke="#8a8984" stroke-width="1.5" stroke-dasharray="1.5 4" stroke-linecap="round"/>');
-      s.push('<text x="' + (W - Rr - 4) + '" y="' + (Y(S.e.thU) - 5).toFixed(1) + '" text-anchor="end" font-size="' + fs + '" fill="#5a6b7f">' + esc(t("dia_raum", { th: z(S.e.thU, 1) })) + "</text>");
+      const raumRechts = !(R && freigabe() && Math.min(Math.abs(Y(R.th2) - Y(S.e.thU)), Math.abs(Y(R.th1) - Y(S.e.thU)), Math.abs(Y(R.th2K) - Y(S.e.thU))) < 22 && X(tz) > W - Rr - 110);
+      s.push('<text x="' + (raumRechts ? W - Rr - 4 : L + 6) + '" y="' + (Y(S.e.thU) - 5).toFixed(1) + '" text-anchor="' + (raumRechts ? "end" : "start") + '" font-size="' + fs + '" fill="#5a6b7f">' + esc(t("dia_raum", { th: z(S.e.thU, 1) })) + "</text>");
       if (!freigabe()) {
         s.push('<circle cx="' + X(0) + '" cy="' + Y(S.e.thK0).toFixed(1) + '" r="4.5" fill="#222"/><text x="' + (X(0) + 9) + '" y="' + (Y(S.e.thK0) + 4).toFixed(1) + '" font-size="' + fs + '">' + z(S.e.thK0, 0) + " °C</text>");
-        s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="14" fill="#5a6b7f">' + esc(nurText(t("dia_beschreibung_start"))) + "</text>");
+        const zeilen = [], wo = nurText(t("dia_beschreibung_start")).split(" "), maxZ = Math.floor((W - L - Rr - 20) / 7.6);
+        for (const w of wo) { if (zeilen.length && (zeilen[zeilen.length - 1] + " " + w).length <= maxZ) zeilen[zeilen.length - 1] += " " + w; else zeilen.push(w); }
+        s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + ((O + H - U) / 2 - (zeilen.length - 1) * 9) + '" text-anchor="middle" font-size="14" fill="#5a6b7f">' + zeilen.map((zz, i) => '<tspan x="' + ((L + W - Rr) / 2) + '"' + (i ? ' dy="18"' : "") + ">" + esc(zz) + "</tspan>").join("") + "</text>");
       } else if (!R) {
         s.push('<rect x="' + (L + 1) + '" y="' + (O + 1) + '" width="' + (W - L - Rr - 2) + '" height="' + (H - O - U - 2) + '" fill="#fbecec" stroke="#b63434" stroke-dasharray="6 5"/>');
         s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="15" fill="#862828">' + esc(t("dia_ungueltig")) + "</text>");
@@ -302,20 +378,35 @@
         if (S.vergleich) {
           const rv = ERW.fehler(S.vergleich) ? null : ERW.auswerten(S.vergleich);
           if (rv) {
-            s.push('<polyline points="' + pfad(rv.kurve2, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#222" stroke-width="2" stroke-dasharray="9 5" opacity="0.28"/>');
-            s.push('<polyline points="' + pfad(rv.kurve1, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2" opacity="0.28"/>');
+            s.push('<polyline points="' + pfad(rv.kurve2, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#222" stroke-width="2" stroke-dasharray="9 5" opacity="0.5"/>');
+            s.push('<polyline points="' + pfad(rv.kurve1, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="2 3" opacity="0.6"/>');
           }
         }
         s.push('<line x1="' + X(0) + '" x2="' + X(0) + '" y1="' + Y(S.e.thK0).toFixed(1) + '" y2="' + Y(R.th10).toFixed(1) + '" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="2 3"/>');
         s.push('<polyline points="' + pfad(R.kurve2, 0, tz, N_ABTAST) + '" fill="none" stroke="#222" stroke-width="2.6" stroke-dasharray="9 5"/>');
         s.push('<polyline points="' + pfad(R.kurve1, 0, tz, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2.8"/>');
         s.push('<line x1="' + X(tz).toFixed(1) + '" x2="' + X(tz).toFixed(1) + '" y1="' + Y(R.th2K).toFixed(1) + '" y2="' + Y(R.th2).toFixed(1) + '" stroke="#222" stroke-width="2" stroke-dasharray="2 3"/>');
-        s.push('<circle cx="' + X(tz).toFixed(1) + '" cy="' + Y(R.th1).toFixed(1) + '" r="4.5" fill="#8b5a2b"/><circle cx="' + X(tz).toFixed(1) + '" cy="' + Y(R.th2).toFixed(1) + '" r="4.5" fill="#222"/>');
-        if (S.kurs.b3) s.push('<path d="M ' + X(tz).toFixed(1) + " " + (Y(R.th2Raum) - 6).toFixed(1) + " l 5.5 9.5 l -11 0 z\" fill=\"#3d70a3\"/>");
-        if (isFinite(R.tSchnitt) && R.tSchnitt < tz) {
+        s.push('<circle cx="' + X(tz).toFixed(1) + '" cy="' + Y(R.th1).toFixed(1) + '" r="4.5" fill="#fff" stroke="#8b5a2b" stroke-width="2.2"/><circle cx="' + X(tz).toFixed(1) + '" cy="' + Y(R.th2).toFixed(1) + '" r="4.5" fill="#fff" stroke="#222" stroke-width="2.2"/>');
+        if (S.kurs.b3) s.push('<path d="M ' + X(tz).toFixed(1) + " " + (Y(R.th2Raum) - 6).toFixed(1) + " l 5.5 9.5 l -11 0 z\" fill=\"#fff\" stroke=\"#3d70a3\" stroke-width=\"2\"/>");
+        if (schnittFrei() && isFinite(R.tSchnitt) && R.tSchnitt < tz) {
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt));
           s.push('<circle cx="' + sx.toFixed(1) + '" cy="' + sy.toFixed(1) + '" r="5.5" fill="#fff" stroke="#222" stroke-width="1.8"/>');
           belegt.push([sx - 7, sy - 7, 14, 14]);
+        }
+        // Vorhersage der aktuellen Frage als beschrifteter Kasten oben rechts (frei von Kurven), sonst als Zeile unter dem Diagramm (G1-11, G4-08)
+        const fq = frage(S.aktuell), aq = S.antworten[fq.id];
+        const [fv, av] = (aq.fest && !aq.ohne) ? [fq, aq] : [frage("start"), S.antworten.start];
+        if (av.fest && !av.ohne) {
+          const txt = t("dia_vorhersage", { text: vorhersageText(fv, av) });
+          const bw = txt.length * 11 * 0.56 + 14, bx = W - Rr - bw - 4, by = O + 4;
+          let frei = bx > L + 4;
+          for (let i = 0; i <= 20; i++) { const xp = bx + bw * i / 20, tt = (xp - L) / (W - L - Rr) * xMax; if (tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk < by + 26 && yk > by - 4) frei = false; } }
+          if (frei) { s.push('<rect x="' + bx.toFixed(1) + '" y="' + by + '" width="' + bw.toFixed(1) + '" height="22" rx="3" fill="#e8f5ef" stroke="#227b48"/><text x="' + (bx + 7).toFixed(1) + '" y="' + (by + 15) + '" font-size="11" fill="#14603f">' + esc(txt) + "</text>"); belegt.push([bx, by, bw, 22]); }
+          else vorhersageUnten = txt;
+          if ((fv.id === "f1" || fv.id === "v2") && isFinite(vorhersageZahl(fv, av.zahl).wert)) {
+            const tv = vorhersageZahl(fv, av.zahl).wert;
+            if (tv > 0 && tv <= xMax) s.push('<line x1="' + X(tv).toFixed(1) + '" x2="' + X(tv).toFixed(1) + '" y1="' + (O + 28) + '" y2="' + (H - U) + '" stroke="#227b48" stroke-width="1.6" stroke-dasharray="3 3"/>');
+          }
         }
         // Messpunkte
         for (const p of punkte) {
@@ -325,13 +416,15 @@
           else s.push('<path d="M ' + px.toFixed(1) + " " + (py - 6).toFixed(1) + ' l 5.5 9.5 l -11 0 z" fill="' + c + '" stroke="#fff" stroke-width="1"/>');
           belegt.push([px - 6, py - 6, 12, 12]);
         }
-        if (isFinite(R.tSchnitt) && R.tSchnitt < tz) {     // Beschriftung „Schnitt“ nach den Messpunkten, frei von Punkten
+        if (schnittFrei() && isFinite(R.tSchnitt) && R.tSchnitt < tz) {     // Beschriftung „Schnitt“ nach den Messpunkten, frei von Punkten
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt)), txt = t("dia_schnitt"), bw = txt.length * fs * 0.56 + 4;
           const kand = [[sx - bw / 2, sy - 10], [sx - bw / 2, sy + fs + 10], [sx - bw - 10, sy - 8], [sx - bw - 10, sy + fs + 6], [sx - bw / 2, sy - 24]];
           let wahl = kand[0];
           for (const [x0, yb] of kand) {
             if (x0 < L + 2 || x0 + bw > W - Rr + 6 || yb - fs < O || yb > H - U - 2) continue;
-            if (!belegt.some(b => x0 < b[0] + b[2] && x0 + bw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { wahl = [x0, yb]; break; }
+            let aufKurve = false;
+            for (let i = 0; i <= 12 && !aufKurve; i++) { const xp = x0 + bw * i / 12, tt = (xp - L) / (W - L - Rr) * xMax; if (tt >= 0 && tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk > yb - fs - 3 && yk < yb + 4) aufKurve = true; } }
+            if (!aufKurve && !belegt.some(b => x0 < b[0] + b[2] && x0 + bw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { wahl = [x0, yb]; break; }
           }
           s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>");
           belegt.push([wahl[0], wahl[1] - fs, bw, fs + 4]);
@@ -360,16 +453,6 @@
             lx += 30 + txt.length * (fs - 1) * 0.55 + 14;
           }
         }
-        // Vorhersage als beschrifteter Kasten oben rechts (frei von Kurven), sonst unter dem Diagramm
-        const a = S.antworten.start;
-        if (a.fest && !a.ohne) {
-          const txt = t("dia_vorhersage", { text: vorhersageText(frage("start"), a) });
-          const bw = txt.length * 11 * 0.56 + 14, bx = W - Rr - bw - 4, by = O + 4;
-          let frei = true;
-          for (let i = 0; i <= 20; i++) { const xp = bx + bw * i / 20, tt = (xp - L) / (W - L - Rr) * xMax; if (tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk < by + 26 && yk > by - 4) frei = false; } }
-          if (frei) s.push('<rect x="' + bx.toFixed(1) + '" y="' + by + '" width="' + bw.toFixed(1) + '" height="22" rx="3" fill="#e8f5ef" stroke="#227b48"/><text x="' + (bx + 7).toFixed(1) + '" y="' + (by + 15) + '" font-size="11" fill="#14603f">' + esc(txt) + "</text>");
-          else vorhersageUnten = txt;     // kein Platz im Diagramm: als Zeile direkt unter dem Diagramm
-        }
       }
     } else if (ansicht === "waermestrom" && R) {
       const f1 = R.qdot1, f2 = R.qdot2, tq = Math.min(R.tWaermestrom, tz);
@@ -388,9 +471,10 @@
       const fit = ausgleichRechnen();
       if (fit) {
         const C = ERW.kapazitaeten(S.e).C_KB, b0 = -fit.kA_ursprung / C, b1 = -fit.kA_frei / C;
-        s.push('<line x1="' + X(0) + '" y1="' + Y(0).toFixed(1) + '" x2="' + X(xMax).toFixed(1) + '" y2="' + Y(b0 * xMax * 60).toFixed(1) + '" stroke="#173d5e" stroke-width="2"/>');
-        s.push('<line x1="' + X(0) + '" y1="' + Y(fit.achsenabschnitt).toFixed(1) + '" x2="' + X(xMax).toFixed(1) + '" y2="' + Y(fit.achsenabschnitt + b1 * xMax * 60).toFixed(1) + '" stroke="#173d5e" stroke-width="1.5" stroke-dasharray="6 4"/>');
-      } else s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#5a6b7f">' + esc(nurText(t("ln_kein"))) + "</text>");
+        s.push('<clipPath id="feld"><rect x="' + L + '" y="' + O + '" width="' + (W - L - Rr) + '" height="' + (H - O - U) + '"/></clipPath>');
+        s.push('<line clip-path="url(#feld)" x1="' + X(0) + '" y1="' + Y(0).toFixed(1) + '" x2="' + X(xMax).toFixed(1) + '" y2="' + Y(b0 * xMax * 60).toFixed(1) + '" stroke="#173d5e" stroke-width="2"/>');
+        s.push('<line clip-path="url(#feld)" x1="' + X(0) + '" y1="' + Y(fit.achsenabschnitt).toFixed(1) + '" x2="' + X(xMax).toFixed(1) + '" y2="' + Y(fit.achsenabschnitt + b1 * xMax * 60).toFixed(1) + '" stroke="#173d5e" stroke-width="1.5" stroke-dasharray="6 4"/>');
+      } else s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#5a6b7f">' + esc(nurText(t(messFrei() ? "ln_kein" : "ln_erst_f2"))) + "</text>");
     }
     svg.innerHTML = s.join("");
     $("vorhersage-zeile").hidden = !vorhersageUnten; $("vorhersage-zeile").textContent = vorhersageUnten;
@@ -398,10 +482,11 @@
     document.querySelector(".lesehinweis").innerHTML = t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht);
     // Beschreibung für Bildschirmleser
     $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) :
-      (R ? nurText(t("dia_beschreibung", { a: z(S.e.thK0, 1), b: z(R.th1, 2), t: z(tz, 0), c: z(R.th2, 2), d: z(R.dT, 2) })) : nurText(t("dia_ungueltig")));
-    $("legende-mess").hidden = !(freigabe() && punkte.length && ansicht === "temperatur");
+      (R ? nurText(t("dia_beschreibung", { a: z(S.e.thK0, 1), m: z(R.th10, 2), b: z(R.th1, 2), t: z(tz, 0), k: z(R.th2K, 2), c: z(R.th2, 2), d: z(R.dT, 2) })) : nurText(t("dia_ungueltig")));
+    const lnZeigen = ansicht === "ln" && lnPunkte().length;
+    $("legende-mess").hidden = !(freigabe() && ((punkte.length && ansicht === "temperatur") || lnZeigen));
     if (!$("legende-mess").hidden) {
-      const da = [1, 2, 3].filter(n => punkte.some(p => p.b === n));
+      const da = lnZeigen ? [2, 3].filter(n => lnPunkte().some(p => p.b === n)) : [1, 2, 3].filter(n => punkte.some(p => p.b === n));
       $("legende-mess").innerHTML = t("dia_legende_mess", { liste: da.map(n => SYM["b" + n] + " " + t("dia_becher_n", { n: n })).join(" · ") });
     }
     const ft = $("flaechen-text");
@@ -415,9 +500,12 @@
       const kn = $("knopf-ausgleich"); if (kn) kn.addEventListener("click", () => { S.e.kAQuelle = "fest"; S.e.kA = fit.kA_ursprung; S.e.kAHerkunft = "ausgleich"; sichern(); alles(); $("knopf-info").innerHTML = t("ausgleich_genommen"); });
     } else ft.hidden = true;
     // Kernzahlen für das angeheftete Bild am Handy
+    if ($("kern-leiste")) $("kern-leiste").innerHTML = (freigabe() && R) ? "<span>ϑ₁ <b>" + z(R.th1, 2) + " °C</b></span><span>ϑ₂ <b>" + z(R.th2, 2) + " °C</b></span><span>Δ <b>" + z(R.dT, 2) + " K</b></span>" : "";
     $("kernzahlen").innerHTML = (freigabe() && R) ? "<span>ϑ₁<b>" + z(R.th1, 2) + " °C</b></span><span>ϑ₂<b>" + z(R.th2, 2) + " °C</b></span><span>Δ<b>" + z(R.dT, 2) + " K</b></span>" : "";
   }
   const ZEIT = [0, 10, 20, 30, 40, 50, 60, 60];
+  const schnittFrei = () => S.antworten.f1.fest || FRAGEN.some(f => f.id[0] === "v" && S.antworten[f.id].fest);
+  const messFrei = () => S.antworten.f2.fest;      // G1-01, G4-01, G7-01: Lage der Punkte erst nach der Vorhersage zu Frage 2
   function messPunkte() {
     const p = [];
     const becher = [1, 2].concat(S.kurs.b3 ? [3] : []);
@@ -426,6 +514,7 @@
   }
   function lnPunkte() {        // Becher 2 (und 3, falls gezeigt), Zeilen 10 bis „60 vor der Milch“, je Becher mit eigenem Startwert (ZUSTAENDE.md 6)
     const u = S.kurs.u !== null ? S.kurs.u : S.e.thU, out = [];
+    if (!messFrei()) return out;
     for (const b of [2].concat(S.kurs.b3 ? [3] : [])) {
       const w = S.kurs.werte["b" + b], th0 = w[0];
       if (th0 === null || !(th0 > u)) continue;
@@ -453,19 +542,24 @@
       const k = ERW.becherKalt(S.e);
       teile.push(t("kalt_text", { a: z(k.th1_0, 2), b: z(k.thK_0, 2), t: z(S.e.tEnd_min, 0), c: z(k.th1, 2), d: z(k.th2, 2), dt: z(k.dT, 2), dtv: z(R.dT, 2) }));
     }
+    if (freigabe() && R && S.vergleich && !ERW.fehler(S.vergleich)) {
+      const rv = ERW.auswerten(S.vergleich);
+      teile.push(t("vergleich_text", { a: z(rv.th1, 2), b: z(rv.th2, 2), d: z(rv.dT, 2), t: z(S.vergleich.tEnd_min, 0) }));
+    }
     el.hidden = !teile.length; el.innerHTML = teile.map(x => "<span>" + x + "</span>").join("<br>");
   }
   function csvBauen() {
     const de = S.sprache === "de", tr = de ? ";" : ",", zz = (x, n) => (x === null || x === undefined || !isFinite(x)) ? "" : HILFEN.zahlText(x, n, S.sprache).replace("\u2212", "-");
     const becher = [1, 2].concat(S.kurs.b3 ? [3] : []);
     const kopf = [nurText(t("csv_t")), nurText(t("csv_tasse1")), nurText(t("csv_tasse2"))].concat(becher.map(b => nurText(t("csv_becher", { n: b }))));
-    const zeilen = ["\ufeff" + kopf.join(tr)];
+    const feld = x => /[",;\r\n]/.test(x) && x.indexOf(tr) >= 0 || /["\r\n]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x;   // RFC 4180
+    const zeilen = ["\ufeff" + kopf.map(feld).join(tr)];
     const tz = S.e.tEnd_min, mess = (b, tt, nach) => { const i = nach ? 7 : (tt % 10 === 0 && tt <= 60 ? tt / 10 : -1); return i >= 0 ? S.kurs.werte["b" + b][i] : null; };
     for (let tt = 0; tt <= Math.max(tz, 60); tt++) {
       const m1 = R && tt <= tz ? R.kurve1(tt) : null, m2 = R && tt <= tz ? R.kurve2(tt) : null;
       zeilen.push([String(tt), zz(m1, 2), zz(m2, 2)].concat(becher.map(b => zz(mess(b, tt, false), 2))).join(tr));
     }
-    zeilen.push([nurText(t("csv_nach_milch", { t: HILFEN.zahlText(tz, 0, S.sprache) })), zz(R ? R.th1 : null, 2), zz(R ? R.th2 : null, 2)].concat(becher.map(b => zz(S.kurs.werte["b" + b][7], 2))).join(tr));
+    zeilen.push([feld(nurText(t("csv_nach_milch", { t: HILFEN.zahlText(tz, 0, S.sprache) }))), zz(R ? R.th1 : null, 2), zz(R ? R.th2 : null, 2)].concat(becher.map(b => zz(S.kurs.werte["b" + b][7], 2))).join(tr));
     return zeilen.join("\r\n") + "\r\n";
   }
   function csvLaden() {
@@ -490,7 +584,7 @@
     const el = $("energie-inhalt");
     if (!freigabe() || !R) { el.innerHTML = '<p class="klein">' + t(freigabe() ? "dia_ungueltig" : "ergebnis_verdeckt") + "</p>"; $("energie").removeAttribute("aria-label"); return; }
     // Gewählt nach Prototypvergleich (simulation/PROTOTYPEN.md): Säulen auf gemeinsamer Nulllinie, Bezugslinie auf Höhe Q1, Klammer Q2 − Q1
-    const q1 = R.Q1, q2 = R.Q2, m = Math.max(q1, q2, 1), W = 240, H = 150, B = 118, hoch = 92;
+    const q1 = R.Q1, q2 = R.Q2, m = Math.max(q1, q2, 1), W = 240, H = 156, B = 122, hoch = 92;
     const Yb = q => B - hoch * q / m, dq0 = q2 - q1;
     let s = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + esc(nurText(t("energie_aria", { q1: z(q1, 2), q2: z(q2, 2) }))) + '"><defs><pattern id="muster-q2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#222" stroke-width="2"/></pattern></defs>';
     s += '<line x1="20" x2="200" y1="' + B + '" y2="' + B + '" stroke="#5a6b7f"/>';
@@ -498,11 +592,11 @@
     s += '<rect x="118" y="' + Yb(q2).toFixed(1) + '" width="46" height="' + (B - Yb(q2)).toFixed(1) + '" fill="url(#muster-q2)" stroke="#222" stroke-width="1.5"/>';
     s += '<line x1="40" x2="172" y1="' + Yb(q1).toFixed(1) + '" y2="' + Yb(q1).toFixed(1) + '" stroke="#173d5e" stroke-dasharray="4 3"/>';
     s += '<path d="M 170 ' + Yb(q2).toFixed(1) + " h 6 V " + Yb(q1).toFixed(1) + ' h -6" fill="none" stroke="#173d5e" stroke-width="1.6"/>';
-    s += '<text x="180" y="' + ((Yb(q1) + Yb(q2)) / 2 + 4).toFixed(1) + '" font-size="11" font-weight="600" fill="#173d5e">' + (dq0 >= 0 ? "+" : "") + z(dq0, 2) + " kJ</text>";
-    s += '<text x="63" y="' + (Yb(q1) - 6).toFixed(1) + '" text-anchor="middle" font-size="12">' + z(q1, 2) + " kJ</text>";
-    s += '<text x="141" y="' + (Math.min(Yb(q2), Yb(q1)) - 6).toFixed(1) + '" text-anchor="middle" font-size="12">' + z(q2, 2) + " kJ</text>";
-    s += '<text x="63" y="' + (B + 16) + '" text-anchor="middle" font-size="12">' + esc(nurText(t("tasse_n", { n: 1 }))) + "</text>";
-    s += '<text x="141" y="' + (B + 16) + '" text-anchor="middle" font-size="12">' + esc(nurText(t("tasse_n", { n: 2 }))) + "</text></svg>";
+    s += '<text x="180" y="' + ((Yb(q1) + Yb(q2)) / 2 + 4).toFixed(1) + '" font-size="14" font-weight="600" fill="#173d5e">' + (dq0 >= 0 ? "+" : "") + z(dq0, 2) + " kJ</text>";
+    s += '<text x="63" y="' + (Yb(q1) - 6).toFixed(1) + '" text-anchor="middle" font-size="15">' + z(q1, 2) + " kJ</text>";
+    s += '<text x="141" y="' + (Math.min(Yb(q2), Yb(q1)) - 6).toFixed(1) + '" text-anchor="middle" font-size="15">' + z(q2, 2) + " kJ</text>";
+    s += '<text x="63" y="' + (B + 19) + '" text-anchor="middle" font-size="15">' + esc(nurText(t("tasse_n", { n: 1 }))) + "</text>";
+    s += '<text x="141" y="' + (B + 19) + '" text-anchor="middle" font-size="15">' + esc(nurText(t("tasse_n", { n: 2 }))) + "</text></svg>";
     const dq = q2 - q1;
     const satz = Math.abs(R.milch) > 1e-12
       ? t("energie_satz_milch", { dq: z(dq, 2), m: z(R.milch, 2), s: z(dq + R.milch, 2), dt: z(R.dT, 2) })
@@ -526,19 +620,20 @@
   }
 
   // ------------------------------------------------------------------ Regler
+  const wertText = (r, w) => z(w, r.stellen) + " " + (r.einheit === "W/K" ? nurText(t("einheit_wk")) : r.einheit);   // M-12
   function reglerHtml(r) {
     const gesperrt = r.id === "tEnd" && !reglerTZfrei();
     const wert = r.faktor ? S.e[r.key] * r.faktor : S.e[r.key];
     const name = t("regler_" + r.id) + " " + r.mathml + " [" + einheit(r.einheit) + "]";
     let h = '<div class="regler' + (gesperrt ? " gesperrt" : "") + '" data-regler="' + r.id + '">';
     h += '<div class="regler-kopf"><label class="regler-name" for="r-' + r.id + '" id="rl-' + r.id + '">' + name + "</label>";
-    h += '<button type="button" class="hilfe-knopf" aria-expanded="false" aria-controls="h-' + r.id + '" data-hilfe="' + r.id + '"><span aria-hidden="true">?</span><span class="nur-leser">' + nurText(t("regler_" + r.id)) + "</span></button></div>";
+    h += '<button type="button" class="hilfe-knopf" aria-expanded="false" aria-controls="h-' + r.id + '" data-hilfe="' + r.id + '"><span aria-hidden="true">?</span><span class="nur-leser">' + nurText(t("hilfe_zu", { name: t("regler_" + r.id) })) + "</span></button></div>";
     h += '<p class="hilfe-text" id="h-' + r.id + '" hidden>' + t("hilfe_" + r.id) + "</p>";
     h += '<div class="regler-zeile"><button type="button" class="pm" data-pm="-1" data-r="' + r.id + '" aria-label="' + esc(nurText(t("knopf_minus")) + ": " + nurText(t("regler_" + r.id))) + '"' + (gesperrt ? " disabled" : "") + ">−</button>";
-    h += '<input type="range" id="r-' + r.id + '" min="' + r.min + '" max="' + r.max + '" step="' + r.schritt + '" value="' + wert + '"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '">';
+    h += '<input type="range" id="r-' + r.id + '" min="' + r.min + '" max="' + r.max + '" step="' + r.schritt + '" value="' + wert + '" aria-valuetext="' + esc(wertText(r, wert)) + '"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '">';
     h += '<button type="button" class="pm" data-pm="1" data-r="' + r.id + '" aria-label="' + esc(nurText(t("knopf_plus")) + ": " + nurText(t("regler_" + r.id))) + '"' + (gesperrt ? " disabled" : "") + ">+</button>";
     h += '<input type="text" class="zahlfeld" inputmode="decimal" autocomplete="off" id="z-' + r.id + '" value="' + z(wert, r.stellen) + '" aria-label="' + esc(nurText(t("feld_aria", { name: t("regler_" + r.id) }))) + " [" + esc(r.einheit) + ']"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '"></div>';
-    h += '<p class="feld-fehler" id="rf-' + r.id + '" aria-live="polite">' + (gesperrt ? t("regler_gesperrt") : "") + "</p></div>";
+    h += '<p class="feld-fehler' + (gesperrt && !freigabe() ? " neutral" : "") + '" id="rf-' + r.id + '" aria-live="polite">' + (gesperrt ? t(freigabe() ? "regler_gesperrt" : "regler_gesperrt_start") : "") + "</p></div>";
     return h;
   }
   function reglerSetzen(r, wertAnzeige, quelle) {
@@ -562,6 +657,7 @@
       const neu = Math.min(r.max, Math.max(r.min, Math.round((alt + Number(b.getAttribute("data-pm")) * r.schritt) / r.schritt) * r.schritt));
       reglerSetzen(r, Number(neu.toFixed(6)), "pm"); ansagen();
     });
+    for (const b of wurzel.querySelectorAll("[data-hilfe]")) b.addEventListener("keydown", ev => { if (ev.key === "Escape") { $("h-" + b.getAttribute("data-hilfe")).hidden = true; b.setAttribute("aria-expanded", "false"); } });
     for (const b of wurzel.querySelectorAll("[data-hilfe]")) b.addEventListener("click", () => {
       const p = $("h-" + b.getAttribute("data-hilfe")), auf = p.hidden; p.hidden = !auf; b.setAttribute("aria-expanded", auf ? "true" : "false");
     });
@@ -593,7 +689,7 @@
     $("ansichten").hidden = !(S.ansicht.vertiefung && freigabe());
     for (const b of document.querySelectorAll("[data-ansicht]")) b.setAttribute("aria-pressed", b.getAttribute("data-ansicht") === S.ansicht.diagramm ? "true" : "false");
     if (!freigabe()) { $("vertiefung-inhalt").innerHTML = ""; return; }
-    let h = '<p class="hinweis">' + t("v_einleitung") + "</p>";
+    let h = '<div class="kern-leiste" id="kern-leiste" aria-hidden="true"></div><p class="hinweis">' + t("v_einleitung") + "</p>";
     h += '<div class="regler-gitter">';
     h += '<div class="gruppe"><h3 class="gruppe-titel">' + t("gruppe_kaffee") + "</h3>" + reglerHtml(REG.VK) + reglerHtml(REG.thK0) + "</div>";
     h += '<div class="gruppe"><h3 class="gruppe-titel">' + t("gruppe_milch") + "</h3>" + reglerHtml(REG.VM) + reglerHtml(REG.thM) +
@@ -632,7 +728,7 @@
     for (const r of vi.querySelectorAll('input[name="kaq"]')) r.addEventListener("change", () => {
       if (r.value === "fest" && R) { S.e.kA = R.kA; S.e.kAHerkunft = "eigen"; }
       if (r.value === "messung" && R) { S.e.thMess = Math.min(90, Math.max(30, R.thMessModell)); S.e.kAHerkunft = "messung"; }
-      S.e.kAQuelle = r.value; rechnen(); sichern(); alles(); fokus(r.value === "fest" ? "r-kA" : "r-thMess");
+      S.e.kAQuelle = r.value; rechnen(); sichern(); alles(); const neu = document.querySelector('input[name="kaq"][value="' + r.value + '"]'); if (neu) neu.focus();
     });
     for (const b of vi.querySelectorAll("[data-vor]")) b.addEventListener("click", () => {
       const v = ERW.VOREINSTELLUNGEN.find(x => x.id === b.getAttribute("data-vor"));
@@ -646,10 +742,11 @@
   function rechenwerteZeichnen() {
     const fehler = $("einstellung-fehler");
     fehler.hidden = !(freigabe() && FEHLER);
-    if (freigabe() && FEHLER) fehler.innerHTML = t("fehler_" + FEHLER);
+    if (freigabe() && FEHLER && fehler.getAttribute("data-code") !== FEHLER) { fehler.innerHTML = t("fehler_" + FEHLER); fehler.setAttribute("data-code", FEHLER); }
+    if (!FEHLER) fehler.removeAttribute("data-code");
     const dl = $("rechenwerte-liste");
     $("rechenwerte-bezug").textContent = (freigabe() && R) ? nurText(t("rw_bezug", { t: z(S.e.tEnd_min, 0) })) : "";
-    if (!freigabe() || !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rechenwerte") + "</dt><dd>" + t("ergebnis_verdeckt") + "</dd></div>"; return; }
+    if (!freigabe() || !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_noch_nicht") + "</dt><dd>" + t("ergebnis_verdeckt") + "</dd></div>"; return; }
     const satz = R.dT > 0.005 ? t("rw_satz_1") : (R.dT < -0.005 ? t("rw_satz_2") : t("rw_satz_gleich"));
     const herkunft = S.e.kAQuelle === "messung" ? t("rw_kA_herkunft_messung") : (S.e.kAHerkunft === "ausgleich" ? t("rw_kA_herkunft_ausgleich") :
       (S.e.kAHerkunft.indexOf("vor:") === 0 ? t("rw_kA_herkunft_vor", { name: nurText(t("vor_" + S.e.kAHerkunft.slice(4))) }) : t("rw_kA_herkunft_fest")));
@@ -657,7 +754,7 @@
     h += "<div><dt>" + t("rw_tasse2") + "</dt><dd>" + z(R.th2, 2) + " °C</dd></div>";
     if (S.kurs.b3) h += '<div class="breit"><dt>' + t("rw_becher3") + "</dt><dd>" + z(R.th2Raum, 2) + " °C</dd></div>";
     h += '<div class="breit"><dt>' + t("rw_unterschied") + "</dt><dd>" + z(R.dT, 2) + " K · " + satz + "</dd></div>";
-    h += "<div><dt>" + t("rw_schnitt") + "</dt><dd>" + (isFinite(R.tSchnitt) && R.tSchnitt < S.e.tEnd_min ? t("rw_schnitt_wert", { t: z(R.tSchnitt, 1) }) : t("rw_schnitt_kein")) + "</dd></div>";
+    h += "<div><dt>" + t("rw_schnitt") + "</dt><dd>" + (!schnittFrei() ? t("rw_schnitt_spaeter") : (isFinite(R.tSchnitt) && R.tSchnitt < S.e.tEnd_min ? t("rw_schnitt_wert", { t: z(R.tSchnitt, 1) }) : t("rw_schnitt_kein"))) + "</dd></div>";
     h += "<div><dt>" + t("rw_Q") + "</dt><dd>" + z(R.Q1, 2) + " / " + z(R.Q2, 2) + " kJ</dd></div>";
     h += "<div><dt>" + t("rw_kA") + "</dt><dd>" + z(R.kA, 4) + " " + einheit("W/K") + '<br><span class="klein">' + herkunft + "</span></dd></div>";
     h += "<div><dt>" + t("rw_misch") + "</dt><dd>" + z(R.th10, 2) + " °C</dd></div>";
@@ -666,10 +763,10 @@
     dl.innerHTML = h;
   }
   let ansageZeit = null;
-  function ansagen() {
+  function ansagen(festgehalten) {
     clearTimeout(ansageZeit);
     ansageZeit = setTimeout(() => {
-      $("ansage").textContent = (freigabe() && R) ? nurText(t("status_ansage", { a: z(R.th1, 2), b: z(R.th2, 2), d: z(R.dT, 2) })) : "";
+      $("ansage").textContent = (freigabe() && R) ? (festgehalten === true ? nurText(t("status_festgehalten")) + " " : "") + nurText(t("status_ansage", { a: z(R.th1, 2), b: z(R.th2, 2), d: z(R.dT, 2) })) : "";
     }, 250);
   }
 
@@ -677,9 +774,8 @@
   const ZEILEN_NAME = () => ["0", "10", "20", "30", "40", "50", nurText(t("mess_zeile_60v")), nurText(t("mess_zeile_60n"))];
   function messblattZeichnen() {
     const el = $("messblatt-inhalt");
-    if (!freigabe()) { el.innerHTML = '<p class="klein">' + t("ergebnis_verdeckt") + "</p>"; return; }
     const becher = [1, 2].concat(S.kurs.b3 ? [3] : []);
-    let h = '<div class="tabelle-wrap"><table class="messtabelle"><thead><tr><th scope="col">' + t("mess_kopf_t") + "</th>";
+    let h = '<div class="tabelle-wrap" role="region" aria-labelledby="mess-titel"><table class="messtabelle"><thead><tr><th scope="col">' + t("mess_kopf_t") + "</th>";
     for (const b of becher) h += '<th scope="col">' + t("mess_kopf_b" + b) + "</th>";
     h += "</tr></thead><tbody>";
     ZEILEN_NAME().forEach((name, i) => {
@@ -698,7 +794,7 @@
     h += '<label class="schalter"><input type="checkbox" id="mess-d"' + (S.kurs.d ? " checked" : "") + "> " + t("mess_deckel") + "</label>";
     h += '<label class="schalter"><input type="checkbox" id="mess-b3"' + (S.kurs.b3 ? " checked" : "") + "> " + t("mess_becher3") + "</label></div>";
     if (S.kurs.d) h += '<p class="hinweis">' + t("mess_deckel_hinweis") + "</p>";
-    h += '<div class="knopfzeile"><button type="button" class="knopf-zweit" id="mess-ueber">' + t("mess_uebernehmen") + '</button><button type="button" class="knopf-schlicht" id="mess-link">' + t("mess_teilen") + '</button><button type="button" class="knopf-schlicht" id="mess-weg">' + t("mess_loeschen") + '</button><button type="button" class="knopf-schlicht" id="mess-csv">' + t("csv_knopf") + "</button></div>";
+    h += '<div class="knopfzeile">' + (freigabe() ? '<button type="button" class="knopf-zweit" id="mess-ueber">' + t("mess_uebernehmen") + "</button>" : "") + '<button type="button" class="knopf-schlicht" id="mess-link">' + t("mess_teilen") + '</button><button type="button" class="knopf-schlicht" id="mess-weg">' + t("mess_loeschen") + '</button><button type="button" class="knopf-schlicht" id="mess-csv">' + t("csv_knopf") + "</button></div>";
     h += '<p class="hinweis" id="mess-info" role="status"></p><div id="link-ausgabe"></div>';
     el.innerHTML = h;
     for (const inp of el.querySelectorAll(".zelle input")) inp.addEventListener("change", () => {
@@ -706,20 +802,20 @@
       if (inp.value.trim() === "") { S.kurs.werte["b" + b][i] = null; inp.removeAttribute("aria-invalid"); $("mess-fehler").textContent = ""; }
       else if (!isFinite(l.wert) || l.wert < 0 || l.wert > 100) { inp.setAttribute("aria-invalid", "true"); $("mess-fehler").innerHTML = t(l.grund === "tausender" ? "feld_tausender" : "mess_ungueltig"); return; }
       else { S.kurs.werte["b" + b][i] = Math.round(l.wert * 100) / 100; inp.removeAttribute("aria-invalid"); $("mess-fehler").textContent = ""; }
-      sichern(); teilZeichnen(null);
+      sichern(); teilZeichnen("messblatt"); frageleisteStill();
     });
     const feldZahl = (id, key, lo, hi) => $(id).addEventListener("change", () => {
       const l = HILFEN.zahlLesen($(id).value);
       if ($(id).value.trim() === "") S.kurs[key] = null;
       else if (!isFinite(l.wert) || l.wert < lo || l.wert > hi) { $(id).setAttribute("aria-invalid", "true"); $("mess-fehler").innerHTML = t("feld_bereich", { min: lo, max: hi, einheit: "°C" }); return; }
       else S.kurs[key] = l.wert;
-      $(id).removeAttribute("aria-invalid"); $("mess-fehler").textContent = ""; sichern(); teilZeichnen(null);
+      $(id).removeAttribute("aria-invalid"); $("mess-fehler").textContent = ""; sichern(); teilZeichnen("messblatt"); frageleisteStill();
     });
     feldZahl("mess-u", "u", 5, 40); feldZahl("mess-m", "m", 0, 70);
     $("mess-d").addEventListener("change", ev => { S.kurs.d = ev.target.checked; sichern(); alles(); fokus("mess-d"); });
     $("mess-csv").addEventListener("click", csvLaden);
     $("mess-b3").addEventListener("change", ev => { S.kurs.b3 = ev.target.checked; sichern(); alles(); fokus("mess-b3"); });
-    $("mess-ueber").addEventListener("click", () => { const r = uebernehmen(false); alles(); $("mess-info").innerHTML = r.text; fokus("mess-ueber"); });
+    if ($("mess-ueber")) $("mess-ueber").addEventListener("click", () => { const r = uebernehmen(false); alles(); $("mess-info").innerHTML = r.text; fokus("mess-ueber"); });
     $("mess-link").addEventListener("click", linkTeilen);
     $("mess-weg").addEventListener("click", () => bestaetigen(t("mess_loeschen_frage"), () => { S.kurs = leererKurs(); sichern(); alles(); fokus("mess-weg"); }));
   }
@@ -737,8 +833,9 @@
     return { ok: true, text: t("mess_uebernommen", { a: z(start, 2), b: z(zehn, 2), u: z(u, 1), m: z(m, 1) }) };
   }
   function linkTeilen() {
-    const link = location.href.split("#")[0] + "#" + HILFEN.kurslinkBauen(S.kurs);
-    const zeige = () => { $("link-ausgabe").innerHTML = '<p class="hinweis">' + t("link_anzeigen") + '</p><p class="link-ausgabe">' + esc(link) + "</p>"; };
+    const basis = location.href.split("#")[0].replace(/([?&])lang=(de|en)(&|$)/, (m, a, b, c) => (c ? a : "")).replace(/\?$/, "");
+    const link = basis + "#" + HILFEN.kurslinkBauen(S.kurs);
+    const zeige = () => { $("link-ausgabe").innerHTML = (location.protocol === "file:" ? '<p class="hinweis">' + t("link_nur_lokal") + "</p>" : "") + '<p class="hinweis">' + t("link_anzeigen") + '</p><p class="link-ausgabe">' + esc(link) + "</p>"; };
     try { navigator.clipboard.writeText(link).then(() => { $("mess-info").innerHTML = t("link_kopiert"); zeige(); }, zeige); } catch (e) { zeige(); }
   }
   function linkGrund(g) {      // Grund aus HILFEN.kurslinkLesen in Worten (ZUSTAENDE.md, Abschnitt 5)
@@ -780,7 +877,7 @@
       if (!gesperrt) {
         h += "<p>" + t(f.text) + '</p><p class="hinweis"><strong>' + t("ausgangslage") + ":</strong> " + t(f.ausgang) + "</p>";
         h += '<div class="knopfzeile"><button type="button" class="knopf-schlicht" data-zur="' + f.id + '">' + t("knopf_zur_karte") + "</button>" +
-          (a.fest ? '<button type="button" class="knopf-zweit" data-aufl="' + f.id + '" aria-expanded="' + (a.aufl ? "true" : "false") + '" aria-controls="aufl-karte-' + f.id + '">' + t("knopf_aufloesung") + "</button>" : "") + "</div>";
+          (a.fest ? '<button type="button" class="knopf-zweit" data-aufl="' + f.id + '" aria-expanded="' + (a.aufl ? "true" : "false") + '" aria-controls="aufl-karte-' + f.id + '">' + t(a.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button>" : "") + "</div>";
         if (a.fest && a.aufl) h += '<div class="aufloesung" id="aufl-karte-' + f.id + '">' + vergleichHtml(f, a) + "<p>" + t(f.aufl) + "</p></div>";
       }
       h += "</details>";
@@ -829,13 +926,15 @@
   }
 
   // ------------------------------------------------------------------ Rückfrage, Rücksetzen, Sprache
-  function bestaetigen(frageText, wennJa) {
-    const b = $("link-banner");
-    b.hidden = false; b.setAttribute("role", "region");
+  function bestaetigen(frageText, wennJa, ausloeser) {
+    const alt = $("rueck-box"); if (alt) alt.remove();
+    const b = document.createElement("div");
+    b.id = "rueck-box"; b.className = "banner rueck-box"; b.setAttribute("role", "group"); b.setAttribute("aria-labelledby", "rueck-frage");
     b.innerHTML = '<p id="rueck-frage">' + frageText + '</p><div class="knopfzeile"><button type="button" class="knopf-zweit" id="rueck-ja">' + t("ja") + '</button><button type="button" class="knopf-schlicht" id="rueck-nein">' + t("abbrechen") + "</button></div>";
-    b.setAttribute("aria-labelledby", "rueck-frage");
-    $("rueck-ja").addEventListener("click", () => { b.hidden = true; wennJa(); $("knopf-info").textContent = nurText(t("zurueckgesetzt")); });
-    $("rueck-nein").addEventListener("click", () => { b.hidden = true; });
+    const ort = ausloeser || document.activeElement;
+    if (ort && ort.parentNode && ort !== document.body) ort.parentNode.insertBefore(b, ort.nextSibling); else $("link-banner").after(b);
+    $("rueck-ja").addEventListener("click", () => { b.remove(); wennJa(); if (frageText !== t("ohne_frage")) $("knopf-info").textContent = nurText(t("zurueckgesetzt")); });
+    $("rueck-nein").addEventListener("click", () => { b.remove(); if (ort && ort.focus) ort.focus(); });
     $("rueck-ja").focus();
   }
   function fussZeichnen() {
@@ -854,6 +953,7 @@
       const range = $("r-" + r.id), feld = $("z-" + r.id); if (!range) continue;
       const w = r.faktor ? S.e[r.key] * r.faktor : S.e[r.key];
       if (document.activeElement !== range) range.value = w;
+      range.setAttribute("aria-valuetext", wertText(r, w));
       if (document.activeElement !== feld) { feld.value = z(w, r.stellen); feld.removeAttribute("aria-invalid"); }
     }
     const info = $("info-kasten");
@@ -867,16 +967,23 @@
   }
   function scrollbereichePruefen() {     // breite Formeln und Tabellen: nur wenn sie überlaufen, per Tastatur erreichbar (WCAG 2.1.1)
     for (const el of document.querySelectorAll(".formel, .tabelle-wrap")) {
-      if (el.scrollWidth > el.clientWidth + 1) el.setAttribute("tabindex", "0"); else el.removeAttribute("tabindex");
+      if (el.scrollWidth > el.clientWidth + 1) { el.setAttribute("tabindex", "0"); if (!el.hasAttribute("aria-labelledby")) { el.setAttribute("role", "region"); el.setAttribute("aria-label", nurText(t(el.classList.contains("formel") ? "bereich_formel" : "bereich_tabelle"))); } }
+      else { el.removeAttribute("tabindex"); if (!el.hasAttribute("aria-labelledby")) { el.removeAttribute("role"); el.removeAttribute("aria-label"); } }
     }
   }
   function anheftenPruefen() {
     const vv = window.visualViewport, hoehe = vv ? vv.height : window.innerHeight;
-    const tastatur = vv && document.activeElement && /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName) && document.activeElement.type !== "range" && hoehe < window.innerHeight * 0.8;
+    const feldFokus = document.activeElement && document.activeElement.type === "text" && !!document.activeElement.closest("#messblatt, #frageleiste");
+    const tastatur = feldFokus || vv && document.activeElement && /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName) && document.activeElement.type !== "range" && hoehe < window.innerHeight * 0.8;
     const an = S.ansicht.anheften && freigabe() && hoehe >= 500 && !tastatur && window.innerWidth <= 767 && window.innerHeight > window.innerWidth;
     document.documentElement.classList.toggle("anheften", !!an);
+    document.documentElement.classList.toggle("handy", freigabe() && window.innerWidth <= 767);   // Reihenfolge Diagramm, Frage, Regler (M-6)
+    const moeglich = freigabe() && window.innerWidth <= 767 && window.innerHeight > window.innerWidth && hoehe >= 500;
+    const kn = $("knopf-anheften");
+    if (kn) { kn.hidden = !moeglich; kn.textContent = nurText(t(S.ansicht.anheften ? "anheften_aus" : "anheften_an")); kn.setAttribute("aria-pressed", S.ansicht.anheften ? "true" : "false"); }
+    document.documentElement.style.setProperty("--anheft", an ? Math.ceil($("diagramm-halter").getBoundingClientRect().height) + "px" : "0px");
   }
-  $("sprachknopf").addEventListener("click", () => { S.sprache = S.sprache === "de" ? "en" : "de"; sichern(); alles(); $("sprachknopf").focus(); });
+  $("sprachknopf").addEventListener("click", () => { S.sprache = S.sprache === "de" ? "en" : "de"; $("knopf-info").textContent = ""; sichern(); alles(); $("sprachknopf").focus(); });
   $("knopf-standard").addEventListener("click", () => { ausgangslage("standard"); rechnen(); sichern(); alles(); $("knopf-info").innerHTML = t("knopf_standard_info"); ansagen(); });
   $("knopf-versuch").addEventListener("click", () => { Object.assign(S.e, { tEnd_min: 60, becher: true, kAQuelle: "messung", kAHerkunft: "messung" }); if (!(S.e.thMess > S.e.thU && S.e.thMess < S.e.thK0)) S.e.thMess = 67; rechnen(); sichern(); alles(); $("knopf-info").innerHTML = t("knopf_versuch_info"); ansagen(); });
   for (const b of document.querySelectorAll("[data-ansicht]")) b.addEventListener("click", () => { S.ansicht.diagramm = b.getAttribute("data-ansicht"); sichern(); alles(); b.focus(); });
@@ -884,10 +991,13 @@
   reiterTasten();
   let groesse = null;
   document.addEventListener("toggle", scrollbereichePruefen, true);
+  $("knopf-anheften").addEventListener("click", () => { S.ansicht.anheften = !S.ansicht.anheften; sichern(); anheftenPruefen(); $("knopf-anheften").focus(); });
   window.addEventListener("resize", () => { clearTimeout(groesse); groesse = setTimeout(() => { diagrammZeichnen(); anheftenPruefen(); scrollbereichePruefen(); }, 80); });
   if (window.visualViewport) window.visualViewport.addEventListener("resize", anheftenPruefen);
   document.addEventListener("focusin", anheftenPruefen); document.addEventListener("focusout", () => setTimeout(anheftenPruefen, 50));
   alles();
   kurslinkPruefen();
+  window.addEventListener("storage", ev => { if (ev.key && ev.key.indexOf(SPEICHER) === 0 && ev.key !== SPEICHER + "probe") { laden(); alles(); } });
+  window.addEventListener("hashchange", kurslinkPruefen);
   window.KAFFEE = { zustand: () => JSON.parse(JSON.stringify({ e: S.e, antworten: S.antworten, aktuell: S.aktuell, kurs: S.kurs, ansicht: S.ansicht, sprache: S.sprache })), ergebnis: () => R, speicherOk: () => speicherOk, csv: () => csvBauen() };
 })();

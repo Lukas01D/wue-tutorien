@@ -52,19 +52,19 @@ Your prediction
 @ohne_vorhersage
 without a prediction
 @passt
-matches
+choice matches
 @passt_nicht
-does not match
+choice does not match
 @ausgangslage
-Starting situation
+Starting point
 @ausgangslage_gesetzt
-Starting situation set: {was}.
+Starting point set: {was}.
 @auftrag_erklaeren
 Does your prediction match? Explain to each other why.
 @auftrag_start
 Explain the difference using $Q_1$ and $Q_2$.
 @gesperrt_nach_start
-after the start
+(available after the start question)
 @regler_gesperrt
 Lock in your prediction for question 1 first.
 @ergebnis_verdeckt
@@ -83,7 +83,7 @@ Cup 2 (milk later)
 @start_opt_gleich
 both at the same temperature
 @start_k_label
-Difference roughly
+Approximate difference
 @start_ausgangslage
 default values
 @aufl_start
@@ -92,9 +92,9 @@ Cup 1, {{z:dT}} K ({{z:th1}} versus {{z:th2}} °C). Up to the moment the milk is
 @f1_titel
 Time of adding
 @f1_text
-Write down your own answer first, then agree as a pair: at roughly what time of adding the milk to cup 2 is the difference between the cups largest? Then check: move the time at which the milk is added to cup 2. Why does the difference become smaller again when the milk is added later?
+Write down your own answer first, then agree as a pair: roughly when should the milk be added to cup 2 so that the difference between the cups is largest? Then check: move the time at which the milk is added to cup 2. Why does the difference become smaller again when the milk is added later?
 @f1_eingabe
-Time roughly
+Approximate time
 @f1_ausgangslage
 default values
 @aufl_f1
@@ -133,7 +133,7 @@ Milk temperature
 @v1_text
 Write down your own answer first, then agree as a pair: how warm would the milk have to be for both cups to be at roughly the same temperature after 60 min? Does this temperature depend on the time of adding the milk?
 @v1_eingabe
-Milk temperature roughly
+Approximate milk temperature
 @aufl_v1
 {{z:v1_60}} °C; {{z:v1_30}} °C when the milk is added after 30 min, {{z:v1_90}} °C after 90 min.
 @v2_titel
@@ -141,7 +141,7 @@ Lid
 @v2_text
 Write down your own answer first, then agree as a pair: with a lid, both cups cool down more slowly. Does the largest possible difference become larger, smaller or stay the same? When does it occur? Choose “Ceramic with lid” for $kA$ and, as in question 1, find the time of adding with the largest difference.
 @v2_eingabe
-Time roughly
+Approximate time
 @v_opt_groesser
 larger
 @v_opt_kleiner
@@ -216,7 +216,7 @@ Measured points: {liste}
 @lesehinweis
 The brown line is cup 1 (milk right away), the black dashed line is cup 2 (milk later); the short dotted lines are the mixing jumps when the milk is poured in, the grey dotted line is the room temperature.
 @dia_beschreibung
-Cup 1 cools from {a} °C to {b} °C; after adding the milk at {t} min, cup 2 is at {c} °C; difference {d} K.
+Cup 1: after mixing {m} °C, after {t} min {b} °C. Cup 2: black coffee from {a} to {k} °C, after the milk {c} °C. Difference {d} K.
 @dia_beschreibung_start
 Axes without curves: the curves appear after your prediction.
 @werte_tabelle
@@ -232,7 +232,7 @@ Temperature
 @ansicht_waermestrom
 Heat flow rate
 @ansicht_ln
-Measured values, linear (ln)
+Measured values, linearised (ln)
 @ansicht_aria
 View of the diagram
 @flaeche_vor
@@ -259,7 +259,7 @@ Cup 1 $\vartheta_1$
 @rw_tasse2
 Cup 2 $\vartheta_2$
 @rw_becher3
-Mug 3 $\vartheta_{2}$
+Mug 3 (milk at room temperature)
 @rw_unterschied
 Difference $\vartheta_1 - \vartheta_2$
 @rw_satz_1
@@ -277,7 +277,7 @@ no intersection before adding the milk
 @rw_Q
 released $Q_1$ / $Q_2$
 @rw_kA
-heat loss $kA$
+heat loss coefficient $kA$
 @rw_kA_herkunft_fest
 kept fixed
 @rw_kA_herkunft_messung
@@ -293,7 +293,7 @@ Your prediction
 @rw_bezug
 directly after adding the milk at {t} min
 @energie_titel
-Energy up to adding the milk
+Energy up to adding the milk: heat released to the room
 @energie_satz
 $Q_2 - Q_1$ = {dq} kJ corresponds to a difference of {dt} K.
 @energie_satz_milch
@@ -320,7 +320,7 @@ Milk temperature
 @regler_thU
 Room temperature
 @regler_kA
-Heat loss of the cup
+Heat loss coefficient of the cup
 @regler_thMess
 Measurement after 10 min
 @regler_mB
@@ -421,7 +421,7 @@ A vacuum mug with a lid is not included: there is no reliable measured value for
 @mess_titel
 Measured values from the experiment
 @mess_einleitung
-Enter the measured values (comma or point) or open your tutor's link. The rows follow the procedure of the experiment.
+Enter the measured values (comma or point) or open your tutor's link. The rows follow the procedure of the experiment: mug 1 already has its milk at 0 min (row 0 after stirring) and no row “60 after the milk”; mug 3 is calculated with milk at room temperature.
 @mess_kopf_t
 $t$ [min]
 @mess_kopf_b1
@@ -465,7 +465,7 @@ The measured values do not fit the model (the room must be below the value after
 @mess_deckel_hinweis
 Measured with a lid: the lid is already included in the measured $kA$.
 @link_kopiert
-Link copied. Show it as a QR code or send it to the class.
+Link copied. Send it to the class or turn it into a QR code.
 @link_anzeigen
 Link to copy:
 @link_frage
@@ -513,7 +513,7 @@ never (room too warm)
 @schalter_kalt
 Mug cold when pouring (room temperature)
 @kalt_nur
-Only with the mug and $kA$ held fixed.
+Only with the mug included and $kA$ kept fixed.
 @kalt_text
 Cold mug: start cup 1 {a} °C, black coffee {b} °C; after {t} min {c} and {d} °C, difference {dt} K (preheated {dtv} K).
 @csv_knopf
@@ -532,6 +532,54 @@ model cup 2, black until the milk [°C]
 measurement mug {n} [°C]
 @csv_nach_milch
 {t} after the milk
+@soll_start
+{{z:dT}} K (default values)
+@soll_f1
+about {{z:f1_tmax}} min
+@soll_v1
+{{z:v1_60}} °C
+@soll_v2
+about {{z:v2_tmax}} min
+@vergleich_zahl
+Your number: {ist} · model: {soll}
+@eure_begruendung
+Your reason
+@f2_erst_laden
+First load your class's values (tutor's link) or enter them in the measurement sheet; otherwise skip question 2.
+@hinweis_zahl
+Please enter a number only, for example 4 or 3.5.
+@ln_erst_f2
+The measured points appear after your prediction for question 2.
+@rw_schnitt_spaeter
+after your prediction for question 1
+@einheit_wk
+W/K
+@hilfe_zu
+Help on {name}
+@vergleich_text
+Pale: stored comparison run (milk added after {t} min): cup 1 {a} °C, cup 2 {b} °C, difference {d} K.
+@v3_ausgangslage
+default values, mug included, $kA$ from the measurement after 10 min (as in part g)
+@status_festgehalten
+Prediction recorded, curves and calculated values are visible.
+@ohne_frage
+Reveal without your own prediction? The explanation will be visible straight away.
+@link_nur_lokal
+This page is open as a file: the link only works on this computer. For the class, create the link from the published page or let them type in the values.
+@rw_noch_nicht
+No calculated values yet
+@regler_gesperrt_start
+Answer the start question first.
+@anheften_aus
+Unpin diagram
+@anheften_an
+Pin diagram at the top
+@bereich_formel
+formula, scrolls horizontally
+@bereich_tabelle
+table, scrolls horizontally
+@knopf_aufloesung_zu
+Hide explanation
 @link_ok
 Class data from the link used.
 @link_abgelehnt
@@ -639,7 +687,7 @@ part g, working value
 @g_kA1
 discussion in part c
 @g_milch2Raum
-mug 3, additional question (2)
+experiment, mug 3
 
 @text_lesen
 <ul>

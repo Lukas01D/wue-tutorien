@@ -19,8 +19,9 @@ const HILFEN = (() => {
   function kurslinkBauen(kurs) {
     const z = v => (v === null || v === undefined || !isFinite(v)) ? "" : String(Math.round(v * 100) / 100);
     const becher = ["1", "2"].concat(kurs.b3 ? ["3"] : []);
-    const teile = ["u:" + z(kurs.u), "m:" + z(kurs.m), "d:" + (kurs.d ? 1 : 0), "b:" + becher.join(".")];
+    const teile = [];          // Messreihen zuerst, Kopfwerte am Ende: der Link endet nie auf einem Komma (G8-07)
     for (const b of becher) teile.push("b" + b + ":" + kurs.werte["b" + b].map(z).join(","));
+    teile.push("u:" + z(kurs.u), "m:" + z(kurs.m), "d:" + (kurs.d ? 1 : 0), "b:" + becher.join("."));
     return "kurs1=" + teile.join(";");
   }
   function kurslinkLesen(hash) {

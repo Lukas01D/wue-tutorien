@@ -6,7 +6,7 @@
 const { chromium } = require("playwright");
 const fs = require("fs"), path = require("path");
 const { execFileSync } = require("child_process");
-const SEITE = "file://" + path.resolve(__dirname, "..", "site", "index.html");
+const SEITE = "file://" + path.join(process.env.KAFFEE_ORDNER || path.resolve(__dirname, "..", "site"), "index.html");
 const ZIEL = path.resolve(__dirname, "..", "bildschirmfotos", "bau");
 const SOLL = JSON.parse(execFileSync("python3", [path.join(__dirname, "erwartung_browser.py")]).toString());
 fs.mkdirSync(ZIEL, { recursive: true });

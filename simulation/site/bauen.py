@@ -3,6 +3,7 @@
 
 Aufruf: python3 simulation/site/bauen.py         (baut, prüft, schreibt BAUNACHWEIS.txt)
         python3 simulation/site/bauen.py --pruefen   (baut nur im Speicher und vergleicht mit index.html)
+        python3 simulation/site/bauen.py --ziel <ordner>   (Probebau in einen anderen Ordner)
 
 Schritte: Texte lesen (texte_de.txt, texte_en.txt), Platzhalter aus zahlen.py füllen, Formeln nach MathML (tex2mathml.py),
 Regler mit MathML, Schriften als data:-URL, Skripte zusammensetzen, CSP mit SHA-256 der eingebetteten Blöcke.
@@ -201,16 +202,18 @@ def main():
         print("WARNUNG:", w)
     if len(seite) >= GRENZE_BYTES:
         raise BauFehler("Seite zu groß: %d Bytes (Grenze %d)" % (len(seite), GRENZE_BYTES))
-    ziel = os.path.join(HIER, "index.html")
+    ausgabe = sys.argv[sys.argv.index("--ziel") + 1] if "--ziel" in sys.argv else HIER   # --ziel <ordner>: Probebau außerhalb von site/
+    os.makedirs(ausgabe, exist_ok=True)
+    ziel = os.path.join(ausgabe, "index.html")
     if "--pruefen" in sys.argv:
         alt = open(ziel, "rb").read() if os.path.exists(ziel) else b""
         print("gleich" if alt == seite else "VERSCHIEDEN")
         sys.exit(0 if alt == seite else 1)
     for n in ("index.html", "Kaffee_Simulation.html"):
-        with open(os.path.join(HIER, n), "wb") as f:
+        with open(os.path.join(ausgabe, n), "wb") as f:
             f.write(seite)
     sha = hashlib.sha256(seite).hexdigest()
-    with open(os.path.join(HIER, "BAUNACHWEIS.txt"), "w", encoding="utf-8") as f:
+    with open(os.path.join(ausgabe, "BAUNACHWEIS.txt"), "w", encoding="utf-8") as f:
         f.write("Baunachweis Kaffee-Simulation (geschrieben von bauen.py)\n")
         f.write("Stand: %s\nPrüfsumme der Quellen (SHA-256): %s\n" % (STAND, summe))
         f.write("index.html und Kaffee_Simulation.html (bytegleich): %d Bytes, SHA-256 %s\n" % (len(seite), sha))

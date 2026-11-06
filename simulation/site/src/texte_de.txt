@@ -56,9 +56,9 @@ Eure Vorhersage
 @ohne_vorhersage
 ohne Vorhersage
 @passt
-passt
+Auswahl passt
 @passt_nicht
-passt nicht
+Auswahl passt nicht
 @ausgangslage
 Ausgangslage
 @ausgangslage_gesetzt
@@ -68,7 +68,7 @@ Stimmt eure Vorhersage? Erklärt zu zweit, warum.
 @auftrag_start
 Erklärt den Unterschied mit $Q_1$ und $Q_2$.
 @gesperrt_nach_start
-nach dem Start
+(nach der Startfrage verfügbar)
 @regler_gesperrt
 Erst eure Vorhersage zu Frage 1 festhalten.
 @ergebnis_verdeckt
@@ -224,7 +224,7 @@ Messpunkte: {liste}
 @lesehinweis
 Die braune Linie ist Tasse 1 (Milch sofort), die schwarze gestrichelte Tasse 2 (Milch später); die kurzen gepunkteten Striche sind die Mischsprünge beim Zugießen, die graue gepunktete Linie ist die Raumtemperatur.
 @dia_beschreibung
-Tasse 1 kühlt von {a} °C auf {b} °C ab, Tasse 2 hat nach der Zugabe nach {t} min {c} °C; Unterschied {d} K.
+Tasse 1: nach dem Mischen {m} °C, nach {t} min {b} °C. Tasse 2: schwarzer Kaffee von {a} auf {k} °C, nach der Milch {c} °C. Unterschied {d} K.
 @dia_beschreibung_start
 Achsen ohne Kurven: Die Kurven erscheinen nach eurer Vorhersage.
 @werte_tabelle
@@ -268,7 +268,7 @@ Tasse 1 $\vartheta_1$
 @rw_tasse2
 Tasse 2 $\vartheta_2$
 @rw_becher3
-Becher 3 $\vartheta_{2}$
+Becher 3 (Milch mit Raumtemperatur)
 @rw_unterschied
 Unterschied $\vartheta_1 - \vartheta_2$
 @rw_satz_1
@@ -302,7 +302,7 @@ Eure Vorhersage
 @rw_bezug
 direkt nach der Zugabe nach {t} min
 @energie_titel
-Energie bis zur Zugabe
+Energie bis zur Zugabe: an den Raum abgegebene Wärme
 @energie_satz
 $Q_2 - Q_1$ = {dq} kJ entspricht {dt} K Unterschied.
 @energie_satz_milch
@@ -432,7 +432,7 @@ Thermobecher mit Deckel ist nicht dabei: Es gibt dafür keinen belastbaren Messw
 @mess_titel
 Messwerte aus dem Versuch
 @mess_einleitung
-Trage die Messwerte ein (Komma oder Punkt) oder öffne den Link der Tutoriumsleitung. Die Zeilen folgen dem Versuchsablauf.
+Trage die Messwerte ein (Komma oder Punkt) oder öffne den Link der Tutoriumsleitung. Die Zeilen folgen dem Versuchsablauf: Becher 1 hat die Milch schon bei 0 min (Zeile 0 nach dem Umrühren) und keine Zeile „60 nach der Milch“; Becher 3 rechnet mit Milch bei Raumtemperatur.
 @mess_kopf_t
 $t$ [min]
 @mess_kopf_b1
@@ -476,7 +476,7 @@ Die Messwerte passen nicht zum Modell (Raum unter dem Wert nach 10 min, der unte
 @mess_deckel_hinweis
 Mit Deckel gemessen: Der Deckel steckt schon im gemessenen $kA$.
 @link_kopiert
-Link kopiert. Zeige ihn als QR-Code oder schicke ihn dem Kurs.
+Link kopiert. Schicke ihn dem Kurs oder mach daraus einen QR-Code.
 @link_anzeigen
 Link zum Abschreiben:
 @link_frage
@@ -543,6 +543,54 @@ Modell Tasse 2, schwarz bis zur Zugabe [°C]
 Messung Becher {n} [°C]
 @csv_nach_milch
 {t} nach der Milch
+@soll_start
+{{z:dT}} K (Standardwerte)
+@soll_f1
+etwa {{z:f1_tmax}} min
+@soll_v1
+{{z:v1_60}} °C
+@soll_v2
+etwa {{z:v2_tmax}} min
+@vergleich_zahl
+Eure Zahl: {ist} · Modell: {soll}
+@eure_begruendung
+Eure Begründung
+@f2_erst_laden
+Erst Kurswerte laden (Link der Tutoriumsleitung) oder ins Messblatt eintragen; sonst Frage 2 überspringen.
+@hinweis_zahl
+Bitte nur eine Zahl, zum Beispiel 4 oder 3,5.
+@ln_erst_f2
+Die Messpunkte erscheinen nach eurer Vorhersage zu Frage 2.
+@rw_schnitt_spaeter
+nach eurer Vorhersage zu Frage 1
+@einheit_wk
+W/K
+@hilfe_zu
+Hilfe zu {name}
+@vergleich_text
+Blass: gemerkter Vergleichslauf (Zugabe nach {t} min): Tasse 1 {a} °C, Tasse 2 {b} °C, Unterschied {d} K.
+@v3_ausgangslage
+Standardwerte, Becher an, $kA$ aus der Messung nach 10 min (wie Teil g)
+@status_festgehalten
+Vorhersage festgehalten, Kurven und Rechenwerte sind sichtbar.
+@ohne_frage
+Ohne eigene Vorhersage aufdecken? Die Auflösung ist dann sofort sichtbar.
+@link_nur_lokal
+Diese Seite ist als Datei geöffnet: Der Link gilt nur auf diesem Rechner. Für den Kurs den Link aus der veröffentlichten Seite erzeugen oder die Werte eintippen lassen.
+@rw_noch_nicht
+Noch keine Rechenwerte
+@regler_gesperrt_start
+Erst die Startfrage beantworten.
+@anheften_aus
+Diagramm lösen
+@anheften_an
+Diagramm oben anheften
+@bereich_formel
+Formel, waagrecht scrollbar
+@bereich_tabelle
+Tabelle, waagrecht scrollbar
+@knopf_aufloesung_zu
+Auflösung ausblenden
 @link_ok
 Kurswerte aus dem Link übernommen.
 @link_abgelehnt
@@ -652,7 +700,7 @@ Teil g, Arbeitswert
 @g_kA1
 Diskussion in Teil c
 @g_milch2Raum
-Becher 3, Zusatzfrage (2)
+Versuch, Becher 3
 
 @text_lesen
 <ul>
