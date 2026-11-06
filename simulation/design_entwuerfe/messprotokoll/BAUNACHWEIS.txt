@@ -1,7 +1,7 @@
 Baunachweis Gestaltungsentwurf „messprotokoll“ der Kaffee-Simulation (geschrieben von bauen_entwurf.py)
 Stand: 2026-11-05
-Prüfsumme der Quellen (SHA-256): c787aae7121caef6ad74b9c251084f66de9899e60d219ba5c7bc2c8b6785f0f0
-index.html und Kaffee_Simulation.html (bytegleich): 343224 Bytes, SHA-256 d8522745495f2c4b8d41258c27fe54475877578d7ffd33582dc2724b2a917b31
+Prüfsumme der Quellen (SHA-256): e286e574e7d43f0fe7fb586a96de658588ce81c484538902d7718eda6344b308
+index.html und Kaffee_Simulation.html (bytegleich): 343224 Bytes, SHA-256 ac8d93cbbec8effe89778c9af013090ca6b60e8f8e130ff78e8c62228c49ab32
 Anteile: Skript 205160 Bytes, Stil mit Schriften 131468 Bytes, Texte 90173 Bytes
 Grenze: unter 450000 Bytes unkomprimiert
 Warnungen: keine

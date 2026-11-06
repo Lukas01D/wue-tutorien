@@ -1,0 +1,56 @@
+{
+  "_hinweis": "Schriften des Entwurfs Hörsaal. Atkinson: Teilmengen aus schriften_teilen.py; Fira Math: Teilmenge des gebauten Stands; Fira Sans nur vier Zeichen, die Atkinson und Fira Math fehlen (˙ ₁ ₂ ↔). Felder: Familie, Gewicht, Stil, Datei in src/schriften/.",
+  "schriften": [
+    [
+      "Atkinson Hyperlegible Next",
+      400,
+      "normal",
+      "Atkinson-400.woff2"
+    ],
+    [
+      "Atkinson Hyperlegible Next",
+      700,
+      "normal",
+      "Atkinson-700.woff2"
+    ],
+    [
+      "Atkinson Hyperlegible Next",
+      400,
+      "italic",
+      "Atkinson-400i.woff2"
+    ],
+    [
+      "Fira Sans",
+      400,
+      "normal",
+      "FiraSans-Ersatz.woff2"
+    ],
+    [
+      "Fira Math",
+      400,
+      "normal",
+      "FiraMath-teil.woff2"
+    ]
+  ],
+  "formel": "Fira Math",
+  "ersatz": {
+    "Atkinson Hyperlegible Next": [
+      "Fira Sans",
+      "Fira Math"
+    ]
+  },
+  "lizenzen": [
+    [
+      "Atkinson Hyperlegible Next",
+      "AtkinsonNext-OFL.txt"
+    ],
+    [
+      "Fira Sans (Ersatz für vier Zeichen)",
+      "FiraSans-OFL.txt"
+    ],
+    [
+      "Fira Math",
+      "FiraMath-OFL.txt"
+    ]
+  ]
+}

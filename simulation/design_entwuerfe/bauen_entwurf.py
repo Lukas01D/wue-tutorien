@@ -177,6 +177,8 @@ def zeichen_pruefen(texte, js):
         else:
             familien[fam] = cm if fam not in familien else familien[fam] & cm
     for fam, cm in familien.items():
+        if fam not in SCHRIFTEN_DATEN.get("ersatz", {}):      # reine Ersatzschrift (nur einzelne Zeichen): nicht selbst prüfen
+            continue
         mit_ersatz = cm | set().union(*[familien[e] for e in SCHRIFTEN_DATEN.get("ersatz", {}).get(fam, []) if e in familien]) | \
             (mathe if MATHE_FAMILIE in SCHRIFTEN_DATEN.get("ersatz", {}).get(fam, []) else set())
         sans = mit_ersatz if sans is None else sans & mit_ersatz

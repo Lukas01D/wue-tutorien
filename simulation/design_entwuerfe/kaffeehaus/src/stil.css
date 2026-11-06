@@ -1,0 +1,286 @@
+/* ==== Entwurf B „Kaffeehaus“: Milchschaum, Crema, Espresso; große weiche Karten, Serifen für Überschriften ====
+   Schriften: Fraunces (Überschriften, Kernzahlen), Source Sans 3 (Text), STIX Two Math (Formeln). Kontraste siehe RICHTUNGEN.md.
+   Anpassung der TL (06.11.2026): Diagramm auf einer rechteckigen Fläche, so groß wie möglich; die Wärme kommt aus Farben,
+   Schrift und Karten. */
+:root {
+  --schaum: #fbf6ee; --karte: #ffffff; --crema: #f3e6d3; --crema-tief: #e9d6bb; --espresso: #3b2416; --text: #2b1d14; --leise: #6a5646;
+  --rand: #e3d3bd; --rand-stark: #8c7660; --karamell: #9a5a22; --pistazie: #3f6b4f; --pistazie-hell: #e8f0ea; --rot: #a12a24; --rot-hell: #fbeceb;
+  --fokus: #3f6b4f;
+  --schatten: 0 1px 2px rgba(59, 36, 22, .06), 0 10px 28px rgba(59, 36, 22, .07);
+  --schrift: "Source Sans 3", "STIX Two Math", system-ui, sans-serif;
+  --schrift-titel: "Fraunces", Georgia, serif;
+  --schrift-formel: "STIX Two Math", "Source Sans 3", math;
+  /* Diagramm */
+  --k1: #9a5a22; --k1-text: #87501d; --k2: #1f140d; --k3: #2f5f8a; --raum: #857464; --achse: #6a5646; --achse-text: #6a5646;
+  --dia-text: #2b1d14; --gitter: #e2d0b6; --dia-grund: #fdf8f1; --hilfslinie: #3b2416; --vh-grund: #e8f0ea; --vh-text: #24432f;
+  --gruen: #3f6b4f; --fehler: #a12a24; --fehler-grund: #fbeceb; --tasse-grund: #f3e6d3;
+  --schrift-dia: "Source Sans 3", "STIX Two Math", sans-serif;
+  --dia-schrift: 13; --dia-zeichenbreite: 0.52; --dia-rand-links: 50; --dia-max-breite: 1100; --dia-verhaeltnis: 0.58; --dia-hoehe: 0.6;
+  --dia-handy-verhaeltnis: 0.74; --dia-handy-hoehe: 0.31;
+}
+html { background: var(--schaum); color: var(--text); font-family: var(--schrift); line-height: 1.55; }
+body { background: var(--schaum); font-size: 1.0625rem; }
+h1, h2, h3 { font-family: var(--schrift-titel); font-weight: 600; line-height: 1.15; margin: 0 0 .45em; letter-spacing: -.005em; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 .75em; }
+a { color: var(--pistazie); }
+strong, b { font-weight: 600; }
+code { font-size: .92em; background: var(--crema); padding: .05em .35em; border-radius: 6px; }
+.klein { font-size: .9rem; color: var(--leise); }
+.hinweis { color: var(--leise); }
+.hinweis strong { color: var(--text); }
+:focus-visible { outline: 3px solid var(--fokus); outline-offset: 3px; border-radius: 6px; }
+
+.sprung { background: var(--espresso); color: #fff8ee; border-radius: 999px; font-weight: 600; text-decoration: none; }
+.banner { margin: 12px 16px 0; padding: 14px 18px; background: var(--karte); border: 2px solid var(--pistazie); border-radius: 16px; box-shadow: var(--schatten); }
+.rueck-box { margin: 12px 0; }
+
+/* Kopf: ruhig, mit Espresso-Marke */
+.kopf { display: flex; align-items: center; gap: 14px; max-width: 1360px; margin: 0 auto; padding: 18px 20px 6px; }
+.kopf-marke { flex: none; width: 46px; height: 46px; border-radius: 50%; background: var(--espresso); color: #fff8ee; display: grid; place-content: center; font-family: var(--schrift-titel); font-weight: 600; font-size: 1rem; }
+.kopf-texte { flex: 1; min-width: 0; }
+.kopf-zeile { margin: 0; font-size: .9rem; color: var(--leise); }
+.kopf-titel { margin: 0; font-size: 1.75rem; }
+.kopf-rechts { display: flex; align-items: center; gap: 12px; }
+.kopf-speicher { margin: 0; font-size: .85rem; color: var(--leise); max-width: 15em; text-align: right; }
+.kopf-speicher.aus { color: var(--rot); font-weight: 600; }
+.sprachknopf { min-height: 44px; padding: 0 16px; border: 1.5px solid var(--rand-stark); border-radius: 999px; background: var(--karte); }
+.sprachknopf:hover { background: var(--crema); }
+@media (max-width: 600px) {
+  .kopf { padding: 12px 14px 2px; gap: 10px; }
+  .kopf-marke { width: 38px; height: 38px; font-size: .85rem; }
+  .kopf-titel { font-size: 1.3rem; }
+  .kopf-zeile { font-size: .8rem; }
+  .kopf-speicher { display: none; }
+}
+
+main { display: block; }
+main:focus { outline: none; }
+.seite { max-width: 1360px; margin: 0 auto; padding: 14px 20px 28px; }
+@media (max-width: 600px) { .seite { padding: 10px 12px 24px; } }
+.simulation { display: grid; gap: 18px; }
+
+/* Karten */
+.frageleiste, .diagramm, .energie, .bilanz, .rechenwerte, .vertiefung, .messblatt, .reiter-panel { background: var(--karte); border: 1px solid var(--rand); border-radius: 20px; box-shadow: var(--schatten); }
+
+/* Frageleiste als große Karte */
+.frageleiste { padding: 22px 24px; }
+.frage-nr { display: inline-block; margin: 0 0 8px; padding: 3px 12px; border-radius: 999px; background: var(--crema); color: var(--espresso); font-size: .85rem; font-weight: 600; }
+#frage-titel { font-size: 1.75rem; }
+.frage-text { font-size: 1.08rem; }
+.frage-text-zu > summary { min-height: 44px; display: inline-flex; align-items: center; cursor: pointer; color: var(--pistazie); font-weight: 600; }
+.frage-eingabe { margin: 16px 0 8px; display: grid; gap: 16px; }
+.frage-eingabe fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.frage-eingabe legend { padding: 0; margin-bottom: 8px; font-weight: 600; }
+.wahl { display: grid; gap: 10px; }
+.wahl label, .radio-zeile label { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 10px 16px; border: 2px solid var(--rand); border-radius: 16px; background: var(--karte); cursor: pointer; font-size: 1.05rem; }
+.radio-zeile { display: grid; gap: 8px; }
+.radio-zeile label { min-height: 48px; font-size: 1rem; }
+.wahl label:hover, .radio-zeile label:hover { border-color: var(--rand-stark); background: #fffaf3; }
+.wahl label:has(input:checked), .radio-zeile label:has(input:checked) { background: var(--espresso); border-color: var(--espresso); color: #fff8ee; font-weight: 600; }
+input[type="radio"] { appearance: none; -webkit-appearance: none; flex: none; width: 22px; height: 22px; margin: 0; border-radius: 50%; border: 2px solid var(--rand-stark); background: var(--karte); display: grid; place-content: center; }
+input[type="radio"]::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--espresso); transform: scale(0); }
+input[type="radio"]:checked { border-color: #fff8ee; background: #fff8ee; }
+input[type="radio"]:checked::before { transform: scale(1); }
+input[type="checkbox"] { appearance: none; -webkit-appearance: none; flex: none; width: 44px; height: 26px; margin: 0; border-radius: 999px; background: #d8c6ae; border: 2px solid var(--rand-stark); position: relative; }
+input[type="checkbox"]::before { content: ""; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--karte); box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+input[type="checkbox"]:checked { background: var(--pistazie); border-color: var(--pistazie); }
+input[type="checkbox"]:checked::before { left: 20px; }
+input[type="checkbox"]:disabled { opacity: .55; }
+.feld { display: grid; gap: 6px; font-weight: 600; }
+.feld-einheit { display: inline-flex; align-items: center; gap: 8px; font-weight: 400; }
+.feld input, .zahlfeld, .messtabelle input, .mess-zusatz input { min-height: 46px; padding: 8px 12px; border: 1.5px solid var(--rand-stark); border-radius: 12px; background: var(--karte); font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+.feld input { width: 7.5em; }
+.feld-breit input { width: 100%; }
+input[aria-invalid="true"] { border-color: var(--rot); background: var(--rot-hell); }
+.frage-knoepfe { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 14px 0 4px; }
+.frage-nav { display: flex; gap: 8px; }
+.auftrag { padding: 12px 16px; border-radius: 14px; background: var(--pistazie-hell); color: #24432f; font-weight: 600; }
+.auftrag .klein { color: #24432f; font-weight: 400; }
+.rueckblick { padding: 14px 16px 6px; margin-bottom: 18px; border-radius: 16px; background: var(--schaum); border: 1px dashed var(--rand-stark); }
+.aufloesung { padding: 14px 16px; margin: 12px 0; border-radius: 16px; background: #f6efe4; border-left: 6px solid var(--karamell); }
+.vergleich-ok { color: #2f6b45; font-weight: 600; }
+.vergleich-nein { color: var(--rot); font-weight: 600; }
+
+/* Knöpfe als Pillen */
+.knopf-haupt, .knopf-zweit, .knopf-schlicht, .umschalter, .pm, .hilfe-knopf { min-height: 44px; min-width: 44px; border-radius: 999px; font-weight: 600; line-height: 1.2; }
+.knopf-haupt { min-height: 54px; padding: 12px 26px; background: var(--espresso); color: #fff8ee; border: 0; font-size: 1.05rem; box-shadow: 0 6px 16px rgba(59, 36, 22, .22); }
+.knopf-haupt:hover:not(:disabled) { background: #24150c; }
+.knopf-haupt:disabled { background: #e6dccd; color: #6a5646; box-shadow: none; }
+.knopf-zweit { padding: 10px 20px; background: var(--karte); color: var(--espresso); border: 2px solid var(--espresso); }
+.knopf-zweit:hover:not(:disabled) { background: var(--crema); }
+.knopf-schlicht { padding: 10px 18px; background: var(--crema); color: var(--espresso); border: 1px solid var(--rand); }
+.knopf-schlicht:hover:not(:disabled) { background: var(--crema-tief); }
+.knopf-text { padding: 2px 0; background: none; border: 0; color: var(--pistazie); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+.knopf-zweit:disabled, .knopf-schlicht:disabled, .pm:disabled, .hilfe-knopf:disabled { color: #7a6a5c; border-color: #d8c9b6; background: #f4ede3; }
+.knopfzeile { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
+.knopf-info { margin: 0; color: var(--leise); }
+
+/* Ansichten als Segmentschalter */
+.ansichten { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 999px; background: var(--crema); width: fit-content; max-width: 100%; }
+.umschalter { padding: 8px 16px; background: transparent; border: 0; color: var(--espresso); }
+.umschalter[aria-pressed="true"] { background: var(--espresso); color: #fff8ee; }
+.voreinstellungen .umschalter { background: var(--crema); border: 1px solid var(--rand); }
+.voreinstellungen .umschalter[aria-pressed="true"] { background: var(--espresso); color: #fff8ee; }
+
+/* Diagramm: rechteckige Fläche, so groß wie möglich */
+.diagramm { margin: 0; padding: 14px 14px 16px; min-width: 0; }
+.diagramm-halter { display: flex; flex-direction: column; background: var(--dia-grund); border: 1px solid var(--crema-tief); border-radius: 6px; padding: 6px 4px 0; }
+#diagramm { margin: 0 auto; }
+.kernzahlen { display: flex; flex-wrap: wrap; gap: 6px 28px; padding: 10px 14px 12px; border-top: 1px solid var(--crema-tief); background: var(--karte); border-radius: 0 0 6px 6px; margin: 4px -4px 0; }
+.kernzahlen:empty { display: none; }
+.kernzahlen span, .kern-leiste span { display: flex; align-items: baseline; gap: 8px; color: var(--leise); font-size: .95rem; }
+.kernzahlen b, .kern-leiste b { font-family: var(--schrift-titel); font-size: 1.7rem; font-weight: 600; color: var(--text); font-variant-numeric: lining-nums tabular-nums; }
+.kernzahlen span:last-child b { color: var(--karamell); }
+.vorhersage-zeile, .kurven-legende { margin: 6px 12px; font-size: .95rem; }
+.sym { width: 1.4em; height: .9em; vertical-align: middle; }
+.sym-flaeche { width: 1em; height: 1em; }
+.knopf-anheften { margin: 6px 4px 0; }
+.regler-pflicht { padding: 12px 4px 0; }
+.diagramm figcaption { padding: 6px 4px 0; color: var(--leise); }
+.lesehinweis { margin: 4px 0; font-size: .95rem; }
+.legende-mess, .flaechen { margin: 4px 0; color: var(--text); }
+.wertetabelle { margin: 6px 4px 0; }
+.wertetabelle > summary, .vertiefung > summary, .karte > summary, .abschnitt > summary { min-height: 48px; display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+.wertetabelle > summary, .karte > summary, .abschnitt > summary, .vertiefung > summary { position: relative; }
+.wertetabelle > summary::after, .karte > summary::after, .abschnitt > summary::after, .vertiefung > summary::after { content: ""; flex: none; width: 10px; height: 10px; border-right: 2.5px solid currentColor; border-bottom: 2.5px solid currentColor; transform: rotate(45deg); margin-left: auto; margin-right: 6px; }
+details[open] > summary::after { transform: rotate(-135deg); }
+.wertetabelle > summary { color: var(--pistazie); width: fit-content; }
+.wertetabelle > summary::after { margin-left: 4px; }
+#diagramm polyline[stroke="#8b5a2b"] { stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+#diagramm polyline[stroke="#222"] { stroke-width: 2.8; }
+#diagramm text[font-weight="600"] { font-weight: 600; }
+
+/* Tabellen */
+.tabelle-wrap { margin: 10px 0; border-radius: 12px; }
+table { font-size: .95rem; font-variant-numeric: tabular-nums; }
+th, td { padding: 6px 10px; text-align: right; border-bottom: 1px solid var(--rand); }
+thead th { background: var(--crema); text-align: left; vertical-align: bottom; font-weight: 600; }
+tbody th { text-align: left; font-weight: 400; color: var(--leise); }
+
+/* Energie, Bilanzraum, Rechenwerte */
+.knoepfe { display: flex; flex-wrap: wrap; align-content: start; gap: 10px; min-width: 0; }
+.knoepfe .knopf-info { flex-basis: 100%; }
+.energie, .bilanz, .rechenwerte { flex-basis: 100%; padding: 18px 20px; }
+.kasten-titel { font-size: 1.1rem; }
+.energie svg, .bilanz svg { display: block; width: 100%; max-width: 340px; height: auto; }
+.energie-satz { margin: 10px 0 0; padding: 10px 14px; border-radius: 12px; background: var(--crema); font-weight: 600; }
+.rechenwerte dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+.rechenwerte dl > div.breit { grid-column: 1 / -1; }
+.rechenwerte dt { font-size: .9rem; color: var(--leise); }
+.rechenwerte dd { margin: 0; font-weight: 600; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+
+/* Regler: dicke runde Spur, runder Karamell-Griff */
+.regler-gitter { display: grid; gap: 18px; }
+.regler { min-width: 0; }
+.regler-kopf { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.regler-name { font-weight: 600; }
+.hilfe-knopf { width: 44px; height: 44px; padding: 0; border: 1.5px solid var(--rand); background: var(--schaum); color: var(--espresso); font-family: var(--schrift-titel); font-size: 1.05rem; flex: none; }
+.hilfe-text { padding: 10px 14px; border-radius: 12px; background: var(--schaum); font-size: .95rem; }
+.regler-zeile { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px 5.6em; gap: 10px; align-items: center; }
+.pm { width: 44px; padding: 0; background: var(--crema); border: 1px solid var(--rand); color: var(--espresso); font-size: 1.3rem; }
+.pm:hover:not(:disabled) { background: var(--crema-tief); }
+.zahlfeld { width: 100%; text-align: right; }
+input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; min-width: 0; height: 44px; margin: 0; background: transparent; }
+input[type="range"]::-webkit-slider-runnable-track { height: 12px; border-radius: 999px; background: linear-gradient(90deg, var(--crema-tief), var(--karamell)); border: 1px solid var(--rand-stark); }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; margin-top: -10px; border-radius: 50%; background: var(--karte); border: 6px solid var(--espresso); box-shadow: 0 2px 6px rgba(59, 36, 22, .3); }
+input[type="range"]::-moz-range-track { height: 12px; border-radius: 999px; background: linear-gradient(90deg, var(--crema-tief), var(--karamell)); border: 1px solid var(--rand-stark); }
+input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--karte); border: 6px solid var(--espresso); }
+input[type="range"]:disabled::-webkit-slider-runnable-track { background: #eee5d8; border-color: #d8c9b6; }
+input[type="range"]:disabled::-webkit-slider-thumb { border-color: #a9978a; box-shadow: none; }
+.gesperrt .regler-name { color: var(--leise); }
+.feld-fehler { margin: 6px 0 0; font-size: .92rem; color: var(--rot); }
+.feld-fehler:empty { display: none; }
+.feld-fehler.neutral { color: var(--leise); }
+.fehler-meldung { padding: 12px 16px; border-radius: 14px; background: var(--rot-hell); color: var(--rot); border: 1.5px solid var(--rot); font-weight: 600; }
+.schalter { display: flex; align-items: center; gap: 12px; min-height: 44px; flex-direction: row-reverse; justify-content: flex-end; cursor: pointer; }
+.gruppe { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 14px; }
+.gruppe-titel { font-size: 1.2rem; margin: 6px 0 0; }
+.voreinstellungen { display: flex; flex-wrap: wrap; gap: 8px; }
+.info-kasten { padding: 12px 14px; border-radius: 14px; background: var(--schaum); border: 1px solid var(--rand); }
+
+/* Vertiefung, Messblatt */
+.regler-raster { display: grid; gap: 18px; min-width: 0; }
+.regler-bereich { min-width: 0; }
+.vertiefung > summary { padding: 6px 22px; font-family: var(--schrift-titel); font-size: 1.3rem; min-height: 60px; }
+.vertiefung-inhalt { padding: 4px 22px 22px; }
+.hinweis-frueh { margin: 0 22px 12px; padding: 12px 16px; border-radius: 14px; background: var(--pistazie-hell); color: #24432f; }
+.kern-leiste { display: none; }
+.messblatt { padding: 20px 22px; min-width: 0; }
+.messblatt h2 { font-size: 1.4rem; }
+.messtabelle input { width: 5.6em; text-align: right; }
+.messtabelle td { padding: 4px 6px; }
+.messtabelle input:disabled { background: #f1eadf; border-color: #e0d3c2; }
+.mess-zusatz { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: end; margin: 12px 0; }
+.mess-zusatz .feld input { width: 6em; }
+#link-ausgabe input, #link-ausgabe textarea { width: 100%; min-height: 44px; border-radius: 12px; }
+
+/* Reiter als Pillen */
+.reiter-bereich { margin-top: 32px; }
+.reiter { display: flex; flex-wrap: wrap; gap: 6px; padding: 5px; border-radius: 999px; background: var(--crema); width: fit-content; max-width: 100%; margin-bottom: 14px; }
+.reiter [role="tab"] { min-height: 44px; padding: 8px 20px; border: 0; border-radius: 999px; background: transparent; color: var(--espresso); font-weight: 600; }
+.reiter [role="tab"][aria-selected="true"] { background: var(--espresso); color: #fff8ee; }
+.reiter-panel { padding: 20px 24px; }
+.reiter-panel:focus-visible { outline-offset: -4px; }
+.karte, .abschnitt { border-bottom: 1px solid var(--rand); }
+.karte:last-of-type, .abschnitt:last-of-type { border-bottom: 0; }
+.karte > summary, .abschnitt > summary { font-family: var(--schrift-titel); font-size: 1.1rem; }
+.karte[open], .abschnitt[open] { padding-bottom: 12px; }
+.karte-status { font-family: var(--schrift); font-weight: 400; font-size: .9rem; color: var(--leise); }
+.reiter-panel ul { padding-left: 1.2em; }
+.reiter-panel li { margin-bottom: .4em; }
+
+.fuss { max-width: 1360px; margin: 10px auto 0; padding: 18px 20px 28px; font-size: .9rem; color: var(--leise); }
+
+/* ---- Laptop und Beamer: eine breite Mittelspalte. Vor der Vorhersage steht die Startkarte oben, danach das Diagramm
+   (über die ganze Breite), darunter Frage und Energie nebeneinander, dann Vertiefung mit Rechenwerten und Messblatt.
+   „Danach“ erkennt die CSS daran, dass die Vertiefung sichtbar ist (das Skript blendet sie erst nach der Freigabe ein). ---- */
+@media (min-width: 1024px) {
+  .simulation { grid-template-columns: minmax(0, 1fr) minmax(300px, 380px); column-gap: 22px; align-items: start;
+    grid-template-areas: "frage frage" "ansichten ansichten" "dia dia" "seite seite" "regler regler" "mess mess"; }
+  .simulation:has(#vertiefung:not([hidden])) { grid-template-areas: "ansichten ansichten" "dia dia" "frage seite" "regler regler" "mess mess"; }
+  .frageleiste { grid-area: frage; padding: 24px 28px; }
+  .simulation:not(:has(#vertiefung:not([hidden]))) .frageleiste { max-width: 860px; }
+  .ansichten { grid-area: ansichten; }
+  .sim-raster { display: contents; }
+  .diagramm { grid-area: dia; }
+  .knoepfe { grid-area: seite; }
+  .regler-raster { grid-area: regler; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); align-items: start; }
+  .messblatt { grid-area: mess; }
+  .vertiefung-inhalt .regler-gitter { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); align-items: start; }
+  .diagramm .regler-pflicht, .diagramm figcaption, .diagramm .wertetabelle, .diagramm .knopf-anheften { max-width: 900px; }
+}
+@media (min-width: 1024px) and (max-height: 800px) {
+  .kopf { padding-top: 10px; }
+  .kopf-titel { font-size: 1.45rem; }
+  .seite { padding-top: 8px; }
+  .diagramm { padding: 10px 10px 12px; }
+  .kernzahlen b { font-size: 1.45rem; }
+}
+
+/* ---- Handy ---- */
+@media (max-width: 767px) {
+  .frageleiste { padding: 18px 16px; border-radius: 18px; }
+  #frage-titel { font-size: 1.45rem; }
+  .diagramm { padding: 10px 8px 12px; border-radius: 18px; }
+  .diagramm-halter { padding: 4px 0 0; }
+  .kernzahlen { gap: 4px 16px; padding: 6px 10px 8px; margin: 2px 0 0; }
+  .kernzahlen span { font-size: .85rem; gap: 5px; }
+  .kernzahlen b { font-size: 1.2rem; }
+  .vorhersage-zeile, .kurven-legende { font-size: .82rem; margin: 2px 8px 4px; line-height: 1.3; }
+  html.handy .diagramm-halter { margin: 0 -2px; box-shadow: 0 6px 14px rgba(59, 36, 22, .12); border-radius: 0 0 12px 12px; }
+  html.handy .regler-pflicht, html.handy .knopf-anheften, html.handy .diagramm figcaption, html.handy .wertetabelle { padding-left: 4px; padding-right: 4px; }
+  .regler-zeile { grid-template-columns: 44px minmax(0, 1fr) 44px 4.6em; gap: 6px; }
+  .vertiefung > summary { padding: 6px 16px; }
+  .vertiefung-inhalt { padding: 4px 16px 18px; }
+  .messblatt, .reiter-panel { padding: 16px; }
+  .messtabelle input { width: 4.4em; }
+  .reiter { border-radius: 18px; }
+}
+@media (max-width: 380px) {
+  .kernzahlen { flex-wrap: nowrap; justify-content: space-between; gap: 6px; padding: 6px 8px 8px; }
+  .kernzahlen span { white-space: nowrap; font-size: .78rem; gap: 3px; }
+  .kernzahlen b { font-size: 1.05rem; }
+}

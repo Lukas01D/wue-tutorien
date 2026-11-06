@@ -1,0 +1,13 @@
+{
+  "_hinweis": "Schriften des Entwurfs Kaffeehaus (Teilmengen aus schriften_teilen.py). Felder: Familie, Gewicht, Stil, Datei in src/schriften/.",
+  "schriften": [
+    ["Fraunces", 600, "normal", "Fraunces-600.woff2"],
+    ["Source Sans 3", 400, "normal", "SourceSans3-400.woff2"],
+    ["Source Sans 3", 600, "normal", "SourceSans3-600.woff2"],
+    ["Source Sans 3", 400, "italic", "SourceSans3-400i.woff2"],
+    ["STIX Two Math", 400, "normal", "STIXTwoMath.woff2"]
+  ],
+  "formel": "STIX Two Math",
+  "ersatz": {"Source Sans 3": ["STIX Two Math"], "Fraunces": ["Source Sans 3", "STIX Two Math"]},
+  "lizenzen": [["Fraunces", "Fraunces-OFL.txt"], ["Source Sans 3", "SourceSans3-OFL.txt"], ["STIX Two Math", "STIXTwoMath-OFL.txt"]]
+}

@@ -1,0 +1,7 @@
+Baunachweis Gestaltungsentwurf „hoersaal“ der Kaffee-Simulation (geschrieben von bauen_entwurf.py)
+Stand: 2026-11-05
+Prüfsumme der Quellen (SHA-256): 72f6322ec2a5871f50bf3e9019de3ba6a8c6a321989ef38cb03f36981cd0fdee
+index.html und Kaffee_Simulation.html (bytegleich): 308511 Bytes, SHA-256 6f3e07541a6dcd2dcc025df4e03b7765265da2002e221b0ba83e6d8c142217ad
+Anteile: Skript 205160 Bytes, Stil mit Schriften 96755 Bytes, Texte 90173 Bytes
+Grenze: unter 450000 Bytes unkomprimiert
+Warnungen: keine
