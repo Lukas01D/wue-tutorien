@@ -598,8 +598,6 @@ Up to the intersection, cup 2 releases more heat ({v} kJ), afterwards less ({n} 
 Difference cup 1 and mug 3
 @link_leer
 The measurement sheet is empty; enter values first.
-@fehler_am_feld
-Settings not valid, see the note above the controls.
 @f2_ausgang_leer
 class values, applied when you check
 @hinweis_zahl_fehlt

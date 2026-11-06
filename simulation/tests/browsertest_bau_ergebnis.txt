@@ -1,9 +1,9 @@
 Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-06
-Seite: simulation/site/index.html, SHA-256 771445699be30c0fa297e894c7ea19baac0f84713ce0dd02b57a9bb2bd50370a
+Seite: simulation/site/index.html, SHA-256 1d90ce2f84349754592a5dd572a760a5d212cd3383bcafbeb1cceaf06e07292b
 
-ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  398505 Bytes
-ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  398505 Bytes
-ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-SpaI0MdSlsftgcWG5EShR…
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  399063 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  399063 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-TLF1Nl8/1+E0b1oh7w2+3…
 ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
 ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
 ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
@@ -91,9 +91,10 @@ ok    B87 G7-02, G8-01: zweiter Tab überschreibt nichts; der erste Tab übernim
 ok    B88 G8-07: Kurslink endet nicht auf Komma (Kopfwerte am Ende) und wird wieder gelesen  39.6,35.2;u:21.5;m:6;d:0;b:1.2
 ok    B89 Korrekturen Runde 1: keine Konsolenfehler
 ok    B90 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 410, 419
-ok    B91 M-6: Anheften abschaltbar
-ok    B92 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  107 ms (gemessen im Cloud-Container)
-ok    B93 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.1 ms, 95 % 3.7 ms, Max 4.5 ms (Cloud)
-ok    B94 Leistung L4: Bedienfolge 30 s (1340 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.30 MB (Cloud)
+ok    B91 M-6: angehefteter Bereich höchstens 45 % der Höhe (320 × 568, 360 × 640, 390 × 844)  41.5 %, 38.5 %, 38.9 %
+ok    B92 M-6: Anheften abschaltbar
+ok    B93 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  108 ms (gemessen im Cloud-Container)
+ok    B94 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.2 ms, 95 % 3.7 ms, Max 4.5 ms (Cloud)
+ok    B95 Leistung L4: Bedienfolge 30 s (1351 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.30 MB (Cloud)
 
-Ergebnis: 94 von 94 Prüfungen bestanden.
+Ergebnis: 95 von 95 Prüfungen bestanden.

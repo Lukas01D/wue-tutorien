@@ -426,11 +426,12 @@
           else vorhersageUnten = txt;
           if ((fv.id === "f1" || fv.id === "v2") && isFinite(vorhersageZahl(fv, av.zahl).wert)) {
             const tv = vorhersageZahl(fv, av.zahl).wert;
+            if (tv > 0 && tv <= xMax) belegt.push([X(tv) - 3, O + 28, 6, H - U - O - 28]);   // G6-R2-02: Linie ist Hindernis für Beschriftungen
             if (tv > 0 && tv <= xMax) s.push('<line x1="' + X(tv).toFixed(1) + '" x2="' + X(tv).toFixed(1) + '" y1="' + (O + 28) + '" y2="' + (H - U) + '" stroke="#227b48" stroke-width="1.6" stroke-dasharray="3 3"/>');
           }
         }
         // Messpunkte
-        punkte.sort((a, b) => (b.b === 3) - (a.b === 3));
+        punkte.sort((a, b) => ({ 3: 0, 2: 1, 1: 2 })[a.b] - ({ 3: 0, 2: 1, 1: 2 })[b.b]);   // G6-19: Becher 1 oben, Becher 3 unten
         for (const p of punkte) {
           const px = X(p.t), py = Y(p.th), c = p.b === 1 ? "#8b5a2b" : (p.b === 2 ? "#222" : "#3d70a3");
           if (p.b === 1) s.push('<circle cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="4.8" fill="' + c + '" stroke="#fff" stroke-width="1"/>');
@@ -441,7 +442,7 @@
         if (schnittFrei() && isFinite(R.tSchnitt) && R.tSchnitt < tz) {     // Beschriftung „Schnitt“ nach den Messpunkten, frei von Punkten
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt)), txt = t("dia_schnitt"), bw = txt.length * fs * 0.56 + 4;
           const kand = [[sx - bw / 2, sy - 10], [sx - bw / 2, sy + fs + 10], [sx - bw - 10, sy - 8], [sx - bw - 10, sy + fs + 6], [sx - bw / 2, sy - 24]];
-          let wahl = kand[0];
+          let wahl = null;     // G6-03, G6-22: ohne freien Platz keine Beschriftung (der Kreis bleibt)
           for (const [x0, yb] of kand) {
             if (x0 < L + 2 || x0 + bw > W - Rr + 6 || yb - fs < O || yb > H - U - 2) continue;
             let aufKurve = false;
@@ -449,8 +450,7 @@
             if (raumY !== null && raumY > yb - fs - 3 && raumY < yb + 4) aufKurve = true;
             if (!aufKurve && !belegt.some(b => x0 < b[0] + b[2] && x0 + bw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { wahl = [x0, yb]; break; }
           }
-          s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>");
-          belegt.push([wahl[0], wahl[1] - fs, bw, fs + 4]);
+          if (wahl) { s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>"); belegt.push([wahl[0], wahl[1] - fs, bw, fs + 4]); }
         }
         if (S.ansicht.trinkzeit && S.ansicht.vertiefung) {      // K-3 Trinkzeit: Linie bei 60 °C, Marken an den Kurven
           const yT = Y(TRINK);
@@ -678,7 +678,8 @@
     if (r.id === "kA") { S.e.kAQuelle = "fest"; S.e.kAHerkunft = "eigen"; }
     rechnen(); sichern();
     teilZeichnen(quelle === "zahl" ? "z-" + r.id : (quelle === "pm" ? null : "r-" + r.id));
-    const rf = $("rf-" + r.id); if (rf && !rf.classList.contains("neutral")) rf.innerHTML = FEHLER ? t("fehler_am_feld") : "";
+    const rf = $("rf-" + r.id); if (rf && !rf.classList.contains("neutral")) rf.innerHTML = FEHLER ? t("fehler_" + FEHLER) : "";   // G6-20: Grund am Feld
+    const zf = $("z-" + r.id); if (zf) { if (FEHLER) { zf.setAttribute("aria-invalid", "true"); } else zf.removeAttribute("aria-invalid"); }
   }
   function reglerEreignisse(wurzel) {
     for (const r of REGLER_DEF.regler) {
@@ -1047,7 +1048,12 @@
   document.addEventListener("focusin", anheftenPruefen); document.addEventListener("focusout", () => setTimeout(anheftenPruefen, 50));
   alles();
   kurslinkPruefen();
-  window.addEventListener("storage", ev => { if (ev.key && ev.key.indexOf(SPEICHER) === 0 && ev.key !== SPEICHER + "probe") { laden(); alles(); } });
+  window.addEventListener("storage", ev => {      // G8-R2-05: Fokus bleibt nach dem Abgleich
+    if (!ev.key || ev.key.indexOf(SPEICHER) !== 0 || ev.key === SPEICHER + "probe") return;
+    const fid = document.activeElement && document.activeElement.id;
+    laden(); alles();
+    if (fid && $(fid)) $(fid).focus({ preventScroll: true });
+  });
   window.addEventListener("hashchange", kurslinkPruefen);
   window.KAFFEE = { zustand: () => JSON.parse(JSON.stringify({ e: S.e, antworten: S.antworten, aktuell: S.aktuell, kurs: S.kurs, ansicht: S.ansicht, sprache: S.sprache })), ergebnis: () => (freigabe() ? R : null), speicherOk: () => speicherOk, csv: () => csvBauen() };
 })();

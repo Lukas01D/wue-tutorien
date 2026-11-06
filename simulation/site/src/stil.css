@@ -224,7 +224,7 @@ html { scroll-padding-top: calc(var(--anheft, 0px) + 8px); }   /* G5-02, G6-02: 
   .kopf-speicher.aus { display: block; max-width: none; text-align: left; }
 
   html.anheften .diagramm-halter { position: sticky; top: 0; z-index: 5; background: #fff; border-bottom: 3px solid var(--hellblau); }
-  html.anheften #diagramm { max-height: 29vh; }
+  html.anheften #diagramm { max-height: min(29vh, calc(45vh - 125px)); }
   html.anheften .kernzahlen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; background: #fff; padding: 0.2rem 0.3rem; font-size: 0.8rem; }
   .kernzahlen b { display: block; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
   .reiter button { font-size: 13px; padding: 0.55rem 0.2rem; }
@@ -242,7 +242,7 @@ input[type="text"] { border-color: #7d8fa1 !important; }                        
 .nb { white-space: nowrap; }                                                      /* G1-14, G6-17: Satzzeichen nicht allein */
 @media (forced-colors: active) { #diagramm, .energie svg, .bilanz svg, .sym { forced-color-adjust: none; background: #fff; } }   /* G5-23 */
 @media (min-width: 1200px) { .sim-raster { grid-template-columns: minmax(0, 780px) minmax(0, 300px); } }   /* G6-06, G6-12 */
-.wertetabelle td { text-align: right; font-variant-numeric: tabular-nums; }   /* G6-31 */
+.wertetabelle th, .wertetabelle td { text-align: right; font-variant-numeric: tabular-nums; }   /* G6-31 */
 .frage-text-zu > summary { font-weight: 600; min-height: 44px; }   /* G7-03 */
 @media (min-width: 768px) { html { scroll-padding-top: 56px; } }   /* G5-R2-01: Kernleiste der Vertiefung verdeckt den Fokus nicht */
 .kurven-legende { margin: 0.2rem 0 0; font-size: 0.85rem; }
