@@ -1,4 +1,4 @@
-ok    T1 gleiche Schlüssel in DE und EN (278)
+ok    T1 gleiche Schlüssel in DE und EN (344)
 ok    T2/T3 Platzhalter bekannt, Formeln umsetzbar, kein $ übrig
 ok    T2 nach dem Bau kein Platzhalter übrig
 ok    T4 jede literale Zahl hat eine Herkunft

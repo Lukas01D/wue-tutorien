@@ -1,9 +1,9 @@
 Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-06
-Seite: simulation/site/index.html, SHA-256 b0984b39895dfd4962632ed21889d2ac7c56de0151e039f8d424c1bb16e996f0
+Seite: simulation/site/index.html, SHA-256 0c0e91046e4078115448fc4cff8dab32ab641a375ce099792c6b4330e32faf72
 
-ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  390993 Bytes
-ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  390993 Bytes
-ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-5ssx43EV1q/0hY2PIp+xX…
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  394393 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  394393 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-0AoItseJo3Np1I5PnB5Bw…
 ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
 ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
 ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
@@ -73,7 +73,7 @@ ok    B69 Speicher gesperrt: Hinweis „nicht gespeichert“, Seite bleibt bedie
 ok    B70 Umbruch: kein waagrechtes Scrollen bei 320 bis 1920 px, beide Sprachen, P0, P2, Vertiefung, Reiter (320 px = 400 % Zoom bei 1280 px)
 ok    B71 200 % Text bei 1366 px: kein waagrechtes Scrollen  1366 / 1366
 ok    B72 Zielgrößen bei 390 px: Knöpfe, Felder, Regler mindestens 44 px; Textverweise und Auswahl-Labels mindestens 24 px
-ok    B73 Anheften wirkt beim Bedienen: Diagramm oben sichtbar, Regler Milchtemperatur darunter frei (390×844)  0, 384, 800, 844, 844
+ok    B73 Anheften wirkt beim Bedienen: Diagramm oben sichtbar, Regler Milchtemperatur darunter frei (390×844)  0, 376, 800, 844, 844
 ok    B74 Diagramm angeheftet nur im Hochformat mit genug Höhe (390×844 sticky; 390×420 wie mit Tastatur und 844×390 nicht)  sticky, relative, relative
 ok    B75 Reiter mit Tastatur (Pfeile, Pos1, Ende), Auswahl und Fokus folgen, ein Panel sichtbar  tab-modell/tab-modell/panel-modell | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche | tab-code/tab-code/panel-code | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche
 ok    B76 Tastatur: erster Tab „Zum Inhalt springen“, Fokus sichtbar  sprung, solid
@@ -89,10 +89,10 @@ ok    B85 G1-10, G7-10, G8-04: Kurslink im schon offenen Tab löst die Rückfrag
 ok    B86 G7-02, G8-01: zweiter Tab überschreibt nichts; der erste Tab übernimmt den Speicherstand  de/de
 ok    B87 G8-07: Kurslink endet nicht auf Komma (Kopfwerte am Ende) und wird wieder gelesen  39.6,35.2;u:21.5;m:6;d:0;b:1.2
 ok    B88 Korrekturen Runde 1: keine Konsolenfehler
-ok    B89 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 466, 475
+ok    B89 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 457, 467
 ok    B90 M-6: Anheften abschaltbar
-ok    B91 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  109 ms (gemessen im Cloud-Container)
-ok    B92 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.2 ms, 95 % 4.6 ms, Max 8.3 ms (Cloud)
-ok    B93 Leistung L4: Bedienfolge 30 s (1347 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.28 MB (Cloud)
+ok    B91 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  103 ms (gemessen im Cloud-Container)
+ok    B92 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.1 ms, 95 % 3.8 ms, Max 6.9 ms (Cloud)
+ok    B93 Leistung L4: Bedienfolge 30 s (1370 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.33 MB (Cloud)
 
 Ergebnis: 93 von 93 Prüfungen bestanden.

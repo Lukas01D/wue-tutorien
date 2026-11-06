@@ -193,7 +193,7 @@
     h += '<p class="frage-nr">' + nr + '</p><h2 id="frage-titel">' + t(f.titel) + "</h2>";
     h += '<p class="frage-text">' + t(f.text) + "</p>";
     if (f.id === "f2") h += '<p class="hinweis" id="f2-werte">' + (kursAnzahl() ? t("f2_werte_da", { n: kursAnzahl() }) : t("f2_keine_werte")) + "</p>";
-    h += '<p class="hinweis"><strong>' + t("ausgangslage") + ":</strong> " + t(f.ausgang) + "</p>";
+    h += '<p class="hinweis"><strong>' + t("ausgangslage") + ":</strong> " + t(f.id === "f2" && !kursAnzahl() && !a.fest ? "f2_ausgang_leer" : f.ausgang) + "</p>";
     const gesperrt = a.fest;
     if (!a.fest) {          // nach dem Festhalten keine gesperrten Felder mehr: die Leiste wird kurz (G7-03, G4-10)
       h += '<div class="frage-eingabe">';
@@ -236,8 +236,9 @@
     const ko = $("knopf-ohne"); if (ko) ko.addEventListener("click", () => bestaetigen(t("ohne_frage"), () => festhalten(f, true), ko));
     const kas = $("knopf-aufl-start"); if (kas) kas.addEventListener("click", () => { st.aufl = !st.aufl; sichern(); alles(); fokus("knopf-aufl-start"); });
     const ka = $("knopf-aufl"); if (ka) ka.addEventListener("click", () => { a.aufl = !a.aufl; sichern(); alles(); fokus("knopf-aufl"); });
-    const kz = $("knopf-zurueck"); if (kz) kz.addEventListener("click", () => geheZu(reihe[i - 1]));
-    const kw = $("knopf-weiter"); if (kw) kw.addEventListener("click", () => geheZu(reihe[i + 1]));
+    const ruhig = () => Date.now() - (frageleisteZeichnen.zuletzt || 0) > 400;     // G8-19: zweiter Klick eines Doppelklicks trifft sonst den neuen Knopf
+    const kz = $("knopf-zurueck"); if (kz) kz.addEventListener("click", () => { if (ruhig()) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i - 1]); } });
+    const kw = $("knopf-weiter"); if (kw) kw.addEventListener("click", () => { if (ruhig()) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i + 1]); } });
     const k2 = $("knopf-f2-weg"); if (k2) k2.addEventListener("click", () => { S.f2Uebersprungen = true; sichern(); alles(); fokus("knopf-weiter"); });
     const kv = $("knopf-vt-auf"); if (kv) kv.addEventListener("click", () => { S.ansicht.vertiefung = true; geheZu("v1"); $("frageleiste").scrollIntoView({ block: "start" }); });
   }
@@ -292,12 +293,18 @@
 
   // ------------------------------------------------------------------ Diagramm
   const NS = "http://www.w3.org/2000/svg";
+  function mittelText(text, W, H, L, Rr, O, U) {
+    const zeilen = [], maxZ = Math.floor((W - L - Rr - 20) / 7.4);
+    for (const w of text.split(" ")) { if (zeilen.length && (zeilen[zeilen.length - 1] + " " + w).length <= maxZ) zeilen[zeilen.length - 1] += " " + w; else zeilen.push(w); }
+    const x = (L + W - Rr) / 2;
+    return '<text x="' + x + '" y="' + ((O + H - U) / 2 - (zeilen.length - 1) * 9) + '" text-anchor="middle" font-size="13" fill="#5a6b7f">' + zeilen.map((zz, i) => '<tspan x="' + x + '"' + (i ? ' dy="18"' : "") + ">" + esc(zz) + "</tspan>").join("") + "</text>";
+  }
   const stellenVon = st => { let d = 0; while (d < 3 && Math.abs(st * Math.pow(10, d) - Math.round(st * Math.pow(10, d))) > 1e-9) d++; return d; };
   function schritt(spanne) { const roh = spanne / 6; const p = Math.pow(10, Math.floor(Math.log10(roh))); for (const m of [1, 2, 2.5, 5, 10]) if (m * p >= roh) return m * p; return 10 * p; }
   function diagrammZeichnen() {
     const svg = $("diagramm"), halter = $("diagramm-halter");
     const W = Math.round(Math.min(780, Math.max(280, halter.getBoundingClientRect().width || 640)));
-    const H = Math.round(W < 520 ? W * 0.78 : Math.min(W * 0.56, Math.max(280, window.innerHeight * 0.5)));
+    const H = Math.round(W < 520 ? W * 0.78 : Math.min(W * 0.56, Math.max(window.innerHeight < 500 ? 170 : 280, window.innerHeight * 0.5)));
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W); svg.setAttribute("height", H);
     const fs = 12, L = 52, Rr = 14, O = 16, U = 44;
@@ -382,6 +389,7 @@
           const rv = ERW.fehler(S.vergleich) ? null : ERW.auswerten(S.vergleich);
           if (rv) {
             s.push('<polyline points="' + pfad(rv.kurve2, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#222" stroke-width="2" stroke-dasharray="9 5" opacity="0.5"/>');
+            s.push('<line x1="' + X(S.vergleich.tEnd_min).toFixed(1) + '" x2="' + X(S.vergleich.tEnd_min).toFixed(1) + '" y1="' + Y(rv.th2K).toFixed(1) + '" y2="' + Y(rv.th2).toFixed(1) + '" stroke="#222" stroke-width="1.6" stroke-dasharray="2 3" opacity="0.5"/>');
             s.push('<polyline points="' + pfad(rv.kurve1, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="2 3" opacity="0.6"/>');
           }
         }
@@ -390,6 +398,7 @@
         s.push('<polyline points="' + pfad(R.kurve1, 0, tz, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2.8"/>');
         s.push('<line x1="' + X(tz).toFixed(1) + '" x2="' + X(tz).toFixed(1) + '" y1="' + Y(R.th2K).toFixed(1) + '" y2="' + Y(R.th2).toFixed(1) + '" stroke="#222" stroke-width="2" stroke-dasharray="2 3"/>');
         s.push('<circle cx="' + X(tz).toFixed(1) + '" cy="' + Y(R.th1).toFixed(1) + '" r="4.5" fill="#fff" stroke="#8b5a2b" stroke-width="2.2"/><circle cx="' + X(tz).toFixed(1) + '" cy="' + Y(R.th2).toFixed(1) + '" r="4.5" fill="#fff" stroke="#222" stroke-width="2.2"/>');
+        if (S.kurs.b3) s.push('<line x1="' + (X(tz) + 5).toFixed(1) + '" x2="' + (X(tz) + 5).toFixed(1) + '" y1="' + Y(R.th2K).toFixed(1) + '" y2="' + Y(R.th2Raum).toFixed(1) + '" stroke="#3d70a3" stroke-width="2" stroke-dasharray="2 3"/>');
         if (S.kurs.b3) s.push('<path d="M ' + X(tz).toFixed(1) + " " + (Y(R.th2Raum) - 6).toFixed(1) + " l 5.5 9.5 l -11 0 z\" fill=\"#fff\" stroke=\"#3d70a3\" stroke-width=\"2\"/>");
         if (schnittFrei() && isFinite(R.tSchnitt) && R.tSchnitt < tz) {
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt));
@@ -412,11 +421,12 @@
           }
         }
         // Messpunkte
+        punkte.sort((a, b) => (b.b === 3) - (a.b === 3));
         for (const p of punkte) {
           const px = X(p.t), py = Y(p.th), c = p.b === 1 ? "#8b5a2b" : (p.b === 2 ? "#222" : "#3d70a3");
           if (p.b === 1) s.push('<circle cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="4.8" fill="' + c + '" stroke="#fff" stroke-width="1"/>');
           else if (p.b === 2) s.push('<rect x="' + (px - 4.5).toFixed(1) + '" y="' + (py - 4.5).toFixed(1) + '" width="9" height="9" fill="' + c + '" stroke="#fff" stroke-width="1"/>');
-          else s.push('<path d="M ' + px.toFixed(1) + " " + (py - 6).toFixed(1) + ' l 5.5 9.5 l -11 0 z" fill="' + c + '" stroke="#fff" stroke-width="1"/>');
+          else s.push('<path d="M ' + px.toFixed(1) + " " + (py - 6).toFixed(1) + ' l 5.5 9.5 l -11 0 z" fill="none" stroke="' + c + '" stroke-width="1.8"/>');
           belegt.push([px - 6, py - 6, 12, 12]);
         }
         if (schnittFrei() && isFinite(R.tSchnitt) && R.tSchnitt < tz) {     // Beschriftung „Schnitt“ nach den Messpunkten, frei von Punkten
@@ -427,6 +437,7 @@
             if (x0 < L + 2 || x0 + bw > W - Rr + 6 || yb - fs < O || yb > H - U - 2) continue;
             let aufKurve = false;
             for (let i = 0; i <= 12 && !aufKurve; i++) { const xp = x0 + bw * i / 12, tt = (xp - L) / (W - L - Rr) * xMax; if (tt >= 0 && tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk > yb - fs - 3 && yk < yb + 4) aufKurve = true; } }
+            if (raumY !== null && raumY > yb - fs - 3 && raumY < yb + 4) aufKurve = true;
             if (!aufKurve && !belegt.some(b => x0 < b[0] + b[2] && x0 + bw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { wahl = [x0, yb]; break; }
           }
           s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>");
@@ -436,10 +447,17 @@
           const yT = Y(TRINK);
           if (yT > O && yT < H - U) {
             s.push('<line x1="' + L + '" x2="' + (W - Rr) + '" y1="' + yT.toFixed(1) + '" y2="' + yT.toFixed(1) + '" stroke="#227b48" stroke-width="1.4" stroke-dasharray="6 3"/>');
-            s.push('<text x="' + (L + 6) + '" y="' + (yT - 5).toFixed(1) + '" font-size="' + fs + '" fill="#14603f">' + esc(nurText(t("dia_trinklinie"))) + "</text>");
+            const tl = nurText(t("dia_trinklinie")), tw = tl.length * fs * 0.56 + 6;
+            let tx = W - Rr - tw;
+            for (const x0 of [W - Rr - tw, L + 6, (L + W - Rr - tw) / 2]) {
+              let frei = true;
+              for (let i = 0; i <= 10 && frei; i++) { const tt = (x0 + tw * i / 10 - L) / (W - L - Rr) * xMax; if (tt >= 0 && tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk > yT - fs - 8 && yk < yT + 2) frei = false; } }
+              if (frei) { tx = x0; break; }
+            }
+            s.push('<text x="' + tx.toFixed(1) + '" y="' + (yT - 5).toFixed(1) + '" font-size="' + fs + '" fill="#14603f">' + esc(tl) + "</text>");
             const tr = ERW.trinkzeit(S.e, TRINK);
             for (const [tt, k] of [[tr.tasse1, R.kurve1], [tr.schwarz, R.kurve2]]) if (tt > 0 && tt < tz) s.push('<line x1="' + X(tt).toFixed(1) + '" x2="' + X(tt).toFixed(1) + '" y1="' + (yT - 6).toFixed(1) + '" y2="' + (yT + 6).toFixed(1) + '" stroke="#14603f" stroke-width="2"/>');
-            belegt.push([L + 4, yT - 5 - fs, 110, fs + 4]);
+            belegt.push([tx, yT - 5 - fs, tw, fs + 4]);
           }
         }
         const e2 = etikett(t("dia_tasse2", { t: z(tz, 0) }), "#222", R.kurve2, true, [0.12, 0.2, 0.06, 0.3, 0.4]);
@@ -477,14 +495,14 @@
         s.push('<clipPath id="feld"><rect x="' + L + '" y="' + O + '" width="' + (W - L - Rr) + '" height="' + (H - O - U) + '"/></clipPath>');
         s.push('<line clip-path="url(#feld)" x1="' + X(0) + '" y1="' + Y(0).toFixed(1) + '" x2="' + X(xMax).toFixed(1) + '" y2="' + Y(b0 * xMax * 60).toFixed(1) + '" stroke="#173d5e" stroke-width="2"/>');
         s.push('<line clip-path="url(#feld)" x1="' + X(0) + '" y1="' + Y(fit.achsenabschnitt).toFixed(1) + '" x2="' + X(xMax).toFixed(1) + '" y2="' + Y(fit.achsenabschnitt + b1 * xMax * 60).toFixed(1) + '" stroke="#173d5e" stroke-width="1.5" stroke-dasharray="6 4"/>');
-      } else s.push('<text x="' + ((L + W - Rr) / 2) + '" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#5a6b7f">' + esc(nurText(t(messFrei() ? "ln_kein" : "ln_erst_f2"))) + "</text>");
+      } else s.push(mittelText(nurText(t(messFrei() ? "ln_kein" : "ln_erst_f2")), W, H, L, Rr, O, U));
     }
     svg.innerHTML = s.join("");
     const vk = $("vh-kasten"), vt = $("vh-text");
     if (vk && vt && vt.getBBox) { try { const bb = vt.getBBox(); if (bb.width > 0) { const bw2 = bb.width + 14, bx2 = W - Rr - bw2 - 4; vk.setAttribute("width", bw2.toFixed(1)); vk.setAttribute("x", bx2.toFixed(1)); vt.setAttribute("x", (bx2 + 7).toFixed(1)); } } catch (x) { } }
     $("vorhersage-zeile").hidden = !vorhersageUnten; $("vorhersage-zeile").textContent = vorhersageUnten;
     zusatzZeichnen();
-    document.querySelector(".lesehinweis").innerHTML = t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht);
+    document.querySelector(".lesehinweis").innerHTML = (freigabe() && !R) ? "" : t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht);   // G6-21
     // Beschreibung für Bildschirmleser
     $("diagramm-name").textContent = nurText(t(ansicht === "temperatur" ? "dia_titel" : "dia_titel_" + ansicht));
     $("diagramm-beschreibung").textContent = (!freigabe()) ? nurText(t("dia_beschreibung_start")) : (R && ansicht === "waermestrom") ? nurText(t("dia_beschreibung_waermestrom", { v: z(R.flaecheVor, 2), n: z(R.flaecheNach, 2), d: z(R.Q2 - R.Q1, 2) })) : (ansicht === "ln") ? nurText(t("dia_beschreibung_ln", { n: lnPunkte().length })) :
@@ -532,7 +550,9 @@
     const lp = lnPunkte(); if (lp.length < 3) return null;
     const u = S.kurs.u !== null ? S.kurs.u : S.e.thU, th0 = u + 1;
     // ERW.ausgleich erwartet Temperaturen zu einem Startwert; aus y = ln((ϑ − ϑu)/(ϑ0 − ϑu)) zurückgerechnet (exakt, gleiche y)
-    const f = ERW.ausgleich(lp.map(p => [p.t, u + (th0 - u) * Math.exp(p.y)]), th0, u, ERW.kapazitaeten(S.e).C_KB);
+    const extra = [...new Set(lp.map(p => p.b))].slice(1).map(() => [0, th0]);   // je weiterer Becher ein Startpunkt (0, 0) für die freie Gerade
+    const f = ERW.ausgleich(lp.map(p => [p.t, u + (th0 - u) * Math.exp(p.y)]).concat(extra), th0, u, ERW.kapazitaeten(S.e).C_KB);
+    f.n = lp.length;
     f.von = Math.min(...lp.map(p => p.t)); f.bis = Math.max(...lp.map(p => p.t));
     return f;
   }
@@ -583,7 +603,8 @@
     for (let x = 0; x < tz; x += 5) schritte.push(x);
     schritte.push(tz);
     const mw = (b, x) => { const i = x % 10 === 0 && x <= 60 ? x / 10 : -1; const v = i >= 0 ? S.kurs.werte["b" + b][i] : null; return v === null ? "" : z(v, 1); };
-    for (const x of schritte) h += "<tr><td>" + z(x, 0) + "</td><td>" + z(R.kurve1(x), 2) + "</td><td>" + z(x === tz ? R.th2 : R.kurve2(x), 2) + "</td>" + mb.map(b => "<td>" + mw(b, x) + "</td>").join("") + "</tr>";
+    for (const x of schritte) h += "<tr><td>" + z(x, 0) + "</td><td>" + z(R.kurve1(x), 2) + "</td><td>" + z(R.kurve2(x), 2) + "</td>" + mb.map(b => "<td>" + mw(b, x) + "</td>").join("") + "</tr>";
+    h += "<tr><td>" + nurText(t("csv_nach_milch", { t: z(tz, 0) })) + "</td><td>" + z(R.th1, 2) + "</td><td>" + z(R.th2, 2) + "</td>" + mb.map(b => "<td>" + (S.kurs.werte["b" + b][7] === null || tz !== 60 ? "" : z(S.kurs.werte["b" + b][7], 1)) + "</td>").join("") + "</tr>";
     el.innerHTML = h + "</tbody></table></div>";
   }
 
@@ -650,6 +671,7 @@
     if (r.id === "kA") { S.e.kAQuelle = "fest"; S.e.kAHerkunft = "eigen"; }
     rechnen(); sichern();
     teilZeichnen(quelle === "zahl" ? "z-" + r.id : (quelle === "pm" ? null : "r-" + r.id));
+    const rf = $("rf-" + r.id); if (rf && !rf.classList.contains("neutral")) rf.innerHTML = FEHLER ? t("fehler_am_feld") : "";
   }
   function reglerEreignisse(wurzel) {
     for (const r of REGLER_DEF.regler) {
@@ -684,7 +706,7 @@
     const a30 = R ? t("kA_anzeige_30", { a: z(S.e.thK0, 1), b: z(R.schwarz30, 2), tau: z(R.tauMin, 1) }) : "";
     if (S.e.kAQuelle !== "fest") return a30;
     const vor = S.e.kAHerkunft.indexOf("vor:") === 0 ? ERW.VOREINSTELLUNGEN.find(v => "vor:" + v.id === S.e.kAHerkunft) : null;
-    return a30 + (vor ? "<br>" + t("vor_text_" + vor.id) + (vor.art === "richtwert" ? " * " + t("kA_richtwert") + "." : "") : "") +
+    return a30 + (vor ? "<br>" + t("vor_text_" + vor.id) + (vor.art === "richtwert" ? " *" : "") : "") +
       '<br><span class="klein">* ' + t("kA_richtwert") + ". " + t("vor_kein_thermo_deckel") + "</span>";
   }
   function reglerZeichnen() {
@@ -763,6 +785,7 @@
     h += "<div><dt>" + t("rw_tasse2") + "</dt><dd>" + z(R.th2, 2) + " °C</dd></div>";
     if (S.kurs.b3) h += '<div class="breit"><dt>' + t("rw_becher3") + "</dt><dd>" + z(R.th2Raum, 2) + " °C</dd></div>";
     h += '<div class="breit"><dt>' + t("rw_unterschied") + "</dt><dd>" + z(R.dT, 2) + " K · " + satz + "</dd></div>";
+    if (S.kurs.b3) h += '<div class="breit"><dt>' + t("rw_unterschied_b3") + "</dt><dd>" + z(R.th1 - R.th2Raum, 2) + " K</dd></div>";
     h += "<div><dt>" + t("rw_schnitt") + "</dt><dd>" + (!schnittFrei() ? t("rw_schnitt_spaeter") : (isFinite(R.tSchnitt) && R.tSchnitt < S.e.tEnd_min ? t("rw_schnitt_wert", { t: z(R.tSchnitt, 1) }) : t("rw_schnitt_kein"))) + "</dd></div>";
     h += "<div><dt>" + t("rw_Q") + "</dt><dd>" + z(R.Q1, 2) + " / " + z(R.Q2, 2) + " kJ</dd></div>";
     h += "<div><dt>" + t("rw_kA") + "</dt><dd>" + z(R.kA, 4) + " " + einheit("W/K") + '<br><span class="klein">' + herkunft + "</span></dd></div>";
@@ -846,6 +869,7 @@
     return { ok: true, text: t("mess_uebernommen", { a: z(start, 2), b: z(zehn, 2), u: z(u, 1), m: z(m, 1) }) };
   }
   function linkTeilen() {
+    if (!kursAnzahl()) { $("mess-info").innerHTML = t("link_leer"); return; }
     const basis = location.href.split("#")[0].replace(/([?&])lang=(de|en)(&|$)/, (m, a, b, c) => (c ? a : "")).replace(/\?$/, "");
     const link = basis + "#" + HILFEN.kurslinkBauen(S.kurs);
     const zeige = () => { $("link-ausgabe").innerHTML = (location.protocol === "file:" ? '<p class="hinweis">' + t("link_nur_lokal") + "</p>" : "") + '<p class="hinweis">' + t("link_anzeigen") + '</p><p class="link-ausgabe">' + esc(link) + "</p>"; };

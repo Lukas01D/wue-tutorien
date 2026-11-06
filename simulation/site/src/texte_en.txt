@@ -596,6 +596,14 @@ Measured values, linearised (ln), with fitted line
 Up to the intersection, cup 2 releases more heat ({v} kJ), afterwards less ({n} kJ); together {d} kJ.
 @dia_beschreibung_ln
 {n} measured points of the mugs without milk, with fitted line.
+@rw_unterschied_b3
+Difference cup 1 and mug 3
+@link_leer
+The measurement sheet is empty; enter values first.
+@fehler_am_feld
+Settings not valid, see the note above the controls.
+@f2_ausgang_leer
+use the class values once they are loaded
 @link_ok
 Class data from the link used.
 @link_abgelehnt

@@ -607,6 +607,14 @@ Messwerte linear (ln) mit Ausgleichsgerade
 Bis zum Schnitt gibt Tasse 2 mehr Wärme ab ({v} kJ), danach weniger ({n} kJ); zusammen {d} kJ.
 @dia_beschreibung_ln
 {n} Messpunkte der Becher ohne Milch, mit Ausgleichsgerade.
+@rw_unterschied_b3
+Unterschied Tasse 1 und Becher 3
+@link_leer
+Das Messblatt ist leer; erst Werte eintragen.
+@fehler_am_feld
+Einstellung ungültig, siehe Hinweis über den Reglern.
+@f2_ausgang_leer
+Kurswerte übernehmen, sobald sie geladen sind
 @link_ok
 Kurswerte aus dem Link übernommen.
 @link_abgelehnt

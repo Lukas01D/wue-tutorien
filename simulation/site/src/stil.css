@@ -10,7 +10,7 @@
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--seite); color: var(--text); font: 16px/1.58 "Fira Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+body { margin: 0; background: var(--seite); color: var(--text); font: 1rem/1.58 "Fira Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
 math { font-family: "Fira Math", "Fira Sans", math; font-size: 1.02em; }
 html[data-formeln-fett="1"] math { font-weight: 700; }                 /* K1: zentraler Schalter, vorläufig fett */
 math:not([display="block"]) mfrac { font-size: 0.72em; }               /* K3: Bruch im Satz klein, Zeile bleibt */
@@ -224,7 +224,7 @@ html { scroll-padding-top: calc(var(--anheft, 0px) + 8px); }   /* G5-02, G6-02: 
   .kopf-speicher.aus { display: block; max-width: none; text-align: left; }
 
   html.anheften .diagramm-halter { position: sticky; top: 0; z-index: 5; background: #fff; border-bottom: 3px solid var(--hellblau); }
-  html.anheften #diagramm { max-height: 36vh; }
+  html.anheften #diagramm { max-height: 33vh; }
   html.anheften .kernzahlen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; background: #fff; padding: 0.2rem 0.3rem; font-size: 0.8rem; }
   .kernzahlen b { display: block; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
   .reiter button { font-size: 13px; padding: 0.55rem 0.2rem; }
@@ -242,3 +242,4 @@ input[type="text"] { border-color: #7d8fa1 !important; }                        
 .nb { white-space: nowrap; }                                                      /* G1-14, G6-17: Satzzeichen nicht allein */
 @media (forced-colors: active) { #diagramm, .energie svg, .bilanz svg, .sym { forced-color-adjust: none; background: #fff; } }   /* G5-23 */
 @media (min-width: 1200px) { .sim-raster { grid-template-columns: minmax(0, 780px) minmax(0, 300px); } }   /* G6-06, G6-12 */
+.wertetabelle td { text-align: right; font-variant-numeric: tabular-nums; }   /* G6-31 */
