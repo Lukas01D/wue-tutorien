@@ -216,7 +216,7 @@
     if (!a.fest && !f2weg) {
       const ok = vorhersageGueltig(f, a) && !(f.id === "f2" && !kursAnzahl());
       h += '<button type="button" class="knopf-haupt" id="knopf-fest"' + (ok ? "" : " disabled") + ">" + t(f.id === "start" ? "knopf_vorhersage_start" : "knopf_vorhersage") + "</button>";
-      h += '<span class="hinweis" id="hinweis-waehlen"' + (ok ? " hidden" : "") + ">" + t(hinweisSchluessel(f, a)) + "</span>";
+      h += '<span class="hinweis" id="hinweis-waehlen"' + (ok ? " hidden" : "") + ">" + t(hinweisSchluessel(f, a), { b: beispielZahl(f) }) + "</span>";
       if (!(f.id === "f2" && !kursAnzahl())) h += '<button type="button" class="knopf-text" id="knopf-ohne">' + t("knopf_ohne") + "</button>";
       if (f.id === "f2" && !kursAnzahl()) h += '<button type="button" class="knopf-schlicht" id="knopf-f2-weg">' + t("f2_ueberspringen") + "</button>";
     }
@@ -248,6 +248,7 @@
     const k2 = $("knopf-f2-weg"); if (k2) k2.addEventListener("click", () => { S.f2Uebersprungen = true; sichern(); alles(); fokus("knopf-weiter"); });
     const kv = $("knopf-vt-auf"); if (kv) kv.addEventListener("click", () => { S.ansicht.vertiefung = true; geheZu("v1"); $("frageleiste").scrollIntoView({ block: "start" }); });
   }
+  const beispielZahl = f => ({ start: z(3.5, 1), f1: "50", v1: "40", v2: "80" })[f.id] || "4";   // G2-R2-03
   function hinweisSchluessel(f, a) {
     if (f.id === "f2" && !kursAnzahl()) return "f2_erst_laden";
     if (f.wahl && !a.wahl) return "hinweis_erst_waehlen";
@@ -263,7 +264,7 @@
     if (!k) return;
     const ok = vorhersageGueltig(f, a) && !(f.id === "f2" && !kursAnzahl());
     k.disabled = !ok;
-    const h = $("hinweis-waehlen"); if (h) { h.hidden = ok; h.innerHTML = t(hinweisSchluessel(f, a)); }
+    const h = $("hinweis-waehlen"); if (h) { h.hidden = ok; h.innerHTML = t(hinweisSchluessel(f, a), { b: beispielZahl(f) }); }
     const zf = $("frage-zahl");
     if (zf) { const falsch = a.zahl.trim() !== "" && !isFinite(vorhersageZahl(f, a.zahl).wert); if (falsch) { zf.setAttribute("aria-invalid", "true"); zf.setAttribute("aria-describedby", "hinweis-waehlen"); } else { zf.removeAttribute("aria-invalid"); zf.removeAttribute("aria-describedby"); } }
   }
@@ -786,7 +787,7 @@
     if (!FEHLER) fehler.removeAttribute("data-code");
     const dl = $("rechenwerte-liste");
     $("rechenwerte-bezug").textContent = (freigabe() && R) ? nurText(t("rw_bezug", { t: z(S.e.tEnd_min, 0) })) + (S.e.becher && S.ansicht.kalt && S.ansicht.vertiefung ? " " + nurText(t("rw_vorgewaermt")) : "") : "";
-    if (freigabe() && !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_noch_nicht") + "</dt><dd>" + t("dia_ungueltig") + "</dd></div>"; return; }
+    if (freigabe() && !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_keine_rechnung") + "</dt><dd>" + t("dia_ungueltig") + "</dd></div>"; return; }
     if (!freigabe() || !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_noch_nicht") + "</dt><dd>" + t("ergebnis_verdeckt") + "</dd></div>"; return; }
     const satz = R.dT > 0.005 ? t("rw_satz_1") : (R.dT < -0.005 ? t("rw_satz_2") : t("rw_satz_gleich"));
     const herkunft = S.e.kAQuelle === "messung" ? t("rw_kA_herkunft_messung") : (S.e.kAHerkunft === "ausgleich" ? t("rw_kA_herkunft_ausgleich") :
@@ -1033,7 +1034,7 @@
     if (kn) { kn.hidden = !moeglich; kn.textContent = nurText(t(S.ansicht.anheften ? "anheften_aus" : "anheften_an")); kn.setAttribute("aria-pressed", S.ansicht.anheften ? "true" : "false"); }
     document.documentElement.style.setProperty("--anheft", an ? Math.ceil($("diagramm-halter").getBoundingClientRect().height) + "px" : "0px");
   }
-  $("sprachknopf").addEventListener("click", () => { S.sprache = S.sprache === "de" ? "en" : "de"; $("knopf-info").textContent = ""; sichern(); alles();
+  $("sprachknopf").addEventListener("click", () => { S.sprache = S.sprache === "de" ? "en" : "de"; $("knopf-info").textContent = ""; $("ansage").textContent = ""; sichern(); alles();
     try { if (/[?&]lang=/.test(location.search)) history.replaceState(null, "", location.pathname + location.search.replace(/([?&])lang=(de|en)(&|$)/, (m, a, b, c) => (c ? a : "")).replace(/\?$/, "") + location.hash); } catch (x) { }
     if ($("link-ja")) kurslinkPruefen();
     $("sprachknopf").focus(); });

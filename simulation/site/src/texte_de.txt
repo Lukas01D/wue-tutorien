@@ -556,11 +556,11 @@ Eure Begründung
 @f2_erst_laden
 Erst Kurswerte laden (Link der Tutoriumsleitung) oder ins Messblatt eintragen; sonst Frage 2 überspringen.
 @hinweis_zahl
-Bitte nur eine Zahl, zum Beispiel 4 oder 3,5.
+Bitte nur eine Zahl, zum Beispiel {b}.
 @ln_erst_f2
 Die Messpunkte erscheinen nach eurer Vorhersage zu Frage 2.
 @rw_schnitt_spaeter
-nach eurer Vorhersage zu Frage 1
+sichtbar nach eurer Vorhersage zu Frage 1
 @einheit_wk
 W/K
 @hilfe_zu
@@ -633,6 +633,8 @@ Becher 3 nach der Milch {c} °C.
 Ohne Vorhersage aufgedeckt.
 @link_frage_leer
 Kurswerte aus dem Link übernehmen?
+@rw_keine_rechnung
+Keine Rechnung
 @link_ok
 Kurswerte aus dem Link übernommen.
 @link_abgelehnt

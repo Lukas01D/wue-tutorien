@@ -335,7 +335,7 @@ async function domOhneSkript(p) {
     await p2.click("#link-ja"); await warte(80);
     const kurs2 = await p2.evaluate(() => window.KAFFEE.zustand().kurs);
     const hashWeg = await p2.evaluate(() => location.hash === "");
-    pruefe("Kurslink: Hin und zurück gleich (mit Becher 3), Rückfrage vor dem Ersetzen, # danach aus der Adresse", JSON.stringify(kurs2.werte) === JSON.stringify(kurs.werte) && kurs2.u === 21.5 && kurs2.m === 6 && kurs2.b3 && /ersetzt/.test(frage) && hashWeg, link.length + " Zeichen");
+    pruefe("Kurslink: Hin und zurück gleich (mit Becher 3), Rückfrage vor dem Ersetzen, # danach aus der Adresse", JSON.stringify(kurs2.werte) === JSON.stringify(kurs.werte) && kurs2.u === 21.5 && kurs2.m === 6 && kurs2.b3 && /übernehmen\?/.test(frage) && !/ersetzt/.test(frage) && hashWeg, link.length + " Zeichen");
     // Nein ändert nichts
     const vorher = await p2.evaluate(() => JSON.stringify(window.KAFFEE.zustand().kurs));
     await p2.goto(link.replace("b2:80", "b2:79")); await p2.reload(); await warte(80);
@@ -526,7 +526,7 @@ async function domOhneSkript(p) {
     await pe.check('input[name="wahl-start"][value="1"]'); await pe.fill("#frage-zahl", "2,5"); await pe.click("#knopf-fest"); await warte(80);
     pruefe("G2-03: getippte „2,5“ erscheint im Englischen als „2.5“", (await text(pe, "#rechenwerte-liste")).includes("about 2.5 K"));
     const csvEn = await pe.evaluate(() => window.KAFFEE.csv());
-    pruefe("G2-02: englische CSV mit Komma im Spaltenkopf in Anführungszeichen", csvEn.split("\r\n")[0].includes('"model cup 2, black until the milk [°C]"'));
+    pruefe("G2-02: englische CSV mit Komma im Spaltenkopf in Anführungszeichen", csvEn.split("\r\n")[0].includes('"Model cup 2, black until the milk [°C]"'));
     await ctxE.close();
     // Kurslink im offenen Tab (hashchange) und Abgleich zwischen Tabs
     await p.goto(DATEI_URL + "#kurs1=b1:80.2,68.1,59,52.3,47.1,43,39.8,;b2:80,67.6,58.8,52,46.9,42.8,39.6,35.2;u:21.5;m:6;d:0;b:1.2"); await warte(100);
