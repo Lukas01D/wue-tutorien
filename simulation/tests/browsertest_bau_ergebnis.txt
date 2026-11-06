@@ -1,9 +1,9 @@
 Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-06
-Seite: simulation/site/index.html, SHA-256 0c0e91046e4078115448fc4cff8dab32ab641a375ce099792c6b4330e32faf72
+Seite: simulation/site/index.html, SHA-256 ce36d06a3ba753c749055c765f32170948217a3083c46abccaacde73f716a5cd
 
-ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  394393 Bytes
-ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  394393 Bytes
-ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-0AoItseJo3Np1I5PnB5Bw…
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  394558 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  394558 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-zHeRikbiWmXf40KQhn6km…
 ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
 ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
 ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
@@ -91,8 +91,8 @@ ok    B87 G8-07: Kurslink endet nicht auf Komma (Kopfwerte am Ende) und wird wie
 ok    B88 Korrekturen Runde 1: keine Konsolenfehler
 ok    B89 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 457, 467
 ok    B90 M-6: Anheften abschaltbar
-ok    B91 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  103 ms (gemessen im Cloud-Container)
-ok    B92 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.1 ms, 95 % 3.8 ms, Max 6.9 ms (Cloud)
-ok    B93 Leistung L4: Bedienfolge 30 s (1370 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.33 MB (Cloud)
+ok    B91 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  99 ms (gemessen im Cloud-Container)
+ok    B92 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 2.8 ms, 95 % 3.2 ms, Max 3.7 ms (Cloud)
+ok    B93 Leistung L4: Bedienfolge 30 s (1368 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.30 MB (Cloud)
 
 Ergebnis: 93 von 93 Prüfungen bestanden.

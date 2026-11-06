@@ -604,6 +604,8 @@ The measurement sheet is empty; enter values first.
 Settings not valid, see the note above the controls.
 @f2_ausgang_leer
 use the class values once they are loaded
+@hinweis_zahl_fehlt
+Enter a number first.
 @link_ok
 Class data from the link used.
 @link_abgelehnt

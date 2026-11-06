@@ -615,6 +615,8 @@ Das Messblatt ist leer; erst Werte eintragen.
 Einstellung ungültig, siehe Hinweis über den Reglern.
 @f2_ausgang_leer
 Kurswerte übernehmen, sobald sie geladen sind
+@hinweis_zahl_fehlt
+Trage zuerst eine Zahl ein.
 @link_ok
 Kurswerte aus dem Link übernommen.
 @link_abgelehnt

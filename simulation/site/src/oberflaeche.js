@@ -245,6 +245,7 @@
   function hinweisSchluessel(f, a) {
     if (f.id === "f2" && !kursAnzahl()) return "f2_erst_laden";
     if (f.wahl && !a.wahl) return "hinweis_erst_waehlen";
+    if (f.zahl && a.zahl.trim() === "") return "hinweis_zahl_fehlt";
     return "hinweis_zahl";
   }
   function frageleisteStill() {      // nur Hinweis und Knopf der Frage 2 nachziehen, ohne die Leiste neu aufzubauen
