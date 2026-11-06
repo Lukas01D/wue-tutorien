@@ -14,11 +14,13 @@
 
 ## 2 Vorbereitung
 
-1. Offline-Datei `Kaffee_Simulation.html` auf den Laptop für den Beamer und auf einen USB-Stick legen. Einmal im Browser öffnen, eine Vorhersage festhalten, dann unten „Für die nächste Gruppe zurücksetzen“.
+1. Offline-Datei `Kaffee_Simulation.html` auf den Laptop für den Beamer und auf einen USB-Stick legen (Ersatz bei Netzausfall). Einmal im Browser öffnen, eine Vorhersage festhalten, dann unten „Für die nächste Gruppe zurücksetzen“; nach einer Probe mit Messwerten im Messblatt „Kurswerte löschen“.
 2. Am Beamer prüfen (Abschnitt 5).
 3. Nach der Veröffentlichung den QR-Code der Seite in die Kurzkarte setzen (Platzhalter) und die Adresse einmal am Handy öffnen.
+
+   **Achtung Versuchsdauer:** Das Aufgabenblatt vom 31.10. sieht den Versuch bis 40 min und *kA* ohne Becher vor; die Seite folgt deiner Entscheidung E8 (Versuch bis 60 min, Übernahme mit Becher). Vor der Sitzung entscheiden, welcher Ablauf gilt (offene Frage im Baubericht).
 4. Probelauf mit zwei Studierenden am Handy: Zeit vom Öffnen bis zur gemeinsamen Erklärung stoppen (Ziel etwa 10 min, Schätzung).
-5. Versuch vorbereiten wie in der Aufgabe: Becher 1 (Milch sofort), Becher 2 (Milch nach 60 min), gleiche Becher und Unterlage, Becher vorwärmen und die Uhr erst nach dem Temperaturausgleich starten (etwa 2 min; Konzept 9.5). Becher 3 (Milch mit Raumtemperatur) nur, wenn du ihn misst.
+5. Versuch vorbereiten: Becher 1 (Milch sofort), Becher 2 (Milch nach 60 min), gleiche Becher und Unterlage, Becher vorwärmen und die Uhr erst nach dem Temperaturausgleich starten (etwa 2 min; Konzept 9.5). Becher 3 (Milch mit Raumtemperatur) nur, wenn du ihn misst.
 
 ## 3 Ablauf der Simulationsphase (Schätzung)
 
@@ -27,7 +29,7 @@ Der Versuch beginnt in Minute 5 der Sitzung und endet in Minute 65 mit der Milch
 | Minute | Studierende (zu zweit, ein Gerät je Paar) | Du |
 |:--|:--|:--|
 | 65 bis 75 | Rechnung der Aufgabe | Messreihe einmal ins Messblatt der Seite eintragen (Raum- und Milchtemperatur, Becher 1 und 2, beide 60-min-Zeilen von Becher 2), „Kurswerte als Link teilen“, Link in einen QR-Code oder an die Tafel |
-| 75 | Seite über den QR-Code öffnen | QR-Code der Seite und Link mit den Kurswerten zeigen |
+| 75 | Seite über den QR-Code öffnen | einen QR-Code mit dem Kurslink zeigen (öffnet die Seite mit den Kurswerten) |
 | 75 bis 77 | **Start:** jede und jeder notiert eine Vorhersage, das Paar einigt sich und hält sie fest; Kurven und Energiesäulen erscheinen; Auftrag „Erklärt den Unterschied mit $Q_1$ und $Q_2$.“ | ein Paar erklären lassen |
 | 77 bis 81 | **Frage 1 Zeitpunkt:** Vorhersage, dann mit dem einzigen Regler „Zugabe nach“ prüfen | Vorhersagen per Handzeichen abfragen; ein Paar mit abweichender Vorhersage begründen lassen |
 | 81 bis 85 | **Frage 2 Versuch:** Kurswerte über den Link laden, Lage der Punkte beschreiben, eine Ursache und eine prüfende Messung nennen | zwei Paare erklären lassen |
@@ -51,15 +53,15 @@ Die Übernahme der Messwerte („Einstellungen aus den Messwerten übernehmen“
 ## 5 Beamer
 
 - Seite im Vollbild (F11), Sprache nach Kurs.
-- Bei 1920 × 1080 die Browser-Vergrößerung auf etwa 150 % stellen, bei 1280 × 720 auf etwa 125 %, dann passen Frageleiste und Diagramm noch gut auf den Schirm (Empfehlung aus den Bildschirmfotos, im echten Hörsaal prüfen).
+- Browser-Vergrößerung zuerst bei 100 % lassen: Nach dem Festhalten ist der Fragetext eingeklappt („Frage zeigen“), das Diagramm passt sich der Fensterhöhe an, der Regler „Zugabe nach“ steht direkt darunter. Ist die Schrift aus der letzten Reihe zu klein, schrittweise vergrößern (110 bis 125 %) und dafür scrollen; eine eigene Projektionsansicht gibt es nicht. Im echten Hörsaal prüfen.
 - Für die Besprechung: Reiter „Versuche“ unten, Karte der Frage öffnen, „Auflösung zeigen“ (erst nach einer festgehaltenen Vorhersage aktiv; für dich gibt es „ohne Vorhersage aufdecken“).
 - Diagramm groß zeigen: Bei schmalem Fenster rückt es nach oben und bleibt beim Scrollen angeheftet (Hochformat).
 
 ## 6 Kurslink erzeugen und teilen
 
-1. Im Messblatt (unter dem Diagramm, nach der ersten Vorhersage sichtbar) die Werte eintragen; Komma oder Punkt gehen beide. Becher 1 hat keine Zeile „60 nach der Milch“.
+1. Im Messblatt (unter dem Diagramm, von Anfang an sichtbar, ohne etwas aufzudecken) die Werte eintragen; Komma oder Punkt gehen beide. Becher 1 hat keine Zeile „60 nach der Milch“.
 2. „Kurswerte als Link teilen“: Der Link wird kopiert und zusätzlich zum Abschreiben angezeigt. Er enthält nur die Messwerte (hinter `#`, wird nie an einen Server gesendet).
-3. Link als QR-Code zeigen oder in den Kurs-Chat stellen. Wer ihn öffnet, wird gefragt „Kurswerte aus dem Link übernehmen? Eure bisherigen Kurswerte werden ersetzt.“; persönliche Antworten bleiben.
+3. **Den Link auf der veröffentlichten Seite erzeugen**, nicht in der Offline-Datei: Aus der Datei entsteht nur ein Link, der auf diesem Rechner gilt (die Seite sagt das). Der Kurslink enthält die Adresse der Seite; **ein** QR-Code genügt also für Seite und Kurswerte. Einen QR-Code erzeugt die Seite nicht (K-2 nicht gebaut): mit einem QR-Werkzeug auf dem Laptop oder Handy erzeugen, oder den Link in den Kurs-Chat stellen (zum Abschreiben ist er mit etwa 160 Zeichen zu lang). Wer ihn öffnet, wird gefragt „Kurswerte aus dem Link übernehmen? Eure bisherigen Kurswerte werden ersetzt.“; persönliche Antworten bleiben.
 4. Ein beschädigter Link ändert nichts und nennt den Grund in Worten.
 
 Hinweis: Ein Link, den alle öffnen können, braucht die veröffentlichte Adresse. Vor der Veröffentlichung ist der Kurslink nur lokal getestet.

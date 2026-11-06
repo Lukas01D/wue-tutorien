@@ -549,6 +549,10 @@ async function domOhneSkript(p) {
     await startFesthalten(ph); await warte(150);
     const lage = await ph.evaluate(() => { const d = document.getElementById("diagramm-halter").getBoundingClientRect(), f = document.getElementById("frageleiste").getBoundingClientRect(); return [Math.round(d.top), Math.round(d.bottom), Math.round(f.top)]; });
     pruefe("M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild", lage[0] >= -1 && lage[1] <= 844 && lage[2] >= lage[1] - 1 && lage[2] < lage[1] + 40, lage.join(", "));
+    const anteil = [];
+    for (const [w, hh] of [[320, 568], [360, 640], [390, 844]]) { await ph.setViewportSize({ width: w, height: hh }); await warte(200); anteil.push(await ph.evaluate(() => 100 * document.getElementById("diagramm-halter").getBoundingClientRect().height / innerHeight)); }
+    pruefe("M-6: angehefteter Bereich höchstens 45 % der Höhe (320 × 568, 360 × 640, 390 × 844)", anteil.every(x => x <= 45), anteil.map(x => x.toFixed(1) + " %").join(", "));
+    await ph.setViewportSize({ width: 390, height: 844 }); await warte(200);
     await ph.click("#knopf-anheften"); await warte(80);
     pruefe("M-6: Anheften abschaltbar", (await ph.evaluate(() => getComputedStyle(document.getElementById("diagramm-halter")).position)) !== "sticky");
     await ch.close();
