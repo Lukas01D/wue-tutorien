@@ -266,3 +266,5 @@ input[type="text"] { border-color: #7d8fa1 !important; }                        
 /* G6-R3-04: Zeile der Ersatzlegende bleibt frei, damit der Regler darunter beim Schieben nicht springt */
 .kurven-legende { min-height: 1.7em; }
 .kurven-legende[hidden] { display: block !important; visibility: hidden; }
+/* G5-R4-05: Fehlerrand gilt auch gegen den allgemeinen Feldrand (G5-09) */
+input[type="text"][aria-invalid="true"] { border-color: var(--fehler-rand) !important; border-width: 2px; }

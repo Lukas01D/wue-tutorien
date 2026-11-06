@@ -358,6 +358,73 @@ async function test(id, name, fn, b) {
     return [await p.$("#aufl-leiste") !== null, "Auflösung offen " + (await p.$("#aufl-leiste") !== null)];
   }, b);
 
+
+  await test("G3-R4-02, G3-R4-07", "Wärmestrom: Teilflächen nach dem Vorzeichen beschriftet (400 ml, kA Tasse 1 110 %, 180 min); negativer Gesamtwert als „weniger“", async b => {
+    const p = await neu(b); await start(p); await f1(p); await vt(p); await p.click('[data-ansicht="waermestrom"]'); await warte(60);
+    await feld(p, "#z-VK", "400"); await feld(p, "#z-kA1", "110"); await feld(p, "#z-tEnd", "180");
+    const ft = await txt(p, "#flaechen-text"), r = await p.evaluate(() => window.KAFFEE.ergebnis());
+    const ok1 = r.flaecheVor < 0 && /vor dem Schnitt der Wärmeströme: Tasse 2 gibt weniger ab/.test(ft) && /nach dem Schnitt der Wärmeströme: Tasse 2 gibt mehr ab/.test(ft);
+    await feld(p, "#z-VK", "200"); await feld(p, "#z-kA1", "105"); await feld(p, "#z-thM", "60"); await feld(p, "#z-tEnd", "60");
+    const ft2 = await txt(p, "#flaechen-text"), r2 = await p.evaluate(() => window.KAFFEE.ergebnis());
+    const ok2 = r2.Q2 - r2.Q1 >= 0 || (/weniger Wärme ab als Tasse 1/.test(ft2) && !/−/.test(ft2.split("Tasse 2 gibt")[1] || ""));
+    return [ok1 && ok2, ft.slice(0, 140) + " | " + ft2.slice(0, 90)];
+  }, b);
+
+  await test("G3-R4-03, G3-R4-10", "Lesehilfe nennt den Becher bei „geteilt durch m c_p“ und bei der Steigung; Code-Reiter nennt den Ersatzwert nicht „Messwert“", async b => {
+    const p = await neu(b); await start(p); await f1(p); await p.click("#tab-modell"); await p.evaluate(() => { for (const d of document.querySelectorAll("#panel-modell details")) d.open = true; });
+    const m = await txt(p, "#panel-modell"); await p.click("#tab-code"); const c = await txt(p, "#panel-code");
+    return [/des Gemischs \(mit Becher zuzüglich/.test(m) && /des schwarzen Kaffees \(mit Becher zuzüglich/.test(m) && /gleichwertigen Wert nach 10 min \(keine Messung\)/.test(c), ""];
+  }, b);
+
+  await test("G3-R4-08, G3-R4-09", "Meldungen zur kA-Quelle: „Bereich des Feldes“ statt „Messbereich“; „Messwert … wieder verwenden“", async b => {
+    const p = await neu(b); await start(p); await f1(p); await vt(p);
+    await feld(p, "#z-kA", "0,25"); await p.check('input[name="kaq"][value="messung"]'); await warte(80);
+    const k = await txt(p, "#knopf-eigene-messung");
+    const q = await neu(b); await start(q); await f1(q); await vt(q);
+    await feld(q, "#z-VK", "100"); await feld(q, "#z-thK0", "60"); await feld(q, "#z-thU", "10"); await feld(q, "#z-kA", "1");
+    await q.click('input[name="kaq"][value="messung"]'); await warte(80); const m = await txt(q, "#kaq-meldung");
+    return [/^Messwert 67,0 °C wieder verwenden/.test(k.trim()) && /Bereichs des Feldes/.test(m), JSON.stringify(k) + " | " + m.slice(60, 160)];
+  }, b);
+
+
+  await test("G5-R4-01, G5-R4-02", "Keine zwei Beschriftungen im Diagramm überdecken sich; Verbindungslinie zu „Schnitt“ nicht an den Kurven entlang (320 bis 390 px, mit Trinklinie)", async b => {
+    let ueber = 0, linie = 0, n = 0; const bsp = [];
+    for (const [w, h] of [[320, 640], [360, 640], [375, 667], [390, 844]]) for (const lang of ["de", "en"]) {
+      const p = await neu(b, w, h, lang === "en" ? "?lang=en" : ""); await start(p); await f1(p); await vt(p);
+      for (const trink of [false, true]) {
+        if (trink) { await p.check("#s-trink"); await warte(40); }
+        for (const tz of ["20", "40", "56", "60", "75", "90", "120", "180"]) {
+          await feld(p, "#z-tEnd", tz); n++;
+          const r = await p.evaluate(() => { const s = document.getElementById("diagramm"); const ts = [...s.querySelectorAll("text")].filter(x => x.textContent.trim() && !/^[−\d.,]+$/.test(x.textContent.trim())).map(x => [x.textContent, x.getBoundingClientRect()]); let u = []; for (let i = 0; i < ts.length; i++) for (let j = i + 1; j < ts.length; j++) { const a = ts[i][1], c = ts[j][1]; const ox = Math.min(a.right, c.right) - Math.max(a.left, c.left), oy = Math.min(a.bottom, c.bottom) - Math.max(a.top, c.top); if (ox > 2 && oy > 2) u.push(ts[i][0] + " × " + ts[j][0]); } const l = [...s.querySelectorAll("line[stroke='#142337']")].length; return [u, l]; });
+          if (r[0].length) { ueber++; if (bsp.length < 3) bsp.push(w + lang + " " + tz + ": " + r[0][0]); }
+        }
+      }
+      await p.context().close();
+    }
+    return [ueber === 0, ueber + " von " + n + " Zuständen mit Überdeckung " + bsp.join("; ")];
+  }, b);
+
+  await test("G5-R4-04", "Abgelehnter Wechsel der kA-Quelle: Meldung in der bleibenden Ansage und am fieldset verknüpft", async b => {
+    const q = await neu(b); await start(q); await f1(q); await vt(q);
+    await feld(q, "#z-VK", "100"); await feld(q, "#z-thK0", "60"); await feld(q, "#z-thU", "10"); await feld(q, "#z-kA", "1");
+    await q.click('input[name="kaq"][value="messung"]'); await warte(400);
+    const r = await q.evaluate(() => [document.getElementById("ansage").textContent, document.querySelector("fieldset[aria-describedby='kaq-meldung']") !== null]);
+    return [/Nicht umgestellt/.test(r[0]) && r[1], r[0].slice(0, 60)];
+  }, b);
+
+  await test("G5-R4-05", "Messblatt Raum- und Milchtemperatur: Fehler mit Feldname, aria-describedby und rotem Rand", async b => {
+    const p = await neu(b); await feld(p, "#mess-u", "21,555");
+    const r = await p.evaluate(() => { const u = document.getElementById("mess-u"); return [u.getAttribute("aria-describedby"), document.getElementById("mess-fehler").textContent, getComputedStyle(u).borderTopColor]; });
+    return [r[0] === "mess-fehler" && /Raumtemperatur/.test(r[1]) && r[2] === "rgb(182, 52, 52)", r.join(" | ")];
+  }, b);
+
+  await test("G5-R4-06", "Schrift zur Laufzeit vergrößert: überlaufende Tabellen bekommen Tastaturzugang und Namen", async b => {
+    const p = await neu(b, 360, 640); await start(p); await f1(p);
+    await p.evaluate(() => { document.querySelector(".wertetabelle").open = true; document.documentElement.style.fontSize = "200%"; }); await warte(300);
+    const r = await p.evaluate(() => [...document.querySelectorAll(".tabelle-wrap")].filter(e => e.offsetParent && e.scrollWidth > e.clientWidth + 1).map(e => e.getAttribute("tabindex") === "0" && !!(e.getAttribute("aria-label") || e.getAttribute("aria-labelledby"))));
+    return [r.length > 0 && r.every(Boolean), r.join(",")];
+  }, b);
+
   await b.close();
   const ok = ERG.filter(x => x.ok).length;
   console.log("\nErgebnis: " + ok + " von " + ERG.length + " Prüfungen bestanden.");

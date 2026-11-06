@@ -119,6 +119,7 @@
     haken: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6.5 L5 9.5 L10.5 2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
     b1: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="4.8" fill="#8b5a2b"/></svg>',
     b2: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="9" height="9" fill="#222"/></svg>',
+    trink: '<svg class="sym sym-linie" viewBox="0 0 24 12" aria-hidden="true" focusable="false"><line x1="1" x2="23" y1="6" y2="6" stroke="#227b48" stroke-width="1.6" stroke-dasharray="6 3"/></svg>',
     kreis: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="4.6" fill="#fff" stroke="#222" stroke-width="1.6"/></svg>',
     b3: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0.8 L11.5 10.5 L0.5 10.5 Z" fill="#3d70a3"/></svg>',
     vor: '<svg class="sym sym-flaeche" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="13" height="13" fill="#fff" stroke="#222"/><path d="M0 7 L7 0 M0 14 L14 0 M7 14 L14 7" stroke="#222" stroke-width="1.5"/></svg>',
@@ -389,7 +390,7 @@
     s.push('<text x="14" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#142337" transform="rotate(-90 14 ' + ((O + H - U) / 2) + ')">' + svgText(yLabel) + "</text>");
     const belegt = [];   // Rechtecke für die Kollisionsprüfung der Beschriftungen
     const pfad = (f, a, b, n) => { const p = []; for (let i = 0; i <= n; i++) { const x = a + (b - a) * i / n; p.push(X(x).toFixed(1) + "," + Y(f(x)).toFixed(1)); } return p.join(" "); };
-    let kurvenPx = [], raumY = null, vorhersageUnten = "", legendeHtml = "", schnittInLegende = false;
+    let kurvenPx = [], raumY = null, raumRect = null, vorhersageUnten = "", legendeHtml = "", schnittInLegende = false, trinkInLegende = false;
     // Direkte Beschriftung mit Kollisionsprüfung (E6/F19: nie auf einer Linie)
     const etikett = (text, farbe, kurve, oben, bevorzugt) => {
       const breite = text.length * fs * 0.56 + 6, hoehe = fs + 6;
@@ -419,6 +420,7 @@
       s.push('<line x1="' + L + '" x2="' + (W - Rr) + '" y1="' + Y(S.e.thU).toFixed(1) + '" y2="' + Y(S.e.thU).toFixed(1) + '" stroke="#8a8984" stroke-width="1.5" stroke-dasharray="1.5 4" stroke-linecap="round"/>');
       const raumRechts = !(R && freigabe() && Math.min(Math.abs(Y(R.th2) - Y(S.e.thU)), Math.abs(Y(R.th1) - Y(S.e.thU)), Math.abs(Y(R.th2K) - Y(S.e.thU))) < 22 && X(tz) > W - Rr - 110);
       s.push('<text x="' + (raumRechts ? W - Rr - 4 : L + 6) + '" y="' + (Y(S.e.thU) - 5).toFixed(1) + '" text-anchor="' + (raumRechts ? "end" : "start") + '" font-size="' + fs + '" fill="#5a6b7f">' + esc(t("dia_raum", { th: z(S.e.thU, 1) })) + "</text>");
+      { const rt = t("dia_raum", { th: z(S.e.thU, 1) }), rb = rt.length * fs * 0.56 + 4, rx = raumRechts ? W - Rr - 4 - rb : L + 6; raumRect = [rx, Y(S.e.thU) - 5 - fs, rb, fs + 4]; belegt.push(raumRect); }   // G5-R4-01: Raum ist Hindernis
       if (!freigabe()) {
         s.push('<circle cx="' + X(0) + '" cy="' + Y(S.e.thK0).toFixed(1) + '" r="4.5" fill="#222"/><text x="' + (X(0) + 9) + '" y="' + (Y(S.e.thK0) + 4).toFixed(1) + '" font-size="' + fs + '">' + z(S.e.thK0, 0) + " °C</text>");
         const zeilen = [], wo = nurText(t("dia_beschreibung_start")).split(" "), maxZ = Math.floor((W - L - Rr - 20) / 7.6);
@@ -436,6 +438,8 @@
             s.push('<polyline points="' + pfad(rv.kurve1, 0, S.vergleich.tEnd_min, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="2 3" opacity="0.8"/>');
           }
         }
+        if (S.vergleich && !ERW.fehler(S.vergleich)) { const rv2 = ERW.auswerten(S.vergleich), tv2 = S.vergleich.tEnd_min; kurvenPx.push(t2 => t2 <= tv2 ? Y(rv2.kurve1(t2)) : NaN, t2 => t2 <= tv2 ? Y(rv2.kurve2(t2)) : NaN); }   // G5-R4-02
+        if (S.ansicht.trinkzeit && S.ansicht.vertiefung) { const yT0 = Y(TRINK); if (yT0 > O && yT0 < H - U) kurvenPx.push(() => yT0); }      // Trinklinie als Hindernis
         s.push('<line x1="' + X(0) + '" x2="' + X(0) + '" y1="' + Y(S.e.thK0).toFixed(1) + '" y2="' + Y(R.th10).toFixed(1) + '" stroke="#8b5a2b" stroke-width="2" stroke-dasharray="2 3"/>');
         s.push('<polyline points="' + pfad(R.kurve2, 0, tz, N_ABTAST) + '" fill="none" stroke="#222" stroke-width="2.6" stroke-dasharray="9 5"/>');
         s.push('<polyline points="' + pfad(R.kurve1, 0, tz, N_ABTAST) + '" fill="none" stroke="#8b5a2b" stroke-width="2.8"/>');
@@ -465,7 +469,8 @@
           if ((fv.id === "f1" || fv.id === "v2") && isFinite(vorhersageZahl(fv, av.zahl).wert)) {
             const tv = vorhersageZahl(fv, av.zahl).wert;
             if (tv > 0 && tv <= xMax) belegt.push([X(tv) - 3, O + 28, 6, H - U - O - 28]);   // G6-R2-02: Linie ist Hindernis für Beschriftungen
-            if (tv > 0 && tv <= xMax) s.push('<line x1="' + X(tv).toFixed(1) + '" x2="' + X(tv).toFixed(1) + '" y1="' + (O + 28) + '" y2="' + (H - U) + '" stroke="#227b48" stroke-width="1.6" stroke-dasharray="3 3"/>');
+            const yEnde = raumRect && X(tv) > raumRect[0] - 2 && X(tv) < raumRect[0] + raumRect[2] + 2 ? raumRect[1] - 2 : H - U;   // nicht durch die Raumbeschriftung
+            if (tv > 0 && tv <= xMax) s.push('<line x1="' + X(tv).toFixed(1) + '" x2="' + X(tv).toFixed(1) + '" y1="' + (O + 28) + '" y2="' + yEnde.toFixed(1) + '" stroke="#227b48" stroke-width="1.6" stroke-dasharray="3 3"/>');
           }
         }
         // Messpunkte
@@ -507,7 +512,8 @@
             const ers = kand.find(([x0, yb]) => x0 >= L + 2 && x0 + bw <= W - Rr + 6 && yb - fs >= O && yb <= H - U - 2 && !belegt.some(q => x0 < q[0] + q[2] && x0 + bw > q[0] && yb - fs < q[1] + q[3] && yb + 2 > q[1]));
             if (ers) { s.push((ers[2] ? linieZum(ers) : "") + '<text x="' + ers[0].toFixed(1) + '" y="' + ers[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337" stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">' + esc(txt) + "</text>"); belegt.push([ers[0], ers[1] - fs, bw, fs + 4]); }
             else {
-              wahlWeit = kandWeit.find(([x0, yb]) => x0 >= L + 2 && x0 + bw <= W - Rr + 6 && yb - fs >= O && yb <= H - U - 2 && !belegt.some(q => x0 < q[0] + q[2] && x0 + bw > q[0] && yb - fs < q[1] + q[3] && yb + 2 > q[1]));
+              const linieFrei = w => { const lx = Math.min(Math.max(sx, w[0]), w[0] + bw), ly = w[1] < sy ? w[1] + 3 : w[1] - fs - 1; let nah = 0; for (let i = 1; i < 20; i++) { const px = lx + (sx - lx) * i / 20, py = ly + (sy - ly) * i / 20, tt = (px - L) / (W - L - Rr) * xMax; if (tt >= 0 && tt <= tz && kurvenPx.some(k => Math.abs(k(tt) - py) < 4)) nah++; } return nah <= 6; };   // G5-R4-02
+              wahlWeit = kandWeit.find(([x0, yb, l]) => x0 >= L + 2 && x0 + bw <= W - Rr + 6 && yb - fs >= O && yb <= H - U - 2 && !belegt.some(q => x0 < q[0] + q[2] && x0 + bw > q[0] && yb - fs < q[1] + q[3] && yb + 2 > q[1]) && linieFrei([x0, yb, l]));
               if (wahlWeit) { s.push(linieZum(wahlWeit) + '<text x="' + wahlWeit[0].toFixed(1) + '" y="' + wahlWeit[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337" stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round">' + esc(txt) + "</text>"); belegt.push([wahlWeit[0], wahlWeit[1] - fs, bw, fs + 4]); }
               else schnittInLegende = true;      // „Schnitt“ in der Legende unter dem Diagramm
             }
@@ -531,10 +537,17 @@
               if (belegt.some(b => x0 < b[0] + b[2] && x0 + tw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) frei = false;
               if (frei) { tx = x0; ty = yb; gefunden = true; break suche; }
             }
+            let zweitOk = gefunden;
+            if (!gefunden) {     // G5-R4-01: zweiter Durchgang nur gegen andere Beschriftungen (mit weißem Rand), sonst in die Legende
+              zweit: for (const yb of [yT - 5, yT + fs + 4, yT - fs - 9, yT + 2 * fs + 8]) for (const x0 of xs0) {
+                if (yb - fs > O && yb < H - U - 2 && !belegt.some(b => x0 < b[0] + b[2] && x0 + tw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { tx = x0; ty = yb; zweitOk = true; break zweit; }
+              }
+            }
+            if (!zweitOk) trinkInLegende = true;
             // ohne freien Platz: weißer Rand um die Schrift, damit sie über einer Linie lesbar bleibt
-            s.push('<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" font-size="' + fs + '" fill="#14603f"' + (gefunden ? "" : ' stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"') + ">" + esc(tl) + "</text>");
+            if (zweitOk) s.push('<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" font-size="' + fs + '" fill="#14603f"' + (gefunden ? "" : ' stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"') + ">" + esc(tl) + "</text>");
             for (const [tt, k] of [[tr.tasse1, R.kurve1], [tr.schwarz, R.kurve2]]) if (tt > 0 && tt < tz) s.push('<line x1="' + X(tt).toFixed(1) + '" x2="' + X(tt).toFixed(1) + '" y1="' + (yT - 6).toFixed(1) + '" y2="' + (yT + 6).toFixed(1) + '" stroke="#14603f" stroke-width="2"/>');
-            belegt.push([tx, ty - fs, tw, fs + 4]);
+            if (zweitOk) belegt.push([tx, ty - fs, tw, fs + 4]);
           }
         }
         const e2 = etikett(t("dia_tasse2", { t: z(tz, 0) }), "#222", R.kurve2, true, [0.12, 0.2, 0.06, 0.3, 0.4]);
@@ -544,6 +557,7 @@
         if (e1) s.push(e1); else fehlend.push("1");
         const teileL = fehlend.reverse().map(n => (n === "1" ? SYM.linie1 : SYM.linie2) + " " + esc(n === "1" ? t("dia_tasse1") : t("dia_tasse2", { t: z(tz, 0) })));
         if (schnittInLegende) teileL.push(SYM.kreis + " " + esc(t("dia_schnitt")));
+        if (trinkInLegende) teileL.push(SYM.trink + " " + esc(nurText(t("dia_trinklinie"))));
         if (teileL.length) legendeHtml = teileL.join(" · ");   // Ersatz als Text unter dem Diagramm
       }
     } else if (ansicht === "waermestrom" && R) {
@@ -817,7 +831,7 @@
     h += '<div class="gruppe"><h3 class="gruppe-titel">' + t("gruppe_milch") + "</h3>" + reglerHtml(REG.VM) + reglerHtml(REG.thM) +
       '<label class="schalter"><input type="checkbox" id="s-milch2Raum"' + (S.e.milch2Raum ? " checked" : "") + "> " + t("schalter_milch2Raum") + "</label>" + "</div>";
     h += '<div class="gruppe"><h3 class="gruppe-titel">' + t("gruppe_tasse") + "</h3>" + reglerHtml(REG.thU);
-    h += '<fieldset class="gruppe"><legend class="regler-name">' + t("kA_quelle") + '</legend><div class="radio-zeile">' +
+    h += '<fieldset class="gruppe" aria-describedby="kaq-meldung"><legend class="regler-name">' + t("kA_quelle") + '</legend><div class="radio-zeile">' +
       '<label><input type="radio" name="kaq" value="fest"' + (S.e.kAQuelle === "fest" ? " checked" : "") + "> " + t("kA_quelle_fest") + "</label>" +
       '<label><input type="radio" name="kaq" value="messung"' + (S.e.kAQuelle === "messung" ? " checked" : "") + "> " + t("kA_quelle_messung") + "</label></div>";
     h += '<p class="hinweis">' + t(S.e.kAQuelle === "fest" ? "kA_quelle_info_fest" : "kA_quelle_info_messung") + '</p><p class="feld-fehler" id="kaq-meldung" aria-live="polite"></p></fieldset>';
@@ -857,7 +871,7 @@
         const gl = R.thMessModell, rg = REG.thMess;
         if (!(gl >= rg.min && gl <= rg.max) || ERW.fehler(Object.assign({}, S.e, { kAQuelle: "messung", thMess: gl }))) {
           alles(); const f = document.querySelector('input[name="kaq"][value="fest"]'); if (f) f.focus();
-          $("kaq-meldung").innerHTML = t("kA_quelle_nicht", { wert: z(gl, 1), min: z(rg.min, 0), max: z(rg.max, 0) }); return;
+          $("kaq-meldung").innerHTML = t("kA_quelle_nicht", { wert: z(gl, 1), min: z(rg.min, 0), max: z(rg.max, 0) }); ansagenText(nurText($("kaq-meldung").innerHTML)); return;   // G5-R4-04
         }
         if (Math.abs(gl - S.e.thMess) > 1e-9) { if (!S.e.thMessErsatz) S.e.thMessEigen = S.e.thMess; S.e.thMess = gl; S.e.thMessErsatz = true; }
         S.e.kAHerkunft = "messung";
@@ -946,10 +960,13 @@
     const feldZahl = (id, key, lo, hi) => $(id).addEventListener("change", () => {
       const l = HILFEN.zahlLesen($(id).value);
       if ($(id).value.trim() === "") S.kurs[key] = null;
-      else if (!isFinite(l.wert) || l.wert < lo || l.wert > hi) { $(id).setAttribute("aria-invalid", "true"); $("mess-fehler").innerHTML = t("feld_bereich", { min: lo, max: hi, einheit: "°C" }); return; }
-      else if (zuVieleStellen($(id).value)) { $(id).setAttribute("aria-invalid", "true"); $("mess-fehler").innerHTML = t("mess_stellen"); return; }
+      else if (!isFinite(l.wert) || l.wert < lo || l.wert > hi || zuVieleStellen($(id).value)) {     // G5-R4-05: Feldname vorn, Bezug per aria-describedby
+        for (const x of document.querySelectorAll("#messblatt-inhalt [aria-describedby='mess-fehler']")) if (x !== $(id)) x.removeAttribute("aria-describedby");
+        $(id).setAttribute("aria-invalid", "true"); $(id).setAttribute("aria-describedby", "mess-fehler");
+        $("mess-fehler").innerHTML = esc(nurText($(id).closest("label").childNodes[0].textContent).trim()) + ": " + (isFinite(l.wert) && l.wert >= lo && l.wert <= hi ? t("mess_stellen") : t("feld_bereich", { min: lo, max: hi, einheit: "°C" })); return;
+      }
       else S.kurs[key] = l.wert;
-      $(id).removeAttribute("aria-invalid"); $("mess-fehler").textContent = ""; sichern(); teilZeichnen("messblatt"); frageleisteStill();
+      $(id).removeAttribute("aria-invalid"); $(id).removeAttribute("aria-describedby"); $("mess-fehler").textContent = ""; sichern(); teilZeichnen("messblatt"); frageleisteStill();
     });
     feldZahl("mess-u", "u", 5, 40); feldZahl("mess-m", "m", 0, 70);
     $("mess-d").addEventListener("change", ev => { S.kurs.d = ev.target.checked; sichern(); alles(); fokus("mess-d"); });
@@ -1192,7 +1209,7 @@
   if (window.visualViewport) window.visualViewport.addEventListener("resize", anheftenPruefen);
   if (window.ResizeObserver) {      // X5-04, X5-10: auch wenn nur die Schrift wächst (kein resize des Fensters)
     let rz = 0;
-    new ResizeObserver(() => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => anheftenPruefen()); }).observe($("hauptinhalt") || document.body);
+    new ResizeObserver(() => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { anheftenPruefen(); scrollbereichePruefen(); }); }).observe($("hauptinhalt") || document.body);
   }
   document.addEventListener("focusin", anheftenPruefen); document.addEventListener("focusout", () => setTimeout(anheftenPruefen, 50));
   alles();
