@@ -1,28 +1,32 @@
 # Gutachten G3: Fachgutachter Wärmeübertragung
 
-> **Zwischenstand, nicht abgeschlossen.** Abgebrochen am 05.11.2026 auf Anweisung der Koordination (Pause der TL wegen Nutzungslimit). Die Abschnitte 1 bis 6 sind vollständig ausgearbeitet; die 30 Zustände und alle Auflösungen sind verglichen. **Noch nicht geprüft:**
+> **Abgeschlossen am 06.11.2026** (Fortsetzung des Zwischenstands vom 05.11.2026; nachgeholt: Messblatt mit Becher 3 und „mit Deckel gemessen“, Kurslink hin und zurück, CSV mit den Testwerten aus M11, Wertetabelle und Lage der Kurven im Bild, Vergleichslauf, englische Texte, Suche nach Gedankenstrichen). Die Abschnitte 1 bis 6 vom 05.11.2026 sind unverändert; die Nachträge stehen in Abschnitt 4a, neue Befunde ab G3-14. **Ergebnisse der Nachträge:**
 >
-> - Messblatt mit „Becher 3 zeigen“ (zwei Mischsprünge, Rechenwerte mit verglichenem Paar Becher 2 oder 3) und mit Häkchen „mit Deckel gemessen“
-> - Link mit Kurswerten (hin und zurück) und CSV-Ausgabe (Testwerte M11)
-> - Aufklappbare Wertetabelle des Diagramms (Werte je 5 min) und Lage der Kurven im Bild (geprüft wurden nur die Texte, keine Pixelpositionen)
-> - Vergleichslauf („Lauf zum Vergleich merken“)
-> - Englische Texte über die Auflösungen und eine Stichprobe der Rechenwerte hinaus
-> - Abschließende Suche nach Gedankenstrichen in diesem Gutachten
+> - Messblatt mit Becher 3: Übernahme (Mittel von Becher 2 und 3 bei 0 und 10 min) und alle Rechenwerte stimmen; im Diagramm fehlt aber der zweite Mischsprung (G3-14), und Becher 3 trägt in den Rechenwerten das Zeichen $\vartheta_2$ (G3-15). „mit Deckel gemessen“: richtig, kein zweiter Deckelfaktor, Hinweis „Der Deckel steckt schon im gemessenen *kA*“.
+> - Kurslink: hin und zurück gleiche Werte und Bedingungen (auch Becher 3 und Deckel), ungültige Links ändern nichts und nennen den Grund; zwei Bedienlücken (G3-23, G3-24).
+> - CSV: Testwerte M11 genau getroffen, alle Modellwerte in 1-min-Schritten stimmen (0 Abweichungen in 5 Fällen); englische Kopfzeile hat ein Feld zu viel (G3-16); Bedingungen fehlen (G3-17).
+> - Wertetabelle: alle Werte stimmen; Darstellung bei der Zugabe und bei Zugabezeiten mit Nachkommastelle (G3-18, G3-19). Lage der Kurven: höchstens 0,017 K von meiner Rechnung (1 px = 0,27 K), Schnittkreis, Mischsprung bei *t* = 0 und Messpunkte an der richtigen Stelle.
+> - Vergleichslauf: blasse Kurven richtig, aber ohne Mischsprung und ohne Zahl (G3-21).
+> - Englische Texte: Physik und Zahlen richtig; G3-04 bis G3-06 gelten dort ebenso; neue Punkte G3-16, G3-22, G3-24.
+> - Ausgleichsgerade mit Becher 3: Ursprungsgerade richtig, Gerade mit freiem Achsenabschnitt gewichtet den Startpunkt anders (G3-20).
+> - Gedankenstriche: keine in diesem Gutachten (Suche nach U+2013 und U+2014: 0 Treffer; „ - “ nur als Minus im Programmtext).
 > - Nicht Aufgabe dieser Rolle und nicht geprüft: Handy-Ansicht, Barrierefreiheit, Tastaturbedienung
 
 | | |
 |:--|:--|
 | Rolle | G3 „Fachgutachter Wärmeübertragung“ |
-| Datum | 05.11.2026 |
+| Datum | 05.11.2026, fortgesetzt und abgeschlossen am 06.11.2026 |
 | Art | getrennte Rollenprüfung desselben Modells (eine unabhängige Prüfung mit einem anderen Modell folgt) |
 | Gegenstand | `simulation/site/index.html` (Fuß: „Stand 2026-11-05 · Version d2ce37a8e5“) |
-| SHA-256 | `f519052cadf6745eeeb4eb97f5a0042c74688f3495cada09c059970b25016707` (369 081 Byte; vor und nach der Prüfung gleich) |
+| SHA-256 | `f519052cadf6745eeeb4eb97f5a0042c74688f3495cada09c059970b25016707` (369 081 Byte; vor und nach der Prüfung gleich, am 06.11.2026 vor und nach der Fortsetzung erneut geprüft) |
 | Umgebung | Linux-Container der Cloud-Sitzung, Node v22.23.4, Playwright mit Chromium (`chromium.launch()` ohne Optionen), Python 3.13.18; Seite als `file:`-Aufruf, Fenster 1366 × 900 px |
 | Maßstab | `simulation/KONZEPT.md` Fassung 2 (Abschnitte 6, 8, Anhang A, C); Aufgabe und Lösung in der **fertigen Fassung vom 31.10.2026** (`ergebnisse/kaffee/fertig/`, dort Teil f = erwärmte Milch $\vartheta_\mathrm{M,h}$ = 60 °C, Teil g = vorgewärmter Keramikbecher); Versuch für die Website 60 min (E8) |
 
 Nicht gelesen: Code der Seite (Skript in `index.html`, `simulation/site/src/`, `simulation/modell/kaffee_erweitert.py`), `BAU_BERICHT.md`, `PROTOTYPEN.md`, `ZUSTAENDE.md`, `tests/`, `recherche/`, andere Gutachten, Git-Protokoll. Gelesen wurde nur, was die Seite anzeigt (sichtbarer Text, Beschriftungen, Formeln im DOM).
 
 **Kurzurteil.** Alle 30 Zustände stimmen in jeder angezeigten Zahl mit meiner unabhängigen Rechnung überein, ebenso die Auflösungen von Start, Frage 1, Frage 2 und V1 bis V5 (deutsch und englisch), die Teilflächen der Wärmestrom-Ansicht, die Ausgleichsgerade und die Übernahme einer Messreihe. Die Physik der Seite ist richtig. Es bleiben drei mittlere Befunde (Bewertung der Startvorhersage, ein ungenauer Satz in der Start-Auflösung, Darstellung „Becher kalt“) und mehrere kleine Text- und Begriffsbefunde.
+
+*Nachtrag 06.11.2026:* Auch Messblatt (mit Becher 3 und Deckel), Kurslink, CSV, Wertetabelle, Kurvenlage und Vergleichslauf zeigen in jeder geprüften Zahl die richtigen Werte. Dazu kommen zwei mittlere Befunde: Becher 3 hat im Diagramm keinen eigenen Mischsprung (M-7 nicht erfüllt, G3-14), und die englische CSV-Kopfzeile verschiebt die Spaltennamen (G3-16). Dazu neun kleine Befunde.
 
 ## 2 Eigene Gleichungen und Prüffälle (vor dem Blick auf die Seite festgelegt)
 
@@ -113,6 +117,36 @@ Zusätzlich geprüft (alle stimmen): Becher 600 g mit *kA* aus der Messung (0,54
 
 **Erklärtexte unter ihren Bedingungen (M-22).** Lesehilfe „Kreis: Schnittpunkt … (bei gleichem *kA* beider Tassen)“ und V2 „Gilt bei gleichem *kA* beider Tassen“ nennen die Bedingung. Mit *kA* von Tasse 1 = 105 % erscheint kein dynamischer Text, der den größten Unterschied an den Schnittpunkt bindet; die Wärmestrom-Ansicht teilt die Flächen physikalisch richtig beim Wechsel der Wärmeströme (61,0 min), nicht am Temperaturschnitt (84,9 min). Begriffliche Doppeldeutigkeit siehe G3-07. Die Energiezeile nennt den Milchbeitrag nur bei verschiedener Milchtemperatur (Z08). Becher kalt ist nur mit festgehaltenem *kA* möglich (mit *kA* aus der Messung gesperrt und abgehakt), wie M9 verlangt.
 
+## 4a Nachgeholte Prüfungen (06.11.2026)
+
+Gleiche Seite (SHA-256 vor und nach unverändert), gleiche Umgebung, gleiche Fehlerschwelle (2.3). Eigene Werte aus `g3_rechnung.py` über `g3_f_rechnung.py`, `g3_f_csvcheck.py` und `g3_f_lage.py`; der Code der Seite wurde nicht gelesen.
+
+**Messdatensatz F1 (Becher 3).** Becher 1: 70,9; 61,6; 54,2; 48,4; 43,6; 39,8; 36,7 °C. Becher 2: 80,1; 67,3; 56,9; 49,1; 42,7; 37,4; 33,7; nach der Milch 30,1 °C. Becher 3: 79,7; 66,9; 56,5; 48,8; 42,5; 37,3; 33,6; nach der Milch 32,0 °C. Raum 20 °C, Milch 5 °C. Erwartet nach M-7: Start und 10-min-Wert als Mittel von Becher 2 und 3, also 79,90 und 67,10 °C, Becher an, *kA* aus der Messung.
+
+| Größe | eigene Werte | Anzeige | Urteil |
+|:--|:--|:--|:--|
+| Übernahme | 79,90 / 67,10 °C, Raum 20,0, Milch 5,0 | „Übernommen (Mittel der Becher vor der Milch, ungerundet): Start 79,90 °C, nach 10 min 67,10 °C …“ | stimmt |
+| *kA*, $\vartheta_{1,0}$ | 0,43713 W/K; 72,3809 °C | 0,4371; 72,38 | stimmt |
+| $\vartheta_1$ / $\vartheta_2$ / Becher 3 / Δ | 34,3095 / 31,2306 / 32,7364 (Milch 20 °C) / 3,0789 | 34,31 / 31,23 / 32,74 / 3,08 | stimmt |
+| $Q_1$ / $Q_2$, Schnitt | 46,1709 / 49,9049 kJ; 55,58 min bei 35,74 °C | 46,17 / 49,90; 55,6 min; Kreis bei 55,58 min und 35,76 °C (Pixel) | stimmt |
+| Kasten 30 min | 49,12 °C, τ = 1091 J/K / 0,43713 W/K = 41,60 min | „from 79.9 to 49.12 °C in 30 min (time constant 41.6 min)“ | stimmt |
+| Ansicht ln | Ursprungsgerade aus 12 Punkten 0,44698 W/K | 0,4470 W/K, „Becher 2 und Becher 3, 12 Punkte, 10 bis 60 min“ | stimmt |
+| Ansicht ln, freier Achsenabschnitt | 14 Punkte (Startpunkt je Becher): 0,44932; 12 Punkte ohne Start: 0,45135; 13 Punkte (Start einmal): 0,45003 W/K | 0,4500 W/K | siehe G3-20 |
+
+Im Diagramm stehen die Messpunkte an der richtigen Stelle (Kreise, Quadrate, Dreiecke je auf ±0,02 K), aber es gibt nur einen Mischsprung bei der Zugabe (Becher 2, 34,16 auf 31,22 °C nach Pixeln); Becher 3 hat keinen gepunkteten Sprung, keine Linie und keine Beschriftung, nur ein randloses Dreieck bei etwa 32,7 °C zwischen den Messdreiecken (G3-14). Die Dreiecke von Becher 3 überdecken die fast gleich liegenden Quadrate von Becher 2.
+
+**Messdatensatz F2 (mit Deckel, Kurslink des Konzeptformats).** `#kurs1=u:21.5;m:6;d:1;b:1.2;b1:68.2,62.0,56.6,52.0,48.0,44.6,41.6,;b2:79.0,70.4,63.1,57.0,51.7,47.2,43.4,39.0`. Eigene Werte (Becher an, *kA* aus 79,0 und 70,4 °C): *kA* 0,29458 W/K, $\vartheta_{1,0}$ 71,6716, $\vartheta_1$ 42,4259, $\vartheta_2$ 39,5130, Δ 2,9129, $Q_1$ 35,4677, $Q_2$ 39,0003 kJ, Schnitt erst bei 83,83 min, 30-min-Wert 56,865 °C, τ 61,73 min. Anzeige: 0,2946; 71,67; 42,43 / 39,51 / 2,91; 35,47 / 39,00; „kein Schnitt bis zur Zugabe“; 56,87 °C, 61,7 min. Stimmt. Mit `d:0` und denselben Werten gleiche Zahlen; mit `d:1` zusätzlich der Satz „Mit Deckel gemessen: Der Deckel steckt schon im gemessenen *kA*.“ Auch wenn vorher „Keramik mit Deckel“ gewählt war, rechnet die Übernahme mit 0,2946 W/K, also ohne zweiten Deckelfaktor (M-7, M1). Richtig.
+
+**Kurslink hin und zurück.** F1 und F2 als Link geöffnet: Abfrage „Kurswerte aus dem Link übernehmen? Eure bisherigen Kurswerte werden ersetzt.“, nach „Übernehmen“ stehen alle Werte, Raum, Milch, Deckel und „Becher 3 zeigen“ im Messblatt; der danach erzeugte Link ist zeichengleich (F1) bzw. bis auf weggelassene Endnullen gleich (F2: `62` statt `62.0`). Ungültige Links (Raum `abc`, Formatversion `kurs2`, 999 °C, zu wenige Werte, `Unsinn`) ändern nichts und nennen den Grund. Lücken: G3-23.
+
+**CSV (M11).** Deutsch: UTF-8 mit BOM, CRLF, Semikolon, Dezimalkomma, Kopfzeile mit Einheiten; Herunterladen liefert dieselbe Datei wie `window.KAFFEE.csv()` (`kaffee_simulation.csv`, englisch `coffee_simulation.csv`). Testwerte M11 genau: `0;70,47;80,00`, `1;69,40;78,55`, `2;68,36;77,14`, `10;60,78;67,00` (eigene 70,4662 / 80,0000; 69,4019 / 78,5526; 68,3600 / 77,1400; 60,7782 / 67,0000). Alle Modellwerte jeder Minute geprüft für Standard (deutsch und englisch), F1, Zugabe 56 und 120 min: 0 Abweichungen; Zeile „60 nach der Milch“ jeweils gleich meinen Werten. Messwerte stehen in den Zeilen 0, 10, … 60 und „60 nach der Milch“ unverändert. Befunde G3-16, G3-17.
+
+**Wertetabelle und Lage der Kurven.** Tabelle je 5 min für Standard, Zugabe 56 und 120 min, „Keramik mit Deckel“ und F1: jeder Wert gleich meiner Rechnung auf 0,01 K (zum Beispiel Standard 55 min 35,63 / 35,66, 60 min 34,05 / 30,19; Zugabe 120 min: 115 min 24,35 / 23,62, 120 min 23,91 / 20,89). Vor der Vorhersage zeigt sie „erscheint nach eurer Vorhersage“ (M-2). Kurven als Pixel ausgelesen und über die Achsenteilung (0 und 60 min, 0 und 100 °C) zurückgerechnet: Standard, F1 und Vergleichslauf mit Deckel weichen höchstens 0,017 K ab (ein Pixel sind 0,27 K); Mischsprung bei *t* = 0 von 80,00 auf 70,48 °C, Schnittkreis Standard 55,75 min bei 35,38 °C (eigene 55,745 min, 35,380 °C). Befunde G3-18, G3-19.
+
+**Vergleichslauf.** „Lauf zum Vergleich merken“ (in der Vertiefung) bei Standardwerten, dann „Keramik mit Deckel“: blasse Kurven (Deckkraft 0,28) liegen auf den Standardkurven (höchstens 0,016 K), kräftige Kurven auf den Deckelkurven; Knopf wird zu „Vergleich entfernen“. Befund G3-21.
+
+**Englische Texte.** Geprüft: Kopf, Fragen 1 und 2, V1 bis V5 (Fragetexte), Regler und Hilfen, Rechenwerte, Energie, Bilanzraum, Messblatt, Übernahme, Kurslink, Voreinstellungen mit Erklärungen, Trinkzeit, Becher kalt, Milch für Tasse 2 bei Raumtemperatur, Ansicht Wärmestrom, Reiter „Model“ und „How the code calculates“, Fuß. Zahlen mit Thermobecher offen (*kA* 0,1497 W/K) nachgerechnet: Trinkzeit 24,8 / 37,7 min (eigene 24,78 / 37,74), Becher kalt 300 g 45,56 / 43,73 °C, 1,82 K, vorgewärmt 2,21 K (eigene 45,5551 / 43,7317 / 1,8234; 2,2148), Milch 20 °C für Tasse 2: 48,75 / 47,49 °C, 1,26 K, $Q_2 - Q_1$ = 3,03 kJ, Milchbeitrag −1,83 kJ, zusammen 1,21 kJ (eigene 3,0341 − 1,8262 = 1,2079 kJ, 1,2612 K). Physik und Fachbegriffe richtig („transient lumped energy balance“, „heat flow rate“, „control volume“, „time constant“). G3-04 gilt englisch ebenso („Heat loss of the cup *kA*“ in W/K neben „total heat loss … is $\dot{Q}_\mathrm{ab}$“), ebenso G3-05 („divided by $m c_p$ of the mixture“) und G3-06 („mixing jump from 80 to 70.47 °C“). Neue Punkte: G3-16, G3-22, G3-24.
+
 ## 5 Befunde
 
 Schweregrade wie vorgegeben (blocker, high, medium, low). Ein Befund mit falscher Physik oder falscher Zahl (blocker) wurde nicht gefunden.
@@ -132,8 +166,19 @@ Schweregrade wie vorgegeben (blocker, high, medium, low). Ein Befund mit falsche
 | G3-11 | low | V5-Auflösung „Glas und Pappe sind etwa wie Keramik“ ist als Ergebnis formuliert, folgt in der Simulation aber nur aus den Richtwerten mit Faktor 1,00, die die Seite selbst setzt; die Simulation kann es nicht zeigen. Die physikalische Begründung (Wand nicht der große Widerstand) ist richtig. | V5-Auflösung; Voreinstellungen Glas und Pappe mit Stern, *kA* 0,3402 | „Nach den Richtwerten (*) sind Glas und Pappe etwa wie Keramik: …“ | CONFIRMED |
 | G3-12 | low | Die Trinktemperatur ist fest 60 °C; KONZEPT.md 8.4 empfiehlt „Vorgabe einstellbar“ (Stufe kann). | Schalter „Trinkzeit bis 60 °C zeigen“, kein Eingabefeld | Feld für $\vartheta_\mathrm{T}$ (zum Beispiel 40 bis 75 °C) oder Empfehlung im Konzept anpassen | CONFIRMED |
 | G3-13 | high | *Außerhalb der fachlichen Rolle, nur gesehen:* Die Reiterleiste hat drei Reiter („Versuche“, „Modell“, „So rechnet der Code“) statt neun (M-18), und der Reiter heißt „Versuche“ statt „Auflösungen“ (E6). Die Inhalte der neun Reiter sind als aufklappbare Abschnitte vorhanden. Ob eine spätere Entscheidung der TL das erlaubt, konnte ich nicht prüfen (Baubericht nicht gelesen). | Startseite bei 1366 px, `#reiter-leiste` | Mit der Rolle für Aufbau und Bedienung und der TL klären; sonst nach M-18 und E6 umbenennen bzw. aufteilen | INFERRED |
+| G3-14 | medium | Mit „Becher 3 zeigen“ hat das Diagramm bei der Zugabe nur **einen** Mischsprung (Becher 2). M-7 verlangt zwei (Becher 2 mit kalter Milch, Becher 3 mit Milch bei Raumtemperatur). Für Becher 3 gibt es keinen gepunkteten Sprung von 34,16 auf 32,74 °C, keine Linie, keine Beschriftung und keine Erwähnung in der Diagrammbeschreibung; nur ein randloses Dreieck bei etwa 32,7 °C, das zwischen den Messdreiecken nicht als Modellwert erkennbar ist. Gerade der Vergleich Becher 2 gegen Becher 3 (Zusatzfrage (2), Pflichttest M3) ist damit im Bild nicht zu sehen. Die Zahl 32,74 °C in den Rechenwerten ist richtig. | F1, Abschnitt 4a; `lage_b3.json`: eine gepunktete Sprunglinie bei *t* = 60 min (34,16 → 31,22 °C), SVG-Texte nur „Tasse 2: Milch nach 60 min“, „Tasse 1: Milch sofort“; Bild `zoom_b3.png`; eigene Werte 34,1577 → 32,7364 °C | Zweiten gepunkteten Sprung für Becher 3 zeichnen (strichpunktiert, `#3d70a3` nach M-10) und beschriften („Becher 3: Milch mit Raumtemperatur“); Diagrammbeschreibung um Becher 3 ergänzen | CONFIRMED |
+| G3-15 | low | In den Rechenwerten trägt Becher 3 dasselbe Formelzeichen wie Tasse 2: „Tasse 2 $\vartheta_2$ 31,23 °C“ und „Becher 3 $\vartheta_2$ 32,74 °C“ (englisch „Mug 3 $\vartheta_2$“). Zwei verschiedene Werte mit einem Zeichen. Der Unterschied wird nur als $\vartheta_1 - \vartheta_2$ genannt; das Paar Tasse 1 gegen Becher 3 (1,57 K) fehlt, obwohl M-22 verlangt, dass die Rechenwerte das verglichene Paar nennen. | F1; eigene 34,3095 − 32,7364 = 1,5731 K | Becher 3 als $\vartheta_3$ bezeichnen und eine Zeile „Unterschied Tasse 1 − Becher 3: 1,57 K“ ergänzen | CONFIRMED |
+| G3-16 | medium | Englische CSV: Die Kopfzeile enthält ein Komma im Spaltennamen „model cup 2, black until the milk [°C]“ ohne Anführungszeichen, bei Komma als Trennzeichen. Die Kopfzeile hat 6 Felder, die Datenzeilen 5 (mit Becher 3: 7 gegen 6). In einer Tabellenkalkulation stehen die Namen ab der dritten Spalte eine Spalte zu weit rechts: Unter „black until the milk“ stehen die Messwerte von Becher 1, unter „measurement mug 1“ die von Becher 2. Wer die Datei auswertet, liest die Spalten falsch zu. Deutsch richtig (Semikolon). | `csv_std_en.csv` (`g3_f_csv.js`, `g3_f_csvcheck.py`: „Kopffelder 6 Datenfelder 5“) | Feld in Anführungszeichen setzen oder umbenennen, zum Beispiel „model cup 2 (black until the milk) [°C]“ | CONFIRMED |
+| G3-17 | low | Die CSV enthält nur Zeit, Modellkurven und Messwerte. Es fehlen die Bedingungen, ohne die eine Datei später nicht auswertbar ist: Raum- und Milchtemperatur des Messblatts, Deckel ja oder nein, *kA* mit Herkunft, Becher an oder aus, Mengen. Mit Becher 3 fehlt der Modellwert von Becher 3 nach der Milch (32,74 °C). Bei Zugabe vor 60 min steht die Zeile „56 nach der Milch“ hinter den leeren Zeilen 57 bis 60. | `csv_b3.csv`, `csv_tz56.csv`; KONZEPT.md M11 (Zweck Nachbereitung, K-5) | Bedingungen als eigene Spalten oder als zweiter Block mit Kopfzeile ausgeben; Spalte „Modell Becher 3“; Zeile „nach der Milch“ direkt hinter $t_\mathrm{Z}$ | CONFIRMED |
+| G3-18 | low | Wertetabelle des Diagramms: Die Spalte „Tasse 2“ enthält bis 55 min den schwarzen Kaffee und in der letzten Zeile ohne Kennzeichnung den Wert nach der Milch (60 min: 30,19 °C); der Wert vor der Milch (33,86 °C) und damit der Mischsprung fehlen. CSV und Messblatt trennen „60 vor der Milch“ und „60 nach der Milch“. Becher 3 und der Vergleichslauf stehen nicht in der Tabelle (für Bildschirmleser fehlen sie damit ganz). | Standard und F1, Abschnitt 4a | Zwei Zeilen „60 vor der Milch“ und „60 nach der Milch“ wie in CSV und Messblatt; Spalte Becher 3, wenn gezeigt | CONFIRMED |
+| G3-19 | low | Zugabezeit mit Nachkommastelle: Das Zahlenfeld nimmt 30,4 an (Tabelle der Regler: Schritt 1 min), gerechnet wird mit 30,4 min, angezeigt wird überall „nach 30 min“ (Rechenwerte, Beschreibung, Tabelle); bei 30,6 steht „nach 31 min“ bei Werten für 30,6 min. Die Wertetabelle hat dann zwei Zeilen „30“ mit verschiedenen Werten für Tasse 1 (46,62 und 46,40 °C); bei 7,5 min heißt die letzte Zeile „8“. | Eigene Werte: 30 min 46,6247 / 43,2669; 30,4 min 46,3986 / 43,0222; 30,6 min 46,2863 / 42,9008; 31 min 46,0632 / 42,6597; Anzeige bei 30,6: 46,29 / 42,90 „nach 31 min“ (`g3_f_t75.js`) | Eingabe auf ganze Minuten runden (wie der Regler) oder die Zeit mit einer Nachkommastelle anzeigen | CONFIRMED |
+| G3-20 | low | Ansicht ln mit Becher 2 und 3: Die Gerade mit freiem Achsenabschnitt (0,4500 W/K) gewichtet den Startpunkt anders als bei einem Becher. Mit einem Becher gehen 7 Punkte ein (Start und 6 Messpunkte, 0,4495 W/K, wie am 05.11.2026 nachgerechnet); mit zwei Bechern ergibt sich 0,4500 W/K nur mit 13 Punkten, also dem Startpunkt einmal statt je Becher. Folgerichtig wären 14 Punkte: 0,4493 W/K. Die Abweichung (7 Einheiten der letzten Stelle) folgt aus der Wahl der Punkte, nicht aus einer falschen Rechnung; der Wert wird nur zum Vergleich gezeigt und nicht übernommen. Deshalb nicht blocker. Die Ursprungsgerade (0,4470 W/K) ist richtig. | `g3_f_ln3.js`; eigene Varianten 14 Punkte 0,44932 (Abschnitt +0,0056), 13 Punkte 0,45003 (+0,0073), 12 Punkte 0,45135 (+0,0104) | Startpunkt je Becher mitzählen (14 Punkte) oder im Text „Startpunkt einmal gezählt“ nennen | INFERRED (Wert CONFIRMED, Ursache aus der Nachrechnung erschlossen) |
+| G3-21 | low | Der Vergleichslauf zeigt nur die blassen Abkühlkurven bis zur Zugabe, ohne Mischsprung von Tasse 2 und ohne Zahl. Die Größe, um die es geht (Unterschied nach der Zugabe, Standard 3,85 K gegen Deckel 3,51 K), kann man für den gemerkten Lauf nicht ablesen; Beschreibung und Tabelle nennen ihn nicht. Die Kurven selbst liegen richtig. | `g3_f_vergleich.js`, `vergleich.json`: blasse Linien enden bei 33,87 und 34,06 °C, kein blasser Sprung auf 30,19 °C | Blassen Mischsprung zeichnen und in den Rechenwerten eine Zeile „Vergleichslauf: 3,85 K (Standardwerte)“ | CONFIRMED |
+| G3-22 | low | Im Kasten der *kA*-Voreinstellungen steht bei den Voreinstellungen mit Stern der Satz „* Richtwert, geschätzt, nicht gemessen.“ zweimal hintereinander (englisch „* estimate, not measured.“ ebenso). | Glas, Pappbecher, Edelstahl, Thermobecher, deutsch und englisch (`g3_f_en3.js`, `g3_f_de_preset.js`) | Satz einmal | CONFIRMED |
+| G3-23 | low | *Bedienung, außerhalb der fachlichen Rolle:* (a) Wird der Kurslink in einem Tab geöffnet, in dem die Seite schon offen ist (nur der Teil hinter `#` ändert sich), passiert nichts und es erscheint keine Meldung; erst Neuladen fragt nach der Übernahme. (b) „Kurswerte als Link teilen“ erzeugt auch bei leerem Messblatt einen Link (`u:;m:;…;b2:,,,,,,,`) ohne Hinweis; wer ihn öffnet und „Übernehmen“ wählt, hat danach ein leeres Messblatt. | `g3_f_hash.js` (Felder danach leer, keine Meldung); `g3_f_csv.js`, `g3_f_ungueltig.js` | (a) auf die Änderung hinter `#` reagieren; (b) bei leerem Messblatt keinen Link erzeugen und das sagen | CONFIRMED |
+| G3-24 | low | Englisch: Wird nach dem Öffnen eines Kurslinks auf EN umgeschaltet, bevor die Abfrage beantwortet ist, bleibt sie deutsch („Kurswerte aus dem Link übernehmen? … Übernehmen / Nicht übernehmen“); erst die Bestätigung erscheint englisch („Class data from the link used.“). | `g3_f_en.js`, `en_ui.txt` | Abfrage beim Sprachwechsel neu beschriften | CONFIRMED |
 
-Zahl der Befunde: blocker 0, high 1 (G3-13, außerhalb der fachlichen Rolle, INFERRED), medium 3, low 9.
+Zahl der Befunde: blocker 0, high 1 (G3-13, außerhalb der fachlichen Rolle, INFERRED), medium 5 (G3-01 bis G3-03, G3-14, G3-16), low 18 (G3-04 bis G3-12, G3-15, G3-17 bis G3-24). Davon am 06.11.2026 neu: medium 2, low 9.
 
 ## 6 Anhang: Skripte
 
@@ -145,6 +190,17 @@ Alle Skripte liegen in `/tmp/claude-0/-home-user-wue-tutorien/8bff1287-c5bb-5641
 - `g3_maxscan.js`: Abtastung der Zugabe 1 bis 180 min in der Seite, Bewertung der Startvorhersage
 - `g3_fragen.js`, `g3_vertiefung.js`: Fragen mit Vorhersage, Ausgangslage, Auflösung (deutsch und englisch)
 - `g3_waermestrom.js`, `g3_messung.js`, `g3_reiter.js`, `g3_hilfe.js`, `g3_rest.js`: Wärmestrom, Bilanzraum, ungültige Einstellung, Becher kalt, Messreihe und Ausgleichsgerade, Reitertexte und Indizes, Hilfetexte
+
+Fortsetzung 06.11.2026 (gleicher Ordner):
+
+- `g3_f_rechnung.py`: eigene Werte für F1 (Becher 3), F2 (Deckel) und Standard je Minute bzw. je 5 min (nutzt `zustand` aus `g3_rechnung.py`)
+- `g3_f_csvcheck.py`: jede Modellzeile der CSV gegen die eigene Rechnung, Zahl der Kopf- und Datenfelder
+- `g3_f_lage.py`: Pixel der Kurven, Sprünge, Punkte und des Schnittkreises über die Achsenteilung in (*t*, $\vartheta$) zurückgerechnet und verglichen
+- `g3_f_b3.js`, `g3_f_diag.js`, `g3_f_lage.js`, `g3_f_zoom.js`, `g3_f_ln3.js`: Messblatt mit Becher 3, Diagramm, Ansicht ln
+- `g3_f_link.js`, `g3_f_ungueltig.js`, `g3_f_hash.js`, `g3_f_deckel.js`, `g3_f_deckel2.js`, `g3_f_finde.js`: Kurslink hin und zurück, ungültige Links, Deckel
+- `g3_f_csv.js`, `g3_f_tabelle.js`, `g3_f_t75.js`, `g3_f_vergleich.js`: CSV und Herunterladen, Wertetabelle, Zugabe mit Nachkommastelle, Vergleichslauf
+- `g3_f_en.js`, `g3_f_en2.js`, `g3_f_en3.js`, `g3_f_de_preset.js`: englische Oberfläche, Voreinstellungen, Feldgrenzen
+- `g3_striche.py`: Suche nach Gedankenstrichen in diesem Gutachten
 
 Wichtigste Zeilen aus `g3_rechnung.py`:
 
