@@ -140,9 +140,75 @@ EINZELN = {
  "G5-28": ("druck", ""), "G6-08": ("entschieden", "„Weiter“ nach Frage 2 und „Vertiefung öffnen“ führen zu V1; dauerhafter Eintrag nicht gebaut (low)"),
  "G6-13": ("stand_kopf", ""), "G6-30": ("scroll_tabelle", ""), "G6-32": ("fragen_k3", ""),
 }
+
+# Runde 2: neue Befunde (IDs G?-R2-nn und G9-nn der neuen Studentin); Nachprüfungen stehen in den Gutachten *_R2.md
+R2 = {
+ "G1-R2-01": (U, "Rechenwerte und Vorhersagezeile zeigen die Vorhersage der aktuellen Frage (`aktuelleVorhersage`)", "behoben"),
+ "G1-R2-02": (U, "Ausgangslage von Frage 2 vor dem Prüfen „Kurswerte, übernommen beim Prüfen“", "behoben"),
+ "G1-R2-03": (U, "Schnittbeschriftung nur mit freiem Platz (prüft Kurven, Punkte, Raumlinie, Vorhersagelinie)", "behoben; Endmarken bei 60 min dicht (siehe G9-09)"),
+ "G2-R2-01": (U, "Anheften nur bei Fokus im Messblatt aus, nicht in der Frageleiste: Knopf springt nicht mehr", "behoben"),
+ "G2-R2-02": (U, "Statusansage beim Sprachwechsel geleert", "behoben"),
+ "G2-R2-03": (U, "Beispiel je Frage (3,5 K; 50 min; 40 °C; 80 min)", "behoben"),
+ "G2-R2-04": (U, "siehe G1-R2-02", "behoben"),
+ "G2-R2-05": (U, "„sichtbar nach eurer Vorhersage zu Frage 1“ / „shown once you have made your prediction …“", "behoben"),
+ "G2-R2-06": (U, "Ohne Schnitt vor der Zugabe Text „Tasse 2 gibt bis zur Zugabe insgesamt … mehr ab“", "behoben"),
+ "G2-R2-07": (U, "Grund der Ungültigkeit am auslösenden Feld, Feld mit `aria-invalid`", "behoben"),
+ "G2-R2-08": (U, "V5 englisch umformuliert; Stellenzahl folgt Konzept 6.2", "behoben"),
+ "G3-R2-01": (U, "siehe G2-R2-06", "behoben"),
+ "G4-R2-01": (U, "Teilweise: Rückblick am Handy nennt Q1 und Q2 direkt beim Auftrag; die Säulen selbst stehen weiter unter Frage und Regler", "teilweise"),
+ "G4-R2-02": (U, "Wärmestrom-Ansicht nennt vor der Vorhersage zu Frage 1 keinen Schnitt", "behoben"),
+ "G4-R2-03": (U, "siehe G1-R2-01", "behoben"),
+ "G4-R2-04": (U, "Rückfrage schließt mit Escape, Fokus auf „Ja“ bleibt (Muster der Rückfragen); Grund steht im Text", "teilweise"),
+ "G4-R2-05": (U, "Ansage „Ohne Vorhersage aufgedeckt“", "behoben"),
+ "G4-R2-06": (U, "Nach dem Überspringen keine Eingaben mehr; ohne Kurswerte kein „ohne Vorhersage aufdecken“", "behoben"),
+ "G5-R2-01": (U, "`scroll-padding-top` 56 px ab 768 px", "behoben"),
+ "G5-R2-02": (U, "Diagrammhöhe `min(29vh, 45vh − 125px)`, Schalter außerhalb des angehefteten Bereichs; " + BT + " „angehefteter Bereich höchstens 45 %“", "behoben"),
+ "G5-R2-03": (U, "Ersatzlegende als Text unter dem Diagramm", "behoben"),
+ "G5-R2-04": (U, "Tabelle im Messblatt ohne zweiten Bereich gleichen Namens", "behoben"),
+ "G5-R2-05": (U, "Aufklappzeichen mit leerem Alternativtext (`content: \"▸\" / \"\"`)", "behoben"),
+ "G5-R2-06": (U, "Fester Text „Diagramm oben anheften“ mit `aria-pressed`", "behoben"),
+ "G5-R2-07": (U, "Hinweis „außerhalb des sinnvollen Bereichs“", "behoben"),
+ "G5-R2-08": (U, "Bestätigung nur über den Fokus, nicht zusätzlich als Ansage", "behoben"),
+ "G6-R2-01": (U, "siehe G5-R2-03", "behoben"),
+ "G6-R2-02": (U, "Vorhersagelinie als Hindernis für Beschriftungen; Kasten bleibt oben rechts", "behoben (Abstand Kasten zu Linie bleibt)"),
+ "G6-R2-03": (U, "siehe G5-R2-01", "behoben"),
+ "G6-R2-04": (U, "siehe G5-R2-02", "behoben"),
+ "G6-R2-05": (U, "Köpfe der Wertetabelle rechtsbündig", "behoben"),
+ "G6-R2-06": (U, "siehe G2-R2-01", "behoben"),
+ "G7-R2-01": (U, "Fragetext nach dem Festhalten eingeklappt; Einsatzblatt: Zoom zuerst 100 %", "behoben im Rahmen; Hörsaal offen"),
+ "G7-R2-02": (U, "Rechte Spalte 240 px ab 768 px, Schrift der Säulen größer", "behoben"),
+ "G7-R2-03": (U, "Einsatzblatt nennt die Abweichung Blatt (40 min) gegen Seite (60 min) und verweist auf die Frage an die TL", "behoben"),
+ "G7-R2-04": (U, "Einsatzblatt: Link auf der veröffentlichten Seite erzeugen, ein QR-Code mit dem Kurslink, Werkzeug außerhalb der Seite", "behoben"),
+ "G7-R2-05": (U, "Einsatzblatt: Messblatt von Anfang an sichtbar", "behoben"),
+ "G7-R2-06": (U, "Einsatzblatt: „Kurswerte löschen“ nach der Probe", "behoben"),
+ "G7-R2-07": (U, "Bestätigung verschwindet nach 15 s", "behoben"),
+ "G7-R2-08": (O, "Wortlaut Frage 2 (Konzept 6.1); Empfehlung im Baubericht", "Frage an die TL"),
+ "G8-R2-01": (U, "CSV vor der Startvorhersage ohne Modellwerte; " + BT + " „CSV vor der Startvorhersage ohne Modellwerte“", "behoben"),
+ "G8-R2-02": (U, "siehe G5-R2-02", "behoben"),
+ "G8-R2-03": (U, "siehe G2-R2-01", "behoben"),
+ "G8-R2-04": (U, "Messwert „60 nach der Milch“ nur bei Zugabe nach 60 min in der CSV", "behoben"),
+ "G8-R2-05": (U, "Fokus bleibt nach dem Abgleich; offene Rückfragen schließen weiter (selten: zwei Tabs gleichzeitig)", "teilweise"),
+ "G8-R2-06": (U, "Zweiter Klick eines Doppelklicks (`detail > 1`) wird bei Rückfragen und Auflösungen übergangen", "behoben"),
+ "G8-R2-07": (A, "Erneute Rückfrage beim Zurückblättern ändert ohne „Übernehmen“ nichts", "keine"),
+ "G9-01": (U, "siehe G2-R2-01", "behoben"),
+ "G9-02": (U, "Vorhersagezeile steht im angehefteten Bereich, wenn der Kasten nicht in das Diagramm passt", "behoben"),
+ "G9-03": (U, "Vorhersage neutral blau statt grün", "behoben"),
+ "G9-04": (U, "Teilweise: Rückblick mit Auftrag und Q1, Q2; Sprung zu Frage 1 ist Festlegung (ZUSTAENDE P2)", "teilweise; Ablauf Frage an die TL"),
+ "G9-05": (A, "Messpunkte bleiben als Messung sichtbar; die Vertiefung setzt ihre Ausgangslage", "keine"),
+ "G9-06": (O, "siehe G1-09, G7-12", "Frage an die TL"),
+ "G9-07": (O, "siehe G3-13", "Frage an die TL"),
+ "G9-08": (O, "Wortlaut Frage 1 (Konzept 6.1)", "Frage an die TL"),
+ "G9-09": (U, "Teilweise: Modellendpunkte hohl, Becher 1 oben; bei 60 min liegen mehrere Marken dicht", "teilweise"),
+ "G9-10": (O, "siehe G7-R2-08", "Frage an die TL"),
+ "G9-11": (A, "Die Ansage nennt die Zahlen der aktuellen Lage; ein gleicher Einleitungssatz ist gewollt", "keine"),
+ "G9-12": (U, "siehe G2-R2-03, G5-R2-07", "behoben"),
+ "G9-13": (U, "siehe G6-R2-02", "behoben"),
+}
+
 def befunde():
     out = []
     for f in sorted(glob.glob(os.path.join(HIER, "G*_*.md"))):
+        if f.endswith("_R2.md") or "G9_" in f or "_R3" in f: continue
         for z in open(f, encoding="utf-8"):
             m = re.match(r"^\|\s*(G\d-\d+)\s*\|\s*(blocker|high|medium|low)\s*\|\s*(.*?)\s*\|", z)
             if m:
@@ -170,5 +236,16 @@ def main():
     bil = "\n| Schwere | übernehmen | ablehnen | offen |\n|:--|--:|--:|--:|\n" + "\n".join("| %s | %d | %d | %d |" % (s, zaehl.get((s, U), 0), zaehl.get((s, A), 0), zaehl.get((s, O), 0)) for s in ("blocker", "high", "medium", "low")) + "\n"
     with open(os.path.join(HIER, "ZUSAMMENFUEHRUNG.md"), "w", encoding="utf-8") as f:
         f.write(kopf + bil + "\n## Alle Befunde der Runde 1\n\n| ID | Schwere | Entscheidung | Befund (gekürzt): Begründung mit Beleg | Folge |\n|:--|:--|:--|:--|:--|\n" + "\n".join(zeilen) + "\n")
-    print(len(zeilen), "Befunde", zaehl)
+    r2, z2 = [], {}
+    for f in sorted(glob.glob(os.path.join(HIER, "*_R2.md")) + glob.glob(os.path.join(HIER, "G9_*.md"))):
+        for zl in open(f, encoding="utf-8"):
+            m = re.match(r"^\|\s*(G\d-R2-\d+|G9-\d+)\s*\|\s*(blocker|high|medium|low)\s*\|\s*(.*?)\s*\|", zl)
+            if m:
+                i = m.group(1); e, b, fo = R2[i]; txt = re.sub(r"\*\*|`", "", m.group(3))[:110]
+                z2[(m.group(2), e)] = z2.get((m.group(2), e), 0) + 1
+                r2.append("| %s | %s | %s | %s: %s | %s |" % (i, m.group(2), e, txt.replace("|", "/"), b.replace("|", "/"), fo))
+    bil2 = "\n| Schwere | übernehmen | ablehnen | offen |\n|:--|--:|--:|--:|\n" + "\n".join("| %s | %d | %d | %d |" % (sv, z2.get((sv, U), 0), z2.get((sv, A), 0), z2.get((sv, O), 0)) for sv in ("blocker", "high", "medium", "low")) + "\n"
+    with open(os.path.join(HIER, "ZUSAMMENFUEHRUNG.md"), "a", encoding="utf-8") as f:
+        f.write("\n## Runde 2\n\nGeprüfter Stand SHA-256 `ea6d3ad2…9c31` (394 754 Bytes): alle acht Rollen prüften ihre übernommenen Befunde nach (Ergebnisse in den Tabellen „Nachprüfung“ der Dateien `*_R2.md`), dazu die neue Studentin G9. Kein Befund der Runde 1 blieb ganz unbehoben außer G5-21 (nachgeholt) und G6-19 (nachgebessert). Korrigierter Stand für Runde 3: SHA-256 `1d90ce2f…292b` (399 063 Bytes).\n\n### Bilanz Runde 2\n" + bil2 + "\n### Neue Befunde der Runde 2\n\n| ID | Schwere | Entscheidung | Befund (gekürzt): Begründung mit Beleg | Folge |\n|:--|:--|:--|:--|:--|\n" + "\n".join(r2) + "\n")
+    print(len(zeilen), "Befunde", zaehl, "Runde 2:", len(r2), z2)
 main()

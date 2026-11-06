@@ -212,3 +212,81 @@
 | G8-18 | medium | übernehmen | Querformat zeigt Diagramm und Regler nicht nebeneinander (KONZEPT Abschnitt Handy: „Querformat zeigt Diagramm …: Teilweise: Diagrammhöhe bei niedrigen Fenstern ab 170 px, Pflichtregler direkt darunter, damit Diagramm und Regler zugleich sichtbar sind; echtes Nebeneinander (Konzept 5.2) nicht gebaut | teilweise; Nebeneinander im Baubericht als Abweichung |
 | G8-19 | low | übernehmen | Doppelklick auf „Weiter“ in V1, V2 und V3 am Laptop führt zurück zur selben Frage. Der erste Klick zeichnet di…: Zweiter Klick innerhalb 400 ms nach einem Fragewechsel wird übergangen | behoben |
 | G8-20 | low | übernehmen | Browser-Schriftgröße wirkt nur auf Teile der Seite; bei 200 % waagerechtes Scrollen und Anheften über 45 %. bo…: `body` mit 1rem statt 16px; angehefteter Bereich höchstens 33 vh plus Kernzahlen | behoben |
+
+## Runde 2
+
+Geprüfter Stand SHA-256 `ea6d3ad2…9c31` (394 754 Bytes): alle acht Rollen prüften ihre übernommenen Befunde nach (Ergebnisse in den Tabellen „Nachprüfung“ der Dateien `*_R2.md`), dazu die neue Studentin G9. Kein Befund der Runde 1 blieb ganz unbehoben außer G5-21 (nachgeholt) und G6-19 (nachgebessert). Korrigierter Stand für Runde 3: SHA-256 `1d90ce2f…292b` (399 063 Bytes).
+
+### Bilanz Runde 2
+
+| Schwere | übernehmen | ablehnen | offen |
+|:--|--:|--:|--:|
+| blocker | 1 | 0 | 0 |
+| high | 8 | 0 | 1 |
+| medium | 12 | 0 | 1 |
+| low | 31 | 3 | 3 |
+
+### Neue Befunde der Runde 2
+
+| ID | Schwere | Entscheidung | Befund (gekürzt): Begründung mit Beleg | Folge |
+|:--|:--|:--|:--|:--|
+| G1-R2-01 | low | übernehmen | Neben dem behobenen Kasten im Diagramm zeigen zwei Stellen weiter nur die Startvorhersage: die grüne Zeile unt: Rechenwerte und Vorhersagezeile zeigen die Vorhersage der aktuellen Frage (`aktuelleVorhersage`) | behoben |
+| G1-R2-02 | low | übernehmen | „Ausgangslage“ in Frage 2 passt nicht zum Zustand. Mit geladenem Link steht vor dem Festhalten „Kurswerte über: Ausgangslage von Frage 2 vor dem Prüfen „Kurswerte, übernommen beim Prüfen“ | behoben |
+| G1-R2-03 | low | übernehmen | Bei später Zugabe (180 min) überlagern sich Beschriftungen: „Schnitt“ steht auf „Raum 20,0 °C“, die senkrechte: Schnittbeschriftung nur mit freiem Platz (prüft Kurven, Punkte, Raumlinie, Vorhersagelinie) | behoben; Endmarken bei 60 min dicht (siehe G9-09) |
+| G2-R2-01 | medium | übernehmen | Am Handy geht das erste Tippen auf „Lock in your prediction, then check“ verloren, wenn ich vorher eine Zahl g: Anheften nur bei Fokus im Messblatt aus, nicht in der Frageleiste: Knopf springt nicht mehr | behoben |
+| G2-R2-02 | low | übernehmen | Deutscher Rest für Bildschirmleser nach DE → EN: Die Live-Region #ansage behält „Tasse 1 34,05 °C, Tasse 2 30,: Statusansage beim Sprachwechsel geleert | behoben |
+| G2-R2-03 | low | übernehmen | Hinweis am Feld nennt immer dasselbe Beispiel „4 or 3.5“, auch bei Zeiten in min (Frage 1, V2) und bei der Mil: Beispiel je Frage (3,5 K; 50 min; 40 °C; 80 min) | behoben |
+| G2-R2-04 | low | übernehmen | Frage 2 widerspricht sich nach dem Laden: Über der Ausgangslage steht „Class data loaded: 23 measured values.“: siehe G1-R2-02 | behoben |
+| G2-R2-05 | low | übernehmen | „Intersection of the curves: after your prediction for question 1“ steht fett in der Wertespalte und liest sic: „sichtbar nach eurer Vorhersage zu Frage 1“ / „shown once you have made your prediction …“ | behoben |
+| G2-R2-06 | low | übernehmen | Text zum Wärmestrom ohne Schnittpunkt: In der Ansicht „Heat flow rate“ steht „Up to the intersection, cup 2 re: Ohne Schnitt vor der Zugabe Text „Tasse 2 gibt bis zur Zugabe insgesamt … mehr ab“ | behoben |
+| G2-R2-07 | low | übernehmen | Hinweis bei ungültiger Kombination steht weit weg vom Feld: Am auslösenden Feld „Measurement after 10 min“ ste: Grund der Ungültigkeit am auslösenden Feld, Feld mit `aria-invalid` | behoben |
+| G2-R2-08 | low | übernehmen | Kleinigkeiten in Auflösung und Beschreibung: V5 „from 80 to 63.5 °C in 30 min instead of to 48.8 °C“ ist kein : V5 englisch umformuliert; Stellenzahl folgt Konzept 6.2 | behoben |
+| G3-R2-01 | low | übernehmen | Ansicht Wärmestrom: Liegt der Schnitt erst nach der Zugabe, sagen Beschreibung und Flächentext trotzdem „Bis z: siehe G2-R2-06 | behoben |
+| G4-R2-01 | medium | übernehmen | Handy: Der Erklärauftrag „Erklärt den Unterschied mit $Q_1$ und $Q_2$“ und die Säulen mit $Q_1$, $Q_2$ sind ni: Teilweise: Rückblick am Handy nennt Q1 und Q2 direkt beim Auftrag; die Säulen selbst stehen weiter unter Frage und Regler | teilweise |
+| G4-R2-02 | low | übernehmen | Die neue Sperre zu Frage 1 ist über die Vertiefung umgehbar: Ansicht „Wärmestrom“ vor der Vorhersage zu Frage : Wärmestrom-Ansicht nennt vor der Vorhersage zu Frage 1 keinen Schnitt | behoben |
+| G4-R2-03 | low | übernehmen | Zwei verschiedene „Eure Vorhersage“ zugleich: Der Kasten im Diagramm zeigt die aktuelle Frage („30 min“, „30 °: siehe G1-R2-01 | behoben |
+| G4-R2-04 | low | übernehmen | Rückfrage bei „ohne Vorhersage aufdecken“ lenkt zum Aufdecken: Der Fokus liegt sofort auf „Ja“ (zweimal Enter : Rückfrage schließt mit Escape, Fokus auf „Ja“ bleibt (Muster der Rückfragen); Grund steht im Text | teilweise |
+| G4-R2-05 | low | übernehmen | Nach „ohne Vorhersage aufdecken“ sagt die Ansage für Bildschirmleser „Vorhersage festgehalten, Kurven und Rech: Ansage „Ohne Vorhersage aufgedeckt“ | behoben |
+| G4-R2-06 | low | übernehmen | Frage 2 ohne Kurswerte widersprüchlich: Nach „Frage 2 überspringen“ bleiben Auswahl, grauer Knopf, der Hinweis: Nach dem Überspringen keine Eingaben mehr; ohne Kurswerte kein „ohne Vorhersage aufdecken“ | behoben |
+| G5-R2-01 | high | übernehmen | Neue Kernleiste in der Vertiefung (#kern-leiste, ab 768 px Breite position: sticky; top: 0, 34 px hoch) verdec: `scroll-padding-top` 56 px ab 768 px | behoben |
+| G5-R2-02 | high | übernehmen | Angehefteter Bereich am Handy höher als die Muss-Grenze aus M-6 („höchstens 45 % der sichtbaren Höhe“). Die Ko: Diagrammhöhe `min(29vh, 45vh − 125px)`, Schalter außerhalb des angehefteten Bereichs; Browsertest `browsertest_bau.js` „angehefteter Bereich höchstens 45 %“ | behoben |
+| G5-R2-03 | medium | übernehmen | Bei 320 und 360 px Breite fällt die Kurvenbeschriftung auf eine Legendenzeile unter dem Diagramm, die über den: Ersatzlegende als Text unter dem Diagramm | behoben |
+| G5-R2-04 | low | übernehmen | Die Scrollhülle des Messblatts trägt immer role="region" mit aria-labelledby="mess-titel", also denselben Name: Tabelle im Messblatt ohne zweiten Bereich gleichen Namens | behoben |
+| G5-R2-05 | low | übernehmen | Die neuen Aufklappzeichen stehen im zugänglichen Namen jedes Ausklappers: CSS-Inhalt content: "▸" ohne Alterna: Aufklappzeichen mit leerem Alternativtext (`content: "▸" / ""`) | behoben |
+| G5-R2-06 | low | übernehmen | Der Schalter „Diagramm lösen“ wechselt zugleich Beschriftung und aria-pressed. Angesagt wird „Diagramm lösen, : Fester Text „Diagramm oben anheften“ mit `aria-pressed` | behoben |
+| G5-R2-07 | low | übernehmen | Vorhersagefeld am Start: „−3“ wird abgelehnt mit „Bitte nur eine Zahl, zum Beispiel 4 oder 3,5.“; die Eingabe : Hinweis „außerhalb des sinnvollen Bereichs“ | behoben |
+| G5-R2-08 | low | übernehmen | Kurslink-Bestätigung kann doppelt angesagt werden: Der Fokus geht auf p#link-ende, und derselbe Text wird zugl: Bestätigung nur über den Fokus, nicht zusätzlich als Ansage | behoben |
+| G6-R2-01 | high | übernehmen | Rückfall der Beschriftung bei kleiner Zugabezeit: Findet die Platzierung im Diagramm keinen Platz, setzt sie e: siehe G5-R2-03 | behoben |
+| G6-R2-02 | high | übernehmen | Die Vorhersagemarke ist bei der Platzierung kein Hindernis: Die grün gepunktete Vorhersagelinie läuft durch Ku: Vorhersagelinie als Hindernis für Beschriftungen; Kasten bleibt oben rechts | behoben (Abstand Kasten zu Linie bleibt) |
+| G6-R2-03 | high | übernehmen | Ab 768 px verdeckt die angeheftete Kernleiste der Vertiefung (34 px, sticky) den Fokus: scroll-padding-top rec: siehe G5-R2-01 | behoben |
+| G6-R2-04 | high | übernehmen | 360 × 640: Der angeheftete Bereich ist 309 px hoch, das sind 48 % der sichtbaren Höhe; M-6 erlaubt höchstens 4: siehe G5-R2-02 | behoben |
+| G6-R2-05 | low | übernehmen | Wertetabelle: Köpfe linksbündig, Zahlen rechtsbündig; in der breiten Tabelle am Laptop stehen „Tasse 1 [°C]“ u: Köpfe der Wertetabelle rechtsbündig | behoben |
+| G6-R2-06 | low | übernehmen | Handy: Tipp auf „Vorhersage festhalten, dann prüfen“ kann verloren gehen, solange das Zahlenfeld noch den Foku: siehe G2-R2-01 | behoben |
+| G7-R2-01 | medium | übernehmen | Zoom-Empfehlung im Einsatzblatt trifft nicht zu; Frage, Diagramm und Regler am Beamer nicht zugleich sichtbar.: Fragetext nach dem Festhalten eingeklappt; Einsatzblatt: Zoom zuerst 100 % | behoben im Rahmen; Hörsaal offen |
+| G7-R2-02 | medium | übernehmen | Energiesäulen unter 1200 CSS-px wieder klein; die empfohlene Zoomstufe für 1280 × 720 verschlechtert sie. Ab 1: Rechte Spalte 240 px ab 768 px, Schrift der Säulen größer | behoben |
+| G7-R2-03 | medium | übernehmen | Einsatzblatt und Blatt widersprechen sich beim Versuch, ohne es zu sagen (Folge von G7-12). Einsatzblatt 2.5: : Einsatzblatt nennt die Abweichung Blatt (40 min) gegen Seite (60 min) und verweist auf die Frage an die TL | behoben |
+| G7-R2-04 | medium | übernehmen | Einsatzblatt: Kurslink und QR-Code nicht durchführbar beschrieben. (a) 2.1 legt die Offline-Datei auf den Beam: Einsatzblatt: Link auf der veröffentlichten Seite erzeugen, ein QR-Code mit dem Kurslink, Werkzeug außerhalb der Seite | behoben |
+| G7-R2-05 | low | übernehmen | Einsatzblatt: zwei veraltete oder unpassende Sätze. 6.1 „Im Messblatt (unter dem Diagramm, nach der ersten Vor: Einsatzblatt: Messblatt von Anfang an sichtbar | behoben |
+| G7-R2-06 | low | übernehmen | Einsatzblatt: Lücken bei Vorbereitung und Eingabe. (a) 2.1 Probe mit „Für die nächste Gruppe zurücksetzen“: Te: Einsatzblatt: „Kurswerte löschen“ nach der Probe | behoben |
+| G7-R2-07 | low | übernehmen | Meldung „Kurswerte aus dem Link übernommen.“ bleibt dauerhaft, auch nach dem Zurücksetzen und in englischer An: Bestätigung verschwindet nach 15 s | behoben |
+| G7-R2-08 | low | offen | Frage 2 fordert einen Schritt, den die Seite schon getan hat. Der Fragetext sagt „Prüft dann: Ladet die Messwe: Wortlaut Frage 2 (Konzept 6.1); Empfehlung im Baubericht | Frage an die TL |
+| G8-R2-01 | blocker | übernehmen | Lösung vor der Vorhersage über den CSV-Knopf. Der Knopf „Als CSV herunterladen“ im Messblatt ist schon vor der: CSV vor der Startvorhersage ohne Modellwerte; Browsertest `browsertest_bau.js` „CSV vor der Startvorhersage ohne Modellwerte“ | behoben |
+| G8-R2-02 | high | übernehmen | Angehefteter Bereich über 45 % der sichtbaren Höhe (M-6 verletzt), schlechter als in Runde 1. Begrenzt ist nur: siehe G5-R2-02 | behoben |
+| G8-R2-03 | medium | übernehmen | Erster Klick nach einer Eingabe in der Frageleiste geht verloren (Nebenwirkung der Korrektur zu G8-17). Solang: siehe G2-R2-01 | behoben |
+| G8-R2-04 | medium | übernehmen | CSV ordnet die Messwerte „60 nach der Milch“ einer anderen Zeit zu, wenn die Zugabe nicht 60 min ist. Die letz: Messwert „60 nach der Milch“ nur bei Zugabe nach 60 min in der CSV | behoben |
+| G8-R2-05 | low | übernehmen | Abgleich zwischen Tabs baut den anderen Tab ganz neu auf: Fokus, offene Elemente, Rückfragen und ungespeichert: Fokus bleibt nach dem Abgleich; offene Rückfragen schließen weiter (selten: zwei Tabs gleichzeitig) | teilweise |
+| G8-R2-06 | low | übernehmen | Doppelklick-Sperre gilt nur für „Weiter“ und „Zurück“. Doppelklick oder Doppeltipp auf „Ja“ bei „Für die nächs: Zweiter Klick eines Doppelklicks (`detail > 1`) wird bei Rückfragen und Auflösungen übergangen | behoben |
+| G8-R2-07 | low | ablehnen | Zurück und Vor bieten schon beantwortete Kurslinks erneut an; nach „Zurück“ bleibt eine offene Link-Frage steh: Erneute Rückfrage beim Zurückblättern ändert ohne „Übernehmen“ nichts | keine |
+| G9-01 | medium | übernehmen | Erster Tipp auf „Vorhersage festhalten, dann prüfen“ geht verloren, wenn das Zahlenfeld noch den Fokus hat und: siehe G2-R2-01 | behoben |
+| G9-02 | high | übernehmen | Die Startvorhersage erscheint nach dem Festhalten nicht als beschriftete Marke im Diagramm (M-2). Frage 1, Fra: Vorhersagezeile steht im angehefteten Bereich, wenn der Kasten nicht in das Diagramm passt | behoben |
+| G9-03 | medium | übernehmen | Eine falsche Vorhersage wird grün dargestellt (Kasten unter dem Regler; Marken der Fragen im Diagramm ebenfall: Vorhersage neutral blau statt grün | behoben |
+| G9-04 | medium | übernehmen | Nach dem Festhalten der Startfrage springt der Fokus auf Frage 1, die Startkarte wird klein. Der Erklärauftrag: Teilweise: Rückblick mit Auftrag und Q1, Q2; Sprung zu Frage 1 ist Festlegung (ZUSTAENDE P2) | teilweise; Ablauf Frage an die TL |
+| G9-05 | low | ablehnen | In der Vertiefung (V1, Ausgangslage Standardwerte, Raum 20 °C) bleiben die Messpunkte des Kurses (Raum 21,5 °C: Messpunkte bleiben als Messung sichtbar; die Vertiefung setzt ihre Ausgangslage | keine |
+| G9-06 | medium | offen | Messblatt und Seite sagen „Becher 2 (Milch nach 60 min)“ und Zeilen bis 60 min; das Aufgabenblatt, das wir in : siehe G1-09, G7-12 | Frage an die TL |
+| G9-07 | high | offen | Reiterleiste hat drei Reiter („Versuche · Modell · So rechnet der Code“) statt neun (M-18), und der Fragen-Rei: siehe G3-13 | Frage an die TL |
+| G9-08 | low | offen | Frage 1 sagt nicht, dass beide Tassen direkt nach der Zugabe verglichen werden; das steht nur in der „?“-Hilfe: Wortlaut Frage 1 (Konzept 6.1) | Frage an die TL |
+| G9-09 | low | übernehmen | Bei 60 min liegen Messpunkt Becher 1, zwei Messpunkte Becher 2 (vor und nach der Milch) und zwei Modellringe a: Teilweise: Modellendpunkte hohl, Becher 1 oben; bei 60 min liegen mehrere Marken dicht | teilweise |
+| G9-10 | low | offen | Frage 2 sagt nach dem Festhalten weiter „Ladet die Messwerte … und übernehmt die Einstellungen“, obwohl das Fe: siehe G7-R2-08 | Frage an die TL |
+| G9-11 | low | ablehnen | Die Ansage (aria-live) nach dem Festhalten ist bei allen Fragen derselbe Satz „Vorhersage festgehalten, Kurven: Die Ansage nennt die Zahlen der aktuellen Lage; ein gleicher Einleitungssatz ist gewollt | keine |
+| G9-12 | low | übernehmen | Hinweis bei Frage 1 (Minuten) lautet „Bitte nur eine Zahl, zum Beispiel 4 oder 3,5.“; „-4“ beim Start wird ohn: siehe G2-R2-03, G5-R2-07 | behoben |
+| G9-13 | low | übernehmen | Die grüne senkrechte Vorhersagelinie von Frage 1 läuft durch die Kurvenbeschriftungen „Tasse 2: Milch nach 56 : siehe G6-R2-02 | behoben |
