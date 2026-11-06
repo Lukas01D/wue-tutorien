@@ -507,6 +507,8 @@ async function domOhneSkript(p) {
   {
     const ctx = await kontext(browser); const fehler = [];
     const p = await seite(ctx, DATEI_URL, fehler);
+    const csvVor = await p.evaluate(() => window.KAFFEE.csv());
+    pruefe("G8-R2-01: CSV vor der Startvorhersage ohne Modellwerte", !/34,05|30,19|70,47/.test(csvVor), csvVor.split("\r\n")[1]);
     pruefe("G7-08: Messblatt vor der Freigabe eingebbar, ohne „Übernehmen“", await p.isVisible('input[data-b="2"][data-i="0"]') && (await p.$("#mess-ueber")) === null);
     await p.check('input[name="wahl-start"][value="1"]'); await p.fill("#frage-zahl", "4 K");
     pruefe("G1-05: „4 K“ als Zahl angenommen", !(await p.isDisabled("#knopf-fest")));

@@ -1,9 +1,9 @@
 Browsertests der Kaffee-Seite (Chromium-Prüfungen, Playwright, Cloud-Container), Stand 2026-11-06
-Seite: simulation/site/index.html, SHA-256 478776ad65a31b7119299edd648b1019e0fb9b5c8a721c6325436b11267cedac
+Seite: simulation/site/index.html, SHA-256 771445699be30c0fa297e894c7ea19baac0f84713ce0dd02b57a9bb2bd50370a
 
-ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  398199 Bytes
-ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  398199 Bytes
-ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-ZbZa9T3odtynEVFCvRhjG…
+ok    B01 Artefakt: index.html und Kaffee_Simulation.html bytegleich  398505 Bytes
+ok    B02 Artefakt (L1): unter 450 000 Bytes unkomprimiert  398505 Bytes
+ok    B03 Artefakt: CSP mit default-src 'none' und Hashes, die zu Skript und Stil passen  default-src 'none'; script-src 'sha256-SpaI0MdSlsftgcWG5EShR…
 ok    B04 Artefakt: genau ein Skript- und ein Stilblock, keine externen Verweise (src=, href=http)
 ok    B05 Artefakt: Schriften eingebettet (Fira Sans, Fira Math als woff2-data-URL)
 ok    B06 Artefakt Datei (file:): frisches Profil, keine Fehler, keine CSP-Verletzung, keine Anfrage nach außen, Schrift geladen, bedienbar  Fehler 0, CSP 0, fremde Anfragen 0, Schrift true, Kurven 2
@@ -78,21 +78,22 @@ ok    B74 Diagramm angeheftet nur im Hochformat mit genug Höhe (390×844 sticky
 ok    B75 Reiter mit Tastatur (Pfeile, Pos1, Ende), Auswahl und Fokus folgen, ein Panel sichtbar  tab-modell/tab-modell/panel-modell | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche | tab-code/tab-code/panel-code | tab-code/tab-code/panel-code | tab-versuche/tab-versuche/panel-versuche
 ok    B76 Tastatur: erster Tab „Zum Inhalt springen“, Fokus sichtbar  sprung, solid
 ok    B77 axe-core 4.14.0 (wcag2a, 2aa, 21a, 21aa, 22aa): keine Verstöße in P0, P2, Vertiefung, DE und EN, 1366 und 390 px
-ok    B78 G7-08: Messblatt vor der Freigabe eingebbar, ohne „Übernehmen“
-ok    B79 G1-05: „4 K“ als Zahl angenommen
-ok    B80 G1-05: Unsinn sperrt den Knopf mit passendem Hinweis
-ok    B81 G1-04, G4-07: Rückmeldung vergleicht die Zahl mit dem Modell  Eure Vorhersage: Tasse 1 (Milch sofort), etwa 10 K · Auswahl passtEure Zahl: 10 K · Modell: 3,85 K (Standardwerte)Tasse 
-ok    B82 G2-01, G5-01: Achsenbeschriftung bei Schrittweite 2,5 mit Nachkommastelle  10 30 50 70 90 0,0 2,5 5,0 7,5 10,0 12,5
-ok    B83 G2-03: getippte „2,5“ erscheint im Englischen als „2.5“
-ok    B84 G2-02: englische CSV mit Komma im Spaltenkopf in Anführungszeichen
-ok    B85 G1-10, G7-10, G8-04: Kurslink im schon offenen Tab löst die Rückfrage aus
-ok    B86 G7-02, G8-01: zweiter Tab überschreibt nichts; der erste Tab übernimmt den Speicherstand  de/de
-ok    B87 G8-07: Kurslink endet nicht auf Komma (Kopfwerte am Ende) und wird wieder gelesen  39.6,35.2;u:21.5;m:6;d:0;b:1.2
-ok    B88 Korrekturen Runde 1: keine Konsolenfehler
-ok    B89 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 410, 419
-ok    B90 M-6: Anheften abschaltbar
-ok    B91 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  101 ms (gemessen im Cloud-Container)
-ok    B92 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.1 ms, 95 % 3.5 ms, Max 4.0 ms (Cloud)
-ok    B93 Leistung L4: Bedienfolge 30 s (1352 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.31 MB (Cloud)
+ok    B78 G8-R2-01: CSV vor der Startvorhersage ohne Modellwerte  0;;;;
+ok    B79 G7-08: Messblatt vor der Freigabe eingebbar, ohne „Übernehmen“
+ok    B80 G1-05: „4 K“ als Zahl angenommen
+ok    B81 G1-05: Unsinn sperrt den Knopf mit passendem Hinweis
+ok    B82 G1-04, G4-07: Rückmeldung vergleicht die Zahl mit dem Modell  Eure Vorhersage: Tasse 1 (Milch sofort), etwa 10 K · Auswahl passtEure Zahl: 10 K · Modell: 3,85 K (Standardwerte)Tasse 
+ok    B83 G2-01, G5-01: Achsenbeschriftung bei Schrittweite 2,5 mit Nachkommastelle  10 30 50 70 90 0,0 2,5 5,0 7,5 10,0 12,5
+ok    B84 G2-03: getippte „2,5“ erscheint im Englischen als „2.5“
+ok    B85 G2-02: englische CSV mit Komma im Spaltenkopf in Anführungszeichen
+ok    B86 G1-10, G7-10, G8-04: Kurslink im schon offenen Tab löst die Rückfrage aus
+ok    B87 G7-02, G8-01: zweiter Tab überschreibt nichts; der erste Tab übernimmt den Speicherstand  de/de
+ok    B88 G8-07: Kurslink endet nicht auf Komma (Kopfwerte am Ende) und wird wieder gelesen  39.6,35.2;u:21.5;m:6;d:0;b:1.2
+ok    B89 Korrekturen Runde 1: keine Konsolenfehler
+ok    B90 M-6 (G1-02, G4-10): am Handy Frage direkt unter dem Diagramm, Diagramm nach dem Festhalten im Bild  81, 410, 419
+ok    B91 M-6: Anheften abschaltbar
+ok    B92 Leistung L2: bedienbar nach höchstens 1500 ms (Cloud-Chromium)  107 ms (gemessen im Cloud-Container)
+ok    B93 Leistung L3: Reaktionszeit je Reglerschritt (120 Schritte): Median ≤ 25 ms, 95 % ≤ 50 ms, Max ≤ 150 ms  Median 3.1 ms, 95 % 3.7 ms, Max 4.5 ms (Cloud)
+ok    B94 Leistung L4: Bedienfolge 30 s (1340 Schritte, Regler, Sprache, Ansichten): keine Fehler, keine veralteten Werte, Zeitgeber ≤ 2, Speicherzuwachs ≤ 5 MB  Fehler 0, veraltet 0, offene Zeitgeber 0, Speicher 1.30 MB (Cloud)
 
-Ergebnis: 93 von 93 Prüfungen bestanden.
+Ergebnis: 94 von 94 Prüfungen bestanden.

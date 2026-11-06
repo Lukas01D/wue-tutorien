@@ -241,9 +241,9 @@
     const zf = $("frage-zahl"); if (zf) zf.addEventListener("input", () => { a.zahl = zf.value; sichern(); frageKnopfAktualisieren(); });
     const wf = $("frage-warum"); if (wf) wf.addEventListener("input", () => { a.warum = wf.value; sichern(); });
     const kf = $("knopf-fest"); if (kf) kf.addEventListener("click", () => festhalten(f, false));
-    const ko = $("knopf-ohne"); if (ko) ko.addEventListener("click", () => bestaetigen(t("ohne_frage"), () => festhalten(f, true), ko));
-    const kas = $("knopf-aufl-start"); if (kas) kas.addEventListener("click", () => { st.aufl = !st.aufl; sichern(); alles(); fokus("knopf-aufl-start"); });
-    const ka = $("knopf-aufl"); if (ka) ka.addEventListener("click", () => { a.aufl = !a.aufl; sichern(); alles(); fokus("knopf-aufl"); });
+    const ko = $("knopf-ohne"); if (ko) ko.addEventListener("click", ev => ev.detail < 2 && bestaetigen(t("ohne_frage"), () => festhalten(f, true), ko));
+    const kas = $("knopf-aufl-start"); if (kas) kas.addEventListener("click", ev => { if (ev.detail > 1) return; /* G8-R2-06: zweiter Klick eines Doppelklicks */ st.aufl = !st.aufl; sichern(); alles(); fokus("knopf-aufl-start"); });
+    const ka = $("knopf-aufl"); if (ka) ka.addEventListener("click", ev => { if (ev.detail > 1) return; a.aufl = !a.aufl; sichern(); alles(); fokus("knopf-aufl"); });
     const ruhig = () => Date.now() - (frageleisteZeichnen.zuletzt || 0) > 400;     // G8-19: zweiter Klick eines Doppelklicks trifft sonst den neuen Knopf
     const kz = $("knopf-zurueck"); if (kz) kz.addEventListener("click", () => { if (ruhig()) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i - 1]); } });
     const kw = $("knopf-weiter"); if (kw) kw.addEventListener("click", () => { if (ruhig()) { frageleisteZeichnen.zuletzt = Date.now(); geheZu(reihe[i + 1]); } });
@@ -588,10 +588,11 @@
     const zeilen = ["\ufeff" + kopf.map(feld).join(tr)];
     const tz = S.e.tEnd_min, mess = (b, tt, nach) => { const i = nach ? 7 : (tt % 10 === 0 && tt <= 60 ? tt / 10 : -1); return i >= 0 ? S.kurs.werte["b" + b][i] : null; };
     for (let tt = 0; tt <= Math.max(tz, 60); tt++) {
-      const m1 = R && tt <= tz ? R.kurve1(tt) : null, m2 = R && tt <= tz ? R.kurve2(tt) : null;
+      const frei = freigabe() && R;      // G8-R2-01: vor der Startvorhersage nur Messwerte
+      const m1 = frei && tt <= tz ? R.kurve1(tt) : null, m2 = frei && tt <= tz ? R.kurve2(tt) : null;
       zeilen.push([String(tt), zz(m1, 2), zz(m2, 2)].concat(becher.map(b => zz(mess(b, tt, false), 2))).join(tr));
     }
-    zeilen.push([feld(nurText(t("csv_nach_milch", { t: HILFEN.zahlText(tz, 0, S.sprache) }))), zz(R ? R.th1 : null, 2), zz(R ? R.th2 : null, 2)].concat(becher.map(b => zz(S.kurs.werte["b" + b][7], 2))).join(tr));
+    zeilen.push([feld(nurText(t("csv_nach_milch", { t: HILFEN.zahlText(tz, 0, S.sprache) }))), zz(freigabe() && R ? R.th1 : null, 2), zz(freigabe() && R ? R.th2 : null, 2)].concat(becher.map(b => zz(tz === 60 ? S.kurs.werte["b" + b][7] : null, 2))).join(tr));   // G8-R2-04
     return zeilen.join("\r\n") + "\r\n";
   }
   function csvLaden() {
@@ -978,7 +979,7 @@
     b.innerHTML = '<p id="rueck-frage">' + frageText + '</p><div class="knopfzeile"><button type="button" class="knopf-zweit" id="rueck-ja">' + t("ja") + '</button><button type="button" class="knopf-schlicht" id="rueck-nein">' + t("abbrechen") + "</button></div>";
     const ort = ausloeser || document.activeElement;
     if (ort && ort.parentNode && ort !== document.body) ort.parentNode.insertBefore(b, ort.nextSibling); else $("link-banner").after(b);
-    $("rueck-ja").addEventListener("click", () => { b.remove(); wennJa(); if (frageText !== t("ohne_frage")) $("knopf-info").textContent = nurText(t("zurueckgesetzt")); });
+    $("rueck-ja").addEventListener("click", ev => { if (ev.detail > 1) return; b.remove(); wennJa(); if (frageText !== t("ohne_frage")) $("knopf-info").textContent = nurText(t("zurueckgesetzt")); });
     $("rueck-nein").addEventListener("click", () => { b.remove(); if (ort && ort.focus) ort.focus(); });
     b.addEventListener("keydown", ev => { if (ev.key === "Escape") $("rueck-nein").click(); });
     $("rueck-ja").focus();
