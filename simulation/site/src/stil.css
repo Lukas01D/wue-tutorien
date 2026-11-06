@@ -268,3 +268,12 @@ input[type="text"] { border-color: #7d8fa1 !important; }                        
 .kurven-legende[hidden] { display: block !important; visibility: hidden; }
 /* G5-R4-05: Fehlerrand gilt auch gegen den allgemeinen Feldrand (G5-09) */
 input[type="text"][aria-invalid="true"] { border-color: var(--fehler-rand) !important; border-width: 2px; }
+/* Beamer-Befund (1280 × 720): Rückblick auf den Start am Laptop in einer Zeile mit dem Knopf */
+@media (min-width: 768px) {
+  .rueckblick { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.8rem; padding: 0.4rem 0.7rem; margin-bottom: 0.6rem; }
+  .rueckblick > p { margin: 0; }
+  .rueckblick > .auftrag { flex: 1 1 22rem; padding: 0.3rem 0.6rem; }
+  .rueckblick > .frage-knoepfe { margin-top: 0; }
+  .rueckblick > .aufloesung { flex: 1 1 100%; }
+}
+.frage-knoepfe:empty { display: none; }

@@ -228,15 +228,17 @@
       if (!(f.id === "f2" && !kursAnzahl())) h += '<button type="button" class="knopf-text" id="knopf-ohne">' + t("knopf_ohne") + "</button>";
       if (f.id === "f2" && !kursAnzahl()) h += '<button type="button" class="knopf-schlicht" id="knopf-f2-weg">' + t("f2_ueberspringen") + "</button>";
     }
-    h += '<div class="frage-nav">';
     const reihe = FRAGEN.map(x => x.id), i = reihe.indexOf(f.id);
-    if (i > 0 && freigabe()) h += '<button type="button" class="knopf-schlicht" id="knopf-zurueck">' + t("knopf_zurueck") + "</button>";
-    if (freigabe() && i < reihe.length - 1 && (a.fest || f.id === "f2" && S.f2Uebersprungen)) h += '<button type="button" class="knopf-schlicht" id="knopf-weiter">' + t("knopf_weiter") + "</button>";
-    h += "</div></div>";
+    let nav = '<div class="frage-nav">';
+    if (i > 0 && freigabe()) nav += '<button type="button" class="knopf-schlicht" id="knopf-zurueck">' + t("knopf_zurueck") + "</button>";
+    if (freigabe() && i < reihe.length - 1 && (a.fest || f.id === "f2" && S.f2Uebersprungen)) nav += '<button type="button" class="knopf-schlicht" id="knopf-weiter">' + t("knopf_weiter") + "</button>";
+    nav += "</div>";
+    if (!a.fest) h += nav;      // nach dem Festhalten stehen „Zurück“ und „Weiter“ in der Zeile von „Auflösung zeigen“ (Beamer-Befund)
+    h += "</div>";
     if (a.fest) {
       h += '<p class="hinweis"><strong>' + t("eure_vorhersage") + ":</strong> " + esc(vorhersageText(f, a)) + (a.warum ? " (" + esc(a.warum) + ")" : "") + "</p>";
-      h += '<p class="auftrag">' + (f.id === "start" ? t("auftrag_start") : (f.id === "f2" ? t("f2_auftrag") : (f.id === "f1" ? t("f1_auftrag") + " " : "") + t("auftrag_erklaeren"))) + "</p>";   // F4, G10-03
-      h += '<div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl" aria-expanded="' + (a.aufl ? "true" : "false") + '" aria-controls="aufl-leiste">' + t(a.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button></div>";
+      h += '<p class="auftrag">' + (a.ohne && f.id !== "start" ? t("auftrag_ohne") : (f.id === "start" ? t("auftrag_start") : (f.id === "f2" ? t("f2_auftrag") : (f.id === "f1" ? t("f1_auftrag") + " " : (f.id === "v1" ? t("v1_auftrag") + " " : "")) + t("auftrag_erklaeren")))) + "</p>";   // F4, G10-03, Q6
+      h += '<div class="frage-knoepfe"><button type="button" class="knopf-zweit" id="knopf-aufl" aria-expanded="' + (a.aufl ? "true" : "false") + '" aria-controls="aufl-leiste">' + t(a.aufl ? "knopf_aufloesung_zu" : "knopf_aufloesung") + "</button>" + nav + "</div>";
       if (a.aufl) h += '<div class="aufloesung" id="aufl-leiste">' + vergleichHtml(f, a) + "<p>" + auflText(f) + "</p></div>";
     }
     if (f.id === "f2" && S.f2Uebersprungen && !a.fest) h += '<p class="hinweis">' + t("f2_uebersprungen") + "</p>";
@@ -302,7 +304,7 @@
     if (a.fest) NEUTRAL = null;
     sichern(); alles();
     if (meldung) $("knopf-info").textContent = meldung;
-    if (a.fest) { ansagen(ohne ? "ohne" : true); $("simulation").scrollIntoView({ block: "start" }); }
+    if (a.fest) { ansagen(ohne ? "ohne" : true); (document.documentElement.classList.contains("handy") ? $("simulation") : $("frageleiste")).scrollIntoView({ block: "start" }); }   // Beamer: Frageleiste oben, Diagramm darunter
     const ziel = $(f.id === "start" ? "frage-titel" : "knopf-aufl");
     if (ziel) { if (!ziel.hasAttribute("tabindex") && ziel.tagName !== "BUTTON") ziel.setAttribute("tabindex", "-1"); ziel.focus({ preventScroll: true }); }
   }
@@ -346,6 +348,13 @@
     let H = Math.round(W < 520 ? W * 0.78 : Math.min(W * 0.56, Math.max(window.innerHeight < 500 ? 170 : 280, window.innerHeight * 0.5)));
     // X5-09, X5-10: angeheftet wird die Zeichnung für die tatsächlich verfügbare Höhe angelegt (Schrift bleibt 12 px), nicht verkleinert
     if (DIA_HMAX && document.documentElement.classList.contains("anheften")) H = Math.min(H, DIA_HMAX);
+    // Beamer-Befund (1280 × 720): am Laptop steht die Frageleiste über dem Diagramm; die Höhe richtet sich nach dem Platz darunter,
+    // damit Frage, Vorhersage und Diagramm zugleich im Bild sind (M-6). Untergrenze 240 px, darunter bleibt die Zeichnung lesbar.
+    if (!document.documentElement.classList.contains("handy") && window.innerWidth >= 768 && window.innerHeight >= 500 && W >= 520) {
+      const leiste = $("frageleiste").getBoundingClientRect().height, unten = $("kurven-legende").getBoundingClientRect().height + 16;
+      const regler = reglerTZfrei() && $("regler-pflicht") ? $("regler-pflicht").getBoundingClientRect().height + 8 : 0;   // beim Prüfen auch der Regler „Zugabe nach“
+      H = Math.min(H, Math.max(240, Math.floor(window.innerHeight - leiste - unten - regler - 56)));
+    }
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W); svg.setAttribute("height", H);
     const fs = 12, L = 52, Rr = 14, O = 16, U = 44;
@@ -1071,7 +1080,7 @@
     $("panel-code").innerHTML = freigabe() ? t("text_rechenweg", { zugabe: t(schnittFrei() ? "rechenweg_zugabe" : "rechenweg_zugabe_vor") }) + t("text_code", { stand: BAU.stand, version: BAU.version }) : '<p class="klein">' + t("reiter_verdeckt") + "</p>";
   }
   // F11, G1-07: Sätze zum Schnitt erst nach der Vorhersage zu Frage 1; G2-R3-02: Wärmestrom ohne Schnitt vor der Zugabe nur die Summe
-  const lesenWerte = () => ({ kreis: t(schnittFrei() ? "lesen_kreis_frei" : "lesen_kreis_vor"), strom: t(schnittFrei() ? "lesen_strom_frei" : "lesen_strom_vor") });
+  const lesenWerte = () => ({ kreis: t(schnittFrei() ? "lesen_kreis_frei" : "lesen_kreis_vor"), strom: t(schnittFrei() ? "lesen_strom_allgemein" : "lesen_strom_vor") });   // Q3
   function reglerTabelle() {
     const k = t("regler_tabelle_kopf").split("|");
     let h = t("text_regler_einleitung") + '<div class="tabelle-wrap"><table><thead><tr>' + k.map(x => "<th>" + x + "</th>").join("") + "</tr></thead><tbody>";

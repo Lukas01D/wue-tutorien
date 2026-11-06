@@ -46,7 +46,7 @@ Diese Frage bearbeiten
 @knopf_vertiefung_oeffnen
 Vertiefung öffnen
 @fertig_pflicht
-Geschafft. Kernsatz: Wer heißer ist, gibt mehr Wärme ab; deshalb Milch sofort. Erhalten bleibt die Energie von Tassen und Raum zusammen. Weiter geht es in der Vertiefung.
+Geschafft. Kernsatz: Wer heißer ist, gibt mehr Wärme ab; deshalb kalte Milch sofort. Erhalten bleibt die Energie von Tassen und Raum zusammen. Weiter geht es in der Vertiefung.
 @vertiefung_frueh
 Die Vertiefung ist für danach gedacht. Erst Frage 1 und 2.
 @begruendung_label
@@ -67,6 +67,8 @@ Ausgangslage vor deiner Vorhersage: Standardwerte (ohne Becher, ohne Deckel). Er
 Ausgangslage beim Prüfen
 @ausgangslage_gesetzt
 Ausgangslage eingestellt: {was}.
+@auftrag_ohne
+Erklärt zu zweit, was ihr seht.
 @auftrag_erklaeren
 Stimmt eure Vorhersage? Erklärt zu zweit, warum.
 @auftrag_start
@@ -107,6 +109,8 @@ Notiere zuerst für dich, dann einigt euch zu zweit: Wie ändert sich der Unters
 Zeitpunkt etwa
 @f1_auftrag
 Prüft dann: Verschiebt die Zugabe der Milch in Tasse 2. Warum wird der Unterschied bei späterer Zugabe wieder kleiner?
+@v1_auftrag
+Prüft mit dem Regler Milchtemperatur (Abschnitt Milch).
 @f1_ausgangslage
 Standardwerte
 @aufl_f1
@@ -146,11 +150,11 @@ Für Schnelle, zum Nachbereiten und zum Selbstlernen. Jede Frage wieder mit Vorh
 @v1_titel
 Milchtemperatur
 @v1_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Wie warm müsste die Milch sein, damit beide Tassen nach 60 min ungefähr gleich warm sind? Notiert für euch: Hängt diese Temperatur vom Zeitpunkt der Zugabe ab?
+Notiere zuerst für dich, dann einigt euch zu zweit: Wie warm müsste die Milch sein, damit beide Tassen nach 60 min ungefähr gleich warm sind? Notiert euch dazu: Hängt diese Temperatur vom Zeitpunkt der Zugabe ab?
 @v1_eingabe
 Milchtemperatur etwa
 @aufl_v1
-{{z:v1_60}} °C; {{z:v1_30}} °C bei Zugabe nach 30 min, {{z:v1_90}} °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei {{z:v1_60}} °C gleicht die wärmere Milch den Mehrverlust von Tasse 2 gerade aus. Je später die Zugabe, desto kälter ist Tasse 2 vorher und desto weniger warm muss die Milch sein.
+{{z:v1_60}} °C; {{z:v1_30}} °C bei Zugabe nach 30 min, {{z:v1_90}} °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei {{z:v1_60}} °C gibt Tasse 1, in der die warme Milch von Anfang an ist, bis zur Zugabe genauso viel Wärme ab wie der schwarze Kaffee in Tasse 2 ($Q_1 = Q_2$); die Milch selbst bringt in beide Tassen dieselbe Energie. Je später die Zugabe, desto mehr von der Wärme der warmen Milch hat Tasse 1 bis dahin an den Raum abgegeben, während Tasse 2 sie erst bei der Zugabe bekommt; deshalb reicht dann kühlere Milch.
 @v2_titel
 Deckel
 @v2_text
@@ -168,7 +172,7 @@ Gleich groß ({{z:dTmax}} K), aber später: bei Zugabe nach etwa {{z:v2_tmax}} m
 @v3_titel
 Becher
 @v3_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Die Tassen sind vorgewärmte Keramikbecher wie in Teil g. Wird der Unterschied größer oder kleiner? Notiert für euch: Bleibt Tasse 1 wärmer?
+Notiere zuerst für dich, dann einigt euch zu zweit: Die Tassen sind vorgewärmte Keramikbecher wie in Teil g. Wird der Unterschied größer oder kleiner? Notiert euch dazu: Bleibt Tasse 1 wärmer?
 @aufl_v3
 Kleiner: {{z:v3_dT}} statt {{z:dT}} K; die abgegebene Wärme steigt ({{z:v3_Q1}} und {{z:v3_Q2}} kJ statt {{z:Q1}} und {{z:Q2}} kJ), weil der Becher mit abkühlt; Tasse 1 bleibt wärmer.
 @v4_titel
@@ -184,7 +188,7 @@ Ungleiches $kA$: Der Unterschied sinkt von {{z:dT}} auf {{z:v4_d105}} K. Falsche
 @v5_titel
 Welcher Becher?
 @v5_text
-Notiere zuerst für dich, dann einigt euch zu zweit: Welcher Becher hält den Kaffee am längsten warm? Notiert für euch: Ändert sich damit der größte mögliche Unterschied zwischen den Tassen? Probiere die Voreinstellungen bei $kA$ aus.
+Notiere zuerst für dich, dann einigt euch zu zweit: Welcher Becher hält den Kaffee am längsten warm? Notiert euch dazu: Ändert sich damit der größte mögliche Unterschied zwischen den Tassen? Probiere die Voreinstellungen bei $kA$ aus.
 @aufl_v5
 Am längsten der Thermobecher offen (Richtwert: von {{e:thK0}} auf {{z:v5_thermo30}} °C in 30 min statt auf {{z:v5_keramik30}} °C), dann Keramik mit Deckel. Der größte Unterschied bleibt {{z:dTmax}} K, er kommt nur später (Thermobecher offen nach etwa {{z:v5_thermo_t}} min). Nach den Richtwerten (*) sind Glas und Pappe etwa wie Keramik: Die Wand ist nicht der große Widerstand, entscheidend sind offene Oberfläche und Abstrahlung.
 
@@ -740,7 +744,7 @@ So liest du die Ergebnisse
 <p>Zusätzlich in der Simulation:</p>
 <ul>
 <li>$kA$ gilt für beide Tassen; „$kA$ von Tasse 1 relativ“ ändert das nur für Tasse 1. Festgehalten bleibt $kA$ gleich, wenn du Mengen oder Temperaturen änderst (die Füllhöhe ändert $kA$ hier nicht); aus der Messung wird es jedes Mal neu bestimmt.</li>
-<li>Voreinstellungen mit Stern sind Richtwerte, geschätzt, nicht gemessen; belegt sind „Keramik offen“ (Arbeitswert der Aufgabe, passt zu $\tau$ ≈ {{v:tau_ferreira}} min bei Ferreira 2025a) und „Keramik mit Deckel“ (Faktor {{v:faktor_deckel}} aus einem Becher mit Styropordeckel, Ferreira 2025a).</li>
+<li>Voreinstellungen mit Stern sind Richtwerte, geschätzt, nicht gemessen; belegt sind „Keramik offen“ (Arbeitswert der Aufgabe, passt zu $\tau$ ≈ {{v:tau_ferreira}} min bei Ferreira 2025) und „Keramik mit Deckel“ (Faktor {{v:faktor_deckel}} aus einem Becher mit Styropordeckel, Ferreira 2025).</li>
 <li>Für die Übernahme gelten die Becher vor der Milch als schwarzer Kaffee mit gleichem Startwert und gleichem $kA$ (Mittel der Messwerte).</li>
 <li>Ideale Durchmischung und „Becher so warm wie der Inhalt“ sind bewusst vereinfachende Annahmen; die kleine Biot-Zahl der Keramikwand (etwa {{v:biot}}) spricht dafür, beweist sie aber nicht allein.</li>
 </ul>
@@ -801,6 +805,8 @@ vor dem Schnitt der Wärmeströme gibt Tasse 2 mehr ab, danach weniger; beide Te
 mit Vorzeichen gerechnet ist sie $Q_2 - Q_1$.
 @lesen_strom_frei_umgekehrt
 vor dem Schnitt der Wärmeströme gibt Tasse 2 weniger ab, danach mehr; beide Teilflächen sind verschieden schraffiert, ihre Summe ist $Q_2 - Q_1$.
+@lesen_strom_allgemein
+vor und nach dem Schnitt der Wärmeströme haben die Teilflächen verschiedene Vorzeichen: positiv, solange Tasse 2 mehr abgibt; beide sind verschieden schraffiert, ihre Summe ist $Q_2 - Q_1$.
 @text_rechenweg
 <p><strong>Bilanz.</strong> Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:</p>
 $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
@@ -814,7 +820,7 @@ $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), 
 <p><strong>kA festhalten</strong> (Vertiefung): Das Werkzeug gibt dem Modell den gleichwertigen Wert nach 10 min (keine Messung), der zu diesem $kA$ gehört, und rechnet sonst unverändert.</p>
 
 @rechenweg_zugabe
-<p><strong>Zeitpunkt der Zugabe.</strong> Verschiebt man die Zugabe, ändert sich der Unterschied mit $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (mit Becher $C_\mathrm{GB}$): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.</p>
+<p><strong>Zeitpunkt der Zugabe.</strong> Verschiebt man die Zugabe, ändert sich der Unterschied mit $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (mit Becher $C_\mathrm{GB}$): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt, solange sie weniger abgibt. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.</p>
 @rechenweg_zugabe_vor
 <p><strong>Zeitpunkt der Zugabe.</strong> Dieser Absatz erscheint nach eurer Vorhersage zu Frage 1.</p>
 @text_code

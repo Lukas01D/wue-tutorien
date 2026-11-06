@@ -42,7 +42,7 @@ Work on this question
 @knopf_vertiefung_oeffnen
 Open going further
 @fertig_pflicht
-Done. Key point: whatever is hotter releases more heat; so add the milk straight away. What is conserved is the energy of the cups and the room together. Continue with going further.
+Done. Key point: whatever is hotter releases more heat; so add cold milk straight away. What is conserved is the energy of the cups and the room together. Continue with going further.
 @vertiefung_frueh
 Going further is meant for afterwards. Do questions 1 and 2 first.
 @begruendung_label
@@ -63,6 +63,8 @@ Starting point before your prediction: default values (no mug, no lid). Predict 
 Starting point when checking
 @ausgangslage_gesetzt
 Starting point set: {was}.
+@auftrag_ohne
+Explain to each other what you see.
 @auftrag_erklaeren
 Does your prediction match? Explain to each other why.
 @auftrag_start
@@ -103,6 +105,8 @@ Write down your own answer first, then agree as a pair: how does the difference 
 Approximate time
 @f1_auftrag
 Then check: move the time at which the milk is added to cup 2. Why does the difference become smaller again when the milk is added later?
+@v1_auftrag
+Check with the milk temperature slider (section Milk).
 @f1_ausgangslage
 default values
 @aufl_f1
@@ -145,7 +149,7 @@ Write down your own answer first, then agree as a pair: how warm would the milk 
 @v1_eingabe
 Approximate milk temperature
 @aufl_v1
-{{z:v1_60}} °C; {{z:v1_30}} °C when the milk is added after 30 min, {{z:v1_90}} °C after 90 min. Yes, the temperature depends on the time: at {{z:v1_60}} °C, the warmer milk just makes up for the extra heat loss of cup 2. The later the milk is added, the colder cup 2 is beforehand and the less warm the milk has to be.
+{{z:v1_60}} °C; {{z:v1_30}} °C when the milk is added after 30 min, {{z:v1_90}} °C after 90 min. Yes, the temperature depends on the time: at {{z:v1_60}} °C, cup 1, which has the warm milk from the start, releases exactly as much heat up to adding the milk as the black coffee in cup 2 ($Q_1 = Q_2$); the milk itself brings the same energy into both cups. The later the milk is added, the more of the warm milk’s heat cup 1 has already released to the room, while cup 2 only receives it when the milk is added; so cooler milk is enough.
 @v2_titel
 Lid
 @v2_text
@@ -729,7 +733,7 @@ How to read the results
 <p>In addition, in the simulation:</p>
 <ul>
 <li>$kA$ applies to both cups; “$kA$ of cup 1, relative” changes this for cup 1 only. When kept fixed, $kA$ stays the same when you change amounts or temperatures (here the filling level does not change $kA$); from the measurement, it is determined again every time.</li>
-<li>Presets marked with a star are estimates, not measured; supported are “Ceramic, open” (working value of the problem, consistent with $\tau$ ≈ {{v:tau_ferreira}} min in Ferreira 2025a) and “Ceramic with lid” (factor {{v:faktor_deckel}} from one mug with a polystyrene lid, Ferreira 2025a).</li>
+<li>Presets marked with a star are estimates, not measured; supported are “Ceramic, open” (working value of the problem, consistent with $\tau$ ≈ {{v:tau_ferreira}} min in Ferreira 2025) and “Ceramic with lid” (factor {{v:faktor_deckel}} from one mug with a polystyrene lid, Ferreira 2025).</li>
 <li>When the measured values are used, the readings taken before the milk is added count as black coffee with the same initial value and the same $kA$ (mean of the measured values).</li>
 <li>Perfect mixing and “mug at the temperature of its contents” are deliberately simplifying assumptions; the small Biot number of the ceramic wall (about {{v:biot}}) supports them, but does not prove them on its own.</li>
 </ul>
@@ -790,6 +794,8 @@ before the heat flow rates intersect, cup 2 releases more, afterwards less; the 
 counted with sign, it equals $Q_2 - Q_1$.
 @lesen_strom_frei_umgekehrt
 before the heat flow rates intersect, cup 2 releases less, afterwards more; the two areas are hatched differently, and their sum is $Q_2 - Q_1$.
+@lesen_strom_allgemein
+before and after the heat flow rates intersect, the two areas have different signs: positive as long as cup 2 releases more; they are hatched differently, and their sum is $Q_2 - Q_1$.
 @text_rechenweg
 <p><strong>Balance.</strong> The control volume is the contents of one cup (with a mug: contents and mug). From the general energy balance (Lecture 05, slide 8), without mass flows and without work, only the change in internal energy and the heat flow rate to the surroundings remain:</p>
 $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$

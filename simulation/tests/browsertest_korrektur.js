@@ -426,6 +426,33 @@ async function test(id, name, fn, b) {
     return [r.length > 0 && r.every(Boolean), r.join(",")];
   }, b);
 
+
+  await test("Beamer (Gestaltungsprüfung)", "1280 × 720 und 1366 × 768: nach der Startvorhersage Frageleiste und ganzes Diagramm im Bild, nach Frage 1 zusätzlich der Regler „Zugabe nach“", async b => {
+    const m = [];
+    for (const [w, h] of [[1280, 720], [1366, 768]]) for (const lang of ["de", "en"]) {
+      const p = await neu(b, w, h, lang === "en" ? "?lang=en" : ""); await start(p); await warte(250);
+      const mess = () => p.evaluate(() => { const f = document.getElementById("frageleiste").getBoundingClientRect(), s = document.getElementById("diagramm").getBoundingClientRect(), r = document.getElementById("r-tEnd").getBoundingClientRect(); return [f.top >= -1, s.top >= -1 && s.bottom <= innerHeight + 1, r.top >= 0 && r.bottom <= innerHeight + 1, Math.round(s.bottom), Math.round(r.bottom)]; });
+      const p3 = await mess(); await f1(p); await warte(250); const p4 = await mess();
+      m.push([w + lang, p3[0] && p3[1] && p4[0] && p4[1] && p4[2], "P3 " + p3[3] + ", P4 " + p4[3] + "/" + p4[4]]);
+      await p.context().close();
+    }
+    return [m.every(x => x[1]), m.map(x => x[0] + ": " + x[2]).join("; ")];
+  }, b);
+
+  await test("Q2 bis Q7", "Entscheidungen der TL: V1-Begründung (Q1 = Q2), allgemeine Sätze zum Wärmestrom, Kernsatz „kalte Milch“, „Notiert euch dazu“, Prüfhinweis V1 und Auftrag nach „ohne Vorhersage“, „Ferreira 2025“", async b => {
+    const p = await neu(b); await start(p); await f1(p); await messblatt(p, false); await f2(p); await p.click("#knopf-aufl"); await warte(60);
+    const fertig = await txt(p, "#frageleiste");
+    await p.click("#knopf-vt-auf"); await warte(80); await p.fill("#frage-zahl", "47"); await p.click("#knopf-fest"); await warte(80);
+    const v1auftrag = await txt(p, "#frageleiste .auftrag"); await p.click("#knopf-aufl"); await warte(60); const v1 = await txt(p, "#aufl-leiste");
+    await p.click("#tab-versuche"); const k = await txt(p, "#panel-versuche");
+    await p.click("#tab-modell"); await p.evaluate(() => { for (const d of document.querySelectorAll("#panel-modell details")) d.open = true; }); const m = await txt(p, "#panel-modell");
+    await p.click("#tab-code"); const c = await txt(p, "#panel-code");
+    const q = await neu(b); await start(q); await q.click("#knopf-ohne"); await warte(60); await q.click("#rueck-ja"); await warte(80); const ohne = await txt(q, "#frageleiste .auftrag");
+    const ok = /kalte Milch sofort/.test(fertig) && /dieselbe Energie/.test(v1) && !/gleicht die wärmere Milch/.test(v1) && /Prüft mit dem Regler Milchtemperatur/.test(v1auftrag)
+      && (k.match(/Notiert euch dazu/g) || []).length === 3 && !/Notiert für euch/.test(k) && /verschiedene Vorzeichen/.test(m) && !/2025a/.test(m) && /sinkt, solange sie weniger abgibt/.test(c) && /was ihr seht/.test(ohne);
+    return [ok, ""];
+  }, b);
+
   await b.close();
   const ok = ERG.filter(x => x.ok).length;
   console.log("\nErgebnis: " + ok + " von " + ERG.length + " Prüfungen bestanden.");

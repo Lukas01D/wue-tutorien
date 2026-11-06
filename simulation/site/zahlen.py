@@ -108,7 +108,7 @@ LITERALE = [
     ("vor_text_keramik", "200", "Aufgabe: 200 ml"),
     ("vor_text_keramik", "80", "Aufgabe: 80 °C"),
     ("vor_text_keramik", "67", "Aufgabe: 67 °C nach 10 min"),
-    ("vor_text_keramik_deckel", "44", "Ferreira 2025a, Abb. 6 (Konzept M1, 1 − 0,56)"),
+    ("vor_text_keramik_deckel", "44", "Ferreira 2025, Abb. 6 (Konzept M1, 1 − 0,56)"),
     ("mess_ungueltig", "66,5", "Beispiel einer Eingabe"),
     ("mess_ungueltig", "66.5", "example of an input"),
     ("g_tEnd", "60", "E8: Versuch bis 60 min"),
@@ -125,7 +125,7 @@ LITERALE = [
     ("hinweis_zahl", "4", "Beispiel einer Eingabe"),
     ("hinweis_zahl", "3,5", "Beispiel einer Eingabe"),
     ("hinweis_zahl", "3.5", "example of an input"),
-    ("*", "2025", "Jahr (Ferreira 2025a)"),
+    ("*", "2025", "Jahr (Ferreira 2025)"),
     ("*", "2019", "Jahr (Abraham und Diller 2019)"),
     ("*", "2008", "Jahr (Brown und Diller 2008)"),
 ]
