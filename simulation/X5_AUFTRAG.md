@@ -76,3 +76,17 @@ Beide Läufe schreiben in denselben Bericht (Abschnitte A und B).
 5. Befunde nach Schwere (blocker, high, medium, low wie im Bauauftrag 4.1) im Format
    `| ID | Schwere | Befund | Beleg | Vorschlag |`, IDs X5-01, X5-02, …
 6. Abschnitte A und B, falls du in zwei Läufen arbeitest.
+
+## 9 Nachprüfung nach der Korrekturrunde (nur betroffene Punkte)
+
+> Startsatz der TL: „Prüfe die Korrekturrunde nach simulation/X5_AUFTRAG.md, Abschnitt 9 (Nachprüfung X5).“ Vorher `git fetch origin claude/simulation-tool-kaffee-4kcacl` und `git checkout claude/simulation-tool-kaffee-4kcacl`. Bericht als `simulation/X5_CODEX_NACHPRUEFUNG.md` auf einem eigenen Zweig (zum Beispiel `codex/x5-nachpruefung`), Format wie Abschnitt 8; IDs X5N-01, X5N-02, …
+
+- **Stand:** Commit, auf den der Zweig beim Start zeigt (`git rev-parse HEAD` im Bericht). Artefakt `simulation/site/index.html` und bytegleich `Kaffee_Simulation.html`, SHA-256 `e44b4961145f8e34db8b1f4e11973862e362797e61a89df899ab4f1959393ce3`, 429 897 Bytes, letzter Commit an der Seite 188ba12. `python3 simulation/site/bauen.py --pruefen` muss „gleich“ ausgeben.
+- **Grundlage:** zusätzlich zu Abschnitt 2 die Antwort `simulation/X5_ANTWORT.md`, die Entscheidungen F1 bis F14 (`simulation/BAU_BERICHT.md`, Fragen an die TL; Wortlaute in `simulation/KONZEPT.md` 12.1), `simulation/ZUSTAENDE.md` (Ergänzungen vom 06.11.2026) und die Zusammenführung Runde 4 (`simulation/gutachten/ZUSAMMENFUEHRUNG.md`, letzter Abschnitt).
+- **Zu prüfen:**
+  1. Deine Befunde X5-01 bis X5-11 mit deinen Reproduktionen (deine Skripte in `simulation/x5_skripte/` laufen unverändert; eine Kopie mit Läufen von Claude liegt in `simulation/x5_regression/`). Zu X5-03: Die Seite lehnt den Wechsel auf „aus der Messung“ ab, wenn der gleichwertige Wert außerhalb 30 bis 90 °C liegt; dein Schritt `Quellenwechsel_haelt_Kurven_bei_kA1` bricht deshalb beim Anklicken ab. Bewerte, ob das deinem Vorschlag entspricht.
+  2. Die betroffenen Muss-Anforderungen: M-1, M-3, M-6, M-11, M-13, M-14, M-19, M-21, M-22 (Stand in der Nachweistabelle des Baubericht).
+  3. Die übrigen Änderungen der Korrekturrunde (Liste in `simulation/X5_ANTWORT.md` und in der Zusammenführung): neue Wortlaute F3 bis F12 (Zahlen in DE und EN), Sperren vor den Vorhersagen (Startauflösung, Reiter „Modell“ und „So rechnet der Code“, V1 bis V5 beim Öffnen), Beschriftungen im Diagramm, Anheften am Handy, Meldungen und Fokus.
+  4. Rechenkern unverändert (Block MODELL, SHA-256 `b32e3f9d…7d24`), eigene Stichprobe der Zahlen.
+- **Nicht zu prüfen:** Was die Korrekturrunde nicht berührt hat; die offenen Fragen Q1 bis Q7 an die TL (nur melden, falls du einen Widerspruch zu einer Muss-Anforderung siehst).
+- **Grenzen** wie Abschnitt 7.

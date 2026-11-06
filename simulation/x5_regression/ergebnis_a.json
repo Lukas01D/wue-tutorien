@@ -6234,13 +6234,6 @@
     {
       "lang": "de",
       "key": "aufl_start",
-      "token": "f1_tmax",
-      "expected": "56",
-      "ok": true
-    },
-    {
-      "lang": "de",
-      "key": "aufl_start",
       "token": "dQ",
       "expected": "3,69",
       "ok": true
@@ -6502,13 +6495,6 @@
       "key": "aufl_start",
       "token": "th2",
       "expected": "30.19",
-      "ok": true
-    },
-    {
-      "lang": "en",
-      "key": "aufl_start",
-      "token": "f1_tmax",
-      "expected": "56",
       "ok": true
     },
     {

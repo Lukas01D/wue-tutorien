@@ -420,7 +420,8 @@ async function test(id, name, fn, b) {
 
   await test("G5-R4-06", "Schrift zur Laufzeit vergrößert: überlaufende Tabellen bekommen Tastaturzugang und Namen", async b => {
     const p = await neu(b, 360, 640); await start(p); await f1(p);
-    await p.evaluate(() => { document.querySelector(".wertetabelle").open = true; document.documentElement.style.fontSize = "200%"; }); await warte(300);
+    await p.evaluate(() => { document.querySelector(".wertetabelle").open = true; }); await warte(200);      // erst öffnen, dann nur die Schrift ändern (kein toggle, kein resize)
+    await p.evaluate(() => { document.documentElement.style.fontSize = "200%"; }); await warte(400);
     const r = await p.evaluate(() => [...document.querySelectorAll(".tabelle-wrap")].filter(e => e.offsetParent && e.scrollWidth > e.clientWidth + 1).map(e => e.getAttribute("tabindex") === "0" && !!(e.getAttribute("aria-label") || e.getAttribute("aria-labelledby"))));
     return [r.length > 0 && r.every(Boolean), r.join(",")];
   }, b);

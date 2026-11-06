@@ -828,9 +828,9 @@
       "name": "Reglerfolge_30s_100ms",
       "status": "PASS",
       "detail": {
-        "duration": 30.029918339999313,
-        "events": 261,
-        "max_ms": 13.799999999813735,
+        "duration": 30.081728211000154,
+        "events": 262,
+        "max_ms": 14.5,
         "median_ms": 3.099999999627471
       },
       "pageerrors": [],
