@@ -1,0 +1,22 @@
+[
+  {
+    "state": "P0",
+    "violations": [],
+    "incomplete_count": 1
+  },
+  {
+    "state": "P4",
+    "violations": [],
+    "incomplete_count": 1
+  },
+  {
+    "state": "Vertiefung",
+    "violations": [],
+    "incomplete_count": 1
+  },
+  {
+    "state": "Code",
+    "violations": [],
+    "incomplete_count": 1
+  }
+]
