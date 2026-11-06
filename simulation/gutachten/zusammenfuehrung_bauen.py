@@ -238,6 +238,42 @@ R3 = {
  "G10-10": (O, "Auflösung Frage 2 (Konzept 6.1, offen formuliert nach K6)", "Frage an die TL"),
 }
 
+
+BEH = "behoben in der Korrekturrunde (Test in `simulation/tests/browsertest_korrektur.js`)"
+R4 = {
+ "G1-R4-01": (U, "Zeitangabe „(bis etwa 56 min)“ der Startauflösung erst nach der Vorhersage zu Frage 1 (Rest des Wortlauts F3 bleibt); Variante an die TL (Q1)", BEH + "; Q1 an die TL"),
+ "G1-R4-02": (U, "„Hinweis schließen“ setzt den Fokus auf die Frage", BEH),
+ "G1-R4-03": (U, "Hinweis zur neutralen Ausgangslage steht in der Frageleiste; vor dem Festhalten heißt es „Ausgangslage beim Prüfen“", BEH),
+ "G1-R4-04": (O, "Begründung V1 ist Wortlaut F8; Fachrolle G3 bestätigt „irreführend“ und schlägt Ersatz vor", "Frage an die TL (Q2)"),
+ "G1-R4-05": (U, "„Schnitt“ zuerst nah am Kreis (auch mit weißem Rand), weit weg nur ohne Verbindungslinie entlang der Kurven", BEH),
+ "G1-R4-06": (U, "Bestätigung des Kurslinks bleibt bis „Hinweis schließen“", BEH),
+ "G1-R4-07": (U, "Endkreise und Mischsprünge sind Hindernisse für „Schnitt“", BEH),
+ "G1-R4-08": (U, "angeheftet konstante Höhe (Mindesthöhe aus der größten gemessenen Zusatzhöhe)", BEH),
+ "G1-R4-09": (U, "zweiter Tipp an derselben Stelle innerhalb 1 s trifft weder „Zurück“ noch den Aufklapper", BEH),
+ "G1-R4-10": (U, "nach dem Anheften wird der Knopf unter das Diagramm gescrollt", BEH),
+ "G1-R4-11": (O, "„Notiert für euch“ ist der Wortlaut zu F9", "Frage an die TL (Q5)"),
+ "G1-R4-12": (U, "„ohne Vorhersage aufdecken“ öffnet die Auflösung sofort (wie der Text der Rückfrage); Auftrag danach: Frage an die TL (Q6)", BEH + "; Q6 an die TL"),
+ "G1-R4-13": (O, "neue Bedienfunktion (Auswahl V1 bis V5 in der Frageleiste), nicht geänderte Stelle; Empfehlung für eine spätere Runde", "offen, Empfehlung"),
+ "G1-R4-14": (O, "Hinweis zum Prüfen in V1 ist neuer Wortlaut", "Frage an die TL (Q6)"),
+ "G3-R4-01": (U, "wie G1-R4-01", BEH + "; Q1 an die TL"),
+ "G3-R4-02": (U, "Teilflächen, Beschreibung und Lesehinweis unter dem Diagramm nach dem Vorzeichen; allgemeine Sätze in Lesehilfe und Rechenweg sind Wortlaut: Frage an die TL (Q3)", BEH + "; Q3 an die TL"),
+ "G3-R4-03": (U, "Rest von G3-05 (Entscheidung F12): „(mit Becher zuzüglich m_B c_B)“ in Lesehilfe und ln-Steigung, DE und EN", BEH),
+ "G3-R4-04": (O, "wie G1-R4-04; Ersatzwortlaut von G3", "Frage an die TL (Q2)"),
+ "G3-R4-05": (O, "Kernsatz aus Konzept 3", "Frage an die TL (Q4)"),
+ "G3-R4-06": (U, "eigener Wortlaut des Baus: „mit Vorzeichen gerechnet ist sie Q2 − Q1“", BEH),
+ "G3-R4-07": (U, "negativer Gesamtwert als „weniger“", BEH),
+ "G3-R4-08": (U, "eigener Wortlaut: „außerhalb des Bereichs des Feldes“", BEH),
+ "G3-R4-09": (U, "eigener Wortlaut: „Messwert … wieder verwenden“", BEH),
+ "G3-R4-10": (U, "Code-Reiter: „gleichwertigen Wert nach 10 min (keine Messung)“ (Konzept 8.2 M8)", BEH),
+ "G3-R4-11": (O, "Quellenangabe im Annahmentext", "Frage an die TL (Q7)"),
+ "G5-R4-01": (U, "Raumbeschriftung ist Hindernis; Trinkbeschriftung ohne Platz in die Legende; Vorhersagelinie endet über der Raumbeschriftung; Skript der Rolle: 0 von 648 Zuständen mit Überdeckung", BEH),
+ "G5-R4-02": (U, "Verbindungslinie nicht entlang der Kurven; Vergleichskurven und Trinklinie sind Hindernisse", BEH),
+ "G5-R4-03": (U, "wie G1-R4-02 und G1-R4-06", BEH),
+ "G5-R4-04": (U, "Meldung zusätzlich in der bleibenden Ansage, `aria-describedby` am fieldset (Bildschirmleser nicht geprüft)", BEH),
+ "G5-R4-05": (U, "Feldname in der Meldung, `aria-describedby`, roter Rand auch gegen den allgemeinen Feldrand", BEH),
+ "G5-R4-06": (U, "`ResizeObserver` prüft auch die Scrollbereiche", BEH),
+}
+
 def befunde():
     out = []
     for f in sorted(glob.glob(os.path.join(HIER, "G*_*.md"))):
@@ -291,5 +327,16 @@ def main():
     bil3 = "\n| Schwere | übernehmen | ablehnen | offen |\n|:--|--:|--:|--:|\n" + "\n".join("| %s | %d | %d | %d |" % (sv, z3.get((sv, U), 0), z3.get((sv, A), 0), z3.get((sv, O), 0)) for sv in ("blocker", "high", "medium", "low")) + "\n"
     with open(os.path.join(HIER, "ZUSAMMENFUEHRUNG.md"), "a", encoding="utf-8") as f:
         f.write("\n## Runde 3 (letzte Runde)\n\nGeprüfter Stand SHA-256 `1d90ce2f…292b` (399 063 Bytes): G2, G4, G5, G6, G7, G8 prüften ihre Reste aus Runde 2 nach (Dateien `*_R3.md`), dazu die neue Studentin G10. Keine Rolle fand einen blocker oder eine falsche Zahl; alle Sperren vor den Vorhersagen hielten (G8 suchte in DOM, Titel, Ansagen, CSV, Prüfhaken und Barrierebaum). Nach Bauauftrag 4.3 endet die Bearbeitung nach dieser Runde; die neuen Befunde bleiben offen, mit Empfehlung. Ausnahme: das Einsatzblatt (Begleitmaterial, Teil 5) wurde nachgezogen.\n\n### Bilanz Runde 3\n" + bil3 + "\n### Neue Befunde der Runde 3\n\n| ID | Schwere | Entscheidung | Befund (gekürzt): Begründung mit Beleg | Folge |\n|:--|:--|:--|:--|:--|\n" + "\n".join(r3) + "\n")
-    print(len(zeilen), "Befunde", zaehl, "Runde 2:", len(r2), z2, "Runde 3:", len(r3), z3)
+    r4, z4 = [], {}
+    for f in sorted(glob.glob(os.path.join(HIER, "*_R4.md"))):
+        for zl in open(f, encoding="utf-8"):
+            m = re.match(r"^\|\s*(G\d+-R4-\d+)\s*\|\s*(blocker|high|medium|low)\s*\|\s*(.*?)\s*\|", zl)
+            if m:
+                i = m.group(1); e, b, fo = R4[i]; txt = re.sub(r"\*\*|`", "", m.group(3))[:110]
+                z4[(m.group(2), e)] = z4.get((m.group(2), e), 0) + 1
+                r4.append("| %s | %s | %s | %s: %s | %s |" % (i, m.group(2), e, txt.replace("|", "/"), b.replace("|", "/"), fo))
+    bil4 = "\n| Schwere | übernehmen | ablehnen | offen |\n|:--|--:|--:|--:|\n" + "\n".join("| %s | %d | %d | %d |" % (sv, z4.get((sv, U), 0), z4.get((sv, A), 0), z4.get((sv, O), 0)) for sv in ("blocker", "high", "medium", "low")) + "\n"
+    with open(os.path.join(HIER, "ZUSAMMENFUEHRUNG.md"), "a", encoding="utf-8") as f:
+        f.write(open(os.path.join(HIER, "zusammenfuehrung_r4_kopf.md"), encoding="utf-8").read() + "\n### Bilanz Runde 4\n" + bil4 + "\n### Befunde der Runde 4\n\n| ID | Schwere | Entscheidung | Befund (gekürzt): Begründung mit Beleg | Folge |\n|:--|:--|:--|:--|:--|\n" + "\n".join(r4) + "\n")
+    print(len(zeilen), "Befunde", zaehl, "Runde 2:", len(r2), z2, "Runde 3:", len(r3), z3, "Runde 4:", len(r4), z4)
 main()

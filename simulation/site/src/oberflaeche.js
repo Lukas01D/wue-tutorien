@@ -486,6 +486,7 @@
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt)), txt = t("dia_schnitt"), bw = txt.length * fs * 0.56 + 4;
           const kand = [[sx - bw / 2, sy - 10], [sx - bw / 2, sy + fs + 10], [sx - bw - 10, sy - 8], [sx - bw - 10, sy + fs + 6], [sx - bw / 2, sy - 24], [sx + 10, sy - 8], [sx + 10, sy + fs + 6]];
           // X5-06, G6-R3-01: weiter weg mit Verbindungslinie zum Kreis, zuletzt am oberen und unteren Rand der Zeichenfläche
+          for (const d of [30, 38, 46, 54, 62]) for (const [ux, uy] of [[-0.5, -1], [0.5, -1], [-1, -0.5], [1, -0.5], [-0.5, 1], [0.5, 1], [-1, 0.5], [1, 0.5]]) kand.push([sx + ux * (d * 0.8) - (ux < 0 ? bw : 0), sy + uy * d + (uy > 0 ? fs : 4), true]);
           for (const d of [38, 54]) for (const [ux, uy] of [[0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1], [-1, 0], [1, 0]]) kand.push([sx + ux * (d * 0.8) - (ux < 0 ? bw : (ux > 0 ? 0 : bw / 2)), sy + uy * d + (uy > 0 ? fs : 4), true]);
           const kandWeit = [];
           for (const d of [72, 92, 115]) for (const [ux, uy] of [[0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1], [-1, 0], [1, 0]]) kandWeit.push([sx + ux * (d * 0.8) - (ux < 0 ? bw : (ux > 0 ? 0 : bw / 2)), sy + uy * d + (uy > 0 ? fs : 4), true]);
@@ -538,12 +539,7 @@
               if (frei) { tx = x0; ty = yb; gefunden = true; break suche; }
             }
             let zweitOk = gefunden;
-            if (!gefunden) {     // G5-R4-01: zweiter Durchgang nur gegen andere Beschriftungen (mit weißem Rand), sonst in die Legende
-              zweit: for (const yb of [yT - 5, yT + fs + 4, yT - fs - 9, yT + 2 * fs + 8]) for (const x0 of xs0) {
-                if (yb - fs > O && yb < H - U - 2 && !belegt.some(b => x0 < b[0] + b[2] && x0 + tw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { tx = x0; ty = yb; zweitOk = true; break zweit; }
-              }
-            }
-            if (!zweitOk) trinkInLegende = true;
+            if (!zweitOk) trinkInLegende = true;      // G5-R4-01, G6-R3-05: ohne freien Platz in die Legende unter dem Diagramm
             // ohne freien Platz: weißer Rand um die Schrift, damit sie über einer Linie lesbar bleibt
             if (zweitOk) s.push('<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" font-size="' + fs + '" fill="#14603f"' + (gefunden ? "" : ' stroke="#fff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round"') + ">" + esc(tl) + "</text>");
             for (const [tt, k] of [[tr.tasse1, R.kurve1], [tr.schwarz, R.kurve2]]) if (tt > 0 && tt < tz) s.push('<line x1="' + X(tt).toFixed(1) + '" x2="' + X(tt).toFixed(1) + '" y1="' + (yT - 6).toFixed(1) + '" y2="' + (yT + 6).toFixed(1) + '" stroke="#14603f" stroke-width="2"/>');

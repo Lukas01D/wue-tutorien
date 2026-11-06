@@ -815,7 +815,7 @@
       "name": "Textschluessel_Gedankenstriche_Platzhalter",
       "status": "PASS",
       "detail": {
-        "keys": 371,
+        "keys": 377,
         "dashes": {
           "de": [],
           "en": []
@@ -828,10 +828,10 @@
       "name": "Reglerfolge_30s_100ms",
       "status": "PASS",
       "detail": {
-        "duration": 30.100336680000055,
+        "duration": 30.029918339999313,
         "events": 261,
-        "max_ms": 11.899999999906868,
-        "median_ms": 3.1000000000931323
+        "max_ms": 13.799999999813735,
+        "median_ms": 3.099999999627471
       },
       "pageerrors": [],
       "external": []

@@ -32,4 +32,27 @@ Zu den Muss-Bewertungen von X5: M-13 (Regler 0 px bei 320 px und 200 % Text) fä
 
 ## Umsetzung und Nachweis
 
-Ergänzt nach der Umsetzung, siehe unten.
+Umgesetzt in der Reihenfolge der TL (Commits 437295c bis 7795d5b auf `claude/simulation-tool-kaffee-4kcacl`). Jeder Befund hat einen Test in `simulation/tests/browsertest_korrektur.js`; derselbe Test läuft auf dem Stand vor der Korrektur (`1d90ce2f…292b`) und auf dem neuen Stand: **alt 0 von 29, neu 29 von 29** (`browsertest_korrektur_alt_ergebnis.txt`, `browsertest_korrektur_ergebnis.txt`).
+
+| ID | Test (Kurzname) | Messwert alt | Messwert neu |
+|:--|:--|:--|:--|
+| X5-01 | V3 nach Frage 2 ohne Becher-Lage | Becher an, 3,08 K vor der Vorhersage | Standardwerte, Ansage „Ausgangslage vor deiner Vorhersage“ |
+| X5-02 | $C_\mathrm{GB}$ im Rechenweg DE und EN | 0 | in beiden Gleichungen, beide Sprachen |
+| X5-03 | Quellenwechsel | 66,5 °C durch 70,145 °C ersetzt, Feld „Messung nach 10 min“ | Feld „Gleichwertiger Wert nach 10 min, aus *kA* berechnet“, eigene Messung gespeichert mit Knopf „Deine Messung 66,5 °C wieder verwenden“; außerhalb 30 bis 90 °C abgelehnt, *kA* unverändert |
+| X5-04 | Fokus bei 768 × 1024, 32 px | 16 verdeckte Fokusmitten (Codex-Lauf) | 0 von 93 Stopps (eigener Test), 0 (Codex-Lauf) |
+| X5-05 | 200 % Text | Seite 371 px breit bei 320 px, 8 Regler 0 px | kein Überlauf 320 bis 1024 px, kein Regler unter 44 px |
+| X5-06 | Schnittbeschriftung | 16 von 72 (Codex), 86 von 180 (eigene Stichprobe) ohne Text | 0 von 72 (Codex), 0 von 168 (eigener Test) |
+| X5-07 | Nachkommastellen | 21,555 angenommen, im Link 21,56 | mehr als zwei Stellen abgelehnt mit Hinweis am Feld |
+| X5-08 | Sprachwechsel | Fehlermeldung bleibt deutsch | übersetzt; ebenso Hinweis zum Kurslink |
+| X5-09 | Diagrammschrift angeheftet | bis 6,79 px | 11 px (320 × 640 bis 412 × 915) |
+| X5-10 | Anteil angeheftet | bis 63,7 % | höchstens 44,8 %; bei zu wenig Platz nicht angeheftet |
+| X5-11 | fremdes Fragment | still, bleibt in der Adresse | Hinweis, aus der Adresse entfernt; `#hauptinhalt` bleibt |
+
+**Skripte von Codex auf dem neuen Stand** (Kopie in `simulation/x5_regression/`, Läufe `lauf_*.txt`, Ergebnisse `ergebnis_*.json`, Auswertung `auswertung_neu.txt` gegen `auswertung_alt_1d90ce2f.txt`):
+
+- `pruefung_a.py`: 441 Sätze, 23 814 Vergleiche, größte Abweichung 1,15e-9, keine außerhalb der Toleranz; 78 Zahlen der Auflösungen (vorher 74, neu unter anderem „bis etwa 56 min“) alle gleich der Rechnung von Codex.
+- `pruefung_b.py`: 19 PASS, 1 ERROR. Der ERROR ist `Quellenwechsel_haelt_Kurven_bei_kA1`: Das Skript erwartet, dass sich „aus der Messung“ bei *kA* = 1 W/K anklicken lässt; die Seite lehnt diesen Wechsel jetzt ab (gleichwertiger Wert 26 °C außerhalb 30 bis 90 °C), wie von Codex als eine der beiden Möglichkeiten vorgeschlagen. Die Eigenschaft, die das Skript prüft (*kA* bleibt gleich), belegt Test K03.
+- `pruefung_layout.py`: 108 Layouts, kein Überlauf, keine Regler mit Breite 0, kein angehefteter Bereich über 45 %, keine Diagrammschrift unter 9 px, 0 verdeckte Fokusmitten, Schnitt ohne Text 0.
+- `pruefung_ergaenzung.py`: 0 verdeckte Fokusmitten bei 768 × 1024 mit 32 px; `measured_replaced` meldet weiter 66,5 → 70,145 °C im Feld, das Feld heißt jetzt aber „Gleichwertiger Wert nach 10 min, aus *kA* berechnet“ und die Messung bleibt gespeichert (gewollt, siehe X5-03).
+
+Die übrigen Tests: `test_kern.py` 134 von 134, `--html` 135 von 135, `test_texte.py` 14 von 14, `browsertest_bau.js` 95 von 95 (zwei Prüfungen an die Entscheidungen angepasst: „Geschafft“ erst nach geöffneter Auflösung, F8; 45 % gilt für den angehefteten Zustand, X5-10).
