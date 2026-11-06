@@ -45,16 +45,18 @@ Umgesetzt in der Reihenfolge der TL (Commits 437295c bis 188ba12 auf `claude/sim
 | X5-07 | Nachkommastellen | 21,555 angenommen, im Link 21,56 | mehr als zwei Stellen abgelehnt mit Hinweis am Feld |
 | X5-08 | Sprachwechsel | Fehlermeldung bleibt deutsch | übersetzt; ebenso Hinweis zum Kurslink |
 | X5-09 | Diagrammschrift angeheftet | bis 6,79 px | 11 px (320 × 640 bis 412 × 915) |
-| X5-10 | Anteil angeheftet | bis 63,7 % | höchstens 44,8 %; bei zu wenig Platz nicht angeheftet |
+| X5-10 | Anteil angeheftet | bis 63,7 % (dauerhaft) | im stabilen Zustand höchstens 45 % (eigene Messung nach 200 ms Wartezeit höchstens 44,8 %; Codex 44,99 %); bei zu wenig Platz nicht angeheftet. Beim Schriftwechsel zur Laufzeit kurzer Übergang bis 54,18 %, danach löst sich das Diagramm selbst (X5N-01) |
 | X5-11 | fremdes Fragment | still, bleibt in der Adresse | Hinweis, aus der Adresse entfernt; `#hauptinhalt` bleibt |
 
 **Skripte von Codex auf dem neuen Stand** (Kopie in `simulation/x5_regression/`, Läufe `lauf_*.txt`, Ergebnisse `ergebnis_*.json`, Auswertung `auswertung_neu.txt` gegen `auswertung_alt_1d90ce2f.txt`):
 
 - `pruefung_a.py`: 441 Sätze, 23 814 Vergleiche, größte Abweichung 1,15e-9, keine außerhalb der Toleranz; alle Zahlen der Auflösungen (76 auf dem Endstand) gleich der Rechnung von Codex.
 - `pruefung_b.py`: 19 PASS, 1 ERROR. Der ERROR ist `Quellenwechsel_haelt_Kurven_bei_kA1`: Das Skript erwartet, dass sich „aus der Messung“ bei *kA* = 1 W/K anklicken lässt; die Seite lehnt diesen Wechsel jetzt ab (gleichwertiger Wert 26 °C außerhalb 30 bis 90 °C), wie von Codex als eine der beiden Möglichkeiten vorgeschlagen. Die Eigenschaft, die das Skript prüft (*kA* bleibt gleich), belegt Test K03.
-- `pruefung_layout.py`: 108 Layouts, kein Überlauf, keine Regler mit Breite 0, kein angehefteter Bereich über 45 %, keine Diagrammschrift unter 9 px, 0 verdeckte Fokusmitten, Schnitt ohne Text 0.
+- `pruefung_layout.py`: 108 Layouts, kein Überlauf, keine Regler mit Breite 0, im stabilen Zustand kein angehefteter Bereich über 45 % (in der Nachprüfung von Codex einmal 49,49 % unmittelbar nach dem Schriftwechsel, danach gelöst: X5N-01), keine Diagrammschrift unter 9 px, 0 verdeckte Fokusmitten, Schnitt ohne Text 0.
 - `pruefung_ergaenzung.py`: 0 verdeckte Fokusmitten bei 768 × 1024 mit 32 px; `measured_replaced` meldet weiter 66,5 → 70,145 °C im Feld, das Feld heißt jetzt aber „Gleichwertiger Wert nach 10 min, aus *kA* berechnet“ und die Messung bleibt gespeichert (gewollt, siehe X5-03).
 
-Die übrigen Tests: `test_kern.py` 134 von 134, `--html` 135 von 135, `test_texte.py` 14 von 14, `browsertest_bau.js` 95 von 95 (zwei Prüfungen an die Entscheidungen angepasst: „Geschafft“ erst nach geöffneter Auflösung, F8; 45 % gilt für den angehefteten Zustand, X5-10).
+Die übrigen Tests: `test_kern.py` 134 von 134, `--html` 135 von 135, `test_texte.py` 14 von 14, `browsertest_bau.js` 95 von 95, nach Wegfall der Größengrenze (L1) 94 von 94 (zwei Prüfungen an die Entscheidungen angepasst: „Geschafft“ erst nach geöffneter Auflösung, F8; 45 % gilt für den angehefteten Zustand, X5-10).
 
 **Nach der Rollenprüfung Runde 4** (G1, G3, G5 auf e2f9cd9) wurden die dort gefundenen Nebenwirkungen ebenfalls behoben, unter anderem: Zeitangabe der Startauflösung erst nach Frage 1 (G1-R4-01, G3-R4-01; Frage Q1 an die TL), Beschriftungen ohne Überdeckung im flacheren Handy-Diagramm (G5-R4-01; Skript der Rolle: 0 von 648 Zuständen), Teilflächen nach dem Vorzeichen (G3-R4-02), Becher in der Lesehilfe (G3-R4-03). Einzelheiten in `simulation/gutachten/ZUSAMMENFUEHRUNG.md`, letzter Abschnitt.
+
+**Nachprüfung durch Codex** (`simulation/X5_CODEX_NACHPRUEFUNG.md`, Zweig `codex/x5-nachpruefung`, Commit 2680008, eingemergt): „abnahmefähig mit Änderungen“; alle elf Befunde behoben. Neu nur X5N-01 (low): Der Nachweis zur 45-%-Grenze muss den kurzen Übergang beim Schriftwechsel (unmittelbar danach bis 54,18 %, ab 120 ms gelöst) vom stabilen Zustand (44,99 %) unterscheiden. Erledigt in Baubericht (M-6), dieser Antwort (X5-10) und den Protokollnotizen; an der Seite nichts geändert.

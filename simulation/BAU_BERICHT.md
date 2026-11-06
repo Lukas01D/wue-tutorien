@@ -1,6 +1,6 @@
 # Baubericht: Simulation „Kaffee mit Milch“
 
-> Bau durch Claude nach `simulation/BAU_AUFTRAG.md` (Stand 6526feb, Rollentausch, Entscheidung der TL vom 05.11.2026). Grundlage: `simulation/KONZEPT.md` Fassung 2 (93cb32e). Teile 0 bis 7 abgeschlossen am 06.11.2026, danach Korrekturrunde nach der Abnahme X5 (06.11.2026). **Status: abnahmebereit** für alle in dieser Umgebung möglichen Nachweise (Chromium), vorbehaltlich der Nachprüfung durch Codex und der Nachweise in der echten Welt. Einzelheiten am Ende.
+> Bau durch Claude nach `simulation/BAU_AUFTRAG.md` (Stand 6526feb, Rollentausch, Entscheidung der TL vom 05.11.2026). Grundlage: `simulation/KONZEPT.md` Fassung 2 (93cb32e). Teile 0 bis 7 abgeschlossen am 06.11.2026, danach Korrekturrunde nach der Abnahme X5 (06.11.2026). **Status: abgenommen in Chromium** (Nachprüfung X5 durch Codex: „abnahmefähig mit Änderungen“, einzige Änderung X5N-01 erledigt). Offen sind die Nachweise am echten Gerät. Einzelheiten am Ende.
 
 ## Umgebung (Teil 0)
 
@@ -43,6 +43,8 @@ Ergänzung zur Umgebung (06.11.2026): Chromium 153.0.8010.12 über Playwright 1.
 | `simulation/ZUSTAENDE.md`, `VORBILD_LERNZENTRUM.md`, `PROTOTYPEN.md` | Ablauf und Zustände, Vorbild, Prototypen und Wahl |
 | `simulation/gutachten/` | Gutachten G1 bis G10 (drei Runden) und Runde 4 nach der Korrekturrunde (`*_R4.md`), `ZUSAMMENFUEHRUNG.md` |
 | `simulation/X5_CODEX_ABNAHME.md`, `simulation/x5_skripte/` | Abnahme X5 durch Codex (Zweig `codex/x5-abnahme-da7deb1`, eingemergt) |
+| `simulation/X5_CODEX_NACHPRUEFUNG.md`, `simulation/x5n_skripte/` | Nachprüfung durch Codex (Zweig `codex/x5-nachpruefung`, eingemergt) |
+| `simulation/VEROEFFENTLICHUNG.md` | Auftrag für die Veröffentlichung (Codex, Sites) und Liste für die Live-Abnahme |
 | `simulation/X5_ANTWORT.md`, `simulation/x5_regression/` | Antwort auf X5 mit Nachweis je Befund; Kopie der Codex-Skripte mit Läufen auf dem neuen Stand |
 | `simulation/EINSATZ_TUTORIUM.md`, `simulation/kurzkarte/` | Begleitmaterial (Teil 5) |
 | `simulation/ABNAHME_IPHONE.md` | Abnahmeliste für die TL am iPhone |
@@ -61,7 +63,7 @@ Status nur „bestanden“, „fehlgeschlagen“, „nicht geprüft“, „nicht
 | M-3 Vorhersage vor jedem Prüfen | Zustände je Frage, Knopf erst nach Eingabe, Ausgangslage beim Prüfen; Sperre für Frage 1 (Schnitt) und Frage 2 (Messpunkte) | BT „P1“, „P3“, „P5“, „Sperre Frage 1“, „Sperre Frage 2“, „Vertiefung V1 bis V5“; KT X5-01, F3/G1-R4-01; Codex `V3_Antwort_vor_Vorhersage` PASS | bestanden (Korrekturrunde: V3 ohne Vorgriff, X5-01; Zeitangabe der Startauflösung erst nach Frage 1, G1-R4-01, Entscheidung Q1) |
 | M-4 Fachliche Fragen, sinnvolle Bereiche | Fragen Konzept 6; Bereiche `regler.json` | TT, Durchsicht G3 | bestanden |
 | M-5 Sofortige Rückmeldung | kein Knopf „Berechnen“, Zeichnen bei jeder Eingabe | BT „Leistung L3“ (Median 3,0 ms), G8 mit Event Timing (höchstens 80 ms bei CPU · 6) | bestanden |
-| M-6 Frage, Vorhersage, Diagramm zugleich | Laptop: Frageleiste über dem Diagramm, Rückblick in einer Zeile, nach dem Festhalten kurz; Diagrammhöhe nach dem Platz unter der Frageleiste (beim Prüfen mit dem Regler „Zugabe nach“); Handy: Diagramm angeheftet, in seiner echten Größe gezeichnet (Schrift 11 bis 12 px), höchstens 45 % der Höhe gemessen mit Kernzahlen und Legende, konstante Höhe; zu wenig Platz (kleine Höhe, große Schrift): nicht angeheftet; Kernleiste der Vertiefung mit gemessenem Fokusabstand | BT „M-6 am Handy“, „Anheften abschaltbar“; KT X5-04, X5-09, X5-10, G1-R4-08, G1-R4-10, „Beamer“ (1280 × 720 und 1366 × 768); Codex-Layout 108 Zustände: 0 verdeckte Fokusmitten, 0 über 45 %; G5 Runde 4 | bestanden in Chromium; echtes Gerät offen |
+| M-6 Frage, Vorhersage, Diagramm zugleich | Laptop: Frageleiste über dem Diagramm, Rückblick in einer Zeile, nach dem Festhalten kurz; Diagrammhöhe nach dem Platz unter der Frageleiste (beim Prüfen mit dem Regler „Zugabe nach“); Handy: Diagramm angeheftet, in seiner echten Größe gezeichnet (Schrift 11 bis 12 px), höchstens 45 % der Höhe gemessen mit Kernzahlen und Legende, konstante Höhe; zu wenig Platz (kleine Höhe, große Schrift): nicht angeheftet; Kernleiste der Vertiefung mit gemessenem Fokusabstand | BT „M-6 am Handy“, „Anheften abschaltbar“; KT X5-04, X5-09, X5-10, G1-R4-08, G1-R4-10, „Beamer“ (1280 × 720 und 1366 × 768); Codex-Layout 108 Zustände: 0 verdeckte Fokusmitten; Anteil des angehefteten Bereichs im stabilen Zustand höchstens 45 % (Nachprüfung Codex: 379,75 px bei 844 px Fensterhöhe = 44,99 %, konstant bei sieben Zugabezeiten); kurzer Übergang beim Schriftwechsel zur Laufzeit: unmittelbar nach der Schriftänderung bis 457,25 px von 844 px (54,18 %), im Layoutlauf von Codex einmal 49,49 % (390 × 844, EN, 200 % Text); danach löst sich das Diagramm selbst, ab 120 ms bis 2 s bleibt es gelöst (X5N-01; `X5_CODEX_NACHPRUEFUNG.md`, `simulation/x5n_skripte/`); G5 Runde 4 | bestanden in Chromium; echtes Gerät offen |
 | M-7 Messblatt nach Versuchsprotokoll | feste Zeilen, Becher 3 zuschaltbar, Deckel, Übernahme ganz oder gar nicht | BT „Messblatt …“, „Übernahme …“, „P6“; Bilder `M_messblatt_*` | bestanden |
 | M-8 Pflichtweg mit einem Regler | nur „Zugabe nach“ sichtbar, Rest in der Vertiefung | Bild `P2_*` | bestanden |
 | M-9 Kurze Beschriftungen | Regler mit Name, Formelzeichen, Einheit; Hilfe „?“ | Durchsicht, G2, G6 | bestanden |
@@ -209,7 +211,7 @@ Ergebnisse auf dem übergebenen Stand (06.11.2026, Cloud-Container, Chromium 153
 | `test_kern.py` | 134 von 134 bestanden (Rechenkern der Quellen gegen `kaffee_modell.py` und `kaffee_erweitert.py`, 10 000 Zufallssätze) | `test_kern_ergebnis.txt` |
 | `test_kern.py --html` | 135 von 135 bestanden (dasselbe aus der gebauten Seite, dazu Identität des Blocks MODELL) | `test_kern_html_ergebnis.txt` |
 | `test_texte.py` | 14 von 14 bestanden (Schlüssel DE und EN gleich, keine Gedankenstriche, Dezimalzeichen, Zahlen aus `zahlen.py`, „du“) | `test_texte_ergebnis.txt` |
-| `browsertest_bau.js` | 95 von 95 bestanden (Artefakt, Sperren, Pflichtweg, Vertiefung, Messblatt, Kurslink, Sprache, Speicher, Umbruch 320 bis 1920 px, 200 % Text, axe-core, Kann-Punkte) | `browsertest_bau_ergebnis.txt` |
+| `browsertest_bau.js` | 94 von 94 bestanden (L1 Dateigröße entfallen, Entscheidung der TL vom 06.11.2026) (Artefakt, Sperren, Pflichtweg, Vertiefung, Messblatt, Kurslink, Sprache, Speicher, Umbruch 320 bis 1920 px, 200 % Text, axe-core, Kann-Punkte) | `browsertest_bau_ergebnis.txt` |
 | Leistung (im Browsertest) | L2 bedienbar nach 92 ms; L3 je Reglerschritt Median 3,0 ms, 95 % 3,4 ms, höchstens 3,8 ms; L4 Bedienfolge 30 s mit 1411 Schritten ohne Fehler, Speicherzuwachs 1,33 MB | dieselbe |
 | `browsertest_korrektur.js` | 45 von 45 (je behobenem Befund aus X5, Runde 3, Runde 4, dazu Beamer und Q2 bis Q7 ein Test); auf dem Stand vor der Korrektur 0 von 29 (die 29 Tests zu X5 und Runde 3) | `browsertest_korrektur_ergebnis.txt`, `browsertest_korrektur_alt_ergebnis.txt` |
 | Skripte von Codex (Kopie) | Zahlen: 441 Sätze, 23 814 Vergleiche, ohne Abweichung; Layout 108 Zustände ohne Überlauf, ohne verdeckten Fokus, Schnitt ohne Text 0; Bedienlauf 19 von 20 Prüfschritten bestanden, 1 Abbruch | `simulation/x5_regression/` |
@@ -259,18 +261,26 @@ Auftrag der TL vom 06.11.2026 nach der Abnahme X5 (Codex: „nicht abnahmefähig
 
 ## Status
 
-**Abnahmebereit** für alle Nachweise, die in dieser Umgebung möglich sind: Kein blocker, high oder medium ist offen (X5, Runde 3, Runde 4, Gestaltungsprüfung); alle Muss-Anforderungen sind in Chromium belegt, die Entscheidungen F1 bis F14 und Q1 bis Q7 sind umgesetzt. Vorbehalte: die Nachprüfung durch Codex (X5_AUFTRAG.md, Abschnitt 9) und die Nachweise in der echten Welt (iPhone mit Safari, Bildschirmleser für M-15, Hörsaal, Zeit mit Studierenden; G1 schätzt etwa 14 min für ein Paar am Handy).
+**Abgenommen in Chromium.** Die Nachprüfung durch Codex (`simulation/X5_CODEX_NACHPRUEFUNG.md`, Zweig `codex/x5-nachpruefung`, Commit 2680008, eingemergt) lautet „abnahmefähig mit Änderungen“: alle elf X5-Befunde behoben, Entscheidungen F1 bis F14 und Q1 bis Q7 in DE und EN umgesetzt, Beamer bei 1280 × 720 und 1366 × 768 bestanden, Zahlen und neue Begründung V1 unabhängig bestätigt. Die einzige Änderung, X5N-01 (low), ist erledigt: Der Nachweis zur 45-%-Grenze am Handy unterscheidet jetzt zwischen stabilem Zustand (höchstens 45 %, Codex 44,99 %) und dem kurzen Übergang beim Schriftwechsel zur Laufzeit (unmittelbar danach bis 54,18 %, ab 120 ms gelöst); siehe Nachweistabelle M-6 und `simulation/X5_ANTWORT.md`. Kein blocker, high, medium oder low aus X5 ist offen.
 
-Übergebener Stand: `simulation/site/index.html`, bytegleich `simulation/site/Kaffee_Simulation.html`, SHA-256 `e6f95ca27a5c508344e6802195e9ea62f07ad743694761198057da98e757cc1d`, 433 303 Bytes, Commit 6077a92. `python3 simulation/site/bauen.py --pruefen` gibt „gleich“ aus. Tests: `test_kern.py` 134 von 134, `--html` 135 von 135, `test_texte.py` 14 von 14, `browsertest_bau.js` 95 von 95, `browsertest_korrektur.js` 45 von 45.
+Entscheidung der TL vom 06.11.2026: Die Größengrenze von 450 000 Bytes entfällt ersatzlos (Uni-WLAN, auch 2 MB sind in Ordnung); gestrichen in `bauen.py`, Browsertest (L1), Konzept 9.1 und Bauauftrag. Dadurch hat sich die Seite nur in der Versionskennung (Prüfsumme der Quellen, zu denen `bauen.py` gehört) und dem zugehörigen CSP-Hash geändert; Funktion und Texte sind gleich dem von Codex nachgeprüften Stand `e6f95ca2…cc1d`.
 
-**Offen:**
+Übergebener Stand: `simulation/site/index.html`, bytegleich `simulation/site/Kaffee_Simulation.html`, SHA-256 `d37edd0c05c8a4533170e13d65d68ac564420cbb1170e7e0963316125e3df46d`, 433 303 Bytes. `python3 simulation/site/bauen.py --pruefen` gibt „gleich“ aus. Tests: `test_kern.py` 134 von 134, `--html` 135 von 135, `test_texte.py` 14 von 14, `browsertest_bau.js` 94 von 94, `browsertest_korrektur.js` 45 von 45.
 
-| Was | Art | Nächster Schritt |
+**Veröffentlichung:** Auftrag für Codex in `simulation/VEROEFFENTLICHUNG.md` (Quelle nur der Merge-Commit auf `main`, Adresse `waermeuebertragung-kaffee`, zunächst nur für die TL, öffentlich erst am Sitzungstag auf Zuruf; Baunachweis mit SHA-256; Liste für die Live-Abnahme).
+
+**Offen (Nachweise am echten Gerät und Daten):**
+
+| Was | Wer | Wo |
 |:--|:--|:--|
-| Nachprüfung durch Codex (nur betroffene Punkte) | unabhängige Prüfung | `simulation/X5_AUFTRAG.md`, Abschnitt 9 |
-| G1-R4-13: Wechsel zwischen V1 bis V5 umständlich (Auswahl V1 bis V5 in der Frageleiste fehlt) | low, neue Bedienfunktion | Empfehlung für eine spätere Runde |
-| F13 Vorabmessung der TL (Beispielmessung, S-9) | Daten fehlen | Messreihe der TL |
-| iPhone mit Safari, Android, Firefox, Bildschirmleser, Hörsaal, Zeit mit Studierenden | echte Welt | `simulation/ABNAHME_IPHONE.md`, Probelauf |
+| iPhone mit Safari (Hoch- und Querformat, Finger, Bildschirmtastatur, Zoom, Kurslink, Offline-Datei) | TL | `simulation/ABNAHME_IPHONE.md` |
+| Bildschirmleser (VoiceOver, TalkBack, NVDA) für M-15 | TL oder Prüfperson | nicht verfügbar in der Umgebung |
+| Android, Firefox, Safari am Laptop | TL oder Codex | nur Chromium geprüft |
+| Zeit des Pflichtwegs mit Studierenden (Schätzung G1 etwa 14 min, geplant 10) | TL | Probelauf |
+| Hörsaal und Beamer vor Ort | TL | `simulation/EINSATZ_TUTORIUM.md` |
+| Live-Abnahme nach der Veröffentlichung | TL, nach dem Öffentlichschalten Claude | `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 5 |
+| F13 Vorabmessung der TL (Beispielmessung, S-9) | TL | Messreihe |
+| G1-R4-13: Auswahl V1 bis V5 in der Frageleiste | low, Empfehlung | spätere Runde |
 
 ## Fragen an die TL (mit Empfehlung)
 

@@ -23,7 +23,6 @@ import tex2mathml  # noqa: E402
 import zahlen  # noqa: E402
 
 STAND = "2026-11-05"
-GRENZE_BYTES = 450000
 SPRACHEN = ("de", "en")
 SKRIPTE = ["modell.js", "erweiterung.js", "hilfen.js"]
 SCHRIFTEN = [("Fira Sans", 400, "normal", "FiraSans-Regular-teil.woff2"), ("Fira Sans", 600, "normal", "FiraSans-SemiBold-teil.woff2"),
@@ -201,8 +200,6 @@ def main():
     seite, summe, warnungen, teile = bauen()
     for w in warnungen:
         print("WARNUNG:", w)
-    if len(seite) >= GRENZE_BYTES:
-        raise BauFehler("Seite zu groß: %d Bytes (Grenze %d)" % (len(seite), GRENZE_BYTES))
     ausgabe = sys.argv[sys.argv.index("--ziel") + 1] if "--ziel" in sys.argv else HIER   # --ziel <ordner>: Probebau außerhalb von site/
     os.makedirs(ausgabe, exist_ok=True)
     ziel = os.path.join(ausgabe, "index.html")
@@ -219,7 +216,6 @@ def main():
         f.write("Stand: %s\nPrüfsumme der Quellen (SHA-256): %s\n" % (STAND, summe))
         f.write("index.html und Kaffee_Simulation.html (bytegleich): %d Bytes, SHA-256 %s\n" % (len(seite), sha))
         f.write("Anteile: Skript %(js)d Bytes, Stil mit Schriften %(css)d Bytes, Texte %(texte)d Bytes\n" % teile)
-        f.write("Grenze: unter %d Bytes unkomprimiert\n" % GRENZE_BYTES)
         f.write("Warnungen: %s\n" % ("keine" if not warnungen else "; ".join(warnungen)))
     print("gebaut: %d Bytes, SHA-256 %s" % (len(seite), sha))
     print("Anteile:", teile)

@@ -92,3 +92,5 @@ Beide Läufe schreiben in denselben Bericht (Abschnitte A und B).
   6. Den Befund aus der Gestaltungsprüfung: Beamer 1280 × 720 und 1366 × 768, nach der Startvorhersage Frageleiste und ganzes Diagramm im Bild, nach Frage 1 zusätzlich der Regler „Zugabe nach“. Die Gestaltung selbst ist nach Entscheidung der TL unverändert (kein Entwurf übernommen).
 - **Nicht zu prüfen:** Was die Korrekturrunde nicht berührt hat; Gestaltungsentwürfe (Zweig `claude/simulation-design-assignment-w01on3`).
 - **Grenzen** wie Abschnitt 7.
+
+*Ergebnis der Nachprüfung:* `simulation/X5_CODEX_NACHPRUEFUNG.md` (06.11.2026), „abnahmefähig mit Änderungen“; X5N-01 erledigt. Danach entfiel die Größengrenze (Entscheidung der TL); der Stand der Seite ist jetzt SHA-256 `d37edd0c…f46d`, gegenüber dem nachgeprüften `e6f95ca2…cc1d` nur Versionskennung und CSP-Hash geändert.

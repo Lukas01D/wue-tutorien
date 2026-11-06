@@ -295,7 +295,7 @@ Eigene Rechnung `recherche/claude_f2/f2_testfaelle.py` mit Ausgabe `.txt`; Gegen
 
 ### 9.1 Form
 
-- **Eine Datei** `simulation/site/index.html` mit HTML, CSS, JavaScript und Schrift eingebettet; dieselbe Datei ist die Offline-Fassung (Kopie als `Kaffee_Simulation.html`). Ziel unter 450 KB. *(F2: E3, wegen der englischen Texte)*
+- **Eine Datei** `simulation/site/index.html` mit HTML, CSS, JavaScript und Schrift eingebettet; dieselbe Datei ist die Offline-Fassung (Kopie als `Kaffee_Simulation.html`). *(Größengrenze entfallen, Entscheidung der TL vom 06.11.2026: Uni-WLAN, auch 2 MB sind in Ordnung)*
 - **Keine fremden Server:** keine Bibliotheken aus dem Netz, keine fremde Webschrift; `Content-Security-Policy` mit `default-src 'none'`, alles eingebettet.
 - **Kein Rahmenwerk:** einfaches JavaScript; Formeln in MathML oder HTML.
 - **Schrift:** Fira Sans Regular und Semibold als WOFF2-Teilmenge, SIL Open Font License 1.1; Ersatz `system-ui`.

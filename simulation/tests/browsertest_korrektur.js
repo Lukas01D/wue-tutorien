@@ -151,6 +151,8 @@ async function test(id, name, fn, b) {
     return [m.filter(x => x[0]).length >= 4 && m.every(([an, k]) => !an || k >= 10), m.map(x => (x[0] ? "an " : "aus ") + x[1]).join(", ")];
   }, b);
 
+  // X5N-01: gemessen im stabilen Zustand, 200 ms nach Schriftänderung und Festhalten; unmittelbar nach einem Schriftwechsel zur Laufzeit
+  // gibt es einen kurzen Übergang über 45 % (Codex: bis 54,18 %), danach löst sich das Diagramm selbst.
   await test("X5-10", "Angehefteter Bereich höchstens 45 % auch bei 125 bis 200 % Grundschrift", async b => {
     const m = [];
     for (const f of ["125%", "150%", "200%"]) for (const [w, h] of [[320, 640], [360, 640], [390, 844]]) {

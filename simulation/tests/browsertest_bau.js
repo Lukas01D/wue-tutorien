@@ -5,7 +5,7 @@
 // Erwartete Zahlen kommen aus der Python-Referenz (simulation/tests/erwartung_browser.py), nicht aus dem JavaScript der Seite.
 //
 // LEISTUNGSGRENZEN, festgelegt vor der ersten Messung (Messung im Cloud-Container, nicht auf einem Gerät der TL):
-//   L1 Dateigröße unter 450 000 Bytes (Auftrag)
+//   L1 entfallen (Entscheidung der TL vom 06.11.2026: keine Größengrenze)
 //   L2 Zeit bis bedienbar (Navigationsbeginn bis Startkarte mit aktivem Auswahlfeld): höchstens 1500 ms
 //   L3 Reaktionszeit je Reglerschritt (Ereignis bis fertige Zeichnung, synchron gemessen): Median höchstens 25 ms,
 //      95. Perzentil höchstens 50 ms, Maximum höchstens 150 ms
@@ -79,7 +79,6 @@ async function domOhneSkript(p) {
   // ---------------------------------------------------------------- Artefakt
   const a = fs.readFileSync(SEITE), b = fs.readFileSync(KOPIE);
   pruefe("Artefakt: index.html und Kaffee_Simulation.html bytegleich", Buffer.compare(a, b) === 0, a.length + " Bytes");
-  pruefe("Artefakt (L1): unter 450 000 Bytes unkomprimiert", a.length < 450000, a.length + " Bytes");
   const html = a.toString("utf8");
   const csp = (html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || "";
   const skript = (html.match(/<script>([\s\S]*?)<\/script>/) || [])[1] || "";

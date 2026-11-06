@@ -201,7 +201,7 @@ Dokumentiere auch: Ein Kurslink, den alle öffnen können, braucht die veröffen
 - auch versuchte Anfragen nach außen werden protokolliert; erlaubt sind keine;
 - die Content-Security-Policy ist im fertigen Artefakt wirksam und lässt dessen Funktionen zu (zum Beispiel Hashes für eingebettete Skripte);
 - die Schrift ist eingebettet;
-- die Datei bleibt einschließlich aller Einbettungen unter 450 000 Bytes unkomprimiert;
+- *(Größengrenze von 450 000 Bytes gestrichen, Entscheidung der TL vom 06.11.2026)*
 - beide Kopien sind bytegleich.
 
 ### 3.2 Reihenfolge (P16)
