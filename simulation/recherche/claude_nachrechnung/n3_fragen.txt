@@ -1,0 +1,13 @@
+Milch gleich warm bei Zugabe nach 30 min: 60.91 °C; mit Deckel: 68.62 °C
+Milch gleich warm bei Zugabe nach 60 min: 47.00 °C; mit Deckel: 58.99 °C
+Milch gleich warm bei Zugabe nach 90 min: 37.28 °C; mit Deckel: 50.95 °C
+Grenzwert sehr späte Zugabe: dT -> 1.907 K (20 °C gegen 18.09 °C)
+Zugabe  30 min: dT offen 3.358 K, mit Deckel 2.434 K
+Zugabe  40 min: dT offen 3.701 K, mit Deckel 2.906 K
+Zugabe  56 min: dT offen 3.862 K, mit Deckel 3.419 K
+Zugabe  60 min: dT offen 3.853 K, mit Deckel 3.510 K
+Zugabe 100 min: dT offen 3.339 K, mit Deckel 3.862 K
+Zugabe 120 min: dT offen 3.021 K, mit Deckel 3.806 K
+Zugabe 240 min: dT offen 2.060 K, mit Deckel 2.816 K
+Anzeige 3,86 K (offen) für Minuten: [53, 54, 55, 56, 57, 58, 59]
+Anzeige 3,86 K (Deckel) für Minuten: [94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106]

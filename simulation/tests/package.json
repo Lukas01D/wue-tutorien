@@ -1,0 +1,9 @@
+{
+  "name": "kaffee-simulation-tests",
+  "private": true,
+  "description": "Testwerkzeuge der Kaffee-Simulation (nur zum Prüfen, nicht Teil der Seite)",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axe-core": "4.14.0"
+  }
+}

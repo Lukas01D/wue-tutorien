@@ -1,0 +1,12 @@
+Analytisch: Maximum genau am Schnitt (T1 = T2K), Höhe C_M (T_x - T_M) / C_G, T_x unabhängig von kA
+ohne Becher: kA aus Messung 0.3402 W/K, T10 70.47 °C, T_x 35.38 °C, dT_max analytisch 3.862 K
+   kA wie gemessen     : dT_max 3.862 K bei Zugabe nach 55.8 min, schwarzer Kaffee dann 35.38 °C
+   Deckel: kA x 0,56   : dT_max 3.862 K bei Zugabe nach 99.5 min, schwarzer Kaffee dann 35.38 °C
+   kA halb             : dT_max 3.862 K bei Zugabe nach 111.5 min, schwarzer Kaffee dann 35.38 °C
+   kA doppelt          : dT_max 3.862 K bei Zugabe nach 27.9 min, schwarzer Kaffee dann 35.38 °C
+Becher 300 g: kA aus Messung 0.4440 W/K, T10 72.47 °C, T_x 35.78 °C, dT_max analytisch 3.090 K
+   kA wie gemessen     : dT_max 3.090 K bei Zugabe nach 54.7 min, schwarzer Kaffee dann 35.78 °C
+   Deckel: kA x 0,56   : dT_max 3.090 K bei Zugabe nach 97.7 min, schwarzer Kaffee dann 35.78 °C
+   kA halb             : dT_max 3.090 K bei Zugabe nach 109.4 min, schwarzer Kaffee dann 35.78 °C
+   kA doppelt          : dT_max 3.090 K bei Zugabe nach 27.4 min, schwarzer Kaffee dann 35.78 °C
+Kontrolle Standard: kA 0.3402 W/K, th1 34.05 °C, th2 30.19 °C, dT 3.85 K

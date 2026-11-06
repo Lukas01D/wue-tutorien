@@ -1,0 +1,257 @@
+{
+  "graphics": [
+    {
+      "case": "standard",
+      "points": 484,
+      "max_error_svg": 0.06411042926183086
+    },
+    {
+      "case": "100ml",
+      "points": 484,
+      "max_error_svg": 0.0867742901531443
+    },
+    {
+      "case": "400ml",
+      "points": 484,
+      "max_error_svg": 0.05855176522820216
+    },
+    {
+      "case": "milch65",
+      "points": 484,
+      "max_error_svg": 0.06411042926183086
+    },
+    {
+      "case": "raum10",
+      "points": 484,
+      "max_error_svg": 0.0711152715030039
+    },
+    {
+      "case": "105prozent",
+      "points": 484,
+      "max_error_svg": 0.06411042926183086
+    },
+    {
+      "case": "kA05",
+      "points": 484,
+      "max_error_svg": 0.05177031128152976
+    },
+    {
+      "case": "kA1",
+      "points": 484,
+      "max_error_svg": 0.1013066232542883
+    }
+  ],
+  "measured_replaced": {
+    "before": 66.5,
+    "after": 70.14499580594031,
+    "visible": "70,1",
+    "label": "Messung nach 10 min \n𝜗\nK\n(\n10\nmin\n)\n [°C]"
+  },
+  "energy_formula": {
+    "CG": 957.7459999999999,
+    "CGB": 1212.7459999999999,
+    "difference": 3.0788314168794386,
+    "heat_difference": 3.733840485494831,
+    "wrong": 3.8985706914931844,
+    "right": 3.0788314168794053,
+    "text": "Bilanz. Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nmit \n𝐶\n=\n𝑚\n𝑐\n𝑝\n des Inhalts (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Trennung der Variablen mit \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n ergibt\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA aus der Messung. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (Teil c).\n\nMischen. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).\n\nAbgegebene Wärme. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\n; bei gleicher Milch fällt der letzte Teil weg.\n\nZeitpunkt der Zugabe. Verschiebt man die Zugabe, ändert sich der Unterschied mit \nd\n(\n𝜗\n1\n−\n𝜗\n2\n)\nd\n𝑡\nZ\n=\n𝑄\n˙\n2\n−\n𝑄\n˙\n1\n𝐶\nG\n: Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.\n\nkA aus allen Messpunkten (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n mit \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, dann \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. Die Streuung der Geraden ist keine Messunsicherheit von \n𝑘\n𝐴\n, weil alle Punkte denselben Startwert enthalten.\n\nkA festhalten (Vertiefung): Das Werkzeug gibt dem Modell den Messwert nach 10 min, der zu diesem \n𝑘\n𝐴\n gehört, und rechnet sonst unverändert.\n\nDie Seite ist eine einzige Datei. Die Rechnung steht in zwei gekennzeichneten Blöcken: MODELL enthält dieselben Gleichungen und Standardwerte wie das Rechenskript kaffee_modell.py der Lösung (Funktionen rechne und zwei_tassen), ERWEITERUNG die Erweiterungen (Ausgleichsgerade, Energie, \n𝑘\n𝐴\n festhalten und die gewählten Zusätze). Für jede Einstellung rechnet der Code die Kurven geschlossen aus; nur die Zeichnung tastet sie in 241 Punkten ab. Geprüft wird mit automatischen Tests: 10 000 Zufallssätze gegen kaffee_modell.py, die Erweiterungen gegen eine eigene Rechnung, Bedienung im Browser bei 360 bis 1920 px, beide Sprachen. Stand 2026-11-05, Version 2c5665e215. Du kannst den Code mit „Quelltext anzeigen“ im Browser lesen."
+  },
+  "fit_ui": {
+    "text": "𝑘\n𝐴\n aus allen Punkten vor der Milch (Becher 2): 0,4467 \nW\nK\n (Gerade durch den Ursprung, 6 Punkte, 10 bis 60 min); mit freiem Achsenabschnitt 0,4495 \nW\nK\n. \n𝑘\n𝐴\n aus der Ausgleichsgeraden festhalten",
+    "parameters": {
+      "kAQuelle": "fest",
+      "kA": 0.4466880306147928,
+      "kAHerkunft": "ausgleich",
+      "milch2Raum": false,
+      "becher": true,
+      "tEnd_min": 60,
+      "VK_ml": 200,
+      "thK0": 80.1,
+      "VM_ml": 30,
+      "thM": 5,
+      "thU": 20,
+      "thMess": 67.3,
+      "mB_g": 300,
+      "kA1Faktor": 1
+    },
+    "measured": 67.3
+  },
+  "english_wrong": [
+    {
+      "q": "v1",
+      "explanation": "Your prediction: 5 °C\nYour number: 5 °C · model: 47.0 °C\n\n47.0 °C; 60.9 °C when the milk is added after 30 min, 37.3 °C after 90 min."
+    },
+    {
+      "q": "v2",
+      "explanation": "Your prediction: larger · × choice does not match\n\nThe same (3.86 K), but later: when the milk is added after about 100 min instead of 56 min (display 3.86 K from 94 to 106 min). After 60 min the difference with a lid is smaller (3.51 K). Reason: \n𝑘\n𝐴\n appears only in the product \n𝑘\n𝐴\n𝑡\n; the lid stretches the time axis. This holds when both cups have the same \n𝑘\n𝐴\n."
+    },
+    {
+      "q": "v3",
+      "explanation": "Your prediction: larger · × choice does not match\n\nSmaller: 3.08 instead of 3.85 K; the heat released increases (46.60 and 50.34 kJ instead of 34.88 and 38.57 kJ) because the mug cools down too; cup 1 stays warmer."
+    },
+    {
+      "q": "v4",
+      "explanation": "Your prediction: wrong kA of both mugs · × choice does not match\n\nDifferent \n𝑘\n𝐴\n: the difference drops from 3.85 to 2.98 K. A wrong \n𝑘\n𝐴\n of both mugs changes it by at most 0.04 K. Identical mugs and conditions matter more than an exact \n𝑘\n𝐴\n."
+    },
+    {
+      "q": "v5",
+      "explanation": "Your prediction: Glass, open · × choice does not match\n\nThe open vacuum mug keeps it warm the longest (estimate: from 80 to 63.5 °C in 30 min, compared with 48.8 °C for the open ceramic mug), followed by ceramic with a lid. The largest difference stays 3.86 K; it only comes later (open vacuum mug after about 127 min). Glass and paper are roughly like ceramic: the wall is not the main resistance; what matters is the open surface and the radiation."
+    }
+  ],
+  "focus_768_1024_32px": [
+    {
+      "id": "s-trink",
+      "tag": "INPUT",
+      "top": 110.03125,
+      "bottom": 132.03125,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "z-kA1",
+      "tag": "INPUT",
+      "top": 56.109375,
+      "bottom": 100.109375,
+      "hit": "kern-leiste",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 56.109375,
+      "bottom": 100.109375,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "r-kA1",
+      "tag": "INPUT",
+      "top": 56.109375,
+      "bottom": 100.109375,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 56.109375,
+      "bottom": 100.109375,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 114.5,
+      "bottom": 195.828125,
+      "hit": "kern-leiste",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 56.375,
+      "bottom": 137.703125,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "z-thM",
+      "tag": "INPUT",
+      "top": 85.453125,
+      "bottom": 129.453125,
+      "hit": "kern-leiste",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 85.453125,
+      "bottom": 129.453125,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "r-thM",
+      "tag": "INPUT",
+      "top": 85.453125,
+      "bottom": 129.453125,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 85.453125,
+      "bottom": 129.453125,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 56.15625,
+      "bottom": 100.15625,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "z-VM",
+      "tag": "INPUT",
+      "top": 55.96875,
+      "bottom": 99.96875,
+      "hit": "kern-leiste",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 55.96875,
+      "bottom": 99.96875,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "r-VM",
+      "tag": "INPUT",
+      "top": 55.96875,
+      "bottom": 99.96875,
+      "hit": "",
+      "cover": true
+    },
+    {
+      "id": "",
+      "tag": "BUTTON",
+      "top": 55.96875,
+      "bottom": 99.96875,
+      "hit": "",
+      "cover": true
+    }
+  ],
+  "vorbild": [
+    {
+      "w": 390,
+      "topic": "01",
+      "url": "http://127.0.0.1:8766/index.html#topic-01/simulation/steady",
+      "text": "Stationäre Wärmeleitung · Wand, Rohr, Kugel\n\nDie Kurve zeigt das Temperaturprofil über der Wand, dem Rohr oder der Kugel; darunter stehen Wärmestrom und Wärmestromdichte.\n\nRechenwerte\n\nWärmestrom \n𝑄\n24.000 W\nWärmestromdichte \n𝑞\n24.000 \nW\nm\n2\nTemperaturdifferenz ΔT\n80 K\nTemperatur bei \n𝐿\n2\n60 °C\nBerechnen\nStandardwerte\nWand\nRohr\nKugel\nPython konnte nicht vorgeladen werden. Beim Start wird es erneut versucht.\nParameter\nOberflächentemperatur \n𝑇\nW\n1\n[°C]\n?\nOberflächentemperatur \n𝑇\nW\n2\n[°C]\n?\nWärmeleitfähigkeit \n𝜆\n[\nW\nm\n·\nK\n]\n?\nWandfläche \n𝐴\n[m²]\n?\nWanddicke \n𝐿\n[m]\n?\nFür Fortgeschrittene\nVersuche\nModell\nSo rechnet der Code\n\nErst vermuten, dann rechnen.\n\nVersuch 1 · Die Wand leitet Wärme schlechter\n\nStell dir vor: Die linke Oberfläche einer Wand ist 100 °C warm, die rechte 20 °C. Jetzt tauschst du das Material gegen eines, das nur halb so gut leitet.\n\nSimulation: Stationär, Geometrie Wand\nAusgangslage: Standardwerte (Knopf „Ausgangslage einstellen“)\nDas änderst du: \n𝜆\n: 15 → 7,5 \nW\nm\n·\nK\nWas vermutest du? Wie ändert sich der Wärmestrom? Wird die Wandmitte wärmer, kälter, oder bleibt sie gleich warm?\nAusgangslage einstellen\nWas passiert mit der Temperatur in der Wandmitte?\nSie wird kälter.\nSie bleibt gleich.\nSie wird wärmer.\nAuflösung zeigen\nWähle zuerst eine Vermutung.\nohne Vermutung aufdecken\nVersuch 2 · Rohr und Kugel\nVersuch 3 · Beide Seiten gleich warm\nAlle Versuche zurücksetzen"
+    },
+    {
+      "w": 390,
+      "topic": "02",
+      "url": "http://127.0.0.1:8766/index.html#topic-02/simulation/convection_no_fin",
+      "text": "Wärmeübertragung ohne Rippe · Ebene Oberfläche an strömender Luft\n\nDie Gerade zeigt den Wärmestrom über der Oberflächentemperatur; dein Fall ist der Punkt.\n\nRechenwerte\n\nWärmestrom\n300 W\nTemperaturdifferenz\n60 K\nBerechnen\nStandardwerte\nPython konnte nicht vorgeladen werden. Beim Start wird es erneut versucht.\nParameter\nWärmeübergangskoeffizient \n𝛼\n[\nW\nm\n2\n·\nK\n]\n?\nFläche \n𝐴\n[m²]\n?\nLufttemperatur \n𝑇\n∞\n[°C]\n?\nOberflächentemperatur \n𝑇\nW\n[°C]\n?\nVersuche\nModell\nSo rechnet der Code\n\nErst vermuten, dann rechnen.\n\nVersuch 1 · Stärker anblasen\n\nStell dir vor: Ein Ventilator bläst stärker über eine warme Platte. Die Luft bleibt 20 °C warm, sie strömt nur schneller.\n\nSimulation: Ohne Rippe\nAusgangslage: Standardwerte (Knopf „Ausgangslage einstellen“)\nDas änderst du: \n𝛼\n: 25 → 50 \nW\nm\n2\n·\nK\nWas vermutest du? Wie ändert sich der Wärmestrom?\nAusgangslage einstellen\nWie ändert sich der Wärmestrom?\nEr verdoppelt sich, weil er proportional zum Wärmeübergangskoeffizienten ist.\nEr steigt auf mehr als das Doppelte, weil die Luft zusätzlich kälter wird.\nEr bleibt gleich, weil sich die Temperaturen nicht ändern.\nAuflösung zeigen\nWähle zuerst eine Vermutung.\nohne Vermutung aufdecken\nVersuch 2 · Beide wärmer\nVersuch 3 · Gleich warm\nAlle Versuche zurücksetzen"
+    },
+    {
+      "w": 1366,
+      "topic": "01",
+      "url": "http://127.0.0.1:8766/index.html#topic-01/simulation/steady",
+      "text": "Stationäre Wärmeleitung · Wand, Rohr, Kugel\n\nDie Kurve zeigt das Temperaturprofil über der Wand, dem Rohr oder der Kugel; darunter stehen Wärmestrom und Wärmestromdichte.\n\nRechenwerte\n\nWärmestrom \n𝑄\n24.000 W\nWärmestromdichte \n𝑞\n24.000 \nW\nm\n2\nTemperaturdifferenz ΔT\n80 K\nTemperatur bei \n𝐿\n2\n60 °C\nBerechnen\nStandardwerte\nWand\nRohr\nKugel\nPython konnte nicht vorgeladen werden. Beim Start wird es erneut versucht.\nParameter\nOberflächentemperatur \n𝑇\nW\n1\n[°C]\n?\nOberflächentemperatur \n𝑇\nW\n2\n[°C]\n?\nWärmeleitfähigkeit \n𝜆\n[\nW\nm\n·\nK\n]\n?\nWandfläche \n𝐴\n[m²]\n?\nWanddicke \n𝐿\n[m]\n?\nFür Fortgeschrittene\nVersuche\nModell\nSo rechnet der Code\n\nErst vermuten, dann rechnen.\n\nVersuch 1 · Die Wand leitet Wärme schlechter\n\nStell dir vor: Die linke Oberfläche einer Wand ist 100 °C warm, die rechte 20 °C. Jetzt tauschst du das Material gegen eines, das nur halb so gut leitet.\n\nSimulation: Stationär, Geometrie Wand\nAusgangslage: Standardwerte (Knopf „Ausgangslage einstellen“)\nDas änderst du: \n𝜆\n: 15 → 7,5 \nW\nm\n·\nK\nWas vermutest du? Wie ändert sich der Wärmestrom? Wird die Wandmitte wärmer, kälter, oder bleibt sie gleich warm?\nAusgangslage einstellen\nWas passiert mit der Temperatur in der Wandmitte?\nSie wird kälter.\nSie bleibt gleich.\nSie wird wärmer.\nAuflösung zeigen\nWähle zuerst eine Vermutung.\nohne Vermutung aufdecken\nVersuch 2 · Rohr und Kugel\nVersuch 3 · Beide Seiten gleich warm\nAlle Versuche zurücksetzen"
+    },
+    {
+      "w": 1366,
+      "topic": "02",
+      "url": "http://127.0.0.1:8766/index.html#topic-02/simulation/convection_no_fin",
+      "text": "Wärmeübertragung ohne Rippe · Ebene Oberfläche an strömender Luft\n\nDie Gerade zeigt den Wärmestrom über der Oberflächentemperatur; dein Fall ist der Punkt.\n\nRechenwerte\n\nWärmestrom\n300 W\nTemperaturdifferenz\n60 K\nBerechnen\nStandardwerte\nPython konnte nicht vorgeladen werden. Beim Start wird es erneut versucht.\nParameter\nWärmeübergangskoeffizient \n𝛼\n[\nW\nm\n2\n·\nK\n]\n?\nFläche \n𝐴\n[m²]\n?\nLufttemperatur \n𝑇\n∞\n[°C]\n?\nOberflächentemperatur \n𝑇\nW\n[°C]\n?\nVersuche\nModell\nSo rechnet der Code\n\nErst vermuten, dann rechnen.\n\nVersuch 1 · Stärker anblasen\n\nStell dir vor: Ein Ventilator bläst stärker über eine warme Platte. Die Luft bleibt 20 °C warm, sie strömt nur schneller.\n\nSimulation: Ohne Rippe\nAusgangslage: Standardwerte (Knopf „Ausgangslage einstellen“)\nDas änderst du: \n𝛼\n: 25 → 50 \nW\nm\n2\n·\nK\nWas vermutest du? Wie ändert sich der Wärmestrom?\nAusgangslage einstellen\nWie ändert sich der Wärmestrom?\nEr verdoppelt sich, weil er proportional zum Wärmeübergangskoeffizienten ist.\nEr steigt auf mehr als das Doppelte, weil die Luft zusätzlich kälter wird.\nEr bleibt gleich, weil sich die Temperaturen nicht ändern.\nAuflösung zeigen\nWähle zuerst eine Vermutung.\nohne Vermutung aufdecken\nVersuch 2 · Beide wärmer\nVersuch 3 · Gleich warm\nAlle Versuche zurücksetzen"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+F3_F12_Q2_Q7 de 1366 PASS {'v1': 'Eure Vorhersage: 5 °C\nEure Zahl: 5 °C · Modell: 47,0 °C\n\n47,0 °C; 60,9 °C bei Zugabe nach 30 min, 37,3 °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei 47,0 °C gibt Tasse 1, in der die warme Milch von Anfang an ist, bis zur Z
+F3_F12_Q2_Q7 en 1366 PASS {'v1': 'Your prediction: 5 °C\nYour number: 5 °C · model: 47.0 °C\n\n47.0 °C; 60.9 °C when the milk is added after 30 min, 37.3 °C after 90 min. Yes, the temperature depends on the time: at 47.0 °C, cup 1, which has the warm milk from the start, rele

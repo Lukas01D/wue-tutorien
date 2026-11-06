@@ -1,0 +1,11 @@
+X5-05 Ueberlauf (Zustaende mit scrollWidth > Breite): 6 [('VT_200prozent_Text', 320, 'de', 371), ('VT_200prozent_Text', 360, 'de', 391), ('VT_200prozent_Text', 390, 'de', 406), ('VT_200prozent_Text', 844, 'de', 873), ('VT_200prozent_Text', 768, 'de', 797), ('VT_200prozent_Text', 1024, 'de', 1053)]
+X5-05 Regler mit Breite 0: 2 [('VT_200prozent_Text', 320, 'de', 8), ('VT_200prozent_Text', 320, 'en', 8)]
+Ziele unter 24/44 px (ohne Breite 0): 16 [('VT_200prozent_Text', 360, 'de', 'r-tEnd', 32.046875, 44), ('VT_200prozent_Text', 360, 'de', 'r-VK', 32.046875, 44), ('VT_200prozent_Text', 360, 'de', 'r-thK0', 32.046875, 44), ('VT_200prozent_Text', 360, 'de', 'r-VM', 32.046875, 44), ('VT_200prozent_Text', 360, 'de', 'r-thM', 32.046875, 44), ('VT_200prozent_Text', 360, 'de', 'r-thU', 32.046875, 44)]
+X5-10 angeheftet > 45 %: 6 [('VT_200prozent_Text', 320, 640, 'de', 0.637), ('VT_200prozent_Text', 320, 640, 'en', 0.637), ('VT_200prozent_Text', 360, 640, 'de', 0.57), ('VT_200prozent_Text', 360, 640, 'en', 0.637), ('VT_200prozent_Text', 390, 844, 'de', 0.47), ('VT_200prozent_Text', 390, 844, 'en', 0.47)]
+X5-09 kleinste Diagrammschrift < 9 px: 6 [(('P2', 320, 640), 8.43), (('P2', 360, 640), 7.41), (('P4', 320, 640), 7.73), (('P4', 360, 640), 6.79), (('VT', 320, 640), 7.73), (('VT', 360, 640), 6.79)]
+X5-04 verdeckte Fokusmitten (Layoutlauf): 8
+X5-04 768x1024 32 px verdeckt: 16
+X5-06 Schnittkreis ohne Beschriftung: 16 von 72
+X5-02 energy_formula: {"CG": 957.7459999999999, "CGB": 1212.7459999999999, "difference": 3.0788314168794386, "heat_difference": 3.733840485494831, "wrong": 3.8985706914931844, "right": 3.0788314168794053, "text": "Bilanz. Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren 
+X5-03 measured_replaced: {"before": 66.5, "after": 70.14499580594031, "visible": "70,1", "label": "Messung nach 10 min \n𝜗\nK\n(\n10\nmin\n)\n [°C]"}
+Browserlauf B: {'PASS', 'FAIL'} ['V3_Antwort_vor_Vorhersage', 'Quellenwechsel_haelt_Kurven_bei_kA1', 'Ungueltige_Einstellung_und_Sprachwechsel', 'Kurslink_fremdes_Format', 'Kurslink_alle_akzeptierten_Nachkommastellen']

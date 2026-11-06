@@ -1,0 +1,2854 @@
+{
+  "browser": "154.0.8037.57",
+  "playwright": "1.62.0",
+  "tests": [
+    {
+      "name": "Identitaet_MODELL",
+      "lang": "de",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": {
+        "artifact": "e6f95ca27a5c508344e6802195e9ea62f07ad743694761198057da98e757cc1d",
+        "model": "b32e3f9db9f82b09bfc0e300388ffbef72f875cec65540da668d765389f97d24"
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Q1_F4_F11",
+      "lang": "de",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": {
+        "before_modell": "Physikalisches Problem\n\nSonntagmorgen in der WG-Küche: Du hast Filterkaffee gekocht und zwei gleiche Tassen mit je 200 ml gefüllt. Da klingelt das Telefon, das Gespräch wird eine Stunde dauern. Dein Mitbewohner gießt seine Milch sofort in den Kaffee (Tasse 1). Du stellst deine Tasse daneben und willst die Milch erst nach dem Telefonat hineingießen (Tasse 2), damit der Kaffee „länger heiß bleibt“. Die Milch kommt in beiden Fällen direkt aus dem Kühlschrank.\n\nDein Mitbewohner meint: „Ob man die Milch sofort oder später hineingießt, ist egal. Die Energie bleibt ja erhalten.“ Welche Tasse ist nach einer Stunde wärmer?\n\nBeide Tassen geben über ihre Oberfläche Wärme an den Raum ab, und zwar umso mehr, je wärmer der Inhalt als der Raum ist. Die Simulation rechnet den Vorgang mit der instationären globalen Energiebilanz aus Tutorium 5; in der Vertiefung kannst du Mengen, Temperaturen, Tasse und Becher verändern.\n\nAnnahmen\n\nWie auf dem Aufgabenblatt (in du-Form ohne inhaltliche Änderung):\n\nDer Tasseninhalt ist ideal durchmischt, die Milch mischt sich sofort und ohne Wärmeverlust.\nDie Wärmekapazität der Tasse wird vernachlässigt, außer wenn du den Becher einschaltest (Teil g): Dann ist der Becher immer so warm wie sein Inhalt, auch beim Zugießen.\nDie gesamte Wärmeabgabe (auch durch Strahlung und Verdunstung) ist \n𝑄\n˙\nab\n=\n𝑘\n𝐴\n(\n𝜗\n−\n𝜗\nu\n)\n mit konstantem \n𝑘\n𝐴\n; die verdunstete Masse wird vernachlässigt.\nKaffee (Stoffdaten von Wasser) und Milch sind inkompressibel (\n𝑐\n𝑝\n=\n𝑐\n𝑣\n), die Stoffdaten konstant.\n\nZusätzlich in der Simulation:\n\n𝑘\n𝐴\n gilt für beide Tassen; „\n𝑘\n𝐴\n von Tasse 1 relativ“ ändert das nur für Tasse 1. Festgehalten bleibt \n𝑘\n𝐴\n gleich, wenn du Mengen oder Temperaturen änderst (die Füllhöhe ändert \n𝑘\n𝐴\n hier nicht); aus der Messung wird es jedes Mal neu bestimmt.\nVoreinstellungen mit Stern sind Richtwerte, geschätzt, nicht gemessen; belegt sind „Keramik offen“ (Arbeitswert der Aufgabe, passt zu \n𝜏\n ≈ 41 min bei Ferreira 2025) und „Keramik mit Deckel“ (Faktor 0,56 aus einem Becher mit Styropordeckel, Ferreira 2025).\nFür die Übernahme gelten die Becher vor der Milch als schwarzer Kaffee mit gleichem Startwert und gleichem \n𝑘\n𝐴\n (Mittel der Messwerte).\nIdeale Durchmischung und „Becher so warm wie der Inhalt“ sind bewusst vereinfachende Annahmen; die kleine Biot-Zahl der Keramikwand (etwa 0,035) spricht dafür, beweist sie aber nicht allein.\nWas die Simulation macht\nSie nimmt \n𝑘\n𝐴\n der Tasse: festgehalten (Standard 0,3402 \nW\nK\n aus der Messung der Aufgabe, Voreinstellung oder eigener Wert) oder aus Anfangstemperatur und Messung nach 10 min (Teil c, mit Becher Teil g).\nTasse 1: Sie mischt Kaffee und Milch bei \n𝑡\n = 0 (Teil a) und lässt das Gemisch bis zur Zugabe abkühlen (Teil b und d).\nTasse 2: Sie lässt den schwarzen Kaffee bis zur Zugabe abkühlen und mischt dann die Milch hinein.\nSie vergleicht beide Tassen direkt nach der Zugabe, berechnet die abgegebene Wärme aus der Energiebilanz (Teil e) und den Schnittpunkt der Kurven.\nSie zeichnet deine Messwerte ein; auf Wunsch übernimmt sie Starttemperatur und Messwert nach 10 min aus den Messungen oder bestimmt \n𝑘\n𝐴\n aus allen Punkten vor der Milch.\n\nSie rechnet nicht: Verdunstung als eigenen Vorgang (das ist deine Hausaufgabe), Temperaturunterschiede in der Tasse, eine Wärmeabgabe, die stärker als linear wächst. Alle Zahlen entstehen in deinem Browser; die Seite sendet nichts.\n\nRegler und Einheiten\n\nStandardwerte sind die Werte der Aufgabe. Fest sind die Stoffwerte: Kaffee 1000 \nkg\nm\n3\n und 4,18 \nkJ\nkg\n·\nK\n (Stoffwerte von Wasser), Milch 1030 \nkg\nm\n3\n und 3,94 \nkJ\nkg\n·\nK\n (aus der Lösung: Goff; Tutorium 8), Becher 0,85 \nkJ\nkg\n·\nK\n (Teil g, Arbeitswert). Indizes: K Kaffee, M Milch, u Umgebung, G Gemisch, B Becher, Z Zugabe, ab abgegeben, mess Messung, misch Mischung.\n\nGröße\tZeichen\tStandard\tBereich, Schritt\tGrundlage\nZugabe in Tasse 2 nach\t\n𝑡\nZ\n\t60 min\t1 bis 180, 1 min\tAufgabe; Versuch 60 min\nKaffeemenge\t\n𝑉\nK\n\t200 ml\t100 bis 400, 10 ml\tAufgabe\nKaffeetemperatur am Anfang\t\n𝜗\nK,0\n\t80,0 °C\t60,0 bis 95,0, 0,1 °C\tAufgabe; Quellen der Arbeitswerte in der Lösung (Abraham und Diller 2019, Brown und Diller 2008), hier nicht neu geprüft\nMilchmenge\t\n𝑉\nM\n\t30 ml\t5 bis 100, 5 ml\tAufgabe\nMilchtemperatur\t\n𝜗\nM\n\t5,0 °C\t2,0 bis 65,0, 0,5 °C\tAufgabe (Kühlschrank), Teil f (60 °C)\nRaumtemperatur\t\n𝜗\nu\n\t20,0 °C\t10,0 bis 30,0, 0,5 °C\tAufgabe\nWärmeabgabe der Tasse\t\n𝑘\n𝐴\n\t0,3402 \nW\nK\n\t0,05 bis 1,00, 0,01 \nW\nK\n\tfestgehalten: Aufgabe (Teil c) und Voreinstellungen; aus der Messung: Teil c\nMessung nach 10 min\t\n𝜗\nK\n(\n10\nmin\n)\n\t67,0 °C\t30,0 bis 90,0, 0,1 °C\tAufgabe\nMasse des Bechers\t\n𝑚\nB\n\t300 g\t100 bis 600, 10 g\tTeil g, Arbeitswert\n\n𝑘\n𝐴\n von Tasse 1 relativ\t\n𝑘\n𝐴\n1\n/\n𝑘\n𝐴\n\t100 %\t90 bis 110, 1 %\tDiskussion in Teil c\nMilch für Tasse 2 bei Raumtemperatur\t\t\t\tVersuch, Becher 3\nSo liest du die Ergebnisse\nBraune durchgezogene Linie: Tasse 1. Die Milch kommt bei \n𝑡\n = 0 hinein; der kurze gepunktete Strich bei \n𝑡\n = 0 ist der Mischsprung von 80 auf 70,47 °C (bei Standardwerten).\nSchwarze gestrichelte Linie: Tasse 2, schwarzer Kaffee bis zur Zugabe der Milch; der gepunktete Strich am Ende ist der Mischsprung beim Zugießen.\nKreis: Schnittpunkt der beiden Kurven; er erscheint nach eurer Vorhersage zu Frage 1.\nGraue gepunktete Linie: Raumtemperatur. Beide Kurven nähern sich ihr.\nFormen: deine Messwerte (Kreis Becher 1, Quadrat Becher 2, Dreieck Becher 3).\nBeschrifteter Kasten: eure festgehaltene Vorhersage. Blasse Kurven: der gemerkte Vergleichslauf.\nRechenwerte: Temperaturen direkt nach der Zugabe in Tasse 2. Der Unterschied ist \n𝜗\n1\n−\n𝜗\n2\n; positiv heißt: Tasse 1 ist wärmer. \n𝑘\n𝐴\n steht mit seiner Herkunft da (aus der Messung, festgehalten, Voreinstellung, Ausgleichsgerade).\nEnergie bis zur Zugabe: Wärme, die jede Tasse bis zur Zugabe abgegeben hat (Teil e). Bei gleicher Milch ist \n𝑄\n2\n−\n𝑄\n1\n geteilt durch \n𝑚\n𝑐\n𝑝\n des Gemischs (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n) genau der Unterschied; bei verschieden warmer Milch kommt der Milchbeitrag dazu.\nAnsicht „Wärmestrom“ (Vertiefung): \n𝑄\n˙\nab\n beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: mit Vorzeichen gerechnet ist sie \n𝑄\n2\n−\n𝑄\n1\n.\nAnsicht „Messwerte linear (ln)“ (Vertiefung): \nln\n⁡\n𝜗\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n über \n𝑡\n für die Becher vor der Milch. Bei konstantem \n𝑘\n𝐴\n liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung \n−\n𝑘\n𝐴\n/\n(\n𝑚\n𝑐\n𝑝\n)\n des schwarzen Kaffees (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Ein Muster in den Abständen zur Geraden zeigt, dass \n𝑘\n𝐴\n oder die Messbedingungen nicht konstant waren; welche Ursache, sagt die Gerade allein nicht.\nRundung: Temperaturen auf 0,01 K, Wärmen auf 0,01 kJ.",
+        "before_code": "Bilanz. Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nmit \n𝐶\n=\n𝑚\n𝑐\n𝑝\n des Inhalts (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Trennung der Variablen mit \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n ergibt\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA aus der Messung. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (Teil c).\n\nMischen. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).\n\nAbgegebene Wärme. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\nmit \n𝐶\nG\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Kaffee und Milch); mit Becher steht \n𝐶\nGB\n=\n𝐶\nG\n+\n𝑚\nB\n𝑐\nB\n an Stelle von \n𝐶\nG\n. Bei gleicher Milch fällt der letzte Teil weg.\n\nZeitpunkt der Zugabe. Dieser Absatz erscheint nach eurer Vorhersage zu Frage 1.\n\nkA aus allen Messpunkten (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n mit \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, dann \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. Die Streuung der Geraden ist keine Messunsicherheit von \n𝑘\n𝐴\n, weil alle Punkte denselben Startwert enthalten.\n\nkA festhalten (Vertiefung): Das Werkzeug gibt dem Modell den gleichwertigen Wert nach 10 min (keine Messung), der zu diesem \n𝑘\n𝐴\n gehört, und rechnet sonst unverändert.\n\nDie Seite ist eine einzige Datei. Die Rechnung steht in zwei gekennzeichneten Blöcken: MODELL enthält dieselben Gleichungen und Standardwerte wie das Rechenskript kaffee_modell.py der Lösung (Funktionen rechne und zwei_tassen), ERWEITERUNG die Erweiterungen (Ausgleichsgerade, Energie, \n𝑘\n𝐴\n festhalten und die gewählten Zusätze). Für jede Einstellung rechnet der Code die Kurven geschlossen aus; nur die Zeichnung tastet sie in 241 Punkten ab. Geprüft wird mit automatischen Tests: 10 000 Zufallssätze gegen kaffee_modell.py, die Erweiterungen gegen eine eigene Rechnung, Bedienung im Browser bei 360 bis 1920 px, beide Sprachen. Stand 2026-11-05, Version 9c3524e603. Du kannst den Code mit „Quelltext anzeigen“ im Browser lesen.",
+        "start_before": "Eure Vorhersage: Tasse 2 (Milch später), etwa 4 K · × Auswahl passt nicht\nEure Zahl: 4 K · Modell: 3,85 K (Standardwerte)\nEure Begründung: Die frühere Abkühlung senkt die Wärmeabgabe.\n\nTasse 1, 3,85 K (34,05 gegen 30,19 °C). Erhalten bleibt die Energie von Kaffee, Milch und Raum zusammen; jede Tasse gibt Wärme an den Raum ab. Tasse 2 war fast bis zur Zugabe heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: \n𝑄\n2\n−\n𝑄\n1\n = 3,69 kJ; 3,69 kJ geteilt durch 957,7 \nJ\nK\n (Kaffee und Milch) sind 3,85 K.",
+        "start_after": "Start · Erst vorhersagen Tasse 2 (Milch später), etwa 4 KBeide Tassen stehen 60 min, die Milch kommt aus dem Kühlschrank. Dein Mitbewohner meint: „Ob man die Milch sofort oder später hineingießt, ist egal. Die Energie bleibt ja erhalten.“ Welche Tasse ist nach 60 min wärmer, und um etwa wie viel? Notiere zuerst für dich, dann einigt euch.Ausgangslage: StandardwerteDiese Frage bearbeitenAuflösung ausblendenEure Vorhersage: Tasse 2 (Milch später), etwa 4 K · × Auswahl passt nichtEure Zahl: 4 K · Modell: 3,85 K (Standardwerte)Eure Begründung: Die frühere Abkühlung senkt die Wärmeabgabe.Tasse 1, 3,85 K (34,05 gegen 30,19 °C). Erhalten bleibt die Energie von Kaffee, Milch und Raum zusammen; jede Tasse gibt Wärme an den Raum ab. Tasse 2 war fast bis zur Zugabe(bis etwa 56 min) heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: Q2−Q1 = 3,69 kJ; 3,69 kJ geteilt durch 957,7 JK (Kaffee und Milch) sind 3,85 K.",
+        "after_modell": "Physikalisches Problem\n\nSonntagmorgen in der WG-Küche: Du hast Filterkaffee gekocht und zwei gleiche Tassen mit je 200 ml gefüllt. Da klingelt das Telefon, das Gespräch wird eine Stunde dauern. Dein Mitbewohner gießt seine Milch sofort in den Kaffee (Tasse 1). Du stellst deine Tasse daneben und willst die Milch erst nach dem Telefonat hineingießen (Tasse 2), damit der Kaffee „länger heiß bleibt“. Die Milch kommt in beiden Fällen direkt aus dem Kühlschrank.\n\nDein Mitbewohner meint: „Ob man die Milch sofort oder später hineingießt, ist egal. Die Energie bleibt ja erhalten.“ Welche Tasse ist nach einer Stunde wärmer?\n\nBeide Tassen geben über ihre Oberfläche Wärme an den Raum ab, und zwar umso mehr, je wärmer der Inhalt als der Raum ist. Die Simulation rechnet den Vorgang mit der instationären globalen Energiebilanz aus Tutorium 5; in der Vertiefung kannst du Mengen, Temperaturen, Tasse und Becher verändern.\n\nAnnahmen\n\nWie auf dem Aufgabenblatt (in du-Form ohne inhaltliche Änderung):\n\nDer Tasseninhalt ist ideal durchmischt, die Milch mischt sich sofort und ohne Wärmeverlust.\nDie Wärmekapazität der Tasse wird vernachlässigt, außer wenn du den Becher einschaltest (Teil g): Dann ist der Becher immer so warm wie sein Inhalt, auch beim Zugießen.\nDie gesamte Wärmeabgabe (auch durch Strahlung und Verdunstung) ist \n𝑄\n˙\nab\n=\n𝑘\n𝐴\n(\n𝜗\n−\n𝜗\nu\n)\n mit konstantem \n𝑘\n𝐴\n; die verdunstete Masse wird vernachlässigt.\nKaffee (Stoffdaten von Wasser) und Milch sind inkompressibel (\n𝑐\n𝑝\n=\n𝑐\n𝑣\n), die Stoffdaten konstant.\n\nZusätzlich in der Simulation:\n\n𝑘\n𝐴\n gilt für beide Tassen; „\n𝑘\n𝐴\n von Tasse 1 relativ“ ändert das nur für Tasse 1. Festgehalten bleibt \n𝑘\n𝐴\n gleich, wenn du Mengen oder Temperaturen änderst (die Füllhöhe ändert \n𝑘\n𝐴\n hier nicht); aus der Messung wird es jedes Mal neu bestimmt.\nVoreinstellungen mit Stern sind Richtwerte, geschätzt, nicht gemessen; belegt sind „Keramik offen“ (Arbeitswert der Aufgabe, passt zu \n𝜏\n ≈ 41 min bei Ferreira 2025) und „Keramik mit Deckel“ (Faktor 0,56 aus einem Becher mit Styropordeckel, Ferreira 2025).\nFür die Übernahme gelten die Becher vor der Milch als schwarzer Kaffee mit gleichem Startwert und gleichem \n𝑘\n𝐴\n (Mittel der Messwerte).\nIdeale Durchmischung und „Becher so warm wie der Inhalt“ sind bewusst vereinfachende Annahmen; die kleine Biot-Zahl der Keramikwand (etwa 0,035) spricht dafür, beweist sie aber nicht allein.\nWas die Simulation macht\nSie nimmt \n𝑘\n𝐴\n der Tasse: festgehalten (Standard 0,3402 \nW\nK\n aus der Messung der Aufgabe, Voreinstellung oder eigener Wert) oder aus Anfangstemperatur und Messung nach 10 min (Teil c, mit Becher Teil g).\nTasse 1: Sie mischt Kaffee und Milch bei \n𝑡\n = 0 (Teil a) und lässt das Gemisch bis zur Zugabe abkühlen (Teil b und d).\nTasse 2: Sie lässt den schwarzen Kaffee bis zur Zugabe abkühlen und mischt dann die Milch hinein.\nSie vergleicht beide Tassen direkt nach der Zugabe, berechnet die abgegebene Wärme aus der Energiebilanz (Teil e) und den Schnittpunkt der Kurven.\nSie zeichnet deine Messwerte ein; auf Wunsch übernimmt sie Starttemperatur und Messwert nach 10 min aus den Messungen oder bestimmt \n𝑘\n𝐴\n aus allen Punkten vor der Milch.\n\nSie rechnet nicht: Verdunstung als eigenen Vorgang (das ist deine Hausaufgabe), Temperaturunterschiede in der Tasse, eine Wärmeabgabe, die stärker als linear wächst. Alle Zahlen entstehen in deinem Browser; die Seite sendet nichts.\n\nRegler und Einheiten\n\nStandardwerte sind die Werte der Aufgabe. Fest sind die Stoffwerte: Kaffee 1000 \nkg\nm\n3\n und 4,18 \nkJ\nkg\n·\nK\n (Stoffwerte von Wasser), Milch 1030 \nkg\nm\n3\n und 3,94 \nkJ\nkg\n·\nK\n (aus der Lösung: Goff; Tutorium 8), Becher 0,85 \nkJ\nkg\n·\nK\n (Teil g, Arbeitswert). Indizes: K Kaffee, M Milch, u Umgebung, G Gemisch, B Becher, Z Zugabe, ab abgegeben, mess Messung, misch Mischung.\n\nGröße\tZeichen\tStandard\tBereich, Schritt\tGrundlage\nZugabe in Tasse 2 nach\t\n𝑡\nZ\n\t60 min\t1 bis 180, 1 min\tAufgabe; Versuch 60 min\nKaffeemenge\t\n𝑉\nK\n\t200 ml\t100 bis 400, 10 ml\tAufgabe\nKaffeetemperatur am Anfang\t\n𝜗\nK,0\n\t80,0 °C\t60,0 bis 95,0, 0,1 °C\tAufgabe; Quellen der Arbeitswerte in der Lösung (Abraham und Diller 2019, Brown und Diller 2008), hier nicht neu geprüft\nMilchmenge\t\n𝑉\nM\n\t30 ml\t5 bis 100, 5 ml\tAufgabe\nMilchtemperatur\t\n𝜗\nM\n\t5,0 °C\t2,0 bis 65,0, 0,5 °C\tAufgabe (Kühlschrank), Teil f (60 °C)\nRaumtemperatur\t\n𝜗\nu\n\t20,0 °C\t10,0 bis 30,0, 0,5 °C\tAufgabe\nWärmeabgabe der Tasse\t\n𝑘\n𝐴\n\t0,3402 \nW\nK\n\t0,05 bis 1,00, 0,01 \nW\nK\n\tfestgehalten: Aufgabe (Teil c) und Voreinstellungen; aus der Messung: Teil c\nMessung nach 10 min\t\n𝜗\nK\n(\n10\nmin\n)\n\t67,0 °C\t30,0 bis 90,0, 0,1 °C\tAufgabe\nMasse des Bechers\t\n𝑚\nB\n\t300 g\t100 bis 600, 10 g\tTeil g, Arbeitswert\n\n𝑘\n𝐴\n von Tasse 1 relativ\t\n𝑘\n𝐴\n1\n/\n𝑘\n𝐴\n\t100 %\t90 bis 110, 1 %\tDiskussion in Teil c\nMilch für Tasse 2 bei Raumtemperatur\t\t\t\tVersuch, Becher 3\nSo liest du die Ergebnisse\nBraune durchgezogene Linie: Tasse 1. Die Milch kommt bei \n𝑡\n = 0 hinein; der kurze gepunktete Strich bei \n𝑡\n = 0 ist der Mischsprung von 80 auf 70,47 °C (bei Standardwerten).\nSchwarze gestrichelte Linie: Tasse 2, schwarzer Kaffee bis zur Zugabe der Milch; der gepunktete Strich am Ende ist der Mischsprung beim Zugießen.\nKreis: Schnittpunkt der beiden Kurven. Links davon ist der schwarze Kaffee wärmer als Tasse 1 und gibt mehr Wärme ab, rechts davon weniger (bei gleichem \n𝑘\n𝐴\n beider Tassen).\nGraue gepunktete Linie: Raumtemperatur. Beide Kurven nähern sich ihr.\nFormen: deine Messwerte (Kreis Becher 1, Quadrat Becher 2, Dreieck Becher 3).\nBeschrifteter Kasten: eure festgehaltene Vorhersage. Blasse Kurven: der gemerkte Vergleichslauf.\nRechenwerte: Temperaturen direkt nach der Zugabe in Tasse 2. Der Unterschied ist \n𝜗\n1\n−\n𝜗\n2\n; positiv heißt: Tasse 1 ist wärmer. \n𝑘\n𝐴\n steht mit seiner Herkunft da (aus der Messung, festgehalten, Voreinstellung, Ausgleichsgerade).\nEnergie bis zur Zugabe: Wärme, die jede Tasse bis zur Zugabe abgegeben hat (Teil e). Bei gleicher Milch ist \n𝑄\n2\n−\n𝑄\n1\n geteilt durch \n𝑚\n𝑐\n𝑝\n des Gemischs (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n) genau der Unterschied; bei verschieden warmer Milch kommt der Milchbeitrag dazu.\nAnsicht „Wärmestrom“ (Vertiefung): \n𝑄\n˙\nab\n beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: vor und nach dem Schnitt der Wärmeströme haben die Teilflächen verschiedene Vorzeichen: positiv, solange Tasse 2 mehr abgibt; beide sind verschieden schraffiert, ihre Summe ist \n𝑄\n2\n−\n𝑄\n1\n.\nAnsicht „Messwerte linear (ln)“ (Vertiefung): \nln\n⁡\n𝜗\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n über \n𝑡\n für die Becher vor der Milch. Bei konstantem \n𝑘\n𝐴\n liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung \n−\n𝑘\n𝐴\n/\n(\n𝑚\n𝑐\n𝑝\n)\n des schwarzen Kaffees (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Ein Muster in den Abständen zur Geraden zeigt, dass \n𝑘\n𝐴\n oder die Messbedingungen nicht konstant waren; welche Ursache, sagt die Gerade allein nicht.\nRundung: Temperaturen auf 0,01 K, Wärmen auf 0,01 kJ.",
+        "after_code": "Bilanz. Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nmit \n𝐶\n=\n𝑚\n𝑐\n𝑝\n des Inhalts (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Trennung der Variablen mit \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n ergibt\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA aus der Messung. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (Teil c).\n\nMischen. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).\n\nAbgegebene Wärme. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\nmit \n𝐶\nG\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Kaffee und Milch); mit Becher steht \n𝐶\nGB\n=\n𝐶\nG\n+\n𝑚\nB\n𝑐\nB\n an Stelle von \n𝐶\nG\n. Bei gleicher Milch fällt der letzte Teil weg.\n\nZeitpunkt der Zugabe. Verschiebt man die Zugabe, ändert sich der Unterschied mit \nd\n(\n𝜗\n1\n−\n𝜗\n2\n)\nd\n𝑡\nZ\n=\n𝑄\n˙\n2\n−\n𝑄\n˙\n1\n𝐶\nG\n (mit Becher \n𝐶\nGB\n): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt, solange sie weniger abgibt. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.\n\nkA aus allen Messpunkten (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n mit \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, dann \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. Die Streuung der Geraden ist keine Messunsicherheit von \n𝑘\n𝐴\n, weil alle Punkte denselben Startwert enthalten.\n\nkA festhalten (Vertiefung): Das Werkzeug gibt dem Modell den gleichwertigen Wert nach 10 min (keine Messung), der zu diesem \n𝑘\n𝐴\n gehört, und rechnet sonst unverändert.\n\nDie Seite ist eine einzige Datei. Die Rechnung steht in zwei gekennzeichneten Blöcken: MODELL enthält dieselben Gleichungen und Standardwerte wie das Rechenskript kaffee_modell.py der Lösung (Funktionen rechne und zwei_tassen), ERWEITERUNG die Erweiterungen (Ausgleichsgerade, Energie, \n𝑘\n𝐴\n festhalten und die gewählten Zusätze). Für jede Einstellung rechnet der Code die Kurven geschlossen aus; nur die Zeichnung tastet sie in 241 Punkten ab. Geprüft wird mit automatischen Tests: 10 000 Zufallssätze gegen kaffee_modell.py, die Erweiterungen gegen eine eigene Rechnung, Bedienung im Browser bei 360 bis 1920 px, beide Sprachen. Stand 2026-11-05, Version 9c3524e603. Du kannst den Code mit „Quelltext anzeigen“ im Browser lesen."
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "X5_03",
+      "lang": "de",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": {
+        "saved": 66.5,
+        "replacement": 70.14499580594031,
+        "label": "Gleichwertiger Wert nach 10 min, aus \n𝑘\n𝐴\n berechnet \n𝜗\nK\n(\n10\nmin\n)\n [°C]",
+        "note": "Dieser Wert ist aus dem bisherigen \n𝑘\n𝐴\n berechnet, er ist keine Messung. Trag deinen Messwert ein, dann gilt er. Messwert 66,5 °C wieder verwenden",
+        "rejected_value": 21.900927126392453,
+        "message": "Nicht umgestellt: Zu diesem kA gehört nach 10 min ein Wert von 21,9 °C, außerhalb des Bereichs des Feldes (30 bis 90 °C). kA bleibt festgehalten.",
+        "focus": "fest"
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Sperren_V1_V5",
+      "lang": "de",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": [
+        {
+          "q": "v1",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Ausgangslage vor deiner Vorhersage: Standardwerte (ohne Becher, ohne Deckel). Erst vorhersagen, dann prüfen.",
+          "live": ""
+        },
+        {
+          "q": "v2",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Ausgangslage vor deiner Vorhersage: Standardwerte (ohne Becher, ohne Deckel). Erst vorhersagen, dann prüfen.",
+          "live": ""
+        },
+        {
+          "q": "v3",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Ausgangslage vor deiner Vorhersage: Standardwerte (ohne Becher, ohne Deckel). Erst vorhersagen, dann prüfen.",
+          "live": ""
+        },
+        {
+          "q": "v4",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Ausgangslage vor deiner Vorhersage: Standardwerte (ohne Becher, ohne Deckel). Erst vorhersagen, dann prüfen.",
+          "live": ""
+        },
+        {
+          "q": "v5",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Ausgangslage vor deiner Vorhersage: Standardwerte (ohne Becher, ohne Deckel). Erst vorhersagen, dann prüfen.",
+          "live": ""
+        }
+      ],
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "F3_F12_Q2_Q7",
+      "lang": "de",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": {
+        "v1": "Eure Vorhersage: 5 °C\nEure Zahl: 5 °C · Modell: 47,0 °C\n\n47,0 °C; 60,9 °C bei Zugabe nach 30 min, 37,3 °C nach 90 min. Ja, die Temperatur hängt vom Zeitpunkt ab: Bei 47,0 °C gibt Tasse 1, in der die warme Milch von Anfang an ist, bis zur Zugabe genauso viel Wärme ab wie der schwarze Kaffee in Tasse 2 (\n𝑄\n1\n=\n𝑄\n2\n); die Milch selbst bringt in beide Tassen dieselbe Energie. Je später die Zugabe, desto mehr von der Wärme der warmen Milch hat Tasse 1 bis dahin an den Raum abgegeben, während Tasse 2 sie erst bei der Zugabe bekommt; deshalb reicht dann kühlere Milch.",
+        "v1_energy": [
+          {
+            "minutes": 30,
+            "milk": 60.9122663164477,
+            "Q1": 26.04999222222222,
+            "Q2": 26.049992222222222,
+            "difference": 7.105427357601002e-15
+          },
+          {
+            "minutes": 60,
+            "milk": 47.003092800915184,
+            "Q1": 38.57123454855452,
+            "Q2": 38.57123454855452,
+            "difference": 0.0
+          },
+          {
+            "minutes": 90,
+            "milk": 37.284501505330226,
+            "Q1": 44.58972039136377,
+            "Q2": 44.58972039136378,
+            "difference": 3.552713678800501e-15
+          }
+        ],
+        "finish": "Frage 2 von 2\n\nVersuch\nFrage zeigen\n\nKurswerte geladen: 15 Messwerte.\n\nAusgangslage: Kurswerte übernommen (\n𝑘\n𝐴\n aus 0 und 10 min, Becher an)\n\nEure Vorhersage: auf den Kurven\n\nBeschreibt, wo die Punkte liegen. Nennt eine mögliche Ursache und eine Messung, mit der ihr sie prüfen könntet.\n\nAuflösung ausblenden\nZurück\nWeiter\n\nEure Vorhersage: auf den Kurven\n\nHängt von eurer Messung ab. Häufig beim offenen Becher und \n𝑘\n𝐴\n aus den ersten 10 min: Spätere Punkte liegen über den Kurven. Mögliche Ursachen: Die Wärmeabgabe wächst stärker als linear mit \n𝜗\n−\n𝜗\nu\n (Verdunstung, freie Konvektion), die Raumtemperatur stimmt nicht, Anlauf beim Eingießen (Becher nicht ganz vorgewärmt), Lage des Thermometers, ungleiche Becher. Prüfende Messungen: Becher mit Deckel, Raumtemperatur neben den Bechern, gleiche Unterlage, Messreihe in der Ansicht „ln“ (Vertiefung). Der Unterschied zwischen Becher 1 und 2 passt oft besser als die Einzelwerte.\n\nGeschafft. Kernsatz: Wer heißer ist, gibt mehr Wärme ab; deshalb kalte Milch sofort. Erhalten bleibt die Energie von Tassen und Raum zusammen. Weiter geht es in der Vertiefung. Vertiefung öffnen",
+        "code": "Bilanz. Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren Energie und der Wärmestrom an die Umgebung:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nmit \n𝐶\n=\n𝑚\n𝑐\n𝑝\n des Inhalts (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Trennung der Variablen mit \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n ergibt\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA aus der Messung. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (Teil c).\n\nMischen. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).\n\nAbgegebene Wärme. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\nmit \n𝐶\nG\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (Kaffee und Milch); mit Becher steht \n𝐶\nGB\n=\n𝐶\nG\n+\n𝑚\nB\n𝑐\nB\n an Stelle von \n𝐶\nG\n. Bei gleicher Milch fällt der letzte Teil weg.\n\nZeitpunkt der Zugabe. Verschiebt man die Zugabe, ändert sich der Unterschied mit \nd\n(\n𝜗\n1\n−\n𝜗\n2\n)\nd\n𝑡\nZ\n=\n𝑄\n˙\n2\n−\n𝑄\n˙\n1\n𝐶\nG\n (mit Becher \n𝐶\nGB\n): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt, solange sie weniger abgibt. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.\n\nkA aus allen Messpunkten (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n mit \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, dann \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. Die Streuung der Geraden ist keine Messunsicherheit von \n𝑘\n𝐴\n, weil alle Punkte denselben Startwert enthalten.\n\nkA festhalten (Vertiefung): Das Werkzeug gibt dem Modell den gleichwertigen Wert nach 10 min (keine Messung), der zu diesem \n𝑘\n𝐴\n gehört, und rechnet sonst unverändert.\n\nDie Seite ist eine einzige Datei. Die Rechnung steht in zwei gekennzeichneten Blöcken: MODELL enthält dieselben Gleichungen und Standardwerte wie das Rechenskript kaffee_modell.py der Lösung (Funktionen rechne und zwei_tassen), ERWEITERUNG die Erweiterungen (Ausgleichsgerade, Energie, \n𝑘\n𝐴\n festhalten und die gewählten Zusätze). Für jede Einstellung rechnet der Code die Kurven geschlossen aus; nur die Zeichnung tastet sie in 241 Punkten ab. Geprüft wird mit automatischen Tests: 10 000 Zufallssätze gegen kaffee_modell.py, die Erweiterungen gegen eine eigene Rechnung, Bedienung im Browser bei 360 bis 1920 px, beide Sprachen. Stand 2026-11-05, Version 9c3524e603. Du kannst den Code mit „Quelltext anzeigen“ im Browser lesen.",
+        "model": "Physikalisches Problem\n\nSonntagmorgen in der WG-Küche: Du hast Filterkaffee gekocht und zwei gleiche Tassen mit je 200 ml gefüllt. Da klingelt das Telefon, das Gespräch wird eine Stunde dauern. Dein Mitbewohner gießt seine Milch sofort in den Kaffee (Tasse 1). Du stellst deine Tasse daneben und willst die Milch erst nach dem Telefonat hineingießen (Tasse 2), damit der Kaffee „länger heiß bleibt“. Die Milch kommt in beiden Fällen direkt aus dem Kühlschrank.\n\nDein Mitbewohner meint: „Ob man die Milch sofort oder später hineingießt, ist egal. Die Energie bleibt ja erhalten.“ Welche Tasse ist nach einer Stunde wärmer?\n\nBeide Tassen geben über ihre Oberfläche Wärme an den Raum ab, und zwar umso mehr, je wärmer der Inhalt als der Raum ist. Die Simulation rechnet den Vorgang mit der instationären globalen Energiebilanz aus Tutorium 5; in der Vertiefung kannst du Mengen, Temperaturen, Tasse und Becher verändern.\n\nAnnahmen\n\nWie auf dem Aufgabenblatt (in du-Form ohne inhaltliche Änderung):\n\nDer Tasseninhalt ist ideal durchmischt, die Milch mischt sich sofort und ohne Wärmeverlust.\nDie Wärmekapazität der Tasse wird vernachlässigt, außer wenn du den Becher einschaltest (Teil g): Dann ist der Becher immer so warm wie sein Inhalt, auch beim Zugießen.\nDie gesamte Wärmeabgabe (auch durch Strahlung und Verdunstung) ist \n𝑄\n˙\nab\n=\n𝑘\n𝐴\n(\n𝜗\n−\n𝜗\nu\n)\n mit konstantem \n𝑘\n𝐴\n; die verdunstete Masse wird vernachlässigt.\nKaffee (Stoffdaten von Wasser) und Milch sind inkompressibel (\n𝑐\n𝑝\n=\n𝑐\n𝑣\n), die Stoffdaten konstant.\n\nZusätzlich in der Simulation:\n\n𝑘\n𝐴\n gilt für beide Tassen; „\n𝑘\n𝐴\n von Tasse 1 relativ“ ändert das nur für Tasse 1. Festgehalten bleibt \n𝑘\n𝐴\n gleich, wenn du Mengen oder Temperaturen änderst (die Füllhöhe ändert \n𝑘\n𝐴\n hier nicht); aus der Messung wird es jedes Mal neu bestimmt.\nVoreinstellungen mit Stern sind Richtwerte, geschätzt, nicht gemessen; belegt sind „Keramik offen“ (Arbeitswert der Aufgabe, passt zu \n𝜏\n ≈ 41 min bei Ferreira 2025) und „Keramik mit Deckel“ (Faktor 0,56 aus einem Becher mit Styropordeckel, Ferreira 2025).\nFür die Übernahme gelten die Becher vor der Milch als schwarzer Kaffee mit gleichem Startwert und gleichem \n𝑘\n𝐴\n (Mittel der Messwerte).\nIdeale Durchmischung und „Becher so warm wie der Inhalt“ sind bewusst vereinfachende Annahmen; die kleine Biot-Zahl der Keramikwand (etwa 0,035) spricht dafür, beweist sie aber nicht allein.\nWas die Simulation macht\nSie nimmt \n𝑘\n𝐴\n der Tasse: festgehalten (Standard 0,3402 \nW\nK\n aus der Messung der Aufgabe, Voreinstellung oder eigener Wert) oder aus Anfangstemperatur und Messung nach 10 min (Teil c, mit Becher Teil g).\nTasse 1: Sie mischt Kaffee und Milch bei \n𝑡\n = 0 (Teil a) und lässt das Gemisch bis zur Zugabe abkühlen (Teil b und d).\nTasse 2: Sie lässt den schwarzen Kaffee bis zur Zugabe abkühlen und mischt dann die Milch hinein.\nSie vergleicht beide Tassen direkt nach der Zugabe, berechnet die abgegebene Wärme aus der Energiebilanz (Teil e) und den Schnittpunkt der Kurven.\nSie zeichnet deine Messwerte ein; auf Wunsch übernimmt sie Starttemperatur und Messwert nach 10 min aus den Messungen oder bestimmt \n𝑘\n𝐴\n aus allen Punkten vor der Milch.\n\nSie rechnet nicht: Verdunstung als eigenen Vorgang (das ist deine Hausaufgabe), Temperaturunterschiede in der Tasse, eine Wärmeabgabe, die stärker als linear wächst. Alle Zahlen entstehen in deinem Browser; die Seite sendet nichts.\n\nRegler und Einheiten\n\nStandardwerte sind die Werte der Aufgabe. Fest sind die Stoffwerte: Kaffee 1000 \nkg\nm\n3\n und 4,18 \nkJ\nkg\n·\nK\n (Stoffwerte von Wasser), Milch 1030 \nkg\nm\n3\n und 3,94 \nkJ\nkg\n·\nK\n (aus der Lösung: Goff; Tutorium 8), Becher 0,85 \nkJ\nkg\n·\nK\n (Teil g, Arbeitswert). Indizes: K Kaffee, M Milch, u Umgebung, G Gemisch, B Becher, Z Zugabe, ab abgegeben, mess Messung, misch Mischung.\n\nGröße\tZeichen\tStandard\tBereich, Schritt\tGrundlage\nZugabe in Tasse 2 nach\t\n𝑡\nZ\n\t60 min\t1 bis 180, 1 min\tAufgabe; Versuch 60 min\nKaffeemenge\t\n𝑉\nK\n\t200 ml\t100 bis 400, 10 ml\tAufgabe\nKaffeetemperatur am Anfang\t\n𝜗\nK,0\n\t80,0 °C\t60,0 bis 95,0, 0,1 °C\tAufgabe; Quellen der Arbeitswerte in der Lösung (Abraham und Diller 2019, Brown und Diller 2008), hier nicht neu geprüft\nMilchmenge\t\n𝑉\nM\n\t30 ml\t5 bis 100, 5 ml\tAufgabe\nMilchtemperatur\t\n𝜗\nM\n\t5,0 °C\t2,0 bis 65,0, 0,5 °C\tAufgabe (Kühlschrank), Teil f (60 °C)\nRaumtemperatur\t\n𝜗\nu\n\t20,0 °C\t10,0 bis 30,0, 0,5 °C\tAufgabe\nWärmeabgabe der Tasse\t\n𝑘\n𝐴\n\t0,3402 \nW\nK\n\t0,05 bis 1,00, 0,01 \nW\nK\n\tfestgehalten: Aufgabe (Teil c) und Voreinstellungen; aus der Messung: Teil c\nMessung nach 10 min\t\n𝜗\nK\n(\n10\nmin\n)\n\t67,0 °C\t30,0 bis 90,0, 0,1 °C\tAufgabe\nMasse des Bechers\t\n𝑚\nB\n\t300 g\t100 bis 600, 10 g\tTeil g, Arbeitswert\n\n𝑘\n𝐴\n von Tasse 1 relativ\t\n𝑘\n𝐴\n1\n/\n𝑘\n𝐴\n\t100 %\t90 bis 110, 1 %\tDiskussion in Teil c\nMilch für Tasse 2 bei Raumtemperatur\t\t\t\tVersuch, Becher 3\nSo liest du die Ergebnisse\nBraune durchgezogene Linie: Tasse 1. Die Milch kommt bei \n𝑡\n = 0 hinein; der kurze gepunktete Strich bei \n𝑡\n = 0 ist der Mischsprung von 80 auf 70,47 °C (bei Standardwerten).\nSchwarze gestrichelte Linie: Tasse 2, schwarzer Kaffee bis zur Zugabe der Milch; der gepunktete Strich am Ende ist der Mischsprung beim Zugießen.\nKreis: Schnittpunkt der beiden Kurven. Links davon ist der schwarze Kaffee wärmer als Tasse 1 und gibt mehr Wärme ab, rechts davon weniger (bei gleichem \n𝑘\n𝐴\n beider Tassen).\nGraue gepunktete Linie: Raumtemperatur. Beide Kurven nähern sich ihr.\nFormen: deine Messwerte (Kreis Becher 1, Quadrat Becher 2, Dreieck Becher 3).\nBeschrifteter Kasten: eure festgehaltene Vorhersage. Blasse Kurven: der gemerkte Vergleichslauf.\nRechenwerte: Temperaturen direkt nach der Zugabe in Tasse 2. Der Unterschied ist \n𝜗\n1\n−\n𝜗\n2\n; positiv heißt: Tasse 1 ist wärmer. \n𝑘\n𝐴\n steht mit seiner Herkunft da (aus der Messung, festgehalten, Voreinstellung, Ausgleichsgerade).\nEnergie bis zur Zugabe: Wärme, die jede Tasse bis zur Zugabe abgegeben hat (Teil e). Bei gleicher Milch ist \n𝑄\n2\n−\n𝑄\n1\n geteilt durch \n𝑚\n𝑐\n𝑝\n des Gemischs (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n) genau der Unterschied; bei verschieden warmer Milch kommt der Milchbeitrag dazu.\nAnsicht „Wärmestrom“ (Vertiefung): \n𝑄\n˙\nab\n beider Tassen über der Zeit. Die Fläche zwischen den Kurven ist eine Energie: vor und nach dem Schnitt der Wärmeströme haben die Teilflächen verschiedene Vorzeichen: positiv, solange Tasse 2 mehr abgibt; beide sind verschieden schraffiert, ihre Summe ist \n𝑄\n2\n−\n𝑄\n1\n.\nAnsicht „Messwerte linear (ln)“ (Vertiefung): \nln\n⁡\n𝜗\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n über \n𝑡\n für die Becher vor der Milch. Bei konstantem \n𝑘\n𝐴\n liegen die Punkte auf einer Geraden durch den Ursprung mit der Steigung \n−\n𝑘\n𝐴\n/\n(\n𝑚\n𝑐\n𝑝\n)\n des schwarzen Kaffees (mit Becher zuzüglich \n𝑚\nB\n𝑐\nB\n). Ein Muster in den Abständen zur Geraden zeigt, dass \n𝑘\n𝐴\n oder die Messbedingungen nicht konstant waren; welche Ursache, sagt die Gerade allein nicht.\nRundung: Temperaturen auf 0,01 K, Wärmen auf 0,01 kJ.",
+        "becher": {
+          "C": 1212.7459999999999,
+          "dT": 3.0788314168794386,
+          "Q1": 46.6025433571762,
+          "Q2": 50.33638384267103
+        }
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beamer",
+      "lang": "de",
+      "w": 1280,
+      "h": 720,
+      "status": "PASS",
+      "detail": [
+        {
+          "phase": "P2",
+          "boxes": {
+            "#frageleiste": {
+              "top": 43.1875,
+              "bottom": 415.703125,
+              "width": 1192,
+              "height": 372.515625,
+              "visible": true,
+              "inView": true
+            },
+            "#diagramm": {
+              "top": 415.703125,
+              "bottom": 667.703125,
+              "width": 780,
+              "height": 252,
+              "visible": true,
+              "inView": true
+            }
+          }
+        },
+        {
+          "phase": "P4",
+          "boxes": {
+            "#frageleiste": {
+              "top": 43.1875,
+              "bottom": 344.21875,
+              "width": 1192,
+              "height": 301.03125,
+              "visible": true,
+              "inView": true
+            },
+            "#diagramm": {
+              "top": 344.21875,
+              "bottom": 586.21875,
+              "width": 780,
+              "height": 242,
+              "visible": true,
+              "inView": true
+            },
+            "#regler-pflicht": {
+              "top": 612.515625,
+              "bottom": 686.109375,
+              "width": 780,
+              "height": 73.59375,
+              "visible": true,
+              "inView": true
+            }
+          }
+        }
+      ],
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beamer",
+      "lang": "de",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": [
+        {
+          "phase": "P2",
+          "boxes": {
+            "#frageleiste": {
+              "top": 43.1875,
+              "bottom": 415.703125,
+              "width": 1192,
+              "height": 372.515625,
+              "visible": true,
+              "inView": true
+            },
+            "#diagramm": {
+              "top": 415.703125,
+              "bottom": 715.703125,
+              "width": 780,
+              "height": 300,
+              "visible": true,
+              "inView": true
+            }
+          }
+        },
+        {
+          "phase": "P4",
+          "boxes": {
+            "#frageleiste": {
+              "top": 43.1875,
+              "bottom": 344.21875,
+              "width": 1192,
+              "height": 301.03125,
+              "visible": true,
+              "inView": true
+            },
+            "#diagramm": {
+              "top": 344.21875,
+              "bottom": 634.21875,
+              "width": 780,
+              "height": 290,
+              "visible": true,
+              "inView": true
+            },
+            "#regler-pflicht": {
+              "top": 660.515625,
+              "bottom": 734.109375,
+              "width": 780,
+              "height": 73.59375,
+              "visible": true,
+              "inView": true
+            }
+          }
+        }
+      ],
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beschriftungen_Q3",
+      "lang": "de",
+      "w": 320,
+      "h": 640,
+      "status": "PASS",
+      "detail": {
+        "layouts": [
+          {
+            "temp": "5",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "5",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "5",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "5",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "5",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "5",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "5",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "47",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "47",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "65",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "65",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          }
+        ],
+        "reversed": {
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 180,
+            "VK_ml": 400,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1.1
+          },
+          "text": " vor dem Schnitt der Wärmeströme: Tasse 2 gibt weniger ab: −0,08 kJ ·  nach dem Schnitt der Wärmeströme: Tasse 2 gibt mehr ab: 1,11 kJ · \n𝑄\n2\n−\n𝑄\n1\n = 1,03 kJ (Summe beider Teilflächen)",
+          "own": -0.0806118389440926,
+          "page": -0.08061183894408168
+        }
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beschriftungen_Q3",
+      "lang": "de",
+      "w": 360,
+      "h": 640,
+      "status": "PASS",
+      "detail": {
+        "layouts": [
+          {
+            "temp": "5",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 11.986686390532544
+          },
+          {
+            "temp": "5",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 11.986686390532544
+          },
+          {
+            "temp": "47",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.4493408203125,
+            "minFont": 11.986686390532544
+          },
+          {
+            "temp": "65",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.4493408203125,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.4493408203125,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.4493408203125,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt"
+            ],
+            "sticky": true,
+            "ratio": 0.4493408203125,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.4493408203125,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.4493408203125,
+            "minFont": 10.987795857988166
+          }
+        ],
+        "reversed": {
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 180,
+            "VK_ml": 400,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1.1
+          },
+          "text": " vor dem Schnitt der Wärmeströme: Tasse 2 gibt weniger ab: −0,08 kJ ·  nach dem Schnitt der Wärmeströme: Tasse 2 gibt mehr ab: 1,11 kJ · \n𝑄\n2\n−\n𝑄\n1\n = 1,03 kJ (Summe beider Teilflächen)",
+          "own": -0.0806118389440926,
+          "page": -0.08061183894408168
+        }
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beschriftungen_Q3",
+      "lang": "de",
+      "w": 390,
+      "h": 844,
+      "status": "PASS",
+      "detail": {
+        "layouts": [
+          {
+            "temp": "5",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 30 min",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 57 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 60 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 180 min",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 30 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 57 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 60 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 180 min",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Trinktemperatur 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 57 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Zeit t [min]",
+              "Temperatur ϑ [°C]",
+              "Raum 20,0 °C",
+              "Eure Vorhersage: 56 min",
+              "Schnitt",
+              "Trinktemperatur 60 °C",
+              "Tasse 2: Milch nach 180 min",
+              "Tasse 1: Milch sofort"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          }
+        ],
+        "reversed": {
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 180,
+            "VK_ml": 400,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1.1
+          },
+          "text": " vor dem Schnitt der Wärmeströme: Tasse 2 gibt weniger ab: −0,08 kJ ·  nach dem Schnitt der Wärmeströme: Tasse 2 gibt mehr ab: 1,11 kJ · \n𝑄\n2\n−\n𝑄\n1\n = 1,03 kJ (Summe beider Teilflächen)",
+          "own": -0.0806118389440926,
+          "page": -0.08061183894408168
+        }
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Q1_F4_F11",
+      "lang": "en",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": {
+        "before_modell": "Physical problem\n\nSunday morning in a shared kitchen: you have made filter coffee and filled two identical cups with 200 ml each. Then the phone rings, and the call will last an hour. Your flatmate pours his milk into the coffee straight away (cup 1). You put your cup next to it and want to add the milk only after the call (cup 2), so that the coffee “stays hot for longer”. In both cases the milk comes straight from the fridge.\n\nYour flatmate says: “It doesn’t matter whether you add the milk straight away or later. Energy is conserved, after all.” Which cup is warmer after an hour?\n\nBoth cups release heat to the room through their surface, and the warmer the contents are compared with the room, the more heat they release. The simulation calculates the process with the transient lumped energy balance from Tutorial 5; when going further, you can change amounts, temperatures, cup and mug.\n\nAssumptions\n\nAs on the problem sheet:\n\nThe contents of the cup are perfectly mixed; the milk mixes in immediately and without heat loss.\nThe heat capacity of the cup is neglected, except when you include the mug (part g): then the mug is always at the temperature of its contents, even when the milk is poured in.\nThe total heat loss (including radiation and evaporation) is \n𝑄\n˙\nab\n=\n𝑘\n𝐴\n(\n𝜗\n−\n𝜗\nu\n)\n with a constant \n𝑘\n𝐴\n; the evaporated mass is neglected.\nCoffee (properties of water) and milk are incompressible (\n𝑐\n𝑝\n=\n𝑐\n𝑣\n); the material properties are constant.\n\nIn addition, in the simulation:\n\n𝑘\n𝐴\n applies to both cups; “\n𝑘\n𝐴\n of cup 1, relative” changes this for cup 1 only. When kept fixed, \n𝑘\n𝐴\n stays the same when you change amounts or temperatures (here the filling level does not change \n𝑘\n𝐴\n); from the measurement, it is determined again every time.\nPresets marked with a star are estimates, not measured; supported are “Ceramic, open” (working value of the problem, consistent with \n𝜏\n ≈ 41 min in Ferreira 2025) and “Ceramic with lid” (factor 0.56 from one mug with a polystyrene lid, Ferreira 2025).\nWhen the measured values are used, the readings taken before the milk is added count as black coffee with the same initial value and the same \n𝑘\n𝐴\n (mean of the measured values).\nPerfect mixing and “mug at the temperature of its contents” are deliberately simplifying assumptions; the small Biot number of the ceramic wall (about 0.035) supports them, but does not prove them on its own.\nWhat the simulation does\nIt takes \n𝑘\n𝐴\n of the cup: kept fixed (default 0.3402 \nW\nK\n from the measurement in the problem, a preset or your own value) or from the initial temperature and the measurement after 10 min (part c, with a mug part g).\nCup 1: it mixes coffee and milk at \n𝑡\n = 0 (part a) and lets the mixture cool down until the milk is added to cup 2 (parts b and d).\nCup 2: it lets the black coffee cool down until the milk is added and then mixes the milk in.\nIt compares both cups directly after the milk is added, calculates the heat released from the energy balance (part e) and the intersection of the curves.\nIt plots your measured values; if you want, it uses the initial temperature and the value after 10 min from the measurements or determines \n𝑘\n𝐴\n from all points before the milk.\n\nIt does not calculate: evaporation as a separate process (that is your homework), temperature differences within the cup, a heat loss that grows faster than linearly. All numbers are produced in your browser; the page sends nothing.\n\nControls and units\n\nThe default values are those of the problem. The material properties are fixed: coffee 1000 \nkg\nm\n3\n and 4.18 \nkJ\nkg\n·\nK\n (properties of water), milk 1030 \nkg\nm\n3\n and 3.94 \nkJ\nkg\n·\nK\n (from the solution: Goff; Tutorial 8), mug 0.85 \nkJ\nkg\n·\nK\n (part g, working value). Subscripts as in the lecture: K coffee (Kaffee), M milk (Milch), u surroundings (Umgebung), G mixture (Gemisch), B mug (Becher), Z adding (Zugabe), ab released (abgegeben), mess measured (Messung), misch mixture (Mischung).\n\nQuantity\tSymbol\tDefault\tRange, step\tBasis\nMilk added to cup 2 after\t\n𝑡\nZ\n\t60 min\t1 to 180, 1 min\tproblem; experiment 60 min\nAmount of coffee\t\n𝑉\nK\n\t200 ml\t100 to 400, 10 ml\tproblem\nInitial coffee temperature\t\n𝜗\nK,0\n\t80.0 °C\t60.0 to 95.0, 0.1 °C\tproblem; sources of the working values in the solution (Abraham and Diller 2019, Brown and Diller 2008), not checked again here\nAmount of milk\t\n𝑉\nM\n\t30 ml\t5 to 100, 5 ml\tproblem\nMilk temperature\t\n𝜗\nM\n\t5.0 °C\t2.0 to 65.0, 0.5 °C\tproblem (fridge), part f (60 °C)\nRoom temperature\t\n𝜗\nu\n\t20.0 °C\t10.0 to 30.0, 0.5 °C\tproblem\nHeat loss coefficient of the cup\t\n𝑘\n𝐴\n\t0.3402 \nW\nK\n\t0.05 to 1.00, 0.01 \nW\nK\n\tkept fixed: problem (part c) and presets; from the measurement: part c\nMeasurement after 10 min\t\n𝜗\nK\n(\n10\nmin\n)\n\t67.0 °C\t30.0 to 90.0, 0.1 °C\tproblem\nMass of the mug\t\n𝑚\nB\n\t300 g\t100 to 600, 10 g\tpart g, working value\n\n𝑘\n𝐴\n of cup 1, relative\t\n𝑘\n𝐴\n1\n/\n𝑘\n𝐴\n\t100 %\t90 to 110, 1 %\tdiscussion in part c\nMilk for cup 2 at room temperature\t\t\t\texperiment, mug 3\nHow to read the results\nBrown solid line: cup 1. The milk goes in at \n𝑡\n = 0; the short dotted line at \n𝑡\n = 0 is the mixing jump from 80 to 70.47 °C (default values).\nBlack dashed line: cup 2, black coffee until the milk is added; the dotted line at the end is the mixing jump when the milk is poured in.\nCircle: intersection of the two curves; it appears after your prediction for question 1.\nGrey dotted line: room temperature. Both curves approach it.\nShapes: your measured values (circle mug 1, square mug 2, triangle mug 3).\nLabelled box: your locked-in prediction. Faint curves: the stored comparison run.\nCalculated values: temperatures directly after the milk is added to cup 2. The difference is \n𝜗\n1\n−\n𝜗\n2\n; positive means that cup 1 is warmer. \n𝑘\n𝐴\n is shown with its origin (from the measurement, kept fixed, preset, fitted line).\nEnergy up to adding the milk: heat that each cup has released up to adding the milk (part e). With the same milk, \n𝑄\n2\n−\n𝑄\n1\n divided by \n𝑚\n𝑐\n𝑝\n of the mixture (with the mug, plus \n𝑚\nB\n𝑐\nB\n) is exactly the difference; with milk at different temperatures, the milk contribution is added.\n“Heat flow rate” view (going further): \n𝑄\n˙\nab\n of both cups over time. The area between the curves is an energy: counted with sign, it equals \n𝑄\n2\n−\n𝑄\n1\n.\n“Measured values, linearised (ln)” view (going further): \nln\n⁡\n𝜗\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n over \n𝑡\n for the mugs before the milk. With a constant \n𝑘\n𝐴\n, the points lie on a straight line through the origin with the slope \n−\n𝑘\n𝐴\n/\n(\n𝑚\n𝑐\n𝑝\n)\n of the black coffee (with the mug, plus \n𝑚\nB\n𝑐\nB\n). A pattern in the distances from the line shows that \n𝑘\n𝐴\n or the measuring conditions were not constant; the line alone does not tell you which cause.\nRounding: temperatures to 0.01 K, heat to 0.01 kJ.",
+        "before_code": "Balance. The control volume is the contents of one cup (with a mug: contents and mug). From the general energy balance (Lecture 05, slide 8), without mass flows and without work, only the change in internal energy and the heat flow rate to the surroundings remain:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nwith \n𝐶\n=\n𝑚\n𝑐\n𝑝\n of the contents (with a mug, plus \n𝑚\nB\n𝑐\nB\n). Separation of variables with \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n gives\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA from the measurement. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (part c).\n\nMixing. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (part a; with a mug, its heat capacity is added to the cup).\n\nHeat released. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n (Anfang start, Ende end) for each control volume (part e); from this, directly after the milk is added,\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\nwith \n𝐶\nG\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (coffee and milk); with the mug, \n𝐶\nGB\n=\n𝐶\nG\n+\n𝑚\nB\n𝑐\nB\n takes the place of \n𝐶\nG\n. With the same milk, the last term vanishes.\n\nWhen the milk is added. This paragraph appears after your prediction for question 1.\n\nkA from all measured points (going further): line through the origin in the “ln” view, slope \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n with \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, then \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. The scatter about the line is not a measurement uncertainty of \n𝑘\n𝐴\n, because all points contain the same initial value.\n\nKeeping kA fixed (going further): the tool works out the value after 10 min that belongs to this \n𝑘\n𝐴\n and passes it to the unchanged model.\n\nThe page is a single file. The calculation is in two marked blocks: MODELL contains the same equations and default values as the calculation script kaffee_modell.py of the solution (functions rechne and zwei_tassen), ERWEITERUNG the extensions (fitted line, energy, keeping \n𝑘\n𝐴\n fixed and the selected additions). For every setting the code calculates the curves in closed form; only the drawing samples them at 241 points. Automatic tests check it: 10 000 random parameter sets against kaffee_modell.py, the extensions against an independent calculation, operation in the browser from 360 to 1920 px, both languages. As of 2026-11-05, version 9c3524e603. You can read the code with “View page source” in your browser.",
+        "start_before": "Your prediction: Cup 2 (milk later), about 4 K · × choice does not match\nYour number: 4 K · model: 3.85 K (default values)\nYour reason: Die frühere Abkühlung senkt die Wärmeabgabe.\n\nCup 1, 3.85 K (34.05 versus 30.19 °C). What is conserved is the energy of coffee, milk and room together; each cup releases heat to the room. Cup 2 was hotter than cup 1 almost until the milk was added and therefore released more heat: \n𝑄\n2\n−\n𝑄\n1\n = 3.69 kJ; 3.69 kJ divided by 957.7 \nJ\nK\n (coffee and milk) gives 3.85 K.",
+        "start_after": "Start · Predict first Cup 2 (milk later), about 4 KBoth cups stand for 60 min; the milk comes straight from the fridge. Your flatmate says: “It doesn’t matter whether you add the milk straight away or later. Energy is conserved, after all.” Which cup is warmer after 60 min, and by roughly how much? Write down your own answer first, then agree as a pair.Starting point: default valuesWork on this questionHide explanationYour prediction: Cup 2 (milk later), about 4 K · × choice does not matchYour number: 4 K · model: 3.85 K (default values)Your reason: Die frühere Abkühlung senkt die Wärmeabgabe.Cup 1, 3.85 K (34.05 versus 30.19 °C). What is conserved is the energy of coffee, milk and room together; each cup releases heat to the room. Cup 2 was hotter than cup 1 almost until the milk was added(until about 56 min) and therefore released more heat: Q2−Q1 = 3.69 kJ; 3.69 kJ divided by 957.7 JK (coffee and milk) gives 3.85 K.",
+        "after_modell": "Physical problem\n\nSunday morning in a shared kitchen: you have made filter coffee and filled two identical cups with 200 ml each. Then the phone rings, and the call will last an hour. Your flatmate pours his milk into the coffee straight away (cup 1). You put your cup next to it and want to add the milk only after the call (cup 2), so that the coffee “stays hot for longer”. In both cases the milk comes straight from the fridge.\n\nYour flatmate says: “It doesn’t matter whether you add the milk straight away or later. Energy is conserved, after all.” Which cup is warmer after an hour?\n\nBoth cups release heat to the room through their surface, and the warmer the contents are compared with the room, the more heat they release. The simulation calculates the process with the transient lumped energy balance from Tutorial 5; when going further, you can change amounts, temperatures, cup and mug.\n\nAssumptions\n\nAs on the problem sheet:\n\nThe contents of the cup are perfectly mixed; the milk mixes in immediately and without heat loss.\nThe heat capacity of the cup is neglected, except when you include the mug (part g): then the mug is always at the temperature of its contents, even when the milk is poured in.\nThe total heat loss (including radiation and evaporation) is \n𝑄\n˙\nab\n=\n𝑘\n𝐴\n(\n𝜗\n−\n𝜗\nu\n)\n with a constant \n𝑘\n𝐴\n; the evaporated mass is neglected.\nCoffee (properties of water) and milk are incompressible (\n𝑐\n𝑝\n=\n𝑐\n𝑣\n); the material properties are constant.\n\nIn addition, in the simulation:\n\n𝑘\n𝐴\n applies to both cups; “\n𝑘\n𝐴\n of cup 1, relative” changes this for cup 1 only. When kept fixed, \n𝑘\n𝐴\n stays the same when you change amounts or temperatures (here the filling level does not change \n𝑘\n𝐴\n); from the measurement, it is determined again every time.\nPresets marked with a star are estimates, not measured; supported are “Ceramic, open” (working value of the problem, consistent with \n𝜏\n ≈ 41 min in Ferreira 2025) and “Ceramic with lid” (factor 0.56 from one mug with a polystyrene lid, Ferreira 2025).\nWhen the measured values are used, the readings taken before the milk is added count as black coffee with the same initial value and the same \n𝑘\n𝐴\n (mean of the measured values).\nPerfect mixing and “mug at the temperature of its contents” are deliberately simplifying assumptions; the small Biot number of the ceramic wall (about 0.035) supports them, but does not prove them on its own.\nWhat the simulation does\nIt takes \n𝑘\n𝐴\n of the cup: kept fixed (default 0.3402 \nW\nK\n from the measurement in the problem, a preset or your own value) or from the initial temperature and the measurement after 10 min (part c, with a mug part g).\nCup 1: it mixes coffee and milk at \n𝑡\n = 0 (part a) and lets the mixture cool down until the milk is added to cup 2 (parts b and d).\nCup 2: it lets the black coffee cool down until the milk is added and then mixes the milk in.\nIt compares both cups directly after the milk is added, calculates the heat released from the energy balance (part e) and the intersection of the curves.\nIt plots your measured values; if you want, it uses the initial temperature and the value after 10 min from the measurements or determines \n𝑘\n𝐴\n from all points before the milk.\n\nIt does not calculate: evaporation as a separate process (that is your homework), temperature differences within the cup, a heat loss that grows faster than linearly. All numbers are produced in your browser; the page sends nothing.\n\nControls and units\n\nThe default values are those of the problem. The material properties are fixed: coffee 1000 \nkg\nm\n3\n and 4.18 \nkJ\nkg\n·\nK\n (properties of water), milk 1030 \nkg\nm\n3\n and 3.94 \nkJ\nkg\n·\nK\n (from the solution: Goff; Tutorial 8), mug 0.85 \nkJ\nkg\n·\nK\n (part g, working value). Subscripts as in the lecture: K coffee (Kaffee), M milk (Milch), u surroundings (Umgebung), G mixture (Gemisch), B mug (Becher), Z adding (Zugabe), ab released (abgegeben), mess measured (Messung), misch mixture (Mischung).\n\nQuantity\tSymbol\tDefault\tRange, step\tBasis\nMilk added to cup 2 after\t\n𝑡\nZ\n\t60 min\t1 to 180, 1 min\tproblem; experiment 60 min\nAmount of coffee\t\n𝑉\nK\n\t200 ml\t100 to 400, 10 ml\tproblem\nInitial coffee temperature\t\n𝜗\nK,0\n\t80.0 °C\t60.0 to 95.0, 0.1 °C\tproblem; sources of the working values in the solution (Abraham and Diller 2019, Brown and Diller 2008), not checked again here\nAmount of milk\t\n𝑉\nM\n\t30 ml\t5 to 100, 5 ml\tproblem\nMilk temperature\t\n𝜗\nM\n\t5.0 °C\t2.0 to 65.0, 0.5 °C\tproblem (fridge), part f (60 °C)\nRoom temperature\t\n𝜗\nu\n\t20.0 °C\t10.0 to 30.0, 0.5 °C\tproblem\nHeat loss coefficient of the cup\t\n𝑘\n𝐴\n\t0.3402 \nW\nK\n\t0.05 to 1.00, 0.01 \nW\nK\n\tkept fixed: problem (part c) and presets; from the measurement: part c\nMeasurement after 10 min\t\n𝜗\nK\n(\n10\nmin\n)\n\t67.0 °C\t30.0 to 90.0, 0.1 °C\tproblem\nMass of the mug\t\n𝑚\nB\n\t300 g\t100 to 600, 10 g\tpart g, working value\n\n𝑘\n𝐴\n of cup 1, relative\t\n𝑘\n𝐴\n1\n/\n𝑘\n𝐴\n\t100 %\t90 to 110, 1 %\tdiscussion in part c\nMilk for cup 2 at room temperature\t\t\t\texperiment, mug 3\nHow to read the results\nBrown solid line: cup 1. The milk goes in at \n𝑡\n = 0; the short dotted line at \n𝑡\n = 0 is the mixing jump from 80 to 70.47 °C (default values).\nBlack dashed line: cup 2, black coffee until the milk is added; the dotted line at the end is the mixing jump when the milk is poured in.\nCircle: intersection of the two curves. To the left of it, the black coffee is warmer than cup 1 and releases more heat; to the right, less (with the same \n𝑘\n𝐴\n for both cups).\nGrey dotted line: room temperature. Both curves approach it.\nShapes: your measured values (circle mug 1, square mug 2, triangle mug 3).\nLabelled box: your locked-in prediction. Faint curves: the stored comparison run.\nCalculated values: temperatures directly after the milk is added to cup 2. The difference is \n𝜗\n1\n−\n𝜗\n2\n; positive means that cup 1 is warmer. \n𝑘\n𝐴\n is shown with its origin (from the measurement, kept fixed, preset, fitted line).\nEnergy up to adding the milk: heat that each cup has released up to adding the milk (part e). With the same milk, \n𝑄\n2\n−\n𝑄\n1\n divided by \n𝑚\n𝑐\n𝑝\n of the mixture (with the mug, plus \n𝑚\nB\n𝑐\nB\n) is exactly the difference; with milk at different temperatures, the milk contribution is added.\n“Heat flow rate” view (going further): \n𝑄\n˙\nab\n of both cups over time. The area between the curves is an energy: before and after the heat flow rates intersect, the two areas have different signs: positive as long as cup 2 releases more; they are hatched differently, and their sum is \n𝑄\n2\n−\n𝑄\n1\n.\n“Measured values, linearised (ln)” view (going further): \nln\n⁡\n𝜗\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n over \n𝑡\n for the mugs before the milk. With a constant \n𝑘\n𝐴\n, the points lie on a straight line through the origin with the slope \n−\n𝑘\n𝐴\n/\n(\n𝑚\n𝑐\n𝑝\n)\n of the black coffee (with the mug, plus \n𝑚\nB\n𝑐\nB\n). A pattern in the distances from the line shows that \n𝑘\n𝐴\n or the measuring conditions were not constant; the line alone does not tell you which cause.\nRounding: temperatures to 0.01 K, heat to 0.01 kJ.",
+        "after_code": "Balance. The control volume is the contents of one cup (with a mug: contents and mug). From the general energy balance (Lecture 05, slide 8), without mass flows and without work, only the change in internal energy and the heat flow rate to the surroundings remain:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nwith \n𝐶\n=\n𝑚\n𝑐\n𝑝\n of the contents (with a mug, plus \n𝑚\nB\n𝑐\nB\n). Separation of variables with \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n gives\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA from the measurement. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (part c).\n\nMixing. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (part a; with a mug, its heat capacity is added to the cup).\n\nHeat released. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n (Anfang start, Ende end) for each control volume (part e); from this, directly after the milk is added,\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\nwith \n𝐶\nG\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (coffee and milk); with the mug, \n𝐶\nGB\n=\n𝐶\nG\n+\n𝑚\nB\n𝑐\nB\n takes the place of \n𝐶\nG\n. With the same milk, the last term vanishes.\n\nWhen the milk is added. If the milk is added later, the difference changes by \nd\n(\n𝜗\n1\n−\n𝜗\n2\n)\nd\n𝑡\nZ\n=\n𝑄\n˙\n2\n−\n𝑄\n˙\n1\n𝐶\nG\n (with the mug, \n𝐶\nGB\n): it grows as long as cup 2 releases more heat, and decreases afterwards. What this means for the largest difference is in the explanations of question 1 and V2.\n\nkA from all measured points (going further): line through the origin in the “ln” view, slope \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n with \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, then \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. The scatter about the line is not a measurement uncertainty of \n𝑘\n𝐴\n, because all points contain the same initial value.\n\nKeeping kA fixed (going further): the tool works out the value after 10 min that belongs to this \n𝑘\n𝐴\n and passes it to the unchanged model.\n\nThe page is a single file. The calculation is in two marked blocks: MODELL contains the same equations and default values as the calculation script kaffee_modell.py of the solution (functions rechne and zwei_tassen), ERWEITERUNG the extensions (fitted line, energy, keeping \n𝑘\n𝐴\n fixed and the selected additions). For every setting the code calculates the curves in closed form; only the drawing samples them at 241 points. Automatic tests check it: 10 000 random parameter sets against kaffee_modell.py, the extensions against an independent calculation, operation in the browser from 360 to 1920 px, both languages. As of 2026-11-05, version 9c3524e603. You can read the code with “View page source” in your browser."
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "X5_03",
+      "lang": "en",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": {
+        "saved": 66.5,
+        "replacement": 70.14499580594031,
+        "label": "Equivalent value after 10 min, calculated from \n𝑘\n𝐴\n \n𝜗\nK\n(\n10\nmin\n)\n [°C]",
+        "note": "This value is calculated from the previous \n𝑘\n𝐴\n; it is not a measurement. Enter your measured value to use it. Use the measured value 66.5 °C again",
+        "rejected_value": 21.900927126392453,
+        "message": "Not switched: with this kA, the value after 10 min would be 21.9 °C, outside the range of the field (30 to 90 °C). kA stays fixed.",
+        "focus": "fest"
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Sperren_V1_V5",
+      "lang": "en",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": [
+        {
+          "q": "v1",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Starting point before your prediction: default values (no mug, no lid). Predict first, then check.",
+          "live": ""
+        },
+        {
+          "q": "v2",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Starting point before your prediction: default values (no mug, no lid). Predict first, then check.",
+          "live": ""
+        },
+        {
+          "q": "v3",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Starting point before your prediction: default values (no mug, no lid). Predict first, then check.",
+          "live": ""
+        },
+        {
+          "q": "v4",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Starting point before your prediction: default values (no mug, no lid). Predict first, then check.",
+          "live": ""
+        },
+        {
+          "q": "v5",
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 60,
+            "VK_ml": 200,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1
+          },
+          "hint": "Starting point before your prediction: default values (no mug, no lid). Predict first, then check.",
+          "live": ""
+        }
+      ],
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "F3_F12_Q2_Q7",
+      "lang": "en",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": {
+        "v1": "Your prediction: 5 °C\nYour number: 5 °C · model: 47.0 °C\n\n47.0 °C; 60.9 °C when the milk is added after 30 min, 37.3 °C after 90 min. Yes, the temperature depends on the time: at 47.0 °C, cup 1, which has the warm milk from the start, releases exactly as much heat up to adding the milk as the black coffee in cup 2 (\n𝑄\n1\n=\n𝑄\n2\n); the milk itself brings the same energy into both cups. The later the milk is added, the more of the warm milk’s heat cup 1 has already released to the room, while cup 2 only receives it when the milk is added; so cooler milk is enough.",
+        "v1_energy": [
+          {
+            "minutes": 30,
+            "milk": 60.9122663164477,
+            "Q1": 26.04999222222222,
+            "Q2": 26.049992222222222,
+            "difference": 7.105427357601002e-15
+          },
+          {
+            "minutes": 60,
+            "milk": 47.003092800915184,
+            "Q1": 38.57123454855452,
+            "Q2": 38.57123454855452,
+            "difference": 0.0
+          },
+          {
+            "minutes": 90,
+            "milk": 37.284501505330226,
+            "Q1": 44.58972039136377,
+            "Q2": 44.58972039136378,
+            "difference": 3.552713678800501e-15
+          }
+        ],
+        "finish": "Question 2 of 2\n\nExperiment\nShow question\n\nClass data loaded: 15 measured values.\n\nStarting point: class data used (\n𝑘\n𝐴\n from 0 and 10 min, mug included)\n\nYour prediction: on the curves\n\nDescribe where the points lie. Name one possible cause and one measurement you could use to test it.\n\nHide explanation\nBack\nNext\n\nYour prediction: on the curves\n\nThis depends on your measurement. Often, with an open mug and \n𝑘\n𝐴\n from the first 10 min, later points lie above the curves. Possible causes: the heat loss grows faster than linearly with \n𝜗\n−\n𝜗\nu\n (evaporation, free convection), the room temperature is not right, a start-up effect when pouring (mug not fully preheated), the position of the thermometer, mugs that are not the same. Measurements to test this: a mug with a lid, the room temperature measured next to the mugs, the same surface under each mug, the measurement series in the “ln” view (going further). The difference between mug 1 and mug 2 often fits better than the individual values.\n\nDone. Key point: whatever is hotter releases more heat; so add cold milk straight away. What is conserved is the energy of the cups and the room together. Continue with going further. Open going further",
+        "code": "Balance. The control volume is the contents of one cup (with a mug: contents and mug). From the general energy balance (Lecture 05, slide 8), without mass flows and without work, only the change in internal energy and the heat flow rate to the surroundings remain:\n\n𝐶\nd\n𝑇\nd\n𝑡\n=\n−\n𝑘\n𝐴\n(\n𝑇\n−\n𝑇\nu\n)\n\nwith \n𝐶\n=\n𝑚\n𝑐\n𝑝\n of the contents (with a mug, plus \n𝑚\nB\n𝑐\nB\n). Separation of variables with \n𝑇\n(\n𝑡\n=\n0\ns\n)\n=\n𝑇\n0\n gives\n\n𝑇\n(\n𝑡\n)\n=\n𝑇\nu\n+\n(\n𝑇\n0\n−\n𝑇\nu\n)\nexp\n⁡\n(\n−\n𝑘\n𝐴\n𝐶\n𝑡\n)\n,\n𝜏\n=\n𝐶\n𝑘\n𝐴\n.\n\nkA from the measurement. \n𝑘\n𝐴\n=\n−\n𝐶\n𝑡\nmess\nln\n⁡\n𝑇\nmess\n−\n𝑇\nu\n𝑇\n0\n−\n𝑇\nu\n (part c).\n\nMixing. \n𝜗\nmisch\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n𝜗\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n𝜗\nM\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (part a; with a mug, its heat capacity is added to the cup).\n\nHeat released. \n𝑄\n=\n𝐶\n(\n𝜗\nAnfang\n−\n𝜗\nEnde\n)\n (Anfang start, Ende end) for each control volume (part e); from this, directly after the milk is added,\n𝐶\nG\n(\n𝜗\n1\n−\n𝜗\n2\n)\n=\n𝑄\n2\n−\n𝑄\n1\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n(\n𝜗\nM1\n−\n𝜗\nM2\n)\nwith \n𝐶\nG\n=\n𝑚\nK\n𝑐\n𝑝\n,\nK\n+\n𝑚\nM\n𝑐\n𝑝\n,\nM\n (coffee and milk); with the mug, \n𝐶\nGB\n=\n𝐶\nG\n+\n𝑚\nB\n𝑐\nB\n takes the place of \n𝐶\nG\n. With the same milk, the last term vanishes.\n\nWhen the milk is added. If the milk is added later, the difference changes by \nd\n(\n𝜗\n1\n−\n𝜗\n2\n)\nd\n𝑡\nZ\n=\n𝑄\n˙\n2\n−\n𝑄\n˙\n1\n𝐶\nG\n (with the mug, \n𝐶\nGB\n): it grows as long as cup 2 releases more heat, and decreases afterwards. What this means for the largest difference is in the explanations of question 1 and V2.\n\nkA from all measured points (going further): line through the origin in the “ln” view, slope \n𝑏\n=\n∑\n𝑡\n𝑖\n𝑦\n𝑖\n/\n∑\n𝑡\n𝑖\n2\n with \n𝑦\n𝑖\n=\nln\n⁡\n𝜗\n𝑖\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n, then \n𝑘\n𝐴\n=\n−\n𝐶\n𝑏\n. The scatter about the line is not a measurement uncertainty of \n𝑘\n𝐴\n, because all points contain the same initial value.\n\nKeeping kA fixed (going further): the tool works out the value after 10 min that belongs to this \n𝑘\n𝐴\n and passes it to the unchanged model.\n\nThe page is a single file. The calculation is in two marked blocks: MODELL contains the same equations and default values as the calculation script kaffee_modell.py of the solution (functions rechne and zwei_tassen), ERWEITERUNG the extensions (fitted line, energy, keeping \n𝑘\n𝐴\n fixed and the selected additions). For every setting the code calculates the curves in closed form; only the drawing samples them at 241 points. Automatic tests check it: 10 000 random parameter sets against kaffee_modell.py, the extensions against an independent calculation, operation in the browser from 360 to 1920 px, both languages. As of 2026-11-05, version 9c3524e603. You can read the code with “View page source” in your browser.",
+        "model": "Physical problem\n\nSunday morning in a shared kitchen: you have made filter coffee and filled two identical cups with 200 ml each. Then the phone rings, and the call will last an hour. Your flatmate pours his milk into the coffee straight away (cup 1). You put your cup next to it and want to add the milk only after the call (cup 2), so that the coffee “stays hot for longer”. In both cases the milk comes straight from the fridge.\n\nYour flatmate says: “It doesn’t matter whether you add the milk straight away or later. Energy is conserved, after all.” Which cup is warmer after an hour?\n\nBoth cups release heat to the room through their surface, and the warmer the contents are compared with the room, the more heat they release. The simulation calculates the process with the transient lumped energy balance from Tutorial 5; when going further, you can change amounts, temperatures, cup and mug.\n\nAssumptions\n\nAs on the problem sheet:\n\nThe contents of the cup are perfectly mixed; the milk mixes in immediately and without heat loss.\nThe heat capacity of the cup is neglected, except when you include the mug (part g): then the mug is always at the temperature of its contents, even when the milk is poured in.\nThe total heat loss (including radiation and evaporation) is \n𝑄\n˙\nab\n=\n𝑘\n𝐴\n(\n𝜗\n−\n𝜗\nu\n)\n with a constant \n𝑘\n𝐴\n; the evaporated mass is neglected.\nCoffee (properties of water) and milk are incompressible (\n𝑐\n𝑝\n=\n𝑐\n𝑣\n); the material properties are constant.\n\nIn addition, in the simulation:\n\n𝑘\n𝐴\n applies to both cups; “\n𝑘\n𝐴\n of cup 1, relative” changes this for cup 1 only. When kept fixed, \n𝑘\n𝐴\n stays the same when you change amounts or temperatures (here the filling level does not change \n𝑘\n𝐴\n); from the measurement, it is determined again every time.\nPresets marked with a star are estimates, not measured; supported are “Ceramic, open” (working value of the problem, consistent with \n𝜏\n ≈ 41 min in Ferreira 2025) and “Ceramic with lid” (factor 0.56 from one mug with a polystyrene lid, Ferreira 2025).\nWhen the measured values are used, the readings taken before the milk is added count as black coffee with the same initial value and the same \n𝑘\n𝐴\n (mean of the measured values).\nPerfect mixing and “mug at the temperature of its contents” are deliberately simplifying assumptions; the small Biot number of the ceramic wall (about 0.035) supports them, but does not prove them on its own.\nWhat the simulation does\nIt takes \n𝑘\n𝐴\n of the cup: kept fixed (default 0.3402 \nW\nK\n from the measurement in the problem, a preset or your own value) or from the initial temperature and the measurement after 10 min (part c, with a mug part g).\nCup 1: it mixes coffee and milk at \n𝑡\n = 0 (part a) and lets the mixture cool down until the milk is added to cup 2 (parts b and d).\nCup 2: it lets the black coffee cool down until the milk is added and then mixes the milk in.\nIt compares both cups directly after the milk is added, calculates the heat released from the energy balance (part e) and the intersection of the curves.\nIt plots your measured values; if you want, it uses the initial temperature and the value after 10 min from the measurements or determines \n𝑘\n𝐴\n from all points before the milk.\n\nIt does not calculate: evaporation as a separate process (that is your homework), temperature differences within the cup, a heat loss that grows faster than linearly. All numbers are produced in your browser; the page sends nothing.\n\nControls and units\n\nThe default values are those of the problem. The material properties are fixed: coffee 1000 \nkg\nm\n3\n and 4.18 \nkJ\nkg\n·\nK\n (properties of water), milk 1030 \nkg\nm\n3\n and 3.94 \nkJ\nkg\n·\nK\n (from the solution: Goff; Tutorial 8), mug 0.85 \nkJ\nkg\n·\nK\n (part g, working value). Subscripts as in the lecture: K coffee (Kaffee), M milk (Milch), u surroundings (Umgebung), G mixture (Gemisch), B mug (Becher), Z adding (Zugabe), ab released (abgegeben), mess measured (Messung), misch mixture (Mischung).\n\nQuantity\tSymbol\tDefault\tRange, step\tBasis\nMilk added to cup 2 after\t\n𝑡\nZ\n\t60 min\t1 to 180, 1 min\tproblem; experiment 60 min\nAmount of coffee\t\n𝑉\nK\n\t200 ml\t100 to 400, 10 ml\tproblem\nInitial coffee temperature\t\n𝜗\nK,0\n\t80.0 °C\t60.0 to 95.0, 0.1 °C\tproblem; sources of the working values in the solution (Abraham and Diller 2019, Brown and Diller 2008), not checked again here\nAmount of milk\t\n𝑉\nM\n\t30 ml\t5 to 100, 5 ml\tproblem\nMilk temperature\t\n𝜗\nM\n\t5.0 °C\t2.0 to 65.0, 0.5 °C\tproblem (fridge), part f (60 °C)\nRoom temperature\t\n𝜗\nu\n\t20.0 °C\t10.0 to 30.0, 0.5 °C\tproblem\nHeat loss coefficient of the cup\t\n𝑘\n𝐴\n\t0.3402 \nW\nK\n\t0.05 to 1.00, 0.01 \nW\nK\n\tkept fixed: problem (part c) and presets; from the measurement: part c\nMeasurement after 10 min\t\n𝜗\nK\n(\n10\nmin\n)\n\t67.0 °C\t30.0 to 90.0, 0.1 °C\tproblem\nMass of the mug\t\n𝑚\nB\n\t300 g\t100 to 600, 10 g\tpart g, working value\n\n𝑘\n𝐴\n of cup 1, relative\t\n𝑘\n𝐴\n1\n/\n𝑘\n𝐴\n\t100 %\t90 to 110, 1 %\tdiscussion in part c\nMilk for cup 2 at room temperature\t\t\t\texperiment, mug 3\nHow to read the results\nBrown solid line: cup 1. The milk goes in at \n𝑡\n = 0; the short dotted line at \n𝑡\n = 0 is the mixing jump from 80 to 70.47 °C (default values).\nBlack dashed line: cup 2, black coffee until the milk is added; the dotted line at the end is the mixing jump when the milk is poured in.\nCircle: intersection of the two curves. To the left of it, the black coffee is warmer than cup 1 and releases more heat; to the right, less (with the same \n𝑘\n𝐴\n for both cups).\nGrey dotted line: room temperature. Both curves approach it.\nShapes: your measured values (circle mug 1, square mug 2, triangle mug 3).\nLabelled box: your locked-in prediction. Faint curves: the stored comparison run.\nCalculated values: temperatures directly after the milk is added to cup 2. The difference is \n𝜗\n1\n−\n𝜗\n2\n; positive means that cup 1 is warmer. \n𝑘\n𝐴\n is shown with its origin (from the measurement, kept fixed, preset, fitted line).\nEnergy up to adding the milk: heat that each cup has released up to adding the milk (part e). With the same milk, \n𝑄\n2\n−\n𝑄\n1\n divided by \n𝑚\n𝑐\n𝑝\n of the mixture (with the mug, plus \n𝑚\nB\n𝑐\nB\n) is exactly the difference; with milk at different temperatures, the milk contribution is added.\n“Heat flow rate” view (going further): \n𝑄\n˙\nab\n of both cups over time. The area between the curves is an energy: before and after the heat flow rates intersect, the two areas have different signs: positive as long as cup 2 releases more; they are hatched differently, and their sum is \n𝑄\n2\n−\n𝑄\n1\n.\n“Measured values, linearised (ln)” view (going further): \nln\n⁡\n𝜗\n−\n𝜗\nu\n𝜗\n0\n−\n𝜗\nu\n over \n𝑡\n for the mugs before the milk. With a constant \n𝑘\n𝐴\n, the points lie on a straight line through the origin with the slope \n−\n𝑘\n𝐴\n/\n(\n𝑚\n𝑐\n𝑝\n)\n of the black coffee (with the mug, plus \n𝑚\nB\n𝑐\nB\n). A pattern in the distances from the line shows that \n𝑘\n𝐴\n or the measuring conditions were not constant; the line alone does not tell you which cause.\nRounding: temperatures to 0.01 K, heat to 0.01 kJ.",
+        "becher": {
+          "C": 1212.7459999999999,
+          "dT": 3.0788314168794386,
+          "Q1": 46.6025433571762,
+          "Q2": 50.33638384267103
+        }
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beamer",
+      "lang": "en",
+      "w": 1280,
+      "h": 720,
+      "status": "PASS",
+      "detail": [
+        {
+          "phase": "P2",
+          "boxes": {
+            "#frageleiste": {
+              "top": 43.1875,
+              "bottom": 415.703125,
+              "width": 1192,
+              "height": 372.515625,
+              "visible": true,
+              "inView": true
+            },
+            "#diagramm": {
+              "top": 415.703125,
+              "bottom": 667.703125,
+              "width": 780,
+              "height": 252,
+              "visible": true,
+              "inView": true
+            }
+          }
+        },
+        {
+          "phase": "P4",
+          "boxes": {
+            "#frageleiste": {
+              "top": 43.1875,
+              "bottom": 344.21875,
+              "width": 1192,
+              "height": 301.03125,
+              "visible": true,
+              "inView": true
+            },
+            "#diagramm": {
+              "top": 344.21875,
+              "bottom": 586.21875,
+              "width": 780,
+              "height": 242,
+              "visible": true,
+              "inView": true
+            },
+            "#regler-pflicht": {
+              "top": 612.515625,
+              "bottom": 686.109375,
+              "width": 780,
+              "height": 73.59375,
+              "visible": true,
+              "inView": true
+            }
+          }
+        }
+      ],
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beamer",
+      "lang": "en",
+      "w": 1366,
+      "h": 768,
+      "status": "PASS",
+      "detail": [
+        {
+          "phase": "P2",
+          "boxes": {
+            "#frageleiste": {
+              "top": 43.1875,
+              "bottom": 415.703125,
+              "width": 1192,
+              "height": 372.515625,
+              "visible": true,
+              "inView": true
+            },
+            "#diagramm": {
+              "top": 415.703125,
+              "bottom": 715.703125,
+              "width": 780,
+              "height": 300,
+              "visible": true,
+              "inView": true
+            }
+          }
+        },
+        {
+          "phase": "P4",
+          "boxes": {
+            "#frageleiste": {
+              "top": 43.1875,
+              "bottom": 344.21875,
+              "width": 1192,
+              "height": 301.03125,
+              "visible": true,
+              "inView": true
+            },
+            "#diagramm": {
+              "top": 344.21875,
+              "bottom": 634.21875,
+              "width": 780,
+              "height": 290,
+              "visible": true,
+              "inView": true
+            },
+            "#regler-pflicht": {
+              "top": 660.515625,
+              "bottom": 734.109375,
+              "width": 780,
+              "height": 73.59375,
+              "visible": true,
+              "inView": true
+            }
+          }
+        }
+      ],
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beschriftungen_Q3",
+      "lang": "en",
+      "w": 320,
+      "h": 640,
+      "status": "PASS",
+      "detail": {
+        "layouts": [
+          {
+            "temp": "5",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "5",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "5",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "5",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "5",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "5",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "5",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "47",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "intersection",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "47",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "47",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "65",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 11.984899328859061
+          },
+          {
+            "temp": "65",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          },
+          {
+            "temp": "65",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.448779296875,
+            "minFont": 10.986157718120806
+          }
+        ],
+        "reversed": {
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 180,
+            "VK_ml": 400,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1.1
+          },
+          "text": " before the heat flow rates intersect: cup 2 releases less: −0.08 kJ ·  after the heat flow rates intersect: cup 2 releases more: 1.11 kJ · \n𝑄\n2\n−\n𝑄\n1\n = 1.03 kJ (sum of both areas)",
+          "own": -0.0806118389440926,
+          "page": -0.08061183894408168
+        }
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beschriftungen_Q3",
+      "lang": "en",
+      "w": 360,
+      "h": 640,
+      "status": "PASS",
+      "detail": {
+        "layouts": [
+          {
+            "temp": "5",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "drinking temperature 60 °C",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 11.986686390532544
+          },
+          {
+            "temp": "5",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "5",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "drinking temperature 60 °C",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 11.986686390532544
+          },
+          {
+            "temp": "47",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "47",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 180 min"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 11.986686390532544
+          },
+          {
+            "temp": "65",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          },
+          {
+            "temp": "65",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.449609375,
+            "minFont": 10.987795857988166
+          }
+        ],
+        "reversed": {
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 180,
+            "VK_ml": 400,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1.1
+          },
+          "text": " before the heat flow rates intersect: cup 2 releases less: −0.08 kJ ·  after the heat flow rates intersect: cup 2 releases more: 1.11 kJ · \n𝑄\n2\n−\n𝑄\n1\n = 1.03 kJ (sum of both areas)",
+          "own": -0.0806118389440926,
+          "page": -0.08061183894408168
+        }
+      },
+      "pageerrors": [],
+      "external": []
+    },
+    {
+      "name": "Beschriftungen_Q3",
+      "lang": "en",
+      "w": 390,
+      "h": 844,
+      "status": "PASS",
+      "detail": {
+        "layouts": [
+          {
+            "temp": "5",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 30 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 57 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 60 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "5",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 180 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 30 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 57 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 60 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "47",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 180 min",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "5",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "30",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "56",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "Cup 2: milk after 56 min"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "57",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "60",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "120",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          },
+          {
+            "temp": "65",
+            "t": "180",
+            "overlap": [],
+            "labels": [
+              "Time t [min]",
+              "Temperature ϑ [°C]",
+              "Room 20.0 °C",
+              "Your prediction: 56 min",
+              "intersection",
+              "drinking temperature 60 °C",
+              "Cup 2: milk after 180 min",
+              "Cup 1: milk right away"
+            ],
+            "sticky": true,
+            "ratio": 0.44994075829383884,
+            "minFont": 10.988790760869565
+          }
+        ],
+        "reversed": {
+          "parameters": {
+            "kAQuelle": "fest",
+            "kA": 0.340247764980112,
+            "kAHerkunft": "aufgabe",
+            "milch2Raum": false,
+            "becher": false,
+            "thMessErsatz": false,
+            "thMessEigen": null,
+            "tEnd_min": 180,
+            "VK_ml": 400,
+            "thK0": 80,
+            "VM_ml": 30,
+            "thM": 5,
+            "thU": 20,
+            "thMess": 67,
+            "mB_g": 300,
+            "kA1Faktor": 1.1
+          },
+          "text": " before the heat flow rates intersect: cup 2 releases less: −0.08 kJ ·  after the heat flow rates intersect: cup 2 releases more: 1.11 kJ · \n𝑄\n2\n−\n𝑄\n1\n = 1.03 kJ (sum of both areas)",
+          "own": -0.0806118389440926,
+          "page": -0.08061183894408168
+        }
+      },
+      "pageerrors": [],
+      "external": []
+    }
+  ]
+}

@@ -87,3 +87,11 @@ Startsatz: „Prüfe das Konzept der Simulation nach AGENTS.md (Rolle X4).“ Pr
 
 Startsatz: „Baue die Simulation nach AGENTS.md (Rolle S-Bau).“ Baue genau das entschiedene Konzept in `simulation/site/` (offline lauffähig, keine fremden Server, Deutsch, Indizes nach Ä24), mit Tests in `simulation/tests/`: Zahlen gegen `kaffee_modell.py` und gegen eine eigene Rechnung, Bedienung im Browser bei 390 und 1366 px ohne waagerechtes Scrollen, Tastatur und Kontrast. Seiten als Bildschirmfotos ansehen. Bericht nach `simulation/BAU_BERICHT.md` (was gebaut, Abweichungen vom Konzept mit Grund, Testergebnisse, offene Punkte). Danach prüft Claude ab; Befunde arbeitest du im nächsten Lauf ab. Veröffentlicht wird erst nach Freigabe der Tutoriumsleitung (Sites, eigene Adresse, Baunachweis wie beim Lernzentrum).
 
+
+# Sechster Auftrag: Abnahme des Baus (Rolle X5)
+
+> Ergänzt von Claude nach `simulation/BAU_AUFTRAG.md`, Teil 7 (06.11.2026); die Regeln der Abschnitte oben bleiben unverändert.
+
+Startsatz: „Nimm den Bau der Simulation ab nach simulation/X5_AUFTRAG.md (Rolle X5).“ Die vollständige Anweisung (geprüfter Stand, Prüfumfang, zwei Läufe, Grenzen, Bericht `simulation/X5_CODEX_ABNAHME.md`) steht in `simulation/X5_AUFTRAG.md`.
+
+Nachprüfung nach der Korrekturrunde (ergänzt am 06.11.2026): Startsatz „Prüfe die Korrekturrunde nach simulation/X5_AUFTRAG.md, Abschnitt 9 (Nachprüfung X5).“ Nur die betroffenen Punkte; Bericht `simulation/X5_CODEX_NACHPRUEFUNG.md` auf einem eigenen Zweig, kein Pull Request.

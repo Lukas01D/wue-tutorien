@@ -1,0 +1,11 @@
+X5-05 Ueberlauf (Zustaende mit scrollWidth > Breite): 0 []
+X5-05 Regler mit Breite 0: 0 []
+Ziele unter 24/44 px (ohne Breite 0): 0 []
+X5-10 angeheftet > 45 %: 0 []
+X5-09 kleinste Diagrammschrift < 9 px: 0 []
+X5-04 verdeckte Fokusmitten (Layoutlauf): 0
+X5-04 768x1024 32 px verdeckt: 0
+X5-06 Schnittkreis ohne Beschriftung: 0 von 72
+X5-02 energy_formula: {"CG": 957.7459999999999, "CGB": 1212.7459999999999, "difference": 3.0788314168794386, "heat_difference": 3.733840485494831, "wrong": 3.8985706914931844, "right": 3.0788314168794053, "text": "Bilanz. Bilanzraum ist der Inhalt einer Tasse (mit Becher: Inhalt und Becher). Aus der allgemeinen Energiebilanz (Foliensatz 05, Folie 8) bleiben ohne Stoffströme und ohne Arbeit nur die Änderung der inneren 
+X5-03 measured_replaced: {"before": 66.5, "after": 70.14499580594031, "visible": "70,1", "label": "Gleichwertiger Wert nach 10 min, aus \n𝑘\n𝐴\n berechnet \n𝜗\nK\n(\n10\nmin\n)\n [°C]"}
+Browserlauf B: {'PASS', 'ERROR'} ['Quellenwechsel_haelt_Kurven_bei_kA1']

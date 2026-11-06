@@ -1,0 +1,30 @@
+P0_DOM_AX_live_DE PASS {'versuche': {'dom_result_hits': [], 'ax_nodes': 543}, 'modell': {'dom_result_hits': [], 'ax_nodes': 481}, 'code': {'dom_result_hits': [], 'ax_nodes': 455}}
+P0_DOM_AX_live_EN PASS {'versuche': {'dom_result_hits': [], 'ax_nodes': 502}, 'modell': {'dom_result_hits': [], 'ax_nodes': 459}, 'code': {'dom_result_hits': [], 'ax_nodes': 437}}
+Pflichtweg_falsche_Vorhersage_Kurswerte PASS {'parameters': {'kAQuelle': 'messung', 'kA': 0.340247764980112, 'kAHerkunft': 'messung', 'milch2Raum': False, 'becher': True, 'thMessErsatz': False, 'thMessEigen': None, 'tEnd_min': 60, 'VK_ml': 200, 'thK0': 80.1, 'VM_ml': 30, 'thM': 6, 'thU': 21.5, 'thMess': 67.35, 'mB_g': 300, 'kA1Faktor': 1}, 'own': 3.0684891934836998, 'display': 'Rechenwerte\n\ndirekt nach der Zugabe nach 60 min\n\nTasse 1 \n𝜗\n1\n35,11 °C\nTasse 2 \n𝜗\n2\n32,04 °C\nBecher 3
+Ohne_Vorhersage_Versuch_ausgefallen PASS Ohne Vorhersage, Frage 2 ohne Versuch übersprungen.
+V1_bis_V5_Ausgangslage_und_Aufloesung_DE PASS [{'q': 'v1', 'parameters': {'kAQuelle': 'fest', 'kA': 0.340247764980112, 'kAHerkunft': 'aufgabe', 'milch2Raum': False, 'becher': False, 'thMessErsatz': False, 'thMessEigen': None, 'tEnd_min': 60, 'VK_ml': 200, 'thK0': 80, 'VM_ml': 30, 'thM': 5, 'thU': 20, 'thMess': 67, 'mB_g': 300, 'kA1Faktor': 1}, 'text': 'Eure Vorhersage: 47 °C\nEure Zahl: 47 °C · Modell: 47,0 °C\nEure Begründung: Vorhersage aus der Wärmebilanz.\n\n47,0 °C; 60,9 °C bei Zugabe n
+V3_Antwort_vor_Vorhersage PASS None
+Regler_alle_Felder_Tasten_Hilfe_Ungueltig PASS [['VK', {'kAQuelle': 'fest', 'kA': 0.340247764980112, 'kAHerkunft': 'aufgabe', 'milch2Raum': False, 'becher': False, 'thMessErsatz': False, 'thMessEigen': None, 'tEnd_min': 60, 'VK_ml': 300, 'thK0': 80, 'VM_ml': 30, 'thM': 5, 'thU': 20, 'thMess': 67, 'mB_g': 300, 'kA1Faktor': 1}, 2.641665680854487], ['VM', {'kAQuelle': 'fest', 'kA': 0.340247764980112, 'kAHerkunft': 'aufgabe', 'milch2Raum': False, 'becher': False, 'thMessErsatz': False, 'thMessEig
+Quellenwechsel_haelt_Kurven_bei_kA1 ERROR Locator.check: Timeout 8000ms exceeded.
+Call log:
+  - waiting for locator("[name=\"kaq\"][value=\"messung\"]")
+    17 × locator resolved to <input name="kaq" type="radio" value="messung"/>
+     - attempting click action
+       - waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - performing click action
+       - click action d
+Ungueltige_Einstellung_und_Sprachwechsel PASS None
+Messblatt_ungerundet_Grenze_Unsinn_Loeschen PASS {'accepted': {'kAQuelle': 'messung', 'kA': 0.340247764980112, 'kAHerkunft': 'messung', 'milch2Raum': False, 'becher': True, 'thMessErsatz': False, 'thMessEigen': None, 'tEnd_min': 60, 'VK_ml': 200, 'thK0': 80.015, 'VM_ml': 30, 'thM': 5, 'thU': 20, 'thMess': 67.035, 'mB_g': 300, 'kA1Faktor': 1}, 'rejected': 'Nicht übernommen, nichts verändert: Raumtemperatur 40,0 °C liegt außerhalb 10 bis 30 °C'}
+Kurslink_Hin_Rueck_Nein_Ja_Beschaedigt PASS {'link': 'http://127.0.0.1:8765/simulation/site/index.html#kurs1=b1:70.9,61,53.4,47,41.9,37.7,34.1,;b2:80.4,67.8,57,49.2,43.1,38.2,34.6,31.2;b3:79.8,66.9,57.2,49.1,43,38.4,34.5,32.5;u:21.5;m:6;d:1;b:1.2.3', 'reasons': ['Dieser Link enthält keine Kurswerte dieser Seite. Nichts wurde verändert.', 'Der Link ist beschädigt (der Aufbau stimmt nicht). Nichts wurde verändert.', 'Der Link ist beschädigt (die Raumtemperatur ist keine Zahl zwischen 5 und 4
+Kurslink_fremdes_Format PASS None
+Kurslink_alle_akzeptierten_Nachkommastellen PASS None
+Sprache_Persistenz_Reiter_Reset PASS {'before': {'e': {'kAQuelle': 'fest', 'kA': 0.340247764980112, 'kAHerkunft': 'aufgabe', 'milch2Raum': False, 'becher': False, 'thMessErsatz': False, 'thMessEigen': None, 'tEnd_min': 60, 'VK_ml': 200, 'thK0': 80, 'VM_ml': 30, 'thM': 5, 'thU': 20, 'thMess': 67, 'mB_g': 300, 'kA1Faktor': 1}, 'antworten': {'start': {'wahl': '1', 'zahl': '4', 'warum': 'Die frühere Abkühlung senkt die Wärmeabgabe.', 'fest': True, 'ohne': False, 'aufl': False}, 'f1': {'
+Speicher_gesperrt PASS Werte werden nicht gespeichert (Speicher im Browser gesperrt)
+Offline_frisches_Profil_CSP PASS {'offline_requests': ['http://127.0.0.1:8765/simulation/site/index.html'], 'csp_inline_blocked': True, 'file': 'ERR_BLOCKED_BY_ADMINISTRATOR, separat beobachtet'}
+CSV_Download_DE_EN_Trinkzeit_Becherkalt PASS {'de': {'name': 'kaffee_simulation.csv', 'start': ['0', '70,47', '80,00', '', ''], 'ten': ['10', '60,78', '67,00', '', ''], 'end': ['60 nach der Milch', '34,05', '30,19', '', '']}, 'en': {'name': 'coffee_simulation.csv', 'start': ['0', '70.47', '80.00', '', ''], 'ten': ['10', '60.78', '67.00', '', ''], 'end': ['60 after the milk', '34.05', '30.19', '', '']}}
+WCAG_axe_4_11_0 PASS [{'state': 'P0', 'violations': [], 'incomplete_count': 1}, {'state': 'P4', 'violations': [], 'incomplete_count': 1}, {'state': 'Vertiefung', 'violations': [], 'incomplete_count': 1}, {'state': 'Code', 'violations': [], 'incomplete_count': 1}]
+Textschluessel_Gedankenstriche_Platzhalter PASS {'keys': 380, 'dashes': {'de': [], 'en': []}}
+Reglerfolge_30s_100ms PASS {'duration': 30.011992601999992, 'events': 261, 'max_ms': 14.199999999982538, 'median_ms': 3}
