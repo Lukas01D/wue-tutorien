@@ -14,7 +14,7 @@
 
 ## 2 Vorbereitung
 
-1. Offline-Datei `Kaffee_Simulation.html` auf den Laptop für den Beamer und auf einen USB-Stick legen (Ersatz bei Netzausfall). Einmal im Browser öffnen, eine Vorhersage festhalten, dann unten „Für die nächste Gruppe zurücksetzen“; nach einer Probe mit Messwerten im Messblatt „Kurswerte löschen“.
+1. Offline-Datei `simulation/site/Kaffee_Simulation.html` aus diesem Zweig (nicht die ältere, gleichnamige Datei in `ergebnisse/kaffee/fertig/` oder `ergebnisse/kaffee/simulation/`; Prüfsumme in `simulation/site/BAUNACHWEIS.txt`) auf den Laptop für den Beamer und auf einen USB-Stick legen (Ersatz bei Netzausfall). Einmal im Browser öffnen, eine Vorhersage festhalten, dann unten „Für die nächste Gruppe zurücksetzen“; nach einer Probe mit Messwerten im Messblatt „Kurswerte löschen“.
 2. Am Beamer prüfen (Abschnitt 5).
 3. Nach der Veröffentlichung den QR-Code der Seite in die Kurzkarte setzen (Platzhalter) und die Adresse einmal am Handy öffnen.
 
@@ -28,7 +28,7 @@ Der Versuch beginnt in Minute 5 der Sitzung und endet in Minute 65 mit der Milch
 
 | Minute | Studierende (zu zweit, ein Gerät je Paar) | Du |
 |:--|:--|:--|
-| 65 bis 75 | Rechnung der Aufgabe | Messreihe einmal ins Messblatt der Seite eintragen (Raum- und Milchtemperatur, Becher 1 und 2, beide 60-min-Zeilen von Becher 2), „Kurswerte als Link teilen“, Link in einen QR-Code oder an die Tafel |
+| 65 bis 75 | Rechnung der Aufgabe | Messreihe einmal ins Messblatt der Seite eintragen (Raum- und Milchtemperatur, Becher 1 und 2, beide 60-min-Zeilen von Becher 2), „Kurswerte als Link teilen“ (auf der veröffentlichten Seite), Link als QR-Code zeigen |
 | 75 | Seite über den QR-Code öffnen | einen QR-Code mit dem Kurslink zeigen (öffnet die Seite mit den Kurswerten) |
 | 75 bis 77 | **Start:** jede und jeder notiert eine Vorhersage, das Paar einigt sich und hält sie fest; Kurven und Energiesäulen erscheinen; Auftrag „Erklärt den Unterschied mit $Q_1$ und $Q_2$.“ | ein Paar erklären lassen |
 | 77 bis 81 | **Frage 1 Zeitpunkt:** Vorhersage, dann mit dem einzigen Regler „Zugabe nach“ prüfen | Vorhersagen per Handzeichen abfragen; ein Paar mit abweichender Vorhersage begründen lassen |
@@ -52,16 +52,15 @@ Die Übernahme der Messwerte („Einstellungen aus den Messwerten übernehmen“
 
 ## 5 Beamer
 
-- Seite im Vollbild (F11), Sprache nach Kurs.
+- Seite im Vollbild (F11), Sprache nach Kurs. „Für die nächste Gruppe zurücksetzen“ behält die gewählte Sprache.
 - Browser-Vergrößerung zuerst bei 100 % lassen: Nach dem Festhalten ist der Fragetext eingeklappt („Frage zeigen“), das Diagramm passt sich der Fensterhöhe an, der Regler „Zugabe nach“ steht direkt darunter. Ist die Schrift aus der letzten Reihe zu klein, schrittweise vergrößern (110 bis 125 %) und dafür scrollen; eine eigene Projektionsansicht gibt es nicht. Im echten Hörsaal prüfen.
 - Für die Besprechung: Reiter „Versuche“ unten, Karte der Frage öffnen, „Auflösung zeigen“ (erst nach einer festgehaltenen Vorhersage aktiv; für dich gibt es „ohne Vorhersage aufdecken“).
-- Diagramm groß zeigen: Bei schmalem Fenster rückt es nach oben und bleibt beim Scrollen angeheftet (Hochformat).
 
 ## 6 Kurslink erzeugen und teilen
 
-1. Im Messblatt (unter dem Diagramm, von Anfang an sichtbar, ohne etwas aufzudecken) die Werte eintragen; Komma oder Punkt gehen beide. Becher 1 hat keine Zeile „60 nach der Milch“.
+1. Im Messblatt (unter dem Diagramm, von Anfang an sichtbar, ohne etwas aufzudecken) die Werte eintragen; Komma oder Punkt gehen beide. Becher 1 hat keine Zeile „60 nach der Milch“. Hast du Becher 3 gemessen, „Becher 3 zeigen“ anhaken; wurde mit Deckel gemessen, „mit Deckel gemessen“ anhaken (dann rechnet die Seite keinen zusätzlichen Deckelfaktor).
 2. „Kurswerte als Link teilen“: Der Link wird kopiert und zusätzlich zum Abschreiben angezeigt. Er enthält nur die Messwerte (hinter `#`, wird nie an einen Server gesendet).
-3. **Den Link auf der veröffentlichten Seite erzeugen**, nicht in der Offline-Datei: Aus der Datei entsteht nur ein Link, der auf diesem Rechner gilt (die Seite sagt das). Der Kurslink enthält die Adresse der Seite; **ein** QR-Code genügt also für Seite und Kurswerte. Einen QR-Code erzeugt die Seite nicht (K-2 nicht gebaut): mit einem QR-Werkzeug auf dem Laptop oder Handy erzeugen, oder den Link in den Kurs-Chat stellen (zum Abschreiben ist er mit etwa 160 Zeichen zu lang). Wer ihn öffnet, wird gefragt „Kurswerte aus dem Link übernehmen? Eure bisherigen Kurswerte werden ersetzt.“; persönliche Antworten bleiben.
+3. **Den Link auf der veröffentlichten Seite erzeugen**, nicht in der Offline-Datei: Aus der Datei entsteht nur ein Link, der auf diesem Rechner gilt (die Seite sagt das). Der Kurslink enthält die Adresse der Seite; **ein** QR-Code genügt also für Seite und Kurswerte. Einen QR-Code erzeugt die Seite nicht (K-2 nicht gebaut): mit einem QR-Werkzeug erzeugen (zum Beispiel der QR-Funktion des Browsers über „Seite teilen“ oder einer QR-App am Handy), oder den Link in den Kurs-Chat stellen (zum Abschreiben ist er mit etwa 160 Zeichen zu lang). Wer ihn öffnet, wird gefragt „Kurswerte aus dem Link übernehmen? Eure bisherigen Kurswerte werden ersetzt.“; persönliche Antworten bleiben.
 4. Ein beschädigter Link ändert nichts und nennt den Grund in Worten.
 
 Hinweis: Ein Link, den alle öffnen können, braucht die veröffentlichte Adresse. Vor der Veröffentlichung ist der Kurslink nur lokal getestet.
