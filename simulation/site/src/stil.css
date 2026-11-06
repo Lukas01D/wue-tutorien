@@ -224,7 +224,6 @@ html { scroll-padding-top: calc(var(--anheft, 0px) + 8px); }   /* G5-02, G6-02: 
   .kopf-speicher.aus { display: block; max-width: none; text-align: left; }
 
   html.anheften .diagramm-halter { position: sticky; top: 0; z-index: 5; background: #fff; border-bottom: 3px solid var(--hellblau); }
-  html.anheften #diagramm { max-height: min(29vh, calc(45vh - 125px)); }
   html.anheften .kernzahlen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; background: #fff; padding: 0.2rem 0.3rem; font-size: 0.8rem; }
   .kernzahlen b { display: block; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
   .reiter button { font-size: 13px; padding: 0.55rem 0.2rem; }
@@ -244,6 +243,23 @@ input[type="text"] { border-color: #7d8fa1 !important; }                        
 @media (min-width: 1200px) { .sim-raster { grid-template-columns: minmax(0, 780px) minmax(0, 300px); } }   /* G6-06, G6-12 */
 .wertetabelle th, .wertetabelle td { text-align: right; font-variant-numeric: tabular-nums; }   /* G6-31 */
 .frage-text-zu > summary { font-weight: 600; min-height: 44px; }   /* G7-03 */
-@media (min-width: 768px) { html { scroll-padding-top: 56px; } }   /* G5-R2-01: Kernleiste der Vertiefung verdeckt den Fokus nicht */
+@media (min-width: 768px) { html { scroll-padding-top: var(--kern, 56px); } html.kern-frei .kern-leiste { position: static; } }   /* G5-R2-01, X5-04: Abstand aus der gemessenen Höhe der Kernleiste */
 .kurven-legende { margin: 0.2rem 0 0; font-size: 0.85rem; }
 .sym-linie { width: 1.6em; }
+/* X5-05: Reglerzeile bricht um, wenn der Platz fehlt (große Schrift, schmale Spalte): Regler oben, Minus, Zahlenfeld, Plus darunter */
+.regler { container-type: inline-size; }
+@container (max-width: 17.5rem) {
+  .regler-zeile { grid-template-columns: 44px minmax(0, 1fr) 44px !important; }
+  .regler-zeile input[type="range"] { grid-row: 1; grid-column: 1 / -1; }
+  .regler-zeile .pm[data-pm="-1"] { grid-row: 2; grid-column: 1; }
+  .regler-zeile .zahlfeld { grid-row: 2; grid-column: 2; width: 100%; max-width: 8rem; justify-self: center; }
+  .regler-zeile .pm[data-pm="1"] { grid-row: 2; grid-column: 3; }
+}
+/* X5-05: bei großer Schrift nichts breiter als die Spalte */
+.hilfe-knopf { margin-right: 0; }
+.knoepfe > *, .regler-bereich, .gruppe { min-width: 0; }
+.knopf-haupt, .knopf-zweit, .knopf-schlicht, .umschalter { max-width: 100%; overflow-wrap: anywhere; }
+.rechenwerte dl { grid-template-columns: repeat(auto-fit, minmax(min(8.5rem, 100%), 1fr)); }
+.rechenwerte dt { overflow-wrap: anywhere; }
+.schalter, .karte > summary, .reiter-panel { overflow-wrap: anywhere; min-width: 0; }
+.schalter > span, .schalter { flex-wrap: wrap; }

@@ -61,6 +61,8 @@ Auswahl passt
 Auswahl passt nicht
 @ausgangslage
 Ausgangslage
+@ausgangslage_vorher
+Ausgangslage vor deiner Vorhersage: Standardwerte (ohne Becher, ohne Deckel). Erst vorhersagen, dann prüfen.
 @ausgangslage_gesetzt
 Ausgangslage eingestellt: {was}.
 @auftrag_erklaeren
@@ -333,6 +335,16 @@ Raumtemperatur
 Wärmeabgabe der Tasse
 @regler_thMess
 Messung nach 10 min
+@regler_thMess_ersatz
+Gleichwertiger Wert nach 10 min, aus $kA$ berechnet
+@thmess_ersatz
+Dieser Wert ist aus dem bisherigen $kA$ berechnet, er ist keine Messung. Trag deinen Messwert ein, dann gilt er.
+@thmess_eigen
+Deine Messung {wert} °C wieder verwenden
+@kA_quelle_nicht
+Nicht umgestellt: Zu diesem $kA$ gehört nach 10 min ein Wert von {wert} °C, außerhalb des Messbereichs {min} bis {max} °C. $kA$ bleibt festgehalten.
+@rw_kA_herkunft_ersatz
+aus einem berechneten Wert nach 10 min (keine Messung)
 @regler_mB
 Masse des Bechers
 @regler_kA1
@@ -465,6 +477,8 @@ Alle Kurswerte löschen? Eure Antworten bleiben.
 {becher}, {zeile}
 @mess_ungueltig
 Bitte eine Temperatur zwischen 0 und 100 °C als Zahl eingeben, zum Beispiel 66,5.
+@mess_stellen
+Höchstens zwei Nachkommastellen (wie im Kurslink).
 @mess_uebernommen
 Übernommen (Mittel der Becher vor der Milch, ungerundet): Start {a} °C, nach 10 min {b} °C, Raum {u} °C, Milch {m} °C; Zugabe nach 60 min, Becher an, $kA$ aus der Messung.
 @mess_nicht_uebernommen
@@ -764,8 +778,8 @@ $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
 $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), \qquad \tau = \frac{C}{kA}.$$
 <p><strong>kA aus der Messung.</strong> $kA = -\frac{C}{t_\mathrm{mess}} \ln\frac{T_\mathrm{mess} - T_\mathrm{u}}{T_0 - T_\mathrm{u}}$ (Teil c).</p>
 <p><strong>Mischen.</strong> $\vartheta_\mathrm{misch} = \frac{m_\mathrm{K} c_{p,\mathrm{K}}\,\vartheta_\mathrm{K} + m_\mathrm{M} c_{p,\mathrm{M}}\,\vartheta_\mathrm{M}}{m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}}$ (Teil a; mit Becher dessen Wärmekapazität bei der Tasse dazu).</p>
-<p><strong>Abgegebene Wärme.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$; bei gleicher Milch fällt der letzte Teil weg.</p>
-<p><strong>Zeitpunkt der Zugabe.</strong> Verschiebt man die Zugabe, ändert sich der Unterschied mit $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$: Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.</p>
+<p><strong>Abgegebene Wärme.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ für jeden Bilanzraum (Teil e); daraus direkt nach der Zugabe $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$ mit $C_\mathrm{G} = m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}$ (Kaffee und Milch); mit Becher steht $C_\mathrm{GB} = C_\mathrm{G} + m_\mathrm{B} c_\mathrm{B}$ an Stelle von $C_\mathrm{G}$. Bei gleicher Milch fällt der letzte Teil weg.</p>
+<p><strong>Zeitpunkt der Zugabe.</strong> Verschiebt man die Zugabe, ändert sich der Unterschied mit $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (mit Becher $C_\mathrm{GB}$): Er wächst, solange Tasse 2 mehr Wärme abgibt, und sinkt danach. Was daraus für den größten Unterschied folgt, steht in den Auflösungen zu Frage 1 und V2.</p>
 <p><strong>kA aus allen Messpunkten</strong> (Vertiefung): Ausgleichsgerade durch den Ursprung in der Ansicht „ln“, Steigung $b = \sum t_i y_i / \sum t_i^2$ mit $y_i = \ln\frac{\vartheta_i - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$, dann $kA = -C\,b$. Die Streuung der Geraden ist keine Messunsicherheit von $kA$, weil alle Punkte denselben Startwert enthalten.</p>
 <p><strong>kA festhalten</strong> (Vertiefung): Das Werkzeug gibt dem Modell den Messwert nach 10 min, der zu diesem $kA$ gehört, und rechnet sonst unverändert.</p>
 

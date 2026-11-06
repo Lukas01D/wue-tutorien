@@ -26,7 +26,7 @@
 
   // ------------------------------------------------------------------ Zustand und Speicher
   function standardE() {
-    const e = { kAQuelle: "fest", kA: ERW.KA_AUFGABE, kAHerkunft: "aufgabe", milch2Raum: false, becher: false };
+    const e = { kAQuelle: "fest", kA: ERW.KA_AUFGABE, kAHerkunft: "aufgabe", milch2Raum: false, becher: false, thMessErsatz: false, thMessEigen: null };   // X5-03: Ersatzwert getrennt von der eigenen Messung
     for (const r of REGLER_DEF.regler) if (r.standard !== null) e[r.key] = r.faktor ? r.standard / r.faktor : r.standard;
     return e;
   }
@@ -65,7 +65,8 @@
         if (zahlOk(e.kA) && e.kA > 0 && e.kA <= 5) neu.kA = e.kA;
         if (e.kAQuelle === "fest" || e.kAQuelle === "messung") neu.kAQuelle = e.kAQuelle;
         if (typeof e.kAHerkunft === "string") neu.kAHerkunft = e.kAHerkunft.slice(0, 40);
-        for (const b of ["milch2Raum", "becher"]) neu[b] = e[b] === true;
+        for (const b of ["milch2Raum", "becher", "thMessErsatz"]) neu[b] = e[b] === true;
+        if (zahlOk(e.thMessEigen) && e.thMessEigen >= REG.thMess.min && e.thMessEigen <= REG.thMess.max) neu.thMessEigen = e.thMessEigen;
         S.e = neu;
       }
     } catch (x) { S.e = standardE(); }
@@ -118,6 +119,7 @@
     haken: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6.5 L5 9.5 L10.5 2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
     b1: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="4.8" fill="#8b5a2b"/></svg>',
     b2: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="9" height="9" fill="#222"/></svg>',
+    kreis: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="4.6" fill="#fff" stroke="#222" stroke-width="1.6"/></svg>',
     b3: '<svg class="sym" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M6 0.8 L11.5 10.5 L0.5 10.5 Z" fill="#3d70a3"/></svg>',
     vor: '<svg class="sym sym-flaeche" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="13" height="13" fill="#fff" stroke="#222"/><path d="M0 7 L7 0 M0 14 L14 0 M7 14 L14 7" stroke="#222" stroke-width="1.5"/></svg>',
     nach: '<svg class="sym sym-flaeche" viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x="0.5" y="0.5" width="13" height="13" fill="#fff" stroke="#8b5a2b"/><circle cx="4" cy="4" r="1.4" fill="#8b5a2b"/><circle cx="10" cy="4" r="1.4" fill="#8b5a2b"/><circle cx="4" cy="10" r="1.4" fill="#8b5a2b"/><circle cx="10" cy="10" r="1.4" fill="#8b5a2b"/><circle cx="7" cy="7" r="1.4" fill="#8b5a2b"/></svg>'
@@ -148,7 +150,7 @@
     const sprache = S.sprache;
     if (art === "kurs") return uebernehmen(true);
     S.e = standardE();
-    if (art === "becher") Object.assign(S.e, { kAQuelle: "messung", thMess: 67, becher: true, kAHerkunft: "messung" });
+    if (art === "becher") Object.assign(S.e, { kAQuelle: "messung", thMess: 67, becher: true, kAHerkunft: "messung", thMessErsatz: false, thMessEigen: null });
     S.sprache = sprache;
     return { ok: true };
   }
@@ -296,8 +298,14 @@
   }
   function geheZu(id) {
     S.aktuell = id;
-    if (id[0] === "v") S.ansicht.vertiefung = true;
+    let neutral = false;
+    if (id[0] === "v") {
+      S.ansicht.vertiefung = true;
+      // X5-01, G10-01: vor der eigenen Vorhersage keine Ausgangslage, die die Antwort zeigt; Standardwerte kennt man aus dem Start
+      if (freigabe() && !S.antworten[id].fest) { ausgangslage("standard"); neutral = true; }
+    }
     sichern(); alles(); fokus("frage-titel");
+    if (neutral) $("knopf-info").textContent = nurText(t("ausgangslage_vorher"));
   }
   function fokus(id) { const el = $(id); if (el) { if (!el.hasAttribute("tabindex") && !/^(BUTTON|INPUT|A|SUMMARY)$/.test(el.tagName)) el.setAttribute("tabindex", "-1"); el.focus({ preventScroll: false }); } }
 
@@ -314,7 +322,9 @@
   function diagrammZeichnen() {
     const svg = $("diagramm"), halter = $("diagramm-halter");
     const W = Math.round(Math.min(780, Math.max(280, halter.getBoundingClientRect().width || 640)));
-    const H = Math.round(W < 520 ? W * 0.78 : Math.min(W * 0.56, Math.max(window.innerHeight < 500 ? 170 : 280, window.innerHeight * 0.5)));
+    let H = Math.round(W < 520 ? W * 0.78 : Math.min(W * 0.56, Math.max(window.innerHeight < 500 ? 170 : 280, window.innerHeight * 0.5)));
+    // X5-09, X5-10: angeheftet wird die Zeichnung für die tatsächlich verfügbare Höhe angelegt (Schrift bleibt 12 px), nicht verkleinert
+    if (DIA_HMAX && document.documentElement.classList.contains("anheften")) H = Math.min(H, DIA_HMAX);
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W); svg.setAttribute("height", H);
     const fs = 12, L = 52, Rr = 14, O = 16, U = 44;
@@ -359,12 +369,15 @@
     s.push('<text x="14" y="' + ((O + H - U) / 2) + '" text-anchor="middle" font-size="13" fill="#142337" transform="rotate(-90 14 ' + ((O + H - U) / 2) + ')">' + svgText(yLabel) + "</text>");
     const belegt = [];   // Rechtecke für die Kollisionsprüfung der Beschriftungen
     const pfad = (f, a, b, n) => { const p = []; for (let i = 0; i <= n; i++) { const x = a + (b - a) * i / n; p.push(X(x).toFixed(1) + "," + Y(f(x)).toFixed(1)); } return p.join(" "); };
-    let kurvenPx = [], raumY = null, vorhersageUnten = "", legendeHtml = "";
+    let kurvenPx = [], raumY = null, vorhersageUnten = "", legendeHtml = "", schnittInLegende = false;
     // Direkte Beschriftung mit Kollisionsprüfung (E6/F19: nie auf einer Linie)
     const etikett = (text, farbe, kurve, oben, bevorzugt) => {
       const breite = text.length * fs * 0.56 + 6, hoehe = fs + 6;
       const kand = [];
+      const weitere = [];      // G6-R3-02, X5-06: weitere Stellen am Kurvenzug, bevor die Ersatzlegende greift
+      for (let fr = 0.05; fr < 0.96; fr += 0.05) if (!bevorzugt.some(b => Math.abs(b - fr) < 0.02)) weitere.push(Number(fr.toFixed(2)));
       for (const fr of bevorzugt) for (const dy of (oben ? [-14, -26, 22, 34] : [22, 34, -14, -26])) kand.push([fr, dy]);
+      for (const fr of weitere) for (const dy of (oben ? [-14, -26, -38, 22, 34, 46] : [22, 34, 46, -14, -26, -38])) kand.push([fr, dy]);
       for (const [fr, dy] of kand) {
         const x0 = X(tz * fr); if (x0 + breite > W - Rr || x0 < L + 4) continue;
         const yb = Y(kurve(tz * fr)) + dy, yo = yb - fs;
@@ -441,32 +454,47 @@
         }
         if (schnittFrei() && isFinite(R.tSchnitt) && R.tSchnitt < tz) {     // Beschriftung „Schnitt“ nach den Messpunkten, frei von Punkten
           const sx = X(R.tSchnitt), sy = Y(R.kurve1(R.tSchnitt)), txt = t("dia_schnitt"), bw = txt.length * fs * 0.56 + 4;
-          const kand = [[sx - bw / 2, sy - 10], [sx - bw / 2, sy + fs + 10], [sx - bw - 10, sy - 8], [sx - bw - 10, sy + fs + 6], [sx - bw / 2, sy - 24]];
-          let wahl = null;     // G6-03, G6-22: ohne freien Platz keine Beschriftung (der Kreis bleibt)
-          for (const [x0, yb] of kand) {
+          const kand = [[sx - bw / 2, sy - 10], [sx - bw / 2, sy + fs + 10], [sx - bw - 10, sy - 8], [sx - bw - 10, sy + fs + 6], [sx - bw / 2, sy - 24], [sx + 10, sy - 8], [sx + 10, sy + fs + 6]];
+          // X5-06, G6-R3-01: weiter weg mit Verbindungslinie zum Kreis, zuletzt am oberen und unteren Rand der Zeichenfläche
+          for (const d of [38, 54, 72, 92, 115]) for (const [ux, uy] of [[0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1], [-1, 0], [1, 0]]) kand.push([sx + ux * (d * 0.8) - (ux < 0 ? bw : (ux > 0 ? 0 : bw / 2)), sy + uy * d + (uy > 0 ? fs : 4), true]);
+          for (const dx of [0, -40, 40, -80, 80, -120, 120, -170, 170, -220, 220]) { kand.push([sx - bw / 2 + dx, O + fs + 2, true]); kand.push([sx - bw / 2 + dx, H - U - 6, true]); }
+          let wahl = null;
+          for (const [x0, yb, linie] of kand) {
             if (x0 < L + 2 || x0 + bw > W - Rr + 6 || yb - fs < O || yb > H - U - 2) continue;
             let aufKurve = false;
             for (let i = 0; i <= 12 && !aufKurve; i++) { const xp = x0 + bw * i / 12, tt = (xp - L) / (W - L - Rr) * xMax; if (tt >= 0 && tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk > yb - fs - 3 && yk < yb + 4) aufKurve = true; } }
             if (raumY !== null && raumY > yb - fs - 3 && raumY < yb + 4) aufKurve = true;
-            if (!aufKurve && !belegt.some(b => x0 < b[0] + b[2] && x0 + bw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { wahl = [x0, yb]; break; }
+            if (!aufKurve && !belegt.some(b => x0 < b[0] + b[2] && x0 + bw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) { wahl = [x0, yb, linie]; break; }
           }
-          if (wahl) { s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>"); belegt.push([wahl[0], wahl[1] - fs, bw, fs + 4]); }
+          if (wahl) {
+            if (wahl[2]) {       // Verbindungslinie von der Beschriftung zum Kreis
+              const lx = Math.min(Math.max(sx, wahl[0]), wahl[0] + bw), ly = wahl[1] < sy ? wahl[1] + 3 : wahl[1] - fs - 1;
+              const dx = sx - lx, dy = sy - ly, dl = Math.hypot(dx, dy) || 1;
+              s.push('<line x1="' + lx.toFixed(1) + '" y1="' + ly.toFixed(1) + '" x2="' + (sx - dx / dl * 6.5).toFixed(1) + '" y2="' + (sy - dy / dl * 6.5).toFixed(1) + '" stroke="#142337" stroke-width="1"/>');
+            }
+            s.push('<text x="' + wahl[0].toFixed(1) + '" y="' + wahl[1].toFixed(1) + '" font-size="' + fs + '" fill="#142337">' + esc(txt) + "</text>"); belegt.push([wahl[0], wahl[1] - fs, bw, fs + 4]);
+          } else schnittInLegende = true;      // letzter Ersatz: „Schnitt“ in der Legende unter dem Diagramm
         }
         if (S.ansicht.trinkzeit && S.ansicht.vertiefung) {      // K-3 Trinkzeit: Linie bei 60 °C, Marken an den Kurven
           const yT = Y(TRINK);
           if (yT > O && yT < H - U) {
             s.push('<line x1="' + L + '" x2="' + (W - Rr) + '" y1="' + yT.toFixed(1) + '" y2="' + yT.toFixed(1) + '" stroke="#227b48" stroke-width="1.4" stroke-dasharray="6 3"/>');
             const tl = nurText(t("dia_trinklinie")), tw = tl.length * fs * 0.56 + 6;
-            let tx = W - Rr - tw;
-            for (const x0 of [W - Rr - tw, L + 6, (L + W - Rr - tw) / 2]) {
-              let frei = true;
-              for (let i = 0; i <= 10 && frei; i++) { const tt = (x0 + tw * i / 10 - L) / (W - L - Rr) * xMax; if (tt >= 0 && tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk > yT - fs - 8 && yk < yT + 2) frei = false; } }
-              if (frei) { tx = x0; break; }
-            }
-            s.push('<text x="' + tx.toFixed(1) + '" y="' + (yT - 5).toFixed(1) + '" font-size="' + fs + '" fill="#14603f">' + esc(tl) + "</text>");
             const tr = ERW.trinkzeit(S.e, TRINK);
+            for (const tt of [tr.tasse1, tr.schwarz]) if (tt > 0 && tt < tz) belegt.push([X(tt) - 3, yT - 7, 6, 14]);
+            let tx = W - Rr - tw, ty = yT - 5;
+            // G6-R3-05: Platz frei von Kurven, Raumlinie, Messpunkten und Marken; über oder unter der Linie
+            const xs0 = [W - Rr - tw, L + 6, (L + W - Rr - tw) / 2, L + (W - L - Rr - tw) * 0.25, L + (W - L - Rr - tw) * 0.75];
+            suche: for (const yb of [yT - 5, yT + fs + 4]) for (const x0 of xs0) {
+              let frei = yb - fs > O && yb < H - U - 2;
+              for (let i = 0; i <= 12 && frei; i++) { const tt = (x0 + tw * i / 12 - L) / (W - L - Rr) * xMax; if (tt >= 0 && tt <= tz) for (const k of kurvenPx) { const yk = k(tt); if (yk > yb - fs - 3 && yk < yb + 4) frei = false; } }
+              if (raumY !== null && raumY > yb - fs - 3 && raumY < yb + 4) frei = false;
+              if (belegt.some(b => x0 < b[0] + b[2] && x0 + tw > b[0] && yb - fs < b[1] + b[3] && yb + 2 > b[1])) frei = false;
+              if (frei) { tx = x0; ty = yb; break suche; }
+            }
+            s.push('<text x="' + tx.toFixed(1) + '" y="' + ty.toFixed(1) + '" font-size="' + fs + '" fill="#14603f">' + esc(tl) + "</text>");
             for (const [tt, k] of [[tr.tasse1, R.kurve1], [tr.schwarz, R.kurve2]]) if (tt > 0 && tt < tz) s.push('<line x1="' + X(tt).toFixed(1) + '" x2="' + X(tt).toFixed(1) + '" y1="' + (yT - 6).toFixed(1) + '" y2="' + (yT + 6).toFixed(1) + '" stroke="#14603f" stroke-width="2"/>');
-            belegt.push([tx, yT - 5 - fs, tw, fs + 4]);
+            belegt.push([tx, ty - fs, tw, fs + 4]);
           }
         }
         const e2 = etikett(t("dia_tasse2", { t: z(tz, 0) }), "#222", R.kurve2, true, [0.12, 0.2, 0.06, 0.3, 0.4]);
@@ -474,7 +502,9 @@
         const fehlend = [];
         if (e2) s.push(e2); else fehlend.push("2");
         if (e1) s.push(e1); else fehlend.push("1");
-        if (fehlend.length) legendeHtml = fehlend.reverse().map(n => (n === "1" ? SYM.linie1 : SYM.linie2) + " " + esc(n === "1" ? t("dia_tasse1") : t("dia_tasse2", { t: z(tz, 0) }))).join(" · ");   // Ersatz als Text unter dem Diagramm
+        const teileL = fehlend.reverse().map(n => (n === "1" ? SYM.linie1 : SYM.linie2) + " " + esc(n === "1" ? t("dia_tasse1") : t("dia_tasse2", { t: z(tz, 0) })));
+        if (schnittInLegende) teileL.push(SYM.kreis + " " + esc(t("dia_schnitt")));
+        if (teileL.length) legendeHtml = teileL.join(" · ");   // Ersatz als Text unter dem Diagramm
       }
     } else if (ansicht === "waermestrom" && R) {
       const f1 = R.qdot1, f2 = R.qdot2, tq = Math.min(R.tWaermestrom, tz);
@@ -501,8 +531,10 @@
     svg.innerHTML = s.join("");
     const vk = $("vh-kasten"), vt = $("vh-text");
     if (vk && vt && vt.getBBox) { try { const bb = vt.getBBox(); if (bb.width > 0) { const bw2 = bb.width + 14, bx2 = W - Rr - bw2 - 4; vk.setAttribute("width", bw2.toFixed(1)); vk.setAttribute("x", bx2.toFixed(1)); vt.setAttribute("x", (bx2 + 7).toFixed(1)); } } catch (x) { } }
+    const zusatzAlt = $("kurven-legende").hidden + "|" + $("vorhersage-zeile").hidden;
     $("vorhersage-zeile").hidden = !vorhersageUnten; $("vorhersage-zeile").textContent = vorhersageUnten;
     $("kurven-legende").hidden = !legendeHtml; $("kurven-legende").innerHTML = legendeHtml;
+    if (document.documentElement.classList.contains("anheften") && !anheftenLaeuft && zusatzAlt !== $("kurven-legende").hidden + "|" + $("vorhersage-zeile").hidden) requestAnimationFrame(anheftenPruefen);
     zusatzZeichnen();
     document.querySelector(".lesehinweis").innerHTML = (freigabe() && !R) ? "" : t(ansicht === "temperatur" ? "lesehinweis" : "lesehinweis_" + ansicht);   // G6-21
     // Beschreibung für Bildschirmleser
@@ -660,15 +692,16 @@
   function reglerHtml(r) {
     const gesperrt = r.id === "tEnd" && !reglerTZfrei();
     const wert = r.faktor ? S.e[r.key] * r.faktor : S.e[r.key];
-    const name = t("regler_" + r.id) + " " + r.mathml + " [" + einheit(r.einheit) + "]";
+    const nm = r.id === "thMess" && S.e.thMessErsatz ? "regler_thMess_ersatz" : "regler_" + r.id;      // X5-03
+    const name = t(nm) + " " + r.mathml + " [" + einheit(r.einheit) + "]";
     let h = '<div class="regler' + (gesperrt ? " gesperrt" : "") + '" data-regler="' + r.id + '">';
     h += '<div class="regler-kopf"><label class="regler-name" for="r-' + r.id + '" id="rl-' + r.id + '">' + name + "</label>";
-    h += '<button type="button" class="hilfe-knopf" aria-expanded="false" aria-controls="h-' + r.id + '" data-hilfe="' + r.id + '"><span aria-hidden="true">?</span><span class="nur-leser">' + nurText(t("hilfe_zu", { name: t("regler_" + r.id) })) + "</span></button></div>";
+    h += '<button type="button" class="hilfe-knopf" aria-expanded="false" aria-controls="h-' + r.id + '" data-hilfe="' + r.id + '"><span aria-hidden="true">?</span><span class="nur-leser">' + nurText(t("hilfe_zu", { name: t(nm) })) + "</span></button></div>";
     h += '<p class="hilfe-text" id="h-' + r.id + '" hidden>' + t("hilfe_" + r.id) + "</p>";
-    h += '<div class="regler-zeile"><button type="button" class="pm" data-pm="-1" data-r="' + r.id + '" aria-label="' + esc(nurText(t("knopf_minus")) + ": " + nurText(t("regler_" + r.id))) + '"' + (gesperrt ? " disabled" : "") + ">−</button>";
-    h += '<input type="range" id="r-' + r.id + '" min="' + r.min + '" max="' + r.max + '" step="' + r.schritt + '" value="' + wert + '" aria-valuetext="' + esc(wertText(r, wert)) + '" aria-label="' + esc(nurText(t("regler_" + r.id)) + " (" + (r.einheit === "W/K" ? nurText(t("einheit_wk")) : r.einheit) + ")") + '"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '">';
-    h += '<button type="button" class="pm" data-pm="1" data-r="' + r.id + '" aria-label="' + esc(nurText(t("knopf_plus")) + ": " + nurText(t("regler_" + r.id))) + '"' + (gesperrt ? " disabled" : "") + ">+</button>";
-    h += '<input type="text" class="zahlfeld" inputmode="decimal" autocomplete="off" id="z-' + r.id + '" value="' + z(wert, r.stellen) + '" aria-label="' + esc(nurText(t("feld_aria", { name: t("regler_" + r.id) }))) + " [" + esc(r.einheit) + ']"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '"></div>';
+    h += '<div class="regler-zeile"><button type="button" class="pm" data-pm="-1" data-r="' + r.id + '" aria-label="' + esc(nurText(t("knopf_minus")) + ": " + nurText(t(nm))) + '"' + (gesperrt ? " disabled" : "") + ">−</button>";
+    h += '<input type="range" id="r-' + r.id + '" min="' + r.min + '" max="' + r.max + '" step="' + r.schritt + '" value="' + wert + '" aria-valuetext="' + esc(wertText(r, wert)) + '" aria-label="' + esc(nurText(t(nm)) + " (" + (r.einheit === "W/K" ? nurText(t("einheit_wk")) : r.einheit) + ")") + '"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '">';
+    h += '<button type="button" class="pm" data-pm="1" data-r="' + r.id + '" aria-label="' + esc(nurText(t("knopf_plus")) + ": " + nurText(t(nm))) + '"' + (gesperrt ? " disabled" : "") + ">+</button>";
+    h += '<input type="text" class="zahlfeld" inputmode="decimal" autocomplete="off" id="z-' + r.id + '" value="' + z(wert, r.stellen) + '" aria-label="' + esc(nurText(t("feld_aria", { name: t(nm) }))) + " [" + esc(r.einheit) + ']"' + (gesperrt ? " disabled" : "") + ' aria-describedby="rf-' + r.id + '"></div>';
     h += '<p class="feld-fehler' + (gesperrt ? " neutral" : "") + '" id="rf-' + r.id + '" aria-live="polite">' + (gesperrt ? t(freigabe() ? "regler_gesperrt" : "regler_gesperrt_start") : "") + "</p></div>";
     return h;
   }
@@ -676,6 +709,12 @@
     const w = r.faktor ? wertAnzeige / r.faktor : wertAnzeige;
     S.e[r.key] = w;
     if (r.id === "kA") { S.e.kAQuelle = "fest"; S.e.kAHerkunft = "eigen"; }
+    if (r.id === "thMess" && S.e.thMessErsatz) {       // X5-03: eigene Eingabe ist wieder eine Messung
+      S.e.thMessErsatz = false; S.e.thMessEigen = null;
+      const rl = $("rl-thMess"); if (rl) rl.innerHTML = t("regler_thMess") + " " + r.mathml + " [" + einheit(r.einheit) + "]";
+      const he = $("thmess-ersatz"); if (he) he.remove();
+      const rr = $("r-thMess"); if (rr) rr.setAttribute("aria-label", nurText(t("regler_thMess")) + " (°C)");
+    }
     rechnen(); sichern();
     teilZeichnen(quelle === "zahl" ? "z-" + r.id : (quelle === "pm" ? null : "r-" + r.id));
     const rf = $("rf-" + r.id); if (rf && !rf.classList.contains("neutral")) rf.innerHTML = FEHLER ? t("fehler_" + FEHLER) : "";   // G6-20: Grund am Feld
@@ -736,7 +775,7 @@
     h += '<fieldset class="gruppe"><legend class="regler-name">' + t("kA_quelle") + '</legend><div class="radio-zeile">' +
       '<label><input type="radio" name="kaq" value="fest"' + (S.e.kAQuelle === "fest" ? " checked" : "") + "> " + t("kA_quelle_fest") + "</label>" +
       '<label><input type="radio" name="kaq" value="messung"' + (S.e.kAQuelle === "messung" ? " checked" : "") + "> " + t("kA_quelle_messung") + "</label></div>";
-    h += '<p class="hinweis">' + t(S.e.kAQuelle === "fest" ? "kA_quelle_info_fest" : "kA_quelle_info_messung") + "</p></fieldset>";
+    h += '<p class="hinweis">' + t(S.e.kAQuelle === "fest" ? "kA_quelle_info_fest" : "kA_quelle_info_messung") + '</p><p class="feld-fehler" id="kaq-meldung" aria-live="polite"></p></fieldset>';
     if (S.e.kAQuelle === "fest") {
       h += '<p class="regler-name">' + t("kA_voreinstellungen") + '</p><div class="voreinstellungen" role="group" aria-label="' + esc(nurText(t("kA_voreinstellungen"))) + '">';
       for (const v of ERW.VOREINSTELLUNGEN) h += '<button type="button" class="umschalter" data-vor="' + v.id + '" aria-pressed="' + (S.e.kAHerkunft === "vor:" + v.id ? "true" : "false") + '">' + t("vor_" + v.id) + (v.art === "richtwert" ? "*" : "") + "</button>";
@@ -744,6 +783,7 @@
       h += '<div class="info-kasten" id="info-kasten">' + infoKastenInhalt() + "</div>";
     } else {
       h += reglerHtml(REG.thMess);
+      if (S.e.thMessErsatz) h += '<p class="hinweis" id="thmess-ersatz">' + t("thmess_ersatz") + (S.e.thMessEigen !== null ? ' <button type="button" class="knopf-schlicht" id="knopf-eigene-messung">' + t("thmess_eigen", { wert: z(S.e.thMessEigen, 1) }) + "</button>" : "") + "</p>";
       h += '<div class="info-kasten" id="info-kasten">' + infoKastenInhalt() + "</div>";
     }
     h += '<label class="schalter"><input type="checkbox" id="s-becher"' + (S.e.becher ? " checked" : "") + "> " + t("schalter_becher") + "</label>";
@@ -762,10 +802,21 @@
     $("s-milch2Raum").addEventListener("change", ev => { S.e.milch2Raum = ev.target.checked; rechnen(); sichern(); teilZeichnen("s-milch2Raum"); ansagen(); });
     $("s-trink").addEventListener("change", ev => { S.ansicht.trinkzeit = ev.target.checked; sichern(); teilZeichnen("s-trink"); });
     $("s-kalt").addEventListener("change", ev => { S.ansicht.kalt = ev.target.checked; sichern(); teilZeichnen("s-kalt"); });
+    const ke = $("knopf-eigene-messung");
+    if (ke) ke.addEventListener("click", () => { Object.assign(S.e, { thMess: S.e.thMessEigen, thMessErsatz: false, thMessEigen: null }); rechnen(); sichern(); alles(); fokus("z-thMess"); ansagen(); });
     $("s-becher").addEventListener("change", ev => { S.e.becher = ev.target.checked; rechnen(); sichern(); alles(); fokus("s-becher"); ansagen(); });
     for (const r of vi.querySelectorAll('input[name="kaq"]')) r.addEventListener("change", () => {
       if (r.value === "fest" && R) { S.e.kA = R.kA; S.e.kAHerkunft = "eigen"; }
-      if (r.value === "messung" && R) { S.e.thMess = Math.min(90, Math.max(30, R.thMessModell)); S.e.kAHerkunft = "messung"; }
+      if (r.value === "messung" && R) {
+        // X5-03 (KONZEPT 8.2 M8, 8.5): der Wechsel ändert die Kurven nicht; der zum kA gleichwertige Wert ist keine Messung und heißt auch nicht so
+        const gl = R.thMessModell, rg = REG.thMess;
+        if (!(gl >= rg.min && gl <= rg.max) || ERW.fehler(Object.assign({}, S.e, { kAQuelle: "messung", thMess: gl }))) {
+          alles(); const f = document.querySelector('input[name="kaq"][value="fest"]'); if (f) f.focus();
+          $("kaq-meldung").innerHTML = t("kA_quelle_nicht", { wert: z(gl, 1), min: z(rg.min, 0), max: z(rg.max, 0) }); return;
+        }
+        if (Math.abs(gl - S.e.thMess) > 1e-9) { if (!S.e.thMessErsatz) S.e.thMessEigen = S.e.thMess; S.e.thMess = gl; S.e.thMessErsatz = true; }
+        S.e.kAHerkunft = "messung";
+      }
       S.e.kAQuelle = r.value; rechnen(); sichern(); alles(); const neu = document.querySelector('input[name="kaq"][value="' + r.value + '"]'); if (neu) neu.focus();
     });
     for (const b of vi.querySelectorAll("[data-vor]")) b.addEventListener("click", () => {
@@ -780,14 +831,14 @@
   function rechenwerteZeichnen() {
     const fehler = $("einstellung-fehler");
     fehler.hidden = !(freigabe() && FEHLER);
-    if (freigabe() && FEHLER && fehler.getAttribute("data-code") !== FEHLER) { fehler.innerHTML = t("fehler_" + FEHLER); fehler.setAttribute("data-code", FEHLER); }
+    if (freigabe() && FEHLER && fehler.getAttribute("data-code") !== FEHLER + "|" + S.sprache) { fehler.innerHTML = t("fehler_" + FEHLER); fehler.setAttribute("data-code", FEHLER + "|" + S.sprache); }   // X5-08: Sprache gehört zum Schlüssel
     if (!FEHLER) fehler.removeAttribute("data-code");
     const dl = $("rechenwerte-liste");
     $("rechenwerte-bezug").textContent = (freigabe() && R) ? nurText(t("rw_bezug", { t: z(S.e.tEnd_min, 0) })) + (S.e.becher && S.ansicht.kalt && S.ansicht.vertiefung ? " " + nurText(t("rw_vorgewaermt")) : "") : "";
     if (freigabe() && !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_keine_rechnung") + "</dt><dd>" + t("dia_ungueltig") + "</dd></div>"; return; }
     if (!freigabe() || !R) { dl.innerHTML = '<div class="breit"><dt>' + t("rw_noch_nicht") + "</dt><dd>" + t("ergebnis_verdeckt") + "</dd></div>"; return; }
     const satz = R.dT > 0.005 ? t("rw_satz_1") : (R.dT < -0.005 ? t("rw_satz_2") : t("rw_satz_gleich"));
-    const herkunft = S.e.kAQuelle === "messung" ? t("rw_kA_herkunft_messung") : (S.e.kAHerkunft === "ausgleich" ? t("rw_kA_herkunft_ausgleich") :
+    const herkunft = S.e.kAQuelle === "messung" ? t(S.e.thMessErsatz ? "rw_kA_herkunft_ersatz" : "rw_kA_herkunft_messung") : (S.e.kAHerkunft === "ausgleich" ? t("rw_kA_herkunft_ausgleich") :
       (S.e.kAHerkunft.indexOf("vor:") === 0 ? t("rw_kA_herkunft_vor", { name: nurText(t("vor_" + S.e.kAHerkunft.slice(4))) }) : t("rw_kA_herkunft_fest")));
     let h = "<div><dt>" + t("rw_tasse1") + "</dt><dd>" + z(R.th1, 2) + " °C</dd></div>";
     h += "<div><dt>" + t("rw_tasse2") + "</dt><dd>" + z(R.th2, 2) + " °C</dd></div>";
@@ -811,6 +862,7 @@
   }
 
   // ------------------------------------------------------------------ Messblatt
+  const messStellen = v => Math.abs(v * 10 - Math.round(v * 10)) < 1e-9 ? 1 : 2;
   const ZEILEN_NAME = () => ["0", "10", "20", "30", "40", "50", nurText(t("mess_zeile_60v")), nurText(t("mess_zeile_60n"))];
   function messblattZeichnen() {
     const el = $("messblatt-inhalt");
@@ -822,32 +874,34 @@
       h += '<tr><th scope="row">' + esc(name) + "</th>";
       for (const b of becher) {
         const v = S.kurs.werte["b" + b][i], aus = b === 1 && i === 7;
-        h += '<td class="zelle"><input type="text" inputmode="decimal" autocomplete="off" data-b="' + b + '" data-i="' + i + '" value="' + (v === null ? "" : z(v, Math.round(v * 100) % 10 === 0 ? (Math.round(v * 10) % 10 === 0 ? 1 : 1) : 2)) + '"' + (aus ? " disabled" : "") +
+        h += '<td class="zelle"><input type="text" inputmode="decimal" autocomplete="off" data-b="' + b + '" data-i="' + i + '" value="' + (v === null ? "" : z(v, messStellen(v))) + '"' + (aus ? " disabled" : "") +
           ' aria-label="' + esc(nurText(t("mess_feld_aria", { becher: nurText(t("mess_kopf_b" + b)).replace(/ \[.*\]$/, ""), zeile: i < 6 ? name + " min" : name }))) + '"></td>';
       }
       h += "</tr>";
     });
     h += "</tbody></table></div>";
     h += '<p class="feld-fehler" id="mess-fehler" aria-live="polite"></p>';
-    h += '<div class="mess-zusatz"><label class="feld">' + t("mess_raum") + ' <input type="text" inputmode="decimal" id="mess-u" value="' + (S.kurs.u === null ? "" : z(S.kurs.u, 1)) + '"></label>';
-    h += '<label class="feld">' + t("mess_milch") + ' <input type="text" inputmode="decimal" id="mess-m" value="' + (S.kurs.m === null ? "" : z(S.kurs.m, 1)) + '"></label>';
+    h += '<div class="mess-zusatz"><label class="feld">' + t("mess_raum") + ' <input type="text" inputmode="decimal" id="mess-u" value="' + (S.kurs.u === null ? "" : z(S.kurs.u, messStellen(S.kurs.u))) + '"></label>';
+    h += '<label class="feld">' + t("mess_milch") + ' <input type="text" inputmode="decimal" id="mess-m" value="' + (S.kurs.m === null ? "" : z(S.kurs.m, messStellen(S.kurs.m))) + '"></label>';
     h += '<label class="schalter"><input type="checkbox" id="mess-d"' + (S.kurs.d ? " checked" : "") + "> " + t("mess_deckel") + "</label>";
     h += '<label class="schalter"><input type="checkbox" id="mess-b3"' + (S.kurs.b3 ? " checked" : "") + "> " + t("mess_becher3") + "</label></div>";
     if (S.kurs.d) h += '<p class="hinweis">' + t("mess_deckel_hinweis") + "</p>";
     h += '<div class="knopfzeile">' + (freigabe() ? '<button type="button" class="knopf-zweit" id="mess-ueber">' + t("mess_uebernehmen") + "</button>" : "") + '<button type="button" class="knopf-schlicht" id="mess-link">' + t("mess_teilen") + '</button><button type="button" class="knopf-schlicht" id="mess-weg">' + t("mess_loeschen") + '</button><button type="button" class="knopf-schlicht" id="mess-csv">' + t("csv_knopf") + "</button></div>";
     h += '<p class="hinweis" id="mess-info" role="status"></p><div id="link-ausgabe"></div>';
     el.innerHTML = h;
+    const zuVieleStellen = text => /[.,]\d{3,}\s*$/.test(String(text).trim());     // X5-07: Eingabe, Speicher, Anzeige und Kurslink gleich genau
     for (const inp of el.querySelectorAll(".zelle input")) inp.addEventListener("change", () => {
       const b = inp.getAttribute("data-b"), i = Number(inp.getAttribute("data-i")), l = HILFEN.zahlLesen(inp.value);
       if (inp.value.trim() === "") { S.kurs.werte["b" + b][i] = null; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); if (!document.querySelector("#messblatt-inhalt [aria-invalid]")) $("mess-fehler").textContent = ""; }
-      else if (!isFinite(l.wert) || l.wert < 0 || l.wert > 100) { inp.setAttribute("aria-invalid", "true"); inp.setAttribute("aria-describedby", "mess-fehler"); $("mess-fehler").innerHTML = esc(inp.getAttribute("aria-label")) + ": " + t(l.grund === "tausender" ? "feld_tausender" : "mess_ungueltig"); return; }
-      else { S.kurs.werte["b" + b][i] = Math.round(l.wert * 100) / 100; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); if (!document.querySelector("#messblatt-inhalt [aria-invalid]")) $("mess-fehler").textContent = ""; }
+      else if (!isFinite(l.wert) || l.wert < 0 || l.wert > 100 || zuVieleStellen(inp.value)) { inp.setAttribute("aria-invalid", "true"); inp.setAttribute("aria-describedby", "mess-fehler"); $("mess-fehler").innerHTML = esc(inp.getAttribute("aria-label")) + ": " + t(l.grund === "tausender" ? "feld_tausender" : (isFinite(l.wert) && zuVieleStellen(inp.value) ? "mess_stellen" : "mess_ungueltig")); return; }
+      else { S.kurs.werte["b" + b][i] = l.wert; inp.removeAttribute("aria-invalid"); inp.removeAttribute("aria-describedby"); if (!document.querySelector("#messblatt-inhalt [aria-invalid]")) $("mess-fehler").textContent = ""; }
       sichern(); teilZeichnen("messblatt"); frageleisteStill();
     });
     const feldZahl = (id, key, lo, hi) => $(id).addEventListener("change", () => {
       const l = HILFEN.zahlLesen($(id).value);
       if ($(id).value.trim() === "") S.kurs[key] = null;
       else if (!isFinite(l.wert) || l.wert < lo || l.wert > hi) { $(id).setAttribute("aria-invalid", "true"); $("mess-fehler").innerHTML = t("feld_bereich", { min: lo, max: hi, einheit: "°C" }); return; }
+      else if (zuVieleStellen($(id).value)) { $(id).setAttribute("aria-invalid", "true"); $("mess-fehler").innerHTML = t("mess_stellen"); return; }
       else S.kurs[key] = l.wert;
       $(id).removeAttribute("aria-invalid"); $("mess-fehler").textContent = ""; sichern(); teilZeichnen("messblatt"); frageleisteStill();
     });
@@ -866,7 +920,7 @@
     const start = mittel(0), zehn = mittel(1);
     const u = S.kurs.u !== null ? S.kurs.u : S.e.thU, m = S.kurs.m !== null ? S.kurs.m : S.e.thM;
     if (start === null || zehn === null) return { ok: false, text: t("mess_nicht_uebernommen", { grund: t("mess_grund_fehlt") }) };
-    const neu = Object.assign({}, S.e, { thK0: start, thMess: zehn, thU: u, thM: m, kAQuelle: "messung", kAHerkunft: "messung", becher: true, tEnd_min: 60, milch2Raum: false });
+    const neu = Object.assign({}, S.e, { thK0: start, thMess: zehn, thU: u, thM: m, kAQuelle: "messung", kAHerkunft: "messung", becher: true, tEnd_min: 60, milch2Raum: false, thMessErsatz: false, thMessEigen: null });
     const fehlerBereich = start < REG.thK0.min || start > REG.thK0.max || zehn < REG.thMess.min || zehn > REG.thMess.max || u < REG.thU.min || u > REG.thU.max || m < REG.thM.min || m > REG.thM.max;
     if (fehlerBereich) {
       const pruef = [["mess_was_start", start, REG.thK0], ["mess_was_zehn", zehn, REG.thMess], ["mess_was_raum", u, REG.thU], ["mess_was_milch", m, REG.thM]].find(([, w, r]) => w < r.min || w > r.max);
@@ -892,15 +946,21 @@
     if ((m = /^b([123])$/.exec(g))) return t("link_grund_becher", { becher: m[1] });
     return t("link_grund_aufbau");
   }
+  let BANNER = null;      // X5-08: Text des Hinweises zum Kurslink, damit er beim Sprachwechsel neu gesetzt wird
   function kurslinkPruefen() {
     const l = HILFEN.kurslinkLesen(location.hash), b = $("link-banner");
-    if (l.art === "leer" || (l.art === "fremd" && !/^#kurs/i.test(location.hash))) return;
+    if (l.art === "leer") return;
+    if (l.art === "fremd") {        // X5-11: eigene Sprunganker (#hauptinhalt) bleiben, alles andere ohne kurs1 wird gemeldet und entfernt
+      let ziel = ""; try { ziel = decodeURIComponent(location.hash.slice(1)); } catch (e) { }
+      if (ziel && document.getElementById(ziel)) return;
+    }
     const weg = () => { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { } };
-    if (l.art !== "ok") { b.hidden = false; b.setAttribute("role", "alert"); b.innerHTML = "<p>" + (l.art === "fremd" ? t("link_fremd") : t("link_defekt", { grund: linkGrund(l.grund) })) + "</p>"; weg(); return; }
+    if (l.art !== "ok") { BANNER = () => "<p>" + (l.art === "fremd" ? t("link_fremd") : t("link_defekt", { grund: linkGrund(l.grund) })) + "</p>"; b.hidden = false; b.setAttribute("role", "alert"); b.innerHTML = BANNER(); weg(); return; }
+    BANNER = null;
     b.hidden = false;
     b.innerHTML = '<p id="link-frage">' + t(kursAnzahl() ? "link_frage" : "link_frage_leer") + '</p><div class="knopfzeile"><button type="button" class="knopf-zweit" id="link-ja">' + t("link_ja") + '</button><button type="button" class="knopf-schlicht" id="link-nein">' + t("link_nein") + "</button></div>";
     b.setAttribute("role", "region"); b.setAttribute("aria-labelledby", "link-frage");
-    const fertig = schluessel => { b.innerHTML = '<p id="link-ende" tabindex="-1">' + t(schluessel) + "</p>"; b.setAttribute("aria-labelledby", "link-ende"); $("link-ende").focus(); setTimeout(() => { if ($("link-ende")) b.hidden = true; }, 15000); };   // G5-24, G7-14
+    const fertig = schluessel => { BANNER = () => '<p id="link-ende" tabindex="-1">' + t(schluessel) + "</p>"; b.innerHTML = BANNER(); b.setAttribute("aria-labelledby", "link-ende"); $("link-ende").focus(); setTimeout(() => { if ($("link-ende")) b.hidden = true; }, 15000); };   // G5-24, G7-14
     $("link-ja").addEventListener("click", () => { S.kurs = l.kurs; sichern(); weg(); alles(); fertig("link_ok"); });
     $("link-nein").addEventListener("click", () => { weg(); fertig("link_abgelehnt"); });
     b.addEventListener("keydown", ev => { if (ev.key === "Escape" && $("link-nein")) $("link-nein").click(); });
@@ -1019,24 +1079,56 @@
       else { el.removeAttribute("tabindex"); if (!el.hasAttribute("aria-labelledby")) { el.removeAttribute("role"); el.removeAttribute("aria-label"); } }
     }
   }
+  let DIA_HMAX = null, anheftenLaeuft = false, ZUSATZ = { k: "", v: 0 };
   function anheftenPruefen() {
+    if (anheftenLaeuft) return;
+    anheftenLaeuft = true;
+    try { anheftenPruefenInnen(); } finally { anheftenLaeuft = false; }
+  }
+  function anheftenPruefenInnen() {
     const vv = window.visualViewport, hoehe = vv ? vv.height : window.innerHeight;
     const feldFokus = document.activeElement && document.activeElement.type === "text" && !!document.activeElement.closest("#messblatt");   // Frageleiste nicht: sonst springt der Knopf beim Verlassen des Feldes (G9-01)
     const tastatur = feldFokus || vv && document.activeElement && /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName) && document.activeElement.type !== "range" && hoehe < window.innerHeight * 0.8;
-    const an = S.ansicht.anheften && freigabe() && hoehe >= 500 && !tastatur && window.innerWidth <= 767 && window.innerHeight > window.innerWidth;
-    document.documentElement.classList.toggle("anheften", !!an);
+    let an = S.ansicht.anheften && freigabe() && hoehe >= 500 && !tastatur && window.innerWidth <= 767 && window.innerHeight > window.innerWidth;
     document.documentElement.classList.toggle("handy", freigabe() && window.innerWidth <= 767);   // Reihenfolge Diagramm, Frage, Regler (M-6)
-    const moeglich = freigabe() && window.innerWidth <= 767 && window.innerHeight > window.innerWidth && hoehe >= 500;
+    // X5-10, G5-R3-02: höchstens 45 % der sichtbaren Höhe, gemessen mit Kernzahlen, Vorhersagezeile und Legende (wachsen mit der Schrift)
+    let hmax = null, platz = true;
+    if (window.innerWidth <= 767 && window.innerHeight > window.innerWidth && hoehe >= 500 && freigabe()) {
+      const war = document.documentElement.classList.contains("anheften");
+      document.documentElement.classList.add("anheften");
+      const extra = $("diagramm-halter").getBoundingClientRect().height - $("diagramm").getBoundingClientRect().height + 1;
+      document.documentElement.classList.toggle("anheften", war);
+      // größter Zusatz für dieselbe Fenstergröße und Schrift: die Ersatzlegende hängt von der Höhe ab, sonst pendelt die Höhe
+      const k = window.innerWidth + "x" + Math.round(hoehe) + "@" + getComputedStyle(document.documentElement).fontSize;
+      if (ZUSATZ.k !== k) ZUSATZ = { k: k, v: 0 };
+      ZUSATZ.v = Math.max(ZUSATZ.v, extra);
+      hmax = Math.floor(0.45 * hoehe - ZUSATZ.v);
+      if (hmax < 150) { platz = false; hmax = null; }      // zu wenig Platz für ein lesbares Diagramm: nicht anheften
+    }
+    if (!platz) an = false;
+    document.documentElement.classList.toggle("anheften", !!an);
+    if (!an) hmax = null;
+    if (hmax !== DIA_HMAX && !(hmax && DIA_HMAX && Math.abs(hmax - DIA_HMAX) < 2)) { DIA_HMAX = hmax; diagrammZeichnen(); }
+    const moeglich = freigabe() && window.innerWidth <= 767 && window.innerHeight > window.innerWidth && hoehe >= 500 && platz;
     const kn = $("knopf-anheften");
     if (kn) { kn.hidden = !moeglich; kn.textContent = nurText(t("anheften_an")); kn.setAttribute("aria-pressed", S.ansicht.anheften ? "true" : "false"); }
     document.documentElement.style.setProperty("--anheft", an ? Math.ceil($("diagramm-halter").getBoundingClientRect().height) + "px" : "0px");
+    // X5-04, G5-R3-01: Abstand für den Fokus aus der tatsächlichen Höhe der Kernleiste; zu hoch (große Schrift), dann nicht angeheftet
+    const kl = $("kern-leiste"), wurzel = document.documentElement;
+    let kern = 0;
+    if (kl && window.innerWidth >= 768) {
+      wurzel.classList.remove("kern-frei");
+      const hk = kl.getBoundingClientRect().height;
+      if (hk > window.innerHeight * 0.2) wurzel.classList.add("kern-frei"); else kern = Math.ceil(hk);
+    }
+    wurzel.style.setProperty("--kern", (kern + 8) + "px");
   }
   $("sprachknopf").addEventListener("click", () => { S.sprache = S.sprache === "de" ? "en" : "de"; $("knopf-info").textContent = ""; $("ansage").textContent = ""; sichern(); alles();
     try { if (/[?&]lang=/.test(location.search)) history.replaceState(null, "", location.pathname + location.search.replace(/([?&])lang=(de|en)(&|$)/, (m, a, b, c) => (c ? a : "")).replace(/\?$/, "") + location.hash); } catch (x) { }
-    if ($("link-ja")) kurslinkPruefen();
+    if ($("link-ja")) kurslinkPruefen(); else if (BANNER && !$("link-banner").hidden) $("link-banner").innerHTML = BANNER();
     $("sprachknopf").focus(); });
   $("knopf-standard").addEventListener("click", () => { ausgangslage("standard"); rechnen(); sichern(); alles(); $("knopf-info").innerHTML = t("knopf_standard_info"); ansagen(); });
-  $("knopf-versuch").addEventListener("click", () => { Object.assign(S.e, { tEnd_min: 60, becher: true, kAQuelle: "messung", kAHerkunft: "messung" }); if (!(S.e.thMess > S.e.thU && S.e.thMess < S.e.thK0)) S.e.thMess = 67; rechnen(); sichern(); alles(); $("knopf-info").innerHTML = t("knopf_versuch_info"); ansagen(); });
+  $("knopf-versuch").addEventListener("click", () => { Object.assign(S.e, { tEnd_min: 60, becher: true, kAQuelle: "messung", kAHerkunft: "messung" }); if (!(S.e.thMess > S.e.thU && S.e.thMess < S.e.thK0)) Object.assign(S.e, { thMess: 67, thMessErsatz: false, thMessEigen: null }); rechnen(); sichern(); alles(); $("knopf-info").innerHTML = t("knopf_versuch_info"); ansagen(); });
   for (const b of document.querySelectorAll("[data-ansicht]")) b.addEventListener("click", () => { S.ansicht.diagramm = b.getAttribute("data-ansicht"); sichern(); alles(); b.focus(); });
   $("vertiefung").addEventListener("toggle", () => { const auf = $("vertiefung").open; if (auf !== !!S.ansicht.vertiefung) { S.ansicht.vertiefung = auf; if (!auf && S.ansicht.diagramm !== "temperatur") S.ansicht.diagramm = "temperatur"; sichern(); alles(); } });
   reiterTasten();
@@ -1045,6 +1137,10 @@
   $("knopf-anheften").addEventListener("click", () => { S.ansicht.anheften = !S.ansicht.anheften; sichern(); anheftenPruefen(); $("knopf-anheften").focus(); });
   window.addEventListener("resize", () => { clearTimeout(groesse); groesse = setTimeout(() => { diagrammZeichnen(); anheftenPruefen(); scrollbereichePruefen(); }, 80); });
   if (window.visualViewport) window.visualViewport.addEventListener("resize", anheftenPruefen);
+  if (window.ResizeObserver) {      // X5-04, X5-10: auch wenn nur die Schrift wächst (kein resize des Fensters)
+    let rz = 0;
+    new ResizeObserver(() => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => anheftenPruefen()); }).observe($("hauptinhalt") || document.body);
+  }
   document.addEventListener("focusin", anheftenPruefen); document.addEventListener("focusout", () => setTimeout(anheftenPruefen, 50));
   alles();
   kurslinkPruefen();

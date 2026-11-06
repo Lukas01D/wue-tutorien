@@ -57,6 +57,8 @@ choice matches
 choice does not match
 @ausgangslage
 Starting point
+@ausgangslage_vorher
+Starting point before your prediction: default values (no mug, no lid). Predict first, then check.
 @ausgangslage_gesetzt
 Starting point set: {was}.
 @auftrag_erklaeren
@@ -323,6 +325,16 @@ Room temperature
 Heat loss coefficient of the cup
 @regler_thMess
 Measurement after 10 min
+@regler_thMess_ersatz
+Equivalent value after 10 min, calculated from $kA$
+@thmess_ersatz
+This value is calculated from the previous $kA$; it is not a measurement. Enter your measured value to use it.
+@thmess_eigen
+Use your measurement {wert} °C again
+@kA_quelle_nicht
+Not switched: with this $kA$, the value after 10 min would be {wert} °C, outside the measuring range {min} to {max} °C. $kA$ stays fixed.
+@rw_kA_herkunft_ersatz
+from a calculated value after 10 min (not a measurement)
 @regler_mB
 Mass of the mug
 @regler_kA1
@@ -454,6 +466,8 @@ Delete all class data? Your answers stay.
 {becher}, {zeile}
 @mess_ungueltig
 Please enter a temperature between 0 and 100 °C as a number, for example 66.5.
+@mess_stellen
+At most two decimal places (as in the course link).
 @mess_uebernommen
 Settings applied (mean of the mugs without milk, not rounded): start {a} °C, after 10 min {b} °C, room {u} °C, milk {m} °C; milk added after 60 min, mug included, $kA$ from the measurement.
 @mess_nicht_uebernommen
@@ -751,8 +765,8 @@ $$C\,\frac{\mathrm{d}T}{\mathrm{d}t} = -kA\,(T - T_\mathrm{u})$$
 $$T(t) = T_\mathrm{u} + (T_0 - T_\mathrm{u}) \exp\left(-\frac{kA}{C}\,t\right), \qquad \tau = \frac{C}{kA}.$$
 <p><strong>kA from the measurement.</strong> $kA = -\frac{C}{t_\mathrm{mess}} \ln\frac{T_\mathrm{mess} - T_\mathrm{u}}{T_0 - T_\mathrm{u}}$ (part c).</p>
 <p><strong>Mixing.</strong> $\vartheta_\mathrm{misch} = \frac{m_\mathrm{K} c_{p,\mathrm{K}}\,\vartheta_\mathrm{K} + m_\mathrm{M} c_{p,\mathrm{M}}\,\vartheta_\mathrm{M}}{m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}}$ (part a; with a mug, its heat capacity is added to the cup).</p>
-<p><strong>Heat released.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ (Anfang start, Ende end) for each control volume (part e); from this, directly after the milk is added, $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$; with the same milk, the last term vanishes.</p>
-<p><strong>When the milk is added.</strong> If the milk is added later, the difference changes by $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$: it grows as long as cup 2 releases more heat, and decreases afterwards. What this means for the largest difference is in the explanations of question 1 and V2.</p>
+<p><strong>Heat released.</strong> $Q = C\,(\vartheta_\mathrm{Anfang} - \vartheta_\mathrm{Ende})$ (Anfang start, Ende end) for each control volume (part e); from this, directly after the milk is added, $$C_\mathrm{G}(\vartheta_1 - \vartheta_2) = Q_2 - Q_1 + m_\mathrm{M} c_{p,\mathrm{M}}(\vartheta_\mathrm{M1} - \vartheta_\mathrm{M2})$$ with $C_\mathrm{G} = m_\mathrm{K} c_{p,\mathrm{K}} + m_\mathrm{M} c_{p,\mathrm{M}}$ (coffee and milk); with the mug, $C_\mathrm{GB} = C_\mathrm{G} + m_\mathrm{B} c_\mathrm{B}$ takes the place of $C_\mathrm{G}$. With the same milk, the last term vanishes.</p>
+<p><strong>When the milk is added.</strong> If the milk is added later, the difference changes by $\frac{\mathrm{d}(\vartheta_1 - \vartheta_2)}{\mathrm{d}t_\mathrm{Z}} = \frac{\dot{Q}_2 - \dot{Q}_1}{C_\mathrm{G}}$ (with the mug, $C_\mathrm{GB}$): it grows as long as cup 2 releases more heat, and decreases afterwards. What this means for the largest difference is in the explanations of question 1 and V2.</p>
 <p><strong>kA from all measured points</strong> (going further): line through the origin in the “ln” view, slope $b = \sum t_i y_i / \sum t_i^2$ with $y_i = \ln\frac{\vartheta_i - \vartheta_\mathrm{u}}{\vartheta_0 - \vartheta_\mathrm{u}}$, then $kA = -C\,b$. The scatter about the line is not a measurement uncertainty of $kA$, because all points contain the same initial value.</p>
 <p><strong>Keeping kA fixed</strong> (going further): the tool works out the value after 10 min that belongs to this $kA$ and passes it to the unchanged model.</p>
 
