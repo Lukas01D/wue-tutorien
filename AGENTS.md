@@ -95,3 +95,10 @@ Startsatz: „Baue die Simulation nach AGENTS.md (Rolle S-Bau).“ Baue genau da
 Startsatz: „Nimm den Bau der Simulation ab nach simulation/X5_AUFTRAG.md (Rolle X5).“ Die vollständige Anweisung (geprüfter Stand, Prüfumfang, zwei Läufe, Grenzen, Bericht `simulation/X5_CODEX_ABNAHME.md`) steht in `simulation/X5_AUFTRAG.md`.
 
 Nachprüfung nach der Korrekturrunde (ergänzt am 06.11.2026): Startsatz „Prüfe die Korrekturrunde nach simulation/X5_AUFTRAG.md, Abschnitt 9 (Nachprüfung X5).“ Nur die betroffenen Punkte; Bericht `simulation/X5_CODEX_NACHPRUEFUNG.md` auf einem eigenen Zweig, kein Pull Request.
+
+
+# Siebter Auftrag: Prüfung der Simulation Fassung 3 (Rolle X6)
+
+> Ergänzt von Claude am 08.11.2026 nach dem Startprompt Fassung 3 der Tutoriumsleitung (Schritt 4); die Regeln der Abschnitte oben bleiben unverändert.
+
+Startsatz: „Prüfe die Kaffee-Simulation Fassung 3 nach simulation/X6_AUFTRAG.md (Rolle X6).“ Die vollständige Anweisung (geprüfter Stand, Prüfwerte, Entscheidungen der Tutoriumsleitung, Abnahmekriterien, Prüffragen, Bericht `simulation/X6_CODEX_PRUEFUNG.md`) steht in `simulation/X6_AUFTRAG.md`. Eigener Zweig, kein Pull Request.

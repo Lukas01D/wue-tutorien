@@ -1,79 +1,19 @@
-# Abnahme auf einem echten iPhone (Safari)
+# Abnahme am echten Gerät (Fassung 3)
 
-> Für die TL. Nach `BAU_AUFTRAG.md`, Teil 3.5. Die Prüfungen im Cloud-Container laufen in Chromium (Playwright); WebKit war dort nicht verfügbar. Chromium ersetzt diesen Gerätenachweis nicht: Er bleibt **offen**, bis du ihn erbracht hast. Dauer etwa 20 min. Trag bei jedem Punkt „ja“, „nein“ oder eine Beobachtung ein und schick die Liste zurück (oder schreib sie in den Chat).
+> Für die TL, neu geschrieben für Fassung 3 am 08.11.2026 (O3). In Chromium ist alles geprüft (`simulation/BAU_BERICHT_F3.md`); WebKit (Safari), Android und Bildschirmleser gibt es in der Cloud-Umgebung nicht. Dauer etwa 10 min. Zuerst die Offline-Datei (`simulation/site/Kaffee_Simulation.html` per AirDrop oder Dateien-App), nach der Veröffentlichung die echte Adresse. Ergebnis je Zeile: ja, nein (mit kurzer Notiz).
 
-**Vorbereitung**
-
-- iPhone mit aktuellem iOS, Safari, Ton aus. Notiere Modell und iOS-Version: ____________________
-- Die Datei `simulation/site/Kaffee_Simulation.html` (bytegleich mit `index.html`) auf das iPhone bringen, zum Beispiel per AirDrop oder in die Dateien-App (iCloud Drive). Prüfsumme siehe `simulation/site/BAUNACHWEIS.txt`.
-- Für den Kurslink (Punkt 8) brauchst du die Seite unter einer Adresse (lokaler Server im WLAN oder später die veröffentlichte Adresse). Ohne Adresse diesen Punkt über die Dateien-App prüfen, soweit möglich, und den Rest offen lassen.
-
-## A Offline-Datei aus der Dateien-App
-
-| Nr. | Schritt | Erwartung | Ergebnis |
+| Nr. | Was tun (iPhone, Safari, hochkant) | Erwartung | Ergebnis |
 |:--|:--|:--|:--|
-| A1 | Flugmodus an. In der Dateien-App auf `Kaffee_Simulation.html` tippen, „In Safari öffnen“ (falls angeboten) oder Vorschau. | Seite erscheint vollständig, Schrift Fira Sans (Ziffern mit flachen Köpfen, nicht Systemschrift), Formeln mit ϑ und Indizes aufrecht. | |
-| A2 | Erstes Öffnen | Startkarte „Erst vorhersagen“, Achsen ohne Kurven, keine Zahlen zu den Ergebnissen. Kopf rechts: „Werte bleiben nur in diesem Browser“ oder „Werte werden nicht gespeichert“ (notiere, welches). | |
-| A3 | Flugmodus wieder aus | | |
-
-## B Hochformat
-
-| Nr. | Schritt | Erwartung | Ergebnis |
-|:--|:--|:--|:--|
-| B1 | Tasse 1 wählen, bei „Unterschied etwa“ 4 eintippen, „Vorhersage festhalten und Kurven zeigen“ | Kurven erscheinen, darunter ϑ₁ 34,05 °C, ϑ₂ 30,19 °C, Δ 3,85 K. Frageleiste springt zu Frage 1, oben der Rückblick „Start: …“. | |
-| B2 | Nach unten scrollen bis zum Regler „Zugabe in Tasse 2 nach“ | Das Diagramm bleibt oben angeheftet (mit den drei Kernzahlen), Regler darunter sichtbar. | |
-| B3 | Bei Frage 1 „50“ eintippen, festhalten. Den Regler „Zugabe nach“ mit dem Finger ziehen. | Regler folgt dem Finger flüssig, Kurven und Kernzahlen ändern sich sofort, die Seite scrollt dabei nicht mit. | |
-| B2a | Angeheftetes Diagramm ansehen *(neu nach X5-09, X5-10)* | Achsenzahlen und Beschriftungen so gut lesbar wie im Querformat (nicht verkleinert); das angeheftete Feld nimmt höchstens knapp die Hälfte der Höhe ein; der Knopf darunter heißt „Diagramm lösen“ und nach dem Antippen „Diagramm oben anheften“. Mit größerer Systemschrift (Einstellungen, Anzeige, Textgröße) darf das Diagramm auch nicht angeheftet sein. | |
-| B4 | Plus- und Minusknopf neben dem Regler je dreimal antippen | Wert ändert sich in Schritten von 1 min; Knöpfe gut treffbar (mindestens Fingerkuppe). | |
-
-## C Dezimaleingabe und Bildschirmtastatur
-
-| Nr. | Schritt | Erwartung | Ergebnis |
-|:--|:--|:--|:--|
-| C1 | „Vertiefung“ öffnen, ins Zahlenfeld „Kaffeetemperatur am Anfang“ tippen | Zahlentastatur mit Komma (bei deutscher Region) erscheint. Das Diagramm ist **nicht** mehr angeheftet, solange die Tastatur offen ist (sonst verdeckt es das Feld). | |
-| C2 | „79,5“ eingeben, „Fertig“ bzw. außerhalb tippen | Wert 79,5 übernommen, Kurven ändern sich. | |
-| C3 | „79.5“ (mit Punkt) eingeben | ebenfalls übernommen. | |
-| C4 | „abc“ eingeben | Meldung unter dem Feld, alter Wert bleibt. | |
-| C5 | Im Messblatt einige Werte mit Komma eintippen (z. B. Becher 2: 80,4 und 67,8) | Werte bleiben stehen, keine Rundung beim Tippen, kein Springen der Seite. | |
-
-## D Querformat, Zoom, Scrollen
-
-| Nr. | Schritt | Erwartung | Ergebnis |
-|:--|:--|:--|:--|
-| D1 | iPhone ins Querformat drehen | Diagramm in voller Breite, **nicht** angeheftet; kein waagrechtes Scrollen der ganzen Seite. | |
-| D2 | Zurück ins Hochformat | Anheften wieder an (nach dem Scrollen in den Simulationsbereich). | |
-| D3 | Mit zwei Fingern auf etwa 200 % zoomen, dann wieder zurück | Zoomen möglich (nicht gesperrt); nach dem Zurückzoomen nichts verschoben. | |
-| D4 | In „Bedienungshilfen > Anzeige & Textgröße > Größerer Text“ eine Stufe größer (optional) | Texte größer, nichts abgeschnitten. | |
-
-## E Sprachwechsel
-
-| Nr. | Schritt | Erwartung | Ergebnis |
-|:--|:--|:--|:--|
-| E1 | Oben rechts „DE ↔ EN“ antippen | Alles auf Englisch, Zahlen mit Punkt (34.05), eure Vorhersagen und Regler bleiben. | |
-| E2 | Seite neu laden | Bleibt Englisch (wenn A2 „Werte bleiben …“ zeigte). | |
-| E3 | Zurück auf Deutsch | | |
-
-## F Kurslink (braucht eine Adresse)
-
-| Nr. | Schritt | Erwartung | Ergebnis |
-|:--|:--|:--|:--|
-| F1 | Auf einem zweiten Gerät (oder Laptop) Messblatt füllen, „Kurswerte als Link teilen“, Link aufs iPhone schicken | | |
-| F2 | Link auf dem iPhone öffnen | Rückfrage „Kurswerte aus dem Link übernehmen?“; nach „Übernehmen“ stehen die Werte im Messblatt, die Adresse hat kein `#kurs1=…` mehr. | |
-| F3 | Link mit absichtlich verändertem Wert öffnen (z. B. `b2:180` statt `b2:80`) | Meldung mit Grund in Worten, nichts geändert. | |
-
-## G Download
-
-| Nr. | Schritt | Erwartung | Ergebnis |
-|:--|:--|:--|:--|
-| G1 | Im Messblatt „Als CSV herunterladen“ | Safari bietet die Datei `kaffee_simulation.csv` an (Download-Pfeil oder Teilen-Blatt); in der Dateien-App lesbar, erste Zeile „t [min];Modell Tasse 1 [°C];…“, zweite „0;70,47;80,00;;“. | |
-| G2 | Aus der Offline-Datei (Dateien-App, Flugmodus) dasselbe | Download klappt oder ist erklärbar blockiert (notieren). | |
-
-## H Zurücksetzen
-
-| Nr. | Schritt | Erwartung | Ergebnis |
-|:--|:--|:--|:--|
-| H1 | Ganz unten „Für die nächste Gruppe zurücksetzen“, Rückfrage mit „Ja“ | Startkarte, keine Kurven; die Kurswerte im Messblatt bleiben (nach der nächsten Vorhersage sichtbar). | |
-
-**Gesamturteil der TL:** ☐ abgenommen ☐ abgenommen mit Mängeln (siehe Bemerkungen) ☐ nicht abgenommen
-
-Bemerkungen:
+| 1 | Seite öffnen | Startkarte, darüber „Wozu?“; keine Kurven, keine Zahlen außer den Werten des Blatts | |
+| 2 | „Tasse 1“ und einen Grund antippen, bei ϑ₁ `43,85` und bei ϑ₂ `40,29` eintippen (Bildschirmtastatur mit Komma) | Knopf wird aktiv; Felder nehmen Komma an | |
+| 3 | „Festhalten und Kurven zeigen“ | Seite springt zu den Kernzahlen 43,85 °C, 40,29 °C, 3,56 K; Satz „Simulation und deine Rechnung stimmen überein …“ | |
+| 4 | In 02 eine Erklärung wählen, „Antwort festhalten“ | Rückmeldung mit 25,49 und 28,90 kJ; Säulen jetzt mit Zahlen | |
+| 5 | Regler „Zugabe“ mit dem Finger ziehen, dann Plus und Minus | Kurven und Zahlen folgen sofort; Plus und Minus ändern um 1 min; kein Verrutschen der Seite | |
+| 6 | Diagramm und beide Regler: passen sie zusammen auf den Bildschirm? | ja, nach kurzem Scrollen zu den Kernzahlen | |
+| 7 | In 03 bei Tasse 2 `80 72 65,1` eintippen, „Beispielwerte zeigen“ antippen | gefüllte Quadrate (eigene Werte) und hohle Kreise und Quadrate (Beispielwerte) im Diagramm | |
+| 8 | Querformat, dann Zoom mit zwei Fingern | Inhalt bleibt lesbar, kein waagerechtes Scrollen ohne Zoom | |
+| 9 | „DE ↔ EN“ | englische Texte, Zahlen mit Punkt; nach dem Neuladen bleibt Englisch | |
+| 10 | Seite neu laden, dann „Von vorn“ (unten) | nach dem Neuladen alles noch da; „Von vorn“ fragt nach und zeigt wieder die Startkarte | |
+| 11 | Android (Chrome), wenn verfügbar: Schritte 1 bis 5 | wie iPhone | |
+| 12 | Bildschirmleser (VoiceOver), wenn Zeit ist: Schritte 1 bis 4 | Auswahl, Knöpfe und Regler werden mit Namen und Wert vorgelesen; die Kernzahlen werden nach dem Festhalten angesagt | |
+| 13 | Beamer im Hörsaal: Seite am Laptop öffnen, Schritte 1 bis 4 | Kernzahlen, Diagramm und beide Regler ohne Scrollen sichtbar und aus der letzten Reihe lesbar | |

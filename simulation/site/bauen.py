@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Bau der Kaffee-Seite (BAU_AUFTRAG.md, Teil 3): Quellen in src/ -> index.html und bytegleich Kaffee_Simulation.html.
+"""Bau der Kaffee-Seite, Fassung 3 (KONZEPT_F3.md): Quellen in src/ -> index.html und bytegleich Kaffee_Simulation.html.
 
 Aufruf: python3 simulation/site/bauen.py         (baut, prüft, schreibt BAUNACHWEIS.txt)
         python3 simulation/site/bauen.py --pruefen   (baut nur im Speicher und vergleicht mit index.html)
         python3 simulation/site/bauen.py --ziel <ordner>   (Probebau in einen anderen Ordner)
 
-Schritte: Texte lesen (texte_de.txt, texte_en.txt), Platzhalter aus zahlen.py füllen, Formeln nach MathML (tex2mathml.py),
-Regler mit MathML, Schriften als data:-URL, Skripte zusammensetzen, CSP mit SHA-256 der eingebetteten Blöcke.
+Schritte: Texte lesen (texte_de.txt, texte_en.txt), Verweise {{t:schluessel}} einsetzen, Platzhalter aus zahlen.py füllen,
+Formeln nach MathML (tex2mathml.py), Schriften als data:-URL, Skripte zusammensetzen, CSP mit SHA-256 der eingebetteten Blöcke.
 Der Bau ist deterministisch: gleiche Quellen ergeben gleiche Bytes (Stand aus STAND, Version aus der Prüfsumme der Quellen).
 """
 import base64
@@ -22,12 +22,13 @@ sys.path.insert(0, HIER)
 import tex2mathml  # noqa: E402
 import zahlen  # noqa: E402
 
-STAND = "2026-11-05"
+STAND = "2026-11-08"
 SPRACHEN = ("de", "en")
-SKRIPTE = ["modell.js", "erweiterung.js", "hilfen.js"]
-SCHRIFTEN = [("Fira Sans", 400, "normal", "FiraSans-Regular-teil.woff2"), ("Fira Sans", 600, "normal", "FiraSans-SemiBold-teil.woff2"),
-             ("Fira Sans", 700, "normal", "FiraSans-Bold-teil.woff2"), ("Fira Sans", 400, "italic", "FiraSans-Italic-teil.woff2"),
-             ("Fira Math", 400, "normal", "FiraMath-teil.woff2")]
+SKRIPTE = ["modell.js"]
+SCHRIFTEN = [("Plex Sans", 400, "normal", "PlexSans-400.woff2"), ("Plex Sans", 600, "normal", "PlexSans-600.woff2"),
+             ("Plex Mono", 400, "normal", "PlexMono-400.woff2"), ("Plex Mono", 600, "normal", "PlexMono-600.woff2"),
+             ("Plex Math", 400, "normal", "PlexMath.woff2")]
+LIZENZEN = [("IBM Plex Sans", "IBMPlexSans-OFL.txt"), ("IBM Plex Mono", "IBMPlexMono-OFL.txt"), ("IBM Plex Math", "IBMPlexMath-OFL.txt")]
 
 
 class BauFehler(Exception):
@@ -67,6 +68,9 @@ def texte_bauen():
     fehlt = set(roh["de"]) ^ set(roh["en"])
     if fehlt:
         raise BauFehler("Schlüssel nur in einer Sprache: " + ", ".join(sorted(fehlt)))
+    for s in SPRACHEN:      # Verweise {{t:schluessel}} auf einen anderen Text derselben Sprache (eine Ebene)
+        for k, text in list(roh[s].items()):
+            roh[s][k] = re.sub(r"\{\{t:([A-Za-z0-9_]+)\}\}", lambda m: roh[s][m.group(1)], text)
     fertig = {}
     for s in SPRACHEN:
         werte = zahlen.alle(s)
@@ -87,37 +91,30 @@ def texte_bauen():
             t = re.sub(r"(<math>(?:(?!</math>).)*</math>)([.,;:)])", r'<span class="nb">\1\2</span>', t, flags=re.S)   # Satzzeichen bleiben an der Formel
             if "$" in t:
                 raise BauFehler("%s/%s: einzelnes $ übrig" % (s, k))
-            for zeichen in ("–", "—"):
+            for zeichen in ("\u2013", "\u2014"):
                 if zeichen in t:
                     raise BauFehler("%s/%s: Gedankenstrich" % (s, k))
             fertig[s][k] = t
     return roh, fertig
 
 
-def regler_bauen():
-    d = json.loads(lies("regler.json"))
-    for r in d["regler"]:
-        r["mathml"] = tex2mathml.tex_zu_mathml(r["tex"])
-    d.pop("_hinweis", None)
-    return d
-
-
 def schriften_css():
     teile = []
     for familie, gewicht, stil, datei in SCHRIFTEN:
         b64 = base64.b64encode(lies(os.path.join("schriften", datei), binaer=True)).decode("ascii")
-        teile.append('@font-face { font-family: "%s"; font-weight: %d; font-style: %s; font-display: swap; '
+        teile.append('@font-face { font-family: "%s"; font-weight: %d; font-style: %s; font-display: block; '
                      'src: url(data:font/woff2;base64,%s) format("woff2"); }' % (familie, gewicht, stil, b64))
     return "\n".join(teile)
 
 
 def lizenz_kommentar():
-    sans = lies(os.path.join("schriften", "FiraSans-OFL.txt")).strip().split("\n")[0]
-    mathe = lies(os.path.join("schriften", "FiraMath-OFL.txt")).strip()
-    text = "Fira Sans: " + sans + "\nFira Math: " + mathe
+    teile = []
+    for name, datei in LIZENZEN:
+        teile.append(name + ":\n" + lies(os.path.join("schriften", datei)).strip())
+    text = "\n\n".join(teile)
     if "*/" in text:
         raise BauFehler("Lizenztext enthält */")
-    return "/* Schriften (Teilmengen, eingebettet):\n" + text + "\n*/"
+    return "/* Schriften (Teilmengen, eingebettet), SIL Open Font License 1.1:\n" + text + "\n*/"
 
 
 def js_daten(name, wert):
@@ -134,47 +131,45 @@ def quellen_pruefsumme():
             h.update(n.encode() + b"\0" + open(p, "rb").read() + b"\0")
     for n in ("zahlen.py", "tex2mathml.py", "bauen.py"):
         h.update(n.encode() + b"\0" + open(os.path.join(HIER, n), "rb").read() + b"\0")
-    for n in ("kaffee_modell.py", "kaffee_erweitert.py"):
+    for n in ("kaffee_modell.py", "werte.py"):
         h.update(n.encode() + b"\0" + open(os.path.join(HIER, "..", "modell", n), "rb").read() + b"\0")
     return h.hexdigest()
 
 
 def zeichen_pruefen(texte, js):
-    """Jedes Zeichen der Texte muss in Fira Sans liegen (sonst Ersatzschrift)."""
+    """Jedes Zeichen der Texte und Skripte muss in Plex Sans oder Plex Math liegen (Schriftstapel), Formeln in Plex Math."""
     try:
         from fontTools.ttLib import TTFont
     except ImportError:
         return ["fontTools fehlt: Zeichenprüfung nicht ausgeführt"]
-    sans = set(TTFont(os.path.join(SRC, "schriften", "FiraSans-Regular-teil.woff2")).getBestCmap())
-    mathe = set(TTFont(os.path.join(SRC, "schriften", "FiraMath-teil.woff2")).getBestCmap())
+    sans = set(TTFont(os.path.join(SRC, "schriften", "PlexSans-400.woff2")).getBestCmap())
+    mathe = set(TTFont(os.path.join(SRC, "schriften", "PlexMath.woff2")).getBestCmap())
     fehlt = {}
     for s in SPRACHEN:
         for k, t in texte[s].items():
-            ohne_mathe = re.sub(r"<math.*?</math>", " ", t, flags=re.S)
+            ohne_mathe = re.sub(r"<[^>]+>", " ", re.sub(r"<math.*?</math>", " ", t, flags=re.S))
             for c in set(ohne_mathe):
-                if ord(c) > 0x20 and ord(c) not in sans:
+                if ord(c) > 0x20 and ord(c) not in sans and ord(c) not in mathe:
                     fehlt.setdefault(c, set()).add(s + "/" + k)
             for m in re.findall(r"<math.*?</math>", t, flags=re.S):
-                inhalt = re.sub(r"<[^>]+>", "", m)
-                for c in set(inhalt):
-                    if ord(c) > 0x20 and ord(c) not in mathe and ord(c) not in sans:
+                for c in set(re.sub(r"<[^>]+>", "", m)):
+                    if ord(c) > 0x20 and ord(c) not in mathe:
                         fehlt.setdefault(c, set()).add(s + "/" + k + " (Formel)")
     for c in set(re.findall(r"[^\x00-\x7f]", js)):
-        if ord(c) not in sans:
+        if ord(c) not in sans and ord(c) not in mathe:
             fehlt.setdefault(c, set()).add("Skript")
     return ["Zeichen U+%04X (%s) fehlt in der Schrift: %s" % (ord(c), c, ", ".join(sorted(w)[:4])) for c, w in sorted(fehlt.items())]
 
 
 def bauen():
     roh, texte = texte_bauen()
-    regler = regler_bauen()
     summe = quellen_pruefsumme()
     bau = {"stand": STAND, "version": summe[:10]}
     js_teile = ["// Kaffee mit Milch: Simulation. Gebaut aus simulation/site/src mit simulation/site/bauen.py (Stand %s, Quellen %s)."
                 % (STAND, summe[:10])]
     for n in SKRIPTE:
         js_teile.append(lies(n).strip())
-    js_teile += [js_daten("TEXTE", texte), js_daten("REGLER_DEF", regler), js_daten("BAU", bau), lies("oberflaeche.js").strip()]
+    js_teile += [js_daten("TEXTE", texte), js_daten("BAU", bau), lies("oberflaeche.js").strip()]
     js = "\n".join(js_teile) + "\n"
     if "</script" in js.lower():
         raise BauFehler("</script im Skript")
@@ -191,7 +186,7 @@ def bauen():
     if re.search(r"\sstyle\s*=", vorlage) or re.search(r"\son[a-z]+\s*=", vorlage):
         raise BauFehler("Vorlage: style= oder on...= (CSP)")
     seite = vorlage.replace("{{CSP}}", csp).replace("{{CSS}}", css).replace("{{JS}}", js)
-    warnungen = zeichen_pruefen(texte, lies("oberflaeche.js"))
+    warnungen = zeichen_pruefen(texte, lies("oberflaeche.js") + lies("vorlage.html"))
     return seite.encode("utf-8"), summe, warnungen, {"js": len(js.encode()), "css": len(css.encode()),
                                                        "texte": len(json.dumps(texte, ensure_ascii=False).encode())}
 
@@ -212,7 +207,7 @@ def main():
             f.write(seite)
     sha = hashlib.sha256(seite).hexdigest()
     with open(os.path.join(ausgabe, "BAUNACHWEIS.txt"), "w", encoding="utf-8") as f:
-        f.write("Baunachweis Kaffee-Simulation (geschrieben von bauen.py)\n")
+        f.write("Baunachweis Kaffee-Simulation Fassung 3 (geschrieben von bauen.py)\n")
         f.write("Stand: %s\nPrüfsumme der Quellen (SHA-256): %s\n" % (STAND, summe))
         f.write("index.html und Kaffee_Simulation.html (bytegleich): %d Bytes, SHA-256 %s\n" % (len(seite), sha))
         f.write("Anteile: Skript %(js)d Bytes, Stil mit Schriften %(css)d Bytes, Texte %(texte)d Bytes\n" % teile)

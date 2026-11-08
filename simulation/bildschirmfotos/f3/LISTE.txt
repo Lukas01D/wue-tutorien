@@ -1,0 +1,24 @@
+Bildschirmfotos Fassung 3 (node simulation/tests/bilder.js), Gerätefaktor 2:
+1_start_handy_390x844_de.jpg
+1_start_handy_390x844_en.jpg
+1_start_laptop_1366x768_de.jpg
+1_start_laptop_1366x768_en.jpg
+1_start_beamer_1280x720_de.jpg
+1_start_beamer_1280x720_en.jpg
+2_ergebnis_handy_390x844_de.jpg
+2_ergebnis_laptop_1366x768_de.jpg
+3_erklaert_handy_390x844_de.jpg
+3_erklaert_handy_390x844_en.jpg
+3_erklaert_laptop_1366x768_de.jpg
+3_erklaert_laptop_1366x768_en.jpg
+3_erklaert_beamer_1280x720_de.jpg
+3_erklaert_beamer_1280x720_en.jpg
+4_messung_handy_390x844_de.jpg
+4_messung_laptop_1366x768_de.jpg
+5_ln_handy_390x844_de.jpg
+5_ln_handy_390x844_en.jpg
+5_ln_laptop_1366x768_de.jpg
+5_ln_laptop_1366x768_en.jpg
+6_auftrag3_handy_390x844_de.jpg
+6_auftrag3_laptop_1366x768_de.jpg
+7_modell_laptop_1366x768_de.jpg

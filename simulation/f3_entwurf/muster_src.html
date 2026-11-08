@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaffee mit Milch: Simulation (Gestaltungsmuster Fassung 3)</title>
+<style>
+/*@SCHRIFTEN@*/
+/* Gestaltungsmuster Fassung 3 zum Konzeptstopp: Optik von Entwurf A „Messprotokoll“, dazu je Element die
+   beste Lösung aus A, B, C und Variante 0 (Tabelle in simulation/KONZEPT_F3.md, Anhang A). Kein fertiger Bau. */
+:root {
+  --papier: #f6f3ea; --karte: #fffdf8; --tinte: #1c1f24; --leise: #4f5560; --linie: #8f887a; --linie-fein: #d8d1c0;
+  --blau: #1d4f91; --blau-tief: #163d70; --blau-hell: #e7eef8;
+  --k1: #8a4a17; --k1-text: #7a3f12; --k2: #1c1f24; --raum: #767164; --gitter: #e4ddcc; --gitter-haupt: #cfc7b4;
+  --schrift: "Plex Sans", "Plex Math", system-ui, sans-serif;
+  --zahl: "Plex Mono", "Plex Sans", "Plex Math", ui-monospace, monospace;
+  --formel: "Plex Math", "Plex Sans", serif;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--papier); color: var(--tinte); font-family: var(--schrift); line-height: 1.5; }
+body { margin: 0; background: var(--papier); font-size: 1rem; }
+@media (min-width: 1024px) { body { font-size: 1.0625rem; } }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .4em; font-weight: 600; }
+p { margin: 0 0 .7em; }
+.f { font-family: var(--formel); font-style: normal; }
+.leise { color: var(--leise); }
+.klein { font-size: .875rem; }
+
+/* Kopf wie die Kopfzeile eines Protokollblatts (A) */
+.kopf { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 16px; align-items: center; padding: 10px 16px;
+        border-bottom: 2px solid var(--tinte); background: var(--karte); }
+.kopf-marke { font-family: var(--zahl); font-weight: 600; border: 2px solid var(--tinte); padding: 4px 6px; }
+.kopf-zeile { margin: 0; font-family: var(--zahl); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--leise); }
+.kopf-titel { margin: 0; font-size: 1.2rem; }
+.sprache { min-height: 48px; min-width: 72px; padding: 0 12px; border: 2px solid var(--tinte); background: var(--karte);
+           font-family: var(--zahl); font-size: .95rem; color: var(--tinte); }
+@media (max-width: 600px) { .kopf { grid-template-columns: 1fr auto; padding: 8px 12px; } .kopf-marke { display: none; } .kopf-titel { font-size: 1.05rem; } }
+
+.seite { max-width: 1400px; margin: 0 auto; padding: 14px 16px 32px; }
+.zweck { margin: 0 0 12px; max-width: 70ch; }
+.zweck strong { font-weight: 600; }
+
+/* Anordnung: Laptop und Beamer zwei Spalten, rechts die Bühne (Diagramm) angeheftet; Handy eine Spalte */
+.raster { display: grid; gap: 14px; grid-template-columns: 1fr; }
+.buehne { order: 2; }
+#s1 { order: 1; } #s2 { order: 3; } #s3 { order: 4; } #s4 { order: 5; } #s5 { order: 6; } #modell { order: 7; }
+@media (min-width: 1024px) {
+  .raster { grid-template-columns: minmax(360px, 430px) minmax(0, 1fr); align-items: start; }
+  .buehne { order: 0; grid-column: 2; grid-row: 1 / span 7; position: sticky; top: 10px; }
+  .schritt, #modell { grid-column: 1; }
+}
+
+/* Schritte als Protokollabschnitte mit Nummer (A), ohne eigene Schrittleiste */
+.schritt { background: var(--karte); border: 1.5px solid var(--tinte); padding: 14px 16px; }
+.schritt[hidden] { display: none; }
+.nr { margin: 0 0 2px; font-family: var(--zahl); font-size: .8rem; letter-spacing: .06em; color: var(--blau); font-weight: 600; text-transform: uppercase; }
+.schritt h2 { font-size: 1.25rem; }
+.zu { color: var(--leise); }
+.zu .nr { color: var(--leise); }
+.erledigt { border-color: var(--linie); }
+.zusammenfassung { margin: 0; }
+
+/* Auswahl als ganze Zeile mit rundem Marker (B, C: eindeutig Einzelwahl), Linien wie Formularzeilen (A) */
+fieldset { border: 0; margin: 0 0 12px; padding: 0; min-width: 0; }
+legend { padding: 0; margin-bottom: 6px; font-weight: 600; }
+.wahl { display: grid; border-top: 1px solid var(--linie-fein); }
+.wahl label { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 6px 4px; border-bottom: 1px solid var(--linie-fein); cursor: pointer; }
+.wahl input { width: 22px; height: 22px; margin: 0; accent-color: var(--blau); flex: none; }
+.wahl label:has(input:checked) { background: var(--blau-hell); font-weight: 600; }
+.feld { min-height: 48px; padding: 6px 10px; font: inherit; font-size: 1rem; font-family: var(--zahl); border: 0; border-bottom: 2px solid var(--tinte); background: #fbf8f0; color: var(--tinte); }
+.feld-text { width: 100%; font-family: var(--schrift); }
+.zahlen-zeile { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
+.zahlen-zeile label { display: flex; gap: 8px; align-items: center; }
+.zahlen-zeile .feld { width: 6.5em; }
+.knopf { min-height: 48px; padding: 8px 16px; font: inherit; font-weight: 600; border: 2px solid var(--blau); background: var(--karte); color: var(--blau); cursor: pointer; }
+.knopf-haupt { background: var(--blau); color: #fff; }
+.knopf:focus-visible, .feld:focus-visible, .sprache:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--blau); outline-offset: 2px; }
+
+/* Bühne: Kernzahlen als Messwertzeile (A), groß genug für den Beamer (C) */
+.buehne { background: var(--karte); border: 1.5px solid var(--tinte); }
+.kern { display: grid; grid-template-columns: auto repeat(3, minmax(0, 1fr)); border-bottom: 1.5px solid var(--tinte); }
+.kern > div { padding: 6px 12px; border-right: 1px solid var(--linie-fein); min-width: 0; }
+.kern > div:last-child { border-right: 0; }
+.kern .lab { display: block; font-size: .8rem; color: var(--leise); line-height: 1.25; }
+.kern .wert { display: block; font-family: var(--zahl); font-weight: 600; font-size: 1.35rem; line-height: 1.25; white-space: nowrap; }
+.kern .zeit { font-family: var(--zahl); font-size: .85rem; color: var(--leise); align-self: center; }
+.kern .diff { color: var(--blau); }
+@media (min-width: 1024px) { .kern .wert { font-size: 1.7rem; } }
+@media (max-width: 420px) { .kern { grid-template-columns: repeat(3, minmax(0, 1fr)); } .kern .zeit { display: none; } .kern .wert { font-size: 1.15rem; } .kern > div { padding: 5px 8px; } }
+.kernsatz { margin: 0; padding: 8px 12px; border-bottom: 1px solid var(--linie-fein); background: var(--blau-hell); font-size: .95rem; }
+.dia { display: block; width: 100%; }
+.annahmen { margin: 0; padding: 6px 12px 8px; font-size: .82rem; color: var(--leise); border-top: 1px solid var(--linie-fein); }
+.annahmen a { color: var(--blau); }
+
+/* Regler: Bedienung von C (großer Griff, Plus und Minus 48 px, Wert daneben), Optik von A (Lineal mit Skalenstrichen) */
+.regler-bereich { border-top: 1.5px solid var(--tinte); padding: 6px 12px 4px; }
+.regler-paar { display: grid; gap: 0 20px; }
+@media (min-width: 1024px) { .regler-paar { grid-template-columns: 1fr 1fr; } }
+.regler { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px 6.2em; gap: 4px 8px; align-items: center; align-content: start; margin: 4px 0 8px; }
+.regler .name { grid-column: 1 / -1; font-weight: 600; font-size: .95rem; margin: 0; }
+.regler .name .einheit { font-family: var(--zahl); font-weight: 400; color: var(--leise); }
+.pm { width: 48px; height: 48px; border: 2px solid var(--tinte); background: var(--karte); font-family: var(--zahl); font-size: 1.4rem; line-height: 1; color: var(--tinte); padding: 0; }
+.lineal { position: relative; min-width: 0; }
+.lineal input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 48px; margin: 0; background: transparent; display: block; }
+.lineal input[type=range]::-webkit-slider-runnable-track { height: 20px;
+   background: linear-gradient(var(--tinte), var(--tinte)) bottom / 100% 2px no-repeat,
+               repeating-linear-gradient(90deg, var(--tinte) 0 1.5px, transparent 1.5px calc(10% - 0.15px)) bottom / calc(100% + 1.5px) 12px no-repeat,
+               repeating-linear-gradient(90deg, var(--linie) 0 1px, transparent 1px 2%) bottom / 100% 6px no-repeat; }
+.lineal input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 38px; margin-top: -9px; background: var(--blau); border: 3px solid var(--karte); outline: 2px solid var(--blau); }
+.lineal input[type=range]::-moz-range-track { height: 20px; background: linear-gradient(var(--tinte), var(--tinte)) bottom / 100% 2px no-repeat; }
+.lineal input[type=range]::-moz-range-thumb { width: 18px; height: 34px; background: var(--blau); border: 3px solid var(--karte); border-radius: 0; }
+.skala { position: relative; height: 1.1em; font-family: var(--zahl); font-size: .72rem; color: var(--leise); margin: -4px 11px 0; }
+.skala span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.regler .feld { width: 100%; text-align: right; padding: 6px 8px; }
+.regler .hinweis { grid-column: 2 / -1; margin: 0; font-size: .82rem; color: var(--leise); }
+details.gruppe { border-top: 1px solid var(--linie-fein); margin-top: 4px; }
+details.gruppe > summary { min-height: 48px; padding: 12px 0; cursor: pointer; font-size: .92rem; color: var(--leise); line-height: 1.5; }
+details.gruppe > summary b { color: var(--tinte); font-weight: 600; }
+.vorl { font-family: var(--zahl); font-size: .78rem; border: 1px solid var(--linie); padding: 0 4px; color: var(--leise); }
+
+/* Säulen und Rückmeldung */
+.saeulen-zeile { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 12px; align-items: start; }
+@media (max-width: 520px) { .saeulen-zeile { grid-template-columns: 1fr; } }
+.saeulen-titel { margin: 0 0 2px; font-size: .85rem; color: var(--leise); }
+.rueck { margin: 10px 0 0; padding: 10px 12px; border-left: 4px solid var(--blau); background: var(--blau-hell); }
+.rueck p:last-child { margin-bottom: 0; }
+.kasten-zu { border-top: 1px solid var(--linie-fein); }
+.kasten-zu summary { min-height: 48px; display: flex; align-items: center; cursor: pointer; font-weight: 600; }
+.legende { margin: 0; padding: 0 12px 6px; font-size: .8rem; color: var(--leise); font-family: var(--zahl); }
+footer { max-width: 1400px; margin: 0 auto; padding: 0 16px 24px; font-size: .8rem; color: var(--leise); }
+</style>
+</head>
+<body>
+<header class="kopf">
+  <span class="kopf-marke">T5</span>
+  <div><p class="kopf-zeile">Tutorium 5 · Wärmebilanzen, instationär global</p><h1 class="kopf-titel">Kaffee mit Milch: Simulation</h1></div>
+  <button class="sprache" type="button">DE ↔ EN</button>
+</header>
+<main class="seite">
+  <p class="zweck"><strong>Wozu?</strong> Die Seite klärt, welche Tasse nach einer Stunde wärmer ist und warum. Gedacht für die Zeit nach Teil e des Blatts: erst die Temperaturen beider Tassen nach 60 min selbst rechnen.</p>
+  <div class="raster">
+    <section class="schritt" id="s1" aria-labelledby="s1-t">
+      <p class="nr">01 Vorhersage</p>
+      <div id="s1-offen">
+        <h2 id="s1-t">Welche Tasse ist nach 60 min wärmer?</h2>
+        <p>Zwei gleiche Tassen mit Deckel, je 200 ml Kaffee mit 80 °C, Raum 20 °C. Tasse 1 bekommt 30 ml Milch aus dem Kühlschrank sofort, Tasse 2 erst nach 60 min.</p>
+        <fieldset><legend>Deine Wahl</legend><div class="wahl">
+          <label><input type="radio" name="tasse" value="1"> Tasse 1 (Milch sofort)</label>
+          <label><input type="radio" name="tasse" value="2"> Tasse 2 (Milch später)</label>
+          <label><input type="radio" name="tasse" value="0"> beide gleich warm</label></div></fieldset>
+        <fieldset><legend>Dein Grund</legend><div class="wahl">
+          <label><input type="radio" name="grund" value="e"> Die Energie bleibt erhalten.</label>
+          <label><input type="radio" name="grund" value="s"> Der schwarze Kaffee bleibt länger heiß.</label>
+          <label><input type="radio" name="grund" value="h"> Heißer Kaffee gibt mehr Wärme ab.</label>
+          <label><input type="radio" name="grund" value="x"> eigener Grund:</label></div>
+          <input class="feld feld-text" type="text" aria-label="eigener Grund" placeholder="ein Satz"></fieldset>
+        <fieldset><legend>Deine Ergebnisse aus Teil e <span class="leise">(freiwillig)</span></legend>
+          <div class="zahlen-zeile">
+            <label><span class="f">ϑ<sub>1</sub></span> <input class="feld" inputmode="decimal" aria-label="Tasse 1 in Grad Celsius"> °C</label>
+            <label><span class="f">ϑ<sub>2</sub></span> <input class="feld" inputmode="decimal" aria-label="Tasse 2 in Grad Celsius"> °C</label></div></fieldset>
+        <button class="knopf knopf-haupt" type="button" disabled>Festhalten und Kurven zeigen</button>
+      </div>
+      <p class="zusammenfassung" id="s1-zu" hidden><b>Deine Vorhersage:</b> Tasse 1, weil heißer Kaffee mehr Wärme abgibt. Deine Rechnung: 43,85 und 40,29 °C.</p>
+    </section>
+
+    <section class="buehne" id="buehne" aria-label="Diagramm">
+      <div class="kern" id="kern">
+        <div class="zeit" id="kern-zeit">nach 60 min</div>
+        <div><span class="lab">Tasse 1</span><span class="wert" id="w1">..</span></div>
+        <div><span class="lab">Tasse 2, nach der Milch</span><span class="wert" id="w2">..</span></div>
+        <div><span class="lab">Unterschied</span><span class="wert diff" id="wd">..</span></div>
+      </div>
+      <p class="kernsatz" id="kernsatz"><b>Simulation und deine Rechnung stimmen überein:</b> bestätigt ist damit die Rechnung, nicht das Modell. Ob das Modell stimmt, zeigt nur der Versuch.</p>
+      <svg class="dia" id="dia" role="img" aria-label="Temperatur über der Zeit für beide Tassen"></svg>
+      <p class="legende" id="legende">× deine Rechnung · ○ □ Beispielwerte des Blatts (berechnet, vorläufig)</p>
+      <p class="annahmen">Berechnet, nicht gemessen. Annahmen wie im Blatt: Inhalt ideal durchmischt, Deckel dicht (keine Verdunstung), Wärmeabgabe <span class="f">kA</span>(<span class="f">ϑ</span> − <span class="f">ϑ<sub>u</sub></span>) mit festem <span class="f">kA</span>, Tasse ohne Wärmekapazität, Raum konstant. <a href="#modell">Modell</a></p>
+      <div class="regler-bereich" id="regler-bereich"><div class="regler-paar">
+        <div class="regler" data-r="thM"><p class="name">Milchtemperatur <span class="f">ϑ<sub>M</sub></span> <span class="einheit">[°C]</span></p>
+          <button class="pm" type="button" aria-label="weniger">−</button><div class="lineal"><input type="range" min="2" max="80" step="0.5" aria-label="Milchtemperatur"><div class="skala"></div></div><button class="pm" type="button" aria-label="mehr">+</button><input class="feld" inputmode="decimal" aria-label="Milchtemperatur in Grad Celsius">
+          <p class="hinweis">über 30 °C erst in Auftrag 3 (nach Teil g3)</p></div>
+        <div class="regler" data-r="tZ"><p class="name">Zugabe in Tasse 2 nach <span class="f">t<sub>Z</sub></span> <span class="einheit">[min]</span></p>
+          <button class="pm" type="button" aria-label="weniger">−</button><div class="lineal"><input type="range" min="1" max="180" step="1" aria-label="Zugabe nach"><div class="skala"></div></div><button class="pm" type="button" aria-label="mehr">+</button><input class="feld" inputmode="decimal" aria-label="Zugabe in Minuten"></div></div>
+        <details class="gruppe"><summary><b>Ausgangswerte des Blatts</b> Kaffee 80 °C · Raum 20 °C · <span class="f">kA</span> 0,1994 W/K <span class="vorl">vorläufig</span> · Milch 30 ml</summary>
+          <p class="leise klein">Kaffee bei <span class="f">t</span><sub>0</sub>, Raum, <span class="f">kA</span> der Tasse in W/K (daneben: entspricht 72,0 °C nach 10 min), Milchmenge; Knopf „Werte des Blatts“.</p></details>
+      </div>
+    </section>
+
+    <section class="schritt" id="s2" aria-labelledby="s2-t">
+      <p class="nr">02 Warum?</p>
+      <h2 id="s2-t">Wohin ist die Energie gegangen?</h2>
+      <p>Beide Tassen starten mit derselben Energie in Kaffee und Milch. Warum ist Tasse 2 am Ende trotzdem kälter? Wählt die Erklärung, die die Säulen zeigen.</p>
+      <p class="saeulen-titel">An den Raum abgegebene Wärme bis zur Zugabe</p>
+      <svg id="saeulen" width="250" height="172" role="img" aria-label="An den Raum abgegebene Wärme bis zur Zugabe"></svg>
+      <fieldset><div class="wahl">
+        <label><input type="radio" name="warum" value="a" checked> Tasse 2 hat in der Stunde mehr Wärme an den Raum abgegeben.</label>
+        <label><input type="radio" name="warum" value="b"> Die kalte Milch kühlt Tasse 2 am Ende stärker ab als Tasse 1 am Anfang.</label>
+        <label><input type="radio" name="warum" value="c"> Beim Mischen geht Energie verloren.</label></div></fieldset>
+      <div class="rueck" id="rueck">
+        <p>Ja. Der schwarze Kaffee in Tasse 2 war die ganze Stunde heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: <span class="f">Q</span><sub>1</sub> = 25,49 kJ, <span class="f">Q</span><sub>2</sub> = 28,90 kJ. Die 3,41 kJ fehlen Tasse 2; geteilt durch 957,7 J/K (Kaffee und Milch) sind das 3,56 K.</p>
+        <p>Weiter auf dem Blatt: In f1 und f2 rechnet ihr das nach.</p>
+      </div>
+    </section>
+
+    <section class="schritt" id="s3"><p class="nr">03 Messung dazulegen</p>
+      <details class="kasten-zu"><summary>Eigene Messpunkte oder Beispielwerte zeigen</summary><p class="klein">Ein Eingabefeld je Tasse; Beispielwerte des Blatts einblendbar.</p></details></section>
+    <section class="schritt" id="s4"><p class="nr">04 Weiterdenken</p>
+      <details class="kasten-zu"><summary>Auftrag 1: Milch mit Raumtemperatur</summary></details>
+      <details class="kasten-zu"><summary>Auftrag 2: Zeitpunkt der Zugabe</summary></details>
+      <details class="kasten-zu"><summary>Auftrag 3: Erwärmte Milch (nach Teil g3)</summary></details></section>
+    <section class="schritt" id="s5"><p class="nr">05 Zum Schluss</p>
+      <p>Was zeigt die Simulation, was der Versuch nicht zeigen kann, und umgekehrt?</p></section>
+    <details class="schritt kasten-zu" id="modell"><summary>Modell: Annahmen, Rechnung, Grenzen</summary></details>
+  </div>
+</main>
+<footer>Gestaltungsmuster Fassung 3 zum Konzeptstopp (08.11.2026). Rechnung: Modell der Aufgabe (kaffee_modell.py), Werte aus werte.py.</footer>
+<script>
+// Modell wie kaffee_modell.py (rechne), Standardwerte aus werte.py (72 °C nach 10 min, Deckel)
+const P = { V_K: 200e-6, rho_K: 1000.0, cp_K: 4180.0, V_M: 30e-6, rho_M: 1030.0, cp_M: 3940.0, th_K0: 80.0, th_M: 5.0,
+            th_U: 20.0, t_end: 60 * 60.0, t_mess: 10 * 60.0, th_mess: 72.0 };
+const K = 273.15;
+function rechne(p) {
+  const r = Object.assign({}, p);
+  r.C_K = p.rho_K * p.V_K * p.cp_K; r.C_M = p.rho_M * p.V_M * p.cp_M; r.C_G = r.C_K + r.C_M;
+  const T_K0 = p.th_K0 + K, T_M = p.th_M + K, T_U = p.th_U + K;
+  Object.assign(r, { T_K0, T_M, T_U, T_mess: p.th_mess + K });
+  r.ln_mess = Math.log((r.T_mess - T_U) / (T_K0 - T_U)); r.kA = -r.C_K / p.t_mess * r.ln_mess;
+  r.a_K = r.kA / r.C_K; r.a_G = r.kA / r.C_G;
+  const mix = TK => (r.C_K * TK + r.C_M * T_M) / r.C_G;
+  r.T1_0 = mix(T_K0); r.e_G = Math.exp(-r.a_G * p.t_end); r.T1 = T_U + (r.T1_0 - T_U) * r.e_G;
+  r.e_K = Math.exp(-r.a_K * p.t_end); r.T2_K = T_U + (T_K0 - T_U) * r.e_K; r.T2 = mix(r.T2_K); r.dT = r.T1 - r.T2;
+  r.Q1 = r.C_G * (r.T1_0 - r.T1); r.Q2 = r.C_K * (T_K0 - r.T2_K);
+  return r;
+}
+const e = { thM: 5, tZ: 60 };
+const de = (x, n) => x.toFixed(n).replace('.', ',').replace('-', '−');
+const BSP1 = [72.5, 66.1, 60.6, 55.7, 51.4, 47.6, 44.2], BSP2 = [80.0, 72.0, 65.1, 59.1, 53.9, 49.3, 45.4], BSP2M = 41.4;
+const zustand = (new URLSearchParams(location.search)).get('zustand') || '0';
+const SVGNS = 'http://www.w3.org/2000/svg';
+function el(tag, at, txt) { const n = document.createElementNS(SVGNS, tag); for (const k in at) n.setAttribute(k, at[k]); if (txt != null) n.textContent = txt; return n; }
+
+function zeichne() {
+  const svg = document.getElementById('dia');
+  const W = svg.getBoundingClientRect().width || 600;
+  const breit = W >= 600;
+  const H = Math.round(breit ? Math.min(W * 0.5, window.innerWidth >= 1024 ? Math.max(250, window.innerHeight - 405) : 420) : W * 0.68);
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('height', H); svg.innerHTML = '';
+  const fs = breit ? 13 : 12;
+  const L = 46, R = 22, T = 12, B = 38;
+  const xmax = Math.max(60, Math.ceil(e.tZ / 10) * 10), ymin = 10, ymax = 90;
+  const X = t => L + (W - L - R) * t / xmax, Y = v => T + (H - T - B) * (ymax - v) / (ymax - ymin);
+  const g = el('g', {});
+  // Raster: Hauptlinien alle 10 min und 10 K, Hilfslinien alle 5 (kein Millimeterraster: Kohärenz)
+  for (let t = 0; t <= xmax; t += 5) g.appendChild(el('line', { x1: X(t), x2: X(t), y1: Y(ymax), y2: Y(ymin), stroke: t % 10 ? 'var(--gitter)' : 'var(--gitter-haupt)', 'stroke-width': 1 }));
+  for (let v = ymin; v <= ymax; v += 5) g.appendChild(el('line', { x1: X(0), x2: X(xmax), y1: Y(v), y2: Y(v), stroke: v % 10 ? 'var(--gitter)' : 'var(--gitter-haupt)', 'stroke-width': 1 }));
+  g.appendChild(el('line', { x1: X(0), x2: X(xmax), y1: Y(ymin), y2: Y(ymin), stroke: 'var(--tinte)', 'stroke-width': 1.5 }));
+  g.appendChild(el('line', { x1: X(0), x2: X(0), y1: Y(ymin), y2: Y(ymax), stroke: 'var(--tinte)', 'stroke-width': 1.5 }));
+  const sx = xmax > 90 ? 30 : 10;
+  for (let t = 0; t <= xmax; t += sx) g.appendChild(el('text', { x: X(t), y: Y(ymin) + 15, 'text-anchor': 'middle', 'font-size': fs, 'font-family': 'var(--zahl)', fill: 'var(--leise)' }, t));
+  for (let v = ymin; v <= ymax; v += 20) g.appendChild(el('text', { x: X(0) - 6, y: Y(v) + 4, 'text-anchor': 'end', 'font-size': fs, 'font-family': 'var(--zahl)', fill: 'var(--leise)' }, v));
+  g.appendChild(el('text', { x: (X(0) + X(xmax)) / 2, y: H - 6, 'text-anchor': 'middle', 'font-size': fs, fill: 'var(--tinte)' }, 'Zeit t [min]'));
+  const yl = el('text', { x: 12, y: (Y(ymin) + Y(ymax)) / 2, 'text-anchor': 'middle', 'font-size': fs, fill: 'var(--tinte)', transform: `rotate(-90 12 ${(Y(ymin) + Y(ymax)) / 2})` }, 'Temperatur ϑ [°C]');
+  g.appendChild(yl);
+  svg.appendChild(g);
+  // Raumlinie
+  svg.appendChild(el('line', { x1: X(0), x2: X(xmax), y1: Y(20), y2: Y(20), stroke: 'var(--raum)', 'stroke-width': 2, 'stroke-dasharray': '2 4' }));
+  svg.appendChild(el('text', { x: X(xmax) - 2, y: Y(20) - 6, 'text-anchor': 'end', 'font-size': fs, fill: 'var(--leise)' }, 'Raum 20,0 °C'));
+  if (zustand === '0') {
+    svg.appendChild(el('text', { x: (X(0) + X(xmax)) / 2, y: Y(55), 'text-anchor': 'middle', 'font-size': fs + 1, fill: 'var(--leise)' }, 'Kurven erscheinen nach deiner Vorhersage.'));
+    return;
+  }
+  const p = Object.assign({}, P, { th_M: e.thM, t_end: e.tZ * 60 });
+  const r = rechne(p);
+  const pts1 = [], pts2 = [];
+  for (let i = 0; i <= 120; i++) { const t = e.tZ * 60 * i / 120;
+    pts1.push(`${X(t / 60).toFixed(1)},${Y(r.T_U - K + (r.T1_0 - r.T_U) * Math.exp(-r.a_G * t)).toFixed(1)}`);
+    pts2.push(`${X(t / 60).toFixed(1)},${Y(r.T_U - K + (r.T_K0 - r.T_U) * Math.exp(-r.a_K * t)).toFixed(1)}`); }
+  // Mischsprünge kurz gepunktet
+  svg.appendChild(el('line', { x1: X(0), x2: X(0), y1: Y(80), y2: Y(r.T1_0 - K), stroke: 'var(--k1)', 'stroke-width': 2, 'stroke-dasharray': '1.5 3' }));
+  svg.appendChild(el('line', { x1: X(e.tZ), x2: X(e.tZ), y1: Y(r.T2_K - K), y2: Y(r.T2 - K), stroke: 'var(--k2)', 'stroke-width': 2, 'stroke-dasharray': '1.5 3' }));
+  svg.appendChild(el('polyline', { points: pts1.join(' '), fill: 'none', stroke: 'var(--k1)', 'stroke-width': breit ? 3 : 2.5 }));
+  svg.appendChild(el('polyline', { points: pts2.join(' '), fill: 'none', stroke: 'var(--k2)', 'stroke-width': breit ? 3 : 2.5, 'stroke-dasharray': '7 4' }));
+  svg.appendChild(el('circle', { cx: X(e.tZ), cy: Y(r.T1 - K), r: 4.5, fill: 'var(--karte)', stroke: 'var(--k1)', 'stroke-width': 2.5 }));
+  svg.appendChild(el('circle', { cx: X(e.tZ), cy: Y(r.T2 - K), r: 4.5, fill: 'var(--karte)', stroke: 'var(--k2)', 'stroke-width': 2.5 }));
+  // Direktbeschriftung an den Kurven (keine Legende)
+  const tl = e.tZ * 0.22;
+  svg.appendChild(el('text', { x: X(tl), y: Y(r.T_U - K + (r.T_K0 - r.T_U) * Math.exp(-r.a_K * tl * 60)) - 9, 'font-size': fs, 'font-weight': 600, fill: 'var(--k2)' }, `Tasse 2: Milch nach ${e.tZ} min`));
+  const tl1 = e.tZ * 0.62;
+  svg.appendChild(el('text', { x: X(tl1), y: Y(r.T_U - K + (r.T1_0 - r.T_U) * Math.exp(-r.a_G * tl1 * 60)) + 26, 'text-anchor': 'end', 'font-size': fs, 'font-weight': 600, fill: 'var(--k1-text)' }, 'Tasse 1: Milch sofort'));
+  // Beispielwerte des Blatts (hohl) und eigene Rechnung (Kreuz)
+  if (zustand === '2') {
+    BSP1.forEach((v, i) => svg.appendChild(el('circle', { cx: X(10 * i), cy: Y(v), r: 4, fill: 'none', stroke: 'var(--k1)', 'stroke-width': 1.8 })));
+    BSP2.forEach((v, i) => svg.appendChild(el('rect', { x: X(10 * i) - 4, y: Y(v) - 4, width: 8, height: 8, fill: 'none', stroke: 'var(--k2)', 'stroke-width': 1.8 })));
+    svg.appendChild(el('rect', { x: X(60) - 4, y: Y(BSP2M) - 4, width: 8, height: 8, fill: 'none', stroke: 'var(--k2)', 'stroke-width': 1.8 }));
+  }
+  [43.85, 40.29].forEach(v => svg.appendChild(el('text', { x: X(e.tZ) + 13, y: Y(v) + 5, 'text-anchor': 'middle', 'font-size': 15, 'font-weight': 600, fill: 'var(--blau)' }, '×')));
+  document.getElementById('w1').textContent = de(r.T1 - K, 2) + ' °C';
+  document.getElementById('w2').textContent = de(r.T2 - K, 2) + ' °C';
+  document.getElementById('wd').textContent = de(r.dT, 2) + ' K';
+  document.getElementById('kern-zeit').textContent = `nach ${e.tZ} min`;
+  saeulen(r);
+}
+
+function saeulen(r) {
+  const s = document.getElementById('saeulen'); s.innerHTML = '';
+  const b = 150, top = 26, max = Math.max(r.Q1, r.Q2);
+  const h1 = (b - top) * r.Q1 / max, h2 = (b - top) * r.Q2 / max;
+  const defs = el('defs', {}); const pat = el('pattern', { id: 'schraffur', width: 6, height: 6, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' });
+  pat.appendChild(el('rect', { width: 6, height: 6, fill: 'var(--karte)' })); pat.appendChild(el('line', { x1: 0, y1: 0, x2: 0, y2: 6, stroke: 'var(--k2)', 'stroke-width': 2.4 }));
+  defs.appendChild(pat); s.appendChild(defs);
+  s.appendChild(el('rect', { x: 20, y: b - h1, width: 56, height: h1, fill: 'var(--k1)' }));
+  s.appendChild(el('rect', { x: 100, y: b - h2, width: 56, height: h2, fill: 'url(#schraffur)', stroke: 'var(--k2)', 'stroke-width': 2 }));
+  s.appendChild(el('line', { x1: 10, x2: 170, y1: b, y2: b, stroke: 'var(--tinte)', 'stroke-width': 1.5 }));
+  s.appendChild(el('line', { x1: 78, x2: 168, y1: b - h1, y2: b - h1, stroke: 'var(--blau)', 'stroke-width': 1.5, 'stroke-dasharray': '3 3' }));
+  s.appendChild(el('path', { d: `M162 ${b - h2} h8 V${b - h1} h-8`, fill: 'none', stroke: 'var(--blau)', 'stroke-width': 2.5 }));
+  const ym = (2 * b - h1 - h2) / 2;
+  s.appendChild(el('text', { x: 176, y: ym - 2, 'font-size': 13, 'font-weight': 600, fill: 'var(--blau)' }, 'Q₂ − Q₁'));
+  if (zustand === '2') s.appendChild(el('text', { x: 176, y: ym + 14, 'font-size': 13, 'font-weight': 600, 'font-family': 'var(--zahl)', fill: 'var(--blau)' }, de((r.Q2 - r.Q1) / 1000, 2) + ' kJ'));
+  s.appendChild(el('text', { x: 48, y: b + 17, 'text-anchor': 'middle', 'font-size': 13, fill: 'var(--k1-text)', 'font-weight': 600 }, 'Tasse 1'));
+  s.appendChild(el('text', { x: 128, y: b + 17, 'text-anchor': 'middle', 'font-size': 13, fill: 'var(--k2)', 'font-weight': 600 }, 'Tasse 2'));
+  if (zustand === '2') {
+    s.appendChild(el('text', { x: 48, y: b - h1 - 6, 'text-anchor': 'middle', 'font-size': 12, 'font-family': 'var(--zahl)' }, de(r.Q1 / 1000, 2) + ' kJ'));
+    s.appendChild(el('text', { x: 128, y: b - h2 - 6, 'text-anchor': 'middle', 'font-size': 12, 'font-family': 'var(--zahl)' }, de(r.Q2 / 1000, 2) + ' kJ'));
+  }
+}
+
+function regler() {
+  document.querySelectorAll('.regler').forEach(div => {
+    const id = div.dataset.r, inp = div.querySelector('input[type=range]'), feld = div.querySelector('.feld');
+    const min = +inp.min, max = +inp.max, sk = div.querySelector('.skala');
+    const marken = id === 'thM' ? [2, 20, 40, 60, 80] : [1, 60, 120, 180];
+    sk.innerHTML = marken.map(m => `<span style="left:${(100 * (m - min) / (max - min)).toFixed(2)}%">${m}</span>`).join('');
+    const setze = v => { v = Math.min(max, Math.max(min, v)); if (id === 'thM') v = Math.min(v, 30); e[id] = v; inp.value = v; feld.value = de(v, id === 'thM' ? 1 : 0); zeichne(); };
+    inp.addEventListener('input', () => setze(+inp.value));
+    const [minus, plus] = div.querySelectorAll('.pm');
+    minus.addEventListener('click', () => setze(e[id] - +inp.step)); plus.addEventListener('click', () => setze(e[id] + +inp.step));
+    feld.addEventListener('change', () => setze(parseFloat(feld.value.replace(',', '.'))));
+    inp.value = e[id]; feld.value = de(e[id], id === 'thM' ? 1 : 0);
+  });
+}
+
+function zustandSetzen() {
+  const z0 = zustand === '0';
+  document.getElementById('s1-offen').hidden = !z0;
+  document.getElementById('s1-zu').hidden = z0;
+  document.getElementById('s1').classList.toggle('erledigt', !z0);
+  ['s2', 's3', 's4', 's5', 'modell'].forEach(id => document.getElementById(id).hidden = z0);
+  document.getElementById('kern').hidden = z0;
+  document.getElementById('kernsatz').hidden = z0;
+  document.getElementById('legende').hidden = zustand !== '2';
+  document.getElementById('regler-bereich').hidden = zustand !== '2';
+  document.getElementById('rueck').hidden = zustand !== '2';
+  if (window.innerWidth < 1024 && z0) document.getElementById('buehne').hidden = true;
+}
+zustandSetzen(); regler(); zeichne();
+window.addEventListener('resize', zeichne);
+</script>
+</body>
+</html>

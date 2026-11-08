@@ -1,0 +1,56 @@
+[
+  {
+    "lang": "de",
+    "linkZ1": {
+      "hash": "#modell",
+      "hidden": true
+    },
+    "clipping": [
+      {
+        "text": "Modell mit kA = 0,1994 W/K",
+        "right": 358.39166259765625,
+        "left": 202.26666259765625,
+        "top": 82.8773193359375,
+        "bottom": 97.8773193359375,
+        "width": 356,
+        "height": 242
+      }
+    ],
+    "reset": {
+      "zustand": 0,
+      "ansage": "Nach 60 min: Tasse 1 43,91 °C, Tasse 2 40,41 °C, Unterschied 3,50 K.",
+      "kern": "\n        nach 60 min\n        Tasse 143,91 °C\n        Tasse 2, nach der Milch40,41 °C\n        Unterschied3,50 K\n      ",
+      "saeulen": "Q₂ − Q₁Tasse 1Tasse 23,35 kJ25,55 kJ28,90 kJ",
+      "aria": "Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 1 25,55 kJ, Tasse 2 28,90 kJ, Unterschied 3,35 kJ"
+    },
+    "accessibility": "- status: \"Nach 60 min: Tasse 1 43,91 °C, Tasse 2 40,41 °C, Unterschied 3,50 K.\"",
+    "race": "Nach 60 min: Tasse 1 43,88 °C, Tasse 2 40,35 °C, Unterschied 3,53 K."
+  },
+  {
+    "lang": "en",
+    "linkZ1": {
+      "hash": "#modell",
+      "hidden": true
+    },
+    "clipping": [
+      {
+        "text": "model with kA = 0.1994 W/K",
+        "right": 362.03228759765625,
+        "left": 202.26666259765625,
+        "top": 82.8773193359375,
+        "bottom": 97.8773193359375,
+        "width": 356,
+        "height": 242
+      }
+    ],
+    "reset": {
+      "zustand": 0,
+      "ansage": "After 60 min: cup 1 43.91 °C, cup 2 40.41 °C, difference 3.50 K.",
+      "kern": "\n        after 60 min\n        Cup 143.91 °C\n        Cup 2, after the milk40.41 °C\n        Difference3.50 K\n      ",
+      "saeulen": "Q₂ − Q₁Cup 1Cup 23.35 kJ25.55 kJ28.90 kJ",
+      "aria": "Bars: heat released to the room until the milk is added, cup 1 25.55 kJ, cup 2 28.90 kJ, difference 3.35 kJ"
+    },
+    "accessibility": "- status: \"After 60 min: cup 1 43.91 °C, cup 2 40.41 °C, difference 3.50 K.\"",
+    "race": "After 60 min: cup 1 43.88 °C, cup 2 40.35 °C, difference 3.53 K."
+  }
+]
