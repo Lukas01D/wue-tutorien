@@ -29,7 +29,21 @@
 | Gerätetest iPhone mit Safari (`simulation/ABNAHME_IPHONE.md`) | bestanden (TL, 08.11.2026) |
 | Freigabe von Fassung 3 | **freigegeben durch die TL am 08.11.2026 um 22:24 Uhr** (F1 in `ENTSCHEIDUNGEN_F3.md`) |
 
-**Weiter offen:** Ersetzen der Hauptadresse `waermeuebertragung-kaffee` durch Fassung 3 (V1, Schritt 3; Startsatz an Codex „Ersetze die Kaffee-Seite durch Fassung 3.“), danach kurzer Live-Abgleich der Hauptadresse; Android, Bildschirmleser und Beamer im Hörsaal nicht gemeldet.
+### Hauptadresse nach dem Austausch (08.11.2026, gegen 22:35 Uhr, Claude)
+
+Codex hat die Hauptadresse durch Fassung 3 ersetzt und die Prüfadresse wieder privat gestellt (Nachweis `simulation/VEROEFFENTLICHUNG_NACHWEIS.md` auf `codex/kaffee-f3-veroeffentlichung`, 7077e1c; dort war der HTTP-Abruf gesperrt). Abruf und Bedienung wie oben, ohne Anmeldung.
+
+| Prüfpunkt | Ergebnis |
+|:--|:--|
+| Hauptadresse <https://waermeuebertragung-kaffee.qarri196.chatgpt.site/> | bestanden: HTTP 200, `text/html`, Cloudflare; liefert Fassung 3 |
+| Datei gleich dem Bau | bestanden mit der bekannten Einfügung: 178 403 Bytes (SHA-256 `55c8e34c9628f2b5…`); ohne das Cloudflare-Skript (1 114 Bytes, durch die CSP blockiert, L1) bytegleich mit `simulation/site/index.html` (177 289 Bytes, `95cff1f2…9702`) |
+| Fuß | „Stand 2026-11-08 · Version 6700332355“ |
+| Ablauf, Zahlen, Sperren, Englisch, „Von vorn“ | bestanden wie bei der Prüf-Site (43,85 / 40,29 / 3,56; 25,49, 28,90, 3,41 kJ; Milch über 30 °C erst nach Auftrag 3) |
+| Konsole, Netzwerk, Beamer 1280 × 720, Handy 390 px | bestanden: keine Skriptfehler, keine fremden Anfragen, alles im Bild, kein waagerechtes Scrollen |
+| Prüfadresse privat | bestanden: <https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site/> antwortet ohne Anmeldung mit HTTP 401, keine Seite ausgeliefert |
+| QR-Code (`simulation/qr/`) | zeigt auf die Hauptadresse, gilt damit für Fassung 3 |
+
+**Ergebnis: bestanden.** Fassung 3 ist unter der Hauptadresse öffentlich. Weiter offen: Android, Bildschirmleser und Beamer im Hörsaal (nicht gemeldet).
 
 ## Fassung 2 (06.11.2026)
 
