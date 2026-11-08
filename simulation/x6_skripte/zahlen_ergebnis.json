@@ -1,0 +1,18 @@
+{
+  "faelle": 33,
+  "vergleiche": 858,
+  "maxRel": 8.532967568916755e-12,
+  "texteGeprueft": 34,
+  "fehler": [],
+  "standard": {
+    "thK0": 80,
+    "thM": 5,
+    "thU": 20,
+    "VK_ml": 200,
+    "VM_ml": 30,
+    "thMess": 72,
+    "tZ": 60,
+    "thMh": 70,
+    "trink": 60
+  }
+}

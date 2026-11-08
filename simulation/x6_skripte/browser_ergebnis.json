@@ -1,0 +1,2043 @@
+{
+  "browser": "154.0.8037.57",
+  "laeufe": [
+    {
+      "width": 390,
+      "height": 844,
+      "lang": "de",
+      "states": [
+        {
+          "state": "Z0",
+          "snapshot": {
+            "leaks": [],
+            "attrs": [],
+            "ansage": "",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [],
+            "passes": 24
+          }
+        },
+        {
+          "state": "Z1",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Tasse 1 (Milch sofort). Grund: Heißer Kaffee gibt mehr Wärme ab. Deine Rechnung aus e: 43,85 und 40,29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43,85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40,29 °C"
+              }
+            ],
+            "attrs": [],
+            "ansage": "",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "bars": "Q₂ − Q₁Tasse 1Tasse 2",
+          "barLabel": "Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 2 mehr als Tasse 1",
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z2",
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 28
+          },
+          "barText": "Q₂ − Q₁Tasse 1Tasse 23,41 kJ25,49 kJ28,90 kJ"
+        },
+        {
+          "state": "alle_Auftraege_und_Modell",
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 29
+          }
+        },
+        {
+          "state": "Z0_nach_Von_vorn",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Tasse 1 (Milch sofort). Grund: Heißer Kaffee gibt mehr Wärme ab. Deine Rechnung aus e: 43,85 und 40,29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43,85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40,29 °C"
+              },
+              {
+                "el": "text",
+                "text": "25,49 kJ"
+              },
+              {
+                "el": "text",
+                "text": "28,90 kJ"
+              },
+              {
+                "el": "ansage",
+                "text": "Nach 60 min: Tasse 1 43,85 °C, Tasse 2 40,29 °C, Unterschied 3,56 K."
+              }
+            ],
+            "attrs": [
+              {
+                "el": "saeulen",
+                "a": "aria-label",
+                "v": "Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 1 25,49 kJ, Tasse 2 28,90 kJ, Unterschied 3,41 kJ"
+              }
+            ],
+            "ansage": "Nach 60 min: Tasse 1 43,85 °C, Tasse 2 40,29 °C, Unterschied 3,56 K.",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [],
+            "passes": 24
+          }
+        }
+      ],
+      "controls": [
+        {
+          "id": "thM",
+          "comma": 5.5,
+          "point": 5.5,
+          "plus": 6,
+          "minus": 5.5,
+          "Home": 2,
+          "ArrowRight": 2.5,
+          "PageUp": 5.5,
+          "PageDown": 2.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 11,
+          "invalid": "true"
+        },
+        {
+          "id": "tZ",
+          "comma": 61,
+          "point": 61,
+          "plus": 62,
+          "minus": 61,
+          "Home": 1,
+          "ArrowRight": 2,
+          "PageUp": 20,
+          "PageDown": 2,
+          "End": 180,
+          "ArrowLeft": 179,
+          "drag": 58,
+          "invalid": "true"
+        },
+        {
+          "id": "thK0",
+          "comma": 80.5,
+          "point": 80.5,
+          "plus": 81,
+          "minus": 80.5,
+          "Home": 60,
+          "ArrowRight": 60.5,
+          "PageUp": 64,
+          "PageDown": 60.5,
+          "End": 95,
+          "ArrowLeft": 94.5,
+          "drag": 71,
+          "invalid": "true"
+        },
+        {
+          "id": "thU",
+          "comma": 20.5,
+          "point": 20.5,
+          "plus": 21,
+          "minus": 20.5,
+          "Home": 10,
+          "ArrowRight": 10.5,
+          "PageUp": 12.5,
+          "PageDown": 10.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 16.5,
+          "invalid": "true"
+        },
+        {
+          "id": "kA",
+          "comma": 0.2345,
+          "point": 0.2345,
+          "plus": 0.2395,
+          "minus": 0.2345,
+          "Home": 0.05,
+          "ArrowRight": 0.055,
+          "PageUp": 0.13,
+          "PageDown": 0.055,
+          "End": 0.8,
+          "ArrowLeft": 0.795,
+          "drag": 0.29,
+          "invalid": "true"
+        },
+        {
+          "id": "VM_ml",
+          "comma": 35,
+          "point": 35,
+          "plus": 40,
+          "minus": 35,
+          "Home": 10,
+          "ArrowRight": 15,
+          "PageUp": 25,
+          "PageDown": 15,
+          "End": 100,
+          "ArrowLeft": 95,
+          "drag": 40,
+          "invalid": "true"
+        }
+      ],
+      "measurements": [
+        {
+          "id": "m1",
+          "v": "72,5 x 60.6 55,7 51.4 47,6 44.2",
+          "text": "erkannt in °C: 0 min 72,5 · 20 min 60,6 · 30 min 55,7 · 40 min 51,4 · 50 min 47,6 · 60 min 44,2",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "80 72 65.1 59,1 53.9 49,3 45.4 41,4",
+          "text": "erkannt in °C: 0 min 80,0 · 10 min 72,0 · 20 min 65,1 · 30 min 59,1 · 40 min 53,9 · 50 min 49,3 · 60 min 45,4 · 60 min, nach der Milch 41,4",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "-1",
+          "text": "−1,0 °C liegt nicht zwischen 0 und 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "101",
+          "text": "101,0 °C liegt nicht zwischen 0 und 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "NaN",
+          "text": "„NaN“ ist keine Zahl.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "1 2 3 4 5 6 7 8",
+          "text": "Höchstens 7 Werte.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "1 2 3 4 5 6 7 8 9",
+          "text": "Höchstens 8 Werte.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "<img src=https://example.org/x>",
+          "text": "„<img“ ist keine Zahl.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "20 90",
+          "text": "erkannt in °C: 0 min 20,0 · 10 min 90,0 90,0 °C liegt über dem ersten Wert von Tasse 2. Bitte prüfen.",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "",
+          "text": "",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "",
+          "text": "",
+          "invalid": null
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:8765/?lang=de",
+        "http://127.0.0.1:8765/?lang=de"
+      ],
+      "errors": [],
+      "consoleErrors": [],
+      "modelLinkZ1": {
+        "hash": "#modell",
+        "hidden": true
+      },
+      "hotLocked": {
+        "invalid": "true",
+        "state": 5
+      },
+      "ln": {
+        "clipping": [
+          {
+            "text": "Modell mit kA = 0,1994 W/K",
+            "x": 202.26666259765625,
+            "y": 82.8773193359375,
+            "w": 156.125,
+            "h": 15,
+            "svgW": 356,
+            "svgH": 242
+          }
+        ],
+        "description": "Tasse 2 vor der Milch als ln-Darstellung. Modell mit kA = 0,1994 W/K."
+      },
+      "resetHtml": {
+        "kern": "\n        nach 60 min\n        Tasse 143,85 °C\n        Tasse 2, nach der Milch40,29 °C\n        Unterschied3,56 K\n      ",
+        "kernsatz": "Simulation und deine Rechnung stimmen überein: bestätigt ist damit die Rechnung, nicht das Modell. Ob das Modell stimmt, zeigt nur der Versuch.",
+        "saeulen": "Q₂ − Q₁Tasse 1Tasse 23,41 kJ25,49 kJ28,90 kJ"
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "lang": "en",
+      "states": [
+        {
+          "state": "Z0",
+          "snapshot": {
+            "leaks": [],
+            "attrs": [],
+            "ansage": "",
+            "title": "Coffee with milk: simulation"
+          },
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [],
+            "passes": 24
+          }
+        },
+        {
+          "state": "Z1",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Cup 1 (milk right away). Reason: Hotter coffee releases more heat. Your calculation from e: 43.85 and 40.29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43.85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40.29 °C"
+              }
+            ],
+            "attrs": [],
+            "ansage": "",
+            "title": "Coffee with milk: simulation"
+          },
+          "bars": "Q₂ − Q₁Cup 1Cup 2",
+          "barLabel": "Bars: heat released to the room until the milk is added, cup 2 more than cup 1",
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z2",
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 28
+          },
+          "barText": "Q₂ − Q₁Cup 1Cup 23.41 kJ25.49 kJ28.90 kJ"
+        },
+        {
+          "state": "alle_Auftraege_und_Modell",
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 29
+          }
+        },
+        {
+          "state": "Z0_nach_Von_vorn",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Cup 1 (milk right away). Reason: Hotter coffee releases more heat. Your calculation from e: 43.85 and 40.29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43.85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40.29 °C"
+              },
+              {
+                "el": "text",
+                "text": "25.49 kJ"
+              },
+              {
+                "el": "text",
+                "text": "28.90 kJ"
+              },
+              {
+                "el": "ansage",
+                "text": "After 60 min: cup 1 43.85 °C, cup 2 40.29 °C, difference 3.56 K."
+              }
+            ],
+            "attrs": [
+              {
+                "el": "saeulen",
+                "a": "aria-label",
+                "v": "Bars: heat released to the room until the milk is added, cup 1 25.49 kJ, cup 2 28.90 kJ, difference 3.41 kJ"
+              }
+            ],
+            "ansage": "After 60 min: cup 1 43.85 °C, cup 2 40.29 °C, difference 3.56 K.",
+            "title": "Coffee with milk: simulation"
+          },
+          "layout": {
+            "width": 390,
+            "scrollWidth": 390,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [],
+            "passes": 24
+          }
+        }
+      ],
+      "controls": [
+        {
+          "id": "thM",
+          "comma": 5.5,
+          "point": 5.5,
+          "plus": 6,
+          "minus": 5.5,
+          "Home": 2,
+          "ArrowRight": 2.5,
+          "PageUp": 5.5,
+          "PageDown": 2.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 11,
+          "invalid": "true"
+        },
+        {
+          "id": "tZ",
+          "comma": 61,
+          "point": 61,
+          "plus": 62,
+          "minus": 61,
+          "Home": 1,
+          "ArrowRight": 2,
+          "PageUp": 20,
+          "PageDown": 2,
+          "End": 180,
+          "ArrowLeft": 179,
+          "drag": 58,
+          "invalid": "true"
+        },
+        {
+          "id": "thK0",
+          "comma": 80.5,
+          "point": 80.5,
+          "plus": 81,
+          "minus": 80.5,
+          "Home": 60,
+          "ArrowRight": 60.5,
+          "PageUp": 64,
+          "PageDown": 60.5,
+          "End": 95,
+          "ArrowLeft": 94.5,
+          "drag": 71,
+          "invalid": "true"
+        },
+        {
+          "id": "thU",
+          "comma": 20.5,
+          "point": 20.5,
+          "plus": 21,
+          "minus": 20.5,
+          "Home": 10,
+          "ArrowRight": 10.5,
+          "PageUp": 12.5,
+          "PageDown": 10.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 16.5,
+          "invalid": "true"
+        },
+        {
+          "id": "kA",
+          "comma": 0.2345,
+          "point": 0.2345,
+          "plus": 0.2395,
+          "minus": 0.2345,
+          "Home": 0.05,
+          "ArrowRight": 0.055,
+          "PageUp": 0.13,
+          "PageDown": 0.055,
+          "End": 0.8,
+          "ArrowLeft": 0.795,
+          "drag": 0.29,
+          "invalid": "true"
+        },
+        {
+          "id": "VM_ml",
+          "comma": 35,
+          "point": 35,
+          "plus": 40,
+          "minus": 35,
+          "Home": 10,
+          "ArrowRight": 15,
+          "PageUp": 25,
+          "PageDown": 15,
+          "End": 100,
+          "ArrowLeft": 95,
+          "drag": 40,
+          "invalid": "true"
+        }
+      ],
+      "measurements": [
+        {
+          "id": "m1",
+          "v": "72,5 x 60.6 55,7 51.4 47,6 44.2",
+          "text": "recognised in °C: 0 min 72.5 · 20 min 60.6 · 30 min 55.7 · 40 min 51.4 · 50 min 47.6 · 60 min 44.2",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "80 72 65.1 59,1 53.9 49,3 45.4 41,4",
+          "text": "recognised in °C: 0 min 80.0 · 10 min 72.0 · 20 min 65.1 · 30 min 59.1 · 40 min 53.9 · 50 min 49.3 · 60 min 45.4 · 60 min, after the milk 41.4",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "-1",
+          "text": "−1.0 °C is not between 0 and 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "101",
+          "text": "101.0 °C is not between 0 and 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "NaN",
+          "text": "“NaN” is not a number.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "1 2 3 4 5 6 7 8",
+          "text": "At most 7 values.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "1 2 3 4 5 6 7 8 9",
+          "text": "At most 8 values.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "<img src=https://example.org/x>",
+          "text": "“<img” is not a number.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "20 90",
+          "text": "recognised in °C: 0 min 20.0 · 10 min 90.0 90.0 °C is above the first value of cup 2. Please check.",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "",
+          "text": "",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "",
+          "text": "",
+          "invalid": null
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:8765/?lang=en",
+        "http://127.0.0.1:8765/?lang=en"
+      ],
+      "errors": [],
+      "consoleErrors": [],
+      "modelLinkZ1": {
+        "hash": "#modell",
+        "hidden": true
+      },
+      "hotLocked": {
+        "invalid": "true",
+        "state": 5
+      },
+      "ln": {
+        "clipping": [
+          {
+            "text": "model with kA = 0.1994 W/K",
+            "x": 202.26666259765625,
+            "y": 82.8773193359375,
+            "w": 159.765625,
+            "h": 15,
+            "svgW": 356,
+            "svgH": 242
+          }
+        ],
+        "description": "Cup 2 before the milk as a ln plot. model with kA = 0.1994 W/K."
+      },
+      "resetHtml": {
+        "kern": "\n        after 60 min\n        Cup 143.85 °C\n        Cup 2, after the milk40.29 °C\n        Difference3.56 K\n      ",
+        "kernsatz": "Simulation and your calculation agree: this confirms your calculation, not the model. Only the experiment shows whether the model is right.",
+        "saeulen": "Q₂ − Q₁Cup 1Cup 23.41 kJ25.49 kJ28.90 kJ"
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "lang": "de",
+      "states": [
+        {
+          "state": "Z0",
+          "snapshot": {
+            "leaks": [],
+            "attrs": [],
+            "ansage": "",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z1",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Tasse 1 (Milch sofort). Grund: Heißer Kaffee gibt mehr Wärme ab. Deine Rechnung aus e: 43,85 und 40,29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43,85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40,29 °C"
+              }
+            ],
+            "attrs": [],
+            "ansage": "",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "bars": "Q₂ − Q₁Tasse 1Tasse 2",
+          "barLabel": "Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 2 mehr als Tasse 1",
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z2",
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 28
+          },
+          "barText": "Q₂ − Q₁Tasse 1Tasse 23,41 kJ25,49 kJ28,90 kJ"
+        },
+        {
+          "state": "alle_Auftraege_und_Modell",
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 29
+          }
+        },
+        {
+          "state": "Z0_nach_Von_vorn",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Tasse 1 (Milch sofort). Grund: Heißer Kaffee gibt mehr Wärme ab. Deine Rechnung aus e: 43,85 und 40,29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43,85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40,29 °C"
+              },
+              {
+                "el": "text",
+                "text": "25,49 kJ"
+              },
+              {
+                "el": "text",
+                "text": "28,90 kJ"
+              },
+              {
+                "el": "ansage",
+                "text": "Nach 60 min: Tasse 1 43,85 °C, Tasse 2 40,29 °C, Unterschied 3,56 K."
+              }
+            ],
+            "attrs": [
+              {
+                "el": "saeulen",
+                "a": "aria-label",
+                "v": "Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 1 25,49 kJ, Tasse 2 28,90 kJ, Unterschied 3,41 kJ"
+              }
+            ],
+            "ansage": "Nach 60 min: Tasse 1 43,85 °C, Tasse 2 40,29 °C, Unterschied 3,56 K.",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        }
+      ],
+      "controls": [
+        {
+          "id": "thM",
+          "comma": 5.5,
+          "point": 5.5,
+          "plus": 6,
+          "minus": 5.5,
+          "Home": 2,
+          "ArrowRight": 2.5,
+          "PageUp": 5.5,
+          "PageDown": 2.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 11.5,
+          "invalid": "true"
+        },
+        {
+          "id": "tZ",
+          "comma": 61,
+          "point": 61,
+          "plus": 62,
+          "minus": 61,
+          "Home": 1,
+          "ArrowRight": 2,
+          "PageUp": 20,
+          "PageDown": 2,
+          "End": 180,
+          "ArrowLeft": 179,
+          "drag": 61,
+          "invalid": "true"
+        },
+        {
+          "id": "thK0",
+          "comma": 80.5,
+          "point": 80.5,
+          "plus": 81,
+          "minus": 80.5,
+          "Home": 60,
+          "ArrowRight": 60.5,
+          "PageUp": 64,
+          "PageDown": 60.5,
+          "End": 95,
+          "ArrowLeft": 94.5,
+          "drag": 71.5,
+          "invalid": "true"
+        },
+        {
+          "id": "thU",
+          "comma": 20.5,
+          "point": 20.5,
+          "plus": 21,
+          "minus": 20.5,
+          "Home": 10,
+          "ArrowRight": 10.5,
+          "PageUp": 12.5,
+          "PageDown": 10.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 16.5,
+          "invalid": "true"
+        },
+        {
+          "id": "kA",
+          "comma": 0.2345,
+          "point": 0.2345,
+          "plus": 0.2395,
+          "minus": 0.2345,
+          "Home": 0.05,
+          "ArrowRight": 0.055,
+          "PageUp": 0.13,
+          "PageDown": 0.055,
+          "End": 0.8,
+          "ArrowLeft": 0.795,
+          "drag": 0.3,
+          "invalid": "true"
+        },
+        {
+          "id": "VM_ml",
+          "comma": 35,
+          "point": 35,
+          "plus": 40,
+          "minus": 35,
+          "Home": 10,
+          "ArrowRight": 15,
+          "PageUp": 25,
+          "PageDown": 15,
+          "End": 100,
+          "ArrowLeft": 95,
+          "drag": 40,
+          "invalid": "true"
+        }
+      ],
+      "measurements": [
+        {
+          "id": "m1",
+          "v": "72,5 x 60.6 55,7 51.4 47,6 44.2",
+          "text": "erkannt in °C: 0 min 72,5 · 20 min 60,6 · 30 min 55,7 · 40 min 51,4 · 50 min 47,6 · 60 min 44,2",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "80 72 65.1 59,1 53.9 49,3 45.4 41,4",
+          "text": "erkannt in °C: 0 min 80,0 · 10 min 72,0 · 20 min 65,1 · 30 min 59,1 · 40 min 53,9 · 50 min 49,3 · 60 min 45,4 · 60 min, nach der Milch 41,4",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "-1",
+          "text": "−1,0 °C liegt nicht zwischen 0 und 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "101",
+          "text": "101,0 °C liegt nicht zwischen 0 und 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "NaN",
+          "text": "„NaN“ ist keine Zahl.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "1 2 3 4 5 6 7 8",
+          "text": "Höchstens 7 Werte.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "1 2 3 4 5 6 7 8 9",
+          "text": "Höchstens 8 Werte.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "<img src=https://example.org/x>",
+          "text": "„<img“ ist keine Zahl.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "20 90",
+          "text": "erkannt in °C: 0 min 20,0 · 10 min 90,0 90,0 °C liegt über dem ersten Wert von Tasse 2. Bitte prüfen.",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "",
+          "text": "",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "",
+          "text": "",
+          "invalid": null
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:8765/?lang=de",
+        "http://127.0.0.1:8765/?lang=de"
+      ],
+      "errors": [],
+      "consoleErrors": [],
+      "modelLinkZ1": {
+        "hash": "#modell",
+        "hidden": true
+      },
+      "hotLocked": {
+        "invalid": "true",
+        "state": 5
+      },
+      "ln": {
+        "clipping": [
+          {
+            "text": "ln((ϑ − ϑu)/(ϑ(0) − ϑu))",
+            "x": -1,
+            "y": 96.9140625,
+            "w": 17,
+            "h": 133.171875,
+            "svgW": 888,
+            "svgH": 353
+          }
+        ],
+        "description": "Tasse 2 vor der Milch als ln-Darstellung. Modell mit kA = 0,1994 W/K."
+      },
+      "resetHtml": {
+        "kern": "\n        nach 60 min\n        Tasse 143,85 °C\n        Tasse 2, nach der Milch40,29 °C\n        Unterschied3,56 K\n      ",
+        "kernsatz": "Simulation und deine Rechnung stimmen überein: bestätigt ist damit die Rechnung, nicht das Modell. Ob das Modell stimmt, zeigt nur der Versuch.",
+        "saeulen": "Q₂ − Q₁Tasse 1Tasse 23,41 kJ25,49 kJ28,90 kJ"
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "lang": "en",
+      "states": [
+        {
+          "state": "Z0",
+          "snapshot": {
+            "leaks": [],
+            "attrs": [],
+            "ansage": "",
+            "title": "Coffee with milk: simulation"
+          },
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z1",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Cup 1 (milk right away). Reason: Hotter coffee releases more heat. Your calculation from e: 43.85 and 40.29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43.85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40.29 °C"
+              }
+            ],
+            "attrs": [],
+            "ansage": "",
+            "title": "Coffee with milk: simulation"
+          },
+          "bars": "Q₂ − Q₁Cup 1Cup 2",
+          "barLabel": "Bars: heat released to the room until the milk is added, cup 2 more than cup 1",
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z2",
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 28
+          },
+          "barText": "Q₂ − Q₁Cup 1Cup 23.41 kJ25.49 kJ28.90 kJ"
+        },
+        {
+          "state": "alle_Auftraege_und_Modell",
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 29
+          }
+        },
+        {
+          "state": "Z0_nach_Von_vorn",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Cup 1 (milk right away). Reason: Hotter coffee releases more heat. Your calculation from e: 43.85 and 40.29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43.85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40.29 °C"
+              },
+              {
+                "el": "text",
+                "text": "25.49 kJ"
+              },
+              {
+                "el": "text",
+                "text": "28.90 kJ"
+              },
+              {
+                "el": "ansage",
+                "text": "After 60 min: cup 1 43.85 °C, cup 2 40.29 °C, difference 3.56 K."
+              }
+            ],
+            "attrs": [
+              {
+                "el": "saeulen",
+                "a": "aria-label",
+                "v": "Bars: heat released to the room until the milk is added, cup 1 25.49 kJ, cup 2 28.90 kJ, difference 3.41 kJ"
+              }
+            ],
+            "ansage": "After 60 min: cup 1 43.85 °C, cup 2 40.29 °C, difference 3.56 K.",
+            "title": "Coffee with milk: simulation"
+          },
+          "layout": {
+            "width": 1366,
+            "scrollWidth": 1366,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        }
+      ],
+      "controls": [
+        {
+          "id": "thM",
+          "comma": 5.5,
+          "point": 5.5,
+          "plus": 6,
+          "minus": 5.5,
+          "Home": 2,
+          "ArrowRight": 2.5,
+          "PageUp": 5.5,
+          "PageDown": 2.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 11.5,
+          "invalid": "true"
+        },
+        {
+          "id": "tZ",
+          "comma": 61,
+          "point": 61,
+          "plus": 62,
+          "minus": 61,
+          "Home": 1,
+          "ArrowRight": 2,
+          "PageUp": 20,
+          "PageDown": 2,
+          "End": 180,
+          "ArrowLeft": 179,
+          "drag": 61,
+          "invalid": "true"
+        },
+        {
+          "id": "thK0",
+          "comma": 80.5,
+          "point": 80.5,
+          "plus": 81,
+          "minus": 80.5,
+          "Home": 60,
+          "ArrowRight": 60.5,
+          "PageUp": 64,
+          "PageDown": 60.5,
+          "End": 95,
+          "ArrowLeft": 94.5,
+          "drag": 71.5,
+          "invalid": "true"
+        },
+        {
+          "id": "thU",
+          "comma": 20.5,
+          "point": 20.5,
+          "plus": 21,
+          "minus": 20.5,
+          "Home": 10,
+          "ArrowRight": 10.5,
+          "PageUp": 12.5,
+          "PageDown": 10.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 16.5,
+          "invalid": "true"
+        },
+        {
+          "id": "kA",
+          "comma": 0.2345,
+          "point": 0.2345,
+          "plus": 0.2395,
+          "minus": 0.2345,
+          "Home": 0.05,
+          "ArrowRight": 0.055,
+          "PageUp": 0.13,
+          "PageDown": 0.055,
+          "End": 0.8,
+          "ArrowLeft": 0.795,
+          "drag": 0.3,
+          "invalid": "true"
+        },
+        {
+          "id": "VM_ml",
+          "comma": 35,
+          "point": 35,
+          "plus": 40,
+          "minus": 35,
+          "Home": 10,
+          "ArrowRight": 15,
+          "PageUp": 25,
+          "PageDown": 15,
+          "End": 100,
+          "ArrowLeft": 95,
+          "drag": 40,
+          "invalid": "true"
+        }
+      ],
+      "measurements": [
+        {
+          "id": "m1",
+          "v": "72,5 x 60.6 55,7 51.4 47,6 44.2",
+          "text": "recognised in °C: 0 min 72.5 · 20 min 60.6 · 30 min 55.7 · 40 min 51.4 · 50 min 47.6 · 60 min 44.2",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "80 72 65.1 59,1 53.9 49,3 45.4 41,4",
+          "text": "recognised in °C: 0 min 80.0 · 10 min 72.0 · 20 min 65.1 · 30 min 59.1 · 40 min 53.9 · 50 min 49.3 · 60 min 45.4 · 60 min, after the milk 41.4",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "-1",
+          "text": "−1.0 °C is not between 0 and 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "101",
+          "text": "101.0 °C is not between 0 and 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "NaN",
+          "text": "“NaN” is not a number.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "1 2 3 4 5 6 7 8",
+          "text": "At most 7 values.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "1 2 3 4 5 6 7 8 9",
+          "text": "At most 8 values.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "<img src=https://example.org/x>",
+          "text": "“<img” is not a number.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "20 90",
+          "text": "recognised in °C: 0 min 20.0 · 10 min 90.0 90.0 °C is above the first value of cup 2. Please check.",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "",
+          "text": "",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "",
+          "text": "",
+          "invalid": null
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:8765/?lang=en",
+        "http://127.0.0.1:8765/?lang=en"
+      ],
+      "errors": [],
+      "consoleErrors": [],
+      "modelLinkZ1": {
+        "hash": "#modell",
+        "hidden": true
+      },
+      "hotLocked": {
+        "invalid": "true",
+        "state": 5
+      },
+      "ln": {
+        "clipping": [
+          {
+            "text": "ln((ϑ − ϑu)/(ϑ(0) − ϑu))",
+            "x": -1,
+            "y": 96.9140625,
+            "w": 17,
+            "h": 133.171875,
+            "svgW": 888,
+            "svgH": 353
+          }
+        ],
+        "description": "Cup 2 before the milk as a ln plot. model with kA = 0.1994 W/K."
+      },
+      "resetHtml": {
+        "kern": "\n        after 60 min\n        Cup 143.85 °C\n        Cup 2, after the milk40.29 °C\n        Difference3.56 K\n      ",
+        "kernsatz": "Simulation and your calculation agree: this confirms your calculation, not the model. Only the experiment shows whether the model is right.",
+        "saeulen": "Q₂ − Q₁Cup 1Cup 23.41 kJ25.49 kJ28.90 kJ"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "lang": "de",
+      "states": [
+        {
+          "state": "Z0",
+          "snapshot": {
+            "leaks": [],
+            "attrs": [],
+            "ansage": "",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z1",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Tasse 1 (Milch sofort). Grund: Heißer Kaffee gibt mehr Wärme ab. Deine Rechnung aus e: 43,85 und 40,29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43,85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40,29 °C"
+              }
+            ],
+            "attrs": [],
+            "ansage": "",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "bars": "Q₂ − Q₁Tasse 1Tasse 2",
+          "barLabel": "Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 2 mehr als Tasse 1",
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z2",
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 28
+          },
+          "barText": "Q₂ − Q₁Tasse 1Tasse 23,41 kJ25,49 kJ28,90 kJ"
+        },
+        {
+          "state": "alle_Auftraege_und_Modell",
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 29
+          }
+        },
+        {
+          "state": "Z0_nach_Von_vorn",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Tasse 1 (Milch sofort). Grund: Heißer Kaffee gibt mehr Wärme ab. Deine Rechnung aus e: 43,85 und 40,29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43,85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40,29 °C"
+              },
+              {
+                "el": "text",
+                "text": "25,49 kJ"
+              },
+              {
+                "el": "text",
+                "text": "28,90 kJ"
+              },
+              {
+                "el": "ansage",
+                "text": "Nach 60 min: Tasse 1 43,85 °C, Tasse 2 40,29 °C, Unterschied 3,56 K."
+              }
+            ],
+            "attrs": [
+              {
+                "el": "saeulen",
+                "a": "aria-label",
+                "v": "Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 1 25,49 kJ, Tasse 2 28,90 kJ, Unterschied 3,41 kJ"
+              }
+            ],
+            "ansage": "Nach 60 min: Tasse 1 43,85 °C, Tasse 2 40,29 °C, Unterschied 3,56 K.",
+            "title": "Kaffee mit Milch: Simulation"
+          },
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        }
+      ],
+      "controls": [
+        {
+          "id": "thM",
+          "comma": 5.5,
+          "point": 5.5,
+          "plus": 6,
+          "minus": 5.5,
+          "Home": 2,
+          "ArrowRight": 2.5,
+          "PageUp": 5.5,
+          "PageDown": 2.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 11,
+          "invalid": "true"
+        },
+        {
+          "id": "tZ",
+          "comma": 61,
+          "point": 61,
+          "plus": 62,
+          "minus": 61,
+          "Home": 1,
+          "ArrowRight": 2,
+          "PageUp": 20,
+          "PageDown": 2,
+          "End": 180,
+          "ArrowLeft": 179,
+          "drag": 60,
+          "invalid": "true"
+        },
+        {
+          "id": "thK0",
+          "comma": 80.5,
+          "point": 80.5,
+          "plus": 81,
+          "minus": 80.5,
+          "Home": 60,
+          "ArrowRight": 60.5,
+          "PageUp": 64,
+          "PageDown": 60.5,
+          "End": 95,
+          "ArrowLeft": 94.5,
+          "drag": 71.5,
+          "invalid": "true"
+        },
+        {
+          "id": "thU",
+          "comma": 20.5,
+          "point": 20.5,
+          "plus": 21,
+          "minus": 20.5,
+          "Home": 10,
+          "ArrowRight": 10.5,
+          "PageUp": 12.5,
+          "PageDown": 10.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 16.5,
+          "invalid": "true"
+        },
+        {
+          "id": "kA",
+          "comma": 0.2345,
+          "point": 0.2345,
+          "plus": 0.2395,
+          "minus": 0.2345,
+          "Home": 0.05,
+          "ArrowRight": 0.055,
+          "PageUp": 0.13,
+          "PageDown": 0.055,
+          "End": 0.8,
+          "ArrowLeft": 0.795,
+          "drag": 0.295,
+          "invalid": "true"
+        },
+        {
+          "id": "VM_ml",
+          "comma": 35,
+          "point": 35,
+          "plus": 40,
+          "minus": 35,
+          "Home": 10,
+          "ArrowRight": 15,
+          "PageUp": 25,
+          "PageDown": 15,
+          "End": 100,
+          "ArrowLeft": 95,
+          "drag": 40,
+          "invalid": "true"
+        }
+      ],
+      "measurements": [
+        {
+          "id": "m1",
+          "v": "72,5 x 60.6 55,7 51.4 47,6 44.2",
+          "text": "erkannt in °C: 0 min 72,5 · 20 min 60,6 · 30 min 55,7 · 40 min 51,4 · 50 min 47,6 · 60 min 44,2",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "80 72 65.1 59,1 53.9 49,3 45.4 41,4",
+          "text": "erkannt in °C: 0 min 80,0 · 10 min 72,0 · 20 min 65,1 · 30 min 59,1 · 40 min 53,9 · 50 min 49,3 · 60 min 45,4 · 60 min, nach der Milch 41,4",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "-1",
+          "text": "−1,0 °C liegt nicht zwischen 0 und 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "101",
+          "text": "101,0 °C liegt nicht zwischen 0 und 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "NaN",
+          "text": "„NaN“ ist keine Zahl.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "1 2 3 4 5 6 7 8",
+          "text": "Höchstens 7 Werte.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "1 2 3 4 5 6 7 8 9",
+          "text": "Höchstens 8 Werte.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "<img src=https://example.org/x>",
+          "text": "„<img“ ist keine Zahl.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "20 90",
+          "text": "erkannt in °C: 0 min 20,0 · 10 min 90,0 90,0 °C liegt über dem ersten Wert von Tasse 2. Bitte prüfen.",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "",
+          "text": "",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "",
+          "text": "",
+          "invalid": null
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:8765/?lang=de",
+        "http://127.0.0.1:8765/?lang=de"
+      ],
+      "errors": [],
+      "consoleErrors": [],
+      "modelLinkZ1": {
+        "hash": "#modell",
+        "hidden": true
+      },
+      "hotLocked": {
+        "invalid": "true",
+        "state": 5
+      },
+      "ln": {
+        "clipping": [
+          {
+            "text": "ln((ϑ − ϑu)/(ϑ(0) − ϑu))",
+            "x": -1,
+            "y": 72.9140625,
+            "w": 17,
+            "h": 133.171875,
+            "svgW": 802,
+            "svgH": 305
+          }
+        ],
+        "description": "Tasse 2 vor der Milch als ln-Darstellung. Modell mit kA = 0,1994 W/K."
+      },
+      "resetHtml": {
+        "kern": "\n        nach 60 min\n        Tasse 143,85 °C\n        Tasse 2, nach der Milch40,29 °C\n        Unterschied3,56 K\n      ",
+        "kernsatz": "Simulation und deine Rechnung stimmen überein: bestätigt ist damit die Rechnung, nicht das Modell. Ob das Modell stimmt, zeigt nur der Versuch.",
+        "saeulen": "Q₂ − Q₁Tasse 1Tasse 23,41 kJ25,49 kJ28,90 kJ"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "lang": "en",
+      "states": [
+        {
+          "state": "Z0",
+          "snapshot": {
+            "leaks": [],
+            "attrs": [],
+            "ansage": "",
+            "title": "Coffee with milk: simulation"
+          },
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z1",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Cup 1 (milk right away). Reason: Hotter coffee releases more heat. Your calculation from e: 43.85 and 40.29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43.85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40.29 °C"
+              }
+            ],
+            "attrs": [],
+            "ansage": "",
+            "title": "Coffee with milk: simulation"
+          },
+          "bars": "Q₂ − Q₁Cup 1Cup 2",
+          "barLabel": "Bars: heat released to the room until the milk is added, cup 2 more than cup 1",
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        },
+        {
+          "state": "Z2",
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 28
+          },
+          "barText": "Q₂ − Q₁Cup 1Cup 23.41 kJ25.49 kJ28.90 kJ"
+        },
+        {
+          "state": "alle_Auftraege_und_Modell",
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 29
+          }
+        },
+        {
+          "state": "Z0_nach_Von_vorn",
+          "snapshot": {
+            "leaks": [
+              {
+                "el": "s1-zusammenfassung",
+                "text": "Cup 1 (milk right away). Reason: Hotter coffee releases more heat. Your calculation from e: 43.85 and 40.29 °C."
+              },
+              {
+                "el": "w1",
+                "text": "43.85 °C"
+              },
+              {
+                "el": "w2",
+                "text": "40.29 °C"
+              },
+              {
+                "el": "text",
+                "text": "25.49 kJ"
+              },
+              {
+                "el": "text",
+                "text": "28.90 kJ"
+              },
+              {
+                "el": "ansage",
+                "text": "After 60 min: cup 1 43.85 °C, cup 2 40.29 °C, difference 3.56 K."
+              }
+            ],
+            "attrs": [
+              {
+                "el": "saeulen",
+                "a": "aria-label",
+                "v": "Bars: heat released to the room until the milk is added, cup 1 25.49 kJ, cup 2 28.90 kJ, difference 3.41 kJ"
+              }
+            ],
+            "ansage": "After 60 min: cup 1 43.85 °C, cup 2 40.29 °C, difference 3.56 K.",
+            "title": "Coffee with milk: simulation"
+          },
+          "layout": {
+            "width": 1280,
+            "scrollWidth": 1280,
+            "overflow": []
+          },
+          "axe": {
+            "violations": [],
+            "incomplete": [
+              "color-contrast"
+            ],
+            "passes": 26
+          }
+        }
+      ],
+      "controls": [
+        {
+          "id": "thM",
+          "comma": 5.5,
+          "point": 5.5,
+          "plus": 6,
+          "minus": 5.5,
+          "Home": 2,
+          "ArrowRight": 2.5,
+          "PageUp": 5.5,
+          "PageDown": 2.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 11,
+          "invalid": "true"
+        },
+        {
+          "id": "tZ",
+          "comma": 61,
+          "point": 61,
+          "plus": 62,
+          "minus": 61,
+          "Home": 1,
+          "ArrowRight": 2,
+          "PageUp": 20,
+          "PageDown": 2,
+          "End": 180,
+          "ArrowLeft": 179,
+          "drag": 60,
+          "invalid": "true"
+        },
+        {
+          "id": "thK0",
+          "comma": 80.5,
+          "point": 80.5,
+          "plus": 81,
+          "minus": 80.5,
+          "Home": 60,
+          "ArrowRight": 60.5,
+          "PageUp": 64,
+          "PageDown": 60.5,
+          "End": 95,
+          "ArrowLeft": 94.5,
+          "drag": 71.5,
+          "invalid": "true"
+        },
+        {
+          "id": "thU",
+          "comma": 20.5,
+          "point": 20.5,
+          "plus": 21,
+          "minus": 20.5,
+          "Home": 10,
+          "ArrowRight": 10.5,
+          "PageUp": 12.5,
+          "PageDown": 10.5,
+          "End": 30,
+          "ArrowLeft": 29.5,
+          "drag": 16.5,
+          "invalid": "true"
+        },
+        {
+          "id": "kA",
+          "comma": 0.2345,
+          "point": 0.2345,
+          "plus": 0.2395,
+          "minus": 0.2345,
+          "Home": 0.05,
+          "ArrowRight": 0.055,
+          "PageUp": 0.13,
+          "PageDown": 0.055,
+          "End": 0.8,
+          "ArrowLeft": 0.795,
+          "drag": 0.295,
+          "invalid": "true"
+        },
+        {
+          "id": "VM_ml",
+          "comma": 35,
+          "point": 35,
+          "plus": 40,
+          "minus": 35,
+          "Home": 10,
+          "ArrowRight": 15,
+          "PageUp": 25,
+          "PageDown": 15,
+          "End": 100,
+          "ArrowLeft": 95,
+          "drag": 40,
+          "invalid": "true"
+        }
+      ],
+      "measurements": [
+        {
+          "id": "m1",
+          "v": "72,5 x 60.6 55,7 51.4 47,6 44.2",
+          "text": "recognised in °C: 0 min 72.5 · 20 min 60.6 · 30 min 55.7 · 40 min 51.4 · 50 min 47.6 · 60 min 44.2",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "80 72 65.1 59,1 53.9 49,3 45.4 41,4",
+          "text": "recognised in °C: 0 min 80.0 · 10 min 72.0 · 20 min 65.1 · 30 min 59.1 · 40 min 53.9 · 50 min 49.3 · 60 min 45.4 · 60 min, after the milk 41.4",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "-1",
+          "text": "−1.0 °C is not between 0 and 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "101",
+          "text": "101.0 °C is not between 0 and 100 °C.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "NaN",
+          "text": "“NaN” is not a number.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "1 2 3 4 5 6 7 8",
+          "text": "At most 7 values.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "1 2 3 4 5 6 7 8 9",
+          "text": "At most 8 values.",
+          "invalid": "true"
+        },
+        {
+          "id": "m1",
+          "v": "<img src=https://example.org/x>",
+          "text": "“<img” is not a number.",
+          "invalid": "true"
+        },
+        {
+          "id": "m2",
+          "v": "20 90",
+          "text": "recognised in °C: 0 min 20.0 · 10 min 90.0 90.0 °C is above the first value of cup 2. Please check.",
+          "invalid": null
+        },
+        {
+          "id": "m1",
+          "v": "",
+          "text": "",
+          "invalid": null
+        },
+        {
+          "id": "m2",
+          "v": "",
+          "text": "",
+          "invalid": null
+        }
+      ],
+      "requests": [
+        "http://127.0.0.1:8765/?lang=en",
+        "http://127.0.0.1:8765/?lang=en"
+      ],
+      "errors": [],
+      "consoleErrors": [],
+      "modelLinkZ1": {
+        "hash": "#modell",
+        "hidden": true
+      },
+      "hotLocked": {
+        "invalid": "true",
+        "state": 5
+      },
+      "ln": {
+        "clipping": [
+          {
+            "text": "ln((ϑ − ϑu)/(ϑ(0) − ϑu))",
+            "x": -1,
+            "y": 72.9140625,
+            "w": 17,
+            "h": 133.171875,
+            "svgW": 802,
+            "svgH": 305
+          }
+        ],
+        "description": "Cup 2 before the milk as a ln plot. model with kA = 0.1994 W/K."
+      },
+      "resetHtml": {
+        "kern": "\n        after 60 min\n        Cup 143.85 °C\n        Cup 2, after the milk40.29 °C\n        Difference3.56 K\n      ",
+        "kernsatz": "Simulation and your calculation agree: this confirms your calculation, not the model. Only the experiment shows whether the model is right.",
+        "saeulen": "Q₂ − Q₁Cup 1Cup 23.41 kJ25.49 kJ28.90 kJ"
+      }
+    }
+  ],
+  "befunde": {},
+  "fehler": [],
+  "gesperrterSpeicher": {
+    "text": "Eingaben werden nicht gespeichert (Speicher im Browser gesperrt); nichts wird gesendet.",
+    "werte": "Tasse 1\n43,85 °C\nTasse 2, nach der Milch\n40,29 °C\nUnterschied\n3,56 K"
+  }
+}
