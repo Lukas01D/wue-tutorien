@@ -97,3 +97,21 @@ Bestand: A „Messprotokoll“, B „Kaffeehaus“, C „Hörsaal“, 0 = Fassun
 | V07 | $kA$-Voreinstellungen (Glas, Pappe, Edelstahl, Thermobecher) und Wahl der $kA$-Quelle | G1; Deckel ist jetzt im Blatt; ein Regler $kA$ mit Anzeige „entspricht … °C nach 10 min“ genügt | 08.11.2026 |
 | V08 | Feld „Unterschied etwa … K“ auf der Startkarte | nach Teil e bekannt; die Wahl mit Grund trägt die Vorhersage (G1) | 08.11.2026 |
 | V09 | Becher (Wärmekapazität) als Schalter | Teil entfallen; nur Satz unter „Grenzen“ (Startprompt 2.2) | 08.11.2026 |
+
+## 5 Bauentscheidungen von Claude (zur Bestätigung durch die TL)
+
+Abweichungen vom Konzept beim Bau (08.11.2026), mit Grund; Einzelheiten in `simulation/BAU_BERICHT_F3.md`, Abschnitt 3.
+
+| Kennung | Vorschlag (umgesetzt) | Quelle | Kosten | Empfehlung | Entscheidung der TL | Grund | Datum |
+|:--|:--|:--|:--|:--|:--|:--|:--|
+| A1 | du-Form durchgehend, auch in 02 bis 04 und den Aufträgen (Konzept stellenweise „ihr“) | G2; Kernsatz Leitlinie 6 in du-Form | keine | bestätigen | offen | allein zu Hause passend, einheitlich | |
+| A2 | Kernsatz mit eigenen Werten nur bei den Werten des Blatts; „stimmen überein“ bis 0,1 K | L2 C2.4 (S. 231 f., 236); P06 | keine | bestätigen | offen | Rundung auf zwei Stellen bleibt unter 0,03 K | |
+| A3 | Überschriften für 03 und 04 | Mayer Signalisierung (d = 0,69); WCAG 1.3.1 | keine | bestätigen | offen | Gliederung für Bildschirmleser | |
+| A4 | Plausibilitätshinweis bei Messwerten; Sprung „Zum Diagramm ↑“ am Handy | L2 C2.9 (S. 205, 248) | gering | bestätigen | offen | Messwerte prüfen; kurzer Weg zum Diagramm | |
+| A5 | Bühne am Laptop scrollt in sich, wenn sie höher als der Bildschirm wird | WCAG 2.4.11 | keine | bestätigen | offen | untere Regler sonst erst am Seitenende | |
+| A6 | Reglerbereiche (Milch 2 bis 80 °C, vor Auftrag 3 bis 30 °C; Zugabe 1 bis 180 min; Kaffee 60 bis 95 °C; Raum 10 bis 30 °C; kA 0,05 bis 0,80 W/K; Milch 10 bis 100 ml) | Fassung 2; L2 D1 S5 | keine | bestätigen | offen | physikalisch sinnvolle Bereiche | |
+| A7 | Legendenzeichen ○ □ ● ■ aus Plex Math | Zeichenprüfung des Baus | keine | bestätigen | offen | Plex Sans hat sie nicht | |
+| A8 | Rückmeldung c beginnt mit „Nein.“ | L1 S5 (S. 251) | keine | bestätigen | offen | klare Rückmeldung mit Begründung | |
+| A9 | kein Verweis „ohne Vorhersage aufdecken“ | G1 | keine | bestätigen | offen | am Beamer genügt eine beliebige Vorhersage | |
+| A10 | Begleitmaterial der Fassung 2 entfernt (`simulation/kurzkarte/`, `simulation/EINSATZ_TUTORIUM.md`); Ersatz `simulation/HINWEISE_TEXT_F3.md` | SE3 (Kurslink entfällt); Startprompt 3 („Entferntes vollständig entfernen“) | keine | bestätigen | offen | beschrieben Kurslink, QR-Code und Fragen der Fassung 2 | |
+
