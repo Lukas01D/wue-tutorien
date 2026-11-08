@@ -24,7 +24,7 @@
 | `site/schriften_teilen.py`, `src/schriften/` | IBM Plex Sans 400 und 600, Plex Mono 400 und 600, Plex Math als Teilmengen (49 kB), OFL-Lizenztexte |
 | `site/bauen.py`, `tex2mathml.py` | Bau mit CSP-Hashes, Formeln nach MathML, Zeichenprüfung (jedes Zeichen in einer eingebetteten Schrift) |
 | `tests/` | `test_kern.py`, `test_texte.py`, `browsertest.js`, `bilder.js`, Ergebnisdateien |
-| entfernt | `src/erweiterung.js`, `src/hilfen.js`, `src/regler.json`, Fira-Schriften, `modell/kaffee_erweitert.py`, alle Tests der Fassung 2, `simulation/kurzkarte/`, `simulation/EINSATZ_TUTORIUM.md` (Kurslink, QR-Code und Fragen der Fassung 2) |
+| entfernt | `src/erweiterung.js`, `src/hilfen.js`, `src/regler.json`, Fira-Schriften, `modell/kaffee_erweitert.py`, alle Tests der Fassung 2, `simulation/kurzkarte/`, `simulation/EINSATZ_TUTORIUM.md` (Kurslink, QR-Code und Fragen der Fassung 2); erhalten bleibt nach Entscheidung Q1 ein schlanker QR-Code nur mit der Adresse in `simulation/qr/` (SVG, PNG, Erzeugerskript) |
 
 ## 3 Abweichungen vom Konzept (mit Grund; je ein Eintrag in `ENTSCHEIDUNGEN_F3.md`, Abschnitt 5)
 
@@ -104,4 +104,4 @@ node simulation/tests/bilder.js
 | Zeit des Pflichtwegs mit Studierenden (Ziel höchstens 8 min) | TL, erster Einsatz | O4 |
 | Messung im Januar 2027: ändert nur `STANDARD` und `BEISPIEL` in `site/src/modell.js` (und `werte.py`) | TL, danach Bau | O5, SE6 |
 | Text für die Hinweise (ersetzt „Stand der Seite“) | TL nach dem Merge | `simulation/HINWEISE_TEXT_F3.md` |
-| Veröffentlichung und Live-Abnahme | TL beauftragt Codex nach dem Merge | `simulation/VEROEFFENTLICHUNG.md` |
+| Veröffentlichung (zuerst privat prüfen, dann ersetzen, V1) und Live-Abnahme | TL beauftragt Codex nach dem Merge | `simulation/VEROEFFENTLICHUNG.md` |

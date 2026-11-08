@@ -13,10 +13,11 @@
   - Stimmt etwas nicht: abbrechen und der TL melden.
 - Genau diese eine Datei als `index.html`, unverändert, ohne zusätzliche Skripte, Analyse- oder Zähldienste.
 
-## 2 Adresse und Zugang
+## 2 Adresse und Zugang (Entscheidung V1 der TL, 08.11.2026: zuerst privat prüfen, dann ersetzen)
 
-- Adresse **`waermeuebertragung-kaffee`** (Sites), neue Version derselben Site; Fassung 2 wird ersetzt.
-- Zugang: Fassung 2 ist seit 06.11.2026 öffentlich (geänderte Entscheidung E2). **Die TL sagt beim Startsatz, ob Fassung 3 sofort öffentlich ersetzt oder zuerst privat geprüft wird**; ohne Angabe zuerst privat (nur das Eigentümerkonto) und nachfragen.
+1. **Privat bereitstellen, ohne die öffentliche Fassung 2 zu verändern:** als gespeicherte Version mit privater Vorschau nur für das Eigentümerkonto, falls Sites das für eine öffentliche Site anbietet; sonst als eigene private Site `waermeuebertragung-kaffee-pruefung` (nur das Eigentümerkonto). Die öffentliche Site `waermeuebertragung-kaffee` bleibt in diesem Schritt unverändert.
+2. **Prüfung durch die TL** (Liste in Abschnitt 5 und `simulation/ABNAHME_IPHONE.md`) an der privaten Fassung.
+3. **Ersetzen erst auf Zuruf der TL**, etwa „Ersetze die Kaffee-Seite durch Fassung 3.“: dieselbe Datei als neue Version der Site `waermeuebertragung-kaffee`, Zugang öffentlich wie bisher. Die Adresse bleibt gleich; der QR-Code in `simulation/qr/` gilt weiter. Eine private Prüf-Site danach löschen oder privat lassen, wie die TL sagt.
 
 ## 3 Baunachweis
 
@@ -24,7 +25,7 @@
 
 ## 4 Meldung an die TL
 
-Adresse; Quelle und SHA-256 gleich dem Repository (ja oder nein); Zugang; Abweichungen oder „keine“.
+Nach Schritt 1: private Adresse oder Vorschau, Quelle und SHA-256 gleich dem Repository (ja oder nein), Zugang (nur Eigentümerkonto), Beleg, dass die öffentliche Fassung 2 unverändert ist. Nach Schritt 3: Adresse, SHA-256 der ausgelieferten Datei, Zugang öffentlich, Zeitpunkt. Jeweils Abweichungen oder „keine“.
 
 ## 5 Live-Abnahme (Claude, danach in `simulation/LIVE_ABNAHME.md`)
 

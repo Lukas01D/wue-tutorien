@@ -98,7 +98,7 @@ Bestand: A „Messprotokoll“, B „Kaffeehaus“, C „Hörsaal“, 0 = Fassun
 | V08 | Feld „Unterschied etwa … K“ auf der Startkarte | nach Teil e bekannt; die Wahl mit Grund trägt die Vorhersage (G1) | 08.11.2026 |
 | V09 | Becher (Wärmekapazität) als Schalter | Teil entfallen; nur Satz unter „Grenzen“ (Startprompt 2.2) | 08.11.2026 |
 
-## 5 Bauentscheidungen von Claude (zur Bestätigung durch die TL)
+## 5 Bauentscheidungen von Claude (bestätigt am 08.11.2026)
 
 Abweichungen vom Konzept beim Bau (08.11.2026), mit Grund; Einzelheiten in `simulation/BAU_BERICHT_F3.md`, Abschnitt 3.
 
@@ -114,4 +114,11 @@ Abweichungen vom Konzept beim Bau (08.11.2026), mit Grund; Einzelheiten in `simu
 | A8 | Rückmeldung c beginnt mit „Nein.“ | L1 S5 (S. 251) | keine | bestätigen | offen | klare Rückmeldung mit Begründung | |
 | A9 | kein Verweis „ohne Vorhersage aufdecken“ | G1 | keine | bestätigen | offen | am Beamer genügt eine beliebige Vorhersage | |
 | A10 | Begleitmaterial der Fassung 2 entfernt (`simulation/kurzkarte/`, `simulation/EINSATZ_TUTORIUM.md`); Ersatz `simulation/HINWEISE_TEXT_F3.md` | SE3 (Kurslink entfällt); Startprompt 3 („Entferntes vollständig entfernen“) | keine | bestätigen | offen | beschrieben Kurslink, QR-Code und Fragen der Fassung 2 | |
+| A11 | Messwerte: eine fehlende Messung als „x“ eintragen (Reihenfolge des Messblatts bleibt erhalten) | SE4; Messblatt des Blatts | keine | zur Kenntnis | offen | beim Bau ergänzt, nach der Bestätigung von A1 bis A9 beim Nachprüfen gefunden | |
 
+## 6 Entscheidungen der TL nach dem Bau (08.11.2026)
+
+| Kennung | Vorschlag | Quelle | Kosten | Empfehlung | Entscheidung der TL | Grund | Datum |
+|:--|:--|:--|:--|:--|:--|:--|:--|
+| Q1 | QR-Code nur mit der Adresse der Seite (ohne Kurslink, ohne Kurzkarte) als SVG und PNG: `simulation/qr/QR_Kaffee_Simulation.svg`, `.png`, erzeugt mit `simulation/qr/qr_erzeugen.py` (segno, Fehlerkorrektur M, schwarz auf weiß; Lesen mit OpenCV bei 160, 300 und 600 px geprüft) | Ausnahme zu A10 | gering | | so entschieden (Vorgabe der TL) | Folie oder Tafel im Tutorium; die Adresse bleibt bei Fassung 3 gleich | 08.11.2026 |
+| V1 | Veröffentlichung von Fassung 3 | `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 2 | | | zuerst privat prüfen, dann die öffentliche Fassung 2 ersetzen | | 08.11.2026 |
