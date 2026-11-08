@@ -20,9 +20,16 @@
 | 8 Laptop und Beamer | bestanden: bei 1280 × 720 Kernzahlen, Diagramm, beide Regler und Ausgangswerte im Bild; am Handy 390 px kein waagerechtes Scrollen |
 | 9 Aufräumen | entfällt: frische Browserkontexte in der Cloud-Umgebung, kein Browser der TL benutzt |
 
-**Hinweis für die TL (Empfehlung):** Die Einfügung durch Cloudflare ist harmlos, weil die CSP sie blockiert, sie ist aber eine Veränderung der Auslieferung. Empfehlung: so lassen und im Nachweis vermerken; falls Sites eine Einstellung ohne Bot-Erkennung anbietet, kann Codex sie beim Ersetzen der Hauptadresse prüfen.
+**Cloudflare-Einfügung:** harmlos, weil die CSP sie blockiert. Entscheidung der TL (08.11.2026): so lassen, keine Änderung bei Sites (L1 in `ENTSCHEIDUNGEN_F3.md`).
 
-**Nicht live geprüft (offen bei der TL):** iPhone mit Safari, Android, Bildschirmleser, Beamer im Hörsaal (`simulation/ABNAHME_IPHONE.md`); Ersetzen der Hauptadresse `waermeuebertragung-kaffee` durch Fassung 3 (V1, Schritt 3) steht noch aus.
+### Gerätetest und Freigabe
+
+| Punkt | Ergebnis |
+|:--|:--|
+| Gerätetest iPhone mit Safari (`simulation/ABNAHME_IPHONE.md`) | bestanden (TL, 08.11.2026) |
+| Freigabe von Fassung 3 | **freigegeben durch die TL am 08.11.2026 um 22:24 Uhr** (F1 in `ENTSCHEIDUNGEN_F3.md`) |
+
+**Weiter offen:** Ersetzen der Hauptadresse `waermeuebertragung-kaffee` durch Fassung 3 (V1, Schritt 3; Startsatz an Codex „Ersetze die Kaffee-Seite durch Fassung 3.“), danach kurzer Live-Abgleich der Hauptadresse; Android, Bildschirmleser und Beamer im Hörsaal nicht gemeldet.
 
 ## Fassung 2 (06.11.2026)
 
