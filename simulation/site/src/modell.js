@@ -1,4 +1,4 @@
-// MODELL-ANFANG: gleiche Gleichungen und Standardwerte wie kaffee_modell.py (rechne, zwei_tassen)
+// MODELL-ANFANG: gleiche Gleichungen und Standardwerte wie kaffee_modell.py (P, rechne); unverändert aus dem geprüften Block der Fassung 2
 const P = { V_K: 200e-6, rho_K: 1000.0, cp_K: 4180.0, V_M: 30e-6, rho_M: 1030.0, cp_M: 3940.0, th_K0: 80.0, th_M: 5.0,
             th_U: 20.0, t_end: 60 * 60.0, t_mess: 10 * 60.0, th_mess: 67.0, th_Mh: 60.0, m_B: 0.300, c_B: 850.0 };
 const K = 273.15;
@@ -30,41 +30,33 @@ function rechne(p) {
   r.t_schnitt = d > 0 ? Math.log((T_K0 - T_U) / (r.T1_0 - T_U)) / d : Infinity;
   return r;
 }
-
-function zweiTassen(p, C_T = 0.0, th_M1 = null, th_M2 = null, kA1_faktor = 1.0, t_end = null) {
-  const r = rechne(p);
-  th_M1 = th_M1 === null ? p.th_M : th_M1;
-  th_M2 = th_M2 === null ? th_M1 : th_M2;
-  const t = t_end === null ? p.t_end : t_end;
-  const CKT = r.C_K + C_T, CGT = r.C_G + C_T;
-  const kA = -CKT / p.t_mess * r.ln_mess;
-  const T10 = (CKT * r.T_K0 + r.C_M * (th_M1 + K)) / CGT;
-  const T1 = r.T_U + (T10 - r.T_U) * Math.exp(-kA1_faktor * kA * t / CGT);
-  const T2K = r.T_U + (r.T_K0 - r.T_U) * Math.exp(-kA * t / CKT);
-  const T2 = (CKT * T2K + r.C_M * (th_M2 + K)) / CGT;
-  return { kA: kA, T1_0: T10, T1: T1, T2_K: T2K, T2: T2, dT: T1 - T2, th1: T1 - K, th2: T2 - K };
-}
-
-// Einstellungen des Werkzeugs (Einheiten der Regler) in die Größen des Modells übersetzen und auswerten
-function berechne(e) {
-  const p = Object.assign({}, P, { V_K: e.VK_ml * 1e-6, V_M: e.VM_ml * 1e-6, th_K0: e.thK0, th_M: e.thM, th_U: e.thU,
-                                   th_mess: e.thMess, m_B: e.mB_g / 1000, t_end: e.tEnd_min * 60.0 });
-  const r = rechne(p);
-  const C_T = e.becher ? p.m_B * p.c_B : 0.0;
-  const th_M2 = e.milch2Raum ? p.th_U : p.th_M;
-  const z = zweiTassen(p, C_T, p.th_M, th_M2, e.kA1Faktor, p.t_end);
-  const CKT = r.C_K + C_T, CGT = r.C_G + C_T;
-  const a1 = e.kA1Faktor * z.kA / CGT, a2 = z.kA / CKT;          // Abklingraten von Tasse 1 und vom schwarzen Kaffee
-  // abgegebene Wärme bis zur Zugabe: Energiebilanz um den Bilanzraum (Inhalt, mit Becher auch der Becher), wie Teil e
-  const Q1 = CGT * (z.T1_0 - z.T1), Q2 = CKT * (r.T_K0 - z.T2_K);
-  // Schnittpunkt der beiden Kurven vor der Zugabe, in beiden Richtungen (wie t_schnitt in rechne(), dort nur für a2 > a1):
-  // (T_K0 - T_U) exp(-a2 t) = (T1_0 - T_U) exp(-a1 t)  =>  t = ln((T_K0 - T_U) / (T1_0 - T_U)) / (a2 - a1), gültig für t > 0
-  const d = a2 - a1, q = (r.T_K0 - r.T_U) / (z.T1_0 - r.T_U);
-  let tS = Infinity;
-  if (d !== 0 && q > 0) { const t = Math.log(q) / d; if (t > 0) tS = t; }
-  return { kA: z.kA, T1_0: z.T1_0, T1: z.T1, T2_K: z.T2_K, T2: z.T2, dT: z.dT, th1: z.th1, th2: z.th2, Q1: Q1, Q2: Q2,
-           t_schnitt: tS, kaffee_danach_kuehler: d > 0, T_K0: r.T_K0, T_U: r.T_U,
-           kurve1: t => r.T_U + (z.T1_0 - r.T_U) * Math.exp(-a1 * t),          // Tasse 1, t in s
-           kurve2: t => r.T_U + (r.T_K0 - r.T_U) * Math.exp(-a2 * t) };        // Tasse 2 vor der Zugabe
-}
 // MODELL-ENDE
+
+// Werte des Blatts Fassung 3 (werte.py; vorläufig bis zur Messung im Januar 2027). Die einzige Stelle für Standardwerte (SE6).
+const STANDARD = { thK0: 80.0, thM: 5.0, thU: 20.0, VK_ml: 200, VM_ml: 30, thMess: 72.0, tZ: 60, thMh: 70.0, trink: 60.0 };
+// Beispielwerte der Kontrollseite (werte.py, Modell mit vorgewärmter Tasse, gerundet wie auf dem Blatt; berechnet, keine Messung)
+const BEISPIEL = { t1: [72.5, 66.1, 60.6, 55.7, 51.4, 47.6, 44.2], t2: [80.0, 72.0, 65.1, 59.1, 53.9, 49.3, 45.4], t2Milch: 41.4 };
+
+// Parameter für rechne() aus den Einstellungen der Seite. kA bleibt beim Ändern von Kaffee- oder Raumtemperatur fest
+// (Eigenschaft der Tasse); rechne() bekommt dafür den gleichwertigen Messwert nach 10 min, aus dem es genau dieses kA bestimmt.
+function parameter(e) {
+  const p = Object.assign({}, P, { V_K: STANDARD.VK_ml * 1e-6, V_M: e.VM_ml * 1e-6, th_K0: e.thK0, th_M: e.thM, th_U: e.thU,
+                                   t_end: e.tZ * 60.0 });
+  const C_K = p.rho_K * p.V_K * p.cp_K;
+  p.th_mess = e.kA === null ? STANDARD.thMess : e.thU + (e.thK0 - e.thU) * Math.exp(-e.kA * p.t_mess / C_K);
+  return p;
+}
+
+// kA des Blatts (aus 72 °C nach 10 min bei den Werten des Blatts)
+function kABlatt() {
+  return rechne(parameter({ thK0: STANDARD.thK0, thM: STANDARD.thM, thU: STANDARD.thU, VM_ml: STANDARD.VM_ml, kA: null, tZ: STANDARD.tZ })).kA;
+}
+
+function auswerten(e) {
+  const p = parameter(e);
+  const r = rechne(p);
+  return { kA: r.kA, th_mess: p.th_mess, C_K: r.C_K, C_G: r.C_G, a_K: r.a_K, a_G: r.a_G, t_schnitt: r.t_schnitt,
+           th10: r.T1_0 - K, th1: r.T1 - K, th2K: r.T2_K - K, th2: r.T2 - K, dT: r.dT, Q1: r.Q1, Q2: r.Q2, thK0: e.thK0, thU: e.thU,
+           kurve1: t => p.th_U + (r.T1_0 - r.T_U) * Math.exp(-r.a_G * t),      // Tasse 1, t in s, Ergebnis in °C
+           kurve2: t => p.th_U + (r.T_K0 - r.T_U) * Math.exp(-r.a_K * t) };    // schwarzer Kaffee in Tasse 2 vor der Zugabe
+}

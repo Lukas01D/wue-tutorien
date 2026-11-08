@@ -1,137 +1,95 @@
 # -*- coding: utf-8 -*-
-"""Prüfung der Texte und Zahlen in Texten (BAU_AUFTRAG.md, Teil 2.3).
-
-Aufruf: python3 simulation/tests/test_texte.py
-Geprüft (Toleranzen gibt es hier keine: Gleichheit der Zeichenketten):
-  T1  Deutsch und Englisch haben dieselben Schlüssel.
-  T2  Jeder Platzhalter {{z:..}}, {{e:..}}, {{v:..}} ist bekannt; nach dem Bau bleibt keiner übrig (bauen.texte_bauen).
-  T3  Jede Formel lässt sich umsetzen; kein einzelnes $ bleibt übrig.
-  T4  Jede literale Zahl in einem Text (außerhalb der Platzhalter) hat einen Herkunftseintrag in zahlen.LITERALE.
-  T5  Keine Gedankenstriche (U+2013, U+2014) in Texten, Skripten, Vorlage und Stil.
-  T6  Rundung und Dezimalzeichen: Deutsch mit Komma, Englisch mit Punkt; jede {{z:..}}-Zahl gleich dem nach der
-      Stellenregel gerundeten ungerundeten Referenzwert, in beiden Sprachen mit gleichen Ziffern.
-  T7  Gegenprobe der Kernzahlen gegen die unabhängig nachgerechneten Werte im Konzept (Abschnitte 6 und 8.2).
-  T8  Vorgaben stimmen mit dem Code überein (Abtastpunkte in oberflaeche.js, Zufallssätze in test_kern.py).
-  T9  Jeder Text-Schlüssel, den die Oberfläche fest anspricht, existiert; keine Schlüssel ohne Verwendung.
-"""
+"""Texte der Kaffee-Seite Fassung 3. Aufruf: python3 simulation/tests/test_texte.py (Ergebnis nach test_texte_ergebnis.txt)."""
 import os
 import re
 import sys
 
 HIER = os.path.dirname(os.path.abspath(__file__))
-SITE = os.path.join(os.path.dirname(HIER), "site")
-sys.path.insert(0, SITE)
+SIM = os.path.dirname(HIER)
+sys.path.insert(0, os.path.join(SIM, "site"))
 import bauen  # noqa: E402
 import zahlen  # noqa: E402
 
-ERG = []
+ergebnisse = []
+KERNSATZ = ("Stimmt die Simulation mit deiner Rechnung überein, ist die Rechnung bestätigt, nicht das Modell. "
+            "Ob das Modell stimmt, zeigt nur der Versuch.")
+# Ergebnisse von Teilaufgaben des Blatts (DE-Schreibweise): dürfen auf der Startkarte nicht stehen
+ERGEBNISSE = ["43,85", "40,29", "3,56", "45,43", "70,47", "25,49", "28,90", "3,41", "0,1994", "18,6", "58,2", "47,76", "48,55", "2,56"]
+# Zahlen in den Texten, die keine Modellzahl sind (Herkunft): Nummern, Zeiten und Werte des Blatts, Grenzen der Seite
+LITERALE = {"0": "Ziffer, Unterschied 0, Index", "1": "Tasse 1, Index, Annahme 1", "2": "Tasse 2, Index", "3": "Auftrag 3",
+            "6": "Annahmen 1 bis 6", "01": "Schritt 01", "02": "Schritt 02", "03": "Schritt 03", "04": "Schritt 04",
+            "10": "Messung nach 10 min (Blatt), Messblatt", "20": "Messblatt 20 min", "30": "Grenze 30 °C (D3), Zugabe 30 min",
+            "60": "60 min (Blatt), Trinktemperatur 60 °C (d2)", "90": "Zugabe 90 min (Auftrag 3)", "100": "Bereich 0 bis 100 °C",
+            "5": "Tutorium 5", "1,0": "Index", "4": "Teil g4"}
 
 
 def pruefe(name, ok, info=""):
-    ERG.append((name, bool(ok), info))
-    print(("ok    " if ok else "FEHLT ") + name + ("  " + info if info else ""))
+    ergebnisse.append((name, bool(ok), info))
+
+
+def sichtbar(t):
+    """Text ohne Tags und ohne Formeln."""
+    return re.sub(r"<[^>]+>", " ", re.sub(r"<math.*?</math>", " ", t, flags=re.S))
 
 
 def main():
-    roh = {s: bauen.texte_lesen("texte_%s.txt" % s) for s in bauen.SPRACHEN}
-    # T1
-    nur = set(roh["de"]) ^ set(roh["en"])
-    pruefe("T1 gleiche Schlüssel in DE und EN (%d)" % len(roh["de"]), not nur, ", ".join(sorted(nur)))
-    # T2, T3
-    try:
-        _, fertig = bauen.texte_bauen()
-        pruefe("T2/T3 Platzhalter bekannt, Formeln umsetzbar, kein $ übrig", True)
-    except bauen.BauFehler as e:
-        pruefe("T2/T3 Platzhalter bekannt, Formeln umsetzbar, kein $ übrig", False, str(e))
-        fertig = None
-    if fertig:
-        rest = [s + "/" + k for s in fertig for k, t in fertig[s].items() if re.search(r"\{\{|\}\}", t)]
-        pruefe("T2 nach dem Bau kein Platzhalter übrig", not rest, ", ".join(rest[:5]))
-    # T4
-    lit = {}
-    for k, n, _ in zahlen.LITERALE:
-        lit.setdefault(n, set()).add(k)
-    ohne = []
-    for s in roh:
-        for k, t in roh[s].items():
-            t2 = re.sub(r"\{\{[zev]:\w+\}\}", " ", t)
-            t2 = re.sub(r"\{\w+\}", " ", t2)
-            t2 = re.sub(r"<[^>]+>", " ", t2)
-            for m in re.finditer(r"(?<![\w.,])\d+(?:[.,]\d+)?", t2):
-                n = m.group(0)
-                if not (n in lit and ("*" in lit[n] or k in lit[n])):
-                    ohne.append("%s/%s: %s" % (s, k, n))
-    pruefe("T4 jede literale Zahl hat eine Herkunft", not ohne, "; ".join(ohne[:8]))
-    # T5
-    striche = []
-    for n in ["texte_de.txt", "texte_en.txt", "oberflaeche.js", "erweiterung.js", "hilfen.js", "vorlage.html", "stil.css", "regler.json"]:
-        for i, z in enumerate(bauen.lies(n).split("\n"), 1):
-            if "–" in z or "—" in z:
-                striche.append("%s:%d" % (n, i))
-    pruefe("T5 keine Gedankenstriche in den Quellen", not striche, ", ".join(striche[:8]))
-    # T6
-    mz = zahlen.modellzahlen()
-    fehl = []
-    for name, (w, st) in mz.items():
-        de, en = zahlen.formatiere(w, st, "de"), zahlen.formatiere(w, st, "en")
-        soll = ("%." + str(st) + "f") % round(w, st) if st > 0 else str(int(round(w)))
-        soll = soll.replace("-", "−")
-        if en != soll or de != soll.replace(".", ","):
-            fehl.append("%s: de %s en %s soll %s" % (name, de, en, soll))
-        if st > 0 and ("," not in de or "." in de or "." not in en or "," in en):
-            fehl.append("%s: Dezimalzeichen" % name)
-    pruefe("T6 Rundung und Dezimalzeichen der Modellzahlen (%d)" % len(mz), not fehl, "; ".join(fehl[:5]))
-    falsch_dez = []
-    for s, zeichen in (("de", r"\d\.\d"), ("en", r"\d,\d")):
-        for k, t in fertig[s].items():
-            ohne_math = re.sub(r"<math.*?</math>", " ", t, flags=re.S)
-            ohne_math = re.sub(r"<code>.*?</code>", " ", ohne_math, flags=re.S)
-            if re.search(zeichen, ohne_math):
-                falsch_dez.append(s + "/" + k)
-    pruefe("T6 Dezimalzeichen im fertigen Text je Sprache", not falsch_dez, ", ".join(falsch_dez[:6]))
-    # T7: Werte aus KONZEPT.md (Abschnitte 6.1, 6.2, 8.2), dort unabhängig nachgerechnet (recherche/claude_f2)
-    erwartet = {"th1": "34,05", "th2": "30,19", "dT": "3,85", "dQ": "3,69", "CG": "957,7", "Q1": "34,88", "Q2": "38,57",
-                "dTmax": "3,86", "kA": "0,3402", "v3_Q1": "46,60", "v3_Q2": "50,34", "th10": "70,47"}
-    abw = ["%s: %s statt %s" % (k, zahlen.formatiere(*mz[k], "de"), v) for k, v in erwartet.items() if zahlen.formatiere(*mz[k], "de") != v]
-    pruefe("T7 Kernzahlen gleich den Konzeptwerten (%d)" % len(erwartet), not abw, "; ".join(abw))
-    konzept = open(os.path.join(os.path.dirname(HIER), "KONZEPT.md"), encoding="utf-8").read()
-    nicht_im_konzept = [v for v in erwartet.values() if v not in konzept]
-    pruefe("T7 jede Vergleichszahl steht im Konzept", not nicht_im_konzept, ", ".join(nicht_im_konzept))
-    # T8
-    ui = bauen.lies("oberflaeche.js")
-    m = re.search(r"const N_ABTAST = (\d+);", ui)
-    pruefe("T8 Abtastpunkte im Text = Code", m and int(m.group(1)) == zahlen.VORGABEN["abtastpunkte"][0], m.group(1) if m else "nicht gefunden")
-    tk = open(os.path.join(HIER, "test_kern.py"), encoding="utf-8").read()
-    m = re.search(r"def test_zufall\(n=(\d+)\)", tk)
-    pruefe("T8 Zufallssätze im Text = Test", m and int(m.group(1)) == zahlen.VORGABEN["testwerte"][0], m.group(1) if m else "nicht gefunden")
-    # T9
-    fest = set(re.findall(r'\bt\("([A-Za-z0-9_]+)"', ui)) | set(re.findall(r'data-t(?:-aria)?="([A-Za-z0-9_]+)"', bauen.lies("vorlage.html")))
-    fest |= set(re.findall(r'(?:titel|text|aufl|ausgang|label|grundlage)": "([A-Za-z0-9_]+)"', ui + bauen.lies("regler.json")))
-    fest |= set(re.findall(r'\w+: "([a-z0-9]+_[a-z0-9_]+)"', ui))
-    wahl_ids = {"thermo_offen", "keramik_deckel"}
-    fest = {k for k in fest if not k.endswith("_") and not re.search(r"_b$", k) and k not in wahl_ids}
-    import json
-    rj = json.loads(bauen.lies("regler.json"))
-    dyn = ["regler_" + r["id"] for r in rj["regler"]] + ["hilfe_" + r["id"] for r in rj["regler"]] + [r["grundlage"] for r in rj["regler"]]
-    dyn += ["hilfe_" + r["id"] for r in rj["schalter"]] + ["mess_kopf_b%d" % i for i in (1, 2, 3)]
-    vor = re.findall(r'id: "(\w+)", faktor', bauen.lies("erweiterung.js"))
-    dyn += ["vor_" + v for v in vor] + ["vor_text_" + v for v in vor]
-    dyn += ["fehler_" + c for c in re.findall(r'"(anfang_ueber_raum|kA_positiv|messung_zwischen|\w+_\w+)"', bauen.lies("erweiterung.js").split("function fehler")[1].split("}")[0])]
-    dyn += ["link_grund_" + g for g in ("zu_lang", "u", "m", "d", "b")]
-    dyn += ["dia_titel_" + a for a in ("waermestrom", "ln")]
-    dyn += ["lesehinweis_" + a for a in re.findall(r'data-ansicht="(\w+)"', bauen.lies("vorlage.html")) if a != "temperatur"]
-    pruefe("T9 Schlüsselfamilien vollständig (Regler, Hilfen, Voreinstellungen %d, Fehlercodes)" % len(vor),
-           len(vor) == 6 and all(k in roh["de"] for k in dyn), ", ".join(k for k in dyn if k not in roh["de"]))
-    fest |= set(dyn)
-    fehlt = sorted(k for k in fest if k not in roh["de"] and re.match(r"^[a-z]", k) and "_" in k)
-    pruefe("T9 jeder fest angesprochene Schlüssel existiert", not fehlt, ", ".join(fehlt[:10]))
-    unbenutzt = sorted(k for k in roh["de"] if k not in fest and '"' + k + '"' not in ui)
-    pruefe("T9 keine Schlüssel ohne Verwendung", not unbenutzt, ", ".join(unbenutzt[:12]))
+    roh, fertig = bauen.texte_bauen()
+    de, en = fertig["de"], fertig["en"]
+    pruefe("Schlüssel DE und EN gleich", set(de) == set(en), str(set(de) ^ set(en)))
+    platz = lambda t: sorted(re.findall(r"\{(\w+)\}", sichtbar(t)))
+    pruefe("Laufzeit-Platzhalter DE und EN gleich", all(platz(de[k]) == platz(en[k]) for k in de),
+           ", ".join(k for k in de if platz(de[k]) != platz(en[k])))
+    # Gedankenstriche in Texten und allen Quellen der Fassung 3
+    dateien = [os.path.join(SIM, "site", "src", n) for n in os.listdir(os.path.join(SIM, "site", "src")) if n.endswith((".txt", ".js", ".html", ".css"))]
+    dateien += [os.path.join(SIM, "site", n) for n in ("bauen.py", "zahlen.py", "schriften_teilen.py")]
+    dateien += [os.path.join(SIM, n) for n in ("KONZEPT_F3.md", "ENTSCHEIDUNGEN_F3.md")]
+    dateien += [os.path.join(HIER, n) for n in os.listdir(HIER) if n.endswith((".py", ".js"))]
+    mit = [os.path.relpath(f, SIM) for f in dateien if os.path.exists(f) and re.search("[\u2013\u2014]", open(f, encoding="utf-8").read())]
+    pruefe("keine Gedankenstriche (Texte, Quellen, Konzept, Entscheidungen, Tests)", not mit, ", ".join(mit))
+    # Dezimalzeichen
+    de_punkt = [k for k, t in de.items() if re.search(r"\d\.\d", sichtbar(t))]
+    en_komma = [k for k, t in en.items() if re.search(r"\d,\d", sichtbar(t))]
+    pruefe("Deutsch mit Dezimalkomma", not de_punkt, ", ".join(de_punkt))
+    pruefe("Englisch mit Dezimalpunkt", not en_komma, ", ".join(en_komma))
+    # du-Form durchgehend (G2: auch allein zu Hause)
+    sie = [k for k, t in de.items() if re.search(r"\b(Sie|Ihre?[nmrs]?|Ihnen|euer|eure[nmrs]?|euch|Wählt|Legt|Stellt|Schreibt|Notiert)\b", sichtbar(t))]
+    pruefe("Deutsch in du-Form", not sie, ", ".join(sie))
+    pruefe("Kernsatz wörtlich nach Leitlinie 6", de["kernsatz"] == KERNSATZ, de["kernsatz"])
+    pruefe("Vertiefung gekennzeichnet: nach dem Tutorium oder zu Hause (T1)", "nach dem Tutorium oder zu Hause" in de["w_titel"]
+           and "after the tutorial or at home" in en["w_titel"])
+    nummern = [sichtbar(de["s%d_nr" % i]).split()[0] for i in range(1, 5)]
+    pruefe("Pflichtweg durchgehend 01 bis 04 (T2), Vertiefung ohne Nummer", nummern == ["01", "02", "03", "04"]
+           and not re.match(r"\s*0\d", sichtbar(de["w_titel"])), str(nummern))
+    start = ["zweck", "s1_nr", "s1_titel", "s1_lage", "s1_wahl", "s1_wahl_1", "s1_wahl_2", "s1_wahl_0", "s1_grund", "s1_grund_e",
+             "s1_grund_s", "s1_grund_h", "s1_grund_x", "s1_freitext", "s1_e", "s1_knopf", "s1_fehlt", "kopf_zeile", "kopf_titel", "dia_leer"]
+    verrat = [k for k in start for z in ERGEBNISSE if z in de[k]]
+    pruefe("Startkarte verrät nichts (keine Ergebniszahl)", not verrat, ", ".join(verrat))
+    pruefe("Startkarte ohne Antwortwort", not any(re.search(r"\b(kälter|bestätigt|abgegeben)\b", sichtbar(de[k])) for k in start))
+    pruefe("Simulationswerte nicht als Messwerte bezeichnet (B05)", "keine Messung" in de["s3_beispiel"] and "nicht gemessen" in de["annahmen"]
+           and "berechnet" in de["leg_beispiel"])
+    pruefe("Startkarte: Grund per Tipp, Freitext freiwillig (T3)", "tippe" in de["s1_grund"] and "freiwillig" in de["s1_freitext"])
+    # Herkunft jeder Zahl: Modellzahl aus zahlen.py oder Literal mit Herkunft
+    erlaubt = set(zahlen.alle("de").values()) | set(LITERALE)
+    fremd = {}
+    for k, t in de.items():
+        for z in re.findall(r"\d+(?:,\d+)?", sichtbar(t)):
+            if z not in erlaubt:
+                fremd.setdefault(z, []).append(k)
+    pruefe("jede Zahl in den Texten aus zahlen.py oder mit Herkunft", not fremd, "; ".join("%s: %s" % (z, ", ".join(v)) for z, v in fremd.items()))
+    gleich = all(sorted(re.findall(r"\d+", sichtbar(de[k]))) == sorted(re.findall(r"\d+", sichtbar(en[k]))) for k in de)
+    pruefe("dieselben Zahlen in DE und EN", gleich, ", ".join(k for k in de if sorted(re.findall(r"\d+", sichtbar(de[k]))) != sorted(re.findall(r"\d+", sichtbar(en[k])))))
+    pruefe("Säulenzahlen nicht in den Texten der Säulen vor der Antwort", not re.search(r"\d,\d|kJ", de["s2_saeulen"] + de["s2_saeulen_aria"] + de["s2_frage"]))
 
-    n_ok = sum(1 for _, ok, _ in ERG if ok)
-    print("\nErgebnis: %d von %d Prüfungen bestanden." % (n_ok, len(ERG)))
-    return 0 if n_ok == len(ERG) else 1
+    zeilen = ["Texte Fassung 3", ""]
+    for n, ok, info in ergebnisse:
+        zeilen.append(("bestanden   " if ok else "FEHLGESCHLAGEN ") + n + ("  [" + info + "]" if info and not ok else ""))
+    gut = sum(1 for _, ok, _ in ergebnisse if ok)
+    zeilen += ["", "%d von %d bestanden" % (gut, len(ergebnisse))]
+    text = "\n".join(zeilen) + "\n"
+    open(os.path.join(HIER, "test_texte_ergebnis.txt"), "w", encoding="utf-8").write(text)
+    print(text)
+    sys.exit(0 if gut == len(ergebnisse) else 1)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
