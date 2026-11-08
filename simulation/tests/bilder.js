@@ -32,7 +32,7 @@ async function zustand(p, z) {
 }
 async function blick(p, geraet, z) {
   const handy = geraet === 'handy';
-  const ziel = { start: null, ergebnis: '#buehne', erklaert: handy ? '#s2' : null, messung: handy ? '#s3' : '#s3', ln: '#s3', auftrag3: handy ? '#buehne' : '#weiter', modell: '#modell' }[z];
+  const ziel = { start: null, ergebnis: '#buehne', erklaert: handy ? '#s2' : null, messung: handy ? '#s3' : '#s3', ln: handy ? '#buehne' : '#s3', auftrag3: handy ? '#buehne' : '#weiter', modell: '#modell' }[z];
   if (!handy && z !== 'start') await p.evaluate(() => window.scrollTo(0, document.querySelector('.raster').getBoundingClientRect().top + scrollY - 10));
   if (ziel && (handy || ['messung', 'ln', 'auftrag3', 'modell'].includes(z))) await p.evaluate(s => document.querySelector(s).scrollIntoView({ block: 'start' }), ziel);
   await p.waitForTimeout(150);
@@ -42,7 +42,7 @@ const FAELLE = [
   ['2_ergebnis', 'ergebnis', ['handy', 'laptop'], ['de']],
   ['3_erklaert', 'erklaert', ['handy', 'laptop', 'beamer'], ['de', 'en']],
   ['4_messung', 'messung', ['handy', 'laptop'], ['de']],
-  ['5_ln', 'ln', ['laptop'], ['de']],
+  ['5_ln', 'ln', ['handy', 'laptop'], ['de', 'en']],
   ['6_auftrag3', 'auftrag3', ['handy', 'laptop'], ['de']],
   ['7_modell', 'modell', ['laptop'], ['de']],
 ];

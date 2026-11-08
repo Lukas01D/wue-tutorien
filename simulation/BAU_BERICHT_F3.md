@@ -1,6 +1,6 @@
 # Baubericht Fassung 3: Kaffee-Simulation, schlank
 
-> Bau durch Claude am 08.11.2026 auf dem Zweig `claude/kaffee-simulation-v3-qw4zb2` (von `main`, 7b235ca) nach `simulation/KONZEPT_F3.md` mit den Entscheidungen der TL vom 08.11.2026 (D1 bis D10 wie empfohlen, T1 bis T3; Beleg `simulation/ENTSCHEIDUNGEN_F3.md`). Fassung 2 (Bau vom 06.11.2026, `simulation/BAU_BERICHT.md`) ist damit in `simulation/site/` ersetzt; ihre Berichte und Prüfungen bleiben als Archiv im Repository. **Status: gebaut und in Chromium geprüft; nächster Schritt unabhängige Prüfung durch Codex (Rolle X6, `simulation/X6_AUFTRAG.md`).**
+> Bau durch Claude am 08.11.2026 auf dem Zweig `claude/kaffee-simulation-v3-qw4zb2` (von `main`, 7b235ca) nach `simulation/KONZEPT_F3.md` mit den Entscheidungen der TL vom 08.11.2026 (D1 bis D10 wie empfohlen, T1 bis T3; Beleg `simulation/ENTSCHEIDUNGEN_F3.md`). Fassung 2 (Bau vom 06.11.2026, `simulation/BAU_BERICHT.md`) ist damit in `simulation/site/` ersetzt; ihre Berichte und Prüfungen bleiben als Archiv im Repository. **Status: gebaut, in Chromium geprüft und von Codex unabhängig geprüft (X6, „mit Änderungen“, vier Befunde); alle vier Befunde übernommen und mit Tests belegt (`simulation/X6_ANTWORT.md`). Bereit für den Pull Request.**
 
 ## 1 Stand
 
@@ -56,8 +56,8 @@ node simulation/tests/bilder.js
 | `bauen.py --pruefen` | gleich | Bau reproduzierbar, keine Zeichenwarnung |
 | `test_kern.py` | 34 von 34 | `rechne()` bytegleich mit `main`; STANDARD und Beispielwerte gleich `werte.py`; alle Prüfwerte relativ unter 1e-9; 2006 Parametersätze (Blatt, 2000 Zufallssätze, Ränder) gegen `kaffee_modell.py`; Energiebilanz ohne Verdunstung; Zahlen der Aufträge und Rückmeldungen |
 | `test_texte.py` | 16 von 16 | Schlüssel und Platzhalter DE = EN; keine Gedankenstriche; Dezimalzeichen; du-Form; Kernsatz wörtlich; T1, T2, T3; Startkarte ohne Ergebnis; jede Zahl mit Herkunft |
-| `browsertest.js` | 93 von 93 | Größe; CSP greift; Sperren Z0 und Z1 im ganzen DOM; Kernzahlen; Kernsatz in drei Fassungen; Säulen ohne und mit Zahlen; Regler (Grenze 30 °C, Komma, Punkt, Tastatur, kA fest, Werte des Blatts); Messpunkte, Beispielwerte, ln-Ansicht; drei Aufträge; Schluss; Speicher, „Von vorn“, gesperrter Speicher; Englisch; kein waagerechtes Scrollen bei 320 bis 1920 px in beiden Sprachen und bei 200 % Text; Beamer 1280 × 720 und 1366 × 768; Handy 390 × 844; Zielgrößen; Fokus; axe-core in 12 Zuständen ohne Verstoß; Reglerschritt im Median 2,3 ms |
-| `bilder.js` | 20 Bilder | `simulation/bildschirmfotos/f3/` (Liste in `LISTE.txt`), von Claude angesehen; dabei gefunden und behoben: Beschriftung bei sich kreuzenden Kurven, „−0,00 K“, zu hohe Bühne bei offenen Ausgangswerten |
+| `browsertest.js` | 107 von 107 (davon 14 zu X6) | Größe; CSP greift; Sperren Z0 und Z1 im ganzen DOM; Kernzahlen; Kernsatz in drei Fassungen; Säulen ohne und mit Zahlen; Regler (Grenze 30 °C, Komma, Punkt, Tastatur, kA fest, Werte des Blatts); Messpunkte, Beispielwerte, ln-Ansicht; drei Aufträge; Schluss; Speicher, „Von vorn“, gesperrter Speicher; Englisch; kein waagerechtes Scrollen bei 320 bis 1920 px in beiden Sprachen und bei 200 % Text; Beamer 1280 × 720 und 1366 × 768; Handy 390 × 844; Zielgrößen; Fokus; axe-core in 12 Zuständen ohne Verstoß; Reglerschritt im Median 2,3 ms |
+| `bilder.js` | 23 Bilder | `simulation/bildschirmfotos/f3/` (Liste in `LISTE.txt`), von Claude angesehen; dabei gefunden und behoben: Beschriftung bei sich kreuzenden Kurven, „−0,00 K“, zu hohe Bühne bei offenen Ausgangswerten |
 
 ## 5 Abnahmekriterien (Abschnitt 4 des Auftrags)
 
@@ -95,11 +95,14 @@ node simulation/tests/bilder.js
 | S14 | geteilte Messwerte ohne Personenbezug | erfüllt | kein Teilen; nur im Browser; Plausibilitätshinweis |
 | S15 | keine Punkte und Uhr, Schluss mit Grenzen | erfüllt | 04 |
 
-## 7 Offen
+## 7 Prüfung X6 durch Codex
+
+Bericht `simulation/X6_CODEX_PRUEFUNG.md` (Stand bee7112, Nachweise `simulation/x6_skripte/`): Rechnung unabhängig bestätigt (858 Vergleiche, größte relative Abweichung 8,5e-12), Pflichtweg geschätzt 7,5 min, 30 axe-Prüfungen ohne Verstoß. Befunde X6-01 (high, Neustart), X6-02 (medium, Entscheidungsprotokoll), X6-03 und X6-04 (low): alle übernommen, Antwort mit Beleg in `simulation/X6_ANTWORT.md`.
+
+## 8 Offen
 
 | Was | Wer | Wo |
 |:--|:--|:--|
-| Unabhängige Prüfung (Rolle X6) | Codex, auf Startsatz der TL | `simulation/X6_AUFTRAG.md` |
 | iPhone mit Safari, Android, Bildschirmleser, Beamer im Hörsaal | TL | `simulation/ABNAHME_IPHONE.md` (neu für Fassung 3) |
 | Zeit des Pflichtwegs mit Studierenden (Ziel höchstens 8 min) | TL, erster Einsatz | O4 |
 | Messung im Januar 2027: ändert nur `STANDARD` und `BEISPIEL` in `site/src/modell.js` (und `werte.py`) | TL, danach Bau | O5, SE6 |

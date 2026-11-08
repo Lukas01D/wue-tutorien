@@ -286,7 +286,7 @@
       let x, y;
       if (oben) { x = Math.max(Lr + 4, Math.min(X(t / 60), W - R - w)); y = Y(k(Math.max(0, Xinv(x)))) - 10; }
       else { x = Math.min(W - R, Math.max(X(t / 60), Lr + w + 4)); y = Y(k(Math.min(tZ, Xinv(x)))) + 22; }
-      svg.appendChild(el("text", { x: x, y: y, "text-anchor": oben ? "start" : "end", "font-size": fs, class: "kbeschr " + (n === 1 ? "k1-text" : "k2-text") }, txt));
+      imBild(svg.appendChild(el("text", { x: x, y: y, "text-anchor": oben ? "start" : "end", "font-size": fs, class: "kbeschr " + (n === 1 ? "k1-text" : "k2-text") }, txt)), Lr + 2, W - 4);
     }
     $("dia-beschreibung").textContent = F("dia_beschreibung", { a1: zahl(erg.th10, 1), e1: zahl(erg.th1, 1), a2: zahl(e.thK0, 1), e2: zahl(erg.th2K, 1), m2: zahl(erg.th2, 1), u: zahl(e.thU, 1) });
     // Legende nur für vorhandene Zeichen
@@ -296,6 +296,12 @@
     if (m.t1.some(v => v !== null) || m.t2.some(v => v !== null)) leg.push(T("leg_messung"));
     $("legende").textContent = leg.join(" · ");
     $("legende").hidden = !leg.length;
+  }
+  function imBild(t, links, rechts) {             // verschiebt einen SVG-Text waagerecht, bis er ganz zwischen links und rechts liegt
+    const b = t.getBBox();
+    if (!b.width) return;
+    const dx = b.x + b.width > rechts ? rechts - (b.x + b.width) : (b.x < links ? links - b.x : 0);
+    if (dx) t.setAttribute("x", Number(t.getAttribute("x")) + dx);
   }
   function zeichneLn(svg, W, H, fs, erg) {
     const m = messungen(), u = S.e.thU;
@@ -320,7 +326,10 @@
     const ym = (Y(ymin) + Y(ymax)) / 2;
     svg.appendChild(el("text", { x: 12, y: ym, "text-anchor": "middle", "font-size": fs, class: "beschr", transform: "rotate(-90 12 " + ym + ")" }, T("dia_ln_y")));
     svg.appendChild(el("line", { x1: X(0), y1: Y(0), x2: X(60), y2: Y(steigung * 60), class: "kurve k2 gestrichelt", "stroke-width": 2.5 }));
-    svg.appendChild(el("text", { x: X(32), y: Y(steigung * 32) - 10, "font-size": fs, class: "kbeschr k2-text" }, F("dia_ln_modell", { kA: zahl(erg.kA, 4) })));
+    const lnText = svg.appendChild(el("text", { x: X(32), y: Y(steigung * 32) - 10, "font-size": fs, class: "kbeschr k2-text" }, F("dia_ln_modell", { kA: zahl(erg.kA, 4) })));
+    imBild(lnText, Lr + 2, W - 4);
+    const xl = Number(lnText.getAttribute("x"));
+    lnText.setAttribute("y", Y(steigung * Math.max(0, Math.min(60, (xl - Lr) / (W - Lr - R) * 60))) - 10);   // über der Geraden am Textanfang
     for (const [t, v] of pkte) svg.appendChild(el("rect", { x: X(t) - 4, y: Y(v) - 4, width: 8, height: 8, class: "punkt k2" + (eigene ? "" : " hohl") }));
     if (!pkte.length) svg.appendChild(el("text", { x: (X(0) + X(60)) / 2, y: Y(ymin * 0.25), "text-anchor": "middle", "font-size": fs, class: "leise-text" }, T("dia_ln_leer")));
     $("dia-beschreibung").textContent = T("dia_ln_titel") + ". " + F("dia_ln_modell", { kA: zahl(erg.kA, 4) }) + ".";
@@ -436,11 +445,27 @@
   }
 
   // ------------------------------------------------------------ Ansage, Kernzahlen, Kernsatz
+  let ansageTimer = 0;
   function ansage(text) {
-    const erg = auswerten(S.e);
+    window.clearTimeout(ansageTimer);
     $("ansage").textContent = "";
+    if (S.z < 1) return;                                   // vor der Vorhersage keine Ergebnisansage (X6-01)
+    const erg = auswerten(S.e);
     const t = text || F("status_werte", { t: S.e.tZ, th1: zahl(erg.th1, 2), th2: zahl(erg.th2, 2), dT: zahl(erg.dT, 2) });
-    window.setTimeout(() => { $("ansage").textContent = t; }, 60);
+    ansageTimer = window.setTimeout(() => { if (S.z >= 1) $("ansage").textContent = t; }, 60);
+  }
+  // Im Startzustand alle Ergebnisinhalte und -attribute leeren, auch nach „Von vorn“ (X6-01)
+  function ergebnisseLeeren() {
+    window.clearTimeout(ansageTimer);
+    for (const id of ["ansage", "w1", "w2", "wd", "kern-zeit", "kernsatz", "s1-zusammenfassung", "s2-rueck", "s4-rueck", "auftrag-zeile", "legende", "gruppe-zus"]) $(id).textContent = "";
+    $("saeulen").textContent = "";
+    $("saeulen").removeAttribute("aria-label");
+    for (const r of REGLER) {
+      $("rf-" + r.id).value = "";
+      $("rr-" + r.id).removeAttribute("aria-valuetext");
+      $("rh-" + r.id).textContent = "";
+      $("rm-" + r.id).textContent = "";
+    }
   }
   function kern(erg) {
     $("kern-zeit").textContent = F("kern_nach", { t: S.e.tZ });
@@ -461,6 +486,10 @@
   // ------------------------------------------------------------ Zustand anzeigen
   function zeigeZustand() {
     const z = S.z;
+    if (z === 0) ergebnisseLeeren();
+    // X6-04: Link „Modell“ erst mit seinem Ziel (ab Zustand 2), dann klappt er den Bereich auf
+    const link = $("zum-modell");
+    if (link && z < 2) link.remove();
     document.body.classList.toggle("z0", z === 0);
     $("s1-offen").hidden = z !== 0;
     $("s1-zu").hidden = z === 0;
@@ -561,6 +590,7 @@
     let warten = 0;
     window.addEventListener("resize", () => { cancelAnimationFrame(warten); warten = requestAnimationFrame(() => zeichne(auswerten(S.e))); });
     $("gruppe").addEventListener("toggle", () => zeichne(auswerten(S.e)));
+    document.addEventListener("click", ev => { if (ev.target.closest && ev.target.closest("#zum-modell")) $("modell").open = true; });
   }
   function nachOben() {
     if (window.innerWidth >= 1024) window.scrollTo(0, Math.max(0, document.querySelector(".raster").getBoundingClientRect().top + window.scrollY - 10));

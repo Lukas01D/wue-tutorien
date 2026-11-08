@@ -180,6 +180,64 @@ async function tests() {
     pruefe('Z2-Lauf: keine Konsolenfehler, keine fremden Anfragen', p.fehler.length === 0 && p.anfragen.length === 0, p.fehler.concat(p.anfragen).join('; '));
     await p.context().close();
   }
+  // ---------------------------------------------------------------- X6-01: „Von vorn“ stellt die Sperre wieder her
+  for (const lang of ['de', 'en']) {
+    const p = await seite({ q: '?lang=' + lang });
+    const zahlen = lang === 'de' ? ERGEBNISSE_DE : ERGEBNISSE_DE.map(z => z.replace(',', '.'));
+    await start(p, lang === 'de' ? '43,85' : '43.85', lang === 'de' ? '40,29' : '40.29');
+    await erklaere(p, 'a');
+    await p.fill('#rf-thM', '6'); await p.press('#rf-thM', 'Enter');
+    await p.click('#gruppe summary');
+    await p.fill('#m2', '80 72');
+    await p.click('#a1 summary'); await p.check('input[name=a1][value="1"]'); await p.click('#a1-knopf'); await p.click('#a1-ged-knopf');
+    await p.fill('#rf-thM', '6'); await p.press('#rf-thM', 'Enter');
+    await p.waitForTimeout(150);
+    const vorher = [await text(p, '#w1'), await text(p, '#w2'), await text(p, '#wd'), (await text(p, '#ansage')).trim()];
+    await p.click('#von-vorn');
+    await p.waitForTimeout(200);
+    // DOM ohne Skript; im Diagramm nur Texte und Namen prüfen (Koordinaten wie x="118.6" sind keine Ergebnisse)
+    const dom = await p.evaluate(() => { const c = document.body.cloneNode(true); c.querySelectorAll('script').forEach(x => x.remove()); const d = c.querySelector('#dia'); const t = d.textContent + ' ' + (d.getAttribute('aria-label') || ''); d.remove(); return c.innerHTML + ' ' + t; });
+    const kern = vorher.slice(0, 3).map(v => v.split(' ')[0]);
+    const gefunden = zahlen.concat(kern).filter(z => dom.includes(z));
+    pruefe('X6-01 Von vorn (' + lang + '): keine Ergebniszahl im DOM, auch nicht in Attributen (vorher ' + vorher.slice(0, 3).join(', ') + ')', gefunden.length === 0 && vorher[3].length > 0, gefunden.join(', '));
+    pruefe('X6-01 Von vorn (' + lang + '): Statusansage leer, Säulen ohne Inhalt und Namen', (await text(p, '#ansage')) === '' && await p.evaluate(() => !document.getElementById('saeulen').hasChildNodes() && !document.getElementById('saeulen').hasAttribute('aria-label')));
+    const axText = await p.locator('body').ariaSnapshot();
+    pruefe('X6-01 Von vorn (' + lang + '): Barrierefreiheitsbaum ohne Ergebniszahl', !zahlen.concat(kern).some(z => axText.includes(z)));
+    await p.context().close();
+  }
+  {
+    // zweiter Pfad: Neustart innerhalb des 60-ms-Fensters einer ausstehenden Ansage
+    const p = await seite();
+    await start(p); await erklaere(p);
+    await p.evaluate(() => { document.getElementById('rf-tZ').value = '61'; document.getElementById('rf-tZ').dispatchEvent(new Event('change')); document.getElementById('von-vorn').click(); });
+    await p.waitForTimeout(250);
+    const dom = await p.evaluate(() => { const c = document.body.cloneNode(true); c.querySelectorAll('script').forEach(x => x.remove()); return c.innerHTML; });
+    pruefe('X6-01 Neustart während ausstehender Ansage: Ansage leer, keine Ergebniszahl', (await text(p, '#ansage')) === '' && !ERGEBNISSE_DE.concat(['3,58']).some(z => dom.includes(z)) && await p.evaluate(() => window.KAFFEE.zustand().z === 0));
+    await p.context().close();
+  }
+  // ---------------------------------------------------------------- X6-03: Beschriftungen im Diagramm, auch ln am Handy
+  for (const lang of ['de', 'en']) {
+    for (const [w, h] of [[390, 844], [320, 640]]) {
+      const p = await seite({ w, h, q: '?lang=' + lang });
+      await start(p); await erklaere(p);
+      const randNormal = await p.evaluate(() => { const s = document.getElementById('dia'), W = s.viewBox.baseVal.width; return [...s.querySelectorAll('text')].filter(t => !t.getAttribute('transform')).map(t => t.getBBox()).filter(b => b.x < 0 || b.x + b.width > W + 0.5).length; });
+      await p.check('#beispiel'); await p.check('#ln');
+      const randLn = await p.evaluate(() => { const s = document.getElementById('dia'), W = s.viewBox.baseVal.width; return [...s.querySelectorAll('text')].filter(t => !t.getAttribute('transform')).map(t => t.getBBox()).filter(b => b.x < 0 || b.x + b.width > W + 0.5).length; });
+      pruefe(`X6-03 Beschriftungen ganz im Diagramm ${w} px ${lang} (Kurven ${randNormal}, ln ${randLn} außerhalb)`, randNormal === 0 && randLn === 0);
+      await p.context().close();
+    }
+  }
+  // ---------------------------------------------------------------- X6-04: Modell-Link erst mit Ziel
+  {
+    const p = await seite();
+    pruefe('X6-04 Z0: kein Link „Modell“', !(await p.$('#zum-modell')));
+    await start(p);
+    pruefe('X6-04 Z1: kein Link „Modell“ (Ziel noch gesperrt)', !(await p.$('#zum-modell')));
+    await erklaere(p);
+    await p.click('#zum-modell');
+    pruefe('X6-04 Z2: Link vorhanden, öffnet das Modell', await p.evaluate(() => !document.getElementById('modell').hidden && document.getElementById('modell').open && location.hash === '#modell'));
+    await p.context().close();
+  }
   // ---------------------------------------------------------------- Rückmeldungen b und c, abweichende Rechnung
   for (const [w, anfang] of [['b', 'Das denken viele.'], ['c', 'Nein.']]) {
     const p = await seite();

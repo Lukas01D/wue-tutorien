@@ -68,7 +68,7 @@ Bestand: A „Messprotokoll“, B „Kaffeehaus“, C „Hörsaal“, 0 = Fassun
 | GS03 | Zahlen in IBM Plex Mono (A): springen beim Ziehen nicht | MS (Wert sichtbar halten) | gering | A | bestätigt (D10) | wie empfohlen | 08.11.2026 |
 | GS04 | Laptop und Beamer: Schritte links, Diagramm rechts und angeheftet (A, Beamer-Befund Fassung 2) | Mayer räumliche Nähe (d = 0,82); WCAG 2.4.11 | gering | A | bestätigt (D10) | wie empfohlen | 08.11.2026 |
 | GS05 | Handy: eine Spalte, Regler direkt unter dem Diagramm, kein Anheften (Lehre aus C; weniger Code als Fassung 2) | WCAG 1.4.10, 2.4.11; Mayer Kohärenz (0,86) | spart Code | übernehmen | bestätigt (D10) | wie empfohlen | 08.11.2026 |
-| GS06 | Ablauf als nummerierte Abschnitte 01 bis 05 (A), keine eigene Schrittleiste | Mayer Signalisierung (0,69), Segmentierung (0,67); G1 | keine | A ohne Leiste | bestätigt (D10) | wie empfohlen | 08.11.2026 |
+| GS06 | Ablauf als nummerierte Abschnitte 01 bis 04 für den Pflichtweg (A; nach T2), Vertiefung ohne Nummer, keine eigene Schrittleiste | Mayer Signalisierung (0,69), Segmentierung (0,67); G1 | keine | A ohne Leiste | bestätigt (D10) | wie empfohlen | 08.11.2026 |
 | GS07 | Auswahl als ganze Zeile, 48 px hoch, runder Marker (B, C) auf Formularlinien (A) | WCAG 2.5.8; Apple 44 pt; Android 48 dp | gering | B/C in A | bestätigt (D10) | wie empfohlen | 08.11.2026 |
 | GS08 | Eingabefeld mit Unterstrich 2 px auf getöntem Feld (A) | WCAG 1.4.11 (Rand 15,6:1) | keine | A | bestätigt (D10) | wie empfohlen | 08.11.2026 |
 | GS09 | Kernzahlen als Messwertzeile (A) mit großen Zahlen (C), Unterschied in Tintenblau | Signalisierung; Beamer-Bilder C | gering | A + C | bestätigt (D10) | wie empfohlen | 08.11.2026 |
@@ -104,17 +104,17 @@ Abweichungen vom Konzept beim Bau (08.11.2026), mit Grund; Einzelheiten in `simu
 
 | Kennung | Vorschlag (umgesetzt) | Quelle | Kosten | Empfehlung | Entscheidung der TL | Grund | Datum |
 |:--|:--|:--|:--|:--|:--|:--|:--|
-| A1 | du-Form durchgehend, auch in 02 bis 04 und den Aufträgen (Konzept stellenweise „ihr“) | G2; Kernsatz Leitlinie 6 in du-Form | keine | bestätigen | offen | allein zu Hause passend, einheitlich | |
-| A2 | Kernsatz mit eigenen Werten nur bei den Werten des Blatts; „stimmen überein“ bis 0,1 K | L2 C2.4 (S. 231 f., 236); P06 | keine | bestätigen | offen | Rundung auf zwei Stellen bleibt unter 0,03 K | |
-| A3 | Überschriften für 03 und 04 | Mayer Signalisierung (d = 0,69); WCAG 1.3.1 | keine | bestätigen | offen | Gliederung für Bildschirmleser | |
-| A4 | Plausibilitätshinweis bei Messwerten; Sprung „Zum Diagramm ↑“ am Handy | L2 C2.9 (S. 205, 248) | gering | bestätigen | offen | Messwerte prüfen; kurzer Weg zum Diagramm | |
-| A5 | Bühne am Laptop scrollt in sich, wenn sie höher als der Bildschirm wird | WCAG 2.4.11 | keine | bestätigen | offen | untere Regler sonst erst am Seitenende | |
-| A6 | Reglerbereiche (Milch 2 bis 80 °C, vor Auftrag 3 bis 30 °C; Zugabe 1 bis 180 min; Kaffee 60 bis 95 °C; Raum 10 bis 30 °C; kA 0,05 bis 0,80 W/K; Milch 10 bis 100 ml) | Fassung 2; L2 D1 S5 | keine | bestätigen | offen | physikalisch sinnvolle Bereiche | |
-| A7 | Legendenzeichen ○ □ ● ■ aus Plex Math | Zeichenprüfung des Baus | keine | bestätigen | offen | Plex Sans hat sie nicht | |
-| A8 | Rückmeldung c beginnt mit „Nein.“ | L1 S5 (S. 251) | keine | bestätigen | offen | klare Rückmeldung mit Begründung | |
-| A9 | kein Verweis „ohne Vorhersage aufdecken“ | G1 | keine | bestätigen | offen | am Beamer genügt eine beliebige Vorhersage | |
-| A10 | Begleitmaterial der Fassung 2 entfernt (`simulation/kurzkarte/`, `simulation/EINSATZ_TUTORIUM.md`); Ersatz `simulation/HINWEISE_TEXT_F3.md` | SE3 (Kurslink entfällt); Startprompt 3 („Entferntes vollständig entfernen“) | keine | bestätigen | offen | beschrieben Kurslink, QR-Code und Fragen der Fassung 2 | |
-| A11 | Messwerte: eine fehlende Messung als „x“ eintragen (Reihenfolge des Messblatts bleibt erhalten) | SE4; Messblatt des Blatts | keine | zur Kenntnis | offen | beim Bau ergänzt, nach der Bestätigung von A1 bis A9 beim Nachprüfen gefunden | |
+| A1 | du-Form durchgehend, auch in 02 bis 04 und den Aufträgen (Konzept stellenweise „ihr“) | G2; Kernsatz Leitlinie 6 in du-Form | keine | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | allein zu Hause passend, einheitlich | 08.11.2026 |
+| A2 | Kernsatz mit eigenen Werten nur bei den Werten des Blatts; „stimmen überein“ bis 0,1 K | L2 C2.4 (S. 231 f., 236); P06 | keine | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | Rundung auf zwei Stellen bleibt unter 0,03 K | 08.11.2026 |
+| A3 | Überschriften für 03 und 04 | Mayer Signalisierung (d = 0,69); WCAG 1.3.1 | keine | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | Gliederung für Bildschirmleser | 08.11.2026 |
+| A4 | Plausibilitätshinweis bei Messwerten; Sprung „Zum Diagramm ↑“ am Handy | L2 C2.9 (S. 205, 248) | gering | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | Messwerte prüfen; kurzer Weg zum Diagramm | 08.11.2026 |
+| A5 | Bühne am Laptop scrollt in sich, wenn sie höher als der Bildschirm wird | WCAG 2.4.11 | keine | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | untere Regler sonst erst am Seitenende | 08.11.2026 |
+| A6 | Reglerbereiche (Milch 2 bis 80 °C, vor Auftrag 3 bis 30 °C; Zugabe 1 bis 180 min; Kaffee 60 bis 95 °C; Raum 10 bis 30 °C; kA 0,05 bis 0,80 W/K; Milch 10 bis 100 ml) | Fassung 2; L2 D1 S5 | keine | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | physikalisch sinnvolle Bereiche | 08.11.2026 |
+| A7 | Legendenzeichen ○ □ ● ■ aus Plex Math | Zeichenprüfung des Baus | keine | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | Plex Sans hat sie nicht | 08.11.2026 |
+| A8 | Rückmeldung c beginnt mit „Nein.“ | L1 S5 (S. 251) | keine | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | klare Rückmeldung mit Begründung | 08.11.2026 |
+| A9 | kein Verweis „ohne Vorhersage aufdecken“ | G1 | keine | bestätigen | ja (Bestätigung der TL im Chat: „A1 bis A9 ja“) | am Beamer genügt eine beliebige Vorhersage | 08.11.2026 |
+| A10 | Begleitmaterial der Fassung 2 entfernt (`simulation/kurzkarte/`, `simulation/EINSATZ_TUTORIUM.md`); Ersatz `simulation/HINWEISE_TEXT_F3.md` | SE3 (Kurslink entfällt); Startprompt 3 („Entferntes vollständig entfernen“) | keine | bestätigen | ja, mit einer Ausnahme: ein schlanker QR-Code nur mit der Adresse bleibt (Q1) | beschrieben Kurslink, QR-Code und Fragen der Fassung 2 | 08.11.2026 |
+| A11 | Messwerte: eine fehlende Messung als „x“ eintragen (Reihenfolge des Messblatts bleibt erhalten) | SE4; Messblatt des Blatts | keine | zur Kenntnis | zur Kenntnis (keine Entscheidung nötig) | beim Bau ergänzt, nach der Bestätigung von A1 bis A9 beim Nachprüfen gefunden | |
 
 ## 6 Entscheidungen der TL nach dem Bau (08.11.2026)
 
@@ -122,3 +122,4 @@ Abweichungen vom Konzept beim Bau (08.11.2026), mit Grund; Einzelheiten in `simu
 |:--|:--|:--|:--|:--|:--|:--|:--|
 | Q1 | QR-Code nur mit der Adresse der Seite (ohne Kurslink, ohne Kurzkarte) als SVG und PNG: `simulation/qr/QR_Kaffee_Simulation.svg`, `.png`, erzeugt mit `simulation/qr/qr_erzeugen.py` (segno, Fehlerkorrektur M, schwarz auf weiß; Lesen mit OpenCV bei 160, 300 und 600 px geprüft) | Ausnahme zu A10 | gering | | so entschieden (Vorgabe der TL) | Folie oder Tafel im Tutorium; die Adresse bleibt bei Fassung 3 gleich | 08.11.2026 |
 | V1 | Veröffentlichung von Fassung 3 | `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 2 | | | zuerst privat prüfen, dann die öffentliche Fassung 2 ersetzen | | 08.11.2026 |
+| X6 | Befunde der Prüfung X6 (Codex): X6-01 Neustart stellt die Sperre wieder her, X6-02 Entscheidungsprotokoll, X6-03 ln-Beschriftung, X6-04 Modell-Link erst mit Ziel | `simulation/X6_CODEX_PRUEFUNG.md`; Antwort `simulation/X6_ANTWORT.md` | gering | übernehmen | alle vier übernehmen; für X6-01 einen Browsertest ergänzen | Sperre gilt auch für die nächste Gruppe | 08.11.2026 |

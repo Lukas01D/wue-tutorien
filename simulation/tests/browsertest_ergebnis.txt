@@ -1,6 +1,6 @@
 Browsertest Fassung 3 (simulation/site/index.html, Chromium über Playwright, axe-core 4.14.0)
 
-bestanden   Datei kleiner als Fassung 2 (175471 gegen 433303 Bytes)
+bestanden   Datei kleiner als Fassung 2 (177289 gegen 433303 Bytes)
 bestanden   CSP ohne fremde Quellen
 bestanden   CSP greift: ganzer Pflichtweg ohne CSP-Verstoß und ohne Anfragen nach außen
 bestanden   Z0: keine Ergebniszahl im DOM (auch versteckt, auch Attribute)
@@ -58,6 +58,20 @@ bestanden   axe-core ohne Verstoß: Z2 Deutsch 1366, Aufträge und Modell offen
 bestanden   Speicher: Zustand bleibt beim Neuladen
 bestanden   „Von vorn“ löscht alles
 bestanden   Z2-Lauf: keine Konsolenfehler, keine fremden Anfragen
+bestanden   X6-01 Von vorn (de): keine Ergebniszahl im DOM, auch nicht in Attributen (vorher 43,91 °C, 40,41 °C, 3,50 K)
+bestanden   X6-01 Von vorn (de): Statusansage leer, Säulen ohne Inhalt und Namen
+bestanden   X6-01 Von vorn (de): Barrierefreiheitsbaum ohne Ergebniszahl
+bestanden   X6-01 Von vorn (en): keine Ergebniszahl im DOM, auch nicht in Attributen (vorher 43.91 °C, 40.41 °C, 3.50 K)
+bestanden   X6-01 Von vorn (en): Statusansage leer, Säulen ohne Inhalt und Namen
+bestanden   X6-01 Von vorn (en): Barrierefreiheitsbaum ohne Ergebniszahl
+bestanden   X6-01 Neustart während ausstehender Ansage: Ansage leer, keine Ergebniszahl
+bestanden   X6-03 Beschriftungen ganz im Diagramm 390 px de (Kurven 0, ln 0 außerhalb)
+bestanden   X6-03 Beschriftungen ganz im Diagramm 320 px de (Kurven 0, ln 0 außerhalb)
+bestanden   X6-03 Beschriftungen ganz im Diagramm 390 px en (Kurven 0, ln 0 außerhalb)
+bestanden   X6-03 Beschriftungen ganz im Diagramm 320 px en (Kurven 0, ln 0 außerhalb)
+bestanden   X6-04 Z0: kein Link „Modell“
+bestanden   X6-04 Z1: kein Link „Modell“ (Ziel noch gesperrt)
+bestanden   X6-04 Z2: Link vorhanden, öffnet das Modell
 bestanden   Kernsatz bei abweichender Rechnung nennt die Abweichung
 bestanden   Rückmeldung b mit eigenem Anfang und Begründung
 bestanden   Kernsatz bei abweichender Rechnung nennt die Abweichung
@@ -92,6 +106,6 @@ bestanden   axe-core ohne Verstoß: Z2 Deutsch 390
 bestanden   axe-core ohne Verstoß: Z0 Englisch 390
 bestanden   axe-core ohne Verstoß: Z2 Englisch 390
 bestanden   axe-core ohne Verstoß: Z2 Deutsch Beamer 1280 × 720
-bestanden   Leistung: Reglerschritt Median unter 50 ms (2.0 / 2.9 ms, Median / 95 %)
+bestanden   Leistung: Reglerschritt Median unter 50 ms (2.7 / 3.9 ms, Median / 95 %)
 
-93 von 93 bestanden
+107 von 107 bestanden
