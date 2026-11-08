@@ -56,6 +56,7 @@
   const F = (k, v) => T(k).replace(/\{(\w+)\}/g, (m, n) => (v[n] !== undefined ? v[n] : m));
   function zahl(x, n) {
     let s = Number(x).toFixed(n);
+    if (/^-0(\.0+)?$/.test(s)) s = s.slice(1);          // keine „−0,00“
     if (s.startsWith("-")) s = "−" + s.slice(1);
     return L === "de" ? s.replace(".", ",") : s;
   }
@@ -272,11 +273,21 @@
     // eigene Rechnung aus e (nur bei den Werten des Blatts)
     const r1 = liesZahl(S.e1), r2 = liesZahl(S.e2), mitRechnung = istBlatt() && (isFinite(r1) || isFinite(r2));
     if (mitRechnung) for (const v of [r1, r2]) if (isFinite(v) && v >= ymin && v <= ymax) svg.appendChild(el("text", { x: X(e.tZ) + 13, y: Y(v) + 5, "text-anchor": "middle", "font-size": 15, class: "kreuz" }, "×"));
-    // Direktbeschriftung: die obere Kurve oben, die untere unten
-    const t2l = tZ * 0.2, t1l = tZ * 0.62;
-    const ob2 = erg.kurve2(t2l) >= erg.kurve1(t2l), ob1 = erg.kurve1(t1l) > erg.kurve2(t1l);
-    svg.appendChild(el("text", { x: X(t2l / 60), y: Y(erg.kurve2(t2l)) + (ob2 ? -10 : 20), "font-size": fs, class: "kbeschr k2-text" }, F("dia_t2", { t: e.tZ })));
-    svg.appendChild(el("text", { x: X(t1l / 60), y: Y(erg.kurve1(t1l)) + (ob1 ? -12 : 26), "text-anchor": "end", "font-size": fs, class: "kbeschr k1-text" }, T("dia_t1")));
+    // Direktbeschriftung: Tasse 2 im ersten, Tasse 1 im zweiten Zeitfenster, je dort, wo die Kurven am weitesten auseinanderliegen.
+    // Ist die Kurve dort die obere, steht der Text darüber und beginnt dort (Kurve fällt nach rechts weg); ist sie die untere,
+    // steht er darunter und endet dort (tiefster Punkt seines Bereichs). So berühren Text und Linien sich nicht.
+    const abstand = t => Math.abs(erg.kurve1(t) - erg.kurve2(t));
+    const Xinv = x => (x - Lr) / (W - Lr - R) * xmax * 60;
+    const beste = (von, bis) => { let tb = tZ * von, ab = -1; for (let i = 0; i <= 24; i++) { const t = tZ * (von + (bis - von) * i / 24); if (abstand(t) > ab) { ab = abstand(t); tb = t; } } return tb; };
+    for (const [n, von, bis] of [[2, 0.08, 0.45], [1, 0.5, 0.92]]) {
+      const k = n === 1 ? erg.kurve1 : erg.kurve2, anders = n === 1 ? erg.kurve2 : erg.kurve1;
+      const txt = n === 1 ? T("dia_t1") : F("dia_t2", { t: e.tZ }), w = txt.length * fs * 0.56;
+      const t = beste(von, bis), oben = k(t) >= anders(t);
+      let x, y;
+      if (oben) { x = Math.max(Lr + 4, Math.min(X(t / 60), W - R - w)); y = Y(k(Math.max(0, Xinv(x)))) - 10; }
+      else { x = Math.min(W - R, Math.max(X(t / 60), Lr + w + 4)); y = Y(k(Math.min(tZ, Xinv(x)))) + 22; }
+      svg.appendChild(el("text", { x: x, y: y, "text-anchor": oben ? "start" : "end", "font-size": fs, class: "kbeschr " + (n === 1 ? "k1-text" : "k2-text") }, txt));
+    }
     $("dia-beschreibung").textContent = F("dia_beschreibung", { a1: zahl(erg.th10, 1), e1: zahl(erg.th1, 1), a2: zahl(e.thK0, 1), e2: zahl(erg.th2K, 1), m2: zahl(erg.th2, 1), u: zahl(e.thU, 1) });
     // Legende nur für vorhandene Zeichen
     const leg = [];

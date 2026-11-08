@@ -1,6 +1,6 @@
 Baunachweis Kaffee-Simulation Fassung 3 (geschrieben von bauen.py)
 Stand: 2026-11-08
-Prüfsumme der Quellen (SHA-256): 1bed44f2c44717e49645e25d8bcc5a39eef61f2f92555efe10d69df560834b64
-index.html und Kaffee_Simulation.html (bytegleich): 174447 Bytes, SHA-256 65421830e1bfe9a10f8146da6d2077057841131e3786199a87931ee56534ea4b
-Anteile: Skript 71104 Bytes, Stil mit Schriften 94375 Bytes, Texte 32481 Bytes
+Prüfsumme der Quellen (SHA-256): 2e243e39496b3ede26d1658539b8e26fddfc94dba0088634db38a7b44dcdaab4
+index.html und Kaffee_Simulation.html (bytegleich): 175471 Bytes, SHA-256 ce238edd33ef5ebadb8dc06d3fbd1eba43f7aa8a8cd168a1c407f4430baad0b0
+Anteile: Skript 72078 Bytes, Stil mit Schriften 94425 Bytes, Texte 32481 Bytes
 Warnungen: keine
