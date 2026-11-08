@@ -46,9 +46,11 @@ Bei den durch Codex geprüften Quelldateien, beim Upload und bei der Sites-Zugan
 
 Die Site ist gemäß der oben dokumentierten TL-Entscheidung öffentlich. Die Datei wurde beim Öffentlichschalten nicht geändert.
 
-## Fassung 3: private Prüf-Site (08.11.2026)
+## Fassung 3: Prüf-Site (08.11.2026)
 
-**Status: Privat bereitgestellt am 08.11.2026 um 22:04:47 Uhr CET (Europe/Berlin), gemäß V1 und `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 2, Schritt 1. Nur das Eigentümerkonto darf die Prüf-Site besuchen. Die öffentliche Fassung 2 bleibt unverändert. Der Abgleich der tatsächlich per HTTP ausgelieferten Datei und die Live-Abnahme sind noch offen.**
+**Aktueller Status: Öffentlich für alle seit 08.11.2026 um 22:09:29 Uhr CET (Europe/Berlin), auf ausdrückliche Anweisung der TL: „beide öffentlich für alle sichtbar bitte“. Beide Kaffee-Seiten sind öffentlich. Fassung 2 und Fassung 3 behalten ihre eigenen Adressen und ihre bisherigen Dateien. Der HTTP-Abgleich und die Live-Abnahme sind weiterhin offen.**
+
+Erstveröffentlichung: Privat bereitgestellt am 08.11.2026 um 22:04:47 Uhr CET, gemäß V1 und `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 2, Schritt 1. Die folgenden Angaben zur Eigentümerbeschränkung dokumentieren diesen ursprünglichen Zustand; die Öffentlichschaltung ist am Ende dieses Abschnitts nachgewiesen.
 
 ### Quelle, Bau und Upload
 
@@ -94,4 +96,17 @@ Keine Abweichung an der freigegebenen HTML-Datei oder am angeordneten Zugang. Di
 
 Offen bleiben der HTTP-Abgleich einschließlich Antwortkopfzeilen, die Live-Abnahme gemäß `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 5, und die Geräteprüfung gemäß `simulation/ABNAHME_IPHONE.md`. Dafür wurde keine Netzwerkfreigabe verändert. Ein blockierter Proxy-Abruf ist weder eine erfolgreiche Inhaltsprüfung noch ein Beleg für die Anmeldesperre der privaten Site.
 
-Die TL prüft jetzt die private Fassung. Die öffentliche Site wird gemäß V1 erst auf gesonderten Zuruf ersetzt. Die private Prüf-Site bleibt bis zu einer weiteren Anweisung privat bestehen. Dieser Nachweis wird auf dem eigenen Zweig `codex/kaffee-f3-veroeffentlichung` gesichert, ohne Pull Request. `simulation/LIVE_ABNAHME.md` wird durch die spätere unabhängige Live-Abnahme ergänzt.
+Die ursprüngliche Übergabe sah die Prüfung der privaten Fassung vor. Die nachfolgende Anweisung der TL hebt die Zugangsbeschränkung auf. Die bestehende Seite mit Fassung 2 wird dadurch nicht ersetzt. Dieser Nachweis wird auf dem eigenen Zweig `codex/kaffee-f3-veroeffentlichung` gesichert, ohne Pull Request. `simulation/LIVE_ABNAHME.md` wird durch die spätere unabhängige Live-Abnahme ergänzt.
+
+### Öffentlichschaltung beider Kaffee-Seiten
+
+Neue Anweisung der TL vom 08.11.2026: **„beide öffentlich für alle sichtbar bitte“**. Damit entfällt die Eigentümerbeschränkung aus V1 für die Prüf-Site. Die beiden Fassungen sollen unter ihren jeweiligen Adressen öffentlich zugänglich sein.
+
+Umgesetzt mit `update_site_access(project_id="appgprj_6af0e3516aac8191b5565eaaaa0ad8cf", access_mode="public")`. Bestätigt wurden Revision 2 und der Zeitstempel `2026-11-08T21:09:29.495827+00:00` (22:09:29 Uhr CET). Anschließend wurden beide Seiten mit `get_site` erneut geprüft:
+
+| Seite | Bestätigter Zugang |
+|:--|:--|
+| Fassung 3: https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site | `access_mode=public`, `access_policy.access_mode=public`, Revision 2 vom 08.11.2026; Sites-Version 1 unverändert. |
+| Fassung 2: https://waermeuebertragung-kaffee.qarri196.chatgpt.site | Bereits öffentlich, erneut bestätigt: `access_mode=public`, `access_policy.access_mode=public`, Revision 2 vom 06.11.2026; Sites-Version 1 unverändert. |
+
+Es wurde ausschließlich der Zugang der Prüf-Site geändert. Keine neue Version, kein Austausch einer Datei, keine erneute Veröffentlichung. Die dokumentierten Grenzen des direkten HTTP-Abrufs bleiben bestehen; die öffentliche Zugangsrichtlinie beider Seiten ist durch Sites bestätigt.
