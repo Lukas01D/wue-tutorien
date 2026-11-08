@@ -45,3 +45,53 @@ Die Tutoriumsleitung hat angewiesen, keine Netzwerkfreigabe vorzunehmen und den 
 Bei den durch Codex geprüften Quelldateien, beim Upload und bei der Sites-Zugangseinstellung wurden keine Abweichungen festgestellt. Die externe Live-Prüfung wird durch diesen Nachweis nicht vorweggenommen.
 
 Die Site ist gemäß der oben dokumentierten TL-Entscheidung öffentlich. Die Datei wurde beim Öffentlichschalten nicht geändert.
+
+## Fassung 3: private Prüf-Site (08.11.2026)
+
+**Status: Privat bereitgestellt am 08.11.2026 um 22:04:47 Uhr CET (Europe/Berlin), gemäß V1 und `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 2, Schritt 1. Nur das Eigentümerkonto darf die Prüf-Site besuchen. Die öffentliche Fassung 2 bleibt unverändert. Der Abgleich der tatsächlich per HTTP ausgelieferten Datei und die Live-Abnahme sind noch offen.**
+
+### Quelle, Bau und Upload
+
+| Punkt | Nachweis |
+|:--|:--|
+| Private Adresse | https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site |
+| Quelle | Merge-Commit `85353d9a2da404b48f8238a8c42e04509c4f9aa3` auf `main`, PR #8, zusammengeführt von der TL am 08.11.2026 um 21:34:59 Uhr CET. Der Merge enthält den Zweig `claude/kaffee-simulation-v3-qw4zb2` bis einschließlich `769c155`. Abstammung mit `git merge-base --is-ancestor` geprüft. |
+| Aktualisierung | `git fetch origin`, `git checkout main`, `git pull --ff-only origin main`; HEAD entspricht dem genannten Merge-Commit. |
+| Datei im Repository | `simulation/site/index.html`, 177289 Bytes. SHA-256: `95cff1f24926ff60b78c458381b3a6f151d55620ec18c82f79af8a0da0049702`. |
+| Bauprüfung | Beide HTML-Dateien sind bytegleich, ihre SHA-256 stimmt mit `simulation/site/BAUNACHWEIS.txt` überein. `python3 simulation/site/bauen.py --pruefen` meldet `gleich`. Das fehlende Brotli-Modul wurde dafür außerhalb des Repositorys installiert; fontTools war vorhanden. `simulation/site/` ist gegenüber dem Merge-Commit unverändert. |
+| Fuß der Seite | `Stand 2026-11-08 · Version 6700332355`. Die Versionskennung sind die ersten zehn Zeichen der Quellprüfsumme `67003323553ddc9db83a8c691da1ece1828921219030654401918ed15ada9f1e`. Geprüft an den unveränderten Baukonstanten und der Fußtextvorlage; die Anzeige im ausgelieferten Browser bleibt Teil der Live-Abnahme. |
+| Quelle bei Sites | Commit `040c5659d0aa820f238a72b8055654e73d793f90` auf `main` des eigenen Site-Quellrepositorys. Remote-HEAD nach dem Push und `get_site_version.source.commit_sha` stimmen mit diesem Commit überein. |
+| Hochgeladene Datei | `dist/index.html`, unverändert aus dem Git-Objekt des Merge-Commits übernommen. 177289 Bytes, SHA-256 `95cff1f24926ff60b78c458381b3a6f151d55620ec18c82f79af8a0da0049702`. Bytegleichheit zwischen Git-Objekt, Site-Quellcommit, Datei und Upload-Archiv vor dem Speichern geprüft. |
+| Umfang | Das Upload-Archiv enthält nur `dist/index.html` und `.openai/hosting.json` mit der Kennung der privaten Prüf-Site und `static.directory=dist`. Keine zusätzlichen Skripte, Seitenressourcen, Analyse- oder Zähldienste. |
+| Sites-Version | Version 1 der privaten Prüf-Site, gespeichert und veröffentlicht mit `save_version_and_deploy_private`. Deployment `appgdep_6af0e3e0d0288191a54f0cde1f63d494`, Status `succeeded`, Zeitstempel `2026-11-08T21:04:47.311479+00:00`. |
+| Ausgelieferte Datei | Noch nicht gemessen. Erwartet werden 177289 Bytes und SHA-256 `95cff1f24926ff60b78c458381b3a6f151d55620ec18c82f79af8a0da0049702`. Die nachgewiesene Bytegleichheit von Quelle und Upload ersetzt diesen Live-Abgleich nicht. |
+| Antwortkopfzeilen der Site | Noch nicht ermittelt. Der direkte Abruf der privaten Adresse aus dieser Umgebung scheitert bereits am Netzwerkproxy mit `curl: (56) CONNECT tunnel failed, response 403`, HTTP-Status des Zielabrufs `000`. Die empfangene CONNECT-Antwort lautet `HTTP/1.1 403 Forbidden`, `server: envoy`, `content-type: text/plain`, Datum `Sun, 08 Nov 2026 21:05:16 GMT`. Das sind Proxy-Kopfzeilen, keine Antwort der Simulation. Keine Aussage über Veränderungen durch Sites oder den tatsächlichen Abruf ohne Anmeldung möglich. |
+
+### Zugang und unveränderte öffentliche Fassung 2
+
+Die verfügbaren Sites-Werkzeuge bieten keine getrennte private Versionsvorschau für die bestehende öffentliche Site. Deshalb wurde die in V1 vorgesehene eigene private Prüf-Site angelegt. `get_site` bestätigt nach der Veröffentlichung:
+
+- Projekt `appgprj_6af0e3516aac8191b5565eaaaa0ad8cf`, Rolle des aktuellen Kontos `owner`.
+- `access_mode=custom`, `access_policy.access_mode=custom`, Revision 1 vom `2026-11-08T21:02:11.890444+00:00`.
+- Genau ein zugelassenes Konto mit Rolle `owner`, keine weiteren Bearbeiter, Gruppen oder externen Besucher. Der private Veröffentlichungsaufruf hat die Eigentümerbeschränkung zusätzlich serverseitig geprüft.
+- Gespeicherte Version `appgprj_6af0e3516aac8191b5565eaaaa0ad8cf~appgver_9f0ac083627c81919e9d4fa832eb2a54`, Sites-Version 1.
+
+Die öffentliche Site wurde ausschließlich gelesen. Vorher und nachher wurden `get_site` und `get_site_version` abgeglichen:
+
+| Merkmal der öffentlichen Fassung 2 | Vorher und nachher identisch |
+|:--|:--|
+| Projekt und Adresse | `appgprj_6aee2773b8788191b72faeefddd89f34`, https://waermeuebertragung-kaffee.qarri196.chatgpt.site |
+| Neueste Sites-Version | 1 |
+| Versionskennung | `appgprj_6aee2773b8788191b72faeefddd89f34~appgver_6e1de74f09408191863b0e9143057de9` |
+| Quellcommit | `28c5d5eee41085987cf73b1ad8317dbe2bdcd7f8` |
+| Deployment | `appgdep_6aee28079650819197a2607341778eed` |
+| Gespeichertes Archiv | `sha256:ba816817fd9ad41dadbb76b4535091ef06d5840345d03180b926d2a86789fe52`, 440320 Bytes, zwei Dateien |
+| Zugang | Öffentlich, unveränderte vollständige Zugangsrichtlinie, Revision 2 vom `2026-11-06T19:25:25.726484+00:00` |
+
+### Prüfgrenzen und Übergabe
+
+Keine Abweichung an der freigegebenen HTML-Datei oder am angeordneten Zugang. Die Sites-Helferskripte waren in dieser Umgebung nicht verfügbar. Deshalb erfolgten Git-Übertragung und Tar-Verpackung direkt; Quellcommit, Remote-HEAD und Archivinhalt wurden ausdrücklich geprüft. Veröffentlichung und Zugangsprüfung erfolgten über die nativen Sites-Werkzeuge.
+
+Offen bleiben der HTTP-Abgleich einschließlich Antwortkopfzeilen, die Live-Abnahme gemäß `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 5, und die Geräteprüfung gemäß `simulation/ABNAHME_IPHONE.md`. Dafür wurde keine Netzwerkfreigabe verändert. Ein blockierter Proxy-Abruf ist weder eine erfolgreiche Inhaltsprüfung noch ein Beleg für die Anmeldesperre der privaten Site.
+
+Die TL prüft jetzt die private Fassung. Die öffentliche Site wird gemäß V1 erst auf gesonderten Zuruf ersetzt. Die private Prüf-Site bleibt bis zu einer weiteren Anweisung privat bestehen. Dieser Nachweis wird auf dem eigenen Zweig `codex/kaffee-f3-veroeffentlichung` gesichert, ohne Pull Request. `simulation/LIVE_ABNAHME.md` wird durch die spätere unabhängige Live-Abnahme ergänzt.
