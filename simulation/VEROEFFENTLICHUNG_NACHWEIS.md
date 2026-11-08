@@ -48,7 +48,7 @@ Die Site ist gemäß der oben dokumentierten TL-Entscheidung öffentlich. Die Da
 
 ## Fassung 3 (08.11.2026)
 
-**Aktueller Status: Fassung 3 ist seit 08.11.2026 um 22:28:14 Uhr CET (Europe/Berlin) unter der öffentlichen Hauptadresse veröffentlicht, Sites-Version 2. Die Sites-Einstellungen der Hauptseite sind unverändert. Die Prüfadresse ist seit 22:28:30 Uhr CET wieder privat, nur für das Eigentümerkonto. Der HTTP-Abgleich und die Live-Abnahme sind weiterhin offen. Die folgenden Abschnitte dokumentieren den Ablauf.**
+**Aktueller Status: Beide Adressen sind öffentlich für alle. Fassung 3 ist seit 08.11.2026 um 22:28:14 Uhr CET (Europe/Berlin) unter der Hauptadresse veröffentlicht, Sites-Version 2. Die Sites-Einstellungen der Hauptseite sind unverändert. Auf die jüngste Anweisung der TL „nein beide für alle sichtbar“ ist die Prüfadresse seit 22:33:40 Uhr CET ebenfalls wieder öffentlich, Zugangsrevision 4. Der HTTP-Abgleich und die Live-Abnahme sind weiterhin offen. Die folgenden Abschnitte dokumentieren den Ablauf.**
 
 Erstveröffentlichung: Privat bereitgestellt am 08.11.2026 um 22:04:47 Uhr CET, gemäß V1 und `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 2, Schritt 1. Die folgenden Angaben zur Eigentümerbeschränkung dokumentieren diesen ursprünglichen Zustand; die Öffentlichschaltung ist am Ende dieses Abschnitts nachgewiesen.
 
@@ -132,3 +132,14 @@ Auftrag der TL vom 08.11.2026: **„Ersetze die Kaffee-Seite unter der Hauptadre
 Erst nach dem erfolgreichen Deployment der Hauptseite wurde die Prüfadresse wieder privat gestellt: `update_site_access(project_id="appgprj_6af0e3516aac8191b5565eaaaa0ad8cf", access_mode="custom")`, bestätigt mit Revision 3 vom `2026-11-08T21:28:30.270811+00:00` (22:28:30 Uhr CET). Der anschließende `get_site`-Abruf bestätigt `custom` und genau ein zugelassenes Konto mit Rolle `owner`, keine weiteren Bearbeiter, Gruppen oder externen Besucher. Die Prüf-Site behält ihre bisherige Datei und Sites-Version 1 unter https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site.
 
 Abweichungen: Keine an der freigegebenen Datei oder an den Sites-Einstellungen der Hauptseite. Offen bleibt der durch den Netzwerkproxy verhinderte HTTP-Live-Abgleich. Es wurde keine Netzwerkfreigabe verändert. Nachweis auf `codex/kaffee-f3-veroeffentlichung`, ohne Pull Request.
+
+### Letzte Zugangsanweisung: beide Adressen öffentlich
+
+Die TL hat anschließend klargestellt: **„nein beide für alle sichtbar“**. Damit ist die zuvor angeordnete Rückstellung der Prüfadresse auf privat aufgehoben.
+
+Umgesetzt am 08.11.2026 um 22:33:40 Uhr CET mit `update_site_access(project_id="appgprj_6af0e3516aac8191b5565eaaaa0ad8cf", access_mode="public")`, Zugangsrevision 4, Zeitstempel `2026-11-08T21:33:40.680694+00:00`. Anschließende `get_site`-Abrufe bestätigen für beide Adressen `access_mode=public` und `access_policy.access_mode=public`:
+
+- Hauptadresse: https://waermeuebertragung-kaffee.qarri196.chatgpt.site, Fassung 3, Sites-Version 2, unveränderte Zugangsrevision 2.
+- Prüfadresse: https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site, Fassung 3, Sites-Version 1, Zugangsrevision 4.
+
+Nur der Zugang der Prüfadresse wurde geändert. Dateien, Prüfsummen, gespeicherte Versionen und Deployments bleiben unverändert.
