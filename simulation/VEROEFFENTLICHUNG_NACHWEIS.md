@@ -46,9 +46,9 @@ Bei den durch Codex geprüften Quelldateien, beim Upload und bei der Sites-Zugan
 
 Die Site ist gemäß der oben dokumentierten TL-Entscheidung öffentlich. Die Datei wurde beim Öffentlichschalten nicht geändert.
 
-## Fassung 3: Prüf-Site (08.11.2026)
+## Fassung 3 (08.11.2026)
 
-**Aktueller Status: Öffentlich für alle seit 08.11.2026 um 22:09:29 Uhr CET (Europe/Berlin), auf ausdrückliche Anweisung der TL: „beide öffentlich für alle sichtbar bitte“. Beide Kaffee-Seiten sind öffentlich. Fassung 2 und Fassung 3 behalten ihre eigenen Adressen und ihre bisherigen Dateien. Der HTTP-Abgleich und die Live-Abnahme sind weiterhin offen.**
+**Aktueller Status: Fassung 3 ist seit 08.11.2026 um 22:28:14 Uhr CET (Europe/Berlin) unter der öffentlichen Hauptadresse veröffentlicht, Sites-Version 2. Die Sites-Einstellungen der Hauptseite sind unverändert. Die Prüfadresse ist seit 22:28:30 Uhr CET wieder privat, nur für das Eigentümerkonto. Der HTTP-Abgleich und die Live-Abnahme sind weiterhin offen. Die folgenden Abschnitte dokumentieren den Ablauf.**
 
 Erstveröffentlichung: Privat bereitgestellt am 08.11.2026 um 22:04:47 Uhr CET, gemäß V1 und `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 2, Schritt 1. Die folgenden Angaben zur Eigentümerbeschränkung dokumentieren diesen ursprünglichen Zustand; die Öffentlichschaltung ist am Ende dieses Abschnitts nachgewiesen.
 
@@ -96,7 +96,7 @@ Keine Abweichung an der freigegebenen HTML-Datei oder am angeordneten Zugang. Di
 
 Offen bleiben der HTTP-Abgleich einschließlich Antwortkopfzeilen, die Live-Abnahme gemäß `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 5, und die Geräteprüfung gemäß `simulation/ABNAHME_IPHONE.md`. Dafür wurde keine Netzwerkfreigabe verändert. Ein blockierter Proxy-Abruf ist weder eine erfolgreiche Inhaltsprüfung noch ein Beleg für die Anmeldesperre der privaten Site.
 
-Die ursprüngliche Übergabe sah die Prüfung der privaten Fassung vor. Die nachfolgende Anweisung der TL hebt die Zugangsbeschränkung auf. Die bestehende Seite mit Fassung 2 wird dadurch nicht ersetzt. Dieser Nachweis wird auf dem eigenen Zweig `codex/kaffee-f3-veroeffentlichung` gesichert, ohne Pull Request. `simulation/LIVE_ABNAHME.md` wird durch die spätere unabhängige Live-Abnahme ergänzt.
+Die ursprüngliche Übergabe sah die Prüfung der privaten Fassung vor. Die nachfolgende erste Anweisung der TL hob die Zugangsbeschränkung auf. Bei dieser Zugangsumstellung wurde die bestehende Seite mit Fassung 2 nicht ersetzt. Dieser Nachweis wird auf dem eigenen Zweig `codex/kaffee-f3-veroeffentlichung` gesichert, ohne Pull Request. `simulation/LIVE_ABNAHME.md` wird durch die spätere unabhängige Live-Abnahme ergänzt.
 
 ### Öffentlichschaltung beider Kaffee-Seiten
 
@@ -110,3 +110,25 @@ Umgesetzt mit `update_site_access(project_id="appgprj_6af0e3516aac8191b5565eaaaa
 | Fassung 2: https://waermeuebertragung-kaffee.qarri196.chatgpt.site | Bereits öffentlich, erneut bestätigt: `access_mode=public`, `access_policy.access_mode=public`, Revision 2 vom 06.11.2026; Sites-Version 1 unverändert. |
 
 Es wurde ausschließlich der Zugang der Prüf-Site geändert. Keine neue Version, kein Austausch einer Datei, keine erneute Veröffentlichung. Die dokumentierten Grenzen des direkten HTTP-Abrufs bleiben bestehen; die öffentliche Zugangsrichtlinie beider Seiten ist durch Sites bestätigt.
+
+### Hauptadresse durch Fassung 3 ersetzt, Prüfadresse wieder privat
+
+Auftrag der TL vom 08.11.2026: **„Ersetze die Kaffee-Seite unter der Hauptadresse durch Fassung 3 (Quelle: main, Merge von PR #8). Keine Änderung an den Einstellungen von Sites. Danach die Prüfadresse wieder auf privat stellen. Melde Adresse, Version und Prüfsumme.“**
+
+| Punkt | Nachweis |
+|:--|:--|
+| Hauptadresse | https://waermeuebertragung-kaffee.qarri196.chatgpt.site |
+| Quelle | `main`, Merge von PR #8: `85353d9a2da404b48f8238a8c42e04509c4f9aa3`. Vor der Übertragung erneut `git fetch origin main`, `git checkout main`, `git pull --ff-only origin main`; HEAD entspricht genau diesem Merge. |
+| Bauprüfung | `simulation/site/index.html` und `Kaffee_Simulation.html` stimmen mit `BAUNACHWEIS.txt` überein. `bauen.py --pruefen` meldet erneut `gleich`. Keine Änderungen an `simulation/site/`. |
+| Datei und Prüfsumme | 177289 Bytes. SHA-256 `95cff1f24926ff60b78c458381b3a6f151d55620ec18c82f79af8a0da0049702`. Git-Objekt aus dem Merge, Site-Quellcommit, `dist/index.html` und Inhalt des Upload-Archivs sind bytegleich. |
+| Bauversion im Seitenfuß | `6700332355`, Stand `2026-11-08`. |
+| Site-Quellcommit | `4519d7eca09fb61b1d6756b01874dce943703d95`, auf `main` des vorhandenen Quellrepositorys der Hauptseite gepusht. Remote-HEAD und `get_site_version.source.commit_sha` abgeglichen. Gegenüber der bisherigen Version änderte sich ausschließlich `dist/index.html`. |
+| Hosting-Konfiguration | `.openai/hosting.json` ist bytegleich mit dem bisherigen Site-Quellcommit `28c5d5eee41085987cf73b1ad8317dbe2bdcd7f8`. Bestehende Projektkennung und `static.directory=dist` unverändert. Das Archiv enthält nur diese Konfiguration und `dist/index.html`. |
+| Sites-Version | **2**, gespeichert mit `save_site_version`, anschließend mit `deploy_site_version` veröffentlicht. Versionskennung `appgprj_6aee2773b8788191b72faeefddd89f34~appgver_8bd4d1b9fce48191bd9bac1ec3b60b31`. |
+| Veröffentlichung | Deployment `appgdep_6af0e9620f58819187d7f70e85526b08`, Status `succeeded`, `2026-11-08T21:28:14.444041+00:00` (22:28:14 Uhr CET). |
+| Sites-Einstellungen der Hauptseite | Vorher und nachher identisch: Titel, Beschreibung, URL-Slug, Auth-Client, Remix-Einstellung, BYOP-Einstellung und vollständige Zugangsrichtlinie. Weiterhin `access_mode=public`, Zugangsrevision 2 vom 06.11.2026. Keine Einstellungen geändert, keine Tunnelbindungen angegeben, keine Laufzeitvariablen geändert; Deployment mit `env_set_revision=0`. |
+| HTTP-Auslieferung | Der erneute direkte Abruf der Hauptadresse ist vom Netzwerkproxy blockiert: `curl: (56) CONNECT tunnel failed, response 403`, HTTP-Zielstatus `000`. Die genannte SHA-256 ist für Quelle und Upload nachgewiesen. Bytes, SHA-256 und Antwortkopfzeilen der tatsächlichen HTTP-Auslieferung bleiben extern zu prüfen. |
+
+Erst nach dem erfolgreichen Deployment der Hauptseite wurde die Prüfadresse wieder privat gestellt: `update_site_access(project_id="appgprj_6af0e3516aac8191b5565eaaaa0ad8cf", access_mode="custom")`, bestätigt mit Revision 3 vom `2026-11-08T21:28:30.270811+00:00` (22:28:30 Uhr CET). Der anschließende `get_site`-Abruf bestätigt `custom` und genau ein zugelassenes Konto mit Rolle `owner`, keine weiteren Bearbeiter, Gruppen oder externen Besucher. Die Prüf-Site behält ihre bisherige Datei und Sites-Version 1 unter https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site.
+
+Abweichungen: Keine an der freigegebenen Datei oder an den Sites-Einstellungen der Hauptseite. Offen bleibt der durch den Netzwerkproxy verhinderte HTTP-Live-Abgleich. Es wurde keine Netzwerkfreigabe verändert. Nachweis auf `codex/kaffee-f3-veroeffentlichung`, ohne Pull Request.
