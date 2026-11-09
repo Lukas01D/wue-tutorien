@@ -13,11 +13,14 @@
   - Stimmt etwas nicht: abbrechen und der TL melden.
 - Genau diese eine Datei als `index.html`, unverändert, ohne zusätzliche Skripte, Analyse- oder Zähldienste.
 
-## 2 Adresse und Zugang (Entscheidung V1 der TL, 08.11.2026: zuerst privat prüfen, dann ersetzen)
+## 2 Adresse und Zugang (Regel R1 der TL, 09.11.2026: immer öffentlich, ohne private Zwischenstufe)
 
-1. **Privat bereitstellen, ohne die öffentliche Fassung 2 zu verändern:** als gespeicherte Version mit privater Vorschau nur für das Eigentümerkonto, falls Sites das für eine öffentliche Site anbietet; sonst als eigene private Site `waermeuebertragung-kaffee-pruefung` (nur das Eigentümerkonto). Die öffentliche Site `waermeuebertragung-kaffee` bleibt in diesem Schritt unverändert.
-2. **Prüfung durch die TL** (Liste in Abschnitt 5 und `simulation/ABNAHME_IPHONE.md`) an der privaten Fassung.
-3. **Ersetzen erst auf Zuruf der TL**, etwa „Ersetze die Kaffee-Seite durch Fassung 3.“: dieselbe Datei als neue Version der Site `waermeuebertragung-kaffee`, Zugang öffentlich wie bisher. Die Adresse bleibt gleich; der QR-Code in `simulation/qr/` gilt weiter. Eine private Prüf-Site danach löschen oder privat lassen, wie die TL sagt.
+> Geändert von Claude am 09.11.2026 nach der Regel R1 der TL; ersetzt V1 („zuerst privat prüfen, dann ersetzen“, 08.11.2026). Der frühere Wortlaut steht in der Git-Geschichte dieser Datei.
+
+1. **Veröffentlichungen in wue-tutorien sind immer öffentlich.** Es gibt keine private Zwischenstufe und keine private Prüf-Site mehr; neue Fassungen werden direkt unter ihrer Adresse öffentlich veröffentlicht (Sites-Zugang `public`).
+2. Hauptadresse der Kaffee-Simulation: **`waermeuebertragung-kaffee`**; eine neue Fassung wird dort als neue Version derselben Site veröffentlicht, die Adresse und der QR-Code in `simulation/qr/` bleiben gültig. Die Prüfadresse `waermeuebertragung-kaffee-pruefung` (Fassung 3) ist seit 08.11.2026, 22:34 Uhr ebenfalls öffentlich.
+3. Die Prüfung erfolgt nach der Veröffentlichung: Live-Abnahme durch Claude (Abschnitt 5) und Gerätetest durch die TL (`simulation/ABNAHME_IPHONE.md`). Ergibt sie einen Fehler, wird er behoben und neu veröffentlicht.
+4. Nur der Merge-Commit auf `main` ist Quelle (Abschnitt 1); daran ändert R1 nichts.
 
 ## 3 Baunachweis
 
@@ -25,7 +28,7 @@
 
 ## 4 Meldung an die TL
 
-Nach Schritt 1: private Adresse oder Vorschau, Quelle und SHA-256 gleich dem Repository (ja oder nein), Zugang (nur Eigentümerkonto), Beleg, dass die öffentliche Fassung 2 unverändert ist. Nach Schritt 3: Adresse, SHA-256 der ausgelieferten Datei, Zugang öffentlich, Zeitpunkt. Jeweils Abweichungen oder „keine“.
+Adresse, Sites-Version, Quelle und SHA-256 gleich dem Repository (ja oder nein), Zugang öffentlich, Zeitpunkt, Abweichungen oder „keine“.
 
 ## 5 Live-Abnahme (Claude, danach in `simulation/LIVE_ABNAHME.md`)
 

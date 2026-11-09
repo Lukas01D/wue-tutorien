@@ -45,6 +45,8 @@ Codex hat die Hauptadresse durch Fassung 3 ersetzt und die Prüfadresse wieder p
 
 **Ergebnis: bestanden.** Fassung 3 ist unter der Hauptadresse öffentlich. Weiter offen: Android, Bildschirmleser und Beamer im Hörsaal (nicht gemeldet).
 
+**Nachtrag (09.11.2026):** Die Prüfadresse <https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site/> ist auf Anweisung der TL seit 08.11.2026, 22:34 Uhr wieder öffentlich (Fassung 3), also nach dieser Abnahme (gegen 22:30 Uhr, damals HTTP 401). Die Zeile „Prüfadresse privat“ oben beschreibt den Stand zum Zeitpunkt der Abnahme. Kontrollabruf am 09.11.2026: HTTP 200, 178 403 Bytes; ohne die bekannte Cloudflare-Einfügung (deren Kennung bei jedem Abruf wechselt) bytegleich mit `simulation/site/index.html`, also Fassung 3. Seit der Regel R1 der TL (09.11.2026) gibt es in wue-tutorien keine private Zwischenstufe mehr.
+
 ## Fassung 2 (06.11.2026)
 
 > Claude, 06.11.2026, gegen 20:30 Uhr (Berlin), im Chrome der Tutoriumsleitung über Claude in Chrome, ohne Anmeldung. Ergänzt den Nachweis von Codex (`simulation/VEROEFFENTLICHUNG_NACHWEIS.md`), in dem Dateiabruf und Anmeldesperre als „extern durch Claude“ gekennzeichnet sind.
