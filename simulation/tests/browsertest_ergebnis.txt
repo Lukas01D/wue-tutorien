@@ -1,6 +1,6 @@
 Browsertest Fassung 3 (simulation/site/index.html, Chromium über Playwright, axe-core 4.14.0)
 
-bestanden   Datei kleiner als Fassung 2 (177289 gegen 433303 Bytes)
+bestanden   Datei kleiner als Fassung 2 (177805 gegen 433303 Bytes)
 bestanden   CSP ohne fremde Quellen
 bestanden   CSP greift: ganzer Pflichtweg ohne CSP-Verstoß und ohne Anfragen nach außen
 bestanden   Z0: keine Ergebniszahl im DOM (auch versteckt, auch Attribute)
@@ -18,12 +18,12 @@ bestanden   Z1: zwei Kurven, Kreuze der eigenen Rechnung
 bestanden   Z1: Direktbeschriftung beider Kurven
 bestanden   Z1: Säulen ohne Zahlen vor der Antwort (D4)
 bestanden   Z1: Regler, Messung, Schluss, Weiterdenken noch gesperrt
-bestanden   Z1: Q-Werte, kA, Kipppunkt, Zeit bis 60 °C noch nicht im DOM
+bestanden   Z1: Q-Werte, kA, Kipppunkt, Zeit bis 50 °C noch nicht im DOM
 bestanden   axe-core ohne Verstoß: Z1 Deutsch 1366
 bestanden   Z2: Rückmeldung a mit Begründung und Q-Werten, Überleitung zu f
 bestanden   Z2: Säulen mit Zahlen
 bestanden   Z2: Antwort gesperrt, Regler, Messung, Schluss, Weiterdenken, Modell sichtbar
-bestanden   Z2: Modell nennt Prüfwerte aus d1 und d2
+bestanden   Z2: Modell nennt Prüfwerte aus d und h1
 bestanden   Regler: Milch bis 30 °C begrenzt vor Auftrag 3 (D3)
 bestanden   Regler: 50 °C im Feld wird abgelehnt
 bestanden   Regler: Komma im Feld
@@ -36,32 +36,32 @@ bestanden   Regler: kA bleibt fest, wenn sich der Kaffee ändert
 bestanden   Regler: Anzeige „entspricht … °C nach 10 min“
 bestanden   Regler: „Werte des Blatts“ setzt zurück
 bestanden   Messung: Komma, Punkt, x erkannt
-bestanden   Messung: eigene Punkte gefüllt im Diagramm (3 + 8)
-bestanden   Messung: Beispielwerte hohl (7 + 8) und in der Legende als berechnet
+bestanden   Messung: eigene Punkte gefüllt im Diagramm (3 + 7)
+bestanden   Messung: Beispielwerte hohl (6 + 7) und in der Legende als berechnet
 bestanden   Messung: Fehler bei Text
 bestanden   Messung: Fehler außerhalb 0 bis 100 °C
 bestanden   Messung: Fehler bei zu vielen Werten
 bestanden   Messung: Hinweis bei Wert über dem Start von Tasse 2
-bestanden   ln-Ansicht: Gerade des Modells und 7 Punkte von Tasse 2 (D6)
+bestanden   ln-Ansicht: Gerade des Modells und 6 Punkte von Tasse 2 (D6)
 bestanden   axe-core ohne Verstoß: Z2 mit ln-Ansicht, Gruppe offen
 bestanden   Auftrag 3: ohne Vermutung nicht prüfbar
 bestanden   Auftrag 3: Vermutung hebt die 30-°C-Grenze auf, Zeile über dem Diagramm
 bestanden   Auftrag 3: Auflösung erst nach „Gedanken dazu“
-bestanden   Auftrag 3: Kipppunkt 58,2 °C ergibt Unterschied nahe 0
-bestanden   Auftrag 3: Gedanken mit 68,1, 58,2, 49,9 °C
-bestanden   Auftrag 1: Gedanken mit 2,56 K (wie die Austrittsfrage)
+bestanden   Auftrag 3: Kipppunkt 63,2 °C ergibt Unterschied nahe 0
+bestanden   Auftrag 3: Gedanken mit 68,3, 63,2, 50,8 °C
+bestanden   Auftrag 1: Gedanken mit 4,97 K (wie die Austrittsfrage)
 bestanden   Auftrag 2: Zahl als Vermutung, Werte des Blatts eingestellt
-bestanden   Auftrag 2: Gedanken mit 95 min und 3,86 K
+bestanden   Auftrag 2: Gedanken mit 112 min und 8,83 K
 bestanden   Schluss: Knopf erst nach eigener Antwort
-bestanden   Schluss: Gedanken zu Simulation, Versuch, Rechnung
+bestanden   Schluss: Gedanken zu Simulation, Experiment, Rechnung
 bestanden   axe-core ohne Verstoß: Z2 Deutsch 1366, Aufträge und Modell offen
 bestanden   Speicher: Zustand bleibt beim Neuladen
 bestanden   „Von vorn“ löscht alles
 bestanden   Z2-Lauf: keine Konsolenfehler, keine fremden Anfragen
-bestanden   X6-01 Von vorn (de): keine Ergebniszahl im DOM, auch nicht in Attributen (vorher 43,91 °C, 40,41 °C, 3,50 K)
+bestanden   X6-01 Von vorn (de): keine Ergebniszahl im DOM, auch nicht in Attributen (vorher 43,22 °C, 36,64 °C, 6,58 K)
 bestanden   X6-01 Von vorn (de): Statusansage leer, Säulen ohne Inhalt und Namen
 bestanden   X6-01 Von vorn (de): Barrierefreiheitsbaum ohne Ergebniszahl
-bestanden   X6-01 Von vorn (en): keine Ergebniszahl im DOM, auch nicht in Attributen (vorher 43.91 °C, 40.41 °C, 3.50 K)
+bestanden   X6-01 Von vorn (en): keine Ergebniszahl im DOM, auch nicht in Attributen (vorher 43.22 °C, 36.64 °C, 6.58 K)
 bestanden   X6-01 Von vorn (en): Statusansage leer, Säulen ohne Inhalt und Namen
 bestanden   X6-01 Von vorn (en): Barrierefreiheitsbaum ohne Ergebniszahl
 bestanden   X6-01 Neustart während ausstehender Ansage: Ansage leer, keine Ergebniszahl
@@ -106,6 +106,6 @@ bestanden   axe-core ohne Verstoß: Z2 Deutsch 390
 bestanden   axe-core ohne Verstoß: Z0 Englisch 390
 bestanden   axe-core ohne Verstoß: Z2 Englisch 390
 bestanden   axe-core ohne Verstoß: Z2 Deutsch Beamer 1280 × 720
-bestanden   Leistung: Reglerschritt Median unter 50 ms (2.7 / 3.9 ms, Median / 95 %)
+bestanden   Leistung: Reglerschritt Median unter 50 ms (2.9 / 4.1 ms, Median / 95 %)
 
 107 von 107 bestanden

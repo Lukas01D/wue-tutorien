@@ -2,18 +2,18 @@
 // Zustände: 0 Start (nur Vorhersage), 1 Ergebnis (Kurven, Warum-Frage), 2 erklärt (Regler, Messung, Schluss, Weiterdenken, Modell).
 (function () {
   "use strict";
-  const SPEICHER = "kaffee-simulation-f3";
+  const SPEICHER = "kaffee-simulation-f3-45min";   // neuer Schlüssel: alte Stände mit 30 ml und 60 min nicht übernehmen
   const SPRACHE = "kaffee-simulation-sprache";
   const KA_BLATT = kABlatt();
   const MILCH_GRENZE = 30;
   const TOLERANZ_RECHNUNG = 0.1;   // K: Abweichung der eigenen Rechnung, ab der die Seite „weicht ab“ sagt
   const REGLER = [
     { id: "thM", t: "r_thM", einheit: "°C", min: 2, max: 80, schritt: 0.5, stellen: 1, marken: [2, 20, 40, 60, 80], gruppe: false },
-    { id: "tZ", t: "r_tZ", einheit: "min", min: 1, max: 180, schritt: 1, stellen: 0, marken: [1, 60, 120, 180], gruppe: false },
+    { id: "tZ", t: "r_tZ", einheit: "min", min: 1, max: 180, schritt: 1, stellen: 0, marken: [1, 45, 90, 135, 180], gruppe: false },
     { id: "thK0", t: "r_thK0", einheit: "°C", min: 60, max: 95, schritt: 0.5, stellen: 1, marken: [60, 70, 80, 95], gruppe: true },
     { id: "thU", t: "r_thU", einheit: "°C", min: 10, max: 30, schritt: 0.5, stellen: 1, marken: [10, 20, 30], gruppe: true },
     { id: "kA", t: "r_kA", einheit: "W/K", min: 0.05, max: 0.8, schritt: 0.005, stellen: 4, marken: [0.05, 0.2, 0.4, 0.6, 0.8], gruppe: true },
-    { id: "VM_ml", t: "r_VM", einheit: "ml", min: 10, max: 100, schritt: 5, stellen: 0, marken: [10, 30, 50, 100], gruppe: true }
+    { id: "VM_ml", t: "r_VM", einheit: "ml", min: 10, max: 200, schritt: 5, stellen: 0, marken: [10, 50, 100, 150, 200], gruppe: true }
   ];
   const SVGNS = "http://www.w3.org/2000/svg";
   const $ = id => document.getElementById(id);
@@ -176,7 +176,7 @@
     return { werte: werte };
   }
   function messungen() {
-    const m1 = messreihe(S.m1, 7), m2 = messreihe(S.m2, 8);
+    const m1 = messreihe(S.m1, ZEITEN.length), m2 = messreihe(S.m2, ZEITEN.length + 1);
     return { t1: m1.werte || [], t2: m2.werte || [], f1: m1.fehler || null, f2: m2.fehler || null };
   }
   function messInfo() {
@@ -190,7 +190,7 @@
       let hoch = null;
       werte.forEach((v, i) => {
         if (v === null) return;
-        const t = i === 7 ? "60 min, " + T("s3_nach_milch") : (10 * i) + " min";
+        const t = i === ZEITEN.length ? STANDARD.tZ + " min, " + T("s3_nach_milch") : ZEITEN[i] + " min";
         liste.push(t + " " + zahl(v, 1));
         if (start2 !== null && !(nr === 2 && i === 0) && v > start2 + 0.5) hoch = v;
       });
@@ -262,12 +262,12 @@
       else svg.appendChild(el("rect", { x: X(t) - 4, y: Y(v) - 4, width: 8, height: 8, class: "punkt k2" + (hohl ? " hohl" : "") }));
     };
     if (S.bsp) {
-      BEISPIEL.t1.forEach((v, i) => punkt(10 * i, v, 1, true));
-      BEISPIEL.t2.forEach((v, i) => punkt(10 * i, v, 2, true));
-      punkt(60, BEISPIEL.t2Milch, 2, true);
+      BEISPIEL.t1.forEach((v, i) => punkt(ZEITEN[i], v, 1, true));
+      BEISPIEL.t2.forEach((v, i) => punkt(ZEITEN[i], v, 2, true));
+      punkt(STANDARD.tZ, BEISPIEL.t2Milch, 2, true);
     }
-    m.t1.forEach((v, i) => { if (v !== null) punkt(10 * i, v, 1, false); });
-    m.t2.forEach((v, i) => { if (v !== null) punkt(i === 7 ? 60 : 10 * i, v, 2, false); });
+    m.t1.forEach((v, i) => { if (v !== null) punkt(ZEITEN[i], v, 1, false); });
+    m.t2.forEach((v, i) => { if (v !== null) punkt(i === ZEITEN.length ? STANDARD.tZ : ZEITEN[i], v, 2, false); });
     svg.appendChild(el("circle", { cx: X(e.tZ), cy: Y(erg.th1), r: 4.5, class: "ende k1" }));
     svg.appendChild(el("circle", { cx: X(e.tZ), cy: Y(erg.th2), r: 4.5, class: "ende k2" }));
     // eigene Rechnung aus e (nur bei den Werten des Blatts)
@@ -305,10 +305,10 @@
   }
   function zeichneLn(svg, W, H, fs, erg) {
     const m = messungen(), u = S.e.thU;
-    let reihe = m.t2.slice(0, 7), eigene = true;
+    let reihe = m.t2.slice(0, ZEITEN.length), eigene = true;
     if (!(reihe.length >= 2 && reihe[0] !== null) && S.bsp) { reihe = BEISPIEL.t2.slice(); eigene = false; }
     const pkte = [];
-    if (reihe.length >= 2 && reihe[0] !== null && reihe[0] > u) reihe.forEach((v, i) => { if (v !== null && v > u) pkte.push([10 * i, Math.log((v - u) / (reihe[0] - u))]); });
+    if (reihe.length >= 2 && reihe[0] !== null && reihe[0] > u) reihe.forEach((v, i) => { if (v !== null && v > u) pkte.push([ZEITEN[i], Math.log((v - u) / (reihe[0] - u))]); });
     const steigung = -erg.kA * 60 / erg.C_K;   // je min
     const ymin = Math.floor(Math.min(steigung * 60, ...pkte.map(q => q[1])) * 10 - 0.5) / 10, ymax = 0.05;
     const Lr = 54, R = 24, Tr = 12, B = 38;

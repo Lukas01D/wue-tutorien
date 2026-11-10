@@ -5,7 +5,7 @@ Quelle der Rechnung ist kaffee_modell.py (unverändert). Geändert sind nur zwei
 gegenüber den dort hinterlegten Standardwerten:
     th_mess = 72 °C  (Messung in Tasse 2 nach 10 min, jetzt mit Deckel; Prüfbericht R, B.2)
     th_Mh   = 70 °C  (erwärmte Milch in Teil g; Prüfbericht R, B.3)
-Neu: Trinktemperatur 60 °C (Teile d2 und d4).
+Neu: Trinktemperatur 50 °C (Teile h1 bis h3); 100 ml Milch und 45 min Wartezeit (Entscheidung TL 10.11.2026).
 
 Aufruf: python3 werte.py            (Tabelle aller Werte und Prüfung der Textaussagen)
 Import: from werte import werte     (Wörterbuch mit Zahlen und fertig formatierten Texten)
@@ -21,10 +21,12 @@ KAFFEE_START = 80.0   # (v) °C, Kaffee in der vorgewärmten Tasse direkt nach d
 MILCH_KALT = 5.0      # (v) °C, Milch aus dem Kühlschrank (M1)
 RAUM = 20.0           # (g) °C, Raumtemperatur auf dem Blatt (am Messtag messen und umrechnen, M3)
 V_KAFFEE = 200e-6     # (v) m³, Kaffee je Tasse (M1)
-V_MILCH = 30e-6       # (v) m³, Milch je Tasse (M1)
+V_MILCH = 100e-6      # (g) m³, Milch je Tasse (Entscheidung TL 10.11.2026; M1 prüft die Menge)
 MESSWERT = 72.0       # (v) °C nach 10 min, Tasse 2 ohne Milch, mit Deckel (M3; Umrechnung: messwert_fuer_blatt)
 MILCH_HEISS = 70.0    # (g) °C, Teil g (Temperatur beim Zugießen prüfen, M6)
-TRINK = 60.0          # (g) °C, Teile d2 und d4 (Literaturwert, keine Messung nötig)
+TRINK = 50.0          # (g) °C, Teile h1 bis h3 (Tasse 1 startet mit 100 ml Milch bei etwa 55 °C)
+DAUER_MIN = 45.0      # (g) min, Wartezeit bis zur Milch in Tasse 2 (Entscheidung TL 10.11.2026)
+ZEITEN_MIN = [0, 10, 20, 30, 40, 45]   # Messzeitpunkte im Experiment (alle 10 min und am Ende)
 M_TASSE = 0.300       # (v) kg, Keramiktasse (M1)
 C_KERAMIK = 850.0     # (L) J/(kg K), Keramik (M4 prüft die Wirkung der Tasse beim Zugießen)
 C_BECHER = M_TASSE * C_KERAMIK   # J/K, vorgewärmte Tasse (nur Versuchserwartung und h, Hinweise)
@@ -35,19 +37,19 @@ TH_OFFEN = 64.0       # (v) °C nach 10 min ohne Deckel (nur für den Deckelverg
 # Vorläufige und gewählte Werte: (Größe, Wert, Stelle, Status, Messung im Messplan)
 VORLAEUFIG = [
     ("Kaffee in der vorgewärmten Tasse", "80 °C", "Werte; alle Teile", "vorläufig", "M2"),
-    ("Tasse 2 nach 10 min mit Deckel", "72 °C", "Werte; d1 und alles danach", "vorläufig", "M3"),
+    ("Tasse 2 nach 10 min mit Deckel", "72 °C", "Werte; d und alles danach", "vorläufig", "M3"),
     ("Milch aus dem Kühlschrank", "5 °C", "Werte; a2, e3, g", "vorläufig", "M1"),
-    ("Kaffee und Milch je Tasse", "200 ml und 30 ml", "Werte; alle Teile", "vorläufig", "M1"),
+    ("Kaffee und Milch je Tasse", "200 ml und 100 ml", "Werte; alle Teile", "vorläufig", "M1"),
     ("Raumtemperatur", "20 °C", "Werte", "gewählt", "M3 (umrechnen)"),
     ("Erwärmte Milch", "70 °C", "Werte; g", "gewählt", "M6"),
-    ("Trinktemperatur", "60 °C", "Werte; d2, d4", "gewählt (Literatur)", "keine"),
-    ("Tasse: Masse, Innendurchmesser", "300 g, 8 cm", "Lösung d1; Hinweise; h", "vorläufig", "M1, M4"),
-    ("Offene Tasse nach 10 min", "64 °C", "Lösung h (Deckelvergleich)", "vorläufig", "M7"),
-    ("Verdunstete Masse in 60 min (offen)", "7 bis 12 g", "Lösung h; Hinweise", "vorläufig", "M7"),
-    ("kA der volleren Tasse 1", "3 bis 5 % größer", "Hinweise, Versuch", "Schätzung", "M5"),
-    ("Streuung zweier gleicher Tassen", "unbekannt", "Hinweise, Versuch", "offen", "M5"),
-    ("Ablesegenauigkeit des Thermometers", "etwa ±0,5 K", "Hinweise, Versuch", "Schätzung", "M0"),
-    ("Beispielwerte für den Versuch", "Modell mit Tasse", "Blatt, Kontrollseite", "berechnet", "M5 (durch Messwerte ersetzen)"),
+    ("Trinktemperatur", "50 °C", "Werte; h1, h3", "gewählt", "keine"),
+    ("Tasse: Masse, Innendurchmesser", "300 g, 8 cm", "Lösung d; Hinweise; j", "vorläufig", "M1, M4"),
+    ("Offene Tasse nach 10 min", "64 °C", "Lösung j (Deckelvergleich)", "vorläufig", "M7"),
+    ("Verdunstete Masse in 60 min (offen)", "7 bis 12 g", "Lösung j; Hinweise", "vorläufig", "M7"),
+    ("kA der volleren Tasse 1", "bis etwa 25 % größer", "Lösung d, Experiment 4", "Schätzung", "M5"),
+    ("Streuung zweier gleicher Tassen", "unbekannt", "Hinweise, Experiment", "offen", "M5"),
+    ("Ablesegenauigkeit des Thermometers", "etwa ±0,5 K", "Hinweise, Experiment", "Schätzung", "M0"),
+    ("Beispielwerte für das Experiment", "Modell mit Tasse", "Blatt, Kontrollseite", "berechnet", "M5 (durch Messwerte ersetzen)"),
 ]
 
 
@@ -71,7 +73,7 @@ def de_tex(x, n=2):
 
 def werte(messwert=MESSWERT, milch_heiss=MILCH_HEISS, trink=TRINK):
     p = dict(P, th_mess=messwert, th_Mh=milch_heiss, th_K0=KAFFEE_START, th_M=MILCH_KALT,
-             th_U=RAUM, V_K=V_KAFFEE, V_M=V_MILCH)
+             th_U=RAUM, V_K=V_KAFFEE, V_M=V_MILCH, t_end=DAUER_MIN * 60.0)
     r = rechne(p)
     K = 273.15
     w = {}
@@ -81,7 +83,7 @@ def werte(messwert=MESSWERT, milch_heiss=MILCH_HEISS, trink=TRINK):
     # a) Mischen
     w["T10"] = r["T1_0"]; w["th10"] = r["T1_0"] - K
     w["sprung_a"] = p["th_K0"] - w["th10"]
-    # d1) kA
+    # d) kA
     w["kA"] = r["kA"]; w["ln_mess"] = r["ln_mess"]
     w["tauK_min"] = r["tau_K"] / 60; w["tauG_min"] = r["tau_G"] / 60
     hK = p["V_K"] / (math.pi * D_TASSE ** 2 / 4); hG = (p["V_K"] + p["V_M"]) / (math.pi * D_TASSE ** 2 / 4)
@@ -94,7 +96,7 @@ def werte(messwert=MESSWERT, milch_heiss=MILCH_HEISS, trink=TRINK):
     w["t_tr_min"] = w["t_tr_s"] / 60
     w["t_tr_schwarz_min"] = -r["tau_K"] * math.log((trink - p["th_U"]) / (p["th_K0"] - p["th_U"])) / 60
     w["d_tr"] = trink - p["th_U"]; w["d_10"] = w["th10"] - p["th_U"]
-    # d3, d4) Tassenwärmer
+    # h2, h3) Tassenwärmer
     w["QW"] = r["kA"] * (trink - p["th_U"])
     w["th_w60"] = trink + (w["th10"] - trink) * r["e_G"]      # Tasse 1 auf dem Wärmer nach 60 min
     # e) nach 60 min
@@ -118,11 +120,14 @@ def werte(messwert=MESSWERT, milch_heiss=MILCH_HEISS, trink=TRINK):
     w["eff_milch_heiss"] = r["C_M"] * (milch_heiss - p["th_U"]) * (r["e_G"] - 1) / r["C_G"]
     w["kipp_linear"] = p["th_M"] + (milch_heiss - p["th_M"]) * w["dT"] / (w["dT"] - w["dTh"])
     # h) Deckelvergleich im linearen Modell (offen: kA aus TH_OFFEN nach 10 min, vorläufig)
-    po = dict(p, th_mess=TH_OFFEN); ro = rechne(po)
+    # Teil j hat eine eigene Dauer von 60 min (eigenes Experiment, unabhängig von der Wartezeit)
+    p60 = dict(p, t_end=3600.0); r60 = rechne(p60)
+    po = dict(p60, th_mess=TH_OFFEN); ro = rechne(po)
     th_offen60 = ro["T2_K"] - K
+    w["h_th2K60"] = r60["T2_K"] - K
     Q_offen = ro["C_K"] * (ro["T_K0"] - ro["T2_K"])
-    QV_wahr = (ro["kA"] - r["kA"]) / ro["kA"] * Q_offen
-    QV_naiv = r["C_K"] * (w["th2K"] - th_offen60)
+    QV_wahr = (ro["kA"] - r60["kA"]) / ro["kA"] * Q_offen
+    QV_naiv = r60["C_K"] * (w["h_th2K60"] - th_offen60)
     w["h_kA_offen"] = ro["kA"]; w["h_th_offen60"] = th_offen60; w["h_Q_offen"] = Q_offen
     w["h_QV_wahr"] = QV_wahr; w["h_QV_naiv"] = QV_naiv; w["h_zuwenig_proz"] = (1 - QV_naiv / QV_wahr) * 100
     w["h_dm_g"] = QV_wahr / p["dh_v"] * 1000
@@ -131,8 +136,8 @@ def werte(messwert=MESSWERT, milch_heiss=MILCH_HEISS, trink=TRINK):
         CKT, CGT = r["C_K"] + C_T, r["C_G"] + C_T
         kA_b = -CKT / p["t_mess"] * r["ln_mess"]
         T10b = (CKT * r["T_K0"] + r["C_M"] * r["T_M"]) / CGT
-        b1 = [r["T_U"] + (T10b - r["T_U"]) * math.exp(-kA_b * 600 * i / CGT) - K for i in range(7)]
-        b2 = [r["T_U"] + (r["T_K0"] - r["T_U"]) * math.exp(-kA_b * 600 * i / CKT) - K for i in range(7)]
+        b1 = [r["T_U"] + (T10b - r["T_U"]) * math.exp(-kA_b * 60 * t / CGT) - K for t in ZEITEN_MIN]
+        b2 = [r["T_U"] + (r["T_K0"] - r["T_U"]) * math.exp(-kA_b * 60 * t / CKT) - K for t in ZEITEN_MIN]
         b2m = (CKT * (b2[-1] + K) + r["C_M"] * r["T_M"]) / CGT - K
         return kA_b, b1, b2, b2m
     w["V_blatt"] = reihe(0.0); w["V_becher"] = reihe(C_BECHER)
@@ -144,8 +149,8 @@ def pruefen(w):
     """Aussagen des Textes, die von den Zahlen abhängen. Schlägt eine fehl, muss der Text angepasst werden."""
     p = w["p"]
     fehler = []
-    if not w["t_schnitt_min"] > 60:
-        fehler.append("Schnittpunkt liegt innerhalb der Stunde: Text in f3 und Abb. L2 anpassen")
+    if not w["t_schnitt_min"] > DAUER_MIN:
+        fehler.append("Schnittpunkt liegt innerhalb der Wartezeit: Text in f3 und Abb. L2 anpassen")
     if not w["dT"] > 0:
         fehler.append("Tasse 1 ist nicht wärmer: Kernaussage")
     if not w["dTh"] < 0:
@@ -153,9 +158,9 @@ def pruefen(w):
     if not (p["th_M"] < w["kipp"] < MILCH_HEISS):
         fehler.append("Kipppunkt liegt nicht zwischen kalter und erwärmter Milch")
     if not w["th10"] > TRINK:
-        fehler.append("Tasse 1 startet unter der Trinktemperatur: Teil d2")
+        fehler.append("Tasse 1 startet unter der Trinktemperatur: Teil h1")
     if not (TRINK < w["th_w60"] < w["th10"]):
-        fehler.append("Tassenwärmer: Temperatur nach 60 min liegt nicht zwischen Endwert und Start")
+        fehler.append("Tassenwärmer: Temperatur am Ende liegt nicht zwischen Endwert und Start")
     if abs(w["kipp"] - w["kipp_linear"]) > 1e-6:
         fehler.append("lineare und geschlossene Kipppunktformel weichen ab")
     if abs(w["dQ"] / w["CG"] - w["dT"]) > 1e-9:
@@ -182,11 +187,11 @@ if __name__ == "__main__":
         ("m_K in kg", w["mK"], 4), ("m_M in kg", w["mM"], 4),
         ("C_K in J/K", w["CK"], 3), ("C_M in J/K", w["CM"], 3), ("C_G in J/K", w["CG"], 3),
         ("a) T_1,0 in K", w["T10"], 3), ("a) th_1,0 in °C", w["th10"], 3), ("a) Sprung in K", w["sprung_a"], 3),
-        ("d1) ln-Verhältnis", w["ln_mess"], 6), ("d1) kA in W/K", w["kA"], 6),
-        ("d1) tau ohne Milch in min", w["tauK_min"], 3), ("d1) tau mit Milch in min", w["tauG_min"], 3),
-        ("d1) Füllhöhe ohne/mit Milch in cm", w["h_K_cm"], 3), ("", w["h_G_cm"], 3),
-        ("d1) Fläche in cm²", w["A_cm2"], 2), ("d1) kA/A in W/(m²K)", w["kA_je_A"], 3),
-        ("d1) kA-Zuschlag Tasse 1, der umdreht, in %", w["kA_kipp_proz"], 3),
+        ("d) ln-Verhältnis", w["ln_mess"], 6), ("d) kA in W/K", w["kA"], 6),
+        ("d) tau ohne Milch in min", w["tauK_min"], 3), ("d) tau mit Milch in min", w["tauG_min"], 3),
+        ("d) Füllhöhe ohne/mit Milch in cm", w["h_K_cm"], 3), ("", w["h_G_cm"], 3),
+        ("d) Fläche in cm²", w["A_cm2"], 2), ("d) kA/A in W/(m²K)", w["kA_je_A"], 3),
+        ("d) kA-Zuschlag Tasse 1, der umdreht, in %", w["kA_kipp_proz"], 3),
         ("d2) t bis 60 °C Tasse 1 in s", w["t_tr_s"], 2), ("d2) in min", w["t_tr_min"], 3),
         ("d2) schwarzer Kaffee bis 60 °C in min", w["t_tr_schwarz_min"], 3),
         ("d4) Q_W in W", w["QW"], 4), ("d4) Tasse 1 auf dem Wärmer nach 60 min", w["th_w60"], 3),

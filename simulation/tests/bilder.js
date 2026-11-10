@@ -9,14 +9,14 @@ const GERAETE = { handy: [390, 844], laptop: [1366, 768], beamer: [1280, 720] };
 async function zustand(p, z) {
   if (z === 'start') return;
   await p.check('input[name=tasse][value="1"]'); await p.check('input[name=grund][value="h"]');
-  await p.fill('#e1', '43,85'); await p.fill('#e2', '40,29');
+  await p.fill('#e1', '43,01'); await p.fill('#e2', '36,31');
   await p.click('#s1-knopf');
   if (z === 'ergebnis') return;
   await p.check('input[name=warum][value="a"]'); await p.click('#s2-knopf');
   if (z === 'erklaert') return;
   if (z === 'messung' || z === 'ln') {
-    await p.fill('#m1', '72,9 66,4 61 56,1 51,9 48 44,8');
-    await p.fill('#m2', '79,6 71,8 64,9 59,2 54,1 49,8 46 42,3');
+    await p.fill('#m1', '59,9 55,9 52 49,2 46 44,9');
+    await p.fill('#m2', '79,6 71,8 64,9 59,2 54,1 51,6 39,2');
     await p.check('#beispiel');
     if (z === 'ln') await p.check('#ln');
     return;

@@ -29,10 +29,10 @@ bestanden   2006 Parametersätze (Blatt, 2000 Zufall, Ränder) gegen kaffee_mode
 bestanden   Auftrag 1: Milch 20 °C
 bestanden   Auftrag 2: größter Unterschied am Schnittpunkt
 bestanden   Auftrag 2: Rest bei sehr später Zugabe
-bestanden   Auftrag 3: Kipppunkte 30, 60, 90 min (Unterschied 0)
-bestanden   Kipppunkt 60 min wie werte.py
+bestanden   Auftrag 3: Kipppunkte 30, 45, 90 min (Unterschied 0)
+bestanden   Kipppunkt 45 min wie werte.py
 bestanden   Erwärmte Milch 70 °C (Teil g)
-bestanden   Zeit bis 60 °C (Teil d2)
+bestanden   Zeit bis 50 °C (Teil h1)
 bestanden   Sprünge beim Zugießen (Rückmeldung b)
 
 34 von 34 bestanden
