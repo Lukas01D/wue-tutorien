@@ -91,10 +91,12 @@ Room {th} °C
 Cup 1: milk right away
 @dia_t2
 Cup 2: milk after {t} min
+@dia_milch
+milk
 @dia_leer
 The curves appear after your prediction.
 @dia_beschreibung
-Cup 1 cools from {a1} to {e1} °C. Cup 2 cools from {a2} to {e2} °C and is at {m2} °C after the milk. Room {u} °C.
+Both cups start with coffee at {a2} °C. The milk drops cup 1 to {a1} °C right away, then it cools to {e1} °C. Cup 2 cools to {e2} °C, and after {t} min the milk drops it to {m2} °C. Room {u} °C.
 @leg_rechnung
 × your calculation
 @leg_beispiel

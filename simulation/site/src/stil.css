@@ -177,7 +177,8 @@ details.gruppe[open] > summary { color: var(--tinte); }
 .kurve { fill: none; }
 .k1 { stroke: var(--k1); } .k2 { stroke: var(--k2); }
 .gestrichelt { stroke-dasharray: 7 4; }
-.sprung { stroke-width: 2; stroke-dasharray: 1.5 3; }
+.abfall { stroke-dasharray: 6 4; stroke-linecap: butt; }   /* Abfall durch die Milch, Breite wie die Kurven */
+.pfeil.k1 { fill: var(--k1); } .pfeil.k2 { fill: var(--k2); }
 .punkt { stroke-width: 1.8; }
 .punkt.k1 { fill: var(--k1); } .punkt.k2 { fill: var(--k2); }
 .punkt.hohl { fill: none; }

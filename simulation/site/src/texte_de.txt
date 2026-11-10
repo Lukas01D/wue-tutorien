@@ -94,10 +94,12 @@ Raum {th} °C
 Tasse 1: Milch sofort
 @dia_t2
 Tasse 2: Milch nach {t} min
+@dia_milch
+Milch
 @dia_leer
 Kurven erscheinen nach deiner Vorhersage.
 @dia_beschreibung
-Tasse 1 kühlt von {a1} auf {e1} °C ab. Tasse 2 kühlt von {a2} auf {e2} °C ab und hat nach der Milch {m2} °C. Raum {u} °C.
+Beide Tassen beginnen mit Kaffee bei {a2} °C. Tasse 1 fällt durch die Milch sofort auf {a1} °C und kühlt dann auf {e1} °C ab. Tasse 2 kühlt auf {e2} °C ab und fällt nach {t} min durch die Milch auf {m2} °C. Raum {u} °C.
 @leg_rechnung
 × deine Rechnung
 @leg_beispiel

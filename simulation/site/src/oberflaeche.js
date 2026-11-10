@@ -206,7 +206,7 @@
     return n;
   }
   function diagrammHoehe(svg, W) {
-    if (window.innerWidth < 1024) return Math.round(Math.min(360, W * 0.68));
+    if (window.innerWidth < 1024) return Math.round(Math.min(360, W * (W < 500 ? 0.82 : 0.68)));   // Handy etwas höher, damit die Abfälle durch die Milch deutlich bleiben
     const b = $("buehne"), fig = svg.parentNode;
     let rest = 4;
     for (const c of b.children) if (c !== fig && !c.hidden && c.getClientRects().length) rest += c.getBoundingClientRect().height;
@@ -226,19 +226,19 @@
     const xmax = Math.max(60, Math.ceil(e.tZ / 10) * 10);
     const ymax = Math.max(90, Math.ceil((Math.max(e.thK0, erg.th10, ...pkt) + 3) / 10) * 10);
     const ymin = Math.min(10, Math.floor((e.thU - 5) / 10) * 10, ...pkt.map(v => Math.floor((v - 2) / 10) * 10));
-    const Lr = 46, R = 24, Tr = 12, B = 38;
-    const X = t => Lr + (W - Lr - R) * t / xmax, Y = v => Tr + (H - Tr - B) * (ymax - v) / (ymax - ymin);
+    const Lr = 46, R = 24, Tr = 12, B = 38, P = 12;   // P: Abstand der Achse von t = 0, damit der Abfall von Tasse 1 nicht auf der Achse liegt
+    const X = t => Lr + P + (W - Lr - P - R) * t / xmax, Y = v => Tr + (H - Tr - B) * (ymax - v) / (ymax - ymin);
     const fein = xmax <= 90 ? 5 : 10, grob = xmax <= 90 ? 10 : 30;
     for (let t = 0; t <= xmax + 1e-9; t += fein) svg.appendChild(el("line", { x1: X(t), x2: X(t), y1: Y(ymax), y2: Y(ymin), class: t % grob ? "gitter" : "gitter-haupt" }));
-    for (let v = ymin; v <= ymax; v += 5) svg.appendChild(el("line", { x1: X(0), x2: X(xmax), y1: Y(v), y2: Y(v), class: v % 10 ? "gitter" : "gitter-haupt" }));
-    svg.appendChild(el("line", { x1: X(0), x2: X(xmax), y1: Y(ymin), y2: Y(ymin), class: "achse" }));
-    svg.appendChild(el("line", { x1: X(0), x2: X(0), y1: Y(ymin), y2: Y(ymax), class: "achse" }));
+    for (let v = ymin; v <= ymax; v += 5) svg.appendChild(el("line", { x1: Lr, x2: X(xmax), y1: Y(v), y2: Y(v), class: v % 10 ? "gitter" : "gitter-haupt" }));
+    svg.appendChild(el("line", { x1: Lr, x2: X(xmax), y1: Y(ymin), y2: Y(ymin), class: "achse" }));
+    svg.appendChild(el("line", { x1: Lr, x2: Lr, y1: Y(ymin), y2: Y(ymax), class: "achse" }));
     for (let t = 0; t <= xmax; t += grob) svg.appendChild(el("text", { x: X(t), y: Y(ymin) + 15, "text-anchor": "middle", "font-size": fs, class: "ax" }, String(t)));
-    for (let v = ymin; v <= ymax; v += (ymax - ymin > 80 ? 20 : 20)) svg.appendChild(el("text", { x: X(0) - 6, y: Y(v) + 4, "text-anchor": "end", "font-size": fs, class: "ax" }, String(v)));
+    for (let v = ymin; v <= ymax; v += (ymax - ymin > 80 ? 20 : 20)) svg.appendChild(el("text", { x: Lr - 6, y: Y(v) + 4, "text-anchor": "end", "font-size": fs, class: "ax" }, String(v)));
     svg.appendChild(el("text", { x: (X(0) + X(xmax)) / 2, y: H - 5, "text-anchor": "middle", "font-size": fs, class: "beschr" }, T("dia_zeit")));
     const ym = (Y(ymin) + Y(ymax)) / 2;
     svg.appendChild(el("text", { x: 12, y: ym, "text-anchor": "middle", "font-size": fs, class: "beschr", transform: "rotate(-90 12 " + ym + ")" }, T("dia_temp")));
-    svg.appendChild(el("line", { x1: X(0), x2: X(xmax), y1: Y(e.thU), y2: Y(e.thU), class: "raum" }));
+    svg.appendChild(el("line", { x1: Lr, x2: X(xmax), y1: Y(e.thU), y2: Y(e.thU), class: "raum" }));
     svg.appendChild(el("text", { x: X(xmax) - 2, y: Y(e.thU) - 6, "text-anchor": "end", "font-size": fs, class: "leise-text" }, F("dia_raum", { th: zahl(e.thU, 1) })));
     if (S.z === 0) {
       svg.appendChild(el("text", { x: (X(0) + X(xmax)) / 2, y: Y((ymin + ymax) / 2), "text-anchor": "middle", "font-size": fs + 1, class: "leise-text" }, T("dia_leer")));
@@ -252,10 +252,14 @@
       p2.push(X(t / 60).toFixed(1) + "," + Y(erg.kurve2(t)).toFixed(1));
     }
     const dick = W >= 600 ? 3 : 2.5;
-    svg.appendChild(el("line", { x1: X(0), x2: X(0), y1: Y(e.thK0), y2: Y(erg.th10), class: "sprung k1" }));
-    svg.appendChild(el("line", { x1: X(e.tZ), x2: X(e.tZ), y1: Y(erg.th2K), y2: Y(erg.th2), class: "sprung k2" }));
     svg.appendChild(el("polyline", { points: p1.join(" "), class: "kurve k1", "stroke-width": dick }));
     svg.appendChild(el("polyline", { points: p2.join(" "), class: "kurve k2 gestrichelt", "stroke-width": dick }));
+    // Abfall durch die Milch: kräftig gestrichelt (Tasse 1 bei t = 0 vom Kaffee auf die Mischtemperatur, Tasse 2 bei tZ)
+    const abf = [[0, e.thK0, erg.th10, "k1", 0], [e.tZ, erg.th2K, erg.th2, "k2", 6]].map(([t, o, u, k, l]) => {
+      const x = X(t), y1 = Y(o), y2 = Y(u) - l;
+      return { t: t, x: x, y1: y1, y2: y2, k: k, sp: Math.min(W >= 600 ? 9 : 7, (y2 - y1) / 2), ok: y2 - y1 > 2 };
+    });
+    for (const a of abf) if (a.ok) svg.appendChild(el("line", { x1: a.x, x2: a.x, y1: a.y1, y2: a.y2 - a.sp, class: "abfall " + a.k, "stroke-width": dick }));
     // Messpunkte: eigene gefüllt, Beispielwerte hohl
     const punkt = (t, v, tasse, hohl) => {
       if (tasse === 1) svg.appendChild(el("circle", { cx: X(t), cy: Y(v), r: 4.2, class: "punkt k1" + (hohl ? " hohl" : "") }));
@@ -270,6 +274,16 @@
     m.t2.forEach((v, i) => { if (v !== null) punkt(i === ZEITEN.length ? STANDARD.tZ : ZEITEN[i], v, 2, false); });
     svg.appendChild(el("circle", { cx: X(e.tZ), cy: Y(erg.th1), r: 4.5, class: "ende k1" }));
     svg.appendChild(el("circle", { cx: X(e.tZ), cy: Y(erg.th2), r: 4.5, class: "ende k2" }));
+    // Pfeilspitzen und Beschriftung der Abfälle über den Endpunkten (Spitze von Tasse 2 endet am Rand ihres Endpunkts)
+    for (const a of abf) {
+      if (!a.ok) continue;
+      const ecken = [[a.x - a.sp * 0.7, a.y2 - a.sp], [a.x + a.sp * 0.7, a.y2 - a.sp], [a.x, a.y2]];
+      svg.appendChild(el("polygon", { points: ecken.map(q => q[0].toFixed(1) + "," + q[1].toFixed(1)).join(" "), class: "pfeil " + a.k }));
+      if (a.y2 - a.y1 > 2.2 * fs) {
+        const yt = a.t === 0 ? (a.y1 + a.y2) / 2 + fs * 0.35 : a.y1 + fs * 1.1;
+        imBild(svg.appendChild(el("text", { x: a.x + 8, y: yt, "font-size": fs, class: "kbeschr " + a.k + "-text" }, T("dia_milch"))), Lr + 2, W - 4);
+      }
+    }
     // eigene Rechnung aus e (nur bei den Werten des Blatts)
     const r1 = liesZahl(S.e1), r2 = liesZahl(S.e2), mitRechnung = istBlatt() && (isFinite(r1) || isFinite(r2));
     if (mitRechnung) for (const v of [r1, r2]) if (isFinite(v) && v >= ymin && v <= ymax) svg.appendChild(el("text", { x: X(e.tZ) + 13, y: Y(v) + 5, "text-anchor": "middle", "font-size": 15, class: "kreuz" }, "×"));
@@ -277,7 +291,7 @@
     // Ist die Kurve dort die obere, steht der Text darüber und beginnt dort (Kurve fällt nach rechts weg); ist sie die untere,
     // steht er darunter und endet dort (tiefster Punkt seines Bereichs). So berühren Text und Linien sich nicht.
     const abstand = t => Math.abs(erg.kurve1(t) - erg.kurve2(t));
-    const Xinv = x => (x - Lr) / (W - Lr - R) * xmax * 60;
+    const Xinv = x => (x - Lr - P) / (W - Lr - P - R) * xmax * 60;
     const beste = (von, bis) => { let tb = tZ * von, ab = -1; for (let i = 0; i <= 24; i++) { const t = tZ * (von + (bis - von) * i / 24); if (abstand(t) > ab) { ab = abstand(t); tb = t; } } return tb; };
     for (const [n, von, bis] of [[2, 0.08, 0.45], [1, 0.5, 0.92]]) {
       const k = n === 1 ? erg.kurve1 : erg.kurve2, anders = n === 1 ? erg.kurve2 : erg.kurve1;
@@ -288,7 +302,7 @@
       else { x = Math.min(W - R, Math.max(X(t / 60), Lr + w + 4)); y = Y(k(Math.min(tZ, Xinv(x)))) + 22; }
       imBild(svg.appendChild(el("text", { x: x, y: y, "text-anchor": oben ? "start" : "end", "font-size": fs, class: "kbeschr " + (n === 1 ? "k1-text" : "k2-text") }, txt)), Lr + 2, W - 4);
     }
-    $("dia-beschreibung").textContent = F("dia_beschreibung", { a1: zahl(erg.th10, 1), e1: zahl(erg.th1, 1), a2: zahl(e.thK0, 1), e2: zahl(erg.th2K, 1), m2: zahl(erg.th2, 1), u: zahl(e.thU, 1) });
+    $("dia-beschreibung").textContent = F("dia_beschreibung", { a1: zahl(erg.th10, 1), e1: zahl(erg.th1, 1), a2: zahl(e.thK0, 1), e2: zahl(erg.th2K, 1), m2: zahl(erg.th2, 1), u: zahl(e.thU, 1), t: e.tZ });
     // Legende nur für vorhandene Zeichen
     const leg = [];
     if (mitRechnung) leg.push(T("leg_rechnung"));
