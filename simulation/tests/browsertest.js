@@ -9,7 +9,7 @@ const DATEI = path.resolve(process.env.KAFFEE_DATEI || path.join(__dirname, '../
 const URL = 'file://' + DATEI;
 const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const GROESSE_F2 = 433303;       // Fassung 2 (simulation/site vor Fassung 3)
-const ERGEBNISSE_DE = ['43,85', '40,29', '3,56', '45,43', '70,47', '25,49', '28,90', '3,41', '0,1994', '18,6', '58,2', '47,76', '48,55', '2,56', '3,86'];
+const ERGEBNISSE_DE = ['43,01', '36,31', '6,69', '51,51', '55,49', '15,50', '23,82', '8,31', '0,1994', '17,4', '63,2', '56,78', '57,55', '4,97', '8,83'];
 const ergebnisse = [];
 let browser;
 
@@ -82,23 +82,23 @@ async function tests() {
   // ---------------------------------------------------------------- Z1 und Z2
   {
     const p = await seite();
-    await start(p, '43,85', '40.29');
-    pruefe('Z1: Kernzahlen wie Prüfwerte', (await text(p, '#w1')) === '43,85 °C' && (await text(p, '#w2')) === '40,29 °C' && (await text(p, '#wd')) === '3,56 K' && (await text(p, '#kern-zeit')) === 'nach 60 min');
+    await start(p, '43,01', '36.31');
+    pruefe('Z1: Kernzahlen wie Prüfwerte', (await text(p, '#w1')) === '43,01 °C' && (await text(p, '#w2')) === '36,31 °C' && (await text(p, '#wd')) === '6,69 K' && (await text(p, '#kern-zeit')) === 'nach 45 min');
     pruefe('Z1: Kernsatz „stimmen überein“', (await text(p, '#kernsatz')).startsWith('Simulation und deine Rechnung stimmen überein'));
     pruefe('Z1: zwei Kurven, Kreuze der eigenen Rechnung', await p.evaluate(() => document.querySelectorAll('#dia polyline').length === 2 && [...document.querySelectorAll('#dia text')].filter(t => t.textContent === '×').length === 2));
-    pruefe('Z1: Direktbeschriftung beider Kurven', await p.evaluate(() => { const t = [...document.querySelectorAll('#dia text')].map(x => x.textContent); return t.includes('Tasse 1: Milch sofort') && t.includes('Tasse 2: Milch nach 60 min'); }));
+    pruefe('Z1: Direktbeschriftung beider Kurven', await p.evaluate(() => { const t = [...document.querySelectorAll('#dia text')].map(x => x.textContent); return t.includes('Tasse 1: Milch sofort') && t.includes('Tasse 2: Milch nach 45 min'); }));
     const saeulen = await p.$eval('#saeulen', s => s.textContent);
     pruefe('Z1: Säulen ohne Zahlen vor der Antwort (D4)', !/kJ|\d,\d/.test(saeulen) && (await p.$$('#saeulen rect')).length >= 2, saeulen);
     pruefe('Z1: Regler, Messung, Schluss, Weiterdenken noch gesperrt', await p.evaluate(() => ['s3', 's4', 'weiter', 'modell', 'regler-bereich'].every(id => document.getElementById(id).hidden)));
     const body = await p.evaluate(() => { const c = document.body.cloneNode(true); c.querySelectorAll('script').forEach(s => s.remove()); return c.innerHTML; });
-    pruefe('Z1: Q-Werte, kA, Kipppunkt, Zeit bis 60 °C noch nicht im DOM', !['25,49', '28,90', '3,41', '0,1994', '58,2', '18,6', '2,56'].some(z => body.includes(z)));
+    pruefe('Z1: Q-Werte, kA, Kipppunkt, Zeit bis 50 °C noch nicht im DOM', !['15,50', '23,82', '8,31', '0,1994', '63,2', '17,4', '4,97'].some(z => body.includes(z)));
     await axe(p, 'Z1 Deutsch 1366');
     await erklaere(p, 'a');
     const rueck = await text(p, '#s2-rueck');
-    pruefe('Z2: Rückmeldung a mit Begründung und Q-Werten, Überleitung zu f', rueck.startsWith('Ja.') && rueck.includes('25,49') && rueck.includes('28,90') && rueck.includes('3,41') && rueck.includes('957,7') && rueck.includes('f1 und f2'), rueck);
-    pruefe('Z2: Säulen mit Zahlen', /25,49 kJ/.test(await p.$eval('#saeulen', s => s.textContent)) && /3,41 kJ/.test(await p.$eval('#saeulen', s => s.textContent)));
+    pruefe('Z2: Rückmeldung a mit Begründung und Q-Werten, Überleitung zu f', rueck.startsWith('Ja.') && rueck.includes('15,50') && rueck.includes('23,82') && rueck.includes('8,31') && rueck.includes('1241,8') && rueck.includes('f1 und f2'), rueck);
+    pruefe('Z2: Säulen mit Zahlen', /15,50 kJ/.test(await p.$eval('#saeulen', s => s.textContent)) && /8,31 kJ/.test(await p.$eval('#saeulen', s => s.textContent)));
     pruefe('Z2: Antwort gesperrt, Regler, Messung, Schluss, Weiterdenken, Modell sichtbar', await p.evaluate(() => [...document.querySelectorAll('input[name=warum]')].every(x => x.disabled) && ['s3', 's4', 'weiter', 'modell', 'regler-bereich'].every(id => !document.getElementById(id).hidden)));
-    pruefe('Z2: Modell nennt Prüfwerte aus d1 und d2', /0,1994 W\/K/.test(await text(p, '#modell')) && /18,6 min/.test(await text(p, '#modell')));
+    pruefe('Z2: Modell nennt Prüfwerte aus d und h1', /0,1994 W\/K/.test(await text(p, '#modell')) && /17,4 min/.test(await text(p, '#modell')));
     // Regler
     pruefe('Regler: Milch bis 30 °C begrenzt vor Auftrag 3 (D3)', (await p.$eval('#rr-thM', e => e.max)) === '30' && (await text(p, '#rh-thM')).includes('Auftrag 3'));
     await p.fill('#rf-thM', '50'); await p.press('#rf-thM', 'Enter');
@@ -122,24 +122,24 @@ async function tests() {
     pruefe('Regler: kA bleibt fest, wenn sich der Kaffee ändert', Math.abs(ka - 0.3) < 1e-12, String(ka));
     pruefe('Regler: Anzeige „entspricht … °C nach 10 min“', /entspricht \d+,\d °C nach 10 min/.test(await text(p, '#rh-kA')));
     await p.click('#knopf-blatt');
-    pruefe('Regler: „Werte des Blatts“ setzt zurück', (await text(p, '#w1')) === '43,85 °C' && (await text(p, '#kernsatz')).startsWith('Simulation und deine Rechnung stimmen überein') && (await text(p, '#gruppe-zus')).includes('vorläufig'));
+    pruefe('Regler: „Werte des Blatts“ setzt zurück', (await text(p, '#w1')) === '43,01 °C' && (await text(p, '#kernsatz')).startsWith('Simulation und deine Rechnung stimmen überein') && (await text(p, '#gruppe-zus')).includes('vorläufig'));
     // Messpunkte
     await p.fill('#m1', '72,1 66 x 55.9');
-    await p.fill('#m2', '79,8 71,9 64,8 59 53,7 49 45,5 41,2');
-    pruefe('Messung: Komma, Punkt, x erkannt', (await text(p, '#m1-info')).includes('30 min 55,9') && !(await text(p, '#m1-info')).includes('20 min') && (await text(p, '#m2-info')).includes('nach der Milch 41,2'));
-    pruefe('Messung: eigene Punkte gefüllt im Diagramm (3 + 8)', await p.evaluate(() => document.querySelectorAll('#dia circle.punkt:not(.hohl)').length === 3 && document.querySelectorAll('#dia rect.punkt:not(.hohl)').length === 8));
+    await p.fill('#m2', '79,8 71,9 64,8 59 53,7 51,4 38,8');
+    pruefe('Messung: Komma, Punkt, x erkannt', (await text(p, '#m1-info')).includes('30 min 55,9') && !(await text(p, '#m1-info')).includes('20 min') && (await text(p, '#m2-info')).includes('45 min, nach der Milch 38,8'));
+    pruefe('Messung: eigene Punkte gefüllt im Diagramm (3 + 7)', await p.evaluate(() => document.querySelectorAll('#dia circle.punkt:not(.hohl)').length === 3 && document.querySelectorAll('#dia rect.punkt:not(.hohl)').length === 7));
     await p.check('#beispiel');
-    pruefe('Messung: Beispielwerte hohl (7 + 8) und in der Legende als berechnet', await p.evaluate(() => document.querySelectorAll('#dia .punkt.hohl').length === 15) && (await text(p, '#legende')).includes('berechnet'));
+    pruefe('Messung: Beispielwerte hohl (6 + 7) und in der Legende als berechnet', await p.evaluate(() => document.querySelectorAll('#dia .punkt.hohl').length === 13) && (await text(p, '#legende')).includes('berechnet'));
     await p.fill('#m1', 'abc');
     pruefe('Messung: Fehler bei Text', (await text(p, '#m1-info')).includes('keine Zahl'));
     await p.fill('#m1', '120');
     pruefe('Messung: Fehler außerhalb 0 bis 100 °C', (await text(p, '#m1-info')).includes('nicht zwischen'));
     await p.fill('#m1', '1 2 3 4 5 6 7 8');
-    pruefe('Messung: Fehler bei zu vielen Werten', (await text(p, '#m1-info')).includes('Höchstens 7'));
+    pruefe('Messung: Fehler bei zu vielen Werten', (await text(p, '#m1-info')).includes('Höchstens 6'));
     await p.fill('#m1', '90');
     pruefe('Messung: Hinweis bei Wert über dem Start von Tasse 2', (await text(p, '#m1-info')).includes('über dem ersten Wert'));
     await p.check('#ln');
-    pruefe('ln-Ansicht: Gerade des Modells und 7 Punkte von Tasse 2 (D6)', await p.evaluate(() => [...document.querySelectorAll('#dia text')].some(t => t.textContent.includes('Modell mit kA = 0,1994')) && document.querySelectorAll('#dia rect.punkt').length === 7));
+    pruefe('ln-Ansicht: Gerade des Modells und 6 Punkte von Tasse 2 (D6)', await p.evaluate(() => [...document.querySelectorAll('#dia text')].some(t => t.textContent.includes('Modell mit kA = 0,1994')) && document.querySelectorAll('#dia rect.punkt').length === 6));
     await axe(p, 'Z2 mit ln-Ansicht, Gruppe offen');
     await p.uncheck('#ln');
     // Aufträge
@@ -150,33 +150,33 @@ async function tests() {
     await p.click('#a3-knopf');
     pruefe('Auftrag 3: Vermutung hebt die 30-°C-Grenze auf, Zeile über dem Diagramm', (await p.$eval('#rr-thM', e => e.max)) === '80' && !(await p.$eval('#auftrag-zeile', e => e.hidden)) && (await text(p, '#auftrag-zeile')).includes('Auftrag 3'));
     pruefe('Auftrag 3: Auflösung erst nach „Gedanken dazu“', (await p.$eval('#a3-ged', e => e.textContent)) === '');
-    await p.fill('#rf-thM', '58,2'); await p.press('#rf-thM', 'Enter');
-    pruefe('Auftrag 3: Kipppunkt 58,2 °C ergibt Unterschied nahe 0', /^−?0,0\d K$/.test(await text(p, '#wd')), await text(p, '#wd'));
+    await p.fill('#rf-thM', '63,2'); await p.press('#rf-thM', 'Enter');
+    pruefe('Auftrag 3: Kipppunkt 63,2 °C ergibt Unterschied nahe 0', /^−?0,0\d K$/.test(await text(p, '#wd')), await text(p, '#wd'));
     await p.click('#a3-ged-knopf');
-    pruefe('Auftrag 3: Gedanken mit 68,1, 58,2, 49,9 °C', /68,1 °C.*58,2 °C.*49,9 °C/.test(await text(p, '#a3-ged')));
+    pruefe('Auftrag 3: Gedanken mit 68,3, 63,2, 50,8 °C', /68,3 °C.*63,2 °C.*50,8 °C/.test(await text(p, '#a3-ged')));
     await p.click('#a1 summary');
     await p.check('input[name=a1][value="1"]');
     await p.click('#a1-knopf');
     await p.click('#a1-ged-knopf');
-    pruefe('Auftrag 1: Gedanken mit 2,56 K (wie die Austrittsfrage)', (await text(p, '#a1-ged')).includes('2,56 K'));
+    pruefe('Auftrag 1: Gedanken mit 4,97 K (wie die Austrittsfrage)', (await text(p, '#a1-ged')).includes('4,97 K'));
     await p.click('#a2 summary');
     await p.fill('#a2-zahl', '60');
     await p.click('#a2-knopf');
-    pruefe('Auftrag 2: Zahl als Vermutung, Werte des Blatts eingestellt', (await text(p, '#a2-vermutung')).includes('60 min') && (await text(p, '#w1')) === '43,85 °C');
+    pruefe('Auftrag 2: Zahl als Vermutung, Werte des Blatts eingestellt', (await text(p, '#a2-vermutung')).includes('60 min') && (await text(p, '#w1')) === '43,01 °C');
     await p.click('#a2-ged-knopf');
-    pruefe('Auftrag 2: Gedanken mit 95 min und 3,86 K', /95 min \(3,86 K\)/.test(await text(p, '#a2-ged')));
+    pruefe('Auftrag 2: Gedanken mit 112 min und 8,83 K', /112 min \(8,83 K\)/.test(await text(p, '#a2-ged')));
     // Schluss
     pruefe('Schluss: Knopf erst nach eigener Antwort', await p.$eval('#s4-knopf', b => b.disabled));
     await p.fill('#s4-text', 'Die Simulation zeigt den Verlauf.');
     await p.click('#s4-knopf');
-    pruefe('Schluss: Gedanken zu Simulation, Versuch, Rechnung', /Simulation:.*Versuch:.*Rechnung:/.test(await text(p, '#s4-rueck')));
+    pruefe('Schluss: Gedanken zu Simulation, Experiment, Rechnung', /Simulation:.*Experiment:.*Rechnung:/.test(await text(p, '#s4-rueck')));
     await p.click('#modell summary');
     await axe(p, 'Z2 Deutsch 1366, Aufträge und Modell offen');
     // Speicher
     await p.reload(); await p.evaluate(() => document.fonts.ready);
     pruefe('Speicher: Zustand bleibt beim Neuladen', await p.evaluate(() => { const z = window.KAFFEE.zustand(); return z.z === 2 && z.a[3].fest && z.schlussGez && z.m2.startsWith('79,8'); }) && (await text(p, '#speicher-text')).includes('nur in diesem Browser'));
     await p.click('#von-vorn');
-    pruefe('„Von vorn“ löscht alles', await p.evaluate(() => { const z = window.KAFFEE.zustand(); return z.z === 0 && z.tasse === null && z.m2 === '' && !z.a[3].fest; }) && await p.evaluate(() => localStorage.getItem('kaffee-simulation-f3') === null || JSON.parse(localStorage.getItem('kaffee-simulation-f3')).z === 0));
+    pruefe('„Von vorn“ löscht alles', await p.evaluate(() => { const z = window.KAFFEE.zustand(); return z.z === 0 && z.tasse === null && z.m2 === '' && !z.a[3].fest; }) && await p.evaluate(() => localStorage.getItem('kaffee-simulation-f3-45min') === null || JSON.parse(localStorage.getItem('kaffee-simulation-f3-45min')).z === 0));
     pruefe('Z2-Lauf: keine Konsolenfehler, keine fremden Anfragen', p.fehler.length === 0 && p.anfragen.length === 0, p.fehler.concat(p.anfragen).join('; '));
     await p.context().close();
   }
@@ -184,7 +184,7 @@ async function tests() {
   for (const lang of ['de', 'en']) {
     const p = await seite({ q: '?lang=' + lang });
     const zahlen = lang === 'de' ? ERGEBNISSE_DE : ERGEBNISSE_DE.map(z => z.replace(',', '.'));
-    await start(p, lang === 'de' ? '43,85' : '43.85', lang === 'de' ? '40,29' : '40.29');
+    await start(p, lang === 'de' ? '43,01' : '43.01', lang === 'de' ? '36,31' : '36.31');
     await erklaere(p, 'a');
     await p.fill('#rf-thM', '6'); await p.press('#rf-thM', 'Enter');
     await p.click('#gruppe summary');
@@ -242,22 +242,22 @@ async function tests() {
   for (const [w, anfang] of [['b', 'Das denken viele.'], ['c', 'Nein.']]) {
     const p = await seite();
     await start(p, '44', '');
-    pruefe('Kernsatz bei abweichender Rechnung nennt die Abweichung', (await text(p, '#kernsatz')).includes('weicht ab') && (await text(p, '#kernsatz')).includes('44,00 statt 43,85'));
+    pruefe('Kernsatz bei abweichender Rechnung nennt die Abweichung', (await text(p, '#kernsatz')).includes('weicht ab') && (await text(p, '#kernsatz')).includes('44,00 statt 43,01'));
     await erklaere(p, w);
     const r = await text(p, '#s2-rueck');
-    pruefe('Rückmeldung ' + w + ' mit eigenem Anfang und Begründung', r.startsWith(anfang) && r.includes('25,49') && (w !== 'b' || r.includes('5,1 K gegen 9,5 K')), r.slice(0, 80));
+    pruefe('Rückmeldung ' + w + ' mit eigenem Anfang und Begründung', r.startsWith(anfang) && r.includes('15,50') && (w !== 'b' || r.includes('15,2 K gegen 24,5 K')), r.slice(0, 80));
     await p.context().close();
   }
   // ---------------------------------------------------------------- Sprache
   {
     const p = await seite({ q: '?lang=en' });
-    pruefe('Englisch über ?lang=en', (await p.evaluate(() => document.documentElement.lang)) === 'en' && (await text(p, '#s1-titel')) === 'Which cup is warmer after 60 min?');
+    pruefe('Englisch über ?lang=en', (await p.evaluate(() => document.documentElement.lang)) === 'en' && (await text(p, '#s1-titel')) === 'Which cup is warmer after 45 min?');
     await axe(p, 'Z0 Englisch 1366');
-    await start(p, '43.85', '40.29');
+    await start(p, '43.01', '36.31');
     await erklaere(p, 'a');
-    pruefe('Englisch: Dezimalpunkt in Kernzahlen und Rückmeldung', (await text(p, '#w1')) === '43.85 °C' && (await text(p, '#s2-rueck')).includes('25.49 kJ') && (await text(p, '#kernsatz')).startsWith('Simulation and your calculation agree'));
+    pruefe('Englisch: Dezimalpunkt in Kernzahlen und Rückmeldung', (await text(p, '#w1')) === '43.01 °C' && (await text(p, '#s2-rueck')).includes('15.50 kJ') && (await text(p, '#kernsatz')).startsWith('Simulation and your calculation agree'));
     await p.click('#sprache');
-    pruefe('Sprachknopf wechselt nach Deutsch, Zustand bleibt', (await p.evaluate(() => document.documentElement.lang)) === 'de' && (await text(p, '#w1')) === '43,85 °C' && (await text(p, '#s2-rueck')).includes('25,49 kJ'));
+    pruefe('Sprachknopf wechselt nach Deutsch, Zustand bleibt', (await p.evaluate(() => document.documentElement.lang)) === 'de' && (await text(p, '#w1')) === '43,01 °C' && (await text(p, '#s2-rueck')).includes('15,50 kJ'));
     await p.click('#sprache');
     await p.click('#modell summary');
     await axe(p, 'Z2 Englisch 1366');
@@ -267,7 +267,7 @@ async function tests() {
   {
     const p = await seite({ init: () => { Object.defineProperty(window, 'localStorage', { get() { throw new Error('gesperrt'); } }); } });
     await start(p);
-    pruefe('Speicher gesperrt: Seite rechnet weiter und sagt es', (await text(p, '#w1')) === '43,85 °C' && (await text(p, '#speicher-text')).includes('nicht gespeichert') && p.fehler.length === 0, p.fehler.join('; '));
+    pruefe('Speicher gesperrt: Seite rechnet weiter und sagt es', (await text(p, '#w1')) === '43,01 °C' && (await text(p, '#speicher-text')).includes('nicht gespeichert') && p.fehler.length === 0, p.fehler.join('; '));
     await p.context().close();
   }
   // ---------------------------------------------------------------- Umbruch, Beamer, Handy, Zielgrößen, Fokus

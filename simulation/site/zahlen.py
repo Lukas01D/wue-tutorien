@@ -20,7 +20,7 @@ K = 273.15
 def blatt():
     """Eingaben des Blatts als Parameter für kaffee_modell.rechne (wie werte.werte())."""
     return dict(km.P, th_mess=wt.MESSWERT, th_Mh=wt.MILCH_HEISS, th_K0=wt.KAFFEE_START, th_M=wt.MILCH_KALT,
-                th_U=wt.RAUM, V_K=wt.V_KAFFEE, V_M=wt.V_MILCH)
+                th_U=wt.RAUM, V_K=wt.V_KAFFEE, V_M=wt.V_MILCH, t_end=wt.DAUER_MIN * 60.0)
 
 
 def modellzahlen():
@@ -38,14 +38,14 @@ def modellzahlen():
     # Grenzwert bei sehr später Zugabe: Tasse 1 und schwarzer Kaffee auf Raumtemperatur, dann Milch in Tasse 2
     th2_grenz = (r["C_K"] * p["th_U"] + r["C_M"] * p["th_M"]) / r["C_G"]
     z["grenz"] = (p["th_U"] - th2_grenz, 2)
-    for t in (30, 60, 90):
+    for t in (30, int(wt.DAUER_MIN), 90):
         z["kipp%d" % t] = (km.rechne(dict(p, t_end=t * 60.0))["th_M_gleich"], 1)
     return z
 
 
 def eingaben():
     return dict(thK0=(wt.KAFFEE_START, 0), thM=(wt.MILCH_KALT, 0), thU=(wt.RAUM, 0), VK=(wt.V_KAFFEE * 1e6, 0),
-                VM=(wt.V_MILCH * 1e6, 0), thMess=(wt.MESSWERT, 0), tZ=(km.P["t_end"] / 60, 0))
+                VM=(wt.V_MILCH * 1e6, 0), thMess=(wt.MESSWERT, 0), tZ=(wt.DAUER_MIN, 0), trink=(wt.TRINK, 0))
 
 
 def zahl(x, n, sprache):

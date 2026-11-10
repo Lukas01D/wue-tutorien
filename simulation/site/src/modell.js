@@ -33,9 +33,10 @@ function rechne(p) {
 // MODELL-ENDE
 
 // Werte des Blatts Fassung 3 (werte.py; vorläufig bis zur Messung im Januar 2027). Die einzige Stelle für Standardwerte (SE6).
-const STANDARD = { thK0: 80.0, thM: 5.0, thU: 20.0, VK_ml: 200, VM_ml: 30, thMess: 72.0, tZ: 60, thMh: 70.0, trink: 60.0 };
+const STANDARD = { thK0: 80.0, thM: 5.0, thU: 20.0, VK_ml: 200, VM_ml: 100, thMess: 72.0, tZ: 45, thMh: 70.0, trink: 50.0 };
+const ZEITEN = [0, 10, 20, 30, 40, 45];   // Messzeitpunkte des Experiments in min (alle 10 min und bei der Zugabe)
 // Beispielwerte der Kontrollseite (werte.py, Modell mit vorgewärmter Tasse, gerundet wie auf dem Blatt; berechnet, keine Messung)
-const BEISPIEL = { t1: [72.5, 66.1, 60.6, 55.7, 51.4, 47.6, 44.2], t2: [80.0, 72.0, 65.1, 59.1, 53.9, 49.3, 45.4], t2Milch: 41.4 };
+const BEISPIEL = { t1: [59.7, 55.7, 52.2, 49.0, 46.1, 44.8], t2: [80.0, 72.0, 65.1, 59.1, 53.9, 51.5], t2Milch: 38.9 };
 
 // Parameter für rechne() aus den Einstellungen der Seite. kA bleibt beim Ändern von Kaffee- oder Raumtemperatur fest
 // (Eigenschaft der Tasse); rechne() bekommt dafür den gleichwertigen Messwert nach 10 min, aus dem es genau dieses kA bestimmt.

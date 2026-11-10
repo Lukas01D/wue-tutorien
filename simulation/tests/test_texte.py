@@ -11,15 +11,17 @@ import bauen  # noqa: E402
 import zahlen  # noqa: E402
 
 ergebnisse = []
+# Wortlaut nach Leitlinie 6; „Versuch“ heißt seit der Entscheidung der TL vom 09.11.2026 auf dem Blatt „Experiment“
 KERNSATZ = ("Stimmt die Simulation mit deiner Rechnung überein, ist die Rechnung bestätigt, nicht das Modell. "
-            "Ob das Modell stimmt, zeigt nur der Versuch.")
+            "Ob das Modell stimmt, zeigt nur das Experiment.")
 # Ergebnisse von Teilaufgaben des Blatts (DE-Schreibweise): dürfen auf der Startkarte nicht stehen
-ERGEBNISSE = ["43,85", "40,29", "3,56", "45,43", "70,47", "25,49", "28,90", "3,41", "0,1994", "18,6", "58,2", "47,76", "48,55", "2,56"]
+ERGEBNISSE = ["43,01", "36,31", "6,69", "51,51", "55,49", "15,50", "23,82", "8,31", "0,1994", "17,4", "63,2", "56,78", "57,55", "4,97"]
 # Zahlen in den Texten, die keine Modellzahl sind (Herkunft): Nummern, Zeiten und Werte des Blatts, Grenzen der Seite
 LITERALE = {"0": "Ziffer, Unterschied 0, Index", "1": "Tasse 1, Index, Annahme 1", "2": "Tasse 2, Index", "3": "Auftrag 3",
             "6": "Annahmen 1 bis 6", "01": "Schritt 01", "02": "Schritt 02", "03": "Schritt 03", "04": "Schritt 04",
-            "10": "Messung nach 10 min (Blatt), Messblatt", "20": "Messblatt 20 min", "30": "Grenze 30 °C (D3), Zugabe 30 min",
-            "60": "60 min (Blatt), Trinktemperatur 60 °C (d2)", "90": "Zugabe 90 min (Auftrag 3)", "100": "Bereich 0 bis 100 °C",
+            "10": "Messung nach 10 min (Blatt), Messblatt", "20": "Messblatt 20 min", "30": "Grenze 30 °C (D3), Zugabe 30 min, Messblatt",
+            "40": "Messblatt 40 min",
+            "60": "ln-Diagramm bis 60 min", "90": "Zugabe 90 min (Auftrag 3)", "100": "Bereich 0 bis 100 °C",
             "5": "Tutorium 5", "1,0": "Index", "4": "Teil g4"}
 
 

@@ -17,13 +17,13 @@ DE ↔ EN: Sprache wechseln, jetzt Deutsch
 @sprung_inhalt
 Zum Inhalt springen
 @zweck
-<strong>Wozu?</strong> Die Seite klärt, welche Tasse nach einer Stunde wärmer ist und warum. Gedacht für die Zeit nach Teil e des Blatts: erst die Temperaturen beider Tassen nach 60 min selbst rechnen.
+<strong>Wozu?</strong> Die Seite klärt, welche Tasse nach {{e:tZ}} min wärmer ist und warum. Gedacht für die Zeit nach Teil e des Blatts: erst die Temperaturen beider Tassen nach {{e:tZ}} min selbst rechnen.
 
 # ---------------------------------------------------------------- 01 Vorhersage
 @s1_nr
 01 Vorhersage
 @s1_titel
-Welche Tasse ist nach 60 min wärmer?
+Welche Tasse ist nach {{e:tZ}} min wärmer?
 @s1_lage
 Zwei gleiche Tassen mit Deckel, je {{e:VK}} ml Kaffee mit {{e:thK0}} °C, Raum {{e:thU}} °C. Tasse 1 bekommt {{e:VM}} ml Milch aus dem Kühlschrank sofort, Tasse 2 erst nach {{e:tZ}} min.
 @s1_wahl
@@ -49,9 +49,9 @@ In eigenen Worten (freiwillig)
 @s1_e
 Deine Ergebnisse aus Teil e (freiwillig)
 @s1_e1_aria
-Tasse 1 nach 60 min in Grad Celsius
+Tasse 1 nach {{e:tZ}} min in Grad Celsius
 @s1_e2_aria
-Tasse 2 nach 60 min in Grad Celsius
+Tasse 2 nach {{e:tZ}} min in Grad Celsius
 @s1_knopf
 Festhalten und Kurven zeigen
 @s1_fehlt
@@ -75,9 +75,9 @@ Tasse 2, nach der Milch
 @kern_diff
 Unterschied
 @kernsatz
-Stimmt die Simulation mit deiner Rechnung überein, ist die Rechnung bestätigt, nicht das Modell. Ob das Modell stimmt, zeigt nur der Versuch.
+Stimmt die Simulation mit deiner Rechnung überein, ist die Rechnung bestätigt, nicht das Modell. Ob das Modell stimmt, zeigt nur das Experiment.
 @kernsatz_gleich
-<b>Simulation und deine Rechnung stimmen überein:</b> bestätigt ist damit die Rechnung, nicht das Modell. Ob das Modell stimmt, zeigt nur der Versuch.
+<b>Simulation und deine Rechnung stimmen überein:</b> bestätigt ist damit die Rechnung, nicht das Modell. Ob das Modell stimmt, zeigt nur das Experiment.
 @kernsatz_ab
 <b>Deine Rechnung weicht ab</b> ({abw}). Prüfe Zeit in Sekunden und Rundung; häufige Fehler stehen auf der Kontrollseite des Blatts.
 @kernsatz_ab_teil
@@ -94,10 +94,12 @@ Raum {th} °C
 Tasse 1: Milch sofort
 @dia_t2
 Tasse 2: Milch nach {t} min
+@dia_milch
+Milch
 @dia_leer
 Kurven erscheinen nach deiner Vorhersage.
 @dia_beschreibung
-Tasse 1 kühlt von {a1} auf {e1} °C ab. Tasse 2 kühlt von {a2} auf {e2} °C ab und hat nach der Milch {m2} °C. Raum {u} °C.
+Beide Tassen beginnen mit Kaffee bei {a2} °C. Tasse 1 fällt durch die Milch sofort auf {a1} °C und kühlt dann auf {e1} °C ab. Tasse 2 kühlt auf {e2} °C ab und fällt nach {t} min durch die Milch auf {m2} °C. Raum {u} °C.
 @leg_rechnung
 × deine Rechnung
 @leg_beispiel
@@ -169,7 +171,7 @@ Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 2 mehr als Tasse 1
 @s2_saeulen_aria_zahl
 Säulen: an den Raum abgegebene Wärme bis zur Zugabe, Tasse 1 {q1} kJ, Tasse 2 {q2} kJ, Unterschied {dq} kJ
 @s2_a
-Tasse 2 hat in der Stunde mehr Wärme an den Raum abgegeben.
+Tasse 2 hat in den {{e:tZ}} min mehr Wärme an den Raum abgegeben.
 @s2_b
 Die kalte Milch kühlt Tasse 2 am Ende stärker ab als Tasse 1 am Anfang.
 @s2_c
@@ -185,7 +187,7 @@ Wähle eine Erklärung.
 @s2_rueck_c
 <p><b>Nein.</b> Beim Mischen geht im Modell nichts verloren (Annahme 1). Entscheidend ist die Wärme, die beide an den Raum abgeben. {{t:s2_rueck_kern}}</p>
 @s2_rueck_kern
-Der schwarze Kaffee in Tasse 2 war die ganze Stunde heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: $Q_1$ = {{z:Q1}} kJ, $Q_2$ = {{z:Q2}} kJ (Werte des Blatts). Die {{z:dQ}} kJ fehlen Tasse 2; geteilt durch {{z:CG}} J/K (Kaffee und Milch) sind das {{z:dT}} K.
+Der schwarze Kaffee in Tasse 2 war die ganze Zeit heißer als Tasse 1 und hat deshalb mehr Wärme abgegeben: $Q_1$ = {{z:Q1}} kJ, $Q_2$ = {{z:Q2}} kJ (Werte des Blatts). Die {{z:dQ}} kJ fehlen Tasse 2; geteilt durch {{z:CG}} J/K (Kaffee und Milch) sind das {{z:dT}} K.
 @s2_weiter
 Weiter auf dem Blatt: In f1 und f2 rechnest du das nach.
 @saeule_t1
@@ -201,11 +203,11 @@ Q₂ − Q₁
 @s3_titel
 Rechnung, Simulation und Messung
 @s3_text
-Lege deine Messwerte über die Kurven: Werte in der Reihenfolge des Messblatts (0, 10, 20, … min), getrennt durch Leerzeichen; Komma oder Punkt. Fehlt ein Wert, schreibe x.
+Lege deine Messwerte über die Kurven: Werte in der Reihenfolge des Messblatts (0, 10, 20, 30, 40, {{e:tZ}} min), getrennt durch Leerzeichen; Komma oder Punkt. Fehlt ein Wert, schreibe x.
 @s3_t1
 Tasse 1
 @s3_t2
-Tasse 2 (letzter Wert: 60 min, nach der Milch)
+Tasse 2 (letzter Wert: {{e:tZ}} min, nach der Milch)
 @s3_erkannt
 erkannt in °C: {liste}
 @zum_diagramm
@@ -223,11 +225,11 @@ Höchstens {n} Werte.
 @s3_beispiel
 Beispielwerte des Blatts zeigen (berechnet mit dem Modell und vorgewärmter Tasse, vorläufig, keine Messung)
 @s3_passen
-Damit die Kurven zu deinem Versuch passen: unter „Ausgangswerte“ Kaffee bei $t_0$, Raum und dein $kA$ aus Versuch 1 einstellen, oben die Milchtemperatur.
+Damit die Kurven zu deinem Experiment passen: unter „Ausgangswerte“ Kaffee bei $t_0$, Raum und dein $kA$ aus der Messung bei 10 min (wie in Teil d) einstellen, oben die Milchtemperatur.
 @s3_frage
-Wo weichen Punkte und Kurven am stärksten ab? (Versuch 3 auf dem Blatt)
+Wo weichen Punkte und Kurven am stärksten ab? (Experiment 3 auf dem Blatt)
 @s3_ln
-Tasse 2 als ln-Darstellung (Versuch 1)
+Tasse 2 als ln-Darstellung (Experiment 4: Ist $kA$ konstant?)
 @s3_ln_hinweis
 Liegen die Punkte auf einer Geraden, ist $kA$ konstant. Die Gerade ist das Modell mit dem eingestellten $kA$.
 
@@ -237,7 +239,7 @@ Liegen die Punkte auf einer Geraden, ist $kA$ konstant. Die Gerade ist das Model
 @s4_titel
 Was zeigt welches Medium?
 @s4_frage
-Was zeigt die Simulation, was der Versuch nicht zeigen kann, und umgekehrt? Notiere je einen Satz.
+Was zeigt die Simulation, was das Experiment nicht zeigen kann, und umgekehrt? Notiere je einen Satz.
 @s4_label
 Deine Antwort
 @s4_knopf
@@ -245,7 +247,7 @@ Gedanken dazu zeigen
 @s4_fehlt
 Schreibe zuerst deine Antwort.
 @s4_gedanken
-<p><b>Simulation:</b> den ganzen Verlauf, die abgegebene Wärme und viele Fälle in Sekunden, aber nur, was im Modell steht.</p><p><b>Versuch:</b> ob das Modell die echten Tassen trifft, mit Tasse, Dampf und Raum, aber nur einen Fall und mit Messunsicherheit.</p><p><b>Rechnung:</b> warum es so ist.</p>
+<p><b>Simulation:</b> den ganzen Verlauf, die abgegebene Wärme und viele Fälle in Sekunden, aber nur, was im Modell steht.</p><p><b>Experiment:</b> ob das Modell die echten Tassen trifft, mit Tasse, Dampf und Raum, aber nur einen Fall und mit Messunsicherheit.</p><p><b>Rechnung:</b> warum es so ist.</p>
 @knopf_von_vorn
 Von vorn (für die nächste Gruppe)
 @von_vorn_frage
@@ -301,7 +303,7 @@ gleich
 @a3_pruefen
 Stelle eine Zugabe ein, zum Beispiel 30 oder 90 min, und suche mit der Milchtemperatur den Unterschied 0.
 @a3_gedanken
-Je später die Zugabe, desto niedriger: {{z:kipp30}} °C nach 30 min, {{z:kipp60}} °C nach 60 min, {{z:kipp90}} °C nach 90 min. Die warme Milch gibt in Tasse 1 bis zur Zugabe Wärme an den Raum ab, je länger, desto mehr; Tasse 2 bekommt sie erst bei der Zugabe.
+Je später die Zugabe, desto niedriger: {{z:kipp30}} °C nach 30 min, {{z:kipp45}} °C nach {{e:tZ}} min, {{z:kipp90}} °C nach 90 min. Die warme Milch gibt in Tasse 1 bis zur Zugabe Wärme an den Raum ab, je länger, desto mehr; Tasse 2 bekommt sie erst bei der Zugabe.
 
 # ---------------------------------------------------------------- Modell
 @m_titel
@@ -315,11 +317,11 @@ So rechnet die Seite
 @m_rechnung
 <p>Dieselben Gleichungen wie das Blatt, Zeit in Sekunden. Bilanz für den Inhalt einer Tasse:</p>$$m\,c_p\,\frac{\mathrm{d}\vartheta}{\mathrm{d}t} = -kA\,(\vartheta - \vartheta_\mathrm{u})$$<p>Lösung mit der Anfangstemperatur $\vartheta_0$:</p>$$\vartheta(t) = \vartheta_\mathrm{u} + (\vartheta_0 - \vartheta_\mathrm{u})\exp\left(-\frac{kA}{m\,c_p}\,t\right)$$<p>Mischen ohne Wärmeverlust:</p>$$\vartheta_{1,0} = \frac{C_\mathrm{K}\,\vartheta_\mathrm{K,0} + C_\mathrm{M}\,\vartheta_\mathrm{M}}{C_\mathrm{K} + C_\mathrm{M}}$$<p>Abgegebene Wärme bis zur Zugabe: $Q = C\,(\vartheta_0 - \vartheta)$.</p>
 @m_pruef
-<b>Prüfwerte aus dem Blatt:</b> $kA$ = {{z:kA}} W/K aus {{e:thMess}} °C nach 10 min (d1, vorläufig); Tasse 1 erreicht 60 °C nach {{z:t_tr}} min (d2).
+<b>Prüfwerte aus dem Blatt:</b> $kA$ = {{z:kA}} W/K aus {{e:thMess}} °C nach 10 min (d, vorläufig); Tasse 1 erreicht {{e:trink}} °C nach {{z:t_tr}} min (h1).
 @m_grenzen_titel
 Grenzen
 @m_grenzen
-<ul><li>Die Tasse speichert Wärme: Im Versuch ist die Mischtemperatur höher und der Unterschied kleiner.</li><li>$kA$ ist nicht ganz konstant.</li><li>Ohne Deckel kommt Verdunstung dazu (Teil h); die Seite rechnet sie nicht.</li><li>Die Seite zeigt Rechenwerte, keine Messwerte.</li></ul>
+<ul><li>Die Tasse speichert Wärme: Im Experiment ist die Mischtemperatur höher und der Unterschied kleiner.</li><li>$kA$ ist nicht ganz konstant.</li><li>Ohne Deckel kommt Verdunstung dazu (Teil j); die Seite rechnet sie nicht.</li><li>Die Seite zeigt Rechenwerte, keine Messwerte.</li></ul>
 @m_code
 Der Quelltext steht offen in dieser Datei (Block MODELL).
 

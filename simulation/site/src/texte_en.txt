@@ -14,13 +14,13 @@ DE ↔ EN: change language, now English
 @sprung_inhalt
 Skip to content
 @zweck
-<strong>What for?</strong> This page answers which cup is warmer after one hour, and why. It is meant for after part e of the worksheet: first calculate the temperatures of both cups after 60 min yourself.
+<strong>What for?</strong> This page answers which cup is warmer after {{e:tZ}} min, and why. It is meant for after part e of the worksheet: first calculate the temperatures of both cups after {{e:tZ}} min yourself.
 
 # ---------------------------------------------------------------- 01 Prediction
 @s1_nr
 01 Prediction
 @s1_titel
-Which cup is warmer after 60 min?
+Which cup is warmer after {{e:tZ}} min?
 @s1_lage
 Two identical cups with lids, each with {{e:VK}} ml of coffee at {{e:thK0}} °C, room at {{e:thU}} °C. Cup 1 gets {{e:VM}} ml of milk from the fridge right away, cup 2 only after {{e:tZ}} min.
 @s1_wahl
@@ -46,9 +46,9 @@ In your own words (optional)
 @s1_e
 Your results from part e (optional)
 @s1_e1_aria
-Cup 1 after 60 min in degrees Celsius
+Cup 1 after {{e:tZ}} min in degrees Celsius
 @s1_e2_aria
-Cup 2 after 60 min in degrees Celsius
+Cup 2 after {{e:tZ}} min in degrees Celsius
 @s1_knopf
 Lock in and show the curves
 @s1_fehlt
@@ -91,10 +91,12 @@ Room {th} °C
 Cup 1: milk right away
 @dia_t2
 Cup 2: milk after {t} min
+@dia_milch
+milk
 @dia_leer
 The curves appear after your prediction.
 @dia_beschreibung
-Cup 1 cools from {a1} to {e1} °C. Cup 2 cools from {a2} to {e2} °C and is at {m2} °C after the milk. Room {u} °C.
+Both cups start with coffee at {a2} °C. The milk drops cup 1 to {a1} °C right away, then it cools to {e1} °C. Cup 2 cools to {e2} °C, and after {t} min the milk drops it to {m2} °C. Room {u} °C.
 @leg_rechnung
 × your calculation
 @leg_beispiel
@@ -166,7 +168,7 @@ Bars: heat released to the room until the milk is added, cup 2 more than cup 1
 @s2_saeulen_aria_zahl
 Bars: heat released to the room until the milk is added, cup 1 {q1} kJ, cup 2 {q2} kJ, difference {dq} kJ
 @s2_a
-Cup 2 released more heat to the room during the hour.
+Cup 2 released more heat to the room during the {{e:tZ}} min.
 @s2_b
 The cold milk cools cup 2 at the end more than cup 1 at the start.
 @s2_c
@@ -182,7 +184,7 @@ Choose an explanation.
 @s2_rueck_c
 <p><b>No.</b> In the model nothing is lost when mixing (assumption 1). What matters is the heat both release to the room. {{t:s2_rueck_kern}}</p>
 @s2_rueck_kern
-The black coffee in cup 2 was hotter than cup 1 for the whole hour and therefore released more heat: $Q_1$ = {{z:Q1}} kJ, $Q_2$ = {{z:Q2}} kJ (worksheet values). Cup 2 lacks these {{z:dQ}} kJ; divided by {{z:CG}} J/K (coffee and milk) this gives {{z:dT}} K.
+The black coffee in cup 2 was hotter than cup 1 the whole time and therefore released more heat: $Q_1$ = {{z:Q1}} kJ, $Q_2$ = {{z:Q2}} kJ (worksheet values). Cup 2 lacks these {{z:dQ}} kJ; divided by {{z:CG}} J/K (coffee and milk) this gives {{z:dT}} K.
 @s2_weiter
 Next on the worksheet: in f1 and f2 you calculate this yourself.
 @saeule_t1
@@ -198,11 +200,11 @@ Q₂ − Q₁
 @s3_titel
 Calculation, simulation and measurement
 @s3_text
-Put your measured values over the curves: values in the order of the data sheet (0, 10, 20, … min), separated by spaces; comma or point. If a value is missing, write x.
+Put your measured values over the curves: values in the order of the data sheet (0, 10, 20, 30, 40, {{e:tZ}} min), separated by spaces; comma or point. If a value is missing, write x.
 @s3_t1
 Cup 1
 @s3_t2
-Cup 2 (last value: 60 min, after the milk)
+Cup 2 (last value: {{e:tZ}} min, after the milk)
 @s3_erkannt
 recognised in °C: {liste}
 @zum_diagramm
@@ -220,11 +222,11 @@ At most {n} values.
 @s3_beispiel
 Show the example values of the worksheet (calculated with the model and a preheated cup, provisional, not measured)
 @s3_passen
-To make the curves match your experiment: under “Starting values” set coffee at $t_0$, room and your $kA$ from experiment 1, and the milk temperature above.
+To make the curves match your experiment: under “Starting values” set coffee at $t_0$, room and your $kA$ from the measurement at 10 min (as in part d), and the milk temperature above.
 @s3_frage
 Where do points and curves differ most? (experiment 3 on the worksheet)
 @s3_ln
-Cup 2 as a ln plot (experiment 1)
+Cup 2 as a ln plot (experiment 4: is $kA$ constant?)
 @s3_ln_hinweis
 If the points lie on a straight line, $kA$ is constant. The line is the model with the $kA$ that is set.
 
@@ -298,7 +300,7 @@ the same
 @a3_pruefen
 Set an adding time, for example 30 or 90 min, and use the milk temperature to find a difference of 0.
 @a3_gedanken
-The later the milk is added, the lower: {{z:kipp30}} °C after 30 min, {{z:kipp60}} °C after 60 min, {{z:kipp90}} °C after 90 min. In cup 1 the warm milk releases heat to the room until the adding time, the longer the more; cup 2 only gets it when the milk is added.
+The later the milk is added, the lower: {{z:kipp30}} °C after 30 min, {{z:kipp45}} °C after {{e:tZ}} min, {{z:kipp90}} °C after 90 min. In cup 1 the warm milk releases heat to the room until the adding time, the longer the more; cup 2 only gets it when the milk is added.
 
 # ---------------------------------------------------------------- Model
 @m_titel
@@ -312,11 +314,11 @@ How the page calculates
 @m_rechnung
 <p>The same equations as the worksheet, time in seconds. Balance for the contents of one cup:</p>$$m\,c_p\,\frac{\mathrm{d}\vartheta}{\mathrm{d}t} = -kA\,(\vartheta - \vartheta_\mathrm{u})$$<p>Solution with the initial temperature $\vartheta_0$:</p>$$\vartheta(t) = \vartheta_\mathrm{u} + (\vartheta_0 - \vartheta_\mathrm{u})\exp\left(-\frac{kA}{m\,c_p}\,t\right)$$<p>Mixing without heat loss:</p>$$\vartheta_{1,0} = \frac{C_\mathrm{K}\,\vartheta_\mathrm{K,0} + C_\mathrm{M}\,\vartheta_\mathrm{M}}{C_\mathrm{K} + C_\mathrm{M}}$$<p>Heat released until the milk is added: $Q = C\,(\vartheta_0 - \vartheta)$.</p>
 @m_pruef
-<b>Check values from the worksheet:</b> $kA$ = {{z:kA}} W/K from {{e:thMess}} °C after 10 min (d1, provisional); cup 1 reaches 60 °C after {{z:t_tr}} min (d2).
+<b>Check values from the worksheet:</b> $kA$ = {{z:kA}} W/K from {{e:thMess}} °C after 10 min (d, provisional); cup 1 reaches {{e:trink}} °C after {{z:t_tr}} min (h1).
 @m_grenzen_titel
 Limits
 @m_grenzen
-<ul><li>The cup stores heat: in the experiment the mixing temperature is higher and the difference smaller.</li><li>$kA$ is not quite constant.</li><li>Without a lid, evaporation adds to the heat loss (part h); the page does not calculate it.</li><li>The page shows calculated values, not measured values.</li></ul>
+<ul><li>The cup stores heat: in the experiment the mixing temperature is higher and the difference smaller.</li><li>$kA$ is not quite constant.</li><li>Without a lid, evaporation adds to the heat loss (part j); the page does not calculate it.</li><li>The page shows calculated values, not measured values.</li></ul>
 @m_code
 The source code is openly readable in this file (block MODELL).
 

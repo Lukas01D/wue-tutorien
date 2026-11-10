@@ -75,16 +75,16 @@ def main():
 
     w = wt.werte()
     ka = w["kA"]
-    blatt = dict(thK0=wt.KAFFEE_START, thM=wt.MILCH_KALT, thU=wt.RAUM, VM_ml=wt.V_MILCH * 1e6, kA=None, tZ=60)
+    blatt = dict(thK0=wt.KAFFEE_START, thM=wt.MILCH_KALT, thU=wt.RAUM, VM_ml=wt.V_MILCH * 1e6, kA=None, tZ=wt.DAUER_MIN)
     faelle = [blatt, dict(blatt, kA=ka)]
     zufall = random.Random(20261108)
     for _ in range(2000):
         faelle.append(dict(thK0=round(zufall.uniform(60, 95) * 2) / 2, thM=round(zufall.uniform(2, 80) * 2) / 2,
-                           thU=round(zufall.uniform(10, 30) * 2) / 2, VM_ml=float(zufall.choice(range(10, 105, 5))),
+                           thU=round(zufall.uniform(10, 30) * 2) / 2, VM_ml=float(zufall.choice(range(10, 205, 5))),
                            kA=zufall.uniform(0.05, 0.8), tZ=float(zufall.randint(1, 180))))
     for kA_rand in (0.05, 0.8):
         for tz in (1, 180):
-            faelle.append(dict(blatt, kA=kA_rand, tZ=float(tz), thK0=95.0, thU=10.0, thM=80.0, VM_ml=100.0))
+            faelle.append(dict(blatt, kA=kA_rand, tZ=float(tz), thK0=95.0, thU=10.0, thM=80.0, VM_ml=200.0))
     js = node(kern, {"faelle": faelle})
 
     # Standardwerte an einer Stelle, gleich werte.py (SE6)
@@ -107,7 +107,7 @@ def main():
             pruefe("Prüfwert %s (%s)" % (name, art), rel(o[name], soll) < GRENZE, "%.10g gegen %.10g" % (o[name], soll))
     o = std = js["aus"][1]
     pruefe("Prüfwerte gerundet wie im Auftrag", "%.2f %.2f %.2f %.2f %.2f %.2f %.0f" % (o["th10"], o["th1"], o["th2K"], o["th2"], o["dT"],
-           o["Q1"] / 1000, o["t_schnitt"] / 60) == "70.47 43.85 45.43 40.29 3.56 25.49 95" and "%.2f" % (o["Q2"] / 1000) == "28.90")
+           o["Q1"] / 1000, o["t_schnitt"] / 60) == "55.49 43.01 51.51 36.31 6.69 15.50 112" and "%.2f" % (o["Q2"] / 1000) == "23.82")
 
     # Zufallssätze und Ränder
     schlecht = []
@@ -135,21 +135,21 @@ def main():
     # Zahlen der Texte (zahlen.py) gegen die Seite: Auftrag 1, 2, 3 und Rückmeldungen
     z = zahlen.modellzahlen()
     extra = [dict(blatt, kA=ka, thM=wt.RAUM), dict(blatt, kA=ka, tZ=std["t_schnitt"] / 60), dict(blatt, kA=ka, tZ=1e5)]
-    for t in (30, 60, 90):
+    for t in (30, int(wt.DAUER_MIN), 90):
         extra.append(dict(blatt, kA=ka, tZ=float(t), thM=z["kipp%d" % t][0]))
     jx = node(kern, {"faelle": extra})["aus"]
-    pruefe("Auftrag 1: Milch 20 °C", abs(jx[0]["dT"] - z["a1_dT"][0]) < 1e-9 and "%.2f" % jx[0]["dT"] == "2.56", "%.6f" % jx[0]["dT"])
-    pruefe("Auftrag 2: größter Unterschied am Schnittpunkt", abs(jx[1]["dT"] - z["dTmax"][0]) < 1e-9 and "%.2f" % jx[1]["dT"] == "3.86"
+    pruefe("Auftrag 1: Milch 20 °C", abs(jx[0]["dT"] - z["a1_dT"][0]) < 1e-9 and "%.2f" % jx[0]["dT"] == "4.97", "%.6f" % jx[0]["dT"])
+    pruefe("Auftrag 2: größter Unterschied am Schnittpunkt", abs(jx[1]["dT"] - z["dTmax"][0]) < 1e-9 and "%.2f" % jx[1]["dT"] == "8.83"
            and "%.0f" % (std["t_schnitt"] / 60) == "%.0f" % z["tmax"][0], "%.6f" % jx[1]["dT"])
     pruefe("Auftrag 2: Rest bei sehr später Zugabe", abs(jx[2]["dT"] - z["grenz"][0]) < 1e-9, "%.6f gegen %.6f" % (jx[2]["dT"], z["grenz"][0]))
-    pruefe("Auftrag 3: Kipppunkte 30, 60, 90 min (Unterschied 0)", all(abs(x["dT"]) < 1e-9 for x in jx[3:6]),
+    pruefe("Auftrag 3: Kipppunkte 30, 45, 90 min (Unterschied 0)", all(abs(x["dT"]) < 1e-9 for x in jx[3:6]),
            ", ".join("%.2e" % x["dT"] for x in jx[3:6]))
-    pruefe("Kipppunkt 60 min wie werte.py", rel(z["kipp60"][0], w["kipp"]) < GRENZE)
+    pruefe("Kipppunkt 45 min wie werte.py", rel(z["kipp45"][0], w["kipp"]) < GRENZE)
     hz = node(kern, {"faelle": [dict(blatt, kA=ka, thM=wt.MILCH_HEISS)]})["aus"][0]
     pruefe("Erwärmte Milch 70 °C (Teil g)", rel(hz["th1"], w["th1h"]) < GRENZE and rel(hz["th2"], w["th2h"]) < GRENZE,
            "%.4f %.4f" % (hz["th1"], hz["th2"]))
-    pruefe("Zeit bis 60 °C (Teil d2)", "%.1f" % z["t_tr"][0] == "18.6" and rel(z["t_tr"][0], w["t_tr_min"]) < GRENZE)
-    pruefe("Sprünge beim Zugießen (Rückmeldung b)", "%.1f %.1f" % (z["sprung1"][0], z["sprung2"][0]) == "9.5 5.1"
+    pruefe("Zeit bis 50 °C (Teil h1)", "%.1f" % z["t_tr"][0] == "17.4" and rel(z["t_tr"][0], w["t_tr_min"]) < GRENZE)
+    pruefe("Sprünge beim Zugießen (Rückmeldung b)", "%.1f %.1f" % (z["sprung1"][0], z["sprung2"][0]) == "24.5 15.2"
            and abs(z["sprung2"][0] - (std["th2K"] - std["th2"])) < 1e-9 and abs(z["sprung1"][0] - (80 - std["th10"])) < 1e-9)
 
     zeilen = ["Rechenkern Fassung 3 gegen kaffee_modell.py mit werte.py (Grenze relativ %g)" % GRENZE, ""]
