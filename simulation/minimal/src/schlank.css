@@ -1,0 +1,15 @@
+/* Schlanke Kaffee-Simulation: Ergänzungen zu simulation/site/src/stil.css (unverändert davor eingebunden).
+   Nur Anordnung: Säulen neben dem Diagramm, Zeitzeile mit „Abspielen“, Bühne ohne eigene Bildlaufleiste. */
+@media (min-width: 1024px) { .buehne { position: static; max-height: none; overflow: visible; } }
+.reihe { display: grid; grid-template-columns: minmax(0, 1fr); }
+.saeulen-feld { padding: 6px 12px 0; border-top: 1px solid var(--linie-fein); }
+.saeulen-feld .saeulen { width: 100%; max-width: 300px; height: auto; margin: 4px auto 8px; }
+@media (min-width: 900px) {
+  .reihe { grid-template-columns: minmax(0, 1fr) 280px; }
+  .saeulen-feld { border-top: 0; border-left: 1px solid var(--linie-fein); display: flex; flex-direction: column; justify-content: center; }
+}
+.zeitzeile { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; border-top: 1.5px solid var(--tinte); padding: 6px 12px 0; }
+.zeitzeile .knopf { min-width: 9.5em; }
+.zeitzeile .regler { flex: 1 1 340px; }
+.jetzt { stroke: var(--blau); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.zukunft { fill: var(--karte); opacity: .82; }

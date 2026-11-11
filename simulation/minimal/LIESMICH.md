@@ -1,18 +1,21 @@
-# Kaffee-Simulation, schlanke Varianten A und B
+# Kaffee-Simulation, schlanke Seite
 
-Auftrag der TL vom 11.11.2026: das Simulationstool ganz schlank, ohne Fragen und ohne sonstige Bereiche; nur die Simulationskurve und daneben zwei Säulen mit der an den Raum abgegebenen Wärme von Tasse 1 und Tasse 2. Zur Auswahl in zwei Varianten. Die Hauptseite (`simulation/site/`) bleibt unverändert daneben bestehen.
+Auftrag der TL vom 11.11.2026: das Simulationstool ohne Fragen und mit viel weniger Text, Stil der Hauptseite unverändert, Säulen der an den Raum abgegebenen Wärme neben der Kurve, „Abspielen“ behalten. Die Hauptseite (`simulation/site/`) bleibt daneben bestehen.
 
-| Variante | Datei | Was sie zeigt |
-|:--|:--|:--|
-| A: Überblick | `Kaffee_Simulation_A.html` | Kurven bis zur Zugabe, Säulen mit Q1 und Q2 bis zur Zugabe, Ergebniszeile, sechs Regler, Knopf „Werte des Blatts“ |
-| B: Zeitlauf | `Kaffee_Simulation_B.html` | wie A, dazu ein Zeitregler mit „Abspielen“: Kurven und Säulen wachsen gemeinsam von 0 bis zur Zugabe |
+| Teil | Woher |
+|:--|:--|
+| Rechenkern, Standardwerte | `site/src/modell.js`, unverändert |
+| Optik | `site/src/stil.css`, unverändert; dazu `src/schlank.css` nur für die Anordnung (Säulen neben dem Diagramm, Zeitzeile) |
+| Regler, Diagramm, Kasten, Säulen | Bausteine aus `site/src/oberflaeche.js`, beim Bau unverändert übernommen (Liste `BAUSTEINE` in `bauen_minimal.py`); einzige Änderung: Maßstab der Säulen aus den Werten bei der Zugabe, damit sie beim Abspielen wachsen |
+| Texte DE und EN | `site/src/texte_*.txt`, dazu vier Texte in `src/texte_schlank_*.txt` (Abspielen, Anhalten, Zeit, Säulentitel bis t) |
+| Eigenes | `src/vorlage.html`, `src/schlank.js` (Zeitregler, Abspielen, verdeckte Zukunft im Diagramm) |
 
-Gemeinsam: Rechenkern und Standardwerte aus `simulation/site/src/modell.js` (unverändert eingebunden), Milchtemperatur bis 95 °C, Sprung durch die Milch gestrichelt mit Pfeil (nach unten oder nach oben), Säulen mit Q₂ − Q₁; es gilt Q₂ − Q₁ = C_G (ϑ1 − ϑ2). Nur Deutsch; Englisch folgt nach der Wahl der TL. Keine Speicherung im Browser, keine Netzanfragen, eigene CSP.
+Ändert sich die Hauptseite, übernimmt der nächste Bau die Änderung. Ändern sich dort die Achsen des Diagramms, bricht der Bau mit einer Meldung ab (`ACHSEN`), damit die Zeitlinie nicht verrutscht.
 
 | Schritt | Befehl |
 |:--|:--|
 | Bauen | `python3 simulation/minimal/bauen_minimal.py` |
-| Prüfen, ob die Dateien zum Quellstand passen | `python3 simulation/minimal/bauen_minimal.py --pruefen` |
-| Browsertest (Werte, Milch 95 °C, Zeitregler, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (49 von 49 bestanden am 11.11.2026) |
+| Prüfen, ob die Datei zum Quellstand passt | `python3 simulation/minimal/bauen_minimal.py --pruefen` |
+| Browsertest (Werte, Zeit, Abspielen, Milch 95 °C, Englisch, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (31 von 31 bestanden am 11.11.2026) |
 
-Stand 11.11.2026: Variante A SHA-256 `d4af39a4131894d2…`, Variante B `433cfdff7a90c829…`. Nicht veröffentlicht; veröffentlicht wird erst nach der Wahl der TL.
+Stand 11.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `2898c8eae95dfbc9…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.

@@ -1,0 +1,9 @@
+# Additional texts of the lean page (all others from simulation/site/src/texte_en.txt)
+@schlank_abspielen
+Play
+@schlank_anhalten
+Pause
+@schlank_zeit
+Time $t$
+@schlank_saeulen_t
+Heat released to the room up to $t$ = {t} min

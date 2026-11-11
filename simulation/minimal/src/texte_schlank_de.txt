@@ -1,0 +1,9 @@
+# Zusätzliche Texte der schlanken Seite (alle übrigen aus simulation/site/src/texte_de.txt)
+@schlank_abspielen
+Abspielen
+@schlank_anhalten
+Anhalten
+@schlank_zeit
+Zeit $t$
+@schlank_saeulen_t
+An den Raum abgegebene Wärme bis $t$ = {t} min
