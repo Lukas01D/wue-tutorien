@@ -47,3 +47,31 @@ worksheet: cup stores no heat
 ≈ porcelain cup, mason jar
 @vgl_CT_5
 ≈ heavy porcelain mug
+@schlank_r_QW
+Cup warmer $\dot{Q}_\mathrm{W}$
+@schlank_bis
+to
+@schlank_ab
+from
+@vgl_kA_1_text
+Vacuum flask: the coffee stays hot for many hours (in the test still 64 °C after 24 h).
+@vgl_kA_2_text
+Vacuum insulated. The standard for vacuum flasks requires at least 70 °C after 6 h.
+@vgl_kA_3_text
+Double-walled but less well insulated: between a good travel mug and a cup.
+@vgl_kA_4_text
+Porcelain, glass or plastic with a lid, about 200 to 400 ml. The worksheet uses 0.20 W/K.
+@vgl_kA_5_text
+Without a lid the coffee cools mainly by evaporation. The model does not include it, so the value is only a rough substitute.
+@vgl_CT_0_text
+Worksheet assumption: the cup takes up no heat.
+@vgl_CT_1_text
+About 11 g of paperboard and a 3 g lid store hardly any heat.
+@vgl_CT_2_text
+Thin borosilicate glass, about 100 g; only the inner wall touches the coffee.
+@vgl_CT_3_text
+About 150 g of glass.
+@vgl_CT_4_text
+About 300 g of porcelain, stoneware or glass. This is the cup in the experiment.
+@vgl_CT_5_text
+Thick wall, about 500 g: takes up noticeable heat when the milk is poured in.

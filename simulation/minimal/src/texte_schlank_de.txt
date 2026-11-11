@@ -47,3 +47,31 @@ Blatt: Tasse speichert keine Wärme
 ≈ Porzellantasse, Einmachglas
 @vgl_CT_5
 ≈ schwerer Porzellanbecher
+@schlank_r_QW
+Tassenwärmer $\dot{Q}_\mathrm{W}$
+@schlank_bis
+bis
+@schlank_ab
+ab
+@vgl_kA_1_text
+Vakuumflasche: Der Kaffee bleibt viele Stunden heiß (im Test nach 24 h noch 64 °C).
+@vgl_kA_2_text
+Vakuumisoliert. Die Norm für Isolierflaschen verlangt nach 6 h noch mindestens 70 °C.
+@vgl_kA_3_text
+Doppelwandig, aber schwächer gedämmt: zwischen gutem Thermobecher und Tasse.
+@vgl_kA_4_text
+Porzellan, Glas oder Kunststoff mit Deckel, etwa 200 bis 400 ml. Das Blatt rechnet mit 0,20 W/K.
+@vgl_kA_5_text
+Ohne Deckel kühlt der Kaffee vor allem durch Verdunstung. Das Modell kennt sie nicht, der Wert ist nur ein grober Ersatz.
+@vgl_CT_0_text
+Annahme des Blatts: Die Tasse nimmt keine Wärme auf.
+@vgl_CT_1_text
+Etwa 11 g Pappe und 3 g Deckel speichern kaum Wärme.
+@vgl_CT_2_text
+Dünnes Borosilikatglas, etwa 100 g; am Kaffee liegt nur die Innenwand.
+@vgl_CT_3_text
+Etwa 150 g Glas.
+@vgl_CT_4_text
+Etwa 300 g Porzellan, Steingut oder Glas. So schwer ist die Tasse im Experiment.
+@vgl_CT_5_text
+Dicke Wand, etwa 500 g: nimmt beim Zugießen spürbar Wärme auf.

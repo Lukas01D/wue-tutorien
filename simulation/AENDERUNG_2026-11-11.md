@@ -35,3 +35,5 @@ Tests: Rechenkern 34 von 34, Texte 16 von 16, Browser 107 von 107, schlanke Seit
 
 Tests: Rechenkern 34 von 34, Texte 16 von 16, Hauptseite 107 von 107, schlanke Seite 51 von 51 bestanden.
 
+Nachtrag 12.11.2026, 00:20: Tassenwärmer als zehnter Regler (gleicher Wärmestrom in beide Tassen; Temperatur strebt gegen $\vartheta_u + \dot{Q}_\mathrm{W}/kA$, höchstens 95 °C; abgegebene Wärme an den Raum = zugeführte Wärme + Abnahme der inneren Energie, $Q_2 - Q_1 = C_G\,(\vartheta_1 - \vartheta_2)$ gilt weiter). Reglernamen größer, Vergleich als blaues Etikett. Drei Darstellungen der Vergleiche zur Auswahl durch die TL (Etikett, Kasten, Band). Schlanke Seite 55 von 55 Tests bestanden.
+

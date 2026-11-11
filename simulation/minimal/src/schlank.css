@@ -30,11 +30,11 @@
 @media (min-width: 1200px) { .regler-raster { grid-template-columns: repeat(4, minmax(0, 1fr)); } .regler-raster.zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 /* Regler mit Alltagsvergleich: unten nebeneinander, Vergleich in der Namenszeile rechts */
 .regler-raster.zwei { border-top: 1px solid var(--linie-fein); padding-top: 4px; }
-.regler .vergleich { margin: 0 0 0 auto; font-size: .86rem; font-weight: 600; color: var(--leise); white-space: nowrap; }
-.regler-raster.zwei .regler .name { flex: 0 1 auto; }
+.regler .vergleich { margin: 0 0 0 auto; padding: 1px 8px; font-size: .95rem; font-weight: 600; color: var(--blau); background: var(--blau-hell); white-space: nowrap; }
+.regler.mit-etikett .name { flex: 0 1 auto; }
 .regler .umbruch { flex: 0 0 100%; height: 0; }
 .regler-raster .regler { gap: 2px 6px; margin: 0 0 4px; }
-.regler-raster .regler .name { font-size: .86rem; }
+.regler-raster .regler .name { font-size: .95rem; }
 .regler-raster .pm { flex: 0 0 36px; width: 36px; height: 36px; font-size: 1.15rem; }
 .regler-raster .lineal input[type=range] { height: 36px; }
 .regler-raster .lineal input[type=range]::-webkit-slider-thumb { width: 18px; height: 30px; margin-top: -5px; }
@@ -46,3 +46,14 @@
 /* logarithmischer Regler: gleichmäßige Striche der Hauptseite passen nicht zur Skala, daher nur die Grundlinie */
 #rr-kA::-webkit-slider-runnable-track { background: linear-gradient(var(--tinte), var(--tinte)) bottom / 100% 2px no-repeat; }
 #rr-kA::-moz-range-track { background: linear-gradient(var(--tinte), var(--tinte)) bottom / 100% 2px no-repeat; }
+/* Darstellung der Alltagsvergleiche: 1 Etikett in der Namenszeile, 2 kleiner Kasten unter dem Regler, 3 Band unter der Skala */
+.bereich { flex: 1 0 100%; margin: 2px 0 0; padding: 4px 10px 5px; background: var(--feld); border-left: 3px solid var(--blau); }
+.bereich-kopf { display: flex; justify-content: space-between; gap: 8px; margin: 0; font-size: .95rem; color: var(--blau); }
+.bereich-kopf .zahl { font-family: var(--zahl); font-size: .85rem; color: var(--leise); white-space: nowrap; }
+.bereich-text { margin: 1px 0 0; font-size: .85rem; color: var(--leise); line-height: 1.35; }
+.lineal .band { position: relative; height: 6px; margin: 3px 11px 0; }
+.lineal .band span { position: absolute; top: 0; height: 6px; background: var(--linie-fein); border-right: 2px solid var(--karte); box-sizing: border-box; }
+.lineal .band span.an { background: var(--blau); }
+.lineal .band-text { position: relative; height: 1.35em; margin: 2px 11px 0; font-size: .9rem; font-weight: 600; color: var(--blau); }
+.lineal .band-text span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
+.lineal .band-text span.links { transform: none; } .lineal .band-text span.rechts { transform: translateX(-100%); }

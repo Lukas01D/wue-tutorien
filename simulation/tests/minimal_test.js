@@ -29,7 +29,7 @@ const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('�
     pruefe(n + 'Kasten: Tasse 1 (Milch zu Beginn), Tasse 2 (Milch später), Temperaturdifferenz', k0.includes('Milch zu Beginn') && k0.includes('Milch später') && k0.includes('Temperatur­differenz'));
     pruefe(n + 'Säulen 15,50 und 23,82 kJ, Unterschied 8,31 kJ', ['15,50', '23,82', '8,31'].every(z => s0.includes(z)), s0);
     pruefe(n + 'keine Fragen, kein Ausklappen, keine Hinweistexte', (await p.$$('textarea, select, fieldset, details, input[type=radio], input[type=checkbox]')).length === 0 && (await p.$$eval('.regler .hinweis', l => l.filter(x => x.textContent.trim()).length)) === 0);
-    pruefe(n + 'neun Regler mit − und + (mit Kaffeemenge und Wärmekapazität)', (await p.$$('.regler')).length === 9 && (await p.$$('.pm')).length === 18 && !!(await p.$('#rr-VK_ml')) && !!(await p.$('#rr-CT')));
+    pruefe(n + 'zehn Regler mit − und + (mit Kaffeemenge, Tassenwärmer und Wärmekapazität)', (await p.$$('.regler')).length === 10 && (await p.$$('.pm')).length === 20 && !!(await p.$('#rr-QW')) && !!(await p.$('#rr-VK_ml')) && !!(await p.$('#rr-CT')));
     pruefe(n + 'keine waagerechte Bildlaufleiste', await p.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
     pruefe(n + 'Säulen neben oder direkt unter dem Diagramm', await p.evaluate(() => {
       const d = document.getElementById('dia').getBoundingClientRect(), s = document.getElementById('saeulen').getBoundingClientRect();
@@ -40,6 +40,13 @@ const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('�
     const k90 = await kern(), s90 = await saeulen(), d90 = zahlen(k90)[2], q90 = zahlen((await p.$$eval('#saeulen text.zahl', l => l.map(x => x.textContent))).join(' '));   // Säulentext: Q₂ − Q₁, Q₁, Q₂
     pruefe(n + 't = 90 min, Zugabe 45: Temperaturdifferenz 4,34 K, Q₂ − Q₁ = C_G · Δϑ', Math.abs(d90 - 4.34) < 0.006 && Math.abs(1241.8 * d90 / 1000 - q90[0]) < 0.011 && Math.abs(q90[2] - q90[1] - q90[0]) < 0.011, k90 + ' | ' + s90);
     pruefe(n + 'Zeit bis 180 min, Zugabe-Regler bis t', (await p.$eval('#rr-t', e => e.max)) === '180' && (await p.$eval('#rr-tZ', e => e.max)) === '90');
+    await setze(p, 'QW', 5);
+    const kw = await kern(), dw = zahlen(kw)[2], qw = zahlen((await p.$$eval('#saeulen text.zahl', l => l.map(x => x.textContent))).join(' '));
+    pruefe(n + 'Tassenwärmer 5 W bei t = 90 min: wärmer als ohne, Q₂ − Q₁ = C_G · Δϑ', zahlen(kw)[0] > 34.91 && Math.abs(1241.8 * dw / 1000 - qw[0]) < 0.011 && Math.abs(qw[2] - qw[1] - qw[0]) < 0.011, kw);
+    await p.fill('#rf-kA', '0,012'); await p.press('#rf-kA', 'Enter');
+    pruefe(n + 'Tassenwärmer höchstens bis 95 °C: bei kA 0,012 W/K Obergrenze 0,5 W', (await p.$eval('#rr-QW', e => e.max)) === '0.5' && (await p.$eval('#rf-QW', e => e.value)) === '0,5');
+    await p.fill('#rf-kA', '0,1994'); await p.press('#rf-kA', 'Enter');
+    await setze(p, 'QW', 0);
     await setze(p, 'tZ', 90);
     pruefe(n + 'Zugabe nicht über t', (await p.$eval('#rr-tZ', e => e.value)) === '90');
     await setze(p, 't', 20);

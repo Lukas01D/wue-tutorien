@@ -24,6 +24,7 @@ import bauen as haupt  # noqa: E402
 import tex2mathml  # noqa: E402
 
 STAND = "2026-11-12"
+DESIGN = "1"   # Darstellung der Alltagsvergleiche; Vorschauen anderer Varianten mit --design N --ziel DATEI
 ZIEL = os.path.join(HIER, "Kaffee_Simulation_schlank.html")
 BAUSTEINE = ["T", "F", "zahl", "liesZahl", "textOhneTags", "el", "imBild", "saeulen", "begrenze", "reglerTexte", "setze"]
 # Einzige Änderung an einem Baustein: Maßstab der Säulen aus den Werten bei der Zugabe, damit sie beim Abspielen wachsen
@@ -101,6 +102,7 @@ def bauen():
         lies(os.path.join(SITE, "src", "modell.js")).strip(),
         haupt.js_daten("TEXTE", texte()),
         haupt.js_daten("BAU", {"stand": STAND, "version": summe[:10]}),
+        'const DESIGN = "%s";   // Darstellung der Alltagsvergleiche (1 Etikett, 2 Kasten, 3 Band)' % DESIGN,
         eigen.strip()]) + "\n"
     if "</script" in js.lower():
         raise haupt.BauFehler("</script im Skript")
@@ -116,6 +118,11 @@ def bauen():
 
 
 def main():
+    global DESIGN, ZIEL
+    if "--design" in sys.argv:
+        DESIGN = sys.argv[sys.argv.index("--design") + 1]
+    if "--ziel" in sys.argv:
+        ZIEL = os.path.abspath(sys.argv[sys.argv.index("--ziel") + 1])
     seite = bauen()
     if "--pruefen" in sys.argv:
         alt = open(ZIEL, "rb").read() if os.path.exists(ZIEL) else b""

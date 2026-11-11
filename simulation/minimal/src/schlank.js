@@ -16,6 +16,7 @@
     { id: "thK0", t: "r_thK0", einheit: "°C", min: 60, max: 95, schritt: 0.5, stellen: 1, marken: [60, 70, 80, 95] },
     { id: "VK_ml", t: "schlank_r_VK", einheit: "ml", min: 50, max: 400, schritt: 10, stellen: 0, marken: [100, 200, 300, 400] },
     { id: "thU", t: "r_thU", einheit: "°C", min: 10, max: 30, schritt: 0.5, stellen: 1, marken: [10, 20, 30] },
+    { id: "QW", t: "schlank_r_QW", einheit: "W", min: 0, max: 10, schritt: 0.5, stellen: 1, marken: [0, 2.5, 5, 7.5, 10] },
     { id: "kA", t: "r_kA", einheit: "W/K", min: 0.01, max: 1, schritt: 0.05, stellen: 4, marken: [0.01, 0.03, 0.1, 0.3, 1], log: true, vergleich: true },
     { id: "CT", t: "schlank_r_CT", einheit: "J/K", min: 0, max: 600, schritt: 5, stellen: 0, marken: [0, 150, 300, 450, 600], vergleich: true }
   ];
@@ -29,12 +30,22 @@
       [0, "vgl_CT_0"], [1, "vgl_CT_1"], [50, "vgl_CT_2"], [110, "vgl_CT_3"], [200, "vgl_CT_4"], [350, "vgl_CT_5"]
     ]
   };
-  function vergleich(r, v) { let k = ""; for (const [g, s] of VERGLEICH[r.id] || []) if (v >= g - 1e-9) k = s; return k ? T(k) : ""; }
+  function bereichNr(r, v) { let n = -1; (VERGLEICH[r.id] || []).forEach(([g], i) => { if (v >= g - 1e-9) n = i; }); return n; }
+  function vergleich(r, v) { const n = bereichNr(r, v); return n < 0 ? "" : T(VERGLEICH[r.id][n][1]); }
+  // Spanne eines Bereichs als Text, zum Beispiel „0,12 bis 0,4 W/K“, „bis 50 J/K“, „ab 350 J/K“
+  function spanne(r, n) {
+    const b = VERGLEICH[r.id], von = b[n][0], bis = n + 1 < b.length ? b[n + 1][0] : null, z = x => (r.log && x < 1 ? zahl(x, 2).replace(/(,\d)0$/, "$1") : zahl(x, 0));
+    if (bis === null) return T("schlank_ab") + " " + z(von) + " " + r.einheit;
+    if (von === 1 && r.id === "CT") return T("schlank_bis") + " " + z(bis) + " " + r.einheit;
+    if (von === 0 && bis === 1) return "0 " + r.einheit;
+    return z(von) + " " + T("schlank_bis") + " " + z(bis) + " " + r.einheit;
+  }
+  const lage = (r, v, max) => (r.log ? zuLog(r, v) / 10 : 100 * (v - r.min) / (max - r.min));   // Lage auf der Skala in %
   // Logarithmischer Regler (kA): Schieber 0 bis 1000, Wert min · (max/min)^(s/1000); − und + ändern um 5 %
   const zuLog = (r, v) => 1000 * Math.log(v / r.min) / Math.log(r.max / r.min);
   const ausLog = (r, s) => r.min * Math.pow(r.max / r.min, s / 1000);
   const runde = (r, v) => Number(v.toFixed(r.stellen));
-  const blatt = () => ({ t: STANDARD.tZ, tZ: STANDARD.tZ, thM: STANDARD.thM, VM_ml: STANDARD.VM_ml, thK0: STANDARD.thK0, VK_ml: STANDARD.VK_ml,
+  const blatt = () => ({ t: STANDARD.tZ, tZ: STANDARD.tZ, thM: STANDARD.thM, VM_ml: STANDARD.VM_ml, thK0: STANDARD.thK0, VK_ml: STANDARD.VK_ml, QW: 0,
                          thU: STANDARD.thU, kA: KA_BLATT, CT: 0 });
   // Zustand in der Form, die die übernommenen Bausteine erwarten (Säulen mit Zahlen)
   const S = { z: 2, e: blatt(), warumFest: true };
@@ -53,27 +64,38 @@
     const r = rechne(p), u = e.thU;
     const CK = r.C_K + e.CT, CG = r.C_G + e.CT, aK = r.kA / CK, aG = r.kA / CG;
     const th10 = (CK * e.thK0 + r.C_M * e.thM) / CG;
-    const thK = t => u + (e.thK0 - u) * Math.exp(-aK * t * 60);
+    // Tassenwärmer: gleicher Wärmestrom Q_W in beide Tassen; die Temperatur strebt gegen u + Q_W/kA statt gegen u
+    const inf = u + e.QW / r.kA;
+    const thK = t => inf + (e.thK0 - inf) * Math.exp(-aK * t * 60);
     const th2K = thK(e.tZ), th2Z = (CK * th2K + r.C_M * e.thM) / CG;
-    const th1 = t => u + (th10 - u) * Math.exp(-aG * t * 60);
-    const th2 = t => (t < e.tZ ? thK(t) : u + (th2Z - u) * Math.exp(-aG * (t - e.tZ) * 60));
-    const Q1 = t => CG * (th10 - th1(t));
-    const Q2 = t => (t < e.tZ ? CK * (e.thK0 - thK(t)) : CK * (e.thK0 - th2K) + CG * (th2Z - th2(t)));
+    const th1 = t => inf + (th10 - inf) * Math.exp(-aG * t * 60);
+    const th2 = t => (t < e.tZ ? thK(t) : inf + (th2Z - inf) * Math.exp(-aG * (t - e.tZ) * 60));
+    // an den Raum abgegebene Wärme = zugeführte Wärme des Wärmers + Abnahme der inneren Energie
+    const Q1 = t => e.QW * t * 60 + CG * (th10 - th1(t));
+    const Q2 = t => e.QW * t * 60 + (t < e.tZ ? CK * (e.thK0 - thK(t)) : CK * (e.thK0 - th2K) + CG * (th2Z - th2(t)));
     return { kA: r.kA, CK: CK, CG: CG, th10: th10, th2K: th2K, th2Z: th2Z, thK: thK, th1: th1, th2: th2, Q1: Q1, Q2: Q2 };
   }
 
   // ------------------------------------------------------------ Regler (Aufbau wie reglerBauen der Hauptseite, dazu Logarithmus und Vergleich)
-  function obergrenze(r) { return r.id === "tZ" ? S.e.t : r.max; }
+  // Zugabe höchstens bis t; der Tassenwärmer höchstens so stark, dass der Kaffee nicht über 95 °C gehalten wird (u + Q_W/kA ≤ 95 °C)
+  function obergrenze(r) {
+    if (r.id === "tZ") return S.e.t;
+    if (r.id === "QW") return Math.max(0, Math.min(r.max, Math.floor(S.e.kA * (95 - S.e.thU) / r.schritt + 1e-9) * r.schritt));
+    return r.max;
+  }
   function reglerBauen() {
     for (const r of REGLER) {
       const d = document.createElement("div");
-      d.className = "regler"; d.dataset.r = r.id;
+      d.className = "regler" + (r.vergleich && DESIGN === "1" ? " mit-etikett" : ""); d.dataset.r = r.id;
       d.innerHTML = '<p class="name" id="rn-' + r.id + '"></p>' +
-        (r.vergleich ? '<p class="vergleich" id="rv-' + r.id + '" aria-hidden="true"></p><span class="umbruch"></span>' : "") +
+        (r.vergleich && DESIGN === "1" ? '<p class="vergleich" id="rv-' + r.id + '" aria-hidden="true"></p><span class="umbruch"></span>' : "") +
         '<button type="button" class="pm" id="rminus-' + r.id + '">−</button>' +
-        '<div class="lineal"><input type="range" id="rr-' + r.id + '" aria-labelledby="rn-' + r.id + '"><div class="skala" aria-hidden="true" id="rs-' + r.id + '"></div></div>' +
+        '<div class="lineal"><input type="range" id="rr-' + r.id + '" aria-labelledby="rn-' + r.id + '"' + (r.vergleich && DESIGN === "2" ? ' aria-describedby="rbx-' + r.id + '"' : "") + '>' +
+        '<div class="skala" aria-hidden="true" id="rs-' + r.id + '"></div>' +
+        (r.vergleich && DESIGN === "3" ? '<div class="band" aria-hidden="true" id="rband-' + r.id + '"></div><p class="band-text" aria-hidden="true" id="rbl-' + r.id + '"></p>' : "") + '</div>' +
         '<button type="button" class="pm" id="rplus-' + r.id + '">+</button>' +
         '<input class="feld" id="rf-' + r.id + '" inputmode="decimal" autocomplete="off">' +
+        (r.vergleich && DESIGN === "2" ? '<div class="bereich" id="rb-' + r.id + '"><p class="bereich-kopf"><b id="rbt-' + r.id + '"></b><span class="zahl" id="rbz-' + r.id + '"></span></p><p class="bereich-text" id="rbx-' + r.id + '"></p></div>' : "") +
         '<p class="hinweis" id="rh-' + r.id + '"></p><p class="meldung" id="rm-' + r.id + '" role="alert"></p>';
       $(r.vergleich ? "regler-vergleich" : "regler-sichtbar").appendChild(d);
       const ein = $("rr-" + r.id), feld = $("rf-" + r.id);
@@ -102,17 +124,45 @@
       const ein = $("rr-" + r.id), max = obergrenze(r), v = S.e[r.id], vg = vergleich(r, v);
       if (r.log) ein.value = zuLog(r, v); else { ein.max = max; ein.value = v; }
       ein.setAttribute("aria-valuetext", zahl(v, r.stellen) + " " + r.einheit + (vg ? ", " + vg : ""));
-      if (r.vergleich) $("rv-" + r.id).textContent = vg;
+      if (r.vergleich) {
+        const nr = bereichNr(r, v), titel = vg.replace(/^≈ /, "");
+        if (DESIGN === "1") $("rv-" + r.id).textContent = vg;
+        if (DESIGN === "2") {
+          $("rbt-" + r.id).textContent = titel;
+          $("rbz-" + r.id).textContent = spanne(r, nr);
+          $("rbx-" + r.id).textContent = T(VERGLEICH[r.id][nr][1] + "_text");
+        }
+        if (DESIGN === "3") {
+          const band = $("rband-" + r.id), b = VERGLEICH[r.id];
+          band.textContent = "";
+          b.forEach(([g], i) => {
+            const von = Math.max(g, r.min), bis = i + 1 < b.length ? b[i + 1][0] : r.max;
+            if (bis <= von) return;
+            const s = document.createElement("span");
+            s.className = i === nr ? "an" : "";
+            s.style.left = lage(r, von, r.max).toFixed(2) + "%";
+            s.style.width = (lage(r, bis, r.max) - lage(r, von, r.max)).toFixed(2) + "%";
+            band.appendChild(s);
+          });
+          const bis = nr + 1 < b.length ? b[nr + 1][0] : r.max, mitte = (lage(r, Math.max(b[nr][0], r.min), r.max) + lage(r, bis, r.max)) / 2;
+          const t = $("rbl-" + r.id), sp = document.createElement("span");
+          sp.textContent = titel;
+          sp.style.left = (mitte < 22 ? Math.max(0, lage(r, Math.max(b[nr][0], r.min), r.max)) : mitte > 78 ? lage(r, bis, r.max) : mitte).toFixed(2) + "%";
+          sp.className = mitte < 22 ? "links" : (mitte > 78 ? "rechts" : "");
+          t.textContent = ""; t.appendChild(sp);
+        }
+      }
       const feld = $("rf-" + r.id);
       if (document.activeElement !== feld || feld.getAttribute("aria-invalid") !== "true") feld.value = zahl(v, r.stellen);
       let marken = r.marken.filter(m => m <= max);
-      if (r.id === "tZ" && max - marken[marken.length - 1] > (max - r.min) * 0.12) marken.push(max);
-      else if (r.id === "tZ" && marken[marken.length - 1] < max) marken[marken.length - 1] = max;
+      const mitGrenze = r.id === "tZ" || r.id === "QW";
+      if (mitGrenze && max - marken[marken.length - 1] > (max - r.min) * 0.12) marken.push(max);
+      else if (mitGrenze && marken[marken.length - 1] < max) marken[marken.length - 1] = max;
       const sk = $("rs-" + r.id);
       sk.textContent = "";
       if (max > r.min) for (const m of marken) {
         const sp = document.createElement("span");
-        sp.textContent = zahl(m, r.id === "kA" ? (m < 0.1 ? 2 : (m < 1 ? 1 : 0)) : 0);
+        sp.textContent = zahl(m, r.id === "kA" ? (m < 0.1 ? 2 : (m < 1 ? 1 : 0)) : (r.id === "QW" && m % 1 ? 1 : 0));
         sp.style.left = (r.log ? zuLog(r, m) / 10 : 100 * (m - r.min) / (max - r.min)).toFixed(2) + "%";
         sk.appendChild(sp);
       }
@@ -124,7 +174,7 @@
   // ------------------------------------------------------------ Diagramm (Aufbau und Zeichen wie zeichne der Hauptseite)
   function diagrammHoehe(W) {
     if (window.innerWidth < 1024) return Math.round(Math.min(360, W * (W < 500 ? 0.82 : 0.68)));
-    return Math.round(Math.max(240, Math.min(W * 0.45, window.innerHeight - 390)));
+    return Math.round(Math.max(240, Math.min(W * 0.45, window.innerHeight - 410)));
   }
   function zeichne(m) {
     const e = S.e, tE = e.t, svg = $("dia");
@@ -265,6 +315,7 @@
   function aktualisiere() {                // nach jeder Änderung eines Reglers (von setze aufgerufen)
     anhalten();
     if (S.e.tZ > S.e.t) S.e.tZ = S.e.t;    // Zugabe höchstens bis zur Zeit t
+    S.e.QW = Math.min(S.e.QW, obergrenze(REGLER.find(r => r.id === "QW")));
     tJetzt = S.e.t;
     reglerAnzeigen();
     zeigen();
