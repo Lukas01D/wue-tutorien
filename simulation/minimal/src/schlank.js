@@ -226,7 +226,7 @@
   reglerBauen();
   abspielenBauen();
   $("sprache").addEventListener("click", () => { L = L === "de" ? "en" : "de"; alles(); });
-  $("knopf-blatt").addEventListener("click", () => { S.e = blatt(); aktualisiere(); ansage(T("status_blatt")); });
+  $("knopf-blatt").addEventListener("click", () => { S.e = blatt(); aktualisiere(); ansage(T("schlank_status_standard")); });
   let warten = 0;
   window.addEventListener("resize", () => { cancelAnimationFrame(warten); warten = requestAnimationFrame(zeigen); });
   alles();

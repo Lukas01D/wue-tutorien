@@ -45,7 +45,7 @@ const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('�
     await setze(p, 't', 20);
     pruefe(n + 't kleiner als Zugabe: Zugabe folgt auf 20 min', (await p.$eval('#rf-tZ', e => e.value)) === '20' && (await p.$eval('#rr-tZ', e => e.max)) === '20');
     await p.click('#knopf-blatt');
-    pruefe(n + 'Werte des Blatts stellt zurück', (await kern()).includes('43,01'));
+    pruefe(n + 'Standardwerte stellt zurück, Knopf heißt „Standardwerte“', (await kern()).includes('43,01') && (await p.textContent('#knopf-blatt')) === 'Standardwerte');
     // Abspielen
     await p.click('#abspielen');
     await p.waitForTimeout(1500);

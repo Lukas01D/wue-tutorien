@@ -19,4 +19,4 @@ Geplant: Alltagsvergleiche neben $kA$ und $C_\mathrm{T}$ (Auftrag in `AUFTRAG_Ve
 | Prüfen, ob die Datei zum Quellstand passt | `python3 simulation/minimal/bauen_minimal.py --pruefen` |
 | Browsertest (Werte, Zeit, Abspielen, Milch 95 °C, Englisch, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (41 von 41 bestanden am 11.11.2026) |
 
-Stand 11.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `8f5d2e266b421789…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.
+Stand 11.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `cbd71ddf431280e4…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.
