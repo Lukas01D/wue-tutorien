@@ -8,7 +8,7 @@
   const MILCH_GRENZE = 30;
   const TOLERANZ_RECHNUNG = 0.1;   // K: Abweichung der eigenen Rechnung, ab der die Seite „weicht ab“ sagt
   const REGLER = [
-    { id: "thM", t: "r_thM", einheit: "°C", min: 2, max: 95, schritt: 0.5, stellen: 1, marken: [2, 20, 40, 60, 80, 95], gruppe: false },
+    { id: "thM", t: "r_thM", einheit: "°C", min: 2, max: 95, schritt: 0.5, stellen: 1, marken: [2, 25, 50, 75, 95], gruppe: false },
     { id: "tZ", t: "r_tZ", einheit: "min", min: 1, max: 180, schritt: 1, stellen: 0, marken: [1, 45, 90, 135, 180], gruppe: false },
     { id: "thK0", t: "r_thK0", einheit: "°C", min: 60, max: 95, schritt: 0.5, stellen: 1, marken: [60, 70, 80, 95], gruppe: true },
     { id: "thU", t: "r_thU", einheit: "°C", min: 10, max: 30, schritt: 0.5, stellen: 1, marken: [10, 20, 30], gruppe: true },
@@ -149,7 +149,7 @@
         sk.appendChild(sp);
       }
       const h = $("rh-" + r.id);
-      if (r.id === "thM") h.textContent = max < r.max ? T("r_thM_sperre") : (v >= 40 ? T("r_thM_warm") : "");
+      if (r.id === "thM") h.textContent = max < r.max ? T("r_thM_sperre") : "";
       else if (r.id === "kA") h.textContent = F("r_kA_mess", { th: zahl(erg.th_mess, 1) });
       $("rminus-" + r.id).disabled = v <= r.min;
       $("rplus-" + r.id).disabled = v >= max;

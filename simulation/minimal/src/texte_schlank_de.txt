@@ -1,0 +1,77 @@
+# Zusätzliche Texte der schlanken Seite (alle übrigen aus simulation/site/src/texte_de.txt)
+@schlank_abspielen
+Abspielen
+@schlank_anhalten
+Anhalten
+@schlank_t1
+Tasse 1 (Milch zu Beginn)
+@schlank_t2
+Tasse 2 (Milch später)
+@schlank_diff
+Temperatur&shy;differenz
+@schlank_r_t
+Zeit $t$
+@schlank_r_VK
+Kaffeemenge $V_\mathrm{K}$
+@schlank_r_CT
+Wärmekapazität der Tasse $C_\mathrm{T}$
+@schlank_saeulen_t
+An den Raum abgegebene Wärme bis $t$ = {t} min
+@schlank_status
+Nach {t} min: Tasse 1 {th1} °C, Tasse 2 {th2} °C, Temperaturdifferenz {dT} K.
+@schlank_dia_beschreibung
+Beide Tassen beginnen mit Kaffee bei {a} °C. Tasse 1 {v1} durch die Milch sofort auf {a1} °C. Tasse 2 {v2} nach {tz} min durch die Milch von {b2} auf {m2} °C. Nach {t} min: Tasse 1 {e1} °C, Tasse 2 {e2} °C. Raum {u} °C.
+@schlank_knopf_standard
+Standardwerte
+@schlank_status_standard
+Die Standardwerte sind eingestellt.
+@vgl_kA_1
+≈ sehr gute Isolierflasche
+@vgl_kA_2
+≈ Isolierflasche, Thermobecher
+@vgl_kA_3
+≈ einfacher Thermobecher
+@vgl_kA_4
+≈ Tasse mit Deckel
+@vgl_kA_5
+≈ offene Tasse (grob)
+@vgl_CT_0
+Blatt: Tasse speichert keine Wärme
+@vgl_CT_1
+≈ Pappbecher mit Deckel
+@vgl_CT_2
+≈ doppelwandiges Glas
+@vgl_CT_3
+≈ dünnes Trinkglas
+@vgl_CT_4
+≈ Porzellantasse, Einmachglas
+@vgl_CT_5
+≈ schwerer Porzellanbecher
+@schlank_r_QW
+Tassenwärmer $\dot{Q}_\mathrm{W}$
+@schlank_bis
+bis
+@schlank_ab
+ab
+@vgl_kA_1_text
+Vakuumflasche: Der Kaffee bleibt viele Stunden heiß (im Test nach 24 h noch 64 °C).
+@vgl_kA_2_text
+Vakuumisoliert. Die Norm für Isolierflaschen verlangt nach 6 h noch mindestens 70 °C.
+@vgl_kA_3_text
+Doppelwandig, aber schwächer gedämmt: zwischen gutem Thermobecher und Tasse.
+@vgl_kA_4_text
+Porzellan, Glas oder Kunststoff mit Deckel, etwa 200 bis 400 ml. Das Blatt rechnet mit 0,20 W/K.
+@vgl_kA_5_text
+Ohne Deckel kühlt der Kaffee vor allem durch Verdunstung. Das Modell kennt sie nicht, der Wert ist nur ein grober Ersatz.
+@vgl_CT_0_text
+Annahme des Blatts: Die Tasse nimmt keine Wärme auf.
+@vgl_CT_1_text
+Etwa 11 g Pappe und 3 g Deckel speichern kaum Wärme.
+@vgl_CT_2_text
+Dünnes Borosilikatglas, etwa 100 g; am Kaffee liegt nur die Innenwand.
+@vgl_CT_3_text
+Etwa 150 g Glas.
+@vgl_CT_4_text
+Etwa 300 g Porzellan, Steingut oder Glas. So schwer ist die Tasse im Experiment.
+@vgl_CT_5_text
+Dicke Wand, etwa 500 g: nimmt beim Zugießen spürbar Wärme auf.

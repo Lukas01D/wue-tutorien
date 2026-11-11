@@ -140,8 +140,6 @@ mehr
 {name} in {einheit}
 @r_falsch
 Bitte eine Zahl zwischen {min} und {max} eingeben.
-@r_thM_warm
-Warme Milch: Die Seite nimmt an, dass sie ihre Temperatur bis zur Zugabe hält (frisch erwärmt, wie in Teil g). Ist sie wärmer als der Kaffee, steigt die Temperatur beim Zugießen.
 @dia_runter
 fällt
 @dia_hoch

@@ -6,40 +6,50 @@
 <meta name="robots" content="noindex, nofollow">
 <meta http-equiv="Content-Security-Policy" content="{{CSP}}">
 <meta name="theme-color" content="#f6f3ea">
-<title>Kaffee mit Milch: Simulation {{VARIANTE}}</title>
+<title>Kaffee mit Milch: Simulation</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fffdf8' stroke='%231c1f24' stroke-width='3'/%3E%3Ctext x='5' y='22' font-size='14' font-family='monospace' fill='%231c1f24'%3ET5%3C/text%3E%3C/svg%3E">
 <style>{{CSS}}</style>
 </head>
 <body>
-<noscript><p class="banner">Diese Seite braucht JavaScript.</p></noscript>
+<noscript><p class="banner">Diese Seite braucht JavaScript. This page needs JavaScript.</p></noscript>
 <header class="kopf">
   <span class="kopf-marke" aria-hidden="true">T5</span>
-  <div><p class="kopf-zeile">Wärmeübertragung · Tutorium 5</p><h1 class="kopf-titel">Kaffee mit Milch: Simulation</h1></div>
+  <div><p class="kopf-zeile" data-t="kopf_zeile"></p><h1 class="kopf-titel" data-t="kopf_titel"></h1></div>
+  <button type="button" class="sprache" id="sprache"><span data-t="sprache_knopf"></span></button>
 </header>
-<main class="seite">
-  <p class="lage" id="lage"></p>
-  <section class="buehne" aria-label="Ergebnis">
-    <figure class="feld-dia">
-      <svg id="dia" class="dia" role="img" aria-labelledby="dia-text"></svg>
-      <figcaption id="dia-text" class="nur-leser"></figcaption>
-    </figure>
-    <figure class="feld-q">
-      <figcaption class="q-titel">An den Raum abgegebene Wärme <span id="q-bis"></span></figcaption>
-      <svg id="q" class="q" role="img" aria-labelledby="q-text"></svg>
-      <p id="q-text" class="nur-leser"></p>
-    </figure>
+<main class="seite" id="inhalt">
+  <section class="buehne" id="buehne" aria-labelledby="dia-titel">
+    <h2 class="nur-leser" id="dia-titel" data-t="dia_titel"></h2>
+    <div class="kern" id="kern">
+      <div class="zeit" id="kern-zeit"></div>
+      <div><span class="lab" data-t="schlank_t1"></span><span class="wert" id="w1"></span></div>
+      <div><span class="lab" data-t="schlank_t2"></span><span class="wert" id="w2"></span></div>
+      <div><span class="lab" data-t="schlank_diff"></span><span class="wert diff" id="wd"></span></div>
+    </div>
+    <p class="kernsatz" id="kernsatz" hidden></p>
+    <div class="reihe">
+      <figure class="dia-figur">
+        <svg class="dia" id="dia" role="img" aria-labelledby="dia-beschreibung"></svg>
+        <figcaption class="nur-leser" id="dia-beschreibung"></figcaption>
+      </figure>
+      <div class="saeulen-feld">
+        <p class="saeulen-titel" id="saeulen-titel"></p>
+        <svg id="saeulen" class="saeulen" viewBox="0 0 250 176" width="250" height="176" role="img"></svg>
+        <div class="knoepfe">
+          <button type="button" class="knopf knopf-haupt" id="abspielen"></button>
+          <button type="button" class="knopf" id="knopf-blatt" data-t="schlank_knopf_standard"></button>
+        </div>
+      </div>
+    </div>
+    <p class="legende" id="legende" hidden></p>
+    <div class="regler-bereich" id="regler-bereich">
+      <div class="regler-raster" id="regler-sichtbar"></div>
+      <div class="regler-raster zwei" id="regler-vergleich"></div>
+    </div>
   </section>
-  <p class="ergebnis" id="ergebnis" aria-live="polite"></p>
-  <div class="zeit" id="zeit-bereich" hidden>
-    <button type="button" class="knopf" id="abspielen">Abspielen</button>
-    <label class="zeit-label" for="zeit">Zeit <span class="zahl" id="zeit-wert"></span></label>
-    <input type="range" id="zeit" min="0" max="45" step="0.25" value="45">
-  </div>
-  <section class="regler-bereich" aria-label="Werte einstellen">
-    <div class="regler-raster" id="regler"></div>
-    <button type="button" class="knopf" id="blatt">Werte des Blatts</button>
-  </section>
+  <p class="nur-leser" id="ansage" role="status" aria-live="polite"></p>
 </main>
-<footer class="fuss"><p id="fuss"></p></footer>
+<footer class="fuss"><p id="fuss-text"></p></footer>
 <script>{{JS}}</script>
 </body>
 </html>

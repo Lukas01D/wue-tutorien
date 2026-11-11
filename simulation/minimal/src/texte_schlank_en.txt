@@ -1,0 +1,77 @@
+# Additional texts of the lean page (all others from simulation/site/src/texte_en.txt)
+@schlank_abspielen
+Play
+@schlank_anhalten
+Pause
+@schlank_t1
+Cup 1 (milk at the start)
+@schlank_t2
+Cup 2 (milk later)
+@schlank_diff
+Temperature difference
+@schlank_r_t
+Time $t$
+@schlank_r_VK
+Amount of coffee $V_\mathrm{K}$
+@schlank_r_CT
+Heat capacity of the cup $C_\mathrm{T}$
+@schlank_saeulen_t
+Heat released to the room up to $t$ = {t} min
+@schlank_status
+After {t} min: cup 1 {th1} °C, cup 2 {th2} °C, temperature difference {dT} K.
+@schlank_dia_beschreibung
+Both cups start with coffee at {a} °C. The milk {v1} cup 1 to {a1} °C right away. After {tz} min the milk {v2} cup 2 from {b2} to {m2} °C. After {t} min: cup 1 {e1} °C, cup 2 {e2} °C. Room {u} °C.
+@schlank_knopf_standard
+Default values
+@schlank_status_standard
+The default values are set.
+@vgl_kA_1
+≈ very good vacuum flask
+@vgl_kA_2
+≈ vacuum flask, travel mug
+@vgl_kA_3
+≈ basic travel mug
+@vgl_kA_4
+≈ cup with lid
+@vgl_kA_5
+≈ open cup (rough)
+@vgl_CT_0
+worksheet: cup stores no heat
+@vgl_CT_1
+≈ paper cup with lid
+@vgl_CT_2
+≈ double-walled glass
+@vgl_CT_3
+≈ thin drinking glass
+@vgl_CT_4
+≈ porcelain cup, mason jar
+@vgl_CT_5
+≈ heavy porcelain mug
+@schlank_r_QW
+Cup warmer $\dot{Q}_\mathrm{W}$
+@schlank_bis
+to
+@schlank_ab
+from
+@vgl_kA_1_text
+Vacuum flask: the coffee stays hot for many hours (in the test still 64 °C after 24 h).
+@vgl_kA_2_text
+Vacuum insulated. The standard for vacuum flasks requires at least 70 °C after 6 h.
+@vgl_kA_3_text
+Double-walled but less well insulated: between a good travel mug and a cup.
+@vgl_kA_4_text
+Porcelain, glass or plastic with a lid, about 200 to 400 ml. The worksheet uses 0.20 W/K.
+@vgl_kA_5_text
+Without a lid the coffee cools mainly by evaporation. The model does not include it, so the value is only a rough substitute.
+@vgl_CT_0_text
+Worksheet assumption: the cup takes up no heat.
+@vgl_CT_1_text
+About 11 g of paperboard and a 3 g lid store hardly any heat.
+@vgl_CT_2_text
+Thin borosilicate glass, about 100 g; only the inner wall touches the coffee.
+@vgl_CT_3_text
+About 150 g of glass.
+@vgl_CT_4_text
+About 300 g of porcelain, stoneware or glass. This is the cup in the experiment.
+@vgl_CT_5_text
+Thick wall, about 500 g: takes up noticeable heat when the milk is poured in.

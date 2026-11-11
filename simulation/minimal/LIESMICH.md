@@ -1,18 +1,24 @@
-# Kaffee-Simulation, schlanke Varianten A und B
+# Kaffee-Simulation, schlanke Seite
 
-Auftrag der TL vom 11.11.2026: das Simulationstool ganz schlank, ohne Fragen und ohne sonstige Bereiche; nur die Simulationskurve und daneben zwei Säulen mit der an den Raum abgegebenen Wärme von Tasse 1 und Tasse 2. Zur Auswahl in zwei Varianten. Die Hauptseite (`simulation/site/`) bleibt unverändert daneben bestehen.
+Auftrag der TL vom 11.11.2026: das Simulationstool ohne Fragen und mit viel weniger Text, Stil der Hauptseite unverändert, Säulen der an den Raum abgegebenen Wärme neben der Kurve, „Abspielen“ behalten. Die Hauptseite (`simulation/site/`) bleibt daneben bestehen.
 
-| Variante | Datei | Was sie zeigt |
-|:--|:--|:--|
-| A: Überblick | `Kaffee_Simulation_A.html` | Kurven bis zur Zugabe, Säulen mit Q1 und Q2 bis zur Zugabe, Ergebniszeile, sechs Regler, Knopf „Werte des Blatts“ |
-| B: Zeitlauf | `Kaffee_Simulation_B.html` | wie A, dazu ein Zeitregler mit „Abspielen“: Kurven und Säulen wachsen gemeinsam von 0 bis zur Zugabe |
+| Teil | Woher |
+|:--|:--|
+| Rechenkern, Standardwerte | `site/src/modell.js`, unverändert; `schlank.js` rechnet darauf auf: Tasse mit Wärmekapazität $C_\mathrm{T}$ (immer so warm wie der Inhalt, wie `kaffee_modell.zwei_tassen`), Kaffeemenge, Abkühlung von Tasse 2 nach der Zugabe bis zur Zeit $t$. Bei $C_\mathrm{T}$ = 0 und $t = t_\mathrm{Z}$ gleiche Zahlen wie die Hauptseite. |
+| Optik | `site/src/stil.css`, unverändert; dazu `src/schlank.css` nur für die Anordnung |
+| Regler, Säulen, Hilfsfunktionen | Bausteine aus `site/src/oberflaeche.js`, beim Bau unverändert übernommen (Liste `BAUSTEINE`); Diagramm, Kasten und Regleranzeige in `schlank.js` im Aufbau der Hauptseite |
+| Texte DE und EN | `site/src/texte_*.txt`, dazu `src/texte_schlank_*.txt` |
 
-Gemeinsam: Rechenkern und Standardwerte aus `simulation/site/src/modell.js` (unverändert eingebunden), Milchtemperatur bis 95 °C, Sprung durch die Milch gestrichelt mit Pfeil (nach unten oder nach oben), Säulen mit Q₂ − Q₁; es gilt Q₂ − Q₁ = C_G (ϑ1 − ϑ2). Nur Deutsch; Englisch folgt nach der Wahl der TL. Keine Speicherung im Browser, keine Netzanfragen, eigene CSP.
+Regler: Zeit $t$ (1 bis 180 min), Zugabe in Tasse 2 (höchstens $t$), Milchtemperatur, Milchmenge, Kaffeetemperatur, Kaffeemenge, Raumtemperatur, Tassenwärmer $\dot{Q}_\mathrm{W}$ (0 bis 35 W in beide Tassen, höchstens so viel, dass $\vartheta_u + \dot{Q}_\mathrm{W}/kA \le$ 95 °C), $kA$, Wärmekapazität der Tasse. Der Kasten zeigt die Werte zum angezeigten Zeitpunkt (beim Abspielen laufend), die Säulen die an den Raum abgegebene Wärme bis dahin; es gilt immer $Q_2 - Q_1 = C_G\,(\vartheta_1 - \vartheta_2)$ nach der Zugabe.
+
+Alltagsvergleiche neben $kA$ (logarithmischer Regler, 0,01 bis 1 W/K) und $C_\mathrm{T}$: Bereiche in `src/schlank.js` (Liste `VERGLEICH`), Belege in `QUELLEN_Vergleichswerte.md`, Prüfung mit `python3 simulation/minimal/vergleichswerte.py`. Beide Regler stehen unten nebeneinander, die übrigen acht darüber (breite Ansicht: vier Spalten). Darstellung der Vergleiche: `DESIGN` in `bauen_minimal.py`, gewählt ist 3 (Band) (1 Etikett in der Namenszeile, 2 kleiner Kasten mit Spanne und Beschreibung, 3 Band unter der Skala); Vorschau einer anderen Darstellung mit `--design 2 --ziel DATEI`.
+
+Entscheidung der TL vom 12.11.2026: Die schlanke Seite ersetzt unter der bisherigen Adresse die alte Seite (Auftrag für Codex oben in `simulation/VEROEFFENTLICHUNG.md`).
 
 | Schritt | Befehl |
 |:--|:--|
 | Bauen | `python3 simulation/minimal/bauen_minimal.py` |
-| Prüfen, ob die Dateien zum Quellstand passen | `python3 simulation/minimal/bauen_minimal.py --pruefen` |
-| Browsertest (Werte, Milch 95 °C, Zeitregler, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (49 von 49 bestanden am 11.11.2026) |
+| Prüfen, ob die Datei zum Quellstand passt | `python3 simulation/minimal/bauen_minimal.py --pruefen` |
+| Browsertest (Werte, Zeit, Abspielen, Milch 95 °C, Englisch, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (57 von 57 bestanden am 12.11.2026) |
 
-Stand 11.11.2026: Variante A SHA-256 `d4af39a4131894d2…`, Variante B `433cfdff7a90c829…`. Nicht veröffentlicht; veröffentlicht wird erst nach der Wahl der TL.
+Stand 12.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `df59a22ece4824e7…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.

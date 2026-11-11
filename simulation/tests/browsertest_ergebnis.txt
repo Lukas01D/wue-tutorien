@@ -1,6 +1,6 @@
 Browsertest Fassung 3 (simulation/site/index.html, Chromium über Playwright, axe-core 4.14.0)
 
-bestanden   Datei kleiner als Fassung 2 (180343 gegen 433303 Bytes)
+bestanden   Datei kleiner als Fassung 2 (179916 gegen 433303 Bytes)
 bestanden   CSP ohne fremde Quellen
 bestanden   CSP greift: ganzer Pflichtweg ohne CSP-Verstoß und ohne Anfragen nach außen
 bestanden   Z0: keine Ergebniszahl im DOM (auch versteckt, auch Attribute)
@@ -106,6 +106,6 @@ bestanden   axe-core ohne Verstoß: Z2 Deutsch 390
 bestanden   axe-core ohne Verstoß: Z0 Englisch 390
 bestanden   axe-core ohne Verstoß: Z2 Englisch 390
 bestanden   axe-core ohne Verstoß: Z2 Deutsch Beamer 1280 × 720
-bestanden   Leistung: Reglerschritt Median unter 50 ms (2.6 / 3.9 ms, Median / 95 %)
+bestanden   Leistung: Reglerschritt Median unter 50 ms (2.6 / 3.5 ms, Median / 95 %)
 
 107 von 107 bestanden
