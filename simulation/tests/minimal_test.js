@@ -9,6 +9,7 @@ const AXE = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const erg = [];
 const pruefe = (name, ok, info) => erg.push([name, !!ok, info || '']);
 const setze = (p, id, v) => p.$eval('#rr-' + id, (e, v) => { e.value = v; e.dispatchEvent(new Event('input')); }, v);
+const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('−', '-').replace(',', '.')));
 
 (async () => {
   const b = await chromium.launch();
@@ -22,31 +23,50 @@ const setze = (p, id, v) => p.$eval('#rr-' + id, (e, v) => { e.value = v; e.disp
     await p.goto(DATEI);
     await p.evaluate(() => document.fonts.ready);
     const n = w + ' px: ';
-    const kern = () => p.textContent('#kern');
-    const k0 = await kern(), s0 = await p.textContent('#saeulen');
-    pruefe(n + 'Kasten mit Werten des Blatts (43,01 / 36,31 / 6,69 K)', ['43,01', '36,31', '6,69'].every(z => k0.includes(z)));
-    pruefe(n + 'Säulen 15,50 und 23,82 kJ, Unterschied 8,31 kJ', ['15,50', '23,82', '8,31'].every(z => s0.includes(z)));
-    pruefe(n + 'keine Fragen, keine Textfelder außer Zahlenfeldern der Regler', (await p.$$('textarea, select, fieldset, input[type=radio], input[type=checkbox]')).length === 0);
-    pruefe(n + 'Regler wie Hauptseite: 6 Regler plus Zeit, mit − und +', (await p.$$('.regler')).length === 7 && (await p.$$('.pm')).length === 14);
+    const kern = () => p.textContent('#kern'), saeulen = () => p.textContent('#saeulen');
+    const k0 = await kern(), s0 = await saeulen();
+    pruefe(n + 'Kasten mit Werten des Blatts (43,01 / 36,31 / 6,69 K)', ['43,01', '36,31', '6,69'].every(z => k0.includes(z)), k0);
+    pruefe(n + 'Kasten: Tasse 1 (Milch zu Beginn), Tasse 2 (Milch am Ende), Temperaturdifferenz', k0.includes('Milch zu Beginn') && k0.includes('Milch am Ende') && k0.includes('Temperatur­differenz'));
+    pruefe(n + 'Säulen 15,50 und 23,82 kJ, Unterschied 8,31 kJ', ['15,50', '23,82', '8,31'].every(z => s0.includes(z)), s0);
+    pruefe(n + 'keine Fragen, kein Ausklappen, keine Hinweistexte', (await p.$$('textarea, select, fieldset, details, input[type=radio], input[type=checkbox]')).length === 0 && (await p.$$eval('.regler .hinweis', l => l.filter(x => x.textContent.trim()).length)) === 0);
+    pruefe(n + 'neun Regler mit − und + (mit Kaffeemenge und Wärmekapazität)', (await p.$$('.regler')).length === 9 && (await p.$$('.pm')).length === 18 && !!(await p.$('#rr-VK_ml')) && !!(await p.$('#rr-CT')));
     pruefe(n + 'keine waagerechte Bildlaufleiste', await p.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
     pruefe(n + 'Säulen neben oder direkt unter dem Diagramm', await p.evaluate(() => {
       const d = document.getElementById('dia').getBoundingClientRect(), s = document.getElementById('saeulen').getBoundingClientRect();
       return d.height > 150 && s.height > 100 && (s.left >= d.right - 1 || s.top - d.bottom < 80);
     }));
+    // Zeit bis 180 min, Zugabe höchstens t
+    await setze(p, 't', 90);
+    const k90 = await kern(), s90 = await saeulen(), d90 = zahlen(k90)[2], q90 = zahlen((await p.$$eval('#saeulen text.zahl', l => l.map(x => x.textContent))).join(' '));   // Säulentext: Q₂ − Q₁, Q₁, Q₂
+    pruefe(n + 't = 90 min, Zugabe 45: Temperaturdifferenz 4,34 K, Q₂ − Q₁ = C_G · Δϑ', Math.abs(d90 - 4.34) < 0.006 && Math.abs(1241.8 * d90 / 1000 - q90[0]) < 0.011 && Math.abs(q90[2] - q90[1] - q90[0]) < 0.011, k90 + ' | ' + s90);
+    pruefe(n + 'Zeit bis 180 min, Zugabe-Regler bis t', (await p.$eval('#rr-t', e => e.max)) === '180' && (await p.$eval('#rr-tZ', e => e.max)) === '90');
+    await setze(p, 'tZ', 90);
+    pruefe(n + 'Zugabe nicht über t', (await p.$eval('#rr-tZ', e => e.value)) === '90');
     await setze(p, 't', 20);
-    const s20 = await p.textContent('#saeulen');
-    pruefe(n + 'Zeit 20 min: Säulen 7,72 und 12,48 kJ, Kasten bleibt beim Endwert', s20.includes('7,72') && s20.includes('12,48') && (await kern()).includes('43,01'), s20);
-    pruefe(n + 'Zeit 20 min: Zukunft verdeckt, Zeitlinie da', (await p.$$('#dia .zukunft')).length === 1 && (await p.$$('#dia .jetzt')).length === 1);
+    pruefe(n + 't kleiner als Zugabe: Zugabe folgt auf 20 min', (await p.$eval('#rf-tZ', e => e.value)) === '20' && (await p.$eval('#rr-tZ', e => e.max)) === '20');
+    await p.click('#knopf-blatt');
+    pruefe(n + 'Werte des Blatts stellt zurück', (await kern()).includes('43,01'));
+    // Abspielen
     await p.click('#abspielen');
-    await p.waitForTimeout(6800);
-    pruefe(n + 'Abspielen läuft bis zur Zugabe', (await p.textContent('#saeulen')).includes('23,82') && (await p.textContent('#abspielen')) === 'Abspielen' && (await p.$$('#dia .zukunft')).length === 0);
+    await p.waitForTimeout(1500);
+    const mitten = await kern();
+    pruefe(n + 'Abspielen: Zwischenstand mit verdeckter Zukunft', !mitten.includes('nach 45 min') && (await p.$$('#dia .zukunft')).length === 1, mitten);
+    await p.waitForTimeout(6500);
+    pruefe(n + 'Abspielen läuft bis t', (await kern()).includes('43,01') && (await saeulen()).includes('23,82') && (await p.textContent('#abspielen')) === 'Abspielen' && (await p.$$('#dia .zukunft')).length === 0);
+    // Milch 95 °C, Wärmekapazität, Kaffeemenge
     await setze(p, 'thM', 95);
     pruefe(n + 'Milch 95 °C: Tasse 2 wärmer (−3,65 K), Bildbeschreibung „steigt“', (await kern()).includes('−3,65') && (await p.textContent('#dia-beschreibung')).includes('steigt'));
-    pruefe(n + 'Regler Milch bis 95 °C ohne Sperre', (await p.$eval('#rr-thM', e => e.max)) === '95');
-    await p.click('#knopf-blatt', { force: true }).catch(async () => { await p.click('#gruppe summary'); await p.click('#knopf-blatt'); });
-    pruefe(n + 'Werte des Blatts stellt zurück', (await kern()).includes('43,01'));
+    await p.click('#knopf-blatt');
+    await setze(p, 'CT', 255);
+    const dCT = zahlen(await kern())[2];
+    pruefe(n + 'Wärmekapazität 255 J/K: Unterschied kleiner als ohne Tasse', dCT > 3 && dCT < 6.69, String(dCT));
+    await p.click('#knopf-blatt');
+    await setze(p, 'VK_ml', 300);
+    const dVK = zahlen(await kern())[2];
+    pruefe(n + 'Kaffeemenge 300 ml: Unterschied kleiner als bei 200 ml', dVK > 0 && dVK < 6.69, String(dVK));
+    await p.click('#knopf-blatt');
     await p.click('#sprache');
-    pruefe(n + 'Englisch: Kasten und Knopf', (await kern()).includes('43.01') && (await p.textContent('#abspielen')) === 'Play');
+    pruefe(n + 'Englisch: Kasten und Knopf', (await kern()).includes('43.01') && (await kern()).includes('milk at the start') && (await p.textContent('#abspielen')) === 'Play');
     await p.click('#sprache');
     await p.addScriptTag({ content: AXE });
     const ax = await p.evaluate(async () => (await axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'] } })).violations.map(x => x.id + ' (' + x.nodes.length + ')'));

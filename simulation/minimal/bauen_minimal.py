@@ -6,8 +6,9 @@ Aufruf: python3 simulation/minimal/bauen_minimal.py            (baut)
 
 Damit die Seite aussieht und rechnet wie die Hauptseite, übernimmt der Bau unverändert aus simulation/site/src:
 modell.js (Rechenkern), stil.css (Optik), texte_de.txt und texte_en.txt (Texte) und aus oberflaeche.js die Bausteine
-für Regler, Diagramm, Kasten und Säulen (Liste BAUSTEINE). Eigene Teile: src/vorlage.html, src/schlank.js,
-src/schlank.css und die wenigen zusätzlichen Texte in src/texte_schlank_*.txt. Der Bau ist deterministisch.
+für Regler, Säulen und Hilfsfunktionen (Liste BAUSTEINE). Eigene Teile: src/vorlage.html, src/schlank.js (Rechnung mit
+Zeit bis 180 min, Kaffeemenge und Wärmekapazität der Tasse, Diagramm im Aufbau der Hauptseite, Kasten, Abspielen),
+src/schlank.css und die zusätzlichen Texte in src/texte_schlank_*.txt. Der Bau ist deterministisch.
 """
 import base64
 import hashlib
@@ -24,13 +25,9 @@ import tex2mathml  # noqa: E402
 
 STAND = "2026-11-11"
 ZIEL = os.path.join(HIER, "Kaffee_Simulation_schlank.html")
-BAUSTEINE = ["T", "F", "zahl", "liesZahl", "textOhneTags", "el", "zeichne", "imBild", "saeulen", "begrenze",
-             "reglerBauen", "reglerTexte", "setze", "reglerAnzeigen", "istBlatt", "kern", "ansage"]
+BAUSTEINE = ["T", "F", "zahl", "liesZahl", "textOhneTags", "el", "imBild", "saeulen", "begrenze", "reglerBauen", "reglerTexte", "setze"]
 # Einzige Änderung an einem Baustein: Maßstab der Säulen aus den Werten bei der Zugabe, damit sie beim Abspielen wachsen
 ERSATZ = {"saeulen": [("max = Math.max(erg.Q1, erg.Q2, 1e-9)", "max = Math.max(erg.Q1max, erg.Q2max, 1e-9)")]}
-# Achsen der Hauptseite, die zeitDarstellen in schlank.js nachbildet; ändern sie sich dort, bricht der Bau ab
-ACHSEN = ["const xmax = Math.max(60, Math.ceil(e.tZ / 10) * 10);", "const Lr = 46, R = 24, Tr = 12, B = 38, P = 12;",
-          "const X = t => Lr + P + (W - Lr - P - R) * t / xmax, Y = v => Tr + (H - Tr - B) * (ymax - v) / (ymax - ymin);"]
 
 
 def lies(pfad):
@@ -86,10 +83,6 @@ def pruefsumme():
 
 def bauen():
     ober = lies(os.path.join(SITE, "src", "oberflaeche.js"))
-    zeichne = baustein(ober, "zeichne")
-    for a in ACHSEN:
-        if a not in zeichne:
-            raise haupt.BauFehler("Achsen der Hauptseite geändert, zeitDarstellen anpassen: " + a)
     teile = []
     for n in BAUSTEINE:
         b = baustein(ober, n)
@@ -99,10 +92,8 @@ def bauen():
             b = b.replace(alt, neu)
         teile.append("  // aus oberflaeche.js: %s\n%s" % (n, b))
     eigen = lies(os.path.join(SRC, "schlank.js"))
-    for platz in ("//@@REGLER@@", "//@@BAUSTEINE@@"):
-        if eigen.count(platz) != 1:
-            raise haupt.BauFehler("schlank.js: Platzhalter " + platz)
-    eigen = eigen.replace("  //@@REGLER@@", "  // aus oberflaeche.js: REGLER\n" + baustein(ober, "REGLER"))
+    if eigen.count("//@@BAUSTEINE@@") != 1:
+        raise haupt.BauFehler("schlank.js: Platzhalter //@@BAUSTEINE@@")
     eigen = eigen.replace("  //@@BAUSTEINE@@", "\n\n".join(teile))
     summe = pruefsumme()
     js = "\n".join([

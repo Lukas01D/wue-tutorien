@@ -149,7 +149,7 @@
         sk.appendChild(sp);
       }
       const h = $("rh-" + r.id);
-      if (r.id === "thM") h.textContent = max < r.max ? T("r_thM_sperre") : (v >= 40 ? T("r_thM_warm") : "");
+      if (r.id === "thM") h.textContent = max < r.max ? T("r_thM_sperre") : "";
       else if (r.id === "kA") h.textContent = F("r_kA_mess", { th: zahl(erg.th_mess, 1) });
       $("rminus-" + r.id).disabled = v <= r.min;
       $("rplus-" + r.id).disabled = v >= max;

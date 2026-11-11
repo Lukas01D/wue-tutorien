@@ -4,18 +4,19 @@ Auftrag der TL vom 11.11.2026: das Simulationstool ohne Fragen und mit viel weni
 
 | Teil | Woher |
 |:--|:--|
-| Rechenkern, Standardwerte | `site/src/modell.js`, unverändert |
-| Optik | `site/src/stil.css`, unverändert; dazu `src/schlank.css` nur für die Anordnung (Säulen neben dem Diagramm, Zeitzeile) |
-| Regler, Diagramm, Kasten, Säulen | Bausteine aus `site/src/oberflaeche.js`, beim Bau unverändert übernommen (Liste `BAUSTEINE` in `bauen_minimal.py`); einzige Änderung: Maßstab der Säulen aus den Werten bei der Zugabe, damit sie beim Abspielen wachsen |
-| Texte DE und EN | `site/src/texte_*.txt`, dazu vier Texte in `src/texte_schlank_*.txt` (Abspielen, Anhalten, Zeit, Säulentitel bis t) |
-| Eigenes | `src/vorlage.html`, `src/schlank.js` (Zeitregler, Abspielen, verdeckte Zukunft im Diagramm) |
+| Rechenkern, Standardwerte | `site/src/modell.js`, unverändert; `schlank.js` rechnet darauf auf: Tasse mit Wärmekapazität $C_\mathrm{T}$ (immer so warm wie der Inhalt, wie `kaffee_modell.zwei_tassen`), Kaffeemenge, Abkühlung von Tasse 2 nach der Zugabe bis zur Zeit $t$. Bei $C_\mathrm{T}$ = 0 und $t = t_\mathrm{Z}$ gleiche Zahlen wie die Hauptseite. |
+| Optik | `site/src/stil.css`, unverändert; dazu `src/schlank.css` nur für die Anordnung |
+| Regler, Säulen, Hilfsfunktionen | Bausteine aus `site/src/oberflaeche.js`, beim Bau unverändert übernommen (Liste `BAUSTEINE`); Diagramm, Kasten und Regleranzeige in `schlank.js` im Aufbau der Hauptseite |
+| Texte DE und EN | `site/src/texte_*.txt`, dazu `src/texte_schlank_*.txt` |
 
-Ändert sich die Hauptseite, übernimmt der nächste Bau die Änderung. Ändern sich dort die Achsen des Diagramms, bricht der Bau mit einer Meldung ab (`ACHSEN`), damit die Zeitlinie nicht verrutscht.
+Regler: Zeit $t$ (1 bis 180 min), Zugabe in Tasse 2 (höchstens $t$), Milchtemperatur, Milchmenge, Kaffeetemperatur, Kaffeemenge, Raumtemperatur, $kA$, Wärmekapazität der Tasse. Der Kasten zeigt die Werte zum angezeigten Zeitpunkt (beim Abspielen laufend), die Säulen die an den Raum abgegebene Wärme bis dahin; es gilt immer $Q_2 - Q_1 = C_G\,(\vartheta_1 - \vartheta_2)$ nach der Zugabe.
+
+Geplant: Alltagsvergleiche neben $kA$ und $C_\mathrm{T}$ (Auftrag in `AUFTRAG_Vergleichswerte.md`).
 
 | Schritt | Befehl |
 |:--|:--|
 | Bauen | `python3 simulation/minimal/bauen_minimal.py` |
 | Prüfen, ob die Datei zum Quellstand passt | `python3 simulation/minimal/bauen_minimal.py --pruefen` |
-| Browsertest (Werte, Zeit, Abspielen, Milch 95 °C, Englisch, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (31 von 31 bestanden am 11.11.2026) |
+| Browsertest (Werte, Zeit, Abspielen, Milch 95 °C, Englisch, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (41 von 41 bestanden am 11.11.2026) |
 
-Stand 11.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `2898c8eae95dfbc9…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.
+Stand 11.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `3e9181c9e5ca2055…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.

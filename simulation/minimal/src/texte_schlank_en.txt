@@ -3,7 +3,21 @@
 Play
 @schlank_anhalten
 Pause
-@schlank_zeit
+@schlank_t1
+Cup 1 (milk at the start)
+@schlank_t2
+Cup 2 (milk at the end)
+@schlank_diff
+Temperature difference
+@schlank_r_t
 Time $t$
+@schlank_r_VK
+Amount of coffee $V_\mathrm{K}$
+@schlank_r_CT
+Heat capacity of the cup $C_\mathrm{T}$
 @schlank_saeulen_t
 Heat released to the room up to $t$ = {t} min
+@schlank_status
+After {t} min: cup 1 {th1} °C, cup 2 {th2} °C, temperature difference {dT} K.
+@schlank_dia_beschreibung
+Both cups start with coffee at {a} °C. The milk {v1} cup 1 to {a1} °C right away. After {tz} min the milk {v2} cup 2 from {b2} to {m2} °C. After {t} min: cup 1 {e1} °C, cup 2 {e2} °C. Room {u} °C.

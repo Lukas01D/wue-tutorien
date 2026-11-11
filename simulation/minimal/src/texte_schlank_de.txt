@@ -3,7 +3,21 @@
 Abspielen
 @schlank_anhalten
 Anhalten
-@schlank_zeit
+@schlank_t1
+Tasse 1 (Milch zu Beginn)
+@schlank_t2
+Tasse 2 (Milch am Ende)
+@schlank_diff
+Temperatur&shy;differenz
+@schlank_r_t
 Zeit $t$
+@schlank_r_VK
+Kaffeemenge $V_\mathrm{K}$
+@schlank_r_CT
+Wärmekapazität der Tasse $C_\mathrm{T}$
 @schlank_saeulen_t
 An den Raum abgegebene Wärme bis $t$ = {t} min
+@schlank_status
+Nach {t} min: Tasse 1 {th1} °C, Tasse 2 {th2} °C, Temperaturdifferenz {dT} K.
+@schlank_dia_beschreibung
+Beide Tassen beginnen mit Kaffee bei {a} °C. Tasse 1 {v1} durch die Milch sofort auf {a1} °C. Tasse 2 {v2} nach {tz} min durch die Milch von {b2} auf {m2} °C. Nach {t} min: Tasse 1 {e1} °C, Tasse 2 {e2} °C. Raum {u} °C.

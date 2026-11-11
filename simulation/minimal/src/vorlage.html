@@ -22,9 +22,9 @@
     <h2 class="nur-leser" id="dia-titel" data-t="dia_titel"></h2>
     <div class="kern" id="kern">
       <div class="zeit" id="kern-zeit"></div>
-      <div><span class="lab" data-t="kern_t1"></span><span class="wert" id="w1"></span></div>
-      <div><span class="lab" data-t="kern_t2"></span><span class="wert" id="w2"></span></div>
-      <div><span class="lab" data-t="kern_diff"></span><span class="wert diff" id="wd"></span></div>
+      <div><span class="lab" data-t="schlank_t1"></span><span class="wert" id="w1"></span></div>
+      <div><span class="lab" data-t="schlank_t2"></span><span class="wert" id="w2"></span></div>
+      <div><span class="lab" data-t="schlank_diff"></span><span class="wert diff" id="wd"></span></div>
     </div>
     <p class="kernsatz" id="kernsatz" hidden></p>
     <div class="reihe">
@@ -38,23 +38,10 @@
       </div>
     </div>
     <p class="legende" id="legende" hidden></p>
-    <div class="zeitzeile" id="zeitzeile">
-      <button type="button" class="knopf knopf-haupt" id="abspielen"></button>
-      <div class="regler" data-r="t">
-        <p class="name" id="rn-t"></p>
-        <button type="button" class="pm" id="rminus-t">−</button>
-        <div class="lineal"><input type="range" id="rr-t" aria-labelledby="rn-t" min="0" step="0.5"><div class="skala" aria-hidden="true" id="rs-t"></div></div>
-        <button type="button" class="pm" id="rplus-t">+</button>
-        <input class="feld" id="rf-t" inputmode="decimal" autocomplete="off">
-      </div>
-    </div>
+    <div class="spielzeile"><button type="button" class="knopf knopf-haupt" id="abspielen"></button></div>
     <div class="regler-bereich" id="regler-bereich">
-      <div class="regler-paar" id="regler-sichtbar"></div>
-      <details class="gruppe" id="gruppe">
-        <summary><b data-t="gruppe_titel"></b> <span id="gruppe-zus"></span></summary>
-        <div class="regler-paar" id="regler-gruppe"></div>
-        <button type="button" class="knopf" id="knopf-blatt" data-t="knopf_blatt"></button>
-      </details>
+      <div class="regler-raster" id="regler-sichtbar"></div>
+      <button type="button" class="knopf" id="knopf-blatt" data-t="knopf_blatt"></button>
     </div>
   </section>
   <p class="nur-leser" id="ansage" role="status" aria-live="polite"></p>

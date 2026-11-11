@@ -137,8 +137,6 @@ more
 {name} in {einheit}
 @r_falsch
 Please enter a number between {min} and {max}.
-@r_thM_warm
-Warm milk: the page assumes it keeps its temperature until it is added (freshly heated, as in part g). If it is warmer than the coffee, the temperature rises when it is poured in.
 @dia_runter
 drops
 @dia_hoch

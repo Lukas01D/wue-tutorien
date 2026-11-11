@@ -7,7 +7,7 @@ Auftrag der TL: „dem simulationstool bitte hinzufügen, dass die milchtemperat
 | Regler Milchtemperatur | bis 95 °C (vorher 80 °C), Marken 2, 25, 50, 75, 95; die Sperre bei 30 °C bis Auftrag 3 bleibt |
 | Diagramm | Ist die Milch wärmer als der Kaffee, steigt die Temperatur beim Zugießen: Linie und Pfeil zeigen dann nach oben; die y-Achse reicht bis über die Temperatur nach der Zugabe |
 | Bildbeschreibung DE und EN | „fällt“ oder „steigt“ (EN „drops“ oder „raises“) je nach Richtung |
-| Hinweis unter dem Regler ab 40 °C | „Warme Milch: Die Seite nimmt an, dass sie ihre Temperatur bis zur Zugabe hält (frisch erwärmt, wie in Teil g). Ist sie wärmer als der Kaffee, steigt die Temperatur beim Zugießen.“ (EN entsprechend) |
+| Hinweis unter dem Regler ab 40 °C | zuerst ergänzt, auf Wunsch der TL wieder entfernt (zu viel Text) |
 | Beschriftung „Tasse 1: Milch sofort“ | endet vor der Zugabe, damit sie den Endpunkt von Tasse 2 nicht verdeckt |
 | Rechenkern | unverändert |
 
@@ -15,4 +15,6 @@ Physikalische Prüfung: Das Modell bleibt bis 95 °C gültig (Wasser und Milch f
 
 Schlanke Seite: Der erste Entwurf (Varianten A und B mit eigener Optik) ist ersetzt. Auf Wunsch der TL hat die schlanke Seite jetzt genau den Stil der Hauptseite (gleiche Stildatei, gleiche Bausteine für Regler, Diagramm, Kasten und Säulen), keinen Lagetext, den Kasten mit den Endwerten oben und den Zeitregler mit „Abspielen“.
 
-Tests: Rechenkern 34 von 34, Texte 16 von 16, Browser 107 von 107, schlanke Seite 31 von 31 bestanden; Bildschirmfotos neu.
+Nachtrag 15:18 (Wünsche der TL): Kasten „Tasse 1 (Milch zu Beginn)“, „Tasse 2 (Milch am Ende)“, „Temperaturdifferenz“; Zeit $t$ bis 180 min unabhängig von der Zugabe, Zugabe höchstens $t$, Tasse 2 kühlt nach der Milch weiter ab; alle Regler ohne Ausklappen in einem Raster; Zusammenfassung „Ausgangswerte des Blatts“ und Hinweis zur warmen Milch entfernt (auch auf der Hauptseite); neue Regler Kaffeemenge und Wärmekapazität der Tasse. Auftrag für Alltagsvergleiche: `minimal/AUFTRAG_Vergleichswerte.md`.
+
+Tests: Rechenkern 34 von 34, Texte 16 von 16, Browser 107 von 107, schlanke Seite 41 von 41 bestanden; Bildschirmfotos neu.
