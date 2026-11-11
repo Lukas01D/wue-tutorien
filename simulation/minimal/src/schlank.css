@@ -1,5 +1,15 @@
 /* Schlanke Kaffee-Simulation: Ergänzungen zu simulation/site/src/stil.css (unverändert davor eingebunden).
-   Nur Anordnung: Säulen neben dem Diagramm, Zeile mit „Abspielen“, alle Regler in einem Raster, Bühne ohne eigene Bildlaufleiste. */
+   Anordnung: Säulen neben dem Diagramm, Knöpfe unter den Säulen, alle Regler in einem Raster, Bühne ohne eigene Bildlaufleiste.
+   Farben (Wunsch der TL, 11.11.2026): Tasse 1 hellbraun, Tasse 2 dunkelbraun und durchgezogen, Differenzen rostrot.
+   Kontraste gegen die Karte #fffdf8: Linie Tasse 1 3,4 (Grafik, mindestens 3); Text Tasse 1 5,6; Tasse 2 13,2; Rostrot 5,3. */
+:root { --k1: #b97d43; --k1-text: #94592a; --k2: #4a2511; --diff: #b5481f; }
+.kern .diff { color: var(--diff); }
+.diff-text { fill: var(--diff); } .klammer { stroke: var(--diff); } .bezug { stroke: var(--diff); }
+.saeule2 { fill: var(--k2); stroke: none; }
+/* Zeitangabe im Kasten kräftiger, auch auf dem Handy sichtbar (dort als eigene Zeile) */
+.kern .zeit { font-weight: 600; font-size: 1.1rem; color: var(--tinte); }
+@media (min-width: 1024px) { .kern .zeit { font-size: 1.3rem; } }
+@media (max-width: 480px) { .kern .zeit { display: block; grid-column: 1 / -1; padding: 4px 8px; font-size: 1rem; } }
 @media (min-width: 1024px) { .buehne { position: static; max-height: none; overflow: visible; } }
 .reihe { display: grid; grid-template-columns: minmax(0, 1fr); }
 .saeulen-feld { padding: 6px 12px 0; border-top: 1px solid var(--linie-fein); }

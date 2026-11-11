@@ -103,11 +103,11 @@
     svg.appendChild(el("text", { x: 12, y: ym, "text-anchor": "middle", "font-size": fs, class: "beschr", transform: "rotate(-90 12 " + ym + ")" }, T("dia_temp")));
     svg.appendChild(el("line", { x1: Lr, x2: X(xmax), y1: Y(e.thU), y2: Y(e.thU), class: "raum" }));
     svg.appendChild(el("text", { x: X(xmax) - 2, y: Y(e.thU) - 6, "text-anchor": "end", "font-size": fs, class: "leise-text" }, F("dia_raum", { th: zahl(e.thU, 1) })));
-    // Kurven: Tasse 1 bis t; Tasse 2 als schwarzer Kaffee bis zur Zugabe, danach mit Milch bis t
+    // Kurven (beide durchgezogen, Tasse 1 hellbraun, Tasse 2 dunkelbraun): Tasse 1 bis t; Tasse 2 als schwarzer Kaffee bis zur Zugabe, danach mit Milch bis t
     const linie = (f, von, bis) => { const p = []; for (let i = 0; i <= 160; i++) { const t = von + (bis - von) * i / 160; p.push(X(t).toFixed(1) + "," + Y(f(t)).toFixed(1)); } return p.join(" "); };
     svg.appendChild(el("polyline", { points: linie(m.th1, 0, tE), class: "kurve k1", "stroke-width": dick }));
-    svg.appendChild(el("polyline", { points: linie(m.thK, 0, e.tZ), class: "kurve k2 gestrichelt", "stroke-width": dick }));
-    if (tE > e.tZ) svg.appendChild(el("polyline", { points: linie(m.th2, e.tZ, tE), class: "kurve k2 gestrichelt", "stroke-width": dick }));
+    svg.appendChild(el("polyline", { points: linie(m.thK, 0, e.tZ), class: "kurve k2", "stroke-width": dick }));
+    if (tE > e.tZ) svg.appendChild(el("polyline", { points: linie(m.th2, e.tZ, tE), class: "kurve k2", "stroke-width": dick }));
     // Sprung durch die Milch (wie Hauptseite); liegt die Zugabe am Ende, endet die Spitze von Tasse 2 am Rand ihres Endpunkts
     const abf = [[0, e.thK0, m.th10, "k1", 0], [e.tZ, m.th2K, m.th2Z, "k2", e.tZ >= tE ? 6 : 0]].map(([t, o, u, k, l]) => {
       const r = Y(u) >= Y(o) ? 1 : -1, x = X(t), y1 = Y(o), y2 = Y(u) - r * l, lang = r * (y2 - y1);

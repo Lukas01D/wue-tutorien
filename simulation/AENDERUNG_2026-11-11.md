@@ -19,4 +19,6 @@ Nachtrag 15:18 (Wünsche der TL): Kasten „Tasse 1 (Milch zu Beginn)“, „Tas
 
 Nachtrag 15:28: „Abspielen“ und „Werte des Blatts“ rechts unter den Säulen; Regler kompakter (Knöpfe und Felder 36 px, engere Abstände). Bei 1366 × 768 und 1280 × 720 sind Diagramm, Säulen und alle neun Regler ohne Bildlauf zu sehen. Knopf „Werte des Blatts“ heißt auf der schlanken Seite „Standardwerte“ (EN „Default values“).
 
+Nachtrag 15:30: Zeitangabe im Kasten kräftiger (auch auf dem Handy); Tasse 1 hellbraun, Tasse 2 dunkelbraun und durchgezogen (Säule 2 voll statt schraffiert); Temperaturdifferenz und Q₂ − Q₁ rostrot. Kontraste: Linie Tasse 1 3,4 (Grafik), Texte mindestens 5,3.
+
 Tests: Rechenkern 34 von 34, Texte 16 von 16, Browser 107 von 107, schlanke Seite 41 von 41 bestanden; Bildschirmfotos neu.
