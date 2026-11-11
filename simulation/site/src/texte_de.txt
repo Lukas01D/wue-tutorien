@@ -99,7 +99,7 @@ Milch
 @dia_leer
 Kurven erscheinen nach deiner Vorhersage.
 @dia_beschreibung
-Beide Tassen beginnen mit Kaffee bei {a2} °C. Tasse 1 fällt durch die Milch sofort auf {a1} °C und kühlt dann auf {e1} °C ab. Tasse 2 kühlt auf {e2} °C ab und fällt nach {t} min durch die Milch auf {m2} °C. Raum {u} °C.
+Beide Tassen beginnen mit Kaffee bei {a2} °C. Tasse 1 {v1} durch die Milch sofort auf {a1} °C und kühlt dann auf {e1} °C ab. Tasse 2 kühlt auf {e2} °C ab und {v2} nach {t} min durch die Milch auf {m2} °C. Raum {u} °C.
 @leg_rechnung
 × deine Rechnung
 @leg_beispiel
@@ -140,6 +140,12 @@ mehr
 {name} in {einheit}
 @r_falsch
 Bitte eine Zahl zwischen {min} und {max} eingeben.
+@r_thM_warm
+Warme Milch: Die Seite nimmt an, dass sie ihre Temperatur bis zur Zugabe hält (frisch erwärmt, wie in Teil g). Ist sie wärmer als der Kaffee, steigt die Temperatur beim Zugießen.
+@dia_runter
+fällt
+@dia_hoch
+steigt
 @r_thM_sperre
 über 30 °C erst in Auftrag 3 (nach Teil g3)
 @r_kA_mess

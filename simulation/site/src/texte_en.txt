@@ -96,7 +96,7 @@ milk
 @dia_leer
 The curves appear after your prediction.
 @dia_beschreibung
-Both cups start with coffee at {a2} °C. The milk drops cup 1 to {a1} °C right away, then it cools to {e1} °C. Cup 2 cools to {e2} °C, and after {t} min the milk drops it to {m2} °C. Room {u} °C.
+Both cups start with coffee at {a2} °C. The milk {v1} cup 1 to {a1} °C right away, then it cools to {e1} °C. Cup 2 cools to {e2} °C, and after {t} min the milk {v2} it to {m2} °C. Room {u} °C.
 @leg_rechnung
 × your calculation
 @leg_beispiel
@@ -137,6 +137,12 @@ more
 {name} in {einheit}
 @r_falsch
 Please enter a number between {min} and {max}.
+@r_thM_warm
+Warm milk: the page assumes it keeps its temperature until it is added (freshly heated, as in part g). If it is warmer than the coffee, the temperature rises when it is poured in.
+@dia_runter
+drops
+@dia_hoch
+raises
 @r_thM_sperre
 above 30 °C only in task 3 (after part g3)
 @r_kA_mess

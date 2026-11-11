@@ -148,7 +148,7 @@ async function tests() {
     pruefe('Auftrag 3: ohne Vermutung nicht prüfbar', (await text(p, '#a3-meldung')).length > 0);
     await p.check('input[name=a3][value="1"]');
     await p.click('#a3-knopf');
-    pruefe('Auftrag 3: Vermutung hebt die 30-°C-Grenze auf, Zeile über dem Diagramm', (await p.$eval('#rr-thM', e => e.max)) === '80' && !(await p.$eval('#auftrag-zeile', e => e.hidden)) && (await text(p, '#auftrag-zeile')).includes('Auftrag 3'));
+    pruefe('Auftrag 3: Vermutung hebt die 30-°C-Grenze auf, Zeile über dem Diagramm', (await p.$eval('#rr-thM', e => e.max)) === '95' && !(await p.$eval('#auftrag-zeile', e => e.hidden)) && (await text(p, '#auftrag-zeile')).includes('Auftrag 3'));
     pruefe('Auftrag 3: Auflösung erst nach „Gedanken dazu“', (await p.$eval('#a3-ged', e => e.textContent)) === '');
     await p.fill('#rf-thM', '63,2'); await p.press('#rf-thM', 'Enter');
     pruefe('Auftrag 3: Kipppunkt 63,2 °C ergibt Unterschied nahe 0', /^−?0,0\d K$/.test(await text(p, '#wd')), await text(p, '#wd'));

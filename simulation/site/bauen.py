@@ -22,7 +22,7 @@ sys.path.insert(0, HIER)
 import tex2mathml  # noqa: E402
 import zahlen  # noqa: E402
 
-STAND = "2026-11-10"
+STAND = "2026-11-11"
 SPRACHEN = ("de", "en")
 SKRIPTE = ["modell.js"]
 SCHRIFTEN = [("Plex Sans", 400, "normal", "PlexSans-400.woff2"), ("Plex Sans", 600, "normal", "PlexSans-600.woff2"),
