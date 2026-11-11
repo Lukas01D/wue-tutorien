@@ -16,9 +16,24 @@
     { id: "thK0", t: "r_thK0", einheit: "°C", min: 60, max: 95, schritt: 0.5, stellen: 1, marken: [60, 70, 80, 95] },
     { id: "VK_ml", t: "schlank_r_VK", einheit: "ml", min: 50, max: 400, schritt: 10, stellen: 0, marken: [100, 200, 300, 400] },
     { id: "thU", t: "r_thU", einheit: "°C", min: 10, max: 30, schritt: 0.5, stellen: 1, marken: [10, 20, 30] },
-    { id: "kA", t: "r_kA", einheit: "W/K", min: 0.05, max: 0.8, schritt: 0.005, stellen: 4, marken: [0.05, 0.4, 0.8] },
-    { id: "CT", t: "schlank_r_CT", einheit: "J/K", min: 0, max: 600, schritt: 5, stellen: 0, marken: [0, 150, 300, 450, 600] }
+    { id: "kA", t: "r_kA", einheit: "W/K", min: 0.01, max: 1, schritt: 0.05, stellen: 4, marken: [0.01, 0.03, 0.1, 0.3, 1], log: true, vergleich: true },
+    { id: "CT", t: "schlank_r_CT", einheit: "J/K", min: 0, max: 600, schritt: 5, stellen: 0, marken: [0, 150, 300, 450, 600], vergleich: true }
   ];
+  // Alltagsvergleiche je Bereich (ab Untergrenze), belegt in minimal/QUELLEN_Vergleichswerte.md, geprüft mit minimal/vergleichswerte.py.
+  // kA gilt für etwa 200 bis 400 ml mit Deckel; „offene Tasse“ ist nur ein grober Ersatz, weil das Modell keine Verdunstung kennt.
+  const VERGLEICH = {
+    kA: [
+      [0.01, "vgl_kA_1"], [0.02, "vgl_kA_2"], [0.06, "vgl_kA_3"], [0.12, "vgl_kA_4"], [0.4, "vgl_kA_5"]
+    ],
+    CT: [
+      [0, "vgl_CT_0"], [1, "vgl_CT_1"], [50, "vgl_CT_2"], [110, "vgl_CT_3"], [200, "vgl_CT_4"], [350, "vgl_CT_5"]
+    ]
+  };
+  function vergleich(r, v) { let k = ""; for (const [g, s] of VERGLEICH[r.id] || []) if (v >= g - 1e-9) k = s; return k ? T(k) : ""; }
+  // Logarithmischer Regler (kA): Schieber 0 bis 1000, Wert min · (max/min)^(s/1000); − und + ändern um 5 %
+  const zuLog = (r, v) => 1000 * Math.log(v / r.min) / Math.log(r.max / r.min);
+  const ausLog = (r, s) => r.min * Math.pow(r.max / r.min, s / 1000);
+  const runde = (r, v) => Number(v.toFixed(r.stellen));
   const blatt = () => ({ t: STANDARD.tZ, tZ: STANDARD.tZ, thM: STANDARD.thM, VM_ml: STANDARD.VM_ml, thK0: STANDARD.thK0, VK_ml: STANDARD.VK_ml,
                          thU: STANDARD.thU, kA: KA_BLATT, CT: 0 });
   // Zustand in der Form, die die übernommenen Bausteine erwarten (Säulen mit Zahlen)
@@ -47,14 +62,47 @@
     return { kA: r.kA, CK: CK, CG: CG, th10: th10, th2K: th2K, th2Z: th2Z, thK: thK, th1: th1, th2: th2, Q1: Q1, Q2: Q2 };
   }
 
-  // ------------------------------------------------------------ Regler
+  // ------------------------------------------------------------ Regler (Aufbau wie reglerBauen der Hauptseite, dazu Logarithmus und Vergleich)
   function obergrenze(r) { return r.id === "tZ" ? S.e.t : r.max; }
+  function reglerBauen() {
+    for (const r of REGLER) {
+      const d = document.createElement("div");
+      d.className = "regler"; d.dataset.r = r.id;
+      d.innerHTML = '<p class="name" id="rn-' + r.id + '"></p>' +
+        (r.vergleich ? '<p class="vergleich" id="rv-' + r.id + '" aria-hidden="true"></p><span class="umbruch"></span>' : "") +
+        '<button type="button" class="pm" id="rminus-' + r.id + '">−</button>' +
+        '<div class="lineal"><input type="range" id="rr-' + r.id + '" aria-labelledby="rn-' + r.id + '"><div class="skala" aria-hidden="true" id="rs-' + r.id + '"></div></div>' +
+        '<button type="button" class="pm" id="rplus-' + r.id + '">+</button>' +
+        '<input class="feld" id="rf-' + r.id + '" inputmode="decimal" autocomplete="off">' +
+        '<p class="hinweis" id="rh-' + r.id + '"></p><p class="meldung" id="rm-' + r.id + '" role="alert"></p>';
+      $(r.vergleich ? "regler-vergleich" : "regler-sichtbar").appendChild(d);
+      const ein = $("rr-" + r.id), feld = $("rf-" + r.id);
+      if (r.log) { ein.min = 0; ein.max = 1000; ein.step = 1; } else { ein.min = r.min; ein.step = r.schritt; }
+      ein.addEventListener("input", () => setze(r, r.log ? runde(r, ausLog(r, Number(ein.value))) : Number(ein.value), false));
+      ein.addEventListener("change", () => ansage());
+      const schritt = (v, vz) => r.log ? runde(r, v * Math.pow(1.05, vz)) : v + vz * r.schritt;
+      $("rminus-" + r.id).addEventListener("click", () => { setze(r, schritt(S.e[r.id], -1), true); });
+      $("rplus-" + r.id).addEventListener("click", () => { setze(r, schritt(S.e[r.id], 1), true); });
+      const ausFeld = () => {
+        const x = liesZahl(feld.value);
+        if (isNaN(x) || x < r.min || x > obergrenze(r)) {
+          feld.setAttribute("aria-invalid", "true");
+          $("rm-" + r.id).textContent = F("r_falsch", { min: zahl(r.min, r.stellen > 1 ? 2 : r.stellen), max: zahl(obergrenze(r), r.stellen > 1 ? 2 : r.stellen) });
+          return;
+        }
+        feld.removeAttribute("aria-invalid"); $("rm-" + r.id).textContent = "";
+        setze(r, x, true);
+      };
+      feld.addEventListener("change", ausFeld);
+      feld.addEventListener("keydown", ev => { if (ev.key === "Enter") { ev.preventDefault(); ausFeld(); } });
+    }
+  }
   function reglerAnzeigen() {
     for (const r of REGLER) {
-      const ein = $("rr-" + r.id), max = obergrenze(r), v = S.e[r.id];
-      ein.max = max;
-      ein.value = v;
-      ein.setAttribute("aria-valuetext", zahl(v, r.stellen) + " " + r.einheit);
+      const ein = $("rr-" + r.id), max = obergrenze(r), v = S.e[r.id], vg = vergleich(r, v);
+      if (r.log) ein.value = zuLog(r, v); else { ein.max = max; ein.value = v; }
+      ein.setAttribute("aria-valuetext", zahl(v, r.stellen) + " " + r.einheit + (vg ? ", " + vg : ""));
+      if (r.vergleich) $("rv-" + r.id).textContent = vg;
       const feld = $("rf-" + r.id);
       if (document.activeElement !== feld || feld.getAttribute("aria-invalid") !== "true") feld.value = zahl(v, r.stellen);
       let marken = r.marken.filter(m => m <= max);
@@ -64,8 +112,8 @@
       sk.textContent = "";
       if (max > r.min) for (const m of marken) {
         const sp = document.createElement("span");
-        sp.textContent = zahl(m, r.id === "kA" ? 2 : 0);
-        sp.style.left = (100 * (m - r.min) / (max - r.min)).toFixed(2) + "%";
+        sp.textContent = zahl(m, r.id === "kA" ? (m < 0.1 ? 2 : (m < 1 ? 1 : 0)) : 0);
+        sp.style.left = (r.log ? zuLog(r, m) / 10 : 100 * (m - r.min) / (max - r.min)).toFixed(2) + "%";
         sk.appendChild(sp);
       }
       $("rminus-" + r.id).disabled = v <= r.min;

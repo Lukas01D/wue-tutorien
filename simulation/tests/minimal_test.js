@@ -26,7 +26,7 @@ const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('�
     const kern = () => p.textContent('#kern'), saeulen = () => p.textContent('#saeulen');
     const k0 = await kern(), s0 = await saeulen();
     pruefe(n + 'Kasten mit Werten des Blatts (43,01 / 36,31 / 6,69 K)', ['43,01', '36,31', '6,69'].every(z => k0.includes(z)), k0);
-    pruefe(n + 'Kasten: Tasse 1 (Milch zu Beginn), Tasse 2 (Milch am Ende), Temperaturdifferenz', k0.includes('Milch zu Beginn') && k0.includes('Milch am Ende') && k0.includes('Temperatur­differenz'));
+    pruefe(n + 'Kasten: Tasse 1 (Milch zu Beginn), Tasse 2 (Milch später), Temperaturdifferenz', k0.includes('Milch zu Beginn') && k0.includes('Milch später') && k0.includes('Temperatur­differenz'));
     pruefe(n + 'Säulen 15,50 und 23,82 kJ, Unterschied 8,31 kJ', ['15,50', '23,82', '8,31'].every(z => s0.includes(z)), s0);
     pruefe(n + 'keine Fragen, kein Ausklappen, keine Hinweistexte', (await p.$$('textarea, select, fieldset, details, input[type=radio], input[type=checkbox]')).length === 0 && (await p.$$eval('.regler .hinweis', l => l.filter(x => x.textContent.trim()).length)) === 0);
     pruefe(n + 'neun Regler mit − und + (mit Kaffeemenge und Wärmekapazität)', (await p.$$('.regler')).length === 9 && (await p.$$('.pm')).length === 18 && !!(await p.$('#rr-VK_ml')) && !!(await p.$('#rr-CT')));
@@ -60,6 +60,17 @@ const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('�
     await setze(p, 'CT', 255);
     const dCT = zahlen(await kern())[2];
     pruefe(n + 'Wärmekapazität 255 J/K: Unterschied kleiner als ohne Tasse', dCT > 3 && dCT < 6.69, String(dCT));
+    pruefe(n + 'Vergleich Wärmekapazität 255 J/K: Porzellantasse, Einmachglas', (await p.textContent('#rv-CT')) === '≈ Porzellantasse, Einmachglas' && (await p.$eval('#rr-CT', e => e.getAttribute('aria-valuetext'))).includes('Porzellantasse'));
+    await p.click('#knopf-blatt');
+    pruefe(n + 'Vergleiche bei Standardwerten: Tasse mit Deckel, Blatt ohne Wärmekapazität', (await p.textContent('#rv-kA')) === '≈ Tasse mit Deckel' && (await p.textContent('#rv-CT')).startsWith('Blatt'));
+    await p.fill('#rf-kA', '0,012'); await p.press('#rf-kA', 'Enter');
+    pruefe(n + 'kA 0,012 W/K: sehr gute Isolierflasche, Schieber logarithmisch', (await p.textContent('#rv-kA')) === '≈ sehr gute Isolierflasche' && Math.abs(Number(await p.$eval('#rr-kA', e => e.value)) - 1000 * Math.log(1.2) / Math.log(100)) < 1.5);
+    await setze(p, 'kA', 1000);
+    pruefe(n + 'kA-Schieber ganz rechts: 1 W/K, offene Tasse', (await p.$eval('#rf-kA', e => e.value)) === '1,0000' && (await p.textContent('#rv-kA')).includes('offene Tasse'));
+    pruefe(n + 'Regler mit Vergleich stehen unten nebeneinander', await p.evaluate(() => {
+      const a = document.querySelector('[data-r=kA]').getBoundingClientRect(), b = document.querySelector('[data-r=CT]').getBoundingClientRect(), t = document.querySelector('[data-r=thU]').getBoundingClientRect();
+      return a.top >= t.bottom - 1 && (innerWidth < 700 ? b.top >= a.bottom - 1 : Math.abs(a.top - b.top) < 2);
+    }));
     await p.click('#knopf-blatt');
     await setze(p, 'VK_ml', 300);
     const dVK = zahlen(await kern())[2];

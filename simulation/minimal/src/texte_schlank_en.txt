@@ -6,7 +6,7 @@ Pause
 @schlank_t1
 Cup 1 (milk at the start)
 @schlank_t2
-Cup 2 (milk at the end)
+Cup 2 (milk later)
 @schlank_diff
 Temperature difference
 @schlank_r_t
@@ -25,3 +25,25 @@ Both cups start with coffee at {a} °C. The milk {v1} cup 1 to {a1} °C right aw
 Default values
 @schlank_status_standard
 The default values are set.
+@vgl_kA_1
+≈ very good vacuum flask
+@vgl_kA_2
+≈ vacuum flask, travel mug
+@vgl_kA_3
+≈ basic travel mug
+@vgl_kA_4
+≈ cup with lid
+@vgl_kA_5
+≈ open cup (rough)
+@vgl_CT_0
+worksheet: cup stores no heat
+@vgl_CT_1
+≈ paper cup with lid
+@vgl_CT_2
+≈ double-walled glass
+@vgl_CT_3
+≈ thin drinking glass
+@vgl_CT_4
+≈ porcelain cup, mason jar
+@vgl_CT_5
+≈ heavy porcelain mug

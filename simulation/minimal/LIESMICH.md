@@ -11,12 +11,14 @@ Auftrag der TL vom 11.11.2026: das Simulationstool ohne Fragen und mit viel weni
 
 Regler: Zeit $t$ (1 bis 180 min), Zugabe in Tasse 2 (höchstens $t$), Milchtemperatur, Milchmenge, Kaffeetemperatur, Kaffeemenge, Raumtemperatur, $kA$, Wärmekapazität der Tasse. Der Kasten zeigt die Werte zum angezeigten Zeitpunkt (beim Abspielen laufend), die Säulen die an den Raum abgegebene Wärme bis dahin; es gilt immer $Q_2 - Q_1 = C_G\,(\vartheta_1 - \vartheta_2)$ nach der Zugabe.
 
-Geplant: Alltagsvergleiche neben $kA$ und $C_\mathrm{T}$ (Auftrag in `AUFTRAG_Vergleichswerte.md`).
+Alltagsvergleiche neben $kA$ (logarithmischer Regler, 0,01 bis 1 W/K) und $C_\mathrm{T}$: Bereiche in `src/schlank.js` (Liste `VERGLEICH`), Belege in `QUELLEN_Vergleichswerte.md`, Prüfung mit `python3 simulation/minimal/vergleichswerte.py`. Beide Regler stehen unten nebeneinander, die übrigen sieben darüber (breite Ansicht: vier Spalten).
+
+Entscheidung der TL vom 12.11.2026: Die schlanke Seite ersetzt unter der bisherigen Adresse die alte Seite (Auftrag für Codex oben in `simulation/VEROEFFENTLICHUNG.md`).
 
 | Schritt | Befehl |
 |:--|:--|
 | Bauen | `python3 simulation/minimal/bauen_minimal.py` |
 | Prüfen, ob die Datei zum Quellstand passt | `python3 simulation/minimal/bauen_minimal.py --pruefen` |
-| Browsertest (Werte, Zeit, Abspielen, Milch 95 °C, Englisch, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (41 von 41 bestanden am 11.11.2026) |
+| Browsertest (Werte, Zeit, Abspielen, Milch 95 °C, Englisch, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (51 von 51 bestanden am 12.11.2026) |
 
-Stand 11.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `f8ed2cb32b79cf95…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.
+Stand 12.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `60409bdf8b7654d1…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.

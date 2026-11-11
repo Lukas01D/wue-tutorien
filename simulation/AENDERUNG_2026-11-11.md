@@ -22,3 +22,16 @@ Nachtrag 15:28: „Abspielen“ und „Werte des Blatts“ rechts unter den Säu
 Nachtrag 15:30: Zeitangabe im Kasten kräftiger (auch auf dem Handy); Tasse 1 hellbraun, Tasse 2 dunkelbraun und durchgezogen (Säule 2 voll statt schraffiert); Temperaturdifferenz und Q₂ − Q₁ rotorange (15:33), Temperaturen im Kasten in der Farbe der Tasse. Kontraste: Linie und große Zahl Tasse 1 3,4, sonst mindestens 5,0.
 
 Tests: Rechenkern 34 von 34, Texte 16 von 16, Browser 107 von 107, schlanke Seite 41 von 41 bestanden; Bildschirmfotos neu.
+
+## Nachtrag 12.11.2026
+
+| Bereich | Änderung |
+|:--|:--|
+| Kasten | „Tasse 2 (Milch später)“ (EN „Cup 2 (milk later)“) |
+| Regler $kA$ | 0,01 bis 1 W/K, logarithmisch (eine Isolierflasche liegt bei etwa 0,01 bis 0,05 W/K) |
+| Alltagsvergleiche | neben $kA$ und Wärmekapazität, belegt in `minimal/QUELLEN_Vergleichswerte.md` (13 Quellen), geprüft mit `minimal/vergleichswerte.py` |
+| Anordnung | sieben Regler in vier Spalten, darunter $kA$ und Wärmekapazität nebeneinander; bei 1366 × 768 alles ohne Bildlauf |
+| Veröffentlichung | Auftrag für die schlanke Seite oben in `VEROEFFENTLICHUNG.md` (ersetzt die alte Seite unter derselben Adresse, Entscheidung der TL) |
+
+Tests: Rechenkern 34 von 34, Texte 16 von 16, Hauptseite 107 von 107, schlanke Seite 51 von 51 bestanden.
+

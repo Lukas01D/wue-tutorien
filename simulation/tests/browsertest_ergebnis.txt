@@ -106,6 +106,6 @@ bestanden   axe-core ohne Verstoß: Z2 Deutsch 390
 bestanden   axe-core ohne Verstoß: Z0 Englisch 390
 bestanden   axe-core ohne Verstoß: Z2 Englisch 390
 bestanden   axe-core ohne Verstoß: Z2 Deutsch Beamer 1280 × 720
-bestanden   Leistung: Reglerschritt Median unter 50 ms (2.2 / 3.3 ms, Median / 95 %)
+bestanden   Leistung: Reglerschritt Median unter 50 ms (2.6 / 3.5 ms, Median / 95 %)
 
 107 von 107 bestanden

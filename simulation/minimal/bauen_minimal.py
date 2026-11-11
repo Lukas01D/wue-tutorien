@@ -23,9 +23,9 @@ sys.path.insert(0, SITE)
 import bauen as haupt  # noqa: E402
 import tex2mathml  # noqa: E402
 
-STAND = "2026-11-11"
+STAND = "2026-11-12"
 ZIEL = os.path.join(HIER, "Kaffee_Simulation_schlank.html")
-BAUSTEINE = ["T", "F", "zahl", "liesZahl", "textOhneTags", "el", "imBild", "saeulen", "begrenze", "reglerBauen", "reglerTexte", "setze"]
+BAUSTEINE = ["T", "F", "zahl", "liesZahl", "textOhneTags", "el", "imBild", "saeulen", "begrenze", "reglerTexte", "setze"]
 # Einzige Änderung an einem Baustein: Maßstab der Säulen aus den Werten bei der Zugabe, damit sie beim Abspielen wachsen
 ERSATZ = {"saeulen": [("max = Math.max(erg.Q1, erg.Q2, 1e-9)", "max = Math.max(erg.Q1max, erg.Q2max, 1e-9)")]}
 

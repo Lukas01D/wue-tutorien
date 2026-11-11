@@ -27,7 +27,12 @@
 .regler-bereich { padding: 4px 12px 2px; }
 .regler-raster { display: grid; gap: 0 18px; }
 @media (min-width: 700px) { .regler-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1200px) { .regler-raster { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .regler-raster { grid-template-columns: repeat(4, minmax(0, 1fr)); } .regler-raster.zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* Regler mit Alltagsvergleich: unten nebeneinander, Vergleich in der Namenszeile rechts */
+.regler-raster.zwei { border-top: 1px solid var(--linie-fein); padding-top: 4px; }
+.regler .vergleich { margin: 0 0 0 auto; font-size: .86rem; font-weight: 600; color: var(--leise); white-space: nowrap; }
+.regler-raster.zwei .regler .name { flex: 0 1 auto; }
+.regler .umbruch { flex: 0 0 100%; height: 0; }
 .regler-raster .regler { gap: 2px 6px; margin: 0 0 4px; }
 .regler-raster .regler .name { font-size: .86rem; }
 .regler-raster .pm { flex: 0 0 36px; width: 36px; height: 36px; font-size: 1.15rem; }
@@ -38,3 +43,6 @@
 .regler-raster .feld { flex: 0 0 4.8em; width: 4.8em; min-height: 36px; padding: 3px 8px; font-size: .95rem; }
 .jetzt { stroke: var(--blau); stroke-width: 1.5; stroke-dasharray: 3 3; }
 .zukunft { fill: var(--karte); opacity: .82; }
+/* logarithmischer Regler: gleichmäßige Striche der Hauptseite passen nicht zur Skala, daher nur die Grundlinie */
+#rr-kA::-webkit-slider-runnable-track { background: linear-gradient(var(--tinte), var(--tinte)) bottom / 100% 2px no-repeat; }
+#rr-kA::-moz-range-track { background: linear-gradient(var(--tinte), var(--tinte)) bottom / 100% 2px no-repeat; }

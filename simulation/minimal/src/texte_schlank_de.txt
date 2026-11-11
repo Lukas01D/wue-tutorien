@@ -6,7 +6,7 @@ Anhalten
 @schlank_t1
 Tasse 1 (Milch zu Beginn)
 @schlank_t2
-Tasse 2 (Milch am Ende)
+Tasse 2 (Milch später)
 @schlank_diff
 Temperatur&shy;differenz
 @schlank_r_t
@@ -25,3 +25,25 @@ Beide Tassen beginnen mit Kaffee bei {a} °C. Tasse 1 {v1} durch die Milch sofor
 Standardwerte
 @schlank_status_standard
 Die Standardwerte sind eingestellt.
+@vgl_kA_1
+≈ sehr gute Isolierflasche
+@vgl_kA_2
+≈ Isolierflasche, Thermobecher
+@vgl_kA_3
+≈ einfacher Thermobecher
+@vgl_kA_4
+≈ Tasse mit Deckel
+@vgl_kA_5
+≈ offene Tasse (grob)
+@vgl_CT_0
+Blatt: Tasse speichert keine Wärme
+@vgl_CT_1
+≈ Pappbecher mit Deckel
+@vgl_CT_2
+≈ doppelwandiges Glas
+@vgl_CT_3
+≈ dünnes Trinkglas
+@vgl_CT_4
+≈ Porzellantasse, Einmachglas
+@vgl_CT_5
+≈ schwerer Porzellanbecher
