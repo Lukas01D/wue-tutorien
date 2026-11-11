@@ -24,7 +24,7 @@ import bauen as haupt  # noqa: E402
 import tex2mathml  # noqa: E402
 
 STAND = "2026-11-12"
-DESIGN = "1"   # Darstellung der Alltagsvergleiche; Vorschauen anderer Varianten mit --design N --ziel DATEI
+DESIGN = "3"   # Wahl der TL vom 12.11.2026: Band. Darstellung der Alltagsvergleiche; Vorschauen anderer Varianten mit --design N --ziel DATEI
 ZIEL = os.path.join(HIER, "Kaffee_Simulation_schlank.html")
 BAUSTEINE = ["T", "F", "zahl", "liesZahl", "textOhneTags", "el", "imBild", "saeulen", "begrenze", "reglerTexte", "setze"]
 # Einzige Änderung an einem Baustein: Maßstab der Säulen aus den Werten bei der Zugabe, damit sie beim Abspielen wachsen

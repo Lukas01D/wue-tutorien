@@ -46,6 +46,8 @@ const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('�
     await p.fill('#rf-kA', '0,012'); await p.press('#rf-kA', 'Enter');
     pruefe(n + 'Tassenwärmer höchstens bis 95 °C: bei kA 0,012 W/K Obergrenze 0,5 W', (await p.$eval('#rr-QW', e => e.max)) === '0.5' && (await p.$eval('#rf-QW', e => e.value)) === '0,5');
     await p.fill('#rf-kA', '0,1994'); await p.press('#rf-kA', 'Enter');
+    pruefe(n + 'Tassenwärmer bei kA des Blatts höchstens 14,5 W (95 °C), bei kA 1 W/K bis 35 W', (await p.$eval('#rr-QW', e => e.max)) === '14.5' && await (async () => { await setze(p, 'kA', 1000); return (await p.$eval('#rr-QW', e => e.max)) === '35'; })());
+    await p.fill('#rf-kA', '0,1994'); await p.press('#rf-kA', 'Enter');
     await setze(p, 'QW', 0);
     await setze(p, 'tZ', 90);
     pruefe(n + 'Zugabe nicht über t', (await p.$eval('#rr-tZ', e => e.value)) === '90');
@@ -67,13 +69,13 @@ const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('�
     await setze(p, 'CT', 255);
     const dCT = zahlen(await kern())[2];
     pruefe(n + 'Wärmekapazität 255 J/K: Unterschied kleiner als ohne Tasse', dCT > 3 && dCT < 6.69, String(dCT));
-    pruefe(n + 'Vergleich Wärmekapazität 255 J/K: Porzellantasse, Einmachglas', (await p.textContent('#rv-CT')) === '≈ Porzellantasse, Einmachglas' && (await p.$eval('#rr-CT', e => e.getAttribute('aria-valuetext'))).includes('Porzellantasse'));
+    pruefe(n + 'Vergleich Wärmekapazität 255 J/K: Porzellantasse, Einmachglas', (await p.textContent('#rbl-CT')) === 'Porzellantasse, Einmachglas' && (await p.$eval('#rr-CT', e => e.getAttribute('aria-valuetext'))).includes('Porzellantasse'));
     await p.click('#knopf-blatt');
-    pruefe(n + 'Vergleiche bei Standardwerten: Tasse mit Deckel, Blatt ohne Wärmekapazität', (await p.textContent('#rv-kA')) === '≈ Tasse mit Deckel' && (await p.textContent('#rv-CT')).startsWith('Blatt'));
+    pruefe(n + 'Vergleiche bei Standardwerten: Tasse mit Deckel, Blatt ohne Wärmekapazität', (await p.textContent('#rbl-kA')) === 'Tasse mit Deckel' && (await p.textContent('#rbl-CT')).startsWith('Blatt') && (await p.$$('#rband-kA span.an')).length === 1);
     await p.fill('#rf-kA', '0,012'); await p.press('#rf-kA', 'Enter');
-    pruefe(n + 'kA 0,012 W/K: sehr gute Isolierflasche, Schieber logarithmisch', (await p.textContent('#rv-kA')) === '≈ sehr gute Isolierflasche' && Math.abs(Number(await p.$eval('#rr-kA', e => e.value)) - 1000 * Math.log(1.2) / Math.log(100)) < 1.5);
+    pruefe(n + 'kA 0,012 W/K: sehr gute Isolierflasche, Schieber logarithmisch', (await p.textContent('#rbl-kA')) === 'sehr gute Isolierflasche' && Math.abs(Number(await p.$eval('#rr-kA', e => e.value)) - 1000 * Math.log(1.2) / Math.log(100)) < 1.5);
     await setze(p, 'kA', 1000);
-    pruefe(n + 'kA-Schieber ganz rechts: 1 W/K, offene Tasse', (await p.$eval('#rf-kA', e => e.value)) === '1,0000' && (await p.textContent('#rv-kA')).includes('offene Tasse'));
+    pruefe(n + 'kA-Schieber ganz rechts: 1 W/K, offene Tasse', (await p.$eval('#rf-kA', e => e.value)) === '1,0000' && (await p.textContent('#rbl-kA')).includes('offene Tasse'));
     pruefe(n + 'Regler mit Vergleich stehen unten nebeneinander', await p.evaluate(() => {
       const a = document.querySelector('[data-r=kA]').getBoundingClientRect(), b = document.querySelector('[data-r=CT]').getBoundingClientRect(), t = document.querySelector('[data-r=thU]').getBoundingClientRect();
       return a.top >= t.bottom - 1 && (innerWidth < 700 ? b.top >= a.bottom - 1 : Math.abs(a.top - b.top) < 2);

@@ -16,7 +16,7 @@
     { id: "thK0", t: "r_thK0", einheit: "°C", min: 60, max: 95, schritt: 0.5, stellen: 1, marken: [60, 70, 80, 95] },
     { id: "VK_ml", t: "schlank_r_VK", einheit: "ml", min: 50, max: 400, schritt: 10, stellen: 0, marken: [100, 200, 300, 400] },
     { id: "thU", t: "r_thU", einheit: "°C", min: 10, max: 30, schritt: 0.5, stellen: 1, marken: [10, 20, 30] },
-    { id: "QW", t: "schlank_r_QW", einheit: "W", min: 0, max: 10, schritt: 0.5, stellen: 1, marken: [0, 2.5, 5, 7.5, 10] },
+    { id: "QW", t: "schlank_r_QW", einheit: "W", min: 0, max: 35, schritt: 0.5, stellen: 1, marken: [0, 10, 20, 35] },
     { id: "kA", t: "r_kA", einheit: "W/K", min: 0.01, max: 1, schritt: 0.05, stellen: 4, marken: [0.01, 0.03, 0.1, 0.3, 1], log: true, vergleich: true },
     { id: "CT", t: "schlank_r_CT", einheit: "J/K", min: 0, max: 600, schritt: 5, stellen: 0, marken: [0, 150, 300, 450, 600], vergleich: true }
   ];
