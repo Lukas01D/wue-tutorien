@@ -15,14 +15,14 @@
 @media (min-width: 1024px) { .buehne { position: static; max-height: none; overflow: visible; } }
 .reihe { display: grid; grid-template-columns: minmax(0, 1fr); }
 .saeulen-feld { padding: 6px 12px 0; border-top: 1px solid var(--linie-fein); }
-.saeulen-feld .saeulen { width: 100%; max-width: 300px; height: auto; margin: 4px auto 8px; }
+.saeulen-feld .saeulen { width: 100%; max-width: 250px; height: auto; margin: 2px auto 6px; }
 @media (min-width: 900px) {
-  .reihe { grid-template-columns: minmax(0, 1fr) 280px; }
+  .reihe { grid-template-columns: minmax(0, 1fr) 300px; }
   .saeulen-feld { border-top: 0; border-left: 1px solid var(--linie-fein); display: flex; flex-direction: column; justify-content: center; }
 }
 .knoepfe { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 8px; margin: 0 0 10px; }
-.knoepfe .knopf { min-height: 40px; margin: 0; padding: 4px 14px; }
-#abspielen { min-width: 8.5em; }
+.knoepfe .knopf { min-height: 38px; margin: 0; padding: 3px 10px; }
+#abspielen { min-width: 7.2em; }
 /* Regler kompakter als auf der Hauptseite (Bedienflächen mindestens 36 px), damit Diagramm und alle Regler auf einen Bildschirm passen */
 .regler-bereich { padding: 4px 12px 2px; }
 .regler-raster { display: grid; gap: 0 18px; }

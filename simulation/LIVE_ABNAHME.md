@@ -67,3 +67,21 @@ Codex hat die Hauptadresse durch Fassung 3 ersetzt und die Prüfadresse wieder p
 ## Nicht live geprüft (offen bei der TL)
 
 iPhone mit Safari (`simulation/ABNAHME_IPHONE.md`), Beamer im Hörsaal, Bildschirmleser, Probelauf mit zwei Studierenden und Stoppuhr.
+
+## Schlanke Seite, Sites-Version 4 (12.11.2026, 00:55 Uhr)
+
+Geprüft von Claude im Chrome der TL (Fenster 1366 × 640) auf https://waermeuebertragung-kaffee.qarri196.chatgpt.site/, Quelle Merge von PR #15 (`89d2d06658`).
+
+| Nr. | Prüfung | Ergebnis |
+|:--|:--|:--|
+| 1 | Stand | Fuß „Stand 2026-11-12 · Version 3a805cda08“, gleich der Datei auf `main` |
+| 2 | Kasten nach 45 min | Tasse 1 43,01 °C, Tasse 2 36,31 °C, Temperaturdifferenz 6,69 K |
+| 3 | Säulen | 15,50 und 23,82 kJ, Q₂ − Q₁ 8,31 kJ |
+| 4 | Regler und Vergleiche | zehn Regler; Bänder „Tasse mit Deckel“ und „Blatt: Tasse speichert keine Wärme“; Tassenwärmer höchstens 14,5 W bei kA des Blatts |
+| 5 | Abspielen | nach 1,5 s „nach 10,8 min“ mit verdeckter Zukunft, Knopf „Anhalten“; am Ende „nach 45 min“, Säulen 15,50 und 23,82 kJ, Knopf wieder „Abspielen“ |
+| 6 | Tassenwärmer 5 W | Tasse 1 51,83 °C, Tasse 2 44,33 °C, Differenz 7,50 K; Q₂ − Q₁ 9,31 kJ = 1241,8 J/K · 7,50 K |
+| 7 | Englisch | „after 45 min“, „Cup 1 (milk at the start)“, 43.01 °C, Knopf „Play“, Band „cup with lid“ |
+| 8 | Konsole, Speicher, fremde Skripte | keine Fehler, lokaler Speicher leer, keine nachgeladenen Skripte |
+| 9 | Platz | im Fenster 1366 × 640 reichen die Regler bis 736 px, die Bänder brauchen Bildlauf; Codex meldet bei 1280 × 720 etwa 15 px |
+
+Folge: Anordnung für niedrige Fenster nachgebessert (Zweig `claude/kaffee-schlank-abnahme`: Knöpfe nebeneinander, Säulen etwas kleiner, Diagramm bei Fenstern unter 700 px Höhe mindestens 200 px). Danach passt alles bei 1280 × 720 und 1366 × 768 ohne Bildlauf, bei 1366 × 640 fehlen noch etwa 40 px. Neue Veröffentlichung nach Merge nötig.
