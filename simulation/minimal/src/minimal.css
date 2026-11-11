@@ -1,0 +1,71 @@
+{{FONTS}}
+/* Kaffee-Simulation, schlanke Varianten A und B: nur Diagramm, Säulen der abgegebenen Wärme und Regler.
+   Farben und Schriften wie die Hauptseite (simulation/site/src/stil.css). */
+:root {
+  --papier: #f6f3ea; --karte: #fffdf8; --tinte: #1c1f24; --leise: #4f5560; --linie: #8f887a;
+  --blau: #1d4f91; --blau-hell: #e7eef8;
+  --k1: #8a4a17; --k1-text: #7a3f12; --k2: #1c1f24; --raum: #767164; --gitter: #e4ddcc; --gitter-haupt: #cfc7b4;
+  --schrift: "Plex Sans", "Plex Math", system-ui, sans-serif;
+  --zahl: "Plex Mono", "Plex Sans", "Plex Math", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--papier); color: var(--tinte); font-family: var(--schrift); line-height: 1.45; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--papier); }
+h1 { line-height: 1.2; margin: 0; font-weight: 600; }
+p { margin: 0; }
+.nur-leser { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.banner { padding: 12px 16px; background: var(--blau-hell); border-bottom: 2px solid var(--blau); }
+.kopf { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; align-items: center; padding: 8px 16px;
+        border-bottom: 2px solid var(--tinte); background: var(--karte); }
+.kopf-marke { font-family: var(--zahl); font-weight: 600; border: 2px solid var(--tinte); padding: 4px 6px; }
+.kopf-zeile { font-family: var(--zahl); font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--leise); }
+.kopf-titel { font-size: 1.15rem; }
+.seite { max-width: 1320px; margin: 0 auto; padding: 10px 16px 16px; }
+.lage { color: var(--leise); font-size: .95rem; margin-bottom: 8px; }
+.buehne { display: grid; gap: 12px; background: var(--karte); border: 1.5px solid var(--tinte); padding: 10px; }
+@media (min-width: 760px) { .buehne { grid-template-columns: minmax(0, 1fr) 240px; align-items: stretch; } }
+figure { margin: 0; min-width: 0; }
+.dia, .q { display: block; width: 100%; }
+.feld-q { display: flex; flex-direction: column; }
+@media (min-width: 760px) { .feld-q { border-left: 1px solid var(--gitter-haupt); padding-left: 12px; } }
+.q-titel { font-size: .9rem; font-weight: 600; margin-bottom: 4px; }
+.dia text, .q text { font-family: var(--schrift); }
+.ax { font-family: var(--zahl); fill: var(--leise); }
+.beschr { fill: var(--leise); }
+.kbeschr { font-weight: 600; }
+.k1-text { fill: var(--k1-text); } .k2-text { fill: var(--k2); }
+.gitter { stroke: var(--gitter); stroke-width: 1; } .gitter-haupt { stroke: var(--gitter-haupt); stroke-width: 1; }
+.achse { stroke: var(--tinte); stroke-width: 1.5; }
+.raum { stroke: var(--raum); stroke-width: 1.5; stroke-dasharray: 2 3; } .raum-text { fill: var(--raum); font-family: var(--zahl); }
+.kurve { fill: none; stroke-linejoin: round; } .k1 { stroke: var(--k1); } .k2 { stroke: var(--k2); }
+.gestrichelt { stroke-dasharray: 7 4; }
+.blass { opacity: .18; }
+.abfall { stroke-dasharray: 6 4; }
+.pfeil.k1 { fill: var(--k1); stroke: none; } .pfeil.k2 { fill: var(--k2); stroke: none; }
+.ende { fill: var(--karte); stroke-width: 2.5; }
+.jetzt { stroke: var(--blau); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.punkt.k1 { fill: var(--k1); stroke: none; } .punkt.k2 { fill: var(--k2); stroke: none; }
+.saeule1 { fill: var(--k1); } .saeule2 { fill: url(#schraffur); stroke: var(--k2); stroke-width: 2; }
+.schraffur-grund { fill: var(--karte); } .schraffur-linie { stroke: var(--k2); stroke-width: 2; }
+.zahl { font-family: var(--zahl); }
+.q .zahl { fill: var(--tinte); font-weight: 600; }
+.diff { fill: var(--tinte); }
+.klammer { fill: none; stroke: var(--tinte); stroke-width: 1.5; }
+.ergebnis { margin: 8px 0 0; font-size: 1.02rem; }
+.ergebnis b { font-family: var(--zahl); font-weight: 600; white-space: nowrap; }
+.zeit { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 10px; }
+.zeit-label { font-weight: 600; min-width: 7.5em; }
+.zeit input { flex: 1 1 220px; min-width: 0; height: 32px; accent-color: var(--blau); }
+.knopf { min-height: 44px; padding: 6px 14px; font: inherit; font-weight: 600; border: 2px solid var(--blau); background: var(--karte); color: var(--blau); cursor: pointer; }
+.knopf:hover { background: var(--blau-hell); }
+.knopf:focus-visible, input:focus-visible { outline: 3px solid var(--blau); outline-offset: 2px; }
+.regler-bereich { margin-top: 12px; border-top: 1.5px solid var(--tinte); padding-top: 8px; }
+.regler-raster { display: grid; gap: 4px 24px; }
+@media (min-width: 640px) { .regler-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .regler-raster { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.regler { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0 8px; }
+.regler label { font-size: .95rem; }
+.regler output { font-family: var(--zahl); font-weight: 600; font-size: .95rem; }
+.regler input { grid-column: 1 / -1; width: 100%; height: 30px; margin: 0; accent-color: var(--blau); }
+.fuss { max-width: 1320px; margin: 0 auto; padding: 0 16px 16px; font-size: .8rem; color: var(--leise); }

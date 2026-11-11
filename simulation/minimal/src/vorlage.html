@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="{{CSP}}">
+<meta name="theme-color" content="#f6f3ea">
+<title>Kaffee mit Milch: Simulation {{VARIANTE}}</title>
+<style>{{CSS}}</style>
+</head>
+<body>
+<noscript><p class="banner">Diese Seite braucht JavaScript.</p></noscript>
+<header class="kopf">
+  <span class="kopf-marke" aria-hidden="true">T5</span>
+  <div><p class="kopf-zeile">Wärmeübertragung · Tutorium 5</p><h1 class="kopf-titel">Kaffee mit Milch: Simulation</h1></div>
+</header>
+<main class="seite">
+  <p class="lage" id="lage"></p>
+  <section class="buehne" aria-label="Ergebnis">
+    <figure class="feld-dia">
+      <svg id="dia" class="dia" role="img" aria-labelledby="dia-text"></svg>
+      <figcaption id="dia-text" class="nur-leser"></figcaption>
+    </figure>
+    <figure class="feld-q">
+      <figcaption class="q-titel">An den Raum abgegebene Wärme <span id="q-bis"></span></figcaption>
+      <svg id="q" class="q" role="img" aria-labelledby="q-text"></svg>
+      <p id="q-text" class="nur-leser"></p>
+    </figure>
+  </section>
+  <p class="ergebnis" id="ergebnis" aria-live="polite"></p>
+  <div class="zeit" id="zeit-bereich" hidden>
+    <button type="button" class="knopf" id="abspielen">Abspielen</button>
+    <label class="zeit-label" for="zeit">Zeit <span class="zahl" id="zeit-wert"></span></label>
+    <input type="range" id="zeit" min="0" max="45" step="0.25" value="45">
+  </div>
+  <section class="regler-bereich" aria-label="Werte einstellen">
+    <div class="regler-raster" id="regler"></div>
+    <button type="button" class="knopf" id="blatt">Werte des Blatts</button>
+  </section>
+</main>
+<footer class="fuss"><p id="fuss"></p></footer>
+<script>{{JS}}</script>
+</body>
+</html>

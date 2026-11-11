@@ -8,7 +8,7 @@
   const MILCH_GRENZE = 30;
   const TOLERANZ_RECHNUNG = 0.1;   // K: Abweichung der eigenen Rechnung, ab der die Seite „weicht ab“ sagt
   const REGLER = [
-    { id: "thM", t: "r_thM", einheit: "°C", min: 2, max: 80, schritt: 0.5, stellen: 1, marken: [2, 20, 40, 60, 80], gruppe: false },
+    { id: "thM", t: "r_thM", einheit: "°C", min: 2, max: 95, schritt: 0.5, stellen: 1, marken: [2, 20, 40, 60, 80, 95], gruppe: false },
     { id: "tZ", t: "r_tZ", einheit: "min", min: 1, max: 180, schritt: 1, stellen: 0, marken: [1, 45, 90, 135, 180], gruppe: false },
     { id: "thK0", t: "r_thK0", einheit: "°C", min: 60, max: 95, schritt: 0.5, stellen: 1, marken: [60, 70, 80, 95], gruppe: true },
     { id: "thU", t: "r_thU", einheit: "°C", min: 10, max: 30, schritt: 0.5, stellen: 1, marken: [10, 20, 30], gruppe: true },
@@ -149,7 +149,7 @@
         sk.appendChild(sp);
       }
       const h = $("rh-" + r.id);
-      if (r.id === "thM") h.textContent = max < r.max ? T("r_thM_sperre") : "";
+      if (r.id === "thM") h.textContent = max < r.max ? T("r_thM_sperre") : (v >= 40 ? T("r_thM_warm") : "");
       else if (r.id === "kA") h.textContent = F("r_kA_mess", { th: zahl(erg.th_mess, 1) });
       $("rminus-" + r.id).disabled = v <= r.min;
       $("rplus-" + r.id).disabled = v >= max;
@@ -224,7 +224,7 @@
     const e = S.e, m = messungen();
     const pkt = [...m.t1, ...m.t2, ...(S.bsp ? [...BEISPIEL.t1, ...BEISPIEL.t2] : [])].filter(v => v !== null);
     const xmax = Math.max(60, Math.ceil(e.tZ / 10) * 10);
-    const ymax = Math.max(90, Math.ceil((Math.max(e.thK0, erg.th10, ...pkt) + 3) / 10) * 10);
+    const ymax = Math.max(90, Math.ceil((Math.max(e.thK0, erg.th10, erg.th2, ...pkt) + 3) / 10) * 10);
     const ymin = Math.min(10, Math.floor((e.thU - 5) / 10) * 10, ...pkt.map(v => Math.floor((v - 2) / 10) * 10));
     const Lr = 46, R = 24, Tr = 12, B = 38, P = 12;   // P: Abstand der Achse von t = 0, damit der Abfall von Tasse 1 nicht auf der Achse liegt
     const X = t => Lr + P + (W - Lr - P - R) * t / xmax, Y = v => Tr + (H - Tr - B) * (ymax - v) / (ymax - ymin);
@@ -254,12 +254,13 @@
     const dick = W >= 600 ? 3 : 2.5;
     svg.appendChild(el("polyline", { points: p1.join(" "), class: "kurve k1", "stroke-width": dick }));
     svg.appendChild(el("polyline", { points: p2.join(" "), class: "kurve k2 gestrichelt", "stroke-width": dick }));
-    // Abfall durch die Milch: kräftig gestrichelt (Tasse 1 bei t = 0 vom Kaffee auf die Mischtemperatur, Tasse 2 bei tZ)
+    // Sprung durch die Milch: kräftig gestrichelt (Tasse 1 bei t = 0 vom Kaffee auf die Mischtemperatur, Tasse 2 bei tZ).
+    // Meist nach unten; ist die Milch wärmer als der Kaffee, zeigt der Pfeil nach oben (r = Richtung in Pixeln, +1 abwärts).
     const abf = [[0, e.thK0, erg.th10, "k1", 0], [e.tZ, erg.th2K, erg.th2, "k2", 6]].map(([t, o, u, k, l]) => {
-      const x = X(t), y1 = Y(o), y2 = Y(u) - l;
-      return { t: t, x: x, y1: y1, y2: y2, k: k, sp: Math.min(W >= 600 ? 9 : 7, (y2 - y1) / 2), ok: y2 - y1 > 2 };
+      const r = Y(u) >= Y(o) ? 1 : -1, x = X(t), y1 = Y(o), y2 = Y(u) - r * l, lang = r * (y2 - y1);
+      return { t: t, x: x, y1: y1, y2: y2, r: r, k: k, sp: Math.min(W >= 600 ? 9 : 7, lang / 2), ok: lang > 2 };
     });
-    for (const a of abf) if (a.ok) svg.appendChild(el("line", { x1: a.x, x2: a.x, y1: a.y1, y2: a.y2 - a.sp, class: "abfall " + a.k, "stroke-width": dick }));
+    for (const a of abf) if (a.ok) svg.appendChild(el("line", { x1: a.x, x2: a.x, y1: a.y1, y2: a.y2 - a.r * a.sp, class: "abfall " + a.k, "stroke-width": dick }));
     // Messpunkte: eigene gefüllt, Beispielwerte hohl
     const punkt = (t, v, tasse, hohl) => {
       if (tasse === 1) svg.appendChild(el("circle", { cx: X(t), cy: Y(v), r: 4.2, class: "punkt k1" + (hohl ? " hohl" : "") }));
@@ -277,10 +278,10 @@
     // Pfeilspitzen und Beschriftung der Abfälle über den Endpunkten (Spitze von Tasse 2 endet am Rand ihres Endpunkts)
     for (const a of abf) {
       if (!a.ok) continue;
-      const ecken = [[a.x - a.sp * 0.7, a.y2 - a.sp], [a.x + a.sp * 0.7, a.y2 - a.sp], [a.x, a.y2]];
+      const ecken = [[a.x - a.sp * 0.7, a.y2 - a.r * a.sp], [a.x + a.sp * 0.7, a.y2 - a.r * a.sp], [a.x, a.y2]];
       svg.appendChild(el("polygon", { points: ecken.map(q => q[0].toFixed(1) + "," + q[1].toFixed(1)).join(" "), class: "pfeil " + a.k }));
-      if (a.y2 - a.y1 > 2.2 * fs) {
-        const yt = a.t === 0 ? (a.y1 + a.y2) / 2 + fs * 0.35 : a.y1 + fs * 1.1;
+      if (a.r * (a.y2 - a.y1) > 2.2 * fs) {
+        const yt = a.t === 0 || a.r < 0 ? (a.y1 + a.y2) / 2 + fs * 0.35 : a.y1 + fs * 1.1;   // Tasse 2 nach unten: oben neben dem Sprung, frei von den Endpunkten
         imBild(svg.appendChild(el("text", { x: a.x + 8, y: yt, "font-size": fs, class: "kbeschr " + a.k + "-text" }, T("dia_milch"))), Lr + 2, W - 4);
       }
     }
@@ -298,11 +299,12 @@
       const txt = n === 1 ? T("dia_t1") : F("dia_t2", { t: e.tZ }), w = txt.length * fs * 0.56;
       const t = beste(von, bis), oben = k(t) >= anders(t);
       let x, y;
-      if (oben) { x = Math.max(Lr + 4, Math.min(X(t / 60), W - R - w)); y = Y(k(Math.max(0, Xinv(x)))) - 10; }
+      if (oben) { x = Math.max(Lr + 4, Math.min(X(t / 60), W - R - w, n === 1 ? X(e.tZ) - 8 - w : W)); y = Y(k(Math.max(0, Xinv(x)))) - 10; }
       else { x = Math.min(W - R, Math.max(X(t / 60), Lr + w + 4)); y = Y(k(Math.min(tZ, Xinv(x)))) + 22; }
       imBild(svg.appendChild(el("text", { x: x, y: y, "text-anchor": oben ? "start" : "end", "font-size": fs, class: "kbeschr " + (n === 1 ? "k1-text" : "k2-text") }, txt)), Lr + 2, W - 4);
     }
-    $("dia-beschreibung").textContent = F("dia_beschreibung", { a1: zahl(erg.th10, 1), e1: zahl(erg.th1, 1), a2: zahl(e.thK0, 1), e2: zahl(erg.th2K, 1), m2: zahl(erg.th2, 1), u: zahl(e.thU, 1), t: e.tZ });
+    $("dia-beschreibung").textContent = F("dia_beschreibung", { a1: zahl(erg.th10, 1), e1: zahl(erg.th1, 1), a2: zahl(e.thK0, 1), e2: zahl(erg.th2K, 1), m2: zahl(erg.th2, 1), u: zahl(e.thU, 1), t: e.tZ,
+      v1: T(erg.th10 > e.thK0 ? "dia_hoch" : "dia_runter"), v2: T(erg.th2 > erg.th2K ? "dia_hoch" : "dia_runter") });
     // Legende nur für vorhandene Zeichen
     const leg = [];
     if (mitRechnung) leg.push(T("leg_rechnung"));
