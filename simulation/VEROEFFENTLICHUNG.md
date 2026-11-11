@@ -1,6 +1,8 @@
 # Auftrag: Veröffentlichung der Kaffee-Simulation Fassung 3 (Codex, Sites)
 
-> **Nächste Veröffentlichung (vorbereitet am 12.11.2026, erst nach Merge und Freigabe der TL): schlanke Seite statt der bisherigen Seite, gleiche Adresse.** Entscheidung der TL vom 12.11.2026: Die schlanke Seite ersetzt unter `waermeuebertragung-kaffee` die bisherige Seite (QR-Code auf dem Blatt bleibt gültig). Startsatz der TL: „Veröffentliche die schlanke Kaffee-Simulation nach simulation/VEROEFFENTLICHUNG.md.“ Abweichungen von den Abschnitten unten:
+> **Nachbesserung (12.11.2026, nach der Live-Abnahme): Anordnung für niedrige Fenster.** Startsatz der TL: „Veröffentliche die schlanke Kaffee-Simulation (Nachbesserung) nach simulation/VEROEFFENTLICHUNG.md.“ Wie unten, aber Quelle ist der Merge von **Pull Request #16**; Fuß „Stand 2026-11-12 · Version b5d8b9e52e“, SHA-256 `5ffb4424171c40c426907b2cf25e484c3ecb8c56d7e5ac9a502966eb5b4bc034`. Sites-Version 4 war die erste schlanke Fassung (Merge von #15).
+>
+> **Schlanke Seite statt der bisherigen Seite, gleiche Adresse (veröffentlicht am 12.11.2026, 00:47 Uhr, Sites-Version 4).** Entscheidung der TL vom 12.11.2026: Die schlanke Seite ersetzt unter `waermeuebertragung-kaffee` die bisherige Seite (QR-Code auf dem Blatt bleibt gültig). Startsatz der TL: „Veröffentliche die schlanke Kaffee-Simulation nach simulation/VEROEFFENTLICHUNG.md.“ Abweichungen von den Abschnitten unten:
 >
 > | Abschnitt | Für die schlanke Seite |
 > |:--|:--|

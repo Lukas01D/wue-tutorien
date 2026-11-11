@@ -21,4 +21,4 @@ Entscheidung der TL vom 12.11.2026: Die schlanke Seite ersetzt unter der bisheri
 | Prüfen, ob die Datei zum Quellstand passt | `python3 simulation/minimal/bauen_minimal.py --pruefen` |
 | Browsertest (Werte, Zeit, Abspielen, Milch 95 °C, Englisch, axe-core, Laptop und Handy) | `node simulation/tests/minimal_test.js` (57 von 57 bestanden am 12.11.2026) |
 
-Stand 12.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `df59a22ece4824e7…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.
+Stand 12.11.2026: `Kaffee_Simulation_schlank.html`, SHA-256 `5ffb4424171c40c4…`. Nicht veröffentlicht; veröffentlicht wird nach Freigabe der TL.
