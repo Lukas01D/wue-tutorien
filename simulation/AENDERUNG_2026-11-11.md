@@ -17,4 +17,6 @@ Schlanke Seite: Der erste Entwurf (Varianten A und B mit eigener Optik) ist erse
 
 Nachtrag 15:18 (Wünsche der TL): Kasten „Tasse 1 (Milch zu Beginn)“, „Tasse 2 (Milch am Ende)“, „Temperaturdifferenz“; Zeit $t$ bis 180 min unabhängig von der Zugabe, Zugabe höchstens $t$, Tasse 2 kühlt nach der Milch weiter ab; alle Regler ohne Ausklappen in einem Raster; Zusammenfassung „Ausgangswerte des Blatts“ und Hinweis zur warmen Milch entfernt (auch auf der Hauptseite); neue Regler Kaffeemenge und Wärmekapazität der Tasse. Auftrag für Alltagsvergleiche: `minimal/AUFTRAG_Vergleichswerte.md`.
 
+Nachtrag 15:28: „Abspielen“ und „Werte des Blatts“ rechts unter den Säulen; Regler kompakter (Knöpfe und Felder 36 px, engere Abstände). Bei 1366 × 768 und 1280 × 720 sind Diagramm, Säulen und alle neun Regler ohne Bildlauf zu sehen.
+
 Tests: Rechenkern 34 von 34, Texte 16 von 16, Browser 107 von 107, schlanke Seite 41 von 41 bestanden; Bildschirmfotos neu.

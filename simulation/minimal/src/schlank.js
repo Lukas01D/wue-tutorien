@@ -76,7 +76,7 @@
   // ------------------------------------------------------------ Diagramm (Aufbau und Zeichen wie zeichne der Hauptseite)
   function diagrammHoehe(W) {
     if (window.innerWidth < 1024) return Math.round(Math.min(360, W * (W < 500 ? 0.82 : 0.68)));
-    return Math.round(Math.max(260, Math.min(W * 0.45, window.innerHeight - 330)));
+    return Math.round(Math.max(240, Math.min(W * 0.45, window.innerHeight - 390)));
   }
   function zeichne(m) {
     const e = S.e, tE = e.t, svg = $("dia");
