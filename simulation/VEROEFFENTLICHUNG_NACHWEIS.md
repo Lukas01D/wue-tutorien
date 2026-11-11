@@ -143,3 +143,50 @@ Umgesetzt am 08.11.2026 um 22:33:40 Uhr CET mit `update_site_access(project_id="
 - Prüfadresse: https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site, Fassung 3, Sites-Version 1, Zugangsrevision 4.
 
 Nur der Zugang der Prüfadresse wurde geändert. Dateien, Prüfsummen, gespeicherte Versionen und Deployments bleiben unverändert.
+
+## Schlanke Seite (12.11.2026)
+
+**Öffentlich veröffentlicht unter der bisherigen Hauptadresse am 12.11.2026 um 00:47:14 Uhr CET (Europe/Berlin), Sites-Version 4.** Auftrag der Tutoriumsleitung: „Veröffentliche die schlanke Kaffee-Simulation nach simulation/VEROEFFENTLICHUNG.md.“ Die freigegebene Datei wurde unverändert übernommen. Die SHA-256 von Repository, Site-Quellcommit und Upload ist identisch. Die tatsächliche HTTP-Auslieferung konnte wegen der Netzwerksperre der Cloud-Umgebung nicht abgeglichen werden. Der zusätzliche lokale Browsertest zeigt bei 1280 × 720 einen unten beschriebenen Darstellungsbefund.
+
+### Quelle, Bau und Veröffentlichung
+
+| Punkt | Nachweis |
+|:--|:--|
+| Adresse | https://waermeuebertragung-kaffee.qarri196.chatgpt.site |
+| Freigegebene Quelle | Merge von **PR #15** auf `main`: `89d2d06658769b935fa46ed41e14a797932b8e2f`, 12.11.2026, 00:42:36 Uhr CET. Merge von `claude/kaffee-sim-milch95-minimal`, zweiter Elterncommit `d09084dba03e958b64eb5dae44db0ecea0aff0e3`. |
+| Aktualisierung | `git fetch origin main`, `git checkout main`, `git pull --ff-only origin main`; `git rev-parse HEAD` ergibt genau den genannten Merge-Commit. Arbeitsverzeichnis vor der Veröffentlichung sauber. |
+| Datei im Repository | `simulation/minimal/Kaffee_Simulation_schlank.html`, **172750 Bytes**, SHA-256 **`df59a22ece4824e7060dab991b790afe5d1b68b5dcbc9832727aef12b7347660`**. |
+| Bauprüfung | `python3 simulation/minimal/bauen_minimal.py --pruefen` meldet **`gleich`**. Dateigröße und SHA-256 entsprechen der Veröffentlichungsanweisung auf dem Merge-Commit. |
+| Fuß der Seite | **`Stand 2026-11-12 · Version 3a805cda08`**, an der Baukonstante und anschließend im lokalen Browser geprüft. |
+| Quelle bei Sites | Commit **`548fac95ea6ed2ca849f75ac685ab50d867225f8`** auf `main` des bestehenden Site-Quellrepositorys. Vorgänger `99ea2b7dcba5ddc1ba4942d59e9fc17303f1d289`. Nach dem Push mit `git ls-remote` abgeglichen. `get_site_version.source.commit_sha` bestätigt denselben Commit. |
+| Hochgeladene Datei | `dist/index.html`, **172750 Bytes**, SHA-256 **`df59a22ece4824e7060dab991b790afe5d1b68b5dcbc9832727aef12b7347660`**. Git-Objekt aus PR #15, Arbeitsdatei, Site-Quellcommit und HTML-Datei im Upload-Archiv sind bytegleich. |
+| Hosting-Konfiguration und Umfang | Gegenüber dem vorherigen Site-Quellcommit wurde ausschließlich `dist/index.html` ausgetauscht. `.openai/hosting.json` blieb bytegleich: bestehende Projektkennung, `static.directory=dist`. Das Tar-Archiv enthält genau diese beiden Dateien. Keine zusätzlichen Skripte, Seitenressourcen, Analyse- oder Zähldienste. |
+| Gespeicherte Version | **Sites-Version 4**, Kennung `appgprj_6aee2773b8788191b72faeefddd89f34~appgver_c1b38d9e961081918cba408a38ac91a8`. Mit `save_site_version` einschließlich lokal geprüftem Archiv gespeichert, anschließend mit `deploy_site_version` veröffentlicht. |
+| Deployment | `appgdep_6af4fe7677788191a327477740387bf2`, Status **`succeeded`**, Zeitstempel `2026-11-11T23:47:14.019061+00:00` (12.11.2026, 00:47:14 Uhr CET). Sites bestätigt die unveränderte Hauptadresse. `env_set_revision=0`. |
+
+### Zugang und HTTP-Abgleich
+
+`get_site` wurde vor und nach der Veröffentlichung abgefragt. Beide Antworten bestätigen **`access_mode=public`**, auch in `access_policy`, Zugangsrevision **2** vom `2026-11-06T19:25:25.726484+00:00`. Die vollständige Zugangsrichtlinie blieb identisch. Projektkennung, Titel, Beschreibung, Slug, Auth-Client, Remix- und BYOP-Einstellung blieben ebenfalls identisch. Nach der Veröffentlichung bestätigt Sites die Versionsnummer 4. Es gab keine private Zwischenstufe; Adresse und QR-Code bleiben gültig.
+
+| HTTP-Prüfung | Ergebnis und Grenze |
+|:--|:--|
+| Abruf nach Veröffentlichung | `curl` gegen die Hauptadresse, ohne Anmeldung und mit den vorgegebenen Proxy-Einstellungen: **`curl: (56) CONNECT tunnel failed, response 403`**, HTTP-Zielstatus **`000`**. Der Proxy hat keine Verbindung zur Site zugelassen. |
+| Bytes und SHA-256 der ausgelieferten Datei | **Nicht gemessen.** Erwartet: **172750 Bytes**, SHA-256 **`df59a22ece4824e7060dab991b790afe5d1b68b5dcbc9832727aef12b7347660`**. Die nachgewiesene Bytegleichheit des Uploads bestätigt nicht die tatsächliche HTTP-Auslieferung. |
+| Antwortkopfzeilen der Site | **Nicht ermittelt.** Empfangen wurden ausschließlich Proxy-Kopfzeilen: `HTTP/1.1 403 Forbidden`, `content-length: 16`, `content-type: text/plain`, `date: Wed, 11 Nov 2026 23:47:32 GMT`, `server: envoy`, `connection: close`. Dies sind keine Kopfzeilen der Simulation und kein Beleg für eine Anmeldesperre. |
+| Unveränderte Auslieferung durch Sites | **Offen**, einschließlich Prüfung auf eingefügte Skripte und Vergleich der tatsächlichen HTTP-Bytes. |
+
+### Zusätzliche lokale Browserprüfung
+
+Geprüft wurde die unveränderte `dist/index.html` des veröffentlichten Site-Quellcommits mit System-Chromium und Playwright. Da Chromium in dieser Umgebung `file:`-Navigationen sperrt (`ERR_BLOCKED_BY_ADMINISTRATOR`), wurde dieselbe Datei über einen lokalen HTTP-Server bereitgestellt. Die vorhandene Testsuite `simulation/tests/minimal_test.js` wurde ausschließlich für diesen Prüflauf im Speicher auf System-Chromium und die lokale Adresse umgestellt; ihre Netzwerkprüfung ließ nur den Seitenabruf selbst und eingebettete `data:`-Ressourcen zu. Keine Änderung an den Repository- oder Veröffentlichungsdateien.
+
+- **57 von 57 vorhandenen Browsertests bestanden**, darunter Standardzahlen, Wärmesäulen, zehn Regler, Abspielen bis 45 min, Tassenwärmer, Vergleiche, Deutsch und Englisch, axe-core sowie Betrieb mit eigener CSP.
+- Ergänzend bei **1366 × 768**, **1280 × 720** und **390 × 844** geprüft: 43,01 °C, 36,31 °C, 6,69 K nach 45 min; 15,50 kJ, 23,82 kJ und 8,31 kJ; Tassenwärmer 0 W; erwarteter Seitenfuß; kein waagerechter Bildlauf. Keine Konsolenfehler, CSP-Verletzungen oder weiteren Netzwerkanfragen.
+- Englisch zeigt Dezimalpunkte und englische Texte. Nach Neuladen wieder Deutsch. Lokaler Speicher und Sitzungsspeicher bleiben leer.
+- **1366 × 768:** alle zehn Regler einschließlich Vergleichsbändern im Bild. **390 × 844:** gut lesbare senkrechte Anordnung mit Bildlauf. Bildschirmfotos beider Größen angesehen.
+- **Darstellungsbefund bei 1280 × 720:** Die beiden unteren Reglerblöcke für `kA` und Tassenwärmekapazität enden bei etwa **734,7 px**. Ihre Vergleichsbänder und Beschriftungen sind am unteren Bildrand teilweise abgeschnitten; etwa **15 px senkrechter Bildlauf** sind für die vollständige Darstellung nötig. Die Schieber und Wertefelder sind sichtbar. Bildschirmfoto angesehen. Die geforderte vollständige Darstellung ohne Bildlauf ist damit bei dieser Größe nicht vollständig erfüllt. Die Datei wurde gemäß dem Auftrag zur unveränderten Veröffentlichung nicht angepasst.
+
+### Abweichungen und verbleibende Abnahme
+
+Keine Abweichung an den freigegebenen HTML-Bytes oder am angeordneten öffentlichen Zugang. Die Sites-Helferskripte waren in dieser Umgebung nicht verfügbar; Git-Übertragung und Tar-Verpackung erfolgten direkt mit kurzlebigem Zugang im Arbeitsspeicher. Remote-Commit, Archivinhalt und Bytegleichheit wurden ausdrücklich geprüft; Speicherung und Veröffentlichung erfolgten mit den nativen Sites-Werkzeugen.
+
+Offen bleiben der HTTP-Abgleich einschließlich Antwortkopfzeilen, die unabhängige Live-Abnahme durch Claude gemäß `simulation/VEROEFFENTLICHUNG.md` und der Gerätetest durch die Tutoriumsleitung. Der lokale Darstellungsbefund bei 1280 × 720 ist dabei zu berücksichtigen. Eine Korrektur muss als neue freigegebene Quelle erfolgen. Es wurde keine Netzwerkfreigabe verändert. Dieser Nachweis wird auf dem eigenen Zweig `codex/kaffee-schlank-veroeffentlichung` gesichert und gepusht, ohne Pull Request.
