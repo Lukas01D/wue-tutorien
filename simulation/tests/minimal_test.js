@@ -55,6 +55,39 @@ const zahlen = s => (s.match(/−?\d+,\d+/g) || []).map(z => Number(z.replace('�
     pruefe(n + 't kleiner als Zugabe: Zugabe folgt auf 20 min', (await p.$eval('#rf-tZ', e => e.value)) === '20' && (await p.$eval('#rr-tZ', e => e.max)) === '20');
     await p.click('#knopf-blatt');
     pruefe(n + 'Standardwerte stellt zurück, Knopf heißt „Standardwerte“', (await kern()).includes('43,01') && (await p.textContent('#knopf-blatt')) === 'Standardwerte');
+    pruefe(n + 'Säulen: Bildschirmleser hört Werte bis t (45 min), kein Hinweis auf negative Wärme', (await p.$eval('#saeulen', s => s.getAttribute('aria-label'))).includes('bis 45 min') &&
+      await p.$eval('#saeulen-hinweis', x => x.hidden));
+    // Befund A-01 (Aufarbeitung 12.11.2026): alles Gezeichnete bleibt zwischen den Achsen
+    const imDiagramm = () => p.evaluate(() => {
+      const a = [...document.querySelectorAll('#dia line.achse')];
+      const unten = Number(a.find(l => l.getAttribute('y1') === l.getAttribute('y2')).getAttribute('y1'));
+      const oben = Number(a.find(l => l.getAttribute('x1') === l.getAttribute('x2')).getAttribute('y2'));
+      const ys = [];
+      document.querySelectorAll('#dia polyline.kurve').forEach(l => l.getAttribute('points').split(' ').forEach(q => ys.push(Number(q.split(',')[1]))));
+      document.querySelectorAll('#dia line.abfall').forEach(l => ys.push(Number(l.getAttribute('y1')), Number(l.getAttribute('y2'))));
+      document.querySelectorAll('#dia circle.ende').forEach(c => { const r = c.getBBox(); ys.push(r.y, r.y + r.height); });
+      return ys.every(y => y >= oben - 1 && y <= unten + 1);
+    });
+    await setze(p, 'VK_ml', 50); await setze(p, 'VM_ml', 200); await setze(p, 'thM', 2); await setze(p, 't', 180); await setze(p, 'tZ', 180);
+    const tief = await imDiagramm();
+    await p.click('#knopf-blatt');
+    await p.fill('#rf-kA', '0,3'); await p.press('#rf-kA', 'Enter'); await setze(p, 'thU', 30); await setze(p, 't', 180); await setze(p, 'QW', 19.5);
+    const hoch = await imDiagramm(), k_hoch = await kern();
+    pruefe(n + 'Diagramm: Kurven, Sprünge und Endpunkte zwischen den Achsen (kalte Mischung 5,69 °C; Tassenwärmer 92,09 °C)', tief && hoch && k_hoch.includes('92,09'), k_hoch);
+    // Befund A-02: Mischung kälter als der Raum, Tasse 1 nimmt Wärme auf
+    await p.click('#knopf-blatt');
+    await setze(p, 'VK_ml', 50); await setze(p, 'thK0', 60); await setze(p, 'thM', 2); await setze(p, 'thU', 30);
+    const neg = await p.evaluate(() => {
+      const r1 = document.querySelector('#saeulen rect.saeule1'), r2 = document.querySelector('#saeulen rect.saeule2');
+      const null_ = Number(document.querySelector('#saeulen line.achse').getAttribute('y1'));
+      const d = document.querySelector('#saeulen path.klammer').getAttribute('d').match(/M162 ([\d.]+) h8 V([\d.]+)/);
+      return { unter: Math.abs(Number(r1.getAttribute('y')) - null_) < 0.01, h1: Number(r1.getAttribute('height')), h2: Number(r2.getAttribute('height')),
+               klammer: Number(d[2]) - Number(d[1]), zahlen: [...document.querySelectorAll('#saeulen text.zahl')].map(x => x.textContent).join(' | '),
+               hinweis: !document.getElementById('saeulen-hinweis').hidden };
+    });
+    pruefe(n + 'Säulen: negative Wärme (−2,97 kJ) zeigt nach unten, Klammer so lang wie beide Säulen (8,76 kJ), Hinweis sichtbar',
+      neg.unter && neg.h1 > 5 && Math.abs(neg.klammer - neg.h1 - neg.h2) < 0.5 && neg.zahlen.includes('−2,97') && neg.zahlen.includes('8,76') && neg.hinweis, JSON.stringify(neg));
+    await p.click('#knopf-blatt');
     // Abspielen
     await p.click('#abspielen');
     await p.waitForTimeout(1500);

@@ -102,3 +102,9 @@ Nachprüfung nach der Korrekturrunde (ergänzt am 06.11.2026): Startsatz „Prü
 > Ergänzt von Claude am 08.11.2026 nach dem Startprompt Fassung 3 der Tutoriumsleitung (Schritt 4); die Regeln der Abschnitte oben bleiben unverändert.
 
 Startsatz: „Prüfe die Kaffee-Simulation Fassung 3 nach simulation/X6_AUFTRAG.md (Rolle X6).“ Die vollständige Anweisung (geprüfter Stand, Prüfwerte, Entscheidungen der Tutoriumsleitung, Abnahmekriterien, Prüffragen, Bericht `simulation/X6_CODEX_PRUEFUNG.md`) steht in `simulation/X6_AUFTRAG.md`. Eigener Zweig, kein Pull Request.
+
+# Achter Auftrag: Prüfung der schlanken Kaffee-Simulation (Rolle X7)
+
+> Ergänzt am 12.11.2026 nach der Aufarbeitung des Simulationscodes (Befund A-03: die Erweiterungen der schlanken Seite hatten noch keine unabhängige Prüfung).
+
+Startsatz: „Prüfe die schlanke Kaffee-Simulation nach simulation/X7_AUFTRAG.md (Rolle X7).“ Die vollständige Anweisung (geprüfter Stand, Modell, Prüfwerte, Entscheidungen der Tutoriumsleitung, Abnahmekriterien, Prüffragen, Bericht `simulation/X7_CODEX_PRUEFUNG.md`) steht in `simulation/X7_AUFTRAG.md`. Eigener Zweig, Pull Request nur mit Bericht und Skripten.

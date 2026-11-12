@@ -6,8 +6,8 @@ Aufruf: python3 simulation/minimal/bauen_minimal.py            (baut)
 
 Damit die Seite aussieht und rechnet wie die Hauptseite, übernimmt der Bau unverändert aus simulation/site/src:
 modell.js (Rechenkern), stil.css (Optik), texte_de.txt und texte_en.txt (Texte) und aus oberflaeche.js die Bausteine
-für Regler, Säulen und Hilfsfunktionen (Liste BAUSTEINE). Eigene Teile: src/vorlage.html, src/schlank.js (Rechnung mit
-Zeit bis 180 min, Kaffeemenge und Wärmekapazität der Tasse, Diagramm im Aufbau der Hauptseite, Kasten, Abspielen),
+für Regler und Hilfsfunktionen (Liste BAUSTEINE). Eigene Teile: src/vorlage.html, src/schlank.js (Rechnung mit
+Zeit bis 180 min, Kaffeemenge und Wärmekapazität der Tasse, Diagramm im Aufbau der Hauptseite, Säulen, Kasten, Abspielen),
 src/schlank.css und die zusätzlichen Texte in src/texte_schlank_*.txt. Der Bau ist deterministisch.
 """
 import base64
@@ -26,9 +26,9 @@ import tex2mathml  # noqa: E402
 STAND = "2026-11-12"
 DESIGN = "3"   # Wahl der TL vom 12.11.2026: Band. Darstellung der Alltagsvergleiche; Vorschauen anderer Varianten mit --design N --ziel DATEI
 ZIEL = os.path.join(HIER, "Kaffee_Simulation_schlank.html")
-BAUSTEINE = ["T", "F", "zahl", "liesZahl", "textOhneTags", "el", "imBild", "saeulen", "begrenze", "reglerTexte", "setze"]
-# Einzige Änderung an einem Baustein: Maßstab der Säulen aus den Werten bei der Zugabe, damit sie beim Abspielen wachsen
-ERSATZ = {"saeulen": [("max = Math.max(erg.Q1, erg.Q2, 1e-9)", "max = Math.max(erg.Q1max, erg.Q2max, 1e-9)")]}
+BAUSTEINE = ["T", "F", "zahl", "liesZahl", "textOhneTags", "el", "imBild", "begrenze", "reglerTexte", "setze"]
+# Änderungen an Bausteinen beim Bau (Paare alt, neu). Seit 12.11.2026 leer: saeulen() steht mit Nulllinie in src/schlank.js (Befund A-02)
+ERSATZ = {}
 
 
 def lies(pfad):

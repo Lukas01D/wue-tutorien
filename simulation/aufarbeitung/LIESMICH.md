@@ -26,6 +26,8 @@ Die Ausgaben der vorhandenen Tests vom selben Tag liegen ebenfalls in `ergebniss
 | a1 | alle Werte des Blatts bestätigt |
 | a2 | alle Vergleiche innerhalb der Grenzen (größte Abweichung gegen die Differentialgleichung 6,7·10⁻¹¹ K) |
 | a3 | 10 von 10 |
-| a4 | 14 von 15; Fehler: Kurve unter der Achse in einer Extremeinstellung (Befund A-01) |
-| a5 | bytegleich, gleich Sites-Version 5 |
-| vorhandene Tests | 34/34, 16/16, 107/107, 57/57 |
+| a4 | 14 von 15; Fehler: Kurve unter der Achse in einer Extremeinstellung (Befund A-01). Nach der Behebung (Zweig `claude/aufarbeitung-befunde`): 15 von 15 |
+| a5 | bytegleich, gleich Sites-Version 5; nach der Behebung bytegleich, neue Fassung noch nicht veröffentlicht |
+| vorhandene Tests | 34/34, 16/16, 107/107, 57/57; nach der Behebung `minimal_test.js` 63/63 |
+
+Bilder `vorher_A01_…` und `vorher_A02_…` zeigen den Stand vor der Behebung, die übrigen Bilder den aktuellen Stand.

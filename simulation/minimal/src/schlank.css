@@ -16,6 +16,7 @@
 .reihe { display: grid; grid-template-columns: minmax(0, 1fr); }
 .saeulen-feld { padding: 6px 12px 0; border-top: 1px solid var(--linie-fein); }
 .saeulen-feld .saeulen { width: 100%; max-width: 250px; height: auto; margin: 2px auto 6px; }
+.saeulen-hinweis { margin: -2px 0 8px; font-size: .8rem; text-align: center; }
 @media (min-width: 900px) {
   .reihe { grid-template-columns: minmax(0, 1fr) 300px; }
   .saeulen-feld { border-top: 0; border-left: 1px solid var(--linie-fein); display: flex; flex-direction: column; justify-content: center; }
