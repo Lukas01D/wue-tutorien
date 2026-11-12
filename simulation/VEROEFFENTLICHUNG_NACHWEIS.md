@@ -143,3 +143,48 @@ Umgesetzt am 08.11.2026 um 22:33:40 Uhr CET mit `update_site_access(project_id="
 - Prüfadresse: https://waermeuebertragung-kaffee-pruefung.qarri196.chatgpt.site, Fassung 3, Sites-Version 1, Zugangsrevision 4.
 
 Nur der Zugang der Prüfadresse wurde geändert. Dateien, Prüfsummen, gespeicherte Versionen und Deployments bleiben unverändert.
+
+## Fassung 3, 100 ml und 45 min
+
+Veröffentlicht am **10.11.2026 um 12:58:04 Uhr CET (Europe/Berlin)** unter der bestehenden Hauptadresse, **Sites-Version 3**, öffentlich. Grundlage ist `simulation/VEROEFFENTLICHUNG.md` auf dem Merge von PR #13. Quelle, Bau, Site-Quellcommit und Upload sind bytegleich geprüft. Der HTTP-Abgleich bleibt offen, weil der Umgebungsproxy den Abruf vor Erreichen der Site blockiert.
+
+### Quelle, Bau und Veröffentlichung
+
+| Punkt | Nachweis |
+|:--|:--|
+| Adresse | https://waermeuebertragung-kaffee.qarri196.chatgpt.site |
+| Quelle | Merge-Commit auf `main`: `14c9d8e622397c31210d9f32c7610495c867df68`, PR #13, `claude/kaffee-sim-100ml-45min`, zusammengeführt am 10.11.2026 um 12:51:48 Uhr CET. Zweiter Elterncommit: `798d764650aa88bd92fb811c34be5695c63c217c`. |
+| Aktualisierung | `git fetch origin`, `git checkout main`, `git pull --ff-only origin main`. HEAD entspricht dem genannten Merge-Commit. Keine Datei aus einem Arbeitszweig, aus `ergebnisse/kaffee/` oder aus `simulation/f3_entwurf/` verwendet. |
+| Datei im Repository | `simulation/site/index.html`, **179395 Bytes**, SHA-256 **`e8ae197debea70f018cbbbfd5d2f56afb30e36df894166544fee1f6e6d6c35c7`**. |
+| Bauprüfung | `index.html` und `Kaffee_Simulation.html` sind bytegleich; beide SHA-256 stimmen mit `simulation/site/BAUNACHWEIS.txt` überein. `python3 simulation/site/bauen.py --pruefen` meldet `gleich`. Dafür wurde das fehlende Python-Modul Brotli 1.2.1 ausschließlich unter `/tmp/kaffee-veroeffentlichung-python` installiert und über `PYTHONPATH` eingebunden; fontTools war vorhanden. `simulation/site/` ist gegenüber dem Merge unverändert. |
+| Seitenfuß | `Stand 2026-11-10 · Version 425de0298b`. Die Baukonstanten und die Fußtextvorlage entsprechen dem Baunachweis, Quellprüfsumme `425de0298be5d98a944d686d89e17e09c275af9e141e4520bddd89875326e6f0`. Die Anzeige im ausgelieferten Browser bleibt Teil der Live-Abnahme. |
+| Werte | Die freigegebene HTML-Datei enthält die Standardwerte `VM_ml: 100` und `tZ: 45`. |
+| Quelle bei Sites | Commit `99ea2b7dcba5ddc1ba4942d59e9fc17303f1d289` auf `main` des bestehenden Site-Quellrepositorys. Push erfolgreich; anschließend Remote-HEAD mit `git ls-remote` abgeglichen. `save_site_version.source.commit_sha` bestätigt denselben Commit. |
+| Übertragene Datei | `dist/index.html`, unverändert aus der freigegebenen Repository-Datei übernommen: 179395 Bytes, SHA-256 `e8ae197debea70f018cbbbfd5d2f56afb30e36df894166544fee1f6e6d6c35c7`. Git-Objekt des Merge-Commits, lokale HTML-Datei, Site-Quellcommit und HTML im Upload-Archiv sind bytegleich. |
+| Umfang | Genau eine Startseite `index.html`. Das Archiv enthält ausschließlich `dist/index.html` und `.openai/hosting.json`. Keine zusätzlichen Skripte, Analyse- oder Zähldienste. Die Hosting-Konfiguration wurde unverändert aus dem bisherigen Site-Quellcommit übernommen: bestehende Projektkennung, `static.directory=dist`. |
+| Gespeichertes Archiv | Sites bestätigt zwei Dateien, 184320 Bytes im gespeicherten Tar-Archiv und `sha256:a953d05541ca8aeeaca1780425dbd93c83a898573d5351e88519a6cc23135550`. Das lokale komprimierte Upload-Archiv hatte 80481 Bytes und SHA-256 `ac674d8b45b56f76abee9fbfabf957f800ced9ecfd44f75c0d22b253106ef619`. |
+| Sites-Version | **3**, gespeichert mit `save_site_version`, veröffentlicht mit `deploy_site_version`. Versionskennung: `appgprj_6aee2773b8788191b72faeefddd89f34~appgver_16771bac8a0c8191a0aa9424d4f45844`. |
+| Veröffentlichung | Projekt `appgprj_6aee2773b8788191b72faeefddd89f34`, Deployment `appgdep_6af306c0175c8191a12e5796699e800e`, Status **`succeeded`**, Zeitstempel `2026-11-10T11:58:04.370578+00:00`. |
+| Öffentlicher Zugang | Vorher und nachher mit `get_site` bestätigt: `access_mode=public`, `access_policy.access_mode=public`, unveränderte Revision 2 vom `2026-11-06T19:25:25.726484+00:00`. Nachher bestätigt Sites die Hauptadresse und `latest_version_number=3`. Keine private Zwischenstufe und keine neue Prüf-Site. |
+| Übrige Einstellungen | Titel, Beschreibung, URL-Slug, Auth-Client, Remix-Einstellung, BYOP-Einstellung und vollständige Zugangsrichtlinie sind vorher und nachher identisch. Keine Laufzeitvariablen oder Tunnelbindungen geändert, `env_set_revision=0`. Die vorhandene Prüfadresse wurde nicht verändert. |
+
+### HTTP-Auslieferung und Prüfgrenze
+
+Der Abruf der Hauptadresse mit `curl --compressed --location` am 10.11.2026 um 12:58:17 Uhr CET scheitert bereits beim Verbindungsaufbau am Umgebungsproxy: `curl: (56) CONNECT tunnel failed, response 403`, HTTP-Zielstatus `000`, 0 übertragene Bytes. Der Proxy antwortet:
+
+```text
+HTTP/1.1 403 Forbidden
+content-length: 16
+content-type: text/plain
+date: Tue, 10 Nov 2026 11:58:17 GMT
+server: envoy
+connection: close
+```
+
+Das sind ausschließlich Proxy-Kopfzeilen, keine Antwortkopfzeilen der Site. **Bytes und SHA-256 der ausgelieferten Datei sind nicht gemessen.** Erwartet werden 179395 Bytes und SHA-256 `e8ae197debea70f018cbbbfd5d2f56afb30e36df894166544fee1f6e6d6c35c7`. Auch die Antwortkopfzeilen der Site, die Abwesenheit eingefügter Skripte und der tatsächliche Abruf ohne Anmeldung bleiben live zu prüfen. Der erfolgreiche öffentliche Sites-Deploy und die geprüften Upload-Bytes ersetzen diesen HTTP-Abgleich nicht. Keine Netzwerkfreigabe verändert.
+
+### Abweichungen und Übergabe
+
+Keine Abweichung an der freigegebenen Datei, der bestehenden Adresse oder dem öffentlichen Zugang. Die Sites-Helferskripte waren in dieser Umgebung nicht verfügbar. Wie bei der vorherigen Veröffentlichung erfolgten Git-Übertragung und Tar-Verpackung direkt, mit ausdrücklichem Abgleich von Quellcommit, Remote-HEAD und Archivinhalt. Zugangsdaten wurden ausschließlich im Arbeitsspeicher und über eine verdeckte Standardeingabe verwendet, nicht in Dateien oder Git-Konfiguration gespeichert. Veröffentlichung und Zugangsnachweis erfolgten über die nativen Sites-Werkzeuge.
+
+Offen bleiben der vom Proxy blockierte HTTP-Abgleich, die Live-Abnahme durch Claude nach `simulation/VEROEFFENTLICHUNG.md`, Abschnitt 5, und der Gerätetest der Tutoriumsleitung nach `simulation/ABNAHME_IPHONE.md`. Dieser Nachweis wird auf dem eigenen Zweig `codex/kaffee-100ml-45min-veroeffentlichung` gesichert und gepusht. Gemäß Veröffentlichungsauftrag wird kein Pull Request angelegt.
