@@ -1,0 +1,22 @@
+Texte Fassung 3
+
+bestanden   Schlüssel DE und EN gleich
+bestanden   Laufzeit-Platzhalter DE und EN gleich
+bestanden   keine Gedankenstriche (Texte, Quellen, Konzept, Entscheidungen, Tests)
+bestanden   Deutsch mit Dezimalkomma
+bestanden   Englisch mit Dezimalpunkt
+bestanden   Deutsch in du-Form
+bestanden   Kernsatz wörtlich nach Leitlinie 6
+bestanden   Vertiefung gekennzeichnet: nach dem Tutorium oder zu Hause (T1)
+bestanden   Pflichtweg durchgehend 01 bis 04 (T2), Vertiefung ohne Nummer
+bestanden   Startkarte verrät nichts (keine Ergebniszahl)
+bestanden   Startkarte ohne Antwortwort
+bestanden   Simulationswerte nicht als Messwerte bezeichnet (B05)
+bestanden   Startkarte: Grund per Tipp, Freitext freiwillig (T3)
+bestanden   jede Zahl in den Texten aus zahlen.py oder mit Herkunft
+bestanden   dieselben Zahlen in DE und EN
+bestanden   Säulenzahlen nicht in den Texten der Säulen vor der Antwort
+
+16 von 16 bestanden
+
+exit 0

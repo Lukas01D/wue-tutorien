@@ -1,0 +1,52 @@
+### kA (W/K)
+
+| Gegenstand | kA | Quelle | Bemerkung |
+|:--|:--|:--|:--|
+| Isolierflasche 0,5 l, Mindestwert der Norm | bis 0,039 | Q1 | EN 12546-1: 95 °C, 6 h, 20 °C, am Ende mindestens 70 °C; Wert ist die Obergrenze für eine Flasche, die die Norm erfüllt |
+| Isolierflasche 1 l, Mindestwert der Norm | bis 0,050 | Q1 | wie oben, am Ende mindestens 78 °C |
+| sehr gute Isolierflasche (Ikea Volym) | 0,012 bis 0,013 | Q3 | 95 °C, nach 6 h 86 °C, nach 24 h fast 64 °C; Füllung 0,5 l und Raum 20 °C angenommen (nicht genannt) |
+| guter Thermobecher (bester im Test) | 0,024 bis 0,032 | Q2 | 80 °C, in der ersten Stunde 4 K weniger; Füllung 0,3 bis 0,4 l und Raum 20 °C angenommen |
+| schwacher Thermobecher (schlechtester im Test) | 0,133 bis 0,177 | Q2 | 80 °C, in der ersten Stunde 19 K weniger; Annahmen wie oben |
+| Trinkglas 140 ml, Seitenwand (oben und unten gedämmt) | 0,242 | Q4 | τ = 49 min; C aus 140 cm³ Wasser und 152 g Glas |
+| Kunststoffbecher 140 ml, Seitenwand | 0,181 | Q4 | τ = 55 min |
+| Styroporbecher 140 ml, Seitenwand | 0,153 | Q4 | τ = 65 min |
+| Keramiktasse 200 ml mit Deckel (Blatt, vorläufig) | 0,199 | Q13 | aus 72 °C nach 10 min (Annahme der TL, Messung im Januar) |
+| Tasse mit Deckel, Abschätzung h·A | 0,200 bis 0,360 | eigene Abschätzung | h = 10 bis 12 W/(m²K) (freie Konvektion und Strahlung), benetzte Außenfläche 0,02 bis 0,03 m² |
+| offene Tasse (mit Verdunstung, grob) | 0,827 bis 1,143 | Q5 und eigene Abschätzung | τ ≈ 22 min für offenen Kaffee; Füllung 0,2 bis 0,3 l und Porzellantasse 255 J/K angenommen; Verdunstung ist im Modell nicht enthalten, der Wert ist nur ein Ersatz |
+
+### Wärmekapazität der Tasse C_T (J/K)
+
+| Gegenstand | Masse in g | C_T | Quelle | Bemerkung |
+|:--|:--|:--|:--|:--|
+| Pappbecher 0,3 l mit Deckel | 14,4 | 19 bis 19 | Q8, Q6 | Becher 11 g (10 bis 18 g), Deckel 3,4 g; c Papier 1340, Deckel als Kunststoff etwa 1300 angenommen |
+| doppelwandiges Glas 0,25 l (Bodum Pavina) | 100 | 75 bis 84 | Q12, Q6 | etwa 100 g je Glas, falls 0,6 kg für den Satz gelten (unklar); mit dem Inhalt in Kontakt ist nur die Innenwand |
+| dünnes Trinkglas | 152 | 128 | Q4, Q6, Q7 | 152 g; c Fensterglas 840 (Q6, Q7); Q4 nennt 500 bis 840, der untere Wert gilt für Bleiglas |
+| Steingutbecher 30 cl (Ikea Dinera) | 300 | 240 | Q9, Q6 | Paket 0,32 kg, Becher also etwa 0,30 kg (geschätzt); c Steingut 800 |
+| Porzellantasse 300 g (Blatt, Experiment) | 300 | 255 | Q13 | werte.py: M_TASSE 0,300 kg, C_KERAMIK 850 |
+| Einmachglas 580 ml (Weck) | 306 | 257 | Q10, Q6 | 306 g (ob mit Deckel, ist nicht angegeben) |
+| schwerer Porzellanbecher 300 ml | 540 | 459 bis 578 | Q11, Q6 | 540 g; c Porzellan 850 (Blatt) bis 1070 (Q6) |
+
+### Prüfung: Welcher Vergleich erscheint beim belegten Wert?
+
+| Regler | Gegenstand | Wert | angezeigt |
+|:--|:--|:--|:--|
+| kA | Isolierflasche 0,5 l, Mindestwert der Norm | 0,039 | ≈ Isolierflasche, Thermobecher |
+| kA | Isolierflasche 1 l, Mindestwert der Norm | 0,050 | ≈ Isolierflasche, Thermobecher |
+| kA | sehr gute Isolierflasche (Ikea Volym) | 0,013 | ≈ sehr gute Isolierflasche |
+| kA | guter Thermobecher (bester im Test) | 0,028 | ≈ Isolierflasche, Thermobecher |
+| kA | schwacher Thermobecher (schlechtester im Test) | 0,155 | ≈ Tasse mit Deckel |
+| kA | Trinkglas 140 ml, Seitenwand (oben und unten gedämmt) | 0,242 | ≈ Tasse mit Deckel |
+| kA | Kunststoffbecher 140 ml, Seitenwand | 0,181 | ≈ Tasse mit Deckel |
+| kA | Styroporbecher 140 ml, Seitenwand | 0,153 | ≈ Tasse mit Deckel |
+| kA | Keramiktasse 200 ml mit Deckel (Blatt, vorläufig) | 0,199 | ≈ Tasse mit Deckel |
+| kA | Tasse mit Deckel, Abschätzung h·A | 0,280 | ≈ Tasse mit Deckel |
+| kA | offene Tasse (mit Verdunstung, grob) | 0,985 | ≈ offene Tasse (grob) |
+| C_T | Pappbecher 0,3 l mit Deckel | 19 | ≈ Pappbecher mit Deckel |
+| C_T | doppelwandiges Glas 0,25 l (Bodum Pavina) | 80 | ≈ doppelwandiges Glas |
+| C_T | dünnes Trinkglas | 128 | ≈ dünnes Trinkglas |
+| C_T | Steingutbecher 30 cl (Ikea Dinera) | 240 | ≈ Porzellantasse, Einmachglas |
+| C_T | Porzellantasse 300 g (Blatt, Experiment) | 255 | ≈ Porzellantasse, Einmachglas |
+| C_T | Einmachglas 580 ml (Weck) | 257 | ≈ Porzellantasse, Einmachglas |
+| C_T | schwerer Porzellanbecher 300 ml | 518 | ≈ schwerer Porzellanbecher |
+
+Bereiche passen zu den Belegen.

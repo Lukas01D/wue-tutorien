@@ -1,0 +1,25 @@
+A1: Unabhängige Nachrechnung (ohne kaffee_modell.py, ohne Code der Seite)
+
+Weg 1, Formeln des Blatts, Werte des Blatts:
+  kA    gerechnet     0.199387  Blatt 0,1994  gleich
+  CG    gerechnet  1241.820000  Blatt 1241,8  gleich
+  th10  gerechnet    55.490409  Blatt 55,49  gleich
+  th1   gerechnet    43.005867  Blatt 43,01  gleich
+  th2K  gerechnet    51.512704  Blatt 51,51  gleich
+  th2   gerechnet    36.312606  Blatt 36,31  gleich
+  dT    gerechnet     6.693261  Blatt 6,69  gleich
+  Q1    gerechnet    15.503554  Blatt 15,50  gleich
+  Q2    gerechnet    23.815379  Blatt 23,82  gleich
+  dQ    gerechnet     8.311826  Blatt 8,31  gleich
+  Energiebilanz Q2 − Q1 − C_G (θ1 − θ2) = -5.457e-12 J
+
+Weg 2, Differentialgleichung numerisch (Runge-Kutta, 1 s):
+  Blatt (45 min)              θ1  43.0059 °C  θ2  36.3126 °C  Δθ  6.6933 K  Q1  15.504 kJ  Q2  23.815 kJ  Q2−Q1  8.312 kJ  höchstens  80.00 °C
+  t = 90 min                  θ1  34.9130 °C  θ2  30.5743 °C  Δθ  4.3388 K  Q1  25.553 kJ  Q2  30.941 kJ  Q2−Q1  5.388 kJ  höchstens  80.00 °C
+  Milch 95 °C                 θ1  62.0712 °C  θ2  65.7241 °C  Δθ -3.6529 K  Q1  28.352 kJ  Q2  23.815 kJ  Q2−Q1 -4.536 kJ  höchstens  84.90 °C
+  Tassenwärmer 5 W            θ1  51.8272 °C  θ2  44.3279 °C  Δθ  7.4993 K  Q1  18.049 kJ  Q2  27.362 kJ  Q2−Q1  9.313 kJ  höchstens  80.00 °C
+  Wärmer 14,5 W, t = 180 min  θ1  86.1488 °C  θ2  83.6890 °C  Δθ  2.4598 K  Q1 118.528 kJ  Q2 121.582 kJ  Q2−Q1  3.055 kJ  höchstens  86.15 °C
+  Tasse 255 J/K               θ1  47.6834 °C  θ2  42.6329 °C  Δθ  5.0505 K  Q1  17.936 kJ  Q2  25.495 kJ  Q2−Q1  7.560 kJ  höchstens  80.00 °C
+  Weg 1 gegen Weg 2 beim Blatt: größte Abweichung 7.11e-14 (K oder kJ)
+
+Ergebnis: alle Werte des Blatts bestätigt

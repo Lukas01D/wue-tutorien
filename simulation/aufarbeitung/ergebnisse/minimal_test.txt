@@ -1,0 +1,60 @@
+bestanden   1366 px: Kasten mit Werten des Blatts (43,01 / 36,31 / 6,69 K)
+bestanden   1366 px: Kasten: Tasse 1 (Milch zu Beginn), Tasse 2 (Milch später), Temperaturdifferenz
+bestanden   1366 px: Säulen 15,50 und 23,82 kJ, Unterschied 8,31 kJ
+bestanden   1366 px: keine Fragen, kein Ausklappen, keine Hinweistexte
+bestanden   1366 px: zehn Regler mit − und + (mit Kaffeemenge, Tassenwärmer und Wärmekapazität)
+bestanden   1366 px: keine waagerechte Bildlaufleiste
+bestanden   1366 px: Säulen neben oder direkt unter dem Diagramm
+bestanden   1366 px: t = 90 min, Zugabe 45: Temperaturdifferenz 4,34 K, Q₂ − Q₁ = C_G · Δϑ
+bestanden   1366 px: Zeit bis 180 min, Zugabe-Regler bis t
+bestanden   1366 px: Tassenwärmer 5 W bei t = 90 min: wärmer als ohne, Q₂ − Q₁ = C_G · Δϑ
+bestanden   1366 px: Tassenwärmer höchstens bis 95 °C: bei kA 0,012 W/K Obergrenze 0,5 W
+bestanden   1366 px: Tassenwärmer bei kA des Blatts höchstens 14,5 W (95 °C), bei kA 1 W/K bis 35 W
+bestanden   1366 px: Zugabe nicht über t
+bestanden   1366 px: t kleiner als Zugabe: Zugabe folgt auf 20 min
+bestanden   1366 px: Standardwerte stellt zurück, Knopf heißt „Standardwerte“
+bestanden   1366 px: Abspielen: Zwischenstand mit verdeckter Zukunft
+bestanden   1366 px: Abspielen läuft bis t
+bestanden   1366 px: Milch 95 °C: Tasse 2 wärmer (−3,65 K), Bildbeschreibung „steigt“
+bestanden   1366 px: Wärmekapazität 255 J/K: Unterschied kleiner als ohne Tasse
+bestanden   1366 px: Vergleich Wärmekapazität 255 J/K: Porzellantasse, Einmachglas
+bestanden   1366 px: Vergleiche bei Standardwerten: Tasse mit Deckel, Blatt ohne Wärmekapazität
+bestanden   1366 px: kA 0,012 W/K: sehr gute Isolierflasche, Schieber logarithmisch
+bestanden   1366 px: kA-Schieber ganz rechts: 1 W/K, offene Tasse
+bestanden   1366 px: Regler mit Vergleich stehen unten nebeneinander
+bestanden   1366 px: Kaffeemenge 300 ml: Unterschied kleiner als bei 200 ml
+bestanden   1366 px: Englisch: Kasten und Knopf
+bestanden   1366 px: axe-core ohne Verstöße
+bestanden   1366 px: keine Fehler, keine Netzanfragen
+bestanden   390 px: Kasten mit Werten des Blatts (43,01 / 36,31 / 6,69 K)
+bestanden   390 px: Kasten: Tasse 1 (Milch zu Beginn), Tasse 2 (Milch später), Temperaturdifferenz
+bestanden   390 px: Säulen 15,50 und 23,82 kJ, Unterschied 8,31 kJ
+bestanden   390 px: keine Fragen, kein Ausklappen, keine Hinweistexte
+bestanden   390 px: zehn Regler mit − und + (mit Kaffeemenge, Tassenwärmer und Wärmekapazität)
+bestanden   390 px: keine waagerechte Bildlaufleiste
+bestanden   390 px: Säulen neben oder direkt unter dem Diagramm
+bestanden   390 px: t = 90 min, Zugabe 45: Temperaturdifferenz 4,34 K, Q₂ − Q₁ = C_G · Δϑ
+bestanden   390 px: Zeit bis 180 min, Zugabe-Regler bis t
+bestanden   390 px: Tassenwärmer 5 W bei t = 90 min: wärmer als ohne, Q₂ − Q₁ = C_G · Δϑ
+bestanden   390 px: Tassenwärmer höchstens bis 95 °C: bei kA 0,012 W/K Obergrenze 0,5 W
+bestanden   390 px: Tassenwärmer bei kA des Blatts höchstens 14,5 W (95 °C), bei kA 1 W/K bis 35 W
+bestanden   390 px: Zugabe nicht über t
+bestanden   390 px: t kleiner als Zugabe: Zugabe folgt auf 20 min
+bestanden   390 px: Standardwerte stellt zurück, Knopf heißt „Standardwerte“
+bestanden   390 px: Abspielen: Zwischenstand mit verdeckter Zukunft
+bestanden   390 px: Abspielen läuft bis t
+bestanden   390 px: Milch 95 °C: Tasse 2 wärmer (−3,65 K), Bildbeschreibung „steigt“
+bestanden   390 px: Wärmekapazität 255 J/K: Unterschied kleiner als ohne Tasse
+bestanden   390 px: Vergleich Wärmekapazität 255 J/K: Porzellantasse, Einmachglas
+bestanden   390 px: Vergleiche bei Standardwerten: Tasse mit Deckel, Blatt ohne Wärmekapazität
+bestanden   390 px: kA 0,012 W/K: sehr gute Isolierflasche, Schieber logarithmisch
+bestanden   390 px: kA-Schieber ganz rechts: 1 W/K, offene Tasse
+bestanden   390 px: Regler mit Vergleich stehen unten nebeneinander
+bestanden   390 px: Kaffeemenge 300 ml: Unterschied kleiner als bei 200 ml
+bestanden   390 px: Englisch: Kasten und Knopf
+bestanden   390 px: axe-core ohne Verstöße
+bestanden   390 px: keine Fehler, keine Netzanfragen
+bestanden   CSP: Seite läuft mit eigener CSP
+
+57 von 57 bestanden
+exit 0

@@ -1,0 +1,19 @@
+A4: Bedienung, Barrierefreiheit und Sicherheit der schlanken Seite (Chromium)
+
+bestanden   Tastatur: alle 40 aktiven Bedienelemente mit Tab erreichbar  [fehlen: ]
+bestanden   Tastatur: Reihenfolge Sprache, Abspielen, Standardwerte, dann Regler von oben nach unten  [sprache > abspielen > knopf-blatt > rminus-t > rr-t > rplus-t > rf-t > rminus-tZ]
+bestanden   Tastatur: Pfeil rechts am Zeitregler setzt 46 min, Kasten folgt  [46 | nach 46 min]
+bestanden   Sichtbarer Fokus am Schieber (Umriss)  [solid 3px]
+bestanden   Kontrast der Kurven und Säulen gegen die Karte mindestens 3  [k1 3.40, k2 13.21, s1 3.40, s2 13.21 (Karte rgb(255, 253, 248))]
+bestanden   Zahl Tasse 1 im Kasten: Kontrast mindestens 3 bei großer Schrift  [3.40, Schrift 27.2px 600]
+bestanden   CSP: eingeschleustes Inline-Skript läuft nicht  [1 CSP-Meldung(en)]
+bestanden   CSP: default-src 'none', nur Skript und Stil mit Prüfsumme, keine Verbindungen  [default-src 'none'; script-src 'sha256-RIglT2u9412Fz6TK7H18XCjoYpctvAk6hYIs7wByTKw='; style-src 'sha256-gK0X9Jshp9DJZp3Z …]
+bestanden   Kein Speicher: weder lokaler Speicher noch Sitzungsspeicher, IndexedDB oder Cookies
+bestanden   Keine Netzanfragen, keine Skriptfehler
+bestanden   Hinweis: Mischung kälter als der Raum (50 ml Kaffee 60 °C, 100 ml Milch 2 °C, Raum 30 °C) zeigt negative Wärme bei Säulenhöhe 0  [Säulen: 8,76 kJ | −2,97 kJ | 5,79 kJ; Höhen 0, 120.00000000000001; Titel „An den Raum abgegebene Wärme bis t = 45 min“; Kasten nach 45 min Tasse 1 (Milch zu Beginn)26,55 °C Tasse 2 (Milch später)12,29 °C Temperatur­differenz14,25 K]
+FEHLER      Kurven, Sprung und Endpunkte liegen über der unteren Achse (50 ml Kaffee, 200 ml Milch 2 °C, Raum 20 °C, 180 min)  [tiefster Punkt y = 320.0 px, Achse y = 300.0 px; Kasten nach 180 min Tasse 1 (Milch zu Beginn)19,75 °C Tasse 2 (Milch später)5,69 °C Temperatur­differenz14,07 K]
+bestanden   Reduzierte Bewegung: Abspielen zeigt sofort das Ende, keine verdeckte Zukunft
+bestanden   Schmale Ansicht 320 px: keine waagerechte Bildlaufleiste
+bestanden   Beamer 1280 × 720: alle Regler ohne Bildlauf sichtbar  [Unterkante der Regler 690 px]
+
+14 von 15 bestanden

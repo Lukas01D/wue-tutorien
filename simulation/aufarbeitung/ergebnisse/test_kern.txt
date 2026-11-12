@@ -1,0 +1,40 @@
+Rechenkern Fassung 3 gegen kaffee_modell.py mit werte.py (Grenze relativ 1e-09)
+
+bestanden   rechne() unverändert (SHA-256 wie auf main)
+bestanden   Block MODELL vorhanden
+bestanden   keine Verdunstung im Rechenkern
+bestanden   STANDARD gleich werte.py
+bestanden   kA des Blatts
+bestanden   Beispielwerte gleich werte.py (gerundet wie das Blatt)
+bestanden   Prüfwert kA (Messwert 72 °C)
+bestanden   Prüfwert th10 (Messwert 72 °C)
+bestanden   Prüfwert th1 (Messwert 72 °C)
+bestanden   Prüfwert th2K (Messwert 72 °C)
+bestanden   Prüfwert th2 (Messwert 72 °C)
+bestanden   Prüfwert dT (Messwert 72 °C)
+bestanden   Prüfwert Q1 (Messwert 72 °C)
+bestanden   Prüfwert Q2 (Messwert 72 °C)
+bestanden   Prüfwert t_schnitt (Messwert 72 °C)
+bestanden   Prüfwert kA (kA fest)
+bestanden   Prüfwert th10 (kA fest)
+bestanden   Prüfwert th1 (kA fest)
+bestanden   Prüfwert th2K (kA fest)
+bestanden   Prüfwert th2 (kA fest)
+bestanden   Prüfwert dT (kA fest)
+bestanden   Prüfwert Q1 (kA fest)
+bestanden   Prüfwert Q2 (kA fest)
+bestanden   Prüfwert t_schnitt (kA fest)
+bestanden   Prüfwerte gerundet wie im Auftrag
+bestanden   2006 Parametersätze (Blatt, 2000 Zufall, Ränder) gegen kaffee_modell.py
+bestanden   Auftrag 1: Milch 20 °C
+bestanden   Auftrag 2: größter Unterschied am Schnittpunkt
+bestanden   Auftrag 2: Rest bei sehr später Zugabe
+bestanden   Auftrag 3: Kipppunkte 30, 45, 90 min (Unterschied 0)
+bestanden   Kipppunkt 45 min wie werte.py
+bestanden   Erwärmte Milch 70 °C (Teil g)
+bestanden   Zeit bis 50 °C (Teil h1)
+bestanden   Sprünge beim Zugießen (Rückmeldung b)
+
+34 von 34 bestanden
+
+exit 0
