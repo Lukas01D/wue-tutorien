@@ -1,0 +1,19 @@
+A2: Python gegen JavaScript (Code der gebauten Seiten)
+
+kA des Blatts: schlanke Seite 0.199387175472671, Hauptseite 0.199387175472671
+
+a) schlanke Seite gegen Differentialgleichung (numerisch, unabhängig): 61049 Einstellungen
+   größte Abweichung Temperatur 6.72e-11 K, Wärme 1.68e-08 J
+   Fall mit größter Temperaturabweichung: {"thM": 95, "VM_ml": 10, "thK0": 95, "VK_ml": 50, "thU": 10, "QW": 0.0, "kA": 1.0, "CT": 0, "t": 1, "tZ": 1}
+
+b) schlanke Seite gegen kaffee_modell.zwei_tassen: 8316 Einstellungen ohne Wärmer bei t = t_Z
+   größte Abweichung Temperatur 9.24e-13 K, kA relativ 2.01e-13
+   432 Einstellungen nicht vergleichbar: kaffee_modell.rechne bricht ab (Mischung kälter als der Raum), z. B. {"thM": 2, "VM_ml": 100, "thK0": 60, "VK_ml": 50, "thU": 30, "QW": 0.0, "kA": 0.01, "CT": 0, "t": 1, "tZ": 1}
+
+c) schlanke Seite (C_T = 0, Q̇W = 0, t = t_Z, 200 ml) gegen Hauptseite: 972 Einstellungen
+   größte Abweichung 1.16e-13 (K oder kJ)
+
+d) Hauptseite gegen kaffee_modell.rechne: 972 Einstellungen
+   größte Abweichung 1.14e-13 (K oder kJ)
+
+Ergebnis: alle Vergleiche innerhalb der Grenzen (Temperatur 1e-6 K numerisch, sonst 1e-9)

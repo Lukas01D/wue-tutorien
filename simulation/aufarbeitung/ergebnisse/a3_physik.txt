@@ -1,0 +1,14 @@
+A3: Physikalische Proben an der schlanken Seite
+
+bestanden   Energiebilanz Q₂ − Q₁ = C_G·(θ₁ − θ₂) bei t ≥ t_Z (4860 Fälle, mit Wärmer und Tasse)  [größte Abweichung 5.7e-11 J]
+bestanden   Milch so warm wie der Kaffee: Tasse 1 ohne Sprung (4860 Fälle)  [größter Sprung 1.4e-14 K]
+bestanden   Milch so warm wie Tasse 2 bei der Zugabe: Tasse 2 ohne Sprung (4860 Fälle)  [größter Sprung 1.4e-14 K]
+bestanden   Milch mit Raumtemperatur: Tasse 1 wärmer (4860 Fälle)  [kleinster Unterschied 4.17e-05 K]
+bestanden   Größeres kA kühlt schneller: Tasse 1 bei t sinkt mit kA (9580 Reihen, 5 Werte von kA, Wärmer 0 und 0,5 W)  [0 Reihen nicht fallend]
+bestanden   Tassenwärmer an der Obergrenze der Seite: höchstens 95 °C (19440 Fälle)  [höchste Temperatur 95.000 °C, höchster Grenzwert 95.000 °C, Obergrenze wie Formel: True]
+bestanden   Temperaturen zwischen kältestem und wärmstem Beteiligten (Milch, Raum, Kaffee, Grenzwert des Wärmers) (4860 Fälle)  [0 Fälle außerhalb; höchster Wert 95.00 °C]
+bestanden   Werte des Blatts, Milch 2 bis 95 °C: genau ein Vorzeichenwechsel des Unterschieds  [1 Wechsel, Unterschied bei 2 °C 7.04 K, bei 95 °C -3.65 K]
+bestanden   Hinweis (keine Fehlerprobe): Mischung kälter als der Raum, Säule wird negativ  [70 von 4860 Rasterfällen; z. B. {"VK_ml": 50, "VM_ml": 100, "thK0": 60, "thM": 2, "thU": 30, "CT": 0}]
+bestanden   Vergleichsbereiche: jeder Reglerwert hat genau einen Bereich  [kA-Bereiche [0, 1, 2, 3, 4], C_T-Bereiche [0, 1, 2, 3, 4, 5]]
+
+10 von 10 bestanden
