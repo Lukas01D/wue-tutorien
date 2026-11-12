@@ -85,3 +85,7 @@ Geprüft von Claude im Chrome der TL (Fenster 1366 × 640) auf https://waermeueb
 | 9 | Platz | im Fenster 1366 × 640 reichen die Regler bis 736 px, die Bänder brauchen Bildlauf; Codex meldet bei 1280 × 720 etwa 15 px |
 
 Folge: Anordnung für niedrige Fenster nachgebessert (Zweig `claude/kaffee-schlank-abnahme`: Knöpfe nebeneinander, Säulen etwas kleiner, Diagramm bei Fenstern unter 700 px Höhe mindestens 200 px). Danach passt alles bei 1280 × 720 und 1366 × 768 ohne Bildlauf, bei 1366 × 640 fehlen noch etwa 40 px. Neue Veröffentlichung nach Merge nötig.
+
+## Schlanke Seite, Sites-Version 5 (Nachtrag vom 12.11.2026, Befund A-04 der Aufarbeitung)
+
+Claude hat Sites-Version 5 (Quelle Merge von PR #16) in der Nacht zum 12.11.2026 im Chrome der TL geprüft: Fuß „Stand 2026-11-12 · Version b5d8b9e52e“ gleich der Datei auf `main`, Werte des Blatts, Abspielen, Tassenwärmer und Englisch wie bei Version 4. Die Einzelergebnisse stehen nur im Chatverlauf und wurden damals nicht hier eingetragen (INFERRED). Belegt ist die Gleichheit der Datei: Die Prüfsumme im Nachweis von Codex (`VEROEFFENTLICHUNG_NACHWEIS.md`, Abschnitt „Nachbesserung“) ist gleich der Prüfsumme des Baus auf `main` (`aufarbeitung/ergebnisse/a5_bau.txt`, CONFIRMED). Die nächste Veröffentlichung (Behebung A-01 und A-02) bekommt wieder eine vollständige Live-Abnahme mit Tabelle.
