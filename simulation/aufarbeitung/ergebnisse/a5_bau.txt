@@ -1,11 +1,11 @@
 A5: Bau und Veröffentlichung
-Commit: 3c2c0d2
+Commit: 1ae8b3c
 
 index.html: zwei Bauten gleich (9a1f65d5fd315a58b77a84c3db8b489e8e4ef808497d764d1399ff0796f11d55)
-schlank.html: zwei Bauten gleich (5ffb4424171c40c426907b2cf25e484c3ecb8c56d7e5ac9a502966eb5b4bc034)
+schlank.html: zwei Bauten gleich (19a64074e1433c70d340eac9d780813d95b6f1b1db512c3907a2b66064335c71)
 Hauptseite im Repository gleich dem Bau: ja
 Schlanke Seite im Repository gleich dem Bau: ja
-Schlanke Seite gleich Sites-Version 5 (Nachweis Codex): ja
-Fuß der schlanken Seite: "stand":"2026-11-12","version":"b5d8b9e52e"
-Größe der schlanken Seite: 172829 Bytes
-Anteile: Skript 69405 Zeichen (davon Texte 38003), Stil 99907 Zeichen (davon Schriften 65504)
+Schlanke Seite gleich Sites-Version 5 (Nachweis Codex): nein (Quellen geändert, gilt bis zur nächsten Veröffentlichung)
+Fuß der schlanken Seite: "stand":"2026-11-12","version":"0b2ce1d937"
+Größe der schlanken Seite: 173980 Bytes
+Anteile: Skript 70347 Zeichen (davon Texte 38446), Stil 99986 Zeichen (davon Schriften 65504)

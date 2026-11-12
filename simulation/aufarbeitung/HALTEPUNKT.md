@@ -208,3 +208,17 @@ Bericht: dieselben Abschnitte wie dieser Haltepunkt, ausführlicher, mit den 8 E
 | 2 | A-01 vor der Präsentation beheben (eigener Pull Request, neue Veröffentlichung)? | ja, dann zeigt Folie 11 „gefunden und behoben“ |
 | 3 | Gegenprüfung durch Codex (A-03)? | ja; ich schreibe den Auftrag, du startest ihn |
 | 4 | Bericht als Claude-Dokument (Docs) und Präsentation als Folien (Slides)? | ja, beide als Artefakt, als PDF und PowerPoint exportierbar |
+
+## 9 Stand der Befunde (12.11.2026, nachmittags)
+
+Entscheidung der TL: „A01 gerne beheben und wenns sinn ergibt auch gern in einem rutsch A02 bis A04 auch noch erledigen. Gegenprüfung gerne machen.“ Umgesetzt auf dem Zweig `claude/aufarbeitung-befunde`.
+
+| ID | Stand | Beleg |
+|:--|:--|:--|
+| A-01 | behoben: Grenzen des Diagramms aus allen gezeichneten Werten (Start, Zugabe, t). Dabei zeigte sich dasselbe nach oben: Mit starkem Tassenwärmer (kA 0,3 W/K, Raum 30 °C, 19,5 W, 180 min) lag Tasse 1 bei 92,09 °C über dem oberen Rand (90 °C), die Kurve ragte 7,5 px hinaus; auch das ist behoben. | `schlank.js` in `zeichne()`; neuer Test in `minimal_test.js` (beide Fälle); `a4_browser.js` jetzt 15 von 15; Bilder `vorher_A01_kurve_unter_achse.png` und `fall_kurve_unter_achse.png` |
+| A-02 | behoben: Säulen mit Nulllinie, negative Wärme zeigt nach unten, Klammer so lang wie Q₂ − Q₁, darunter „Negativ heißt: Die Tasse hat insgesamt Wärme aus dem Raum aufgenommen.“ Maßstab aus dem ganzen Bereich 0 bis t. Die Bildschirmleser-Beschriftung sagt jetzt „bis t min“ statt „bis zur Zugabe“. | `saeulen()` steht jetzt in `schlank.js` (nicht mehr als Baustein übernommen); neuer Test in `minimal_test.js`; Bilder `vorher_A02_negative_waerme.png` und `fall_mischung_kaelter_als_raum.png` |
+| A-03 | Auftrag geschrieben: `X7_AUFTRAG.md`, Abschnitt in `AGENTS.md`; Start durch die TL in Codex | |
+| A-04 | erledigt: Nachweise von Codex zu Sites-Version 3, 4 und 5 auf diesen Zweig übernommen (Merge der Codex-Zweige, Abschnitte nacheinander); Live-Abnahme Version 5 in `LIVE_ABNAHME.md` nachgetragen (Einzelergebnisse nur im Chatverlauf, daher INFERRED) | `VEROEFFENTLICHUNG_NACHWEIS.md`, `LIVE_ABNAHME.md` |
+| A-05 bis A-10 | offen | |
+
+Tests auf diesem Stand: `minimal_test.js` 63 von 63, `test_kern.py` und `test_texte.py` bestanden, `a2_vergleich.py` und `a3_physik.py` unverändert bestanden, `a4_browser.js` 15 von 15, Bau bytegleich. Neue Fassung der Seite: Fuß „Stand 2026-11-12 · Version 0b2ce1d937“, SHA-256 `19a64074…5c71`; noch nicht veröffentlicht.

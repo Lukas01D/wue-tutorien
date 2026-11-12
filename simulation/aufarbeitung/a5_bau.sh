@@ -25,7 +25,7 @@ VERSION5="5ffb4424171c40c426907b2cf25e484c3ecb8c56d7e5ac9a502966eb5b4bc034"   # 
   r1=$(sha256sum "$SIM/site/index.html" | cut -c1-64); r2=$(sha256sum "$SIM/minimal/Kaffee_Simulation_schlank.html" | cut -c1-64)
   echo "Hauptseite im Repository gleich dem Bau: $( [ "$r1" = "$(sha256sum "$TMP/a/index.html" | cut -c1-64)" ] && echo ja || echo NEIN )"
   echo "Schlanke Seite im Repository gleich dem Bau: $( [ "$r2" = "$(sha256sum "$TMP/a/schlank.html" | cut -c1-64)" ] && echo ja || echo NEIN )"
-  echo "Schlanke Seite gleich Sites-Version 5 (Nachweis Codex): $( [ "$r2" = "$VERSION5" ] && echo ja || echo NEIN )"
+  echo "Schlanke Seite gleich Sites-Version 5 (Nachweis Codex): $( [ "$r2" = "$VERSION5" ] && echo ja || echo "nein (Quellen geändert, gilt bis zur nächsten Veröffentlichung)" )"
   echo "Fuß der schlanken Seite: $(grep -o '"stand":"[^"]*","version":"[^"]*"' "$SIM/minimal/Kaffee_Simulation_schlank.html")"
   echo "Größe der schlanken Seite: $(wc -c < "$SIM/minimal/Kaffee_Simulation_schlank.html") Bytes"
   python3 - "$SIM/minimal/Kaffee_Simulation_schlank.html" <<'PY'

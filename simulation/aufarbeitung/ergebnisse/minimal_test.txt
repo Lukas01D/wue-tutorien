@@ -13,6 +13,9 @@ bestanden   1366 px: Tassenwärmer bei kA des Blatts höchstens 14,5 W (95 °C),
 bestanden   1366 px: Zugabe nicht über t
 bestanden   1366 px: t kleiner als Zugabe: Zugabe folgt auf 20 min
 bestanden   1366 px: Standardwerte stellt zurück, Knopf heißt „Standardwerte“
+bestanden   1366 px: Säulen: Bildschirmleser hört Werte bis t (45 min), kein Hinweis auf negative Wärme
+bestanden   1366 px: Diagramm: Kurven, Sprünge und Endpunkte zwischen den Achsen (kalte Mischung 5,69 °C; Tassenwärmer 92,09 °C)
+bestanden   1366 px: Säulen: negative Wärme (−2,97 kJ) zeigt nach unten, Klammer so lang wie beide Säulen (8,76 kJ), Hinweis sichtbar
 bestanden   1366 px: Abspielen: Zwischenstand mit verdeckter Zukunft
 bestanden   1366 px: Abspielen läuft bis t
 bestanden   1366 px: Milch 95 °C: Tasse 2 wärmer (−3,65 K), Bildbeschreibung „steigt“
@@ -41,6 +44,9 @@ bestanden   390 px: Tassenwärmer bei kA des Blatts höchstens 14,5 W (95 °C), 
 bestanden   390 px: Zugabe nicht über t
 bestanden   390 px: t kleiner als Zugabe: Zugabe folgt auf 20 min
 bestanden   390 px: Standardwerte stellt zurück, Knopf heißt „Standardwerte“
+bestanden   390 px: Säulen: Bildschirmleser hört Werte bis t (45 min), kein Hinweis auf negative Wärme
+bestanden   390 px: Diagramm: Kurven, Sprünge und Endpunkte zwischen den Achsen (kalte Mischung 5,69 °C; Tassenwärmer 92,09 °C)
+bestanden   390 px: Säulen: negative Wärme (−2,97 kJ) zeigt nach unten, Klammer so lang wie beide Säulen (8,76 kJ), Hinweis sichtbar
 bestanden   390 px: Abspielen: Zwischenstand mit verdeckter Zukunft
 bestanden   390 px: Abspielen läuft bis t
 bestanden   390 px: Milch 95 °C: Tasse 2 wärmer (−3,65 K), Bildbeschreibung „steigt“
@@ -56,5 +62,5 @@ bestanden   390 px: axe-core ohne Verstöße
 bestanden   390 px: keine Fehler, keine Netzanfragen
 bestanden   CSP: Seite läuft mit eigener CSP
 
-57 von 57 bestanden
+63 von 63 bestanden
 exit 0
