@@ -17,6 +17,10 @@ Kaffeemenge $V_\mathrm{K}$
 Wärmekapazität der Tasse $C_\mathrm{T}$
 @schlank_saeulen_t
 An den Raum abgegebene Wärme bis $t$ = {t} min
+@schlank_saeulen_aria
+Säulen: an den Raum abgegebene Wärme bis {t} min, Tasse 1 {q1} kJ, Tasse 2 {q2} kJ, Unterschied {dq} kJ
+@schlank_saeulen_negativ
+Negativ heißt: Die Tasse hat insgesamt Wärme aus dem Raum aufgenommen.
 @schlank_status
 Nach {t} min: Tasse 1 {th1} °C, Tasse 2 {th2} °C, Temperaturdifferenz {dT} K.
 @schlank_dia_beschreibung

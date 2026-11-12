@@ -17,6 +17,10 @@ Amount of coffee $V_\mathrm{K}$
 Heat capacity of the cup $C_\mathrm{T}$
 @schlank_saeulen_t
 Heat released to the room up to $t$ = {t} min
+@schlank_saeulen_aria
+Bars: heat released to the room up to {t} min, cup 1 {q1} kJ, cup 2 {q2} kJ, difference {dq} kJ
+@schlank_saeulen_negativ
+Negative means: overall, the cup has taken up heat from the room.
 @schlank_status
 After {t} min: cup 1 {th1} °C, cup 2 {th2} °C, temperature difference {dT} K.
 @schlank_dia_beschreibung

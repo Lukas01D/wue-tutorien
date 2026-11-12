@@ -185,8 +185,11 @@
     svg.textContent = "";
     const fs = W >= 600 ? 13 : 12, dick = W >= 600 ? 3 : 2.5;
     const xmax = Math.max(60, Math.ceil(tE / 10) * 10);
-    const ymax = Math.max(90, Math.ceil((Math.max(e.thK0, m.th10, m.th2Z) + 3) / 10) * 10);
-    const ymin = Math.min(10, Math.floor((e.thU - 5) / 10) * 10);
+    // Grenzen aus allen Werten, die gezeichnet werden (Befund A-01). Die Kurven nähern sich ihrem Ziel ohne Umkehr,
+    // Extremwerte liegen also an den Enden der Stücke: Start, Zugabe, t.
+    const werte = [e.thK0, m.th10, m.th1(tE), m.th2K, m.th2Z, m.th2(tE)];
+    const ymax = Math.max(90, Math.ceil((Math.max(...werte) + 3) / 10) * 10);
+    const ymin = Math.min(10, Math.floor((e.thU - 5) / 10) * 10, Math.floor((Math.min(...werte) - 2) / 10) * 10);
     const Lr = 46, R = 24, Tr = 12, B = 38, P = 12;
     const X = t => Lr + P + (W - Lr - P - R) * t / xmax, Y = v => Tr + (H - Tr - B) * (ymax - v) / (ymax - ymin);
     const fein = xmax <= 90 ? 5 : 10, grob = xmax <= 90 ? 10 : 30;
@@ -260,8 +263,37 @@
     $("wd").textContent = zahl(d1 - d2, 2) + " K";
   }
   function saeulenZeigen(m) {
-    saeulen({ Q1: m.Q1(tJetzt), Q2: m.Q2(tJetzt), Q1max: m.Q1(S.e.t), Q2max: m.Q2(S.e.t) });
+    // Maßstab aus dem ganzen Bereich 0 bis t, damit die Säulen beim Abspielen nicht aus dem Bild wachsen
+    const zeiten = [S.e.tZ];
+    for (let i = 0; i <= 60; i++) zeiten.push(S.e.t * i / 60);
+    const q = zeiten.flatMap(t => [m.Q1(t), m.Q2(t)]);
+    saeulen({ Q1: m.Q1(tJetzt), Q2: m.Q2(tJetzt), hoch: Math.max(0, ...q), tief: Math.min(0, ...q) }, zeitText(tJetzt));
     $("saeulen-titel").innerHTML = F("schlank_saeulen_t", { t: zeitText(tJetzt) });
+    $("saeulen-hinweis").hidden = !(m.Q1(tJetzt) < -1e-9 || m.Q2(tJetzt) < -1e-9);
+  }
+  // Säulen der an den Raum abgegebenen Wärme. Aufbau wie saeulen() der Hauptseite (oberflaeche.js), dazu eine Nulllinie:
+  // Ist die Mischung kälter als der Raum, nimmt die Tasse Wärme auf, die Säule zeigt dann nach unten (Befund A-02).
+  function saeulen(erg, t) {
+    const s = $("saeulen");
+    s.textContent = "";
+    const oben = 26, unten = 146, spanne = Math.max(erg.hoch - erg.tief, 1e-9);
+    const Y = q => oben + (unten - oben) * (erg.hoch - q) / spanne;
+    const b = Y(0), y1 = Y(erg.Q1), y2 = Y(erg.Q2);
+    s.appendChild(el("rect", { x: 20, y: Math.min(b, y1), width: 56, height: Math.abs(y1 - b), class: "saeule1" }));
+    s.appendChild(el("rect", { x: 100, y: Math.min(b, y2), width: 56, height: Math.abs(y2 - b), class: "saeule2" }));
+    s.appendChild(el("line", { x1: 10, x2: 170, y1: b, y2: b, class: "achse" }));
+    const o = Math.min(y1, y2), u = Math.max(y1, y2), ymid = (o + u) / 2;
+    s.appendChild(el("line", { x1: 78, x2: 168, y1: y1, y2: y1, class: "bezug" }));
+    s.appendChild(el("path", { d: "M162 " + o + " h8 V" + u + " h-8", class: "klammer" }));
+    s.appendChild(el("text", { x: 176, y: ymid - 2, "font-size": 13, class: "diff-text" }, T("saeule_diff")));
+    s.appendChild(el("text", { x: 48, y: unten + 18, "text-anchor": "middle", "font-size": 13, class: "kbeschr k1-text" }, T("saeule_t1")));
+    s.appendChild(el("text", { x: 128, y: unten + 18, "text-anchor": "middle", "font-size": 13, class: "kbeschr k2-text" }, T("saeule_t2")));
+    const q1 = zahl(erg.Q1 / 1000, 2), q2 = zahl(erg.Q2 / 1000, 2), dq = zahl((erg.Q2 - erg.Q1) / 1000, 2);
+    s.appendChild(el("text", { x: 176, y: ymid + 14, "font-size": 13, class: "diff-text zahl" }, dq + " kJ"));
+    // Zahl über der Säule; bei negativer Wärme über der Nulllinie
+    s.appendChild(el("text", { x: 48, y: Math.min(b, y1) - 6, "text-anchor": "middle", "font-size": 12, class: "zahl" }, q1 + " kJ"));
+    s.appendChild(el("text", { x: 128, y: Math.min(b, y2) - 6, "text-anchor": "middle", "font-size": 12, class: "zahl" }, q2 + " kJ"));
+    s.setAttribute("aria-label", F("schlank_saeulen_aria", { t: t, q1: q1, q2: q2, dq: dq }));
   }
   let ansageTimer = 0;
   function ansage(text) {
