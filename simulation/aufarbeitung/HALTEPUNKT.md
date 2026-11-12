@@ -154,7 +154,7 @@ Hauptseite (kurz): gleicher Kern (`auswerten`), dazu ein Pflichtweg mit Vorhersa
 | gut | weniger gut |
 |:--|:--|
 | Eine Quelle für alle Zahlen (`kaffee_modell.py`), der geprüfte Rechenblock ist per Prüfsumme geschützt | Je schneller die Runden (11. und 12.11.), desto weniger unabhängige Prüfung (A-03) |
-| Unabhängige Prüfungen fanden echte Fehler (X4: Energieerklärung bei Milch mit Raumtemperatur; X6: Neustart; Codex: 15 px am Beamer) | PR #14 gemergt, bevor alle Commits drin waren; PR #15 musste nachziehen |
+| Unabhängige Prüfungen fanden echte Fehler (X4: eindeutige Darstellung der Energie; X6: „Von vorn“ stellte die Sperre nicht wieder her; Codex: 15 px am Beamer) | PR #14 gemergt, bevor alle Commits drin waren; PR #15 musste nachziehen |
 | Eine Datei ohne Netz, ohne Speicher, mit CSP: datenschutzfreundlich und robust | Erste schlanke Varianten im eigenen Design statt im Stil der Hauptseite, neu gebaut |
 | Bau reproduzierbar bis aufs Byte, Veröffentlichung belegbar | Nachweise von Codex auf eigenen Zweigen, nicht auf `main` (A-04) |
 | Die TL entscheidet jede Gestaltungsfrage, mit Varianten zur Wahl | Viele Begleitdokumente (Konzept 585 Zeilen), Aufwand für Leser groß |
@@ -222,3 +222,15 @@ Entscheidung der TL: „A01 gerne beheben und wenns sinn ergibt auch gern in ein
 | A-05 bis A-10 | offen | |
 
 Tests auf diesem Stand: `minimal_test.js` 63 von 63, `test_kern.py` und `test_texte.py` bestanden, `a2_vergleich.py` und `a3_physik.py` unverändert bestanden, `a4_browser.js` 15 von 15, Bau bytegleich. Neue Fassung der Seite: Fuß „Stand 2026-11-12 · Version 0b2ce1d937“, SHA-256 `19a64074…5c71`; noch nicht veröffentlicht.
+
+## 10 Ergebnisse (Schritt 5, 12.11.2026)
+
+Entscheidung der TL zur Folienliste: mehr Folien zum Code (Aufbau, Abläufe als Flussdiagramme, Bau), 25 Folien statt 17; „passt, fang an“.
+
+| Ergebnis | Ort |
+|:--|:--|
+| Präsentation „Kaffee-Simulation: Code und Validität“, 25 Folien mit 7 Diagrammen, Sprechernotizen | Folien-Artefakt in claude.ai (privat, Teilen über das Menü der Seite) |
+| Bericht „Kaffee-Simulation: Aufarbeitung des Codes“ mit 8 Erklärkästen und allen Belegen | Dokument-Artefakt in claude.ai (privat) |
+| Prüfskripte und Ausgaben | `simulation/aufarbeitung/` |
+
+Offen: Ergebnis der Gegenprüfung X7 in Folie 17 („läuft“) und im Bericht nachtragen; danach Veröffentlichung als Sites-Version 6.
